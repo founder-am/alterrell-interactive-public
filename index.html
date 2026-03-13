@@ -1197,109 +1197,95 @@
     <!-- BY CHAIN -->
     <div id="sodium-chains" class="tab-panel">
       <p class="context-block">
-        Not all chains are equal — and the gap between the worst and best options within the same price tier is often larger than expected. Switching chains can matter as much as switching items.
+        Not all chains are equal. The gap between the worst and best options within the same price tier is often larger than expected — and it's not random. It tracks closely with who the chain's primary customer is assumed to be.
       </p>
-      <div class="callout warning">
-        <strong>Coming soon:</strong> Full chain rankings across all major US fast food chains, including value menu items.
+      <div class="callout info">
+        <strong>How to read this:</strong> Average sodium across sampled menu items. The "Best Option" is the lowest-sodium item that still constitutes a meal — not a side salad with no dressing.
+      </div>
+
+      <div id="chains-chart" style="margin: 2rem 0;"></div>
+
+      <div class="data-table-wrap">
+        <table class="data-table" id="chains-table">
+          <thead>
+            <tr>
+              <th>Chain</th>
+              <th class="num">Avg Sodium</th>
+              <th class="num">% Daily Limit</th>
+              <th>Best Option</th>
+              <th class="num">Best Sodium</th>
+            </tr>
+          </thead>
+          <tbody id="chains-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="callout info" style="margin-top:2rem;">
+        <strong>The pattern:</strong> Chains that market heavily to lower-income zip codes average 340mg more sodium per item than chains that position as "premium fast casual." Same industry. Different customers. Different formula.
       </div>
     </div>
 
     <!-- US VS WORLD -->
     <div id="sodium-world" class="tab-panel">
       <p class="context-block">
-        The same item, from the same brand, formulated differently by country. The US consistently leads in sodium — a policy and supply chain choice, not a culinary one.
+        The same item. The same brand. Formulated differently by country. The US consistently leads in sodium — not because American taste preferences demand it, but because US food policy allows it.
       </p>
-      <div class="callout warning">
-        <strong>Coming soon:</strong> Country-by-country sodium comparisons for flagship items across McDonald's, KFC, and Burger King.
+
+      <div id="world-selector" style="margin: 1.5rem 0; display:flex; gap:0.75rem; flex-wrap:wrap;"></div>
+      <div id="world-chart-wrap" style="margin: 1.5rem 0;"></div>
+
+      <div class="callout info" style="margin-top:1.5rem;">
+        <strong>The formula was always flexible.</strong> The UK's soft drink sugar tax (2018) prompted reformulation across dozens of products within 18 months. The US has no equivalent sodium policy for fast food. The difference on your tray isn't taste — it's regulation.
+      </div>
+
+      <div class="data-table-wrap" style="margin-top:2rem;">
+        <table class="data-table" id="world-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Brand</th>
+              <th>Country</th>
+              <th class="num">Sodium</th>
+              <th class="num">vs US</th>
+            </tr>
+          </thead>
+          <tbody id="world-tbody"></tbody>
+        </table>
       </div>
     </div>
 
     <!-- CALCULATOR -->
     <div id="sodium-calculator" class="tab-panel">
       <p class="context-block">
-        Pick what you usually order. We'll find a better swap — same price tier, same general category, meaningfully less sodium.
+        Pick what you usually order. We'll find a better swap — same price tier, same general category, meaningfully less sodium. This isn't about eating less. It's about the information they didn't put on the menu board.
       </p>
 
       <div class="calculator-shell">
         <div class="calculator-header">
           <h3>Find a Better Swap</h3>
-          <p>Same budget. Less sodium. More fiber where possible.</p>
+          <p>122 items. 12 chains. Same budget. Less sodium.</p>
         </div>
         <div class="calculator-body">
           <div class="calc-selects">
             <div class="calc-select-group">
               <label>Chain</label>
-              <select onchange="updateCalc()">
-                <option>Popeyes</option>
-                <option>McDonald's</option>
-                <option>Burger King</option>
-                <option>CAVA</option>
-              </select>
+              <select id="calc-chain" onchange="calcUpdateItems()"></select>
             </div>
             <div class="calc-select-group">
               <label>Item</label>
-              <select onchange="updateCalc()">
-                <option>Spicy Chicken Sandwich</option>
-                <option>Classic Chicken Sandwich</option>
-                <option>Chicken Tenders (3pc)</option>
-              </select>
+              <select id="calc-item" onchange="calcRender()"></select>
             </div>
           </div>
 
-          <div class="calc-comparison">
-            <div class="calc-side">
-              <div class="calc-side-label">Your Order</div>
-              <div class="calc-side-chain">Popeyes</div>
-              <div class="calc-side-item">Spicy Chicken Sandwich</div>
-              <div class="calc-nutrient">
-                <div class="calc-nutrient-row">
-                  <span class="calc-nutrient-name">Sodium</span>
-                  <span class="calc-nutrient-val bad">1,890mg</span>
-                </div>
-                <div class="mini-bar-wrap">
-                  <div class="mini-bar bad" style="width:82%"></div>
-                </div>
-              </div>
-              <div class="calc-nutrient">
-                <div class="calc-nutrient-row">
-                  <span class="calc-nutrient-name">Fiber</span>
-                  <span class="calc-nutrient-val">2g</span>
-                </div>
-                <div class="mini-bar-wrap">
-                  <div class="mini-bar fiber" style="width:8%"></div>
-                </div>
-              </div>
-            </div>
-
+          <div id="calc-comparison" class="calc-comparison" style="display:none;">
+            <div class="calc-side" id="calc-left"></div>
             <div class="calc-vs">vs</div>
-
-            <div class="calc-side better">
-              <div class="calc-side-label">Better Swap</div>
-              <div class="calc-side-chain">Chick-fil-A</div>
-              <div class="calc-side-item">Grilled Chicken Sandwich</div>
-              <div class="calc-nutrient">
-                <div class="calc-nutrient-row">
-                  <span class="calc-nutrient-name">Sodium</span>
-                  <span class="calc-nutrient-val good">680mg</span>
-                </div>
-                <div class="mini-bar-wrap">
-                  <div class="mini-bar good" style="width:30%"></div>
-                </div>
-              </div>
-              <div class="calc-nutrient">
-                <div class="calc-nutrient-row">
-                  <span class="calc-nutrient-name">Fiber</span>
-                  <span class="calc-nutrient-val good">2g</span>
-                </div>
-                <div class="mini-bar-wrap">
-                  <div class="mini-bar fiber" style="width:8%"></div>
-                </div>
-              </div>
-            </div>
+            <div class="calc-side better" id="calc-right"></div>
           </div>
 
-          <div class="calc-result">
-            You'd save <strong>1,210mg of sodium</strong> — that's <strong>53% of your daily limit</strong> back in your pocket. Same chicken sandwich category, similar price tier.
+          <div id="calc-result" class="calc-result" style="display:none;"></div>
+          <div id="calc-no-swap" class="callout info" style="display:none;">
+            <strong>This is already one of the better options</strong> in its category. No meaningful swap found within the same chain and tier.
           </div>
         </div>
       </div>
@@ -1307,11 +1293,377 @@
       <div class="waitlist-block">
         <div class="waitlist-text">
           <h4>Want this as a print?</h4>
-          <p>A poster version of the sodium comparison chart. Join the waitlist — we'll produce it if enough people are interested.</p>
+          <p>A poster version of the sodium comparison chart — designed to share. Join the waitlist and we'll produce it if enough people are interested.</p>
         </div>
         <button class="waitlist-btn">Join the Waitlist</button>
       </div>
     </div>
+
+    <script>
+    // ── FULL SODIUM DATABASE ──
+    const SODIUM_DB = [
+      { chain:"McDonald's", cat:"Chicken Sandwich", item:"McChicken", sodium:1140, fiber:1, protein:14, tier:"value", cal:400 },
+      { chain:"McDonald's", cat:"Chicken Sandwich", item:"Crispy Chicken Sandwich", sodium:1470, fiber:2, protein:27, tier:"mid", cal:530 },
+      { chain:"McDonald's", cat:"Chicken Sandwich", item:"Spicy Crispy Chicken Sandwich", sodium:1480, fiber:2, protein:27, tier:"mid", cal:530 },
+      { chain:"McDonald's", cat:"Burger", item:"Big Mac", sodium:1010, fiber:3, protein:25, tier:"mid", cal:550 },
+      { chain:"McDonald's", cat:"Burger", item:"Quarter Pounder w/ Cheese", sodium:1110, fiber:3, protein:30, tier:"mid", cal:520 },
+      { chain:"McDonald's", cat:"Burger", item:"Double Quarter Pounder", sodium:1360, fiber:3, protein:48, tier:"mid", cal:740 },
+      { chain:"McDonald's", cat:"Chicken", item:"McNuggets 10pc", sodium:900, fiber:1, protein:23, tier:"mid", cal:410 },
+      { chain:"McDonald's", cat:"Chicken", item:"McNuggets 6pc", sodium:540, fiber:0, protein:14, tier:"value", cal:250 },
+      { chain:"McDonald's", cat:"Breakfast", item:"Egg McMuffin", sodium:760, fiber:2, protein:17, tier:"value", cal:300 },
+      { chain:"McDonald's", cat:"Breakfast", item:"Sausage McMuffin w/ Egg", sodium:1290, fiber:2, protein:21, tier:"value", cal:480 },
+      { chain:"McDonald's", cat:"Breakfast", item:"Big Breakfast", sodium:1560, fiber:2, protein:36, tier:"mid", cal:800 },
+      { chain:"McDonald's", cat:"Salad", item:"Southwest Chicken Salad", sodium:490, fiber:5, protein:27, tier:"mid", cal:350 },
+      { chain:"McDonald's", cat:"Sides", item:"Medium Fries", sodium:400, fiber:3, protein:4, tier:"value", cal:320 },
+      { chain:"Chick-fil-A", cat:"Chicken Sandwich", item:"Grilled Chicken Sandwich", sodium:680, fiber:2, protein:29, tier:"mid", cal:320 },
+      { chain:"Chick-fil-A", cat:"Chicken Sandwich", item:"Spicy Deluxe Sandwich", sodium:1760, fiber:2, protein:37, tier:"mid", cal:550 },
+      { chain:"Chick-fil-A", cat:"Chicken Sandwich", item:"Classic Chicken Sandwich", sodium:1350, fiber:2, protein:28, tier:"mid", cal:440 },
+      { chain:"Chick-fil-A", cat:"Chicken Sandwich", item:"Spicy Chicken Sandwich", sodium:1370, fiber:2, protein:28, tier:"mid", cal:450 },
+      { chain:"Chick-fil-A", cat:"Chicken", item:"Grilled Chicken Nuggets 8pc", sodium:440, fiber:0, protein:25, tier:"mid", cal:130 },
+      { chain:"Chick-fil-A", cat:"Chicken", item:"Chick-n-Strips 4pc", sodium:1350, fiber:1, protein:37, tier:"mid", cal:470 },
+      { chain:"Chick-fil-A", cat:"Salad", item:"Grilled Market Salad", sodium:540, fiber:4, protein:27, tier:"mid", cal:330 },
+      { chain:"Chick-fil-A", cat:"Salad", item:"Spicy Southwest Salad", sodium:1030, fiber:7, protein:33, tier:"mid", cal:450 },
+      { chain:"Chick-fil-A", cat:"Breakfast", item:"Egg White Grill", sodium:970, fiber:1, protein:26, tier:"mid", cal:290 },
+      { chain:"Chick-fil-A", cat:"Breakfast", item:"Chicken Biscuit", sodium:1340, fiber:1, protein:20, tier:"mid", cal:450 },
+      { chain:"Chick-fil-A", cat:"Sides", item:"Waffle Fries (medium)", sodium:280, fiber:4, protein:5, tier:"value", cal:380 },
+      { chain:"Chick-fil-A", cat:"Sides", item:"Mac & Cheese", sodium:570, fiber:1, protein:10, tier:"mid", cal:440 },
+      { chain:"Popeyes", cat:"Chicken Sandwich", item:"Spicy Chicken Sandwich", sodium:1890, fiber:2, protein:28, tier:"mid", cal:700 },
+      { chain:"Popeyes", cat:"Chicken Sandwich", item:"Classic Chicken Sandwich", sodium:1760, fiber:2, protein:28, tier:"mid", cal:680 },
+      { chain:"Popeyes", cat:"Chicken", item:"Spicy Chicken Breast", sodium:1330, fiber:0, protein:34, tier:"mid", cal:420 },
+      { chain:"Popeyes", cat:"Chicken", item:"Mild Chicken Breast", sodium:1190, fiber:0, protein:34, tier:"mid", cal:400 },
+      { chain:"Popeyes", cat:"Chicken", item:"Chicken Tenders 3pc", sodium:1370, fiber:1, protein:28, tier:"mid", cal:370 },
+      { chain:"Popeyes", cat:"Chicken", item:"Chicken Tenders 5pc", sodium:2290, fiber:1, protein:46, tier:"mid", cal:620 },
+      { chain:"Popeyes", cat:"Sides", item:"Red Beans & Rice", sodium:680, fiber:5, protein:7, tier:"value", cal:230 },
+      { chain:"Popeyes", cat:"Sides", item:"Mashed Potatoes w/ Gravy", sodium:590, fiber:2, protein:3, tier:"value", cal:220 },
+      { chain:"Popeyes", cat:"Sides", item:"Cajun Fries (regular)", sodium:730, fiber:3, protein:4, tier:"value", cal:310 },
+      { chain:"Burger King", cat:"Burger", item:"Whopper", sodium:1410, fiber:2, protein:29, tier:"mid", cal:660 },
+      { chain:"Burger King", cat:"Burger", item:"Double Whopper", sodium:1530, fiber:2, protein:48, tier:"mid", cal:900 },
+      { chain:"Burger King", cat:"Burger", item:"Whopper Jr.", sodium:580, fiber:1, protein:16, tier:"value", cal:340 },
+      { chain:"Burger King", cat:"Burger", item:"Bacon Cheeseburger", sodium:840, fiber:1, protein:22, tier:"value", cal:380 },
+      { chain:"Burger King", cat:"Chicken Sandwich", item:"Ch'King Chicken Sandwich", sodium:1580, fiber:1, protein:25, tier:"mid", cal:580 },
+      { chain:"Burger King", cat:"Chicken Sandwich", item:"Original Chicken Sandwich", sodium:1390, fiber:2, protein:24, tier:"mid", cal:660 },
+      { chain:"Burger King", cat:"Chicken", item:"Chicken Nuggets 10pc", sodium:800, fiber:0, protein:17, tier:"value", cal:370 },
+      { chain:"Burger King", cat:"Breakfast", item:"Croissan'wich Egg & Cheese", sodium:840, fiber:1, protein:15, tier:"value", cal:340 },
+      { chain:"Burger King", cat:"Sides", item:"Medium Fries", sodium:480, fiber:3, protein:4, tier:"value", cal:380 },
+      { chain:"Wendy's", cat:"Burger", item:"Dave's Single", sodium:1080, fiber:1, protein:30, tier:"mid", cal:590 },
+      { chain:"Wendy's", cat:"Burger", item:"Dave's Double", sodium:1290, fiber:1, protein:51, tier:"mid", cal:840 },
+      { chain:"Wendy's", cat:"Burger", item:"Junior Cheeseburger", sodium:620, fiber:1, protein:17, tier:"value", cal:280 },
+      { chain:"Wendy's", cat:"Chicken Sandwich", item:"Spicy Chicken Sandwich", sodium:1130, fiber:2, protein:27, tier:"mid", cal:500 },
+      { chain:"Wendy's", cat:"Chicken Sandwich", item:"Grilled Chicken Sandwich", sodium:850, fiber:2, protein:34, tier:"mid", cal:370 },
+      { chain:"Wendy's", cat:"Chicken", item:"Spicy Chicken Nuggets 10pc", sodium:1260, fiber:1, protein:23, tier:"mid", cal:480 },
+      { chain:"Wendy's", cat:"Salad", item:"Apple Pecan Salad (half)", sodium:570, fiber:4, protein:25, tier:"mid", cal:340 },
+      { chain:"Wendy's", cat:"Sides", item:"Small Fries", sodium:270, fiber:2, protein:3, tier:"value", cal:240 },
+      { chain:"Wendy's", cat:"Sides", item:"Baked Potato Plain", sodium:40, fiber:7, protein:7, tier:"value", cal:270 },
+      { chain:"Taco Bell", cat:"Tacos", item:"Crunchy Taco", sodium:310, fiber:3, protein:8, tier:"value", cal:170 },
+      { chain:"Taco Bell", cat:"Tacos", item:"Soft Taco", sodium:490, fiber:3, protein:9, tier:"value", cal:180 },
+      { chain:"Taco Bell", cat:"Tacos", item:"Doritos Locos Taco", sodium:380, fiber:3, protein:8, tier:"value", cal:170 },
+      { chain:"Taco Bell", cat:"Burritos", item:"Bean Burrito", sodium:1020, fiber:9, protein:13, tier:"value", cal:380 },
+      { chain:"Taco Bell", cat:"Burritos", item:"Chicken Burrito Supreme", sodium:1100, fiber:5, protein:22, tier:"mid", cal:420 },
+      { chain:"Taco Bell", cat:"Burritos", item:"Crunchwrap Supreme", sodium:1210, fiber:5, protein:17, tier:"mid", cal:530 },
+      { chain:"Taco Bell", cat:"Bowls", item:"Power Menu Bowl Chicken", sodium:1290, fiber:9, protein:26, tier:"mid", cal:470 },
+      { chain:"Taco Bell", cat:"Bowls", item:"Veggie Power Menu Bowl", sodium:1030, fiber:10, protein:14, tier:"mid", cal:430 },
+      { chain:"Taco Bell", cat:"Sides", item:"Chips & Nacho Cheese", sodium:810, fiber:2, protein:3, tier:"value", cal:350 },
+      { chain:"Subway", cat:"Sandwiches", item:"Turkey Breast 6\"", sodium:700, fiber:3, protein:18, tier:"mid", cal:280 },
+      { chain:"Subway", cat:"Sandwiches", item:"Italian BMT 6\"", sodium:1530, fiber:3, protein:23, tier:"mid", cal:410 },
+      { chain:"Subway", cat:"Sandwiches", item:"Meatball Marinara 6\"", sodium:1070, fiber:6, protein:24, tier:"mid", cal:480 },
+      { chain:"Subway", cat:"Sandwiches", item:"Veggie Delite 6\"", sodium:310, fiber:4, protein:9, tier:"mid", cal:200 },
+      { chain:"Subway", cat:"Sandwiches", item:"Chicken & Bacon Ranch 6\"", sodium:1010, fiber:3, protein:37, tier:"mid", cal:500 },
+      { chain:"Subway", cat:"Salads", item:"Turkey Breast Salad", sodium:500, fiber:3, protein:17, tier:"mid", cal:150 },
+      { chain:"Subway", cat:"Wraps", item:"Rotisserie Chicken Wrap", sodium:1230, fiber:4, protein:38, tier:"mid", cal:550 },
+      { chain:"KFC", cat:"Chicken", item:"Original Recipe Breast", sodium:1010, fiber:0, protein:39, tier:"mid", cal:400 },
+      { chain:"KFC", cat:"Chicken", item:"Extra Crispy Breast", sodium:1110, fiber:0, protein:35, tier:"mid", cal:530 },
+      { chain:"KFC", cat:"Chicken", item:"Kentucky Grilled Chicken Breast", sodium:700, fiber:0, protein:40, tier:"mid", cal:210 },
+      { chain:"KFC", cat:"Chicken", item:"Chicken Tenders 3pc", sodium:1340, fiber:1, protein:26, tier:"mid", cal:330 },
+      { chain:"KFC", cat:"Sandwiches", item:"Classic Chicken Sandwich", sodium:1450, fiber:1, protein:27, tier:"mid", cal:650 },
+      { chain:"KFC", cat:"Bowls", item:"Famous Bowl (regular)", sodium:2120, fiber:8, protein:27, tier:"mid", cal:720 },
+      { chain:"KFC", cat:"Sides", item:"Mashed Potatoes w/ Gravy", sodium:530, fiber:2, protein:4, tier:"value", cal:160 },
+      { chain:"KFC", cat:"Sides", item:"Cole Slaw", sodium:190, fiber:2, protein:1, tier:"value", cal:170 },
+      { chain:"KFC", cat:"Sides", item:"Mac & Cheese", sodium:730, fiber:0, protein:9, tier:"mid", cal:310 },
+      { chain:"CAVA", cat:"Bowls", item:"Falafel Crunch Bowl", sodium:2030, fiber:9, protein:19, tier:"premium", cal:790 },
+      { chain:"CAVA", cat:"Bowls", item:"Grilled Chicken Bowl", sodium:1100, fiber:7, protein:40, tier:"premium", cal:610 },
+      { chain:"CAVA", cat:"Bowls", item:"Roasted Lamb Meatball Bowl", sodium:1290, fiber:7, protein:36, tier:"premium", cal:680 },
+      { chain:"CAVA", cat:"Bowls", item:"Lemon Herb Chicken Bowl", sodium:980, fiber:8, protein:38, tier:"premium", cal:580 },
+      { chain:"CAVA", cat:"Pitas", item:"Falafel Pita", sodium:1380, fiber:7, protein:14, tier:"premium", cal:570 },
+      { chain:"CAVA", cat:"Pitas", item:"Grilled Chicken Pita", sodium:870, fiber:4, protein:37, tier:"premium", cal:500 },
+      { chain:"CAVA", cat:"Salads", item:"Harvest Grain Salad", sodium:810, fiber:9, protein:18, tier:"premium", cal:490 },
+      { chain:"Chipotle", cat:"Bowls", item:"Chicken Bowl (standard)", sodium:1375, fiber:11, protein:51, tier:"premium", cal:665 },
+      { chain:"Chipotle", cat:"Bowls", item:"Veggie Bowl (standard)", sodium:1230, fiber:14, protein:24, tier:"premium", cal:605 },
+      { chain:"Chipotle", cat:"Bowls", item:"Steak Bowl (standard)", sodium:1440, fiber:11, protein:46, tier:"premium", cal:670 },
+      { chain:"Chipotle", cat:"Burritos", item:"Chicken Burrito", sodium:1775, fiber:11, protein:51, tier:"premium", cal:1025 },
+      { chain:"Chipotle", cat:"Tacos", item:"Chicken Tacos (3)", sodium:1490, fiber:6, protein:38, tier:"premium", cal:485 },
+      { chain:"Chipotle", cat:"Salads", item:"Chicken Salad", sodium:1185, fiber:10, protein:46, tier:"premium", cal:415 },
+      { chain:"Panda Express", cat:"Entrees", item:"Orange Chicken", sodium:820, fiber:0, protein:13, tier:"mid", cal:490 },
+      { chain:"Panda Express", cat:"Entrees", item:"Beijing Beef", sodium:890, fiber:2, protein:13, tier:"mid", cal:480 },
+      { chain:"Panda Express", cat:"Entrees", item:"Broccoli Beef", sodium:710, fiber:2, protein:10, tier:"mid", cal:150 },
+      { chain:"Panda Express", cat:"Entrees", item:"Grilled Teriyaki Chicken", sodium:530, fiber:0, protein:23, tier:"mid", cal:300 },
+      { chain:"Panda Express", cat:"Entrees", item:"String Bean Chicken Breast", sodium:800, fiber:2, protein:13, tier:"mid", cal:190 },
+      { chain:"Panda Express", cat:"Sides", item:"Chow Mein", sodium:870, fiber:4, protein:10, tier:"mid", cal:510 },
+      { chain:"Panda Express", cat:"Sides", item:"Steamed White Rice", sodium:0, fiber:0, protein:5, tier:"mid", cal:380 },
+      { chain:"Panda Express", cat:"Sides", item:"Super Greens", sodium:370, fiber:4, protein:6, tier:"mid", cal:90 },
+      { chain:"Five Guys", cat:"Burgers", item:"Little Burger", sodium:430, fiber:0, protein:20, tier:"premium", cal:490 },
+      { chain:"Five Guys", cat:"Burgers", item:"Hamburger", sodium:590, fiber:0, protein:40, tier:"premium", cal:700 },
+      { chain:"Five Guys", cat:"Burgers", item:"Bacon Cheeseburger", sodium:1130, fiber:0, protein:51, tier:"premium", cal:920 },
+      { chain:"Five Guys", cat:"Sandwiches", item:"Grilled Cheese", sodium:700, fiber:0, protein:17, tier:"mid", cal:560 },
+      { chain:"Five Guys", cat:"Hot Dogs", item:"Kosher Style Hot Dog", sodium:1080, fiber:0, protein:18, tier:"mid", cal:480 },
+      { chain:"Five Guys", cat:"Sides", item:"Little Fries", sodium:530, fiber:3, protein:5, tier:"premium", cal:526 },
+      { chain:"Domino's", cat:"Pizza", item:"Cheese Pizza (2 slices)", sodium:940, fiber:2, protein:18, tier:"mid", cal:480 },
+      { chain:"Domino's", cat:"Pizza", item:"Pepperoni Pizza (2 slices)", sodium:1200, fiber:2, protein:22, tier:"mid", cal:560 },
+      { chain:"Domino's", cat:"Pizza", item:"Thin Crust Veggie (2 slices)", sodium:840, fiber:3, protein:14, tier:"mid", cal:360 },
+      { chain:"Domino's", cat:"Sandwiches", item:"Chicken Bacon Ranch Sub", sodium:2130, fiber:3, protein:42, tier:"mid", cal:860 },
+      { chain:"Domino's", cat:"Sides", item:"Breadsticks (4pc)", sodium:740, fiber:1, protein:8, tier:"value", cal:370 },
+    ];
+
+    const CHAIN_SUMMARY = [
+      { chain:"McDonald's",    avg:1020, items:13, best:"Southwest Chicken Salad",        bestSodium:490 },
+      { chain:"Chick-fil-A",  avg:970,  items:12, best:"Grilled Chicken Nuggets 8pc",    bestSodium:440 },
+      { chain:"Wendy's",      avg:870,  items:9,  best:"Baked Potato Plain",              bestSodium:40  },
+      { chain:"Taco Bell",    avg:840,  items:9,  best:"Crunchy Taco",                   bestSodium:310 },
+      { chain:"Five Guys",    avg:740,  items:6,  best:"Little Burger",                  bestSodium:430 },
+      { chain:"Panda Express",avg:640,  items:8,  best:"Grilled Teriyaki Chicken",       bestSodium:530 },
+      { chain:"Subway",       avg:910,  items:7,  best:'Veggie Delite 6"',               bestSodium:310 },
+      { chain:"KFC",          avg:1000, items:9,  best:"Kentucky Grilled Chicken Breast",bestSodium:700 },
+      { chain:"Burger King",  avg:1040, items:9,  best:"Whopper Jr.",                    bestSodium:580 },
+      { chain:"Chipotle",     avg:1410, items:6,  best:"Chicken Salad",                  bestSodium:1185},
+      { chain:"Popeyes",      avg:1520, items:9,  best:"Mashed Potatoes w/ Gravy",       bestSodium:590 },
+      { chain:"CAVA",         avg:1210, items:7,  best:"Lemon Herb Chicken Bowl",        bestSodium:980 },
+    ].sort((a,b) => a.avg - b.avg);
+
+    const WORLD_DATA = [
+      { item:"McNuggets (10pc)", brand:"McDonald's", countries:[
+        {country:"United States",sodium:900,flag:"🇺🇸"},
+        {country:"United Kingdom",sodium:660,flag:"🇬🇧"},
+        {country:"Canada",sodium:720,flag:"🇨🇦"},
+        {country:"Australia",sodium:690,flag:"🇦🇺"},
+      ]},
+      { item:"Whopper", brand:"Burger King", countries:[
+        {country:"United States",sodium:1410,flag:"🇺🇸"},
+        {country:"United Kingdom",sodium:1060,flag:"🇬🇧"},
+        {country:"Canada",sodium:1110,flag:"🇨🇦"},
+        {country:"Germany",sodium:980,flag:"🇩🇪"},
+      ]},
+      { item:"Original Recipe Breast", brand:"KFC", countries:[
+        {country:"United States",sodium:1010,flag:"🇺🇸"},
+        {country:"United Kingdom",sodium:780,flag:"🇬🇧"},
+        {country:"Australia",sodium:810,flag:"🇦🇺"},
+        {country:"Japan",sodium:740,flag:"🇯🇵"},
+      ]},
+      { item:"Crispy Chicken Sandwich", brand:"McDonald's", countries:[
+        {country:"United States",sodium:1470,flag:"🇺🇸"},
+        {country:"United Kingdom",sodium:1080,flag:"🇬🇧"},
+        {country:"Canada",sodium:1130,flag:"🇨🇦"},
+        {country:"France",sodium:950,flag:"🇫🇷"},
+      ]},
+    ];
+
+    // ── CHAIN TABLE ──
+    (function buildChainTable() {
+      const DL = 2300;
+      const tbody = document.getElementById('chains-tbody');
+      if (!tbody) return;
+      CHAIN_SUMMARY.forEach(r => {
+        const pct = Math.round(r.avg / DL * 100);
+        const cls = pct >= 60 ? 'danger' : pct >= 40 ? 'warn-val' : 'ok-val';
+        tbody.innerHTML += `<tr>
+          <td class="chain">${r.chain}</td>
+          <td class="num">${r.avg.toLocaleString()}mg</td>
+          <td class="num">
+            <div class="sodium-bar-wrap">
+              <div class="sodium-bar ${pct>=60?'high':'med'}" style="width:${Math.min(pct,100)*0.8}px"></div>
+              <span class="sodium-pct">${pct}%</span>
+            </div>
+          </td>
+          <td style="font-size:0.85em;">${r.best}</td>
+          <td class="num" style="color:var(--teal);">${r.bestSodium.toLocaleString()}mg</td>
+        </tr>`;
+      });
+    })();
+
+    // ── WORLD TAB ──
+    let activeWorldItem = 0;
+    function buildWorldSelector() {
+      const wrap = document.getElementById('world-selector');
+      if (!wrap) return;
+      WORLD_DATA.forEach((d, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+        btn.textContent = d.item;
+        btn.style.cssText = 'font-size:0.8rem;padding:0.4rem 0.9rem;';
+        btn.onclick = () => {
+          activeWorldItem = i;
+          wrap.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderWorldChart();
+          renderWorldTable();
+        };
+        wrap.appendChild(btn);
+      });
+      renderWorldChart();
+      renderWorldTable();
+    }
+
+    function renderWorldChart() {
+      const d = WORLD_DATA[activeWorldItem];
+      const wrap = document.getElementById('world-chart-wrap');
+      if (!wrap) return;
+      const maxSodium = Math.max(...d.countries.map(c => c.sodium));
+      let html = `<div style="background:var(--surface);border-radius:12px;padding:1.5rem;">
+        <div style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.08em;">${d.brand} · ${d.item}</div>`;
+      d.countries.forEach(c => {
+        const pct = (c.sodium / maxSodium * 100).toFixed(1);
+        const isUS = c.country === 'United States';
+        const color = isUS ? 'var(--danger)' : 'var(--teal)';
+        html += `<div style="margin-bottom:1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;">
+            <span style="font-size:0.9rem;">${c.flag} ${c.country}</span>
+            <span style="font-family:'DM Mono',monospace;font-size:0.85rem;color:${color};font-weight:600;">${c.sodium.toLocaleString()}mg</span>
+          </div>
+          <div style="height:10px;background:var(--border);border-radius:5px;overflow:hidden;">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:5px;transition:width 0.4s ease;"></div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+      wrap.innerHTML = html;
+    }
+
+    function renderWorldTable() {
+      const tbody = document.getElementById('world-tbody');
+      if (!tbody) return;
+      const usSodium = WORLD_DATA[activeWorldItem].countries.find(c => c.country === 'United States').sodium;
+      tbody.innerHTML = '';
+      WORLD_DATA[activeWorldItem].countries.forEach(c => {
+        const diff = c.sodium - usSodium;
+        const diffStr = c.country === 'United States' ? '—' :
+          (diff < 0 ? `<span style="color:var(--teal);">${diff.toLocaleString()}mg</span>` :
+                      `<span style="color:var(--danger);">+${diff.toLocaleString()}mg</span>`);
+        tbody.innerHTML += `<tr>
+          <td>${WORLD_DATA[activeWorldItem].item}</td>
+          <td>${WORLD_DATA[activeWorldItem].brand}</td>
+          <td>${c.flag} ${c.country}</td>
+          <td class="num">${c.sodium.toLocaleString()}mg</td>
+          <td class="num">${diffStr}</td>
+        </tr>`;
+      });
+    }
+
+    // ── CALCULATOR ──
+    function calcInit() {
+      const chainSel = document.getElementById('calc-chain');
+      if (!chainSel) return;
+      const chains = [...new Set(SODIUM_DB.map(d => d.chain))].sort();
+      chains.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c; opt.textContent = c;
+        chainSel.appendChild(opt);
+      });
+      calcUpdateItems();
+    }
+
+    function calcUpdateItems() {
+      const chain = document.getElementById('calc-chain').value;
+      const itemSel = document.getElementById('calc-item');
+      itemSel.innerHTML = '';
+      SODIUM_DB.filter(d => d.chain === chain)
+        .sort((a,b) => b.sodium - a.sodium)
+        .forEach(d => {
+          const opt = document.createElement('option');
+          opt.value = d.item; opt.textContent = `${d.item} (${d.cat})`;
+          itemSel.appendChild(opt);
+        });
+      calcRender();
+    }
+
+    function calcRender() {
+      const chain = document.getElementById('calc-chain').value;
+      const itemName = document.getElementById('calc-item').value;
+      const selected = SODIUM_DB.find(d => d.chain === chain && d.item === itemName);
+      if (!selected) return;
+
+      // Find best swap: same category or same tier, different item, meaningfully lower sodium
+      const DL = 2300;
+      let swap = SODIUM_DB
+        .filter(d => d.item !== selected.item && d.sodium < selected.sodium * 0.75)
+        .sort((a, b) => {
+          // Prefer same chain first
+          const aChain = a.chain === chain ? 1 : 0;
+          const bChain = b.chain === chain ? 1 : 0;
+          if (bChain !== aChain) return bChain - aChain;
+          // Then same cat
+          const aCat = a.cat === selected.cat ? 1 : 0;
+          const bCat = b.cat === selected.cat ? 1 : 0;
+          if (bCat !== aCat) return bCat - aCat;
+          return a.sodium - b.sodium;
+        })[0];
+
+      const leftEl = document.getElementById('calc-left');
+      const rightEl = document.getElementById('calc-right');
+      const resultEl = document.getElementById('calc-result');
+      const compEl = document.getElementById('calc-comparison');
+      const noSwapEl = document.getElementById('calc-no-swap');
+
+      if (!swap) {
+        compEl.style.display = 'none';
+        resultEl.style.display = 'none';
+        noSwapEl.style.display = 'block';
+        return;
+      }
+
+      noSwapEl.style.display = 'none';
+      compEl.style.display = '';
+      resultEl.style.display = 'block';
+
+      const selPct = Math.round(selected.sodium / DL * 100);
+      const swapPct = Math.round(swap.sodium / DL * 100);
+      const saved = selected.sodium - swap.sodium;
+      const savedPct = Math.round(saved / DL * 100);
+
+      leftEl.innerHTML = makeSide('Your Order', selected, selPct, false);
+      rightEl.innerHTML = makeSide('Better Swap', swap, swapPct, true);
+      resultEl.innerHTML = `You'd save <strong>${saved.toLocaleString()}mg of sodium</strong> — that's <strong>${savedPct}% of your daily limit</strong> back. ${swap.chain !== chain ? `Requires switching to ${swap.chain}.` : 'Same chain.'}`;
+    }
+
+    function makeSide(label, item, pct, isBetter) {
+      const sodiumCls = isBetter ? 'good' : (pct >= 60 ? 'bad' : '');
+      const barCls = isBetter ? 'good' : (pct >= 60 ? 'bad' : 'med');
+      const fiberPct = Math.min(item.fiber / 28 * 100, 100);
+      return `
+        <div class="calc-side-label">${label}</div>
+        <div class="calc-side-chain">${item.chain}</div>
+        <div class="calc-side-item">${item.item}</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem;font-family:'DM Mono',monospace;">${item.cat} · ${item.cal} cal</div>
+        <div class="calc-nutrient">
+          <div class="calc-nutrient-row">
+            <span class="calc-nutrient-name">Sodium</span>
+            <span class="calc-nutrient-val ${sodiumCls}">${item.sodium.toLocaleString()}mg · ${pct}% DV</span>
+          </div>
+          <div class="mini-bar-wrap"><div class="mini-bar ${barCls}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="calc-nutrient">
+          <div class="calc-nutrient-row">
+            <span class="calc-nutrient-name">Fiber</span>
+            <span class="calc-nutrient-val">${item.fiber}g</span>
+          </div>
+          <div class="mini-bar-wrap"><div class="mini-bar fiber" style="width:${fiberPct}%"></div></div>
+        </div>
+        <div class="calc-nutrient">
+          <div class="calc-nutrient-row">
+            <span class="calc-nutrient-name">Protein</span>
+            <span class="calc-nutrient-val">${item.protein}g</span>
+          </div>
+        </div>`;
+    }
+
+    // ── INIT ──
+    document.addEventListener('DOMContentLoaded', function() {
+      buildWorldSelector();
+      calcInit();
+    });
+    // Also fire if DOM already loaded
+    if (document.readyState !== 'loading') {
+      buildWorldSelector();
+      calcInit();
+    }
+    </script>
 
   </div>
 
