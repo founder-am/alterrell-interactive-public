@@ -15,7 +15,7 @@
 
     /* Hero */
     .sodium-hero {
-      padding: calc(var(--nav-height) + 32px + 4rem) 1.25rem 4rem;
+      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
       background: var(--dark-section);
     }
     .sodium-hero-inner {
@@ -77,24 +77,15 @@
       line-height: 1.5;
     }
 
-    /* Journey block */
+    /* Journey block — icon left / text right */
     .sodium-journey {
       background: var(--paper-warm);
       border-bottom: 1px solid var(--border);
-      padding: var(--space-md) 1.25rem;
+      padding: var(--space-sm) 1.25rem;
     }
     .sodium-journey-inner {
       max-width: var(--max-editorial);
       margin: 0 auto;
-    }
-    .sodium-journey-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 1rem;
-      display: block;
     }
     .sodium-journey-grid {
       display: grid;
@@ -107,19 +98,35 @@
     }
     .sodium-journey-item {
       background: var(--paper-card);
-      padding: 1.25rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      display: grid;
+      grid-template-columns: 38% 62%;
       text-decoration: none;
       transition: background 0.15s;
+      min-height: 80px;
     }
     .sodium-journey-item:hover { background: var(--teal-bg); text-decoration: none; }
+    .sodium-journey-icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      padding: 1rem 0.5rem;
+    }
+    .sodium-journey-item:hover .sodium-journey-icon-cell { border-right-color: rgba(10,124,114,0.2); }
+    .sodium-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--teal); }
+    .sodium-journey-text-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0.875rem 1rem;
+    }
     .sodium-journey-action {
       font-family: var(--font-body);
-      font-size: var(--text-small);
+      font-size: var(--text-body);
       font-weight: 600;
       color: var(--ink);
+      line-height: 1.2;
     }
     .sodium-journey-dest {
       font-family: var(--font-mono);
@@ -168,34 +175,87 @@
     }
     .systemic-point-text strong { color: var(--ink); font-weight: 600; }
 
-    /* Sub-tabs (Systemic Issues, The System) */
-    .sub-tabs {
+    /* ── ACCORDION (replaces sub-tabs) ── */
+    .accordion-group { margin-bottom: var(--space-md); }
+    .accordion-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 0.75rem; overflow: hidden; }
+    .accordion-header {
       display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: var(--space-md);
-      overflow-x: auto;
-      scrollbar-width: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: var(--paper-warm);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      gap: 0.75rem;
+      min-height: var(--touch);
+      transition: background 0.15s;
     }
-    .sub-tabs::-webkit-scrollbar { display: none; }
-    .sub-tab {
+    .accordion-header:hover { background: var(--teal-bg); }
+    .accordion-header.open { background: var(--teal-bg); border-bottom: 1px solid var(--border); }
+    .accordion-title {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--ink);
+      flex: 1;
+    }
+    .accordion-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .accordion-chevron {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .accordion-header.open .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body {
+      padding: var(--space-md) 1.25rem;
+      background: var(--paper-card);
+    }
+
+    /* ── SECTION-FLOOR NAV ── */
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      margin-top: var(--space-md);
+      border-top: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .section-nav-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-decoration: none;
+      min-height: var(--touch);
+      justify-content: center;
+      transition: opacity 0.15s;
+    }
+    .section-nav-btn:hover { opacity: 0.7; text-decoration: none; }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .section-nav-label {
       font-family: var(--font-body);
       font-size: var(--text-small);
-      font-weight: 500;
-      color: var(--ink-muted);
-      padding: 0.75rem 1.25rem;
-      border: none;
-      border-bottom: 2px solid transparent;
-      background: none;
-      cursor: pointer;
-      white-space: nowrap;
-      min-height: var(--touch);
-      transition: color 0.15s, border-color 0.15s;
+      font-weight: 600;
+      color: var(--teal);
     }
-    .sub-tab:hover { color: var(--ink); }
-    .sub-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
-    .sub-panel { display: none; }
-    .sub-panel.active { display: block; }
+    .section-nav-spacer { flex: 1; }
 
     /* Pull quote */
     .pull-quote {
@@ -605,7 +665,11 @@
       line-height: var(--leading-body);
     }
 
-    /* Responsive */
+    /* ── GLOBAL TIGHTENING ── */
+    .ai-section { padding: var(--space-lg) 1.25rem; }
+    .ai-section--tight { padding: var(--space-md) 1.25rem; }
+    .ai-section--dark { padding: var(--space-xl) 1.25rem; }
+
     @media (max-width: 640px) {
       .sodium-hero-stats { grid-template-columns: 1fr; }
       .sodium-journey-grid { grid-template-columns: 1fr; }
@@ -615,6 +679,8 @@
       .zip-compare { grid-template-columns: 1fr; }
       .calc-selectors { grid-template-columns: 1fr; }
       .ceo-row-label { width: 80px; font-size: var(--text-micro); }
+      .section-nav { flex-wrap: wrap; gap: 0.5rem; }
+      .section-nav-btn, .section-nav-btn.next { min-height: 52px; }
     }
   </style>
 </head>
@@ -666,19 +732,27 @@
 <!-- JOURNEY BLOCK -->
 <section class="sodium-journey">
   <div class="sodium-journey-inner">
-    <span class="sodium-journey-label">Follow the work</span>
     <div class="sodium-journey-grid">
-      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="sodium-journey-item">
-        <span class="sodium-journey-action">Read it</span>
-        <span class="sodium-journey-dest">Substack →</span>
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Watch on YouTube">
+        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">▶</span></div>
+        <div class="sodium-journey-text-cell">
+          <span class="sodium-journey-action">Watch</span>
+          <span class="sodium-journey-dest">YouTube →</span>
+        </div>
       </a>
-      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="sodium-journey-item">
-        <span class="sodium-journey-action">Watch it</span>
-        <span class="sodium-journey-dest">YouTube →</span>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Read on Substack">
+        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">✦</span></div>
+        <div class="sodium-journey-text-cell">
+          <span class="sodium-journey-action">Read</span>
+          <span class="sodium-journey-dest">Substack →</span>
+        </div>
       </a>
-      <a href="#compare" class="sodium-journey-item">
-        <span class="sodium-journey-action">Explore it</span>
-        <span class="sodium-journey-dest">Compare your order ↓</span>
+      <a href="#compare" class="sodium-journey-item" aria-label="Explore the interactive tools">
+        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">◎</span></div>
+        <div class="sodium-journey-text-cell">
+          <span class="sodium-journey-action">Explore</span>
+          <span class="sodium-journey-dest">Compare your order ↓</span>
+        </div>
       </a>
     </div>
   </div>
@@ -739,6 +813,15 @@
     <div class="v2-callout">
       <p>Coming in V2: sugar, dietary fat, and the full macro picture. This piece focuses on sodium and fiber because those are the two metrics most directly connected to the hypertension and cardiovascular disease story. The sugar and diabetes link gets its own piece.</p>
     </div>
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <a href="#the-system" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">The System</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -751,235 +834,158 @@
     <h2 class="ai-h2">What the infrastructure produces at scale.</h2>
     <p class="section-intro">The item-level data shows what's in the food. This tab shows what the system produces when you aggregate that across millions of people, decades of targeted marketing, and deliberate decisions about where to locate stores and where not to.</p>
 
-    <div class="sub-tabs" id="systemSubTabs">
-      <button class="sub-tab active" onclick="switchSubTab('system','geography',this)">Where You Live</button>
-      <button class="sub-tab" onclick="switchSubTab('system','zipcodes',this)">Zip Code Exposure</button>
-      <button class="sub-tab" onclick="switchSubTab('system','healthcare',this)">The Healthcare Bill</button>
-      <button class="sub-tab" onclick="switchSubTab('system','fiber',this)">Fiber as Counter-Metric</button>
-    </div>
+    <div class="accordion-group">
 
-    <!-- WHERE YOU LIVE -->
-    <div class="sub-panel active" id="system-geography">
-      <div class="stat-callout">
-        <div class="stat-callout-num">18.8M</div>
-        <div class="stat-callout-text">
-          <p><strong>Americans live in low-income, low-access areas</strong> where residents have limited access to affordable and nutritious food — about 6.1% of the US population.</p>
-          <p style="margin-top:0.5rem; font-size: var(--text-small);">Source: USDA Food Access Research Atlas</p>
-        </div>
-      </div>
-
-      <p class="ai-body">Predominantly Black neighborhoods have <strong>2.4 fast-food restaurants per square mile</strong> compared to 1.5 in predominantly white neighborhoods — a finding consistent across multiple peer-reviewed studies. Low-income and minority areas have both higher fast food density and fewer supermarkets. The two conditions compound each other.</p>
-
-      <p class="ai-body">Research across New York City found that exposure to fast food outlets around schools was significantly associated with the proportion of ethnic minority and low-income students. In New York City, block-by-block assessments found the lowest food environment scores in East and Central Harlem — areas with the highest proportions of Black and Hispanic residents and the lowest median household incomes.</p>
-
-      <div class="pull-quote">
-        <div class="pull-quote-text">"This isn't about bad choices in your neighborhood. It's about which businesses were given permits to operate there — and which ones weren't."</div>
-        <div class="pull-quote-source">Data as Dignity — Alterrell Interactive editorial framework</div>
-      </div>
-
-      <p class="ai-body">Wealthy districts have three times as many supermarkets as poor ones. White neighborhoods contain an average of four times as many supermarkets as predominantly Black neighborhoods. This is not a market failure — it is the market functioning exactly as designed under decades of disinvestment, redlining, and zoning decisions.</p>
-    </div>
-
-    <!-- ZIP CODE EXPOSURE -->
-    <div class="sub-panel" id="system-zipcodes">
-      <p class="ai-body" style="margin-bottom: var(--space-md);">Two cities. Two different structural arguments. One walking city where density compounds daily exposure. One driving city where the absence of a car turns 1.8 miles into a three-hour round trip — while fast food is on every corner.</p>
-
-      <h3 class="ai-h3" style="margin-bottom: var(--space-sm);">New York City — A walking city</h3>
-      <p class="ai-body" style="margin-bottom: 1rem;">Same borough. Same subway lines. Contiguous neighborhoods on the same island. The exposure gap is created before a single order is placed.</p>
-
-      <div class="zip-compare">
-        <div class="zip-card contrast">
-          <div class="zip-label">Low-income, high fast food density</div>
-          <div class="zip-neighborhood">Central Harlem</div>
-          <div class="zip-city">New York, NY · 10037</div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Median household income</div>
-            <div class="zip-stat-val flagged">~$36,000</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Food environment</div>
-            <div class="zip-stat-val flagged">Low access · High fast food density</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Context</div>
-            <div class="zip-stat-val" style="font-size: var(--text-small); color: rgba(248,246,241,0.6);">Research-documented as having among the lowest food environment scores in NYC, with highest proportions of Black and Hispanic residents</div>
-          </div>
-        </div>
-        <div class="zip-card">
-          <div class="zip-label">High-income, high grocery access</div>
-          <div class="zip-neighborhood">Upper East Side</div>
-          <div class="zip-city">New York, NY · 10021</div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Median household income</div>
-            <div class="zip-stat-val">~$130,000</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Food environment</div>
-            <div class="zip-stat-val">High grocery access · Multiple supermarkets</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Context</div>
-            <div class="zip-stat-val" style="font-size: var(--text-small); color: var(--ink-muted);">Multiple full-service grocery stores within walking distance; Whole Foods, Trader Joe's, and specialty markets accessible on foot</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="ai-body" style="margin-bottom: var(--space-md);">In a walking city, fast food density means you pass it going to school, to work, to the subway. The exposure is daily and unavoidable for people who can't afford to live in neighborhoods where the food environment was designed differently.</p>
-
-      <h3 class="ai-h3" style="margin-bottom: var(--space-sm);">Houston — A driving city</h3>
-      <p class="ai-body" style="margin-bottom: 1rem;">The "just drive somewhere" critique doesn't survive contact with Third Ward. This is what the absence of a car looks like in a city built around the assumption that everyone has one.</p>
-
-      <div class="zip-compare">
-        <div class="zip-card contrast">
-          <div class="zip-label">Documented food desert · No car required to be stranded</div>
-          <div class="zip-neighborhood">Third Ward</div>
-          <div class="zip-city">Houston, TX · 77004</div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Nearest grocery store</div>
-            <div class="zip-stat-val flagged">1.8 miles</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Without a car</div>
-            <div class="zip-stat-val flagged">2–3 hour round trip by bus</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Grocery trips by residents</div>
-            <div class="zip-stat-val" style="font-size: var(--text-small); color: rgba(248,246,241,0.6);">Only 14.83% of Third Ward residents leave the neighborhood to shop — not because they don't want fresh food, but because the trip is prohibitive</div>
-          </div>
-        </div>
-        <div class="zip-card">
-          <div class="zip-label">One of the wealthiest zip codes in the American South</div>
-          <div class="zip-neighborhood">River Oaks</div>
-          <div class="zip-city">Houston, TX · 77019</div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Distance from Third Ward</div>
-            <div class="zip-stat-val">~4 miles</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Grocery access</div>
-            <div class="zip-stat-val">Kroger, Whole Foods, and Central Market within half a mile</div>
-          </div>
-          <div class="zip-stat">
-            <div class="zip-stat-label">Context</div>
-            <div class="zip-stat-val" style="font-size: var(--text-small); color: var(--ink-muted);">4 miles in a driving city is nothing — unless you don't have a car. Then it's a different city entirely.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ai-callout ai-callout--orange" style="margin-top: var(--space-md);">
-        <p class="ai-callout-text">61% of Houston residents live in a food desert — over 1.3 million people. In some neighborhoods, 94% of residents are in a food desert. Fast food is not a choice when it is the only infrastructure present.</p>
-      </div>
-    </div>
-
-    <!-- THE HEALTHCARE BILL -->
-    <div class="sub-panel" id="system-healthcare">
-      <div class="stat-callout">
-        <div class="stat-callout-num">$219B</div>
-        <div class="stat-callout-text">
-          <p><strong>Annual US healthcare expenditures associated with hypertension</strong> — including $79.4B in inpatient services, $70.2B in outpatient care, and $32.5B in prescription medications.</p>
-          <p style="margin-top:0.5rem; font-size: var(--text-small);">Source: Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored. 2019 data.</p>
-        </div>
-      </div>
-
-      <p class="ai-body">That cost is not staying in the neighborhoods where the fast food is densest. It is distributed across the entire US healthcare system — through insurance premiums, Medicare and Medicaid, and out-of-pocket costs. People with hypertension pay $2,759 more per year in healthcare costs than people without it. People who can least afford it are disproportionately bearing that burden.</p>
-
-      <h3 class="ai-h3" style="margin: var(--space-md) 0 var(--space-sm);">Where costs are headed</h3>
-      <p class="ai-body" style="margin-bottom: var(--space-md);">The American Heart Association projects that cardiovascular risk factor healthcare costs will triple by 2050 — from $400 billion to $1.3 trillion annually — if current trends continue. Hypertension is the primary driver.</p>
-
-      <div class="proj-bar-container" style="max-width: 400px; margin: 0 auto var(--space-md);">
-        <div class="projection-bars">
-          <div class="proj-bar-wrap">
-            <div class="proj-bar bar-2019">
-              <span class="proj-bar-val">$400B</span>
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">01</span>
+          <span class="accordion-title">Where You Live</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <div class="stat-callout">
+            <div class="stat-callout-num">18.8M</div>
+            <div class="stat-callout-text">
+              <p><strong>Americans live in low-income, low-access areas</strong> where residents have limited access to affordable and nutritious food — about 6.1% of the US population.</p>
+              <p style="margin-top:0.5rem; font-size: var(--text-small);">Source: USDA Food Access Research Atlas</p>
             </div>
-            <div class="proj-bar-label">2020<br>Actual</div>
           </div>
-          <div class="proj-bar-wrap">
-            <div class="proj-bar bar-2050">
-              <span class="proj-bar-val">$1.3T</span>
+          <p class="ai-body">Predominantly Black neighborhoods have <strong>2.4 fast-food restaurants per square mile</strong> compared to 1.5 in predominantly white neighborhoods — a finding consistent across multiple peer-reviewed studies. Low-income and minority areas have both higher fast food density and fewer supermarkets. The two conditions compound each other.</p>
+          <p class="ai-body">Research across New York City found that exposure to fast food outlets around schools was significantly associated with the proportion of ethnic minority and low-income students. Block-by-block assessments found the lowest food environment scores in East and Central Harlem — areas with the highest proportions of Black and Hispanic residents and the lowest median household incomes.</p>
+          <div class="pull-quote">
+            <div class="pull-quote-text">"This isn't about bad choices in your neighborhood. It's about which businesses were given permits to operate there — and which ones weren't."</div>
+            <div class="pull-quote-source">Data as Dignity — Alterrell Interactive editorial framework</div>
+          </div>
+          <p class="ai-body">Wealthy districts have three times as many supermarkets as poor ones. White neighborhoods contain an average of four times as many supermarkets as predominantly Black neighborhoods. This is not a market failure — it is the market functioning exactly as designed under decades of disinvestment, redlining, and zoning decisions.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">02</span>
+          <span class="accordion-title">Zip Code Exposure</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <p class="ai-body" style="margin-bottom: var(--space-md);">Two cities. Two different structural arguments. One walking city where density compounds daily exposure. One driving city where the absence of a car turns 1.8 miles into a three-hour round trip — while fast food is on every corner.</p>
+          <h3 class="ai-h3" style="margin-bottom: var(--space-sm);">New York City — A walking city</h3>
+          <p class="ai-body" style="margin-bottom: 1rem;">Same borough. Same subway lines. Contiguous neighborhoods on the same island. The exposure gap is created before a single order is placed.</p>
+          <div class="zip-compare">
+            <div class="zip-card contrast">
+              <div class="zip-label">Low-income, high fast food density</div>
+              <div class="zip-neighborhood">Central Harlem</div>
+              <div class="zip-city">New York, NY · 10037</div>
+              <div class="zip-stat"><div class="zip-stat-label">Median household income</div><div class="zip-stat-val flagged">~$36,000</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Food environment</div><div class="zip-stat-val flagged">Low access · High fast food density</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Context</div><div class="zip-stat-val" style="font-size:var(--text-small);color:rgba(248,246,241,0.6);">Research-documented as having among the lowest food environment scores in NYC, with highest proportions of Black and Hispanic residents</div></div>
             </div>
-            <div class="proj-bar-label">2050<br>Projected</div>
+            <div class="zip-card">
+              <div class="zip-label">High-income, high grocery access</div>
+              <div class="zip-neighborhood">Upper East Side</div>
+              <div class="zip-city">New York, NY · 10021</div>
+              <div class="zip-stat"><div class="zip-stat-label">Median household income</div><div class="zip-stat-val">~$130,000</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Food environment</div><div class="zip-stat-val">High grocery access · Multiple supermarkets</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Context</div><div class="zip-stat-val" style="font-size:var(--text-small);color:var(--ink-muted);">Multiple full-service grocery stores within walking distance; Whole Foods, Trader Joe's, and specialty markets accessible on foot</div></div>
+            </div>
+          </div>
+          <p class="ai-body" style="margin: var(--space-md) 0;">In a walking city, fast food density means you pass it going to school, to work, to the subway. The exposure is daily and unavoidable for people who can't afford to live in neighborhoods where the food environment was designed differently.</p>
+          <h3 class="ai-h3" style="margin-bottom: var(--space-sm);">Houston — A driving city</h3>
+          <p class="ai-body" style="margin-bottom: 1rem;">The "just drive somewhere" critique doesn't survive contact with Third Ward. This is what the absence of a car looks like in a city built around the assumption that everyone has one.</p>
+          <div class="zip-compare">
+            <div class="zip-card contrast">
+              <div class="zip-label">Documented food desert · No car required to be stranded</div>
+              <div class="zip-neighborhood">Third Ward</div>
+              <div class="zip-city">Houston, TX · 77004</div>
+              <div class="zip-stat"><div class="zip-stat-label">Nearest grocery store</div><div class="zip-stat-val flagged">1.8 miles</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Without a car</div><div class="zip-stat-val flagged">2–3 hour round trip by bus</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Grocery trips by residents</div><div class="zip-stat-val" style="font-size:var(--text-small);color:rgba(248,246,241,0.6);">Only 14.83% of Third Ward residents leave the neighborhood to shop — not because they don't want fresh food, but because the trip is prohibitive</div></div>
+            </div>
+            <div class="zip-card">
+              <div class="zip-label">One of the wealthiest zip codes in the American South</div>
+              <div class="zip-neighborhood">River Oaks</div>
+              <div class="zip-city">Houston, TX · 77019</div>
+              <div class="zip-stat"><div class="zip-stat-label">Distance from Third Ward</div><div class="zip-stat-val">~4 miles</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Grocery access</div><div class="zip-stat-val">Kroger, Whole Foods, and Central Market within half a mile</div></div>
+              <div class="zip-stat"><div class="zip-stat-label">Context</div><div class="zip-stat-val" style="font-size:var(--text-small);color:var(--ink-muted);">4 miles in a driving city is nothing — unless you don't have a car. Then it's a different city entirely.</div></div>
+            </div>
+          </div>
+          <div class="ai-callout" style="margin-top:var(--space-md);">
+            <p class="ai-callout-text">61% of Houston residents live in a food desert — over 1.3 million people. In some neighborhoods, 94% of residents are in a food desert. Fast food is not a choice when it is the only infrastructure present.</p>
           </div>
         </div>
-        <p style="font-family: var(--font-mono); font-size: var(--text-micro); color: var(--ink-muted); text-align: center; margin-top: 0.5rem;">All cardiovascular risk factors (hypertension, diabetes, hypercholesterolemia). Inflation-adjusted 2022 dollars. Source: AHA Presidential Advisory 2024.</p>
       </div>
 
-      <p class="ai-body">About 1 in every 8 healthcare dollars is spent on cardiovascular disease. That ratio doesn't change unless the underlying exposure — the sodium load, the food access gap, the advertising machine — changes first.</p>
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">03</span>
+          <span class="accordion-title">The Healthcare Bill</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <div class="stat-callout">
+            <div class="stat-callout-num">$219B</div>
+            <div class="stat-callout-text">
+              <p><strong>Annual US healthcare expenditures associated with hypertension</strong> — including $79.4B in inpatient services, $70.2B in outpatient care, and $32.5B in prescription medications.</p>
+              <p style="margin-top:0.5rem; font-size: var(--text-small);">Source: Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored. 2019 data.</p>
+            </div>
+          </div>
+          <p class="ai-body">That cost is not staying in the neighborhoods where the fast food is densest. It is distributed across the entire US healthcare system — through insurance premiums, Medicare and Medicaid, and out-of-pocket costs. People with hypertension pay $2,759 more per year in healthcare costs than people without it. People who can least afford it are disproportionately bearing that burden.</p>
+          <h3 class="ai-h3" style="margin: var(--space-md) 0 var(--space-sm);">Where costs are headed</h3>
+          <p class="ai-body" style="margin-bottom: var(--space-md);">The American Heart Association projects that cardiovascular risk factor healthcare costs will triple by 2050 — from $400 billion to $1.3 trillion annually — if current trends continue. Hypertension is the primary driver.</p>
+          <div class="proj-bar-container" style="max-width: 400px; margin: 0 auto var(--space-md);">
+            <div class="projection-bars">
+              <div class="proj-bar-wrap"><div class="proj-bar bar-2019"><span class="proj-bar-val">$400B</span></div><div class="proj-bar-label">2020<br>Actual</div></div>
+              <div class="proj-bar-wrap"><div class="proj-bar bar-2050"><span class="proj-bar-val">$1.3T</span></div><div class="proj-bar-label">2050<br>Projected</div></div>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--ink-muted);text-align:center;margin-top:0.5rem;">All cardiovascular risk factors. Inflation-adjusted 2022 dollars. Source: AHA Presidential Advisory 2024.</p>
+          </div>
+          <p class="ai-body">About 1 in every 8 healthcare dollars is spent on cardiovascular disease. That ratio doesn't change unless the underlying exposure — the sodium load, the food access gap, the advertising machine — changes first.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">04</span>
+          <span class="accordion-title">Fiber as Counter-Metric</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <p class="ai-body">Sodium gets the headline. Fiber is the counter-metric the system forgot to include. Fast food is overwhelmingly a high-protein, high-sodium, low-fiber environment. That combination isn't just bad for blood pressure — it affects gut health, cholesterol regulation, and blood sugar stability simultaneously.</p>
+          <div class="fiber-note">
+            <p>The FDA daily recommended fiber intake is 28g. Most Americans consume less than half that. Fast food rarely provides more than 3–4g per item. Items like Taco Bell's Bean Burrito (9g) and Chipotle bowls (6–10g) are exceptions — but they are swimming in sodium.</p>
+          </div>
+          <h3 class="ai-h3" style="margin: var(--space-md) 0 var(--space-sm);">High-protein fast food items: sodium vs. fiber</h3>
+          <div class="ai-table-wrap" style="margin-bottom: var(--space-md);">
+            <table class="ai-table">
+              <thead><tr><th>Item</th><th class="text-right">Protein</th><th class="text-right">Sodium</th><th class="text-right">Fiber</th><th>Note</th></tr></thead>
+              <tbody>
+                <tr><td>Chick-fil-A 12pc Grilled Nuggets</td><td class="text-right ai-num ai-text-success">38g</td><td class="text-right ai-num ai-text-success">440mg</td><td class="text-right ai-num ai-text-danger">0g</td><td>Best protein, zero fiber</td></tr>
+                <tr><td>Wingstop 10pc Classic Wings (plain)</td><td class="text-right ai-num ai-text-success">60g</td><td class="text-right ai-num ai-text-success">900mg</td><td class="text-right ai-num ai-text-danger">0g</td><td>High protein, zero fiber</td></tr>
+                <tr><td>Chipotle Chicken Bowl</td><td class="text-right ai-num ai-text-success">45g</td><td class="text-right ai-num">1,040mg</td><td class="text-right ai-num ai-text-teal">8g</td><td>Best fiber of any item in database</td></tr>
+                <tr><td>Taco Bell Bean Burrito</td><td class="text-right ai-num">13g</td><td class="text-right ai-num">870mg</td><td class="text-right ai-num ai-text-teal">9g</td><td>Low protein, high fiber — outlier</td></tr>
+                <tr><td>Popeyes Spicy Chicken Sandwich</td><td class="text-right ai-num">28g</td><td class="text-right ai-num ai-text-danger">1,765mg</td><td class="text-right ai-num">2g</td><td>77% daily sodium, 7% daily fiber</td></tr>
+                <tr><td>McDonald's 6pc McNuggets</td><td class="text-right ai-num">14g</td><td class="text-right ai-num">540mg</td><td class="text-right ai-num ai-text-danger">1g</td><td>US formula; UK equivalent: ~228mg sodium</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ai-body">The system optimized for palatability — salt enhances flavor and extends perceived freshness. Fiber was not a design goal. The result is a protein delivery infrastructure that, consumed regularly, creates the exact chronic disease conditions that cost $219 billion per year to manage.</p>
+        </div>
+      </div>
+
+    </div><!-- /accordion-group -->
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#overview" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Overview</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#systemic" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Systemic Issues</span>
+      </a>
     </div>
-
-    <!-- FIBER AS COUNTER-METRIC -->
-    <div class="sub-panel" id="system-fiber">
-      <p class="ai-body">Sodium gets the headline. Fiber is the counter-metric the system forgot to include. Fast food is overwhelmingly a high-protein, high-sodium, low-fiber environment. That combination isn't just bad for blood pressure — it affects gut health, cholesterol regulation, and blood sugar stability simultaneously.</p>
-
-      <div class="fiber-note">
-        <p>The FDA daily recommended fiber intake is 28g. Most Americans consume less than half that. Fast food rarely provides more than 3–4g per item. Items like Taco Bell's Bean Burrito (9g) and Chipotle bowls (6–10g) are exceptions — but they are swimming in sodium.</p>
-      </div>
-
-      <h3 class="ai-h3" style="margin: var(--space-md) 0 var(--space-sm);">High-protein fast food items: sodium vs. fiber</h3>
-      <p class="ai-body" style="margin-bottom: 1rem;">The items with the best protein efficiency tend to have the least fiber. The system was not designed around nutritional completeness.</p>
-
-      <div class="ai-table-wrap" style="margin-bottom: var(--space-md);">
-        <table class="ai-table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th class="text-right">Protein</th>
-              <th class="text-right">Sodium</th>
-              <th class="text-right">Fiber</th>
-              <th>Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Chick-fil-A 12pc Grilled Nuggets</td>
-              <td class="text-right ai-num ai-text-success">38g</td>
-              <td class="text-right ai-num ai-text-success">440mg</td>
-              <td class="text-right ai-num ai-text-danger">0g</td>
-              <td>Best protein, zero fiber</td>
-            </tr>
-            <tr>
-              <td>Wingstop 10pc Classic Wings (plain)</td>
-              <td class="text-right ai-num ai-text-success">60g</td>
-              <td class="text-right ai-num ai-text-success">900mg</td>
-              <td class="text-right ai-num ai-text-danger">0g</td>
-              <td>High protein, zero fiber</td>
-            </tr>
-            <tr>
-              <td>Chipotle Chicken Bowl</td>
-              <td class="text-right ai-num ai-text-success">45g</td>
-              <td class="text-right ai-num">1,040mg</td>
-              <td class="text-right ai-num ai-text-teal">8g</td>
-              <td>Best fiber of any item in database</td>
-            </tr>
-            <tr>
-              <td>Taco Bell Bean Burrito</td>
-              <td class="text-right ai-num">13g</td>
-              <td class="text-right ai-num">870mg</td>
-              <td class="text-right ai-num ai-text-teal">9g</td>
-              <td>Low protein, high fiber — outlier</td>
-            </tr>
-            <tr>
-              <td>Popeyes Spicy Chicken Sandwich</td>
-              <td class="text-right ai-num">28g</td>
-              <td class="text-right ai-num ai-text-danger">1,765mg</td>
-              <td class="text-right ai-num">2g</td>
-              <td>77% daily sodium, 7% daily fiber</td>
-            </tr>
-            <tr>
-              <td>McDonald's 6pc McNuggets</td>
-              <td class="text-right ai-num">14g</td>
-              <td class="text-right ai-num">540mg</td>
-              <td class="text-right ai-num ai-text-danger">1g</td>
-              <td>US formula; UK equivalent: ~228mg sodium</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="ai-body">The system optimized for palatability — salt enhances flavor and extends perceived freshness. Fiber was not a design goal. The result is a protein delivery infrastructure that, consumed regularly, creates the exact chronic disease conditions that cost $219 billion per year to manage.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════
      TAB 3 — SYSTEMIC ISSUES
@@ -990,161 +996,127 @@
     <h2 class="ai-h2">How the system was built.</h2>
     <p class="section-intro">Four mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents.</p>
 
-    <div class="sub-tabs" id="systemicSubTabs">
-      <button class="sub-tab active" onclick="switchSubTab('systemic','formula',this)">1. Formula</button>
-      <button class="sub-tab" onclick="switchSubTab('systemic','ads',this)">2. Ads</button>
-      <button class="sub-tab" onclick="switchSubTab('systemic','cost',this)">3. Cost</button>
-      <button class="sub-tab" onclick="switchSubTab('systemic','wages',this)">4. Wages</button>
-    </div>
+    <div class="accordion-group">
 
-    <!-- FORMULA -->
-    <div class="sub-panel active" id="systemic-formula">
-      <div class="pull-quote">
-        <div class="pull-quote-text">"The formula was always flexible. The decision about whose body was worth protecting — that's what wasn't."</div>
-        <div class="pull-quote-source">Alterrell Interactive · Fast Food Sodium Series</div>
-      </div>
-
-      <p class="ai-body">McDonald's sells the same menu items worldwide. The sodium content varies significantly by country — not because of different ingredients, but because of different regulatory environments and consumer expectations. The US consistently leads in sodium. The gap is a choice, not a culinary necessity.</p>
-
-      <div class="ai-table-wrap">
-        <table class="ai-table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th class="text-right">US Sodium</th>
-              <th class="text-right">International</th>
-              <th class="text-right">Gap</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>McNuggets (10pc)</td>
-              <td class="text-right ai-num ai-text-danger">900mg</td>
-              <td class="text-right ai-num ai-text-success">🇬🇧 UK · 660mg</td>
-              <td class="text-right ai-num">−27%</td>
-            </tr>
-            <tr>
-              <td>McNuggets (6pc)</td>
-              <td class="text-right ai-num ai-text-danger">540mg</td>
-              <td class="text-right ai-num ai-text-success">🇬🇧 UK · ~228mg</td>
-              <td class="text-right ai-num">−58%</td>
-            </tr>
-            <tr>
-              <td>Whopper</td>
-              <td class="text-right ai-num ai-text-danger">980mg</td>
-              <td class="text-right ai-num ai-text-success">🇩🇪 Germany · 690mg</td>
-              <td class="text-right ai-num">−30%</td>
-            </tr>
-            <tr>
-              <td>Original Recipe Breast (KFC)</td>
-              <td class="text-right ai-num ai-text-danger">1,010mg</td>
-              <td class="text-right ai-num ai-text-success">🇯🇵 Japan · 740mg</td>
-              <td class="text-right ai-num">−27%</td>
-            </tr>
-            <tr>
-              <td>Crispy Chicken Sandwich</td>
-              <td class="text-right ai-num ai-text-danger">1,470mg</td>
-              <td class="text-right ai-num ai-text-success">🇫🇷 France · 950mg</td>
-              <td class="text-right ai-num">−35%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="ai-source">Sources: McDonald's, Burger King, KFC published nutrition data (UK, US, DE, JP, FR) · 2024. UK 6-piece sodium calculated from CMAJ peer-reviewed per-100g data.</p>
-
-      <div class="ai-callout" style="margin-top: var(--space-md);">
-        <p class="ai-callout-text">They reformulated for European regulators. Not for you. If McDonald's UK can serve a McNugget with 58% less sodium, McDonald's US can too. The technical barrier doesn't exist. The financial incentive to change doesn't either — yet.</p>
-      </div>
-    </div>
-
-    <!-- ADS -->
-    <div class="sub-panel" id="systemic-ads">
-      <div class="stat-callout">
-        <div class="stat-callout-num">75%</div>
-        <div class="stat-callout-text">
-          <p><strong>More fast food TV ads seen by Black youth</strong> compared to their white peers of the same age demographic.</p>
-          <p style="margin-top: 0.5rem; font-size: var(--text-small);">Source: Rudd Center for Food Policy & Health, Fast Food FACTS 2021 · Nielsen data · University of Connecticut</p>
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">01</span>
+          <span class="accordion-title">The Formula</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <div class="pull-quote">
+            <div class="pull-quote-text">"The formula was always flexible. The decision about whose body was worth protecting — that's what wasn't."</div>
+            <div class="pull-quote-source">Alterrell Interactive · Fast Food Sodium Series</div>
+          </div>
+          <p class="ai-body">McDonald's sells the same menu items worldwide. The sodium content varies significantly by country — not because of different ingredients, but because of different regulatory environments and consumer expectations. The US consistently leads in sodium. The gap is a choice, not a culinary necessity.</p>
+          <div class="ai-table-wrap">
+            <table class="ai-table">
+              <thead><tr><th>Item</th><th class="text-right">US Sodium</th><th class="text-right">International</th><th class="text-right">Gap</th></tr></thead>
+              <tbody>
+                <tr><td>McNuggets (10pc)</td><td class="text-right ai-num ai-text-danger">900mg</td><td class="text-right ai-num ai-text-success">🇬🇧 UK · 660mg</td><td class="text-right ai-num">−27%</td></tr>
+                <tr><td>McNuggets (6pc)</td><td class="text-right ai-num ai-text-danger">540mg</td><td class="text-right ai-num ai-text-success">🇬🇧 UK · ~228mg</td><td class="text-right ai-num">−58%</td></tr>
+                <tr><td>Whopper</td><td class="text-right ai-num ai-text-danger">980mg</td><td class="text-right ai-num ai-text-success">🇩🇪 Germany · 690mg</td><td class="text-right ai-num">−30%</td></tr>
+                <tr><td>Original Recipe Breast (KFC)</td><td class="text-right ai-num ai-text-danger">1,010mg</td><td class="text-right ai-num ai-text-success">🇯🇵 Japan · 740mg</td><td class="text-right ai-num">−27%</td></tr>
+                <tr><td>Crispy Chicken Sandwich</td><td class="text-right ai-num ai-text-danger">1,470mg</td><td class="text-right ai-num ai-text-success">🇫🇷 France · 950mg</td><td class="text-right ai-num">−35%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ai-source">Sources: McDonald's, Burger King, KFC published nutrition data (UK, US, DE, JP, FR) · 2024. UK 6-piece sodium calculated from CMAJ peer-reviewed per-100g data.</p>
+          <div class="ai-callout" style="margin-top: var(--space-md);">
+            <p class="ai-callout-text">They reformulated for European regulators. Not for you. If McDonald's UK can serve a McNugget with 58% less sodium, McDonald's US can too. The technical barrier doesn't exist. The financial incentive to change doesn't either — yet.</p>
+          </div>
         </div>
       </div>
 
-      <p class="ai-body">The advertising architecture is not neutral. Fast food companies invest more advertising in markets with less ability to resist it. Rudd Center research documents that on Spanish-language television, zero healthy menu items were advertised — only value meals and large-portion items. The population being targeted is the same population that lives in higher fast food density neighborhoods with less grocery access.</p>
-
-      <div class="pull-quote">
-        <div class="pull-quote-text">"The choice architecture was built. By people. For reasons."</div>
-        <div class="pull-quote-source">Fast Food's Hidden Sodium Tax · Alterrell Interactive</div>
-      </div>
-
-      <p class="ai-body">This is not incidental. Advertising spend is allocated where return is highest. The communities with the least alternatives are the most valuable markets for fast food — and they receive the most advertising exposure for the least healthy options.</p>
-    </div>
-
-    <!-- COST -->
-    <div class="sub-panel" id="systemic-cost">
-      <p class="ai-body" style="margin-bottom: var(--space-md);">The $219 billion annual hypertension cost is not abstract. It shows up in insurance premiums, Medicare and Medicaid budgets, and individual out-of-pocket expenses. People with hypertension spend $2,759 more per year on healthcare than those without it.</p>
-
-      <div class="ai-table-wrap">
-        <table class="ai-table">
-          <thead>
-            <tr>
-              <th>Cost category</th>
-              <th class="text-right">Annual (US, 2019)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Inpatient services</td>
-              <td class="text-right ai-num">$79.4B</td>
-            </tr>
-            <tr>
-              <td>Outpatient visits</td>
-              <td class="text-right ai-num">$70.2B</td>
-            </tr>
-            <tr>
-              <td>Prescription medications</td>
-              <td class="text-right ai-num">$32.5B</td>
-            </tr>
-            <tr style="font-weight: 600;">
-              <td>Total hypertension-associated</td>
-              <td class="text-right ai-num ai-text-danger">$219.2B</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="ai-source">Source: Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored study. Based on 2019 Medical Expenditure Panel Survey data.</p>
-
-      <p class="ai-body" style="margin-top: var(--space-md);">About 1 in 8 US healthcare dollars goes to cardiovascular disease. The American Heart Association projects these costs will triple by 2050 if current exposure rates continue. The sodium infrastructure being built today is the healthcare bill being written for 2050.</p>
-    </div>
-
-    <!-- WAGES -->
-    <div class="sub-panel" id="systemic-wages">
-      <p class="ai-body" style="margin-bottom: var(--space-md);">The same companies making formulation decisions are making wage decisions. The same lobbying apparatus that resists minimum wage increases is the one that has not changed US sodium formulations for American consumers.</p>
-
-      <p class="ai-eyebrow" style="margin-bottom: 0.75rem;">McDonald's 2023 Compensation</p>
-
-      <div class="ceo-bars">
-        <div class="ceo-row">
-          <span class="ceo-row-label">CEO</span>
-          <div class="ceo-bar-track">
-            <div class="ceo-bar-fill ceo">
-              <span class="ceo-bar-val">$19,200,000</span>
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">02</span>
+          <span class="accordion-title">The Advertising</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <div class="stat-callout">
+            <div class="stat-callout-num">75%</div>
+            <div class="stat-callout-text">
+              <p><strong>More fast food TV ads seen by Black youth</strong> compared to their white peers of the same age demographic.</p>
+              <p style="margin-top:0.5rem;font-size:var(--text-small);">Source: Rudd Center for Food Policy & Health, Fast Food FACTS 2021 · Nielsen data · University of Connecticut</p>
             </div>
           </div>
+          <p class="ai-body">The advertising architecture is not neutral. Fast food companies invest more advertising in markets with less ability to resist it. Rudd Center research documents that on Spanish-language television, zero healthy menu items were advertised — only value meals and large-portion items. The population being targeted is the same population that lives in higher fast food density neighborhoods with less grocery access.</p>
+          <div class="pull-quote">
+            <div class="pull-quote-text">"The choice architecture was built. By people. For reasons."</div>
+            <div class="pull-quote-source">Fast Food's Hidden Sodium Tax · Alterrell Interactive</div>
+          </div>
+          <p class="ai-body">This is not incidental. Advertising spend is allocated where return is highest. The communities with the least alternatives are the most valuable markets for fast food — and they receive the most advertising exposure for the least healthy options.</p>
         </div>
-        <div class="ceo-row">
-          <span class="ceo-row-label">Median Worker</span>
-          <div class="ceo-bar-track" style="display:flex; align-items:center;">
-            <div class="ceo-bar-fill worker"></div>
-            <span class="ceo-bar-val-outside">$15,860</span>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">03</span>
+          <span class="accordion-title">The Cost</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <p class="ai-body" style="margin-bottom: var(--space-md);">The $219 billion annual hypertension cost is not abstract. It shows up in insurance premiums, Medicare and Medicaid budgets, and individual out-of-pocket expenses. People with hypertension spend $2,759 more per year on healthcare than those without it.</p>
+          <div class="ai-table-wrap">
+            <table class="ai-table">
+              <thead><tr><th>Cost category</th><th class="text-right">Annual (US, 2019)</th></tr></thead>
+              <tbody>
+                <tr><td>Inpatient services</td><td class="text-right ai-num">$79.4B</td></tr>
+                <tr><td>Outpatient visits</td><td class="text-right ai-num">$70.2B</td></tr>
+                <tr><td>Prescription medications</td><td class="text-right ai-num">$32.5B</td></tr>
+                <tr style="font-weight:600;"><td>Total hypertension-associated</td><td class="text-right ai-num ai-text-danger">$219.2B</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ai-source">Source: Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored study. Based on 2019 Medical Expenditure Panel Survey data.</p>
+          <p class="ai-body" style="margin-top: var(--space-md);">About 1 in 8 US healthcare dollars goes to cardiovascular disease. The American Heart Association projects these costs will triple by 2050 if current exposure rates continue. The sodium infrastructure being built today is the healthcare bill being written for 2050.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
+          <span class="accordion-num">04</span>
+          <span class="accordion-title">The Wages</span>
+          <span class="accordion-chevron">▲</span>
+        </button>
+        <div class="accordion-body">
+          <p class="ai-body" style="margin-bottom: var(--space-md);">The same companies making formulation decisions are making wage decisions. The same lobbying apparatus that resists minimum wage increases is the one that has not changed US sodium formulations for American consumers.</p>
+          <p class="ai-eyebrow" style="margin-bottom: 0.75rem;">McDonald's 2023 Compensation</p>
+          <div class="ceo-bars">
+            <div class="ceo-row">
+              <span class="ceo-row-label">CEO</span>
+              <div class="ceo-bar-track"><div class="ceo-bar-fill ceo"><span class="ceo-bar-val">$19,200,000</span></div></div>
+            </div>
+            <div class="ceo-row">
+              <span class="ceo-row-label">Median Worker</span>
+              <div class="ceo-bar-track" style="display:flex;align-items:center;"><div class="ceo-bar-fill worker"></div><span class="ceo-bar-val-outside">$15,860</span></div>
+            </div>
+          </div>
+          <p class="ceo-ratio">Pay ratio: 1,212 : 1</p>
+          <p class="ceo-note">The CEO bar is capped for legibility. At true scale, the worker bar would be less than one pixel wide. The CEO bar would extend the full width of your screen and keep going.</p>
+          <p class="ai-source" style="margin-top:0.75rem;">Source: McDonald's 2024 Proxy Statement (SEC filing, reporting 2023 compensation) · AFL-CIO Executive PayWatch</p>
+          <div class="ai-callout" style="margin-top: var(--space-md);">
+            <p class="ai-callout-text">The median McDonald's worker earns $15,860 per year. People with hypertension spend $2,759 more per year on healthcare than those without it. That is 17% of a median McDonald's worker's annual salary — spent managing a condition that the company's own formulation decisions contribute to creating.</p>
           </div>
         </div>
       </div>
 
-      <p class="ceo-ratio">Pay ratio: 1,212 : 1</p>
-      <p class="ceo-note">The CEO bar is capped for legibility. At true scale, the worker bar would be less than one pixel wide. The CEO bar would extend the full width of your screen and keep going.</p>
-      <p class="ai-source" style="margin-top: 0.75rem;">Source: McDonald's 2024 Proxy Statement (SEC filing, reporting 2023 compensation) · AFL-CIO Executive PayWatch</p>
+    </div><!-- /accordion-group -->
 
-      <div class="ai-callout" style="margin-top: var(--space-md);">
-        <p class="ai-callout-text">The median McDonald's worker earns $15,860 per year. People with hypertension spend $2,759 more per year on healthcare than those without it. That is 17% of a median McDonald's worker's annual salary — spent managing a condition that the company's own formulation decisions contribute to creating.</p>
-      </div>
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#the-system" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">The System</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#compare" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Compare Your Order</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1214,6 +1186,19 @@
       This tool is about navigation within a constrained system — not judgment of individual choices. You're not on a diet. You're operating within infrastructure that was designed without your health as a priority. The swap recommendations exist because the system left some room. They don't fix the system.
     </div>
     <p class="ai-source">Nutritional data from chain-published nutrition disclosures, verified 2024–2025. Prices vary by location and are not included in comparisons.</p>
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#systemic" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Systemic Issues</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#data" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Data</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1244,6 +1229,19 @@
       </table>
     </div>
     <p class="ai-source">Source: Chain-published nutrition disclosures, 2024–2025. FDA daily sodium limit: 2,300mg. FDA daily fiber value: 28g.</p>
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#compare" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Compare Your Order</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#franchise" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">By Franchise</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1409,6 +1407,19 @@
       </div>
     </div>
 
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#data" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Data</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#sources" class="section-nav-btn next">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Sources</span>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -1444,24 +1455,33 @@
       <li>Gordon M. Houston food deserts hinder healthy eating · Houston Landing · 2023</li>
       <li>Moore M et al. Food access and shopping behavior in Houston's Third Ward · 2019</li>
     </ol>
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#franchise" class="section-nav-btn">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">By Franchise</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="/" class="section-nav-btn next">
+        <span class="section-nav-direction">↑ Back to top</span>
+        <span class="section-nav-label">All Projects</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="ai-footer" role="contentinfo">
-  <div class="ai-footer-inner">
-    <div class="ai-footer-brand">
-      <a href="/" class="ai-footer-wordmark">Alterrell <span>Interactive</span></a>
-      <span class="ai-footer-series">Fast Food Series</span>
+<!-- FOOTER — rebuilt tight -->
+<footer role="contentinfo" style="background:var(--dark-section);padding:var(--space-md) 1.25rem;">
+  <div style="max-width:var(--max-editorial);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:0.25rem;">
+      <div style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;"><span style="color:var(--teal);">Alterrell</span> Interactive · Fast Food Series</div>
+      <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;">© 2026 · interactive.alterrell.com/fast-food-sodium · Data as Dignity</div>
     </div>
-    <p class="ai-footer-tagline">"See the architecture. The data was always there — now it's yours."</p>
-    <div class="ai-footer-series-nav">
-      <a href="/" class="ai-footer-nav-link">← All Projects</a>
-    </div>
-    <div class="ai-rule ai-rule--dark"></div>
-    <div class="ai-footer-meta">
-      <span class="ai-footer-url">interactive.alterrell.com/fast-food-sodium</span>
-      <span class="ai-footer-credit">© 2026 Alterrell Interactive · Data as Dignity</span>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <a href="/" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">← All Projects</a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">Substack</a>
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">YouTube</a>
     </div>
   </div>
 </footer>
@@ -1693,19 +1713,19 @@ const MENU = {
   window.addEventListener('resize', checkTabOverflow);
 })();
 
-// ── SUB-TAB SYSTEM ──
-function switchSubTab(group, panelId, btn) {
-  const allBtns = btn.parentElement.querySelectorAll('.sub-tab');
-  allBtns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Find all sibling panels
-  const section = btn.closest('.ai-inner') || btn.closest('section');
-  const allPanels = section.querySelectorAll('.sub-panel');
-  allPanels.forEach(p => p.classList.remove('active'));
-
-  const target = section.querySelector('#' + group + '-' + panelId);
-  if (target) target.classList.add('active');
+// ── ACCORDION ──
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  if (isOpen) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    body.style.display = 'none';
+  } else {
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    body.style.display = 'block';
+  }
 }
 
 // ── DATA TABLE ──
