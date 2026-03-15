@@ -5,7 +5,7 @@
 ---
 
 ## STATUS
-**Known drift. Needs full rebuild against locked design system.**
+**Complete — deployed Q1 2026.**
 **Priority: Ships BEFORE Fast Food Sodium.**
 **Target: 1 session to complete if this brief is read first.**
 
