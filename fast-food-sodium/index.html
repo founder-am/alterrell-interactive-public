@@ -192,6 +192,7 @@
       min-height: var(--touch);
       transition: background 0.15s;
     }
+    .accordion-header { background: var(--paper-warm); }
     .accordion-header:hover { background: var(--teal-bg); }
     .accordion-header.open { background: var(--teal-bg); border-bottom: 1px solid var(--border); }
     .accordion-title {
@@ -216,6 +217,17 @@
       flex-shrink: 0;
     }
     .accordion-header.open .accordion-chevron { transform: rotate(180deg); }
+    .accordion-hint {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .accordion-hint-icon { color: var(--teal); }
     .accordion-body {
       padding: var(--space-md) 1.25rem;
       background: var(--paper-card);
@@ -890,6 +902,7 @@
     <p class="section-intro">The item-level data shows what's in the food. This tab shows what the system produces when you aggregate that across millions of people, decades of targeted marketing, and deliberate decisions about where to locate stores and where not to.</p>
 
     <div class="accordion-group">
+      <p class="accordion-hint"><span class="accordion-hint-icon">▼</span> Tap any section to expand or collapse</p>
 
       <div class="accordion-item">
         <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
@@ -1052,6 +1065,7 @@
     <p class="section-intro">Four mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents.</p>
 
     <div class="accordion-group">
+      <p class="accordion-hint"><span class="accordion-hint-icon">▼</span> Tap any section to expand or collapse</p>
 
       <div class="accordion-item">
         <button class="accordion-header open" onclick="toggleAccordion(this)" aria-expanded="true">
@@ -1544,7 +1558,8 @@
       <div style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;"><span style="color:var(--teal);">Alterrell</span> Interactive · Fast Food Series</div>
       <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;">© 2026 · interactive.alterrell.com/fast-food-sodium · Data as Dignity</div>
     </div>
-    <div style="display:flex;align-items:center;gap:1.5rem;">
+    <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;min-height:var(--touch);display:flex;align-items:center;gap:0.4rem;border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;transition:background 0.15s;" onmouseover="this.style.background='rgba(10,124,114,0.1)'" onmouseout="this.style.background='transparent'">☕ Support the work</a>
       <a href="/" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">← All Projects</a>
       <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">Substack</a>
       <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">YouTube</a>
