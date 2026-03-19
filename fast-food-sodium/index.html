@@ -521,8 +521,63 @@
     .sodium-badge.med  { background: var(--warning-bg); color: var(--warning); }
     .sodium-badge.low  { background: var(--success-bg); color: var(--success); }
 
-    /* By Franchise cards */
-    .franchise-section { margin-bottom: var(--space-lg); }
+    /* ── FRANCHISE JUMP NAV ── */
+    .franchise-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border);
+    }
+    .franchise-jump-link {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(10,124,114,0.25);
+      border-radius: 100px;
+      background: var(--teal-bg);
+      transition: background 0.15s, border-color 0.15s;
+      min-height: var(--touch);
+      display: inline-flex;
+      align-items: center;
+    }
+    .franchise-jump-link:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+      text-decoration: none;
+    }
+
+    /* ── STICKY BACK-TO-TABS BUTTON ── */
+    .back-to-tabs {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.25rem;
+      z-index: 150;
+      background: var(--dark-section);
+      color: var(--teal-light);
+      border: 1px solid rgba(13,148,136,0.3);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: var(--touch);
+      box-shadow: var(--shadow-lg);
+      transition: background 0.15s, opacity 0.2s;
+    }
+    .back-to-tabs.visible { display: inline-flex; }
+    .back-to-tabs:hover { background: #1e1c2a; }
     .franchise-header {
       display: flex;
       align-items: baseline;
@@ -1254,8 +1309,19 @@
     <h2 class="ai-h2">What better looks like inside each chain.</h2>
     <p class="section-intro">You don't always get to choose the chain. Here's what a lower-sodium order looks like at the places you're most likely to find yourself.</p>
 
+    <!-- FRANCHISE JUMP NAV -->
+    <nav class="franchise-jump" aria-label="Jump to franchise">
+      <a href="#fr-mcdonalds" class="franchise-jump-link">McDonald's</a>
+      <a href="#fr-chickfila" class="franchise-jump-link">Chick-fil-A</a>
+      <a href="#fr-popeyes" class="franchise-jump-link">Popeyes</a>
+      <a href="#fr-chipotle" class="franchise-jump-link">Chipotle</a>
+      <a href="#fr-burgerking" class="franchise-jump-link">Burger King</a>
+      <a href="#fr-tacobell" class="franchise-jump-link">Taco Bell</a>
+      <a href="#fr-wendys" class="franchise-jump-link">Wendy's</a>
+    </nav>
+
     <!-- McDonald's -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-mcdonalds">
       <div class="franchise-header">
         <h3 class="franchise-name">McDonald's</h3>
       </div>
@@ -1282,7 +1348,7 @@
     </div>
 
     <!-- Chick-fil-A -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-chickfila">
       <div class="franchise-header">
         <h3 class="franchise-name">Chick-fil-A</h3>
       </div>
@@ -1303,7 +1369,7 @@
     </div>
 
     <!-- Popeyes -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-popeyes">
       <div class="franchise-header">
         <h3 class="franchise-name">Popeyes</h3>
       </div>
@@ -1324,7 +1390,7 @@
     </div>
 
     <!-- Chipotle -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-chipotle">
       <div class="franchise-header">
         <h3 class="franchise-name">Chipotle</h3>
       </div>
@@ -1345,7 +1411,7 @@
     </div>
 
     <!-- Burger King -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-burgerking">
       <div class="franchise-header">
         <h3 class="franchise-name">Burger King</h3>
       </div>
@@ -1366,7 +1432,7 @@
     </div>
 
     <!-- Taco Bell -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-tacobell">
       <div class="franchise-header">
         <h3 class="franchise-name">Taco Bell</h3>
       </div>
@@ -1387,7 +1453,7 @@
     </div>
 
     <!-- Wendy's -->
-    <div class="franchise-section">
+    <div class="franchise-section" id="fr-wendys">
       <div class="franchise-header">
         <h3 class="franchise-name">Wendy's</h3>
       </div>
@@ -1917,6 +1983,34 @@ function findSwap() {
     </div>`;
   resultsEl.classList.add('visible');
   setTimeout(() => resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+</script>
+
+<!-- STICKY BACK-TO-TABS BUTTON -->
+<button class="back-to-tabs" id="backToTabs" onclick="scrollToTabs()" aria-label="Back to navigation">
+  ↑ Tabs
+</button>
+
+<script>
+// ── BACK-TO-TABS BUTTON ──
+(function() {
+  const btn = document.getElementById('backToTabs');
+  const tabBar = document.getElementById('tabBar');
+  const franchiseSection = document.getElementById('franchise');
+  if (!btn || !tabBar || !franchiseSection) return;
+
+  window.addEventListener('scroll', () => {
+    const franchiseTop = franchiseSection.getBoundingClientRect().top + window.scrollY;
+    const scrolled = window.scrollY > franchiseTop + 300;
+    btn.classList.toggle('visible', scrolled);
+  }, { passive: true });
+})();
+
+function scrollToTabs() {
+  const tabBar = document.getElementById('tabBar');
+  if (!tabBar) return;
+  const top = tabBar.getBoundingClientRect().top + window.scrollY - 52 - 32 - 8;
+  window.scrollTo({ top, behavior: 'smooth' });
 }
 </script>
 
