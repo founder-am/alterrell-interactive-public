@@ -1,3 +1,10 @@
-/congress-salary    /congress-salary.html    200
-/congress-age       /congress-age.html       200
-/sodium             /sodium-calculator-v1.html 200
+# Alterrell Interactive — Netlify redirects
+# Clean URLs: strip trailing slashes, handle common patterns
+
+/fast-food-sodium     /fast-food-sodium/     301
+/congress-salary      /congress-salary/      301
+/congress             /congress-salary/      301
+/sodium               /fast-food-sodium/     301
+
+# Catch-all: anything not matched → 404
+/*    /404.html    404
