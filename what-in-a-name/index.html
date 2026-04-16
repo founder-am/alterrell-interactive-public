@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's in a Name — Obsidian Futures · Alterrell Interactive</title>
+  <meta name="description" content="Fame doesn't just make stars. It makes names safe to give your child. Here's what the SSA baby name data reveals about Queen Latifah, Whitney Houston, and Mariah Carey.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="What's in a Name: The Fame Effect — Obsidian Futures">
+  <meta property="og:description" content="Queen Latifah was just inducted into the Rock and Roll Hall of Fame. Her name peaked in 1990 — before Living Single. The SSA recorded what happened next.">
+  <meta property="og:url" content="https://interactive.alterrell.com/what-in-a-name/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/naming.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="What's in a Name: The Fame Effect — Obsidian Futures">
+  <meta name="twitter:description" content="Queen Latifah was just inducted into the Rock and Roll Hall of Fame. Her name peaked in 1990 — before Living Single. The SSA recorded what happened next.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/naming.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+
+  <style>
+    /* ── OBSIDIAN FUTURES COLOR TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #111118;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.18);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.08);
+      --of-indigo:    #3d2480;
+    }
+
+    /* ── GLOBAL BODY OVERRIDE FOR THIS PIECE ── */
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    /* ── NAV / BREADCRUMB OVERRIDES ── */
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+
+    /* ── TAB BAR ── */
+    .ai-tabs {
+      background: #0d0d18;
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .ai-tab { color: var(--of-muted); }
+    .ai-tab:hover { color: var(--of-body); }
+    .ai-tab.active {
+      color: var(--of-gold);
+      border-bottom-color: var(--of-gold);
+    }
+
+    /* ── HERO ── */
+    .win-hero {
+      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .win-hero-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+    }
+    .win-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .win-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.0;
+      color: rgba(248,246,241,0.96);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .win-hero-dek {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--of-muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .win-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .win-stat-card {
+      background: rgba(255,255,255,0.03);
+      padding: 1.5rem 1.25rem;
+    }
+    .win-stat-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      color: var(--of-gold);
+    }
+    .win-stat-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      line-height: 1.5;
+    }
+
+    /* ── JOURNEY BLOCK ── */
+    .win-journey {
+      background: var(--of-card);
+      border-bottom: 1px solid var(--of-border);
+      padding: var(--space-sm) 1.25rem;
+    }
+    .win-journey-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+    }
+    .win-journey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .win-journey-item {
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      grid-template-columns: 38% 62%;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: 80px;
+    }
+    .win-journey-item:hover { background: var(--of-gold-dim); text-decoration: none; }
+    .win-journey-icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--of-border);
+      padding: 1rem 0.5rem;
+    }
+    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(232,185,35,0.2); }
+    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--of-gold); }
+    .win-journey-text-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0.875rem 1rem;
+    }
+    .win-journey-action {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--of-body);
+      line-height: 1.2;
+    }
+    .win-journey-dest {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+    }
+
+    /* ── TAB SECTIONS ── */
+    .win-section {
+      padding: var(--space-lg) 1.25rem var(--space-xl);
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .win-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .win-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .win-h2 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: rgba(248,246,241,0.96);
+      margin-bottom: 1rem;
+    }
+    .win-h3 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      line-height: var(--leading-snug);
+      color: var(--of-gold);
+      margin-bottom: 0.75rem;
+    }
+    .win-body {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--of-body);
+      max-width: 720px;
+    }
+    .win-body + .win-body { margin-top: 1.25rem; }
+    .win-body strong { color: rgba(248,246,241,0.96); font-weight: 600; }
+    .win-intro {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      line-height: var(--leading-loose);
+      color: var(--of-body);
+      max-width: 720px;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ── SECTION-FLOOR NAV ── */
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0 0;
+      margin-top: var(--space-lg);
+      border-top: 1px solid var(--of-border);
+      gap: 1rem;
+    }
+    .section-nav-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-decoration: none;
+      min-height: var(--touch);
+      justify-content: center;
+      transition: opacity 0.15s;
+    }
+    .section-nav-btn:hover { opacity: 0.7; text-decoration: none; }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--of-muted);
+    }
+    .section-nav-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 600;
+      color: var(--of-gold);
+    }
+    .section-nav-spacer { flex: 1; }
+
+    /* ── PULL QUOTE ── */
+    .win-pullquote {
+      border-left: 3px solid var(--of-gold);
+      padding: 1rem 1.5rem;
+      margin: var(--space-md) 0;
+      background: rgba(232,185,35,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      max-width: 680px;
+    }
+    .win-pullquote-text {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(248,246,241,0.9);
+      line-height: var(--leading-snug);
+    }
+
+    /* ── STUDY BLOCKS ── */
+    .win-study {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-left: 3px solid var(--of-gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem;
+      margin: var(--space-md) 0;
+      max-width: 720px;
+    }
+    .win-study-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 0.5rem;
+    }
+    .win-study-title {
+      font-family: var(--font-editorial);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      line-height: var(--leading-snug);
+      color: rgba(248,246,241,0.96);
+      margin-bottom: 1rem;
+    }
+    .win-study-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--of-border);
+    }
+    .win-study-stat {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      color: var(--of-gold);
+      background: var(--of-gold-dim);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+    .win-study-body {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--of-body);
+    }
+    .win-study-body strong { color: rgba(248,246,241,0.96); font-weight: 600; }
+
+    /* ── STAT CALLOUT CARDS (3-up hero) ── */
+    .win-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+    .win-stat-item {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      flex: 1 1 160px;
+    }
+    .win-stat-item-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--of-gold);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .win-stat-item-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      line-height: 1.5;
+    }
+
+    /* ── CHART CONTAINER ── */
+    .win-chart-wrap {
+      position: relative;
+      height: 260px;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem 0.75rem;
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+    .win-chart-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-muted);
+      margin-bottom: 0.75rem;
+    }
+    .win-chart-canvas-wrap {
+      position: relative;
+      height: 195px;
+    }
+
+    /* ── CHART STAT CALLOUTS ── */
+    .win-chart-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+    }
+    .win-chart-stat {
+      background: var(--of-card);
+      padding: 0.875rem 1.25rem;
+      flex: 1 1 120px;
+    }
+    .win-chart-stat-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--of-gold);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .win-chart-stat-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      color: var(--of-muted);
+      line-height: 1.4;
+    }
+
+    /* ── PATTERN CARDS (Tab 5) ── */
+    .win-pattern-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: var(--space-md) 0;
+    }
+    .win-pattern-card {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .win-pattern-card--active { border-color: var(--of-gold); }
+    .win-pattern-type {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 0.75rem;
+    }
+    .win-pattern-card--muted .win-pattern-type { color: var(--of-muted); }
+    .win-pattern-examples {
+      font-family: var(--font-editorial);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(248,246,241,0.96);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .win-pattern-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-body);
+      line-height: var(--leading-body);
+    }
+
+    /* ── TEASER BLOCK ── */
+    .win-teaser {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-left: 3px solid var(--of-gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem;
+      margin: var(--space-md) 0;
+      max-width: 680px;
+    }
+    .win-teaser-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 0.5rem;
+    }
+    .win-teaser-title {
+      font-family: var(--font-editorial);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: rgba(248,246,241,0.96);
+      line-height: var(--leading-snug);
+    }
+
+    /* ── SOURCES TAB ── */
+    .win-methodology-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: var(--space-md);
+      padding: 1rem 1.25rem;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+    }
+    .win-sources-list {
+      list-style: none;
+      counter-reset: sources;
+      max-width: 720px;
+    }
+    .win-sources-list li {
+      counter-increment: sources;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--of-border);
+      display: flex;
+      gap: 1rem;
+    }
+    .win-sources-list li::before {
+      content: counter(sources, decimal-leading-zero);
+      color: rgba(232,185,35,0.3);
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    /* ── NAME HEADER (Tab 4) ── */
+    .win-name-header {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--of-gold);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .win-chart-editorial {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-body);
+      line-height: var(--leading-body);
+      max-width: 680px;
+      margin: 0.75rem 0 var(--space-md);
+      padding: 1rem 1.25rem;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-left: 2px solid var(--of-border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .win-chart-divider {
+      height: 1px;
+      background: var(--of-border);
+      margin: var(--space-lg) 0;
+    }
+
+    /* ── FOOTER ── */
+    .win-footer {
+      background: #0a0a0a;
+      padding: var(--space-xl) 1.25rem var(--space-md);
+      border-top: 1px solid var(--of-border);
+    }
+    .win-footer-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+    }
+    .win-footer-brand {
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-wordmark {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3d3a55;
+      margin-bottom: 0.35rem;
+    }
+    .win-footer-wordmark span { color: var(--of-gold); }
+    .win-footer-tagline {
+      font-family: var(--font-editorial);
+      font-size: 1rem;
+      font-style: italic;
+      color: #4a465e;
+      line-height: 1.5;
+    }
+    .win-footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-link {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      text-decoration: none;
+      min-height: var(--touch);
+      display: flex;
+      align-items: center;
+      transition: color 0.15s;
+    }
+    .win-footer-link:hover { color: #888; text-decoration: none; }
+    .win-footer-link--kofi {
+      color: var(--of-gold);
+      border: 1px solid rgba(232,185,35,0.3);
+      padding: 0.4rem 0.75rem;
+      border-radius: 100px;
+    }
+    .win-footer-link--kofi:hover { color: var(--of-gold); border-color: var(--of-gold); }
+    .win-footer-methodology {
+      margin-bottom: var(--space-md);
+    }
+    .win-footer-methodology summary {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: #4a465e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: var(--touch);
+      user-select: none;
+    }
+    .win-footer-methodology summary::-webkit-details-marker { display: none; }
+    .win-footer-methodology summary::before {
+      content: '+';
+      font-family: var(--font-mono);
+      color: var(--of-gold);
+      font-size: 0.9rem;
+      transition: transform 0.15s;
+    }
+    details[open] .win-footer-methodology summary::before { content: '−'; }
+    .win-footer-methodology-body {
+      padding: 1rem 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 0.5rem;
+    }
+    .win-footer-methodology-note {
+      font-size: var(--text-small);
+      color: #4a465e;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+    .win-footer-sources {
+      list-style: none;
+      counter-reset: fsources;
+    }
+    .win-footer-sources li {
+      counter-increment: fsources;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #3d3a55;
+      line-height: 1.6;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      gap: 0.75rem;
+    }
+    .win-footer-sources li::before {
+      content: counter(fsources, decimal-leading-zero);
+      color: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .win-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .win-footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: #222;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SHARE BLOCK ── */
+    .share-block { background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
+    .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 0.4rem; }
+    .share-block-nudge { font-family: var(--font-body); font-style: italic; font-size: var(--text-small); color: var(--of-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .share-block-btns { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 0.875rem; }
+    .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); min-height: var(--touch); text-decoration: none; cursor: pointer; transition: opacity 0.15s; border: none; }
+    .share-btn:hover { opacity: 0.82; text-decoration: none; }
+    .share-btn--outline { background: transparent; border: 1.5px solid var(--of-gold); color: var(--of-gold); }
+    .share-btn--filled { background: var(--of-gold); color: #111118; font-weight: 600; }
+    .share-block-substack { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); }
+    .share-block-substack a { color: var(--of-gold); }
+    /* ── CHART SCREENSHOT NUDGE ── */
+    .chart-screenshot-nudge { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.08em; color: rgba(232,185,35,0.5); margin-top: 0.5rem; text-align: right; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .win-hero-stats { grid-template-columns: 1fr; }
+      .win-journey-grid { grid-template-columns: 1fr; }
+      .win-pattern-grid { grid-template-columns: 1fr; }
+      .win-stat-row { flex-direction: column; }
+      .section-nav { flex-wrap: wrap; gap: 0.5rem; }
+      .win-chart-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span style="color:#3d2480;">Obsidian Futures</span>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">What's in a Name</span>
+</div>
+
+<!-- HERO -->
+<header class="win-hero" role="banner">
+  <div class="win-hero-inner">
+    <span class="win-hero-eyebrow">✦ Obsidian Futures · What's in a Name · Part 1</span>
+    <h1 class="win-hero-headline">The Fame Effect</h1>
+    <p class="win-hero-dek">Fame doesn't just make stars. It makes names safe to give your child. Here's what the data reveals about Queen Latifah, Whitney Houston, and Mariah Carey — and what it tells us about race, visibility, and who gets to be seen.</p>
+    <div class="win-hero-stats">
+      <div class="win-stat-card">
+        <div class="win-stat-num">9,536</div>
+        <div class="win-stat-label">Babies named Whitney in 1986</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">25×</div>
+        <div class="win-stat-label">Mariah's name growth 1980–1996</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">50%</div>
+        <div class="win-stat-label">More callbacks for white-sounding names on résumés</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- JOURNEY BLOCK -->
+<section class="win-journey" aria-label="Follow the platform">
+  <div class="win-journey-inner">
+    <div class="win-journey-grid">
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Watch on YouTube">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">▶</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Watch</span>
+          <span class="win-journey-dest">YouTube →</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-journey-item" aria-label="Read on Substack">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">✦</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Read</span>
+          <span class="win-journey-dest">Substack →</span>
+        </div>
+      </a>
+      <a href="/" class="win-journey-item" aria-label="All pieces">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">◎</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">All Pieces</span>
+          <span class="win-journey-dest">Hub →</span>
+        </div>
+      </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">$</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Back this work</span>
+          <span class="win-journey-dest">Ko-fi →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAB BAR -->
+<nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" data-tab="1" data-target="#tab-overview" role="tab">Overview</button>
+  <button class="ai-tab" data-tab="2" data-target="#tab-system" role="tab">The System</button>
+  <button class="ai-tab" data-tab="3" data-target="#tab-latifah" role="tab">Queen Latifah</button>
+  <button class="ai-tab" data-tab="4" data-target="#tab-whitney-mariah" role="tab">Whitney &amp; Mariah</button>
+  <button class="ai-tab" data-tab="5" data-target="#tab-data" role="tab">What the Data Shows</button>
+  <button class="ai-tab" data-tab="6" data-target="#tab-sources" role="tab">Sources</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     TAB 1 — OVERVIEW
+══════════════════════════════════════ -->
+<section id="tab-overview" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Overview · Part 1</span>
+    <h2 class="win-h2">I've had a complicated relationship with my own name.</h2>
+
+    <p class="win-intro">My name is Alterrell. Growing up, I memorized where it fell in the alphabet — not because I was eager to hear it called, but because I needed to brace for what came next. The substitute teacher would pause. You could feel the hesitation. At work, I shortened it to Al. Not because I preferred it — but because it made things easier for everyone else.</p>
+
+    <p class="win-body">I'm back to Alterrell now. My website just goes by my name. Oprah's does too. Her name was misspelled on her own birth certificate — the intended name was Orpah, from the Book of Ruth — and she built an empire under the typo.</p>
+
+    <p class="win-body">There is a phrase I've come to think of as the informal rule governing all of this: <strong>it's only ghetto until you're famous.</strong> A name that gets you passed over on a résumé can, under the right conditions, become the name that parents give their children by the thousands.</p>
+
+    <p class="win-body">The Social Security Administration has been recording baby name data since 1880. That archive is a quiet record of cultural permission — of which names America decided were safe to give a child, and when.</p>
+
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <a href="#tab-system" class="section-nav-btn next" data-nav-to="2">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">The System</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 2 — THE SYSTEM
+══════════════════════════════════════ -->
+<section id="tab-system" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">The System · Part 2</span>
+    <h2 class="win-h2">Before the fame effect, there's the penalty.</h2>
+
+    <p class="win-intro">The stakes of a name are not just social. They are economic. And they have been documented with unusual precision.</p>
+
+    <div class="win-study">
+      <div class="win-study-label">The landmark study</div>
+      <div class="win-study-title">Are Emily and Greg More Employable than Lakisha and Jamal? — Bertrand &amp; Mullainathan, NBER, 2003</div>
+      <div class="win-study-stats">
+        <span class="win-study-stat">5,000+ résumés sent</span>
+        <span class="win-study-stat">50% more callbacks for white-sounding names</span>
+        <span class="win-study-stat">10 vs 15 résumés needed per callback</span>
+      </div>
+      <p class="win-study-body">Researchers sent identical résumés to over 1,300 job postings in Boston and Chicago. The only variable was the name at the top. Applicants with white-sounding names needed 10 résumés to get one callback. Those with Black-sounding names needed 15. A better résumé helped white applicants 30% more. For Black-named applicants, the improvement produced almost no difference. <strong>Federal contractors and self-described Equal Opportunity Employers discriminated equally.</strong></p>
+    </div>
+
+    <div class="win-study">
+      <div class="win-study-label">Two decades later — nothing changed</div>
+      <div class="win-study-title">Meta-analysis of field experiments, 1989–2015 — Quillian et al., PNAS, 2017</div>
+      <div class="win-study-stats">
+        <span class="win-study-stat">24 studies analyzed</span>
+        <span class="win-study-stat">36% more callbacks for white applicants on average</span>
+        <span class="win-study-stat">Zero measurable reduction in discrimination since 1989</span>
+      </div>
+      <p class="win-study-body">A 2024 study expanded the original: 83,000 fake applications to 11,000 Fortune 500 positions. The typical employer called back white-sounding applicants 9% more. The worst offenders: 24% more. <strong>Equal Opportunity Employer labels made no difference.</strong></p>
+    </div>
+
+    <p class="win-body">This is the structural backdrop against which the naming data should be read. The fame effect does not eliminate this penalty. It creates a temporary override — a window where a name is too visible to be dismissed. The data shows when those windows open. And how quickly they close.</p>
+
+    <div class="section-nav">
+      <a href="#tab-overview" class="section-nav-btn" data-nav-to="1">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Overview</span>
+      </a>
+      <a href="#tab-latifah" class="section-nav-btn next" data-nav-to="3">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Queen Latifah</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 3 — QUEEN LATIFAH
+══════════════════════════════════════ -->
+<section id="tab-latifah" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Queen Latifah · Part 3</span>
+    <h2 class="win-h2">Her music moved the name before her television career began.</h2>
+
+    <p class="win-body">Queen Latifah was inducted into the Rock and Roll Hall of Fame this week. Her stage name is Arabic — Latifah means "gentle" or "kind." It is a Muslim name, part of a deliberate tradition of cultural and spiritual reclamation running through Black American history.</p>
+
+    <p class="win-body">Muhammad Ali changed his name in 1964. Kareem Abdul-Jabbar followed in 1971. These were not incidental decisions. They were political acts, at personal cost, in a country that was not receptive to them. Many of the most prominent Black Americans in music, sport, and culture are Muslim, or have chosen Arabic names as acts of identity and conviction. In a country that has grown more openly hostile to Islam, these names were — and remain — an act of claiming. The data shows Black communities chose them anyway.</p>
+
+    <p class="win-body" style="margin-bottom: var(--space-md);">A deeper episode on Arabic names and Black Muslim identity in America is forthcoming in this series.</p>
+
+    <div class="win-pullquote">
+      <div class="win-pullquote-text">"It's only ghetto until you're famous."</div>
+    </div>
+
+    <div class="win-chart-wrap" style="height:auto;padding-bottom:1.25rem;">
+      <div class="win-chart-title">Latifah — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartLatifah"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">300</div>
+        <div class="win-chart-stat-label">Peak babies named Latifah (1990)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">26×</div>
+        <div class="win-chart-stat-label">Growth from 1980 baseline</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">1988</div>
+        <div class="win-chart-stat-label">Peak came before Living Single premiered</div>
+      </div>
+    </div>
+
+    <p class="win-body">The peak is modest in raw numbers. But the increase factor is 26×. That's not crossover. That's community. Black families were naming their daughters Latifah deliberately, in response to something specific they saw in her. The television show sustained the name — but she didn't need it to create the initial effect.</p>
+
+    <div class="section-nav">
+      <a href="#tab-system" class="section-nav-btn" data-nav-to="2">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">The System</span>
+      </a>
+      <a href="#tab-whitney-mariah" class="section-nav-btn next" data-nav-to="4">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Whitney &amp; Mariah</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 4 — WHITNEY & MARIAH
+══════════════════════════════════════ -->
+<section id="tab-whitney-mariah" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Whitney &amp; Mariah · Part 4</span>
+    <h2 class="win-h2">Two names. Two mechanisms. Both crossover — but the shapes are completely different.</h2>
+
+    <!-- WHITNEY -->
+    <div class="win-name-header" style="margin-top: var(--space-md);">Whitney</div>
+    <div class="win-chart-stats" style="margin-bottom: 0.75rem;">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">9,536</div>
+        <div class="win-chart-stat-label">Peak babies named Whitney (1986)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">16×</div>
+        <div class="win-chart-stat-label">Growth over career</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">1985</div>
+        <div class="win-chart-stat-label">Debut album — peak followed the next year</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap" style="height:auto;padding-bottom:1.25rem;">
+      <div class="win-chart-title">Whitney — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartWhitney"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <div class="win-chart-editorial">The spike is almost vertical. Her debut dropped in 1985. In 1986, 9,536 babies were named Whitney — the largest single-year peak in this entire dataset. For a brief window, naming your daughter Whitney stopped being a cultural signal and became simply what you did if you wanted a name that felt current and powerful. That's what mainstream crossover looks like. The fame becomes so total it temporarily overrides the racial coding.</div>
+
+    <div class="win-chart-divider"></div>
+
+    <!-- MARIAH -->
+    <div class="win-name-header">Mariah</div>
+    <div class="win-chart-stats" style="margin-bottom: 0.75rem;">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">5,446</div>
+        <div class="win-chart-stat-label">Peak babies named Mariah (1996)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">25×</div>
+        <div class="win-chart-stat-label">Growth from 1980 baseline</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">2 decades</div>
+        <div class="win-chart-stat-label">Sustained elevation</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap" style="height:auto;padding-bottom:1.25rem;">
+      <div class="win-chart-title">Mariah — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartMariah"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <div class="win-chart-editorial">Compare to Whitney's spike and you see a different mechanism. Mariah's name climbed and stayed elevated for nearly two decades. She released albums, came back from setbacks, dominated the holidays, returned again. Every wave of cultural presence added something. The plateau is rarer than the spike — and arguably a stronger argument about durability.</div>
+
+    <div class="section-nav">
+      <a href="#tab-latifah" class="section-nav-btn" data-nav-to="3">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Queen Latifah</span>
+      </a>
+      <a href="#tab-data" class="section-nav-btn next" data-nav-to="5">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">What the Data Shows</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 5 — WHAT THE DATA SHOWS
+══════════════════════════════════════ -->
+<section id="tab-data" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">What the Data Shows · Part 5</span>
+    <h2 class="win-h2">Two mechanisms. Neither cancels the other.</h2>
+
+    <div class="win-pattern-grid">
+      <div class="win-pattern-card win-pattern-card--active">
+        <div class="win-pattern-type">Mainstream Crossover</div>
+        <div class="win-pattern-examples">Whitney, Mariah</div>
+        <p class="win-pattern-desc">The name becomes too culturally dominant to be racially legible. Both Black and white families respond simultaneously. The peak is large. The decline is faster. Fame so total it temporarily overrides the coding.</p>
+      </div>
+      <div class="win-pattern-card win-pattern-card--muted">
+        <div class="win-pattern-type">Community Authority</div>
+        <div class="win-pattern-examples">Latifah, Khadijah <span style="font-size:var(--text-small);color:var(--of-muted);">(coming in Part 2)</span></div>
+        <p class="win-pattern-desc">The name moves within Black communities specifically, in response to deliberate cultural choice. The raw numbers are smaller. The intentionality is denser. The name is being claimed, not simply popularized.</p>
+      </div>
+    </div>
+
+    <p class="win-body">The structural penalty — the résumé callback gap that has not changed in 35 years — doesn't disappear for either type. It just becomes temporarily illegible. The name is too present to dismiss. What the data can't tell you is whether that visibility is permanent. The Whitney chart answers that question: it is not.</p>
+
+    <div class="win-teaser">
+      <div class="win-teaser-label">Coming in Part 2</div>
+      <div class="win-teaser-title">The Living Room: Sitcoms, Black Authority, and the Names That Moved Without Mainstream Permission. Khadijah. Regine. Tatyana. The sitcom effect mapped.</div>
+    </div>
+
+    <!-- SHARE BLOCK -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">The charts are screenshot-friendly — share what surprises you.</p>
+      <div class="share-block-btns">
+        <button class="share-btn share-btn--outline" id="naming-copy-btn" onclick="(function(btn){navigator.clipboard.writeText(window.location.href).then(function(){btn.textContent='Copied ✓';setTimeout(function(){btn.innerHTML='<span>◎</span> Copy link';},2000)});})(this)">
+          <span>◎</span> Copy link
+        </button>
+        <a href="https://twitter.com/intent/tweet?text=It%27s+only+ghetto+until+you%27re+famous.+Queen+Latifah%27s+name+peaked+in+1990+%E2%80%94+before+Living+Single.+The+SSA+recorded+what+happened+next.&url=https%3A%2F%2Finteractive.alterrell.com%2Fwhat-in-a-name%2F&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline">
+          <span>✕</span> Share on X
+        </a>
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="share-btn share-btn--filled">
+          <span>$</span> Back this work
+        </a>
+      </div>
+      <p class="share-block-substack">Get early access to every piece → <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-whitney-mariah" class="section-nav-btn" data-nav-to="4">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Whitney &amp; Mariah</span>
+      </a>
+      <a href="#tab-sources" class="section-nav-btn next" data-nav-to="6">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Sources</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 6 — SOURCES
+══════════════════════════════════════ -->
+<section id="tab-sources" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Sources · Part 6</span>
+    <h2 class="win-h2">Methodology &amp; Sources</h2>
+
+    <div class="win-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset (ssa.gov/oact/babynames/), which records names given to at least 5 babies per year. Data covers 1960–2019. Name counts reflect all SSA-recorded births.</div>
+
+    <ol class="win-sources-list">
+      <li>Social Security Administration. Baby Names from Social Security Card Applications — National Data. ssa.gov/oact/babynames/limits.html</li>
+      <li>Bertrand, M. &amp; Mullainathan, S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? <em>American Economic Review</em>, 94(4), 991–1013.</li>
+      <li>Quillian, L. et al. (2017). Meta-analysis of field experiments shows no change in racial discrimination in hiring over time. <em>PNAS</em>, 114(41).</li>
+      <li>UC Berkeley &amp; University of Chicago. (2024). A Discrimination Report Card. Reported by NPR, April 11, 2024.</li>
+      <li>Queen Latifah Rock and Roll Hall of Fame induction, 2025.</li>
+    </ol>
+
+    <div class="section-nav">
+      <a href="#tab-data" class="section-nav-btn" data-nav-to="5">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">What the Data Shows</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="win-footer" role="contentinfo">
+  <div class="win-footer-inner">
+    <div class="win-footer-brand">
+      <div class="win-footer-wordmark"><span>Obsidian Futures</span> · Alterrell Interactive</div>
+      <div class="win-footer-tagline">The data was always there — now it's yours.</div>
+    </div>
+
+    <div class="win-footer-links">
+      <a href="/" class="win-footer-link">← All Projects</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">☕ Support on Ko-fi</a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-footer-link">Substack</a>
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-footer-link">YouTube</a>
+    </div>
+
+    <details class="win-footer-methodology">
+      <summary>Methodology &amp; Data Notes</summary>
+      <div class="win-footer-methodology-body">
+        <p class="win-footer-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset, which records names given to at least 5 babies per year in the United States. Data covers 1960–2019. Charts display raw counts per year. Annotation dates are derived from publicly available release and broadcast records.</p>
+        <ul class="win-footer-sources">
+          <li>Social Security Administration. Baby Names from Social Security Card Applications — National Data. ssa.gov/oact/babynames/limits.html</li>
+          <li>Bertrand, M. &amp; Mullainathan, S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? <em>American Economic Review</em>, 94(4), 991–1013.</li>
+          <li>Quillian, L. et al. (2017). Meta-analysis of field experiments shows no change in racial discrimination in hiring over time. <em>PNAS</em>, 114(41).</li>
+          <li>UC Berkeley &amp; University of Chicago. (2024). A Discrimination Report Card. Reported by NPR, April 11, 2024.</li>
+          <li>Queen Latifah Rock and Roll Hall of Fame induction, 2025.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="win-footer-bottom">
+      <span class="win-footer-copy">© 2026 · interactive.alterrell.com · Data as Dignity</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+<script>
+// Register annotation plugin
+Chart.register(window['chartjs-plugin-annotation']);
+
+// Shared chart config
+const GOLD   = '#E8B923';
+const MUTED  = 'rgba(248,246,241,0.35)';
+const GRID   = 'rgba(255,255,255,0.05)';
+const BG     = '#111118';
+
+function makeYears(start, count) {
+  return Array.from({length: count}, (_, i) => String(start + i));
+}
+
+function annotLine(xVal, color, label, dashed) {
+  return {
+    type: 'line',
+    xMin: xVal, xMax: xVal,
+    borderColor: color,
+    borderWidth: 1.5,
+    borderDash: dashed ? [4, 4] : [],
+    label: {
+      display: true,
+      content: label,
+      position: 'start',
+      font: { family: "'DM Mono', monospace", size: 9 },
+      color: color,
+      backgroundColor: 'transparent',
+      padding: 2,
+    }
+  };
+}
+
+function buildChart(canvasId, labels, data, annotations) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data,
+        borderColor: GOLD,
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.3,
+        fill: true,
+        backgroundColor: 'rgba(232,185,35,0.07)',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.parsed.y} babies named ${canvasId.replace('chart','')}`
+          },
+          backgroundColor: '#1a1a26',
+          titleColor: MUTED,
+          bodyColor: GOLD,
+          borderColor: 'rgba(255,255,255,0.1)',
+          borderWidth: 1,
+        },
+        annotation: { annotations }
+      },
+      scales: {
+        x: {
+          grid: { color: GRID },
+          ticks: {
+            color: MUTED,
+            font: { family: "'DM Mono', monospace", size: 9 },
+            maxTicksLimit: 12,
+            maxRotation: 0,
+          },
+          border: { color: GRID }
+        },
+        y: {
+          grid: { color: GRID },
+          ticks: {
+            color: MUTED,
+            font: { family: "'DM Mono', monospace", size: 9 },
+            callback: val => val.toLocaleString()
+          },
+          border: { color: GRID }
+        }
+      }
+    }
+  });
+}
+
+// ── Latifah ──
+const latifahData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,6,11,25,28,24,26,20,16,19,13,14,19,13,8,93,300,150,251,73,74,34,18,15,14,18,24,17,7,0,14,9,6,7,0,0,7,8,9,8,9,0,7,8,5,11];
+buildChart('chartLatifah', makeYears(1960, 60), latifahData, {
+  debut:    annotLine('1988', MUTED, 'Debut', true),
+  peak:     annotLine('1990', GOLD, 'Peak', false),
+  livingSingle: annotLine('1993', 'rgba(0,200,200,0.7)', 'Living Single', true),
+});
+
+// ── Whitney ──
+const whitneyData = [29,48,191,271,331,296,224,221,248,288,351,327,297,294,368,412,533,693,778,949,1169,1302,1478,1688,2288,3833,9536,8920,7852,6307,5904,5240,4010,4077,3566,2780,2310,1961,1611,1426,1194,899,851,675,676,652,564,533,542,595,541,563,521,482,463,446,375,328,298,303];
+buildChart('chartWhitney', makeYears(1960, 60), whitneyData, {
+  debut: annotLine('1985', MUTED, 'Debut', true),
+  peak:  annotLine('1986', GOLD, 'Peak', false),
+  death: annotLine('2012', MUTED, 'Death', true),
+});
+
+// ── Mariah ──
+const mariahData = [26,33,14,22,11,5,12,19,14,13,5,6,11,61,135,118,156,190,299,289,305,386,322,361,335,311,342,272,437,424,399,1103,5192,4711,4092,4750,5446,4803,5085,4646,4104,3585,2670,3073,2981,3841,4073,3705,4035,3599,3109,2990,2896,2764,2402,2111,1924,1611,1423,1180];
+buildChart('chartMariah', makeYears(1960, 60), mariahData, {
+  debut: annotLine('1990', MUTED, 'Debut', true),
+  peak:  annotLine('1996', GOLD, 'Peak', false),
+});
+
+// ── TAB SWITCHING ──
+(function() {
+  const tabs = document.querySelectorAll('.ai-tab');
+  const tabBar = document.querySelector('.ai-tabs');
+  const sections = [];
+
+  tabs.forEach(tab => {
+    const target = document.querySelector(tab.dataset.target);
+    if (target) sections.push({ tab, target });
+  });
+
+  const navOffset = 52 + 32 + 44; // nav + breadcrumb + tabbar
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.target);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // Section-floor nav buttons
+  document.querySelectorAll('[data-nav-to]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const tabNum = btn.dataset.navTo;
+      const targetTab = document.querySelector(`.ai-tab[data-tab="${tabNum}"]`);
+      if (targetTab) targetTab.click();
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sections.forEach(s => s.tab.classList.remove('active'));
+        const active = sections.find(s => s.target === entry.target);
+        if (active) {
+          active.tab.classList.add('active');
+          active.tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: `-${navOffset}px 0px -60% 0px`, threshold: 0 });
+
+  sections.forEach(s => observer.observe(s.target));
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+})();
+</script>
+
+</body>
+</html>
