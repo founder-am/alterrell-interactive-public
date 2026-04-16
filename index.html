@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alterrell Interactive — See the architecture.</title>
   <meta name="description" content="Alterrell Interactive builds civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="Alterrell Interactive — See the architecture.">
+  <meta property="og:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there — now it's yours.">
+  <meta property="og:url" content="https://interactive.alterrell.com">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/hub.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="Alterrell Interactive — See the architecture.">
+  <meta name="twitter:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there — now it's yours.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/hub.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,10 +29,10 @@
     .hub-hero-subline{font-family:var(--font-editorial);font-style:italic;font-size:clamp(1rem,1.8vw,1.25rem);color:rgba(248,246,241,0.4);line-height:1.4;}
     .hub-about{background:var(--paper);padding:var(--space-md) 1.25rem;border-bottom:1px solid var(--border);}
     .hub-about-inner{max-width:1080px;margin:0 auto;}
-    .hub-about p{font-family:var(--font-body);font-size:clamp(0.9375rem,1.4vw,1.05rem);line-height:var(--leading-body);color:var(--ink-secondary);max-width:680px;}
+    .hub-about p{font-family:var(--font-body);font-size:clamp(0.9375rem,1.4vw,1.05rem);line-height:var(--leading-body);color:var(--ink-secondary);}
     .hub-journey{background:var(--paper-warm);border-bottom:1px solid var(--border);padding:var(--space-sm) 1.25rem;}
     .hub-journey-inner{max-width:1080px;margin:0 auto;}
-    .hub-journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+    .hub-journey-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
     .hub-journey-item{background:var(--paper-card);display:grid;grid-template-columns:38% 62%;text-decoration:none;transition:background 0.15s;min-height:80px;}
     .hub-journey-item:hover{background:var(--teal-bg);text-decoration:none;}
     .hub-journey-icon-cell{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);padding:1rem 0.5rem;}
@@ -57,6 +68,14 @@
     .hub-card-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;}
     .pill--in-progress{background:var(--teal-bg);color:var(--teal);border:1px solid rgba(10,124,114,0.2);}
     .pill--coming-soon{background:var(--paper-warm);color:var(--ink-muted);border:1px solid var(--border);}
+    .pill--explore-now{background:var(--teal-bg);color:var(--teal);border:1px solid rgba(10,124,114,0.35);}
+    /* Two-lane layout */
+    .hub-lanes{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+    .hub-lane-header{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.16em;text-transform:uppercase;padding-bottom:0.75rem;border-bottom:2px solid;margin-bottom:1.25rem;}
+    .hub-lane-header--ai{color:var(--teal);border-bottom-color:var(--teal);}
+    .hub-lane-header--of{color:#3d2480;border-bottom-color:#1e1040;}
+    .hub-lane-cards{display:flex;flex-direction:column;gap:1.25rem;}
+    .hub-lane-cards .hub-card{width:100%;}
     .hub-card-cta{font-family:var(--font-body);font-size:var(--text-micro);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);}
     .hub-obsidian-divider{max-width:1080px;margin:var(--space-lg) auto var(--space-md);display:flex;align-items:center;gap:1rem;}
     .hub-obsidian-divider-line{flex:1;height:1px;background:var(--border);}
@@ -70,6 +89,9 @@
     .hub-footer-right{display:flex;align-items:center;gap:1.5rem;}
     .hub-footer-link{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;}
     .hub-footer-link:hover{color:var(--teal);text-decoration:none;}
+    @media(max-width:768px){
+      .hub-lanes{grid-template-columns:1fr;}
+    }
     @media(max-width:640px){
       .hub-hero-headline{white-space:normal;font-size:clamp(2.6rem,10vw,4rem);}
       .hub-grid{grid-template-columns:1fr;}
@@ -129,80 +151,97 @@
           <span class="hub-journey-dest">Interactive tools ↓</span>
         </div>
       </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="hub-journey-icon-cell"><span class="hub-journey-icon">$</span></div>
+        <div class="hub-journey-text-cell">
+          <span class="hub-journey-action">Back this work</span>
+          <span class="hub-journey-dest">Ko-fi →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <main id="work" class="hub-grid-section" role="main">
   <div class="hub-grid-section-inner">
-    <div class="hub-grid-header">
-      <span class="hub-grid-title">The Work</span>
-      <span class="hub-grid-count">6 pieces</span>
-    </div>
-    <div class="hub-grid">
-      <a href="/fast-food-sodium/" class="hub-card hub-card--active">
-        <div class="hub-card-thumb thumb--ai-sodium"><span class="hub-card-thumb-title">Fast Food's Hidden Sodium Tax</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-          <h2 class="hub-card-title">Fast Food's Hidden Sodium Tax</h2>
-          <p class="hub-card-desc">The advertisements targeting your zip code and the sodium in your meal aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--in-progress">In Progress</span><span class="hub-card-cta">Explore →</span></div>
-        </div>
-      </a>
-      <div class="hub-card hub-card--soon" aria-hidden="true">
-        <div class="hub-card-thumb thumb--ai-hbs"><span class="hub-card-thumb-title">Harvard Business School & Race</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-          <h2 class="hub-card-title">Harvard Business School & Race</h2>
-          <p class="hub-card-desc">One of the most powerful institutions in American business is either deeply inept or structurally incentivized to never close the gap.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-        </div>
-      </div>
-      <a href="/congress-salary/" class="hub-card hub-card--active">
-        <div class="hub-card-thumb thumb--ai-congress"><span class="hub-card-thumb-title">Congressional Selfishness</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-          <h2 class="hub-card-title">Congressional Selfishness: Age, Salary & Retirement</h2>
-          <p class="hub-card-desc">They set their own pay, retire decades before you will, and fundraise millions to keep the job. While the retirement age creeps up and your wages stay flat, the gap between them and you keeps growing.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--in-progress">In Progress</span><span class="hub-card-cta">Explore →</span></div>
-        </div>
-      </a>
-      <div class="hub-card hub-card--soon" aria-hidden="true">
-        <div class="hub-card-thumb thumb--ai-disaster"><span class="hub-card-thumb-title">Who Do We Call During a Disaster</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-          <h2 class="hub-card-title">Who Do We Call During a Disaster</h2>
-          <p class="hub-card-desc">When a hurricane hits, the government has spent decades teaching us to expect less. The data shows who pays for that lesson.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-        </div>
-      </div>
-    </div>
+    <div class="hub-lanes">
 
-    <div class="hub-obsidian-divider">
-      <div class="hub-obsidian-divider-line"></div>
-      <span class="hub-obsidian-divider-label">✦ Obsidian Futures</span>
-      <div class="hub-obsidian-divider-line"></div>
-    </div>
+      <!-- LEFT LANE — Alterrell Interactive -->
+      <div class="hub-lane">
+        <div class="hub-lane-header hub-lane-header--ai">Alterrell Interactive</div>
+        <div class="hub-lane-cards">
 
-    <div class="hub-grid">
-      <div class="hub-card hub-card--soon" aria-hidden="true">
-        <div class="hub-card-thumb thumb--of-queens"><span class="hub-card-thumb-title">Black Music Royalty</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-          <h2 class="hub-card-title">Black Music Royalty</h2>
-          <p class="hub-card-desc">Decades of cultural influence and industry power — mapped.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+          <a href="/fast-food-sodium/" class="hub-card hub-card--active">
+            <div class="hub-card-thumb thumb--ai-sodium"><span class="hub-card-thumb-title">Fast Food's Hidden Sodium Tax</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
+              <h2 class="hub-card-title">Fast Food's Hidden Sodium Tax</h2>
+              <p class="hub-card-desc">The advertisements targeting your zip code and the sodium in your meal aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--explore-now">Explore Now</span><span class="hub-card-cta">Explore →</span></div>
+            </div>
+          </a>
+
+          <div class="hub-card hub-card--soon" aria-hidden="true">
+            <div class="hub-card-thumb thumb--ai-hbs"><span class="hub-card-thumb-title">Harvard Business School & Race</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
+              <h2 class="hub-card-title">Harvard Business School & Race</h2>
+              <p class="hub-card-desc">One of the most powerful institutions in American business is either deeply inept or structurally incentivized to never close the gap.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+            </div>
+          </div>
+
+          <div class="hub-card hub-card--soon" aria-hidden="true">
+            <div class="hub-card-thumb thumb--ai-congress"><span class="hub-card-thumb-title">Congressional Selfishness</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
+              <h2 class="hub-card-title">Congressional Selfishness: Age, Salary & Retirement</h2>
+              <p class="hub-card-desc">They set their own pay, retire decades before you will, and fundraise millions to keep the job. While the retirement age creeps up and your wages stay flat, the gap between them and you keeps growing.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+            </div>
+          </div>
+
+          <div class="hub-card hub-card--soon" aria-hidden="true">
+            <div class="hub-card-thumb thumb--ai-disaster"><span class="hub-card-thumb-title">Who Do We Call During a Disaster</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
+              <h2 class="hub-card-title">Who Do We Call During a Disaster</h2>
+              <p class="hub-card-desc">When a hurricane hits, the government has spent decades teaching us to expect less. The data shows who pays for that lesson.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="hub-card hub-card--soon" aria-hidden="true">
-        <div class="hub-card-thumb thumb--of-naming"><span class="hub-card-thumb-title">What's in a Name</span></div>
-        <div class="hub-card-body">
-          <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-          <h2 class="hub-card-title">What's in a Name</h2>
-          <p class="hub-card-desc">Baby names carry history, aspiration, and identity. Here's what the data reveals about who we're naming our children after — and why.</p>
-          <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+
+      <!-- RIGHT LANE — Obsidian Futures -->
+      <div class="hub-lane">
+        <div class="hub-lane-header hub-lane-header--of">✦ Obsidian Futures</div>
+        <div class="hub-lane-cards">
+
+          <a href="/what-in-a-name/" class="hub-card hub-card--active">
+            <div class="hub-card-thumb thumb--of-naming"><span class="hub-card-thumb-title">What's in a Name</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
+              <h2 class="hub-card-title">What's in a Name</h2>
+              <p class="hub-card-desc">Fame doesn't just make stars. It makes names safe to give your child. The SSA has been recording the proof for decades — here's what the data reveals.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--explore-now">Explore Now</span><span class="hub-card-cta" style="color:#3d2480;">Explore →</span></div>
+            </div>
+          </a>
+
+          <div class="hub-card hub-card--soon" aria-hidden="true">
+            <div class="hub-card-thumb thumb--of-queens"><span class="hub-card-thumb-title">Black Music Royalty</span></div>
+            <div class="hub-card-body">
+              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
+              <h2 class="hub-card-title">Black Music Royalty</h2>
+              <p class="hub-card-desc">Decades of cultural influence and industry power — mapped.</p>
+              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
+            </div>
+          </div>
+
         </div>
       </div>
+
     </div>
   </div>
 </main>
