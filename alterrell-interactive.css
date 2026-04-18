@@ -251,6 +251,9 @@ button { cursor: pointer; font-family: var(--font-body); }
 /* ── 5. SECTION SHELL ───────────────────────────────────────── */
 .ai-section {
   padding: var(--space-xl) 1.25rem;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 128px);
 }
 .ai-section--tight {
   padding: var(--space-lg) 1.25rem;
@@ -271,6 +274,9 @@ button { cursor: pointer; font-family: var(--font-body); }
   max-width: var(--max-editorial);
   margin: 0 auto;
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .ai-inner--tool {
   max-width: var(--max-tool);

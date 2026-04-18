@@ -101,6 +101,38 @@ All piece-specific styles go in <style> blocks in <head>.
 - Tab sections: display:flex; flex-direction:column with
   section-floor nav pushed to bottom via margin-top:auto
   Each tab ends at its nav — no endless scroll between sections
+
+SUB-TAB STYLE STANDARD (locked — apply to every piece with sub-tabs):
+
+.ct-subtabs or equivalent sub-tab container:
+  background: #161620
+  border-radius: 6px
+  padding: 0.4rem
+  display: flex
+  gap: 0.25rem
+  margin-bottom: 1.5rem
+
+Each sub-tab button:
+  padding: 0.4rem 1rem
+  border-radius: 4px
+  font-family: DM Mono
+  font-size: 0.75rem
+  letter-spacing: 0.06em
+  text-transform: uppercase
+  cursor: pointer
+
+Active sub-tab:
+  background: #E8B923
+  color: #0a0a12
+
+Inactive sub-tab:
+  color: rgba(248,246,241,0.45)
+  background: transparent
+
+This applies to ALL pieces — AI lane and Obsidian Futures lane.
+For AI lane pieces, swap #E8B923 active background for #0a7c72
+(teal) with #ffffff text.
+
 - Journey block (4-item 2×2 grid) on every piece:
   Watch/YouTube · Read/Substack · Explore or All Pieces · $ Back this work/Ko-fi
 - Ko-fi icon: $ (not ☕ emoji)
