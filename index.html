@@ -46,40 +46,17 @@
     .hub-grid-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:1px solid var(--border);}
     .hub-grid-title{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
     .hub-grid-count{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.1em;color:var(--ink-muted);}
-    .hub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
-    .hub-card{background:var(--paper-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:box-shadow 0.2s,transform 0.2s;text-decoration:none;color:inherit;}
-    .hub-card--active:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);text-decoration:none;}
+    .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+    .hub-card{background:var(--paper-card);border:1px solid var(--border);border-left:3px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.2s;text-decoration:none;color:inherit;}
+    .hub-card--active:hover{transform:translateY(-2px);text-decoration:none;}
     .hub-card--soon{opacity:0.45;pointer-events:none;cursor:default;}
-    .hub-card-thumb{height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
-    .hub-card-thumb-title{font-family:var(--font-display);font-style:italic;font-weight:700;font-size:clamp(1rem,2.5vw,1.5rem);color:rgba(255,255,255,0.92);text-align:center;padding:0 1.25rem;line-height:1.15;text-shadow:0 1px 8px rgba(0,0,0,0.25);}
-    .thumb--ai-sodium{background:linear-gradient(135deg,#075c54 0%,#0a7c72 50%,#0d9488 100%);}
-    .thumb--ai-hbs{background:linear-gradient(135deg,#052e2a 0%,#0a4f49 45%,#0a7c72 100%);}
-    .thumb--ai-congress{background:linear-gradient(135deg,#04221f 0%,#075c54 50%,#0a7c72 100%);}
-    .thumb--ai-disaster{background:linear-gradient(135deg,#021a17 0%,#043d38 50%,#075c54 100%);}
-    .thumb--of-queens{background:linear-gradient(135deg,#1e1040 0%,#2d1a5e 50%,#3d2480 100%);}
-    .thumb--of-naming{background:linear-gradient(135deg,#1a0e38 0%,#2a1860 50%,#4a2d8a 100%);}
     .hub-card-body{padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;}
-    .hub-card-series{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);display:flex;align-items:center;gap:0.4rem;}
-    .hub-card-series-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0;}
-    .hub-card-series-dot--obsidian{background:#3d2480;}
     .hub-card-title{font-family:var(--font-editorial);font-size:clamp(0.95rem,1.8vw,1.2rem);line-height:var(--leading-snug);color:var(--ink);}
     .hub-card-desc{font-family:var(--font-body);font-size:var(--text-small);line-height:1.6;color:var(--ink-secondary);flex:1;}
     .hub-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:0.5rem;padding-top:0.625rem;border-top:1px solid var(--border);}
     .hub-card-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;}
-    .pill--in-progress{background:var(--teal-bg);color:var(--teal);border:1px solid rgba(10,124,114,0.2);}
     .pill--coming-soon{background:var(--paper-warm);color:var(--ink-muted);border:1px solid var(--border);}
-    .pill--explore-now{background:var(--teal-bg);color:var(--teal);border:1px solid rgba(10,124,114,0.35);}
-    /* Two-lane layout */
-    .hub-lanes{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
-    .hub-lane-header{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.16em;text-transform:uppercase;padding-bottom:0.75rem;border-bottom:2px solid;margin-bottom:1.25rem;}
-    .hub-lane-header--ai{color:var(--teal);border-bottom-color:var(--teal);}
-    .hub-lane-header--of{color:#3d2480;border-bottom-color:#1e1040;}
-    .hub-lane-cards{display:flex;flex-direction:column;gap:1.25rem;}
-    .hub-lane-cards .hub-card{width:100%;}
     .hub-card-cta{font-family:var(--font-body);font-size:var(--text-micro);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);}
-    .hub-obsidian-divider{max-width:1080px;margin:var(--space-lg) auto var(--space-md);display:flex;align-items:center;gap:1rem;}
-    .hub-obsidian-divider-line{flex:1;height:1px;background:var(--border);}
-    .hub-obsidian-divider-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.2em;text-transform:uppercase;color:#3d2480;white-space:nowrap;}
     .hub-footer{background:var(--dark-section);padding:var(--space-md) 1.25rem;}
     .hub-footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
     .hub-footer-left{display:flex;flex-direction:column;gap:0.25rem;}
@@ -89,14 +66,33 @@
     .hub-footer-right{display:flex;align-items:center;gap:1.5rem;}
     .hub-footer-link{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;}
     .hub-footer-link:hover{color:var(--teal);text-decoration:none;}
+    /* Hidden pieces */
+    .piece-hidden{display:none !important;}
+    /* New card stat block */
+    .hub-card-stat-block{height:88px;background:#16141f;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.875rem;flex-shrink:0;border-bottom:0.5px solid rgba(255,255,255,0.07);}
+    .hub-card--soon .hub-card-stat-block{background:#2a2a2a;}
+    .hub-card-stat-number{font-family:var(--font-editorial);font-size:2.2rem;font-weight:500;color:rgba(248,246,241,0.95);line-height:1;flex-shrink:0;min-width:3rem;}
+    .hub-card-stat-divider{width:1px;height:2rem;background:rgba(248,246,241,0.15);flex-shrink:0;}
+    .hub-card-stat-label{font-family:var(--font-body);font-size:11.5px;color:rgba(248,246,241,0.75);line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+    /* Card body updates */
+    .hub-card-lede{font-family:var(--font-body);font-size:var(--text-small);line-height:1.55;color:var(--ink-secondary);flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+    .hub-card-stakes{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.06em;color:var(--ink-muted);font-style:italic;}
+    /* Updated pills */
+    .pill--explore{background:var(--teal-bg);color:var(--teal);border:1px solid rgba(10,124,114,0.35);}
+    /* Nav contrast fix */
+    .ai-nav-meta a{color:rgba(248,246,241,0.88) !important;font-weight:500 !important;}
+    /* Left border category system */
+    .hub-card[data-category~="government"]{border-left:3px solid #4a7fb5;}
+    .hub-card[data-category~="industry"]{border-left:3px solid var(--teal);}
+    .hub-card[data-category~="culture"]{border-left:3px solid #7c5cbf;}
+    .hub-card[data-category~="health"]{border-left:3px solid #c95f1a;}
     @media(max-width:768px){
-      .hub-lanes{grid-template-columns:1fr;}
+      .hub-grid{grid-template-columns:repeat(2,1fr);}
     }
     @media(max-width:640px){
       .hub-hero-headline{white-space:normal;font-size:clamp(2.6rem,10vw,4rem);}
       .hub-grid{grid-template-columns:1fr;}
       .hub-journey-grid{grid-template-columns:1fr;}
-      .hub-card-thumb{height:110px;}
       .hub-footer-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
     }
     @media(max-width:380px){.hub-hero-headline{font-size:clamp(2.2rem,11vw,3rem);}}
@@ -137,7 +133,7 @@
           <span class="hub-journey-dest">YouTube →</span>
         </div>
       </a>
-      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="hub-journey-item" aria-label="Read on Substack">
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="hub-journey-item" aria-label="Read on Substack">
         <div class="hub-journey-icon-cell"><span class="hub-journey-icon">✦</span></div>
         <div class="hub-journey-text-cell">
           <span class="hub-journey-action">Read</span>
@@ -145,16 +141,16 @@
         </div>
       </a>
       <a href="#work" class="hub-journey-item" aria-label="Explore the interactive tools">
-        <div class="hub-journey-icon-cell"><span class="hub-journey-icon">◎</span></div>
+        <div class="hub-journey-icon-cell"><span class="hub-journey-icon">☛</span></div>
         <div class="hub-journey-text-cell">
           <span class="hub-journey-action">Explore</span>
           <span class="hub-journey-dest">Interactive tools ↓</span>
         </div>
       </a>
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-journey-item" aria-label="Back this work on Ko-fi">
-        <div class="hub-journey-icon-cell"><span class="hub-journey-icon">$</span></div>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-journey-item" aria-label="Support on Ko-fi">
+        <div class="hub-journey-icon-cell"><span class="hub-journey-icon">♥</span></div>
         <div class="hub-journey-text-cell">
-          <span class="hub-journey-action">Back this work</span>
+          <span class="hub-journey-action">Support</span>
           <span class="hub-journey-dest">Ko-fi →</span>
         </div>
       </a>
@@ -164,101 +160,189 @@
 
 <main id="work" class="hub-grid-section" role="main">
   <div class="hub-grid-section-inner">
-    <div class="hub-lanes">
+    <div class="hub-grid">
 
-      <!-- LEFT LANE — Alterrell Interactive -->
-      <div class="hub-lane">
-        <div class="hub-lane-header hub-lane-header--ai">Alterrell Interactive</div>
-        <div class="hub-lane-cards">
+      <!-- ACTIVE PIECES FIRST -->
 
-          <a href="/fast-food-sodium/" class="hub-card hub-card--active">
-            <div class="hub-card-thumb thumb--ai-sodium"><span class="hub-card-thumb-title">Fast Food's Hidden Sodium Tax</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-              <h2 class="hub-card-title">Fast Food's Hidden Sodium Tax</h2>
-              <p class="hub-card-desc">The advertisements targeting your zip code and the sodium in your meal aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--explore-now">Explore Now</span><span class="hub-card-cta">Explore →</span></div>
-            </div>
-          </a>
-
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--ai-hbs"><span class="hub-card-thumb-title">Harvard Business School & Race</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-              <h2 class="hub-card-title">Harvard Business School & Race</h2>
-              <p class="hub-card-desc">One of the most powerful institutions in American business is either deeply inept or structurally incentivized to never close the gap.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <a href="/fast-food-sodium/" class="hub-card hub-card--active"
+         data-category="industry health"
+         data-format="calculator"
+         data-lane="ai"
+         data-status="live">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">$219B</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">annual hypertension cost tied to sodium intake</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Fast Food's Hidden Sodium Tax</h2>
+          <p class="hub-card-lede">The warning appears so often it stops being a warning.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--explore">Explore</span>
+            <span class="hub-card-stakes">Your zip code, your exposure</span>
           </div>
+        </div>
+      </a>
 
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--ai-congress"><span class="hub-card-thumb-title">Congressional Selfishness</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-              <h2 class="hub-card-title">Congressional Selfishness: Age, Salary & Retirement</h2>
-              <p class="hub-card-desc">They set their own pay, retire decades before you will, and fundraise millions to keep the job. While the retirement age creeps up and your wages stay flat, the gap between them and you keeps growing.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <a href="/what-in-a-name/" class="hub-card hub-card--active"
+         data-category="culture"
+         data-format="explorer"
+         data-lane="of"
+         data-status="live">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">#1</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">name spike · 72,000 babies · one album cycle</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">What's in a Name: The Fame Effect</h2>
+          <p class="hub-card-lede">Fame doesn't just make stars. It makes names safe to give your child.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--explore">Explore</span>
+            <span class="hub-card-stakes">What the record shows</span>
           </div>
+        </div>
+      </a>
 
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--ai-disaster"><span class="hub-card-thumb-title">Who Do We Call During a Disaster</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot"></span>Alterrell Interactive</div>
-              <h2 class="hub-card-title">Who Do We Call During a Disaster</h2>
-              <p class="hub-card-desc">When a hurricane hits, the government has spent decades teaching us to expect less. The data shows who pays for that lesson.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <a href="/concert-tax/" class="hub-card hub-card--active"
+         data-category="industry culture"
+         data-format="essay"
+         data-lane="of"
+         data-status="live">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">$10M</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">stage cost · one weekend · YouTube Premium deal</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">The Male Laziness Surcharge</h2>
+          <p class="hub-card-lede">Men set the ceiling. Women are required to exceed it just to belong.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--explore">Explore</span>
+            <span class="hub-card-stakes">Who absorbs the cost</span>
           </div>
+        </div>
+      </a>
 
+      <a href="/what-in-a-name/part-0/" class="hub-card hub-card--active"
+         data-category="culture"
+         data-format="essay"
+         data-lane="of"
+         data-status="live">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">1863</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">the year the last name was taken · the first name was all that remained</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">What's in a Name: The Name Was Always Yours</h2>
+          <p class="hub-card-lede">Before the data, there's the argument. Why Black American naming is an act of reclamation.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--explore">Explore</span>
+            <span class="hub-card-stakes">What the record can't take back</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/what-in-a-name/part-2/" class="hub-card hub-card--active"
+         data-category="culture"
+         data-format="explorer"
+         data-lane="of"
+         data-status="live">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">4</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">sitcoms · two kinds of cultural authority · one counter-example</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">What's in a Name: The Living Room</h2>
+          <p class="hub-card-lede">Khadijah. Whitley. Carlton vs. Alfonso. The sitcom data reveals who got to stay.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--explore">Explore</span>
+            <span class="hub-card-stakes">Who the living room remembered</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- COMING SOON PIECES -->
+
+      <div class="hub-card hub-card--soon" aria-hidden="true"
+           data-category="government industry"
+           data-format="calculator"
+           data-lane="ai"
+           data-status="soon">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">79</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">oldest sitting senator · your retirement age is still rising</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Congressional Selfishness: Age, Salary &amp; Retirement</h2>
+          <p class="hub-card-lede">They set their own pay and retire decades before you will.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+            <span class="hub-card-stakes">What they kept for themselves</span>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT LANE — Obsidian Futures -->
-      <div class="hub-lane">
-        <div class="hub-lane-header hub-lane-header--of">✦ Obsidian Futures</div>
-        <div class="hub-lane-cards">
-
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--of-naming"><span class="hub-card-thumb-title">The Name Was Always Yours</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-              <h2 class="hub-card-title">The Name Was Always Yours</h2>
-              <p class="hub-card-desc">Before the data, there's the argument. Why Black American naming is an act of reclamation — and why the first name became the only available site of lineage.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <div class="hub-card hub-card--soon" aria-hidden="true"
+           data-category="culture industry"
+           data-format="tool"
+           data-lane="ai"
+           data-status="soon">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">$0</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">documented giving · nine disaster-prone states</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Who Do We Call During a Disaster</h2>
+          <p class="hub-card-lede">The data shows who pays when the government teaches us to expect less.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+            <span class="hub-card-stakes">Who was never asked</span>
           </div>
+        </div>
+      </div>
 
-          <a href="/what-in-a-name/" class="hub-card hub-card--active">
-            <div class="hub-card-thumb thumb--of-naming"><span class="hub-card-thumb-title">What's in a Name</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-              <h2 class="hub-card-title">What's in a Name: The Fame Effect</h2>
-              <p class="hub-card-desc">Fame doesn't just make stars. It makes names safe to give your child. The SSA has been recording the proof for decades — here's what the data reveals. Part 1 of the series. Start with Part 0 for context.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--explore-now">Explore Now</span><span class="hub-card-cta" style="color:#3d2480;">Explore →</span></div>
-            </div>
-          </a>
-
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--of-naming"><span class="hub-card-thumb-title">The Living Room</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-              <h2 class="hub-card-title">What's in a Name: The Living Room</h2>
-              <p class="hub-card-desc">Khadijah. Whitley. Carlton vs. Alfonso. The sitcom data reveals two kinds of cultural authority — and one clear counter-example.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <div class="hub-card hub-card--soon" aria-hidden="true"
+           data-category="industry government"
+           data-format="essay"
+           data-lane="ai"
+           data-status="soon">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">30yr</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">the gap that has not closed</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Harvard Business School &amp; Race</h2>
+          <p class="hub-card-lede">One of the most powerful institutions in American business keeps missing its own bar.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+            <span class="hub-card-stakes">What the gap actually looks like</span>
           </div>
+        </div>
+      </div>
 
-          <div class="hub-card hub-card--soon" aria-hidden="true">
-            <div class="hub-card-thumb thumb--of-queens"><span class="hub-card-thumb-title">Black Music Royalty</span></div>
-            <div class="hub-card-body">
-              <div class="hub-card-series"><span class="hub-card-series-dot hub-card-series-dot--obsidian"></span>Obsidian Futures</div>
-              <h2 class="hub-card-title">Black Music Royalty</h2>
-              <p class="hub-card-desc">Decades of cultural influence and industry power — mapped.</p>
-              <div class="hub-card-footer"><span class="hub-card-pill pill--coming-soon">Coming Soon</span></div>
-            </div>
+      <div class="hub-card hub-card--soon" aria-hidden="true"
+           data-category="culture"
+           data-format="explorer"
+           data-lane="of"
+           data-status="soon">
+        <div class="hub-card-stat-block">
+          <div class="hub-card-stat-number">✦</div>
+          <div class="hub-card-stat-divider"></div>
+          <div class="hub-card-stat-label">decades of influence · one industry · who got paid</div>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Black Music Royalty</h2>
+          <p class="hub-card-lede">Decades of cultural influence and industry power — mapped.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+            <span class="hub-card-stakes">Who built it, who profited</span>
           </div>
-
         </div>
       </div>
 
@@ -276,10 +360,9 @@
       <a href="https://www.netlify.com">
   <img src="https://www.netlify.com/assets/badges/netlify-badge-color-bg.svg" alt="Deploys by Netlify" />
 </a>
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-footer-link" style="color:var(--teal);border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;">☕ Support</a>
-      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="hub-footer-link">Substack</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-footer-link" style="color:var(--teal);border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;">♥ Support</a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="hub-footer-link">Substack</a>
       <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="hub-footer-link">YouTube</a>
-     
     </div>
   </div>
 </footer>
