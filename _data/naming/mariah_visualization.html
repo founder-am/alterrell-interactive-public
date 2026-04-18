@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariah: Over the Years</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #f38ba8, #fab387, #f9e2af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cdd6f4;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .thesis {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #f38ba8;
+            padding: 20px 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #f9e2af;
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #bac2de;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f38ba8, #fab387);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline {
+            margin-top: 40px;
+        }
+        
+        .timeline h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #f9e2af;
+            text-align: center;
+        }
+        
+        .album-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #f38ba8;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .album-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .album-year {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f38ba8;
+            min-width: 80px;
+        }
+        
+        .album-info {
+            flex: 1;
+        }
+        
+        .album-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #cdd6f4;
+            margin-bottom: 5px;
+        }
+        
+        .album-date {
+            font-size: 0.9rem;
+            color: #bac2de;
+        }
+        
+        .album-impact {
+            background: rgba(243, 139, 168, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #f9e2af;
+            white-space: nowrap;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, rgba(243, 139, 168, 0.2) 0%, rgba(250, 179, 135, 0.2) 100%);
+            border: 1px solid rgba(243, 139, 168, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .insight-box h3 {
+            color: #f9e2af;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .insight-box p {
+            color: #cdd6f4;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .highlight {
+            color: #f38ba8;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MARIAH</h1>
+            <p class="subtitle">Over the Years: A Name's Journey to Mainstream Acceptance</p>
+        </header>
+        
+        <div class="thesis">
+            "A name is not 'ghetto' until you're popular" — This chart tells the story of how a name becomes legitimized through celebrity success, tracing 60 years of the name Mariah from obscurity to peak popularity.
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Pre-Debut (1960-1989)</div>
+                <div class="value" id="preDebut">...</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Peak Year (1996)</div>
+                <div class="value">5,446</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Total (1960-2019)</div>
+                <div class="value" id="total">...</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Increase Factor</div>
+                <div class="value" id="increase">...</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="mariahChart"></canvas>
+        </div>
+        
+        <div class="timeline">
+            <h2>Album Milestones</h2>
+            <div id="albumTimeline"></div>
+        </div>
+        
+        <div class="insight-box">
+            <h3>Key Observations</h3>
+            <p>
+                Before Mariah Carey's debut album in <span class="highlight">June 1990</span>, the name "Mariah" was given to fewer than <span class="highlight">400 babies per year</span> on average. 
+                <br><br>
+                Following her breakthrough with "Vision of Love" and subsequent chart dominance, the name experienced a <span class="highlight">dramatic surge</span>. 
+                The peak came in <span class="highlight">1996</span> — right after the release of <em>Daydream</em> (1995) which featured mega-hits like "Fantasy" and "One Sweet Day."
+                <br><br>
+                This 30-year baseline before her debut proves this wasn't a coincidental trend or pre-existing name popularity — it was <span class="highlight">directly tied to her success</span> as a cultural icon.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Data from SSA Baby Names Database
+        const data = {
+            "years": [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            "counts": [26, 33, 14, 22, 11, 5, 12, 19, 14, 13, 5, 6, 11, 61, 135, 118, 156, 190, 299, 289, 305, 386, 322, 361, 335, 311, 342, 272, 437, 424, 399, 1103, 5192, 4711, 4092, 4750, 5446, 4803, 5085, 4646, 4104, 3585, 2670, 3073, 2981, 3841, 4073, 3705, 4035, 3599, 3109, 2990, 2896, 2764, 2402, 2111, 1924, 1611, 1423, 1180],
+            "albums": [
+                {"year": 1990, "name": "Mariah Carey (Debut)", "date": "June 12", "impact": "4× #1 Singles"},
+                {"year": 1991, "name": "Emotions", "date": "September", "impact": "5th Consecutive #1"},
+                {"year": 1993, "name": "Music Box", "date": "August 31", "impact": "28M Copies Sold"},
+                {"year": 1994, "name": "Merry Christmas", "date": "November", "impact": "'All I Want for Christmas'"},
+                {"year": 1995, "name": "Daydream", "date": "October 3", "impact": "'One Sweet Day' Record"},
+                {"year": 1997, "name": "Butterfly", "date": "September 10", "impact": "Artistic Liberation"},
+                {"year": 1999, "name": "Rainbow", "date": "November 2", "impact": "Hip-Hop Evolution"},
+                {"year": 2005, "name": "The Emancipation of Mimi", "date": "April 12", "impact": "Comeback Album"}
+            ]
+        };
+        
+        // Calculate statistics
+        const preDebutCounts = data.counts.slice(0, 30); // 1960-1989
+        const preDebutAvg = Math.round(preDebutCounts.reduce((a, b) => a + b, 0) / preDebutCounts.length);
+        const totalCount = data.counts.reduce((a, b) => a + b, 0);
+        const increaseFactor = Math.round(5446 / preDebutAvg);
+        
+        document.getElementById('preDebut').textContent = preDebutAvg.toLocaleString();
+        document.getElementById('total').textContent = totalCount.toLocaleString();
+        document.getElementById('increase').textContent = increaseFactor + 'x';
+        
+        // Create the chart
+        const ctx = document.getElementById('mariahChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [{
+                    label: 'Babies Named Mariah',
+                    data: data.counts,
+                    borderColor: '#f38ba8',
+                    backgroundColor: 'rgba(243, 139, 168, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#f38ba8',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(26, 26, 46, 0.95)',
+                        titleColor: '#f9e2af',
+                        bodyColor: '#cdd6f4',
+                        borderColor: '#f38ba8',
+                        borderWidth: 1,
+                        padding: 15,
+                        displayColors: false,
+                        callbacks: {
+                            title: function(context) {
+                                return 'Year ' + context[0].label;
+                            },
+                            label: function(context) {
+                                const year = parseInt(context.label);
+                                const album = data.albums.find(a => a.year === year);
+                                let label = context.parsed.y.toLocaleString() + ' babies named Mariah';
+                                if (album) {
+                                    label += '\n\n📀 ' + album.name;
+                                    label += '\n' + album.date;
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    annotation: {
+                        annotations: createAlbumAnnotations()
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#cdd6f4',
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Babies Named Mariah',
+                            color: '#f9e2af',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#cdd6f4',
+                            maxRotation: 45,
+                            minRotation: 45
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: '#f9e2af',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        function createAlbumAnnotations() {
+            const annotations = {};
+            data.albums.forEach((album, index) => {
+                const yearIndex = data.years.indexOf(album.year);
+                if (yearIndex !== -1) {
+                    annotations['line' + index] = {
+                        type: 'line',
+                        scaleID: 'x',
+                        value: album.year,
+                        borderColor: '#fab387',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        label: {
+                            display: true,
+                            content: album.year,
+                            position: 'start',
+                            backgroundColor: 'rgba(250, 179, 135, 0.8)',
+                            color: '#1a1a2e',
+                            font: {
+                                size: 10,
+                                weight: 'bold'
+                            }
+                        }
+                    };
+                }
+            });
+            return annotations;
+        }
+        
+        // Build album timeline
+        const timelineContainer = document.getElementById('albumTimeline');
+        data.albums.forEach(album => {
+            const card = document.createElement('div');
+            card.className = 'album-card';
+            card.innerHTML = `
+                <div class="album-year">${album.year}</div>
+                <div class="album-info">
+                    <div class="album-name">${album.name}</div>
+                    <div class="album-date">Released ${album.date}</div>
+                </div>
+                <div class="album-impact">${album.impact}</div>
+            `;
+            timelineContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>

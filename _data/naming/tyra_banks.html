@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyra Banks - The Model Exception</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+        }
+        h1 {
+            color: #E8B923;
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .stat-highlight {
+            color: #E8B923;
+            font-weight: 700;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 450px;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            margin-top: 20px;
+        }
+        .insight-box {
+            background: #050505;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 3px solid #ec4899;
+        }
+        .insight-box h3 {
+            color: #ec4899;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+        }
+        .insight-box p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+        .insight-box p:last-child {
+            margin: 0;
+        }
+        .milestones {
+            background: #050505;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .milestones h3 {
+            color: #E8B923;
+            font-size: 0.9rem;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .milestone-icon {
+            width: 24px;
+            height: 24px;
+            background: #E8B923;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .milestone-text {
+            flex: 1;
+        }
+        .milestone-year {
+            color: #E8B923;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .milestone-desc {
+            color: #aaa;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>TYRA BANKS</h1>
+        <p class="subtitle">
+            Peak: <span class="stat-highlight">943 babies (1998)</span> • Increase: <span class="stat-highlight">5.9× from pre-1990</span><br>
+            Modeling alone wasn't enough • Crossover to TV required
+        </p>
+        
+        <div class="chart-wrapper">
+            <canvas id="tyraChart"></canvas>
+        </div>
+        
+        <div class="insight-box">
+            <h3>Why Tyra Worked When Other Models Didn't</h3>
+            <p>
+                Most supermodels don't create large naming spikes. Naomi Campbell, Iman, even Alek Wek had moderate impacts. Models are famous for their appearance, not their work—and that doesn't typically legitimize names at scale.
+            </p>
+            <p>
+                <strong>But Tyra Banks diversified.</strong> She didn't stay in fashion. Sports Illustrated (1996, 1997), Victoria's Secret, international runways—that built visibility. But the peak (943 babies in 1998) came as she was transitioning into business, TV hosting, and building her brand.
+            </p>
+            <p>
+                By 2003, she launched "America's Next Top Model," putting her in millions of homes weekly—just like sitcom stars. She became a personality, mentor, businesswoman. The name stayed popular through the 2000s because Tyra stayed visible beyond the runway.
+            </p>
+            <p>
+                <strong>The lesson:</strong> Beauty isn't enough. Models need crossover—television, entrepreneurship, sustained cultural presence—to legitimize their names at scale.
+            </p>
+        </div>
+        
+        <div class="milestones">
+            <h3>Career Evolution</h3>
+            <div class="milestone-grid">
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1991</div>
+                        <div class="milestone-desc">Signed with Elite Model Management</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1996-97</div>
+                        <div class="milestone-desc">Sports Illustrated covers</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1997</div>
+                        <div class="milestone-desc">Victoria's Secret Angel</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1998</div>
+                        <div class="milestone-desc">Peak year - 943 babies</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2003</div>
+                        <div class="milestone-desc">America's Next Top Model debuts</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2005+</div>
+                        <div class="milestone-desc">Talk show, business empire</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const tyra = [48, 54, 85, 78, 116, 102, 103, 103, 148, 258, 308, 296, 233, 205, 213, 225, 182, 195, 184, 182, 169, 165, 141, 136, 141, 196, 146, 134, 138, 130, 165, 155, 185, 258, 327, 454, 604, 837, 943, 726, 635, 440, 372, 372, 382, 430, 439, 286, 185, 146, 106, 86, 69, 85, 70, 66, 61, 65, 52, 51];
+        
+        // Create marker points for key years
+        const pointRadius = new Array(years.length).fill(0);
+        const pointBorderColor = new Array(years.length).fill('transparent');
+        const pointBorderWidth = new Array(years.length).fill(0);
+        
+        // Mark 1996 (SI), 1998 (peak), 2003 (ANTM)
+        [36, 38, 43].forEach(idx => {
+            pointRadius[idx] = 10;
+            pointBorderColor[idx] = '#E8B923';
+            pointBorderWidth[idx] = 3;
+        });
+        
+        const ctx = document.getElementById('tyraChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Tyra',
+                    data: tyra,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: pointRadius,
+                    pointBackgroundColor: 'transparent',
+                    pointBorderColor: pointBorderColor,
+                    pointBorderWidth: pointBorderWidth
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {
+                        annotations: {
+                            si: {
+                                type: 'line',
+                                xMin: 1996,
+                                xMax: 1996,
+                                borderColor: '#ec4899',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1996 SI Cover',
+                                    position: 'start',
+                                    backgroundColor: '#ec4899',
+                                    color: '#fff',
+                                    font: { size: 9, weight: 'bold' },
+                                    padding: 4
+                                }
+                            },
+                            peak: {
+                                type: 'line',
+                                xMin: 1998,
+                                xMax: 1998,
+                                borderColor: '#E8B923',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1998 PEAK: 943',
+                                    position: 'end',
+                                    backgroundColor: '#E8B923',
+                                    color: '#000',
+                                    font: { size: 10, weight: 'bold' },
+                                    padding: 4
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Number of Babies Named Tyra',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

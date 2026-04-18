@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direction 2: The Name is the Chart - Mariah</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 60px 80px;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 60px;
+        }
+        
+        .category {
+            font-size: 0.9rem;
+            color: #E8B923;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .explanation {
+            font-size: 1rem;
+            color: #888888;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        /* The typographic visualization */
+        .name-viz {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 15px;
+            margin: 80px 0;
+            min-height: 400px;
+        }
+        
+        .letter {
+            font-weight: 900;
+            color: #E8B923;
+            line-height: 1;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .letter-char {
+            display: block;
+        }
+        
+        .letter-decade {
+            font-size: 0.7rem;
+            color: #666666;
+            margin-top: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        /* Size variations based on popularity */
+        .letter-1 { font-size: 2rem; } /* 1960s - tiny */
+        .letter-2 { font-size: 2.5rem; } /* 1970s - small */
+        .letter-3 { font-size: 4rem; } /* 1980s - growing */
+        .letter-4 { font-size: 12rem; } /* 1990s - HUGE */
+        .letter-5 { font-size: 10rem; } /* 2000s - still big */
+        .letter-6 { font-size: 5rem; } /* 2010s - declining */
+        
+        /* Stats boxes */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+            padding: 0 40px;
+        }
+        
+        .stat-card {
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+            text-align: center;
+        }
+        
+        .stat-card-label {
+            font-size: 0.75rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .stat-card-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #E8B923;
+            line-height: 1;
+        }
+        
+        .stat-card-sub {
+            font-size: 0.85rem;
+            color: #666666;
+            margin-top: 8px;
+        }
+        
+        /* Traditional chart section */
+        .chart-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: #0a0a0a;
+        }
+        
+        .chart-title {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .brand-obsidian {
+            color: #ffffff;
+        }
+        
+        .brand-futures {
+            color: #E8B923;
+        }
+        
+        .brand-tag {
+            font-size: 0.7rem;
+            color: #666666;
+            font-style: italic;
+        }
+        
+        .source {
+            font-size: 0.75rem;
+            color: #666666;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="category">Music</div>
+            <div class="explanation">
+                Each letter represents a decade. Size reflects name popularity. Watch MARIAH grow from obscurity to mainstream.
+            </div>
+        </div>
+        
+        <div class="name-viz">
+            <div class="letter letter-1">
+                <span class="letter-char">M</span>
+                <span class="letter-decade">60s</span>
+            </div>
+            <div class="letter letter-2">
+                <span class="letter-char">A</span>
+                <span class="letter-decade">70s</span>
+            </div>
+            <div class="letter letter-3">
+                <span class="letter-char">R</span>
+                <span class="letter-decade">80s</span>
+            </div>
+            <div class="letter letter-4">
+                <span class="letter-char">I</span>
+                <span class="letter-decade">90s</span>
+            </div>
+            <div class="letter letter-5">
+                <span class="letter-char">A</span>
+                <span class="letter-decade">00s</span>
+            </div>
+            <div class="letter letter-6">
+                <span class="letter-char">H</span>
+                <span class="letter-decade">10s</span>
+            </div>
+        </div>
+        
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-card-label">Before Debut</div>
+                <div class="stat-card-value">220</div>
+                <div class="stat-card-sub">avg per year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-label">Peak (1996)</div>
+                <div class="stat-card-value">5.4K</div>
+                <div class="stat-card-sub">babies named</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-label">Increase</div>
+                <div class="stat-card-value">25×</div>
+                <div class="stat-card-sub">from baseline</div>
+            </div>
+        </div>
+        
+        <div class="chart-section">
+            <div class="chart-title">60 Years of Data (1960–2019)</div>
+            <canvas id="mariahChart"></canvas>
+        </div>
+        
+        <div class="footer">
+            <div class="brand">
+                <div class="brand-name">
+                    <span class="brand-obsidian">obsidian</span>
+                    <span class="brand-futures">futures</span>
+                </div>
+                <div class="brand-tag">data-driven insights and analysis of black culture</div>
+            </div>
+            <div class="source">
+                Source: Social Security<br>Administration Baby Names
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            years: [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            counts: [26, 33, 14, 22, 11, 5, 12, 19, 14, 13, 5, 6, 11, 61, 135, 118, 156, 190, 299, 289, 305, 386, 322, 361, 335, 311, 342, 272, 437, 424, 399, 1103, 5192, 4711, 4092, 4750, 5446, 4803, 5085, 4646, 4104, 3585, 2670, 3073, 2981, 3841, 4073, 3705, 4035, 3599, 3109, 2990, 2896, 2764, 2402, 2111, 1924, 1611, 1423, 1180]
+        };
+        
+        const ctx = document.getElementById('mariahChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [{
+                    label: 'Babies Named Mariah',
+                    data: data.counts,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.1)',
+                    borderWidth: 2.5,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 3,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 10
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: '#1a1a1a',
+                            drawTicks: false
+                        }
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 10
+                            },
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12
+                        },
+                        grid: {
+                            color: '#151515',
+                            drawTicks: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Add decade markers
+        const decades = [1960, 1970, 1980, 1990, 2000, 2010];
+        Chart.register({
+            id: 'decadeMarkers',
+            afterDatasetsDraw: function(chart) {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y;
+                
+                ctx.save();
+                decades.forEach(decade => {
+                    const x = xAxis.getPixelForValue(decade);
+                    ctx.strokeStyle = '#333333';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([2, 4]);
+                    ctx.beginPath();
+                    ctx.moveTo(x, yAxis.top);
+                    ctx.lineTo(x, yAxis.bottom);
+                    ctx.stroke();
+                });
+                ctx.restore();
+            }
+        });
+    </script>
+</body>
+</html>

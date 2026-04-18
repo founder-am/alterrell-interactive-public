@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Living Room: Sitcoms & Black Authority — What's in a Name · Obsidian Futures</title>
+  <meta name="description" content="Carlton was not cool. But people liked Alfonso Ribeiro enough to name their child that anyway. The sitcom data reveals two different kinds of cultural authority.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="The Living Room: Sitcoms & Black Authority — What's in a Name · Obsidian Futures">
+  <meta property="og:description" content="Carlton was not cool. But people liked Alfonso Ribeiro enough to name their child that anyway. The sitcom data reveals two different kinds of cultural authority.">
+  <meta property="og:url" content="https://interactive.alterrell.com/what-in-a-name/part-2/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/part2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="The Living Room: Sitcoms & Black Authority — What's in a Name · Obsidian Futures">
+  <meta name="twitter:description" content="Carlton was not cool. But people liked Alfonso Ribeiro enough to name their child that anyway. The sitcom data reveals two different kinds of cultural authority.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/part2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../alterrell-interactive.css">
+
+  <style>
+    /* ── OBSIDIAN FUTURES COLOR TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #111118;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.18);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.08);
+      --of-indigo:    #3d2480;
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+
+    .ai-tabs { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.08); }
+    .ai-tab { color: var(--of-muted); }
+    .ai-tab:hover { color: var(--of-body); }
+    .ai-tab.active { color: var(--of-gold); border-bottom-color: var(--of-gold); }
+
+    /* ── HERO ── */
+    .win-hero {
+      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .win-hero-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .win-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.0;
+      color: rgba(248,246,241,0.96);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .win-hero-dek {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--of-muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .win-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .win-stat-card {
+      background: rgba(255,255,255,0.03);
+      padding: 1.5rem 1.25rem;
+    }
+    .win-stat-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      color: var(--of-gold);
+    }
+    .win-stat-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      line-height: 1.5;
+    }
+
+    /* ── JOURNEY BLOCK ── */
+    .win-journey {
+      background: var(--of-card);
+      border-bottom: 1px solid var(--of-border);
+      padding: var(--space-sm) 1.25rem;
+    }
+    .win-journey-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-journey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .win-journey-item {
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      grid-template-columns: 38% 62%;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: 80px;
+    }
+    .win-journey-item:hover { background: var(--of-gold-dim); text-decoration: none; }
+    .win-journey-icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--of-border);
+      padding: 1rem 0.5rem;
+    }
+    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(232,185,35,0.2); }
+    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--of-gold); }
+    .win-journey-text-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0.875rem 1rem;
+    }
+    .win-journey-action {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--of-body);
+      line-height: 1.2;
+    }
+    .win-journey-dest {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+    }
+
+    /* ── TAB SECTIONS — critical layout ── */
+    .win-section {
+      padding: var(--space-lg) 1.25rem var(--space-xl);
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 128px);
+    }
+    .win-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── SECTION-FLOOR NAV ── */
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0 0;
+      margin-top: auto;
+      border-top: 1px solid var(--of-border);
+      gap: 1rem;
+    }
+    .section-nav-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-decoration: none;
+      min-height: var(--touch);
+      justify-content: center;
+      transition: opacity 0.15s;
+    }
+    .section-nav-btn:hover { opacity: 0.7; text-decoration: none; }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--of-muted);
+    }
+    .section-nav-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 600;
+      color: var(--of-gold);
+    }
+    .section-nav-spacer { flex: 1; }
+
+    /* ── TYPOGRAPHY ── */
+    .win-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .win-h2 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: rgba(248,246,241,0.96);
+      margin-bottom: 1rem;
+    }
+    .win-body {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--of-body);
+      max-width: 720px;
+    }
+    .win-body + .win-body { margin-top: 1.25rem; }
+    .win-body strong { color: rgba(248,246,241,0.96); font-weight: 600; }
+
+    /* ── PULL QUOTE ── */
+    .win-pullquote {
+      border-left: 3px solid var(--of-gold);
+      padding: 1rem 1.5rem;
+      margin: var(--space-md) 0;
+      background: rgba(232,185,35,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      max-width: 680px;
+    }
+    .win-pullquote-text {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(248,246,241,0.9);
+      line-height: var(--leading-snug);
+    }
+
+    /* ── STAT ROW ── */
+    .win-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+    .win-stat-item {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      flex: 1 1 160px;
+    }
+    .win-stat-item-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--of-gold);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .win-stat-item-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      line-height: 1.5;
+    }
+
+    /* ── CHART ── */
+    .win-chart-wrap {
+      position: relative;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem 0.75rem;
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+    .win-chart-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-muted);
+      margin-bottom: 0.75rem;
+    }
+    .win-chart-legend {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .win-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-small);
+      color: var(--of-muted);
+    }
+    .win-legend-swatch {
+      width: 20px;
+      height: 3px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .win-chart-canvas-wrap {
+      position: relative;
+      height: 260px;
+    }
+    .chart-screenshot-nudge {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      color: rgba(232,185,35,0.5);
+      margin-top: 0.5rem;
+      text-align: right;
+    }
+
+    /* ── CHART STAT CALLOUTS ── */
+    .win-chart-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+    }
+    .win-chart-stat {
+      background: var(--of-card);
+      padding: 0.875rem 1.25rem;
+      flex: 1 1 120px;
+    }
+    .win-chart-stat-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--of-gold);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .win-chart-stat-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      color: var(--of-muted);
+      line-height: 1.4;
+    }
+
+    /* ── SOURCES ── */
+    .win-methodology-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: var(--space-md);
+      padding: 1rem 1.25rem;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+    }
+    .win-sources-list {
+      list-style: none;
+      counter-reset: sources;
+      max-width: 720px;
+    }
+    .win-sources-list li {
+      counter-increment: sources;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--of-border);
+      display: flex;
+      gap: 1rem;
+    }
+    .win-sources-list li::before {
+      content: counter(sources, decimal-leading-zero);
+      color: rgba(232,185,35,0.3);
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    /* ── SHARE BLOCK ── */
+    .share-block { background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
+    .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 0.4rem; }
+    .share-block-nudge { font-family: var(--font-body); font-style: italic; font-size: var(--text-small); color: var(--of-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .share-block-btns { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 0.875rem; }
+    .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); min-height: var(--touch); text-decoration: none; cursor: pointer; transition: opacity 0.15s; border: none; }
+    .share-btn:hover { opacity: 0.82; text-decoration: none; }
+    .share-btn--outline { background: transparent; border: 1.5px solid var(--of-gold); color: var(--of-gold); }
+    .share-btn--filled { background: var(--of-gold); color: #111118; font-weight: 600; }
+    .share-block-substack { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); }
+    .share-block-substack a { color: var(--of-gold); }
+
+    /* ── COMMUNITY PROMPT ── */
+    .community-prompt {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-left: 3px solid var(--of-gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem;
+      margin: var(--space-md) 0;
+      max-width: 680px;
+    }
+    .community-prompt p {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--of-body);
+    }
+    .community-prompt a { color: var(--of-gold); }
+
+    /* ── FOOTER ── */
+    .win-footer {
+      background: #0a0a0a;
+      padding: var(--space-xl) 1.25rem var(--space-md);
+      border-top: 1px solid var(--of-border);
+    }
+    .win-footer-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-footer-brand {
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-wordmark {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3d3a55;
+      margin-bottom: 0.35rem;
+    }
+    .win-footer-wordmark span { color: var(--of-gold); }
+    .win-footer-tagline {
+      font-family: var(--font-editorial);
+      font-size: 1rem;
+      font-style: italic;
+      color: #4a465e;
+      line-height: 1.5;
+    }
+    .win-footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-link {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      text-decoration: none;
+      min-height: var(--touch);
+      display: flex;
+      align-items: center;
+      transition: color 0.15s;
+    }
+    .win-footer-link:hover { color: #888; text-decoration: none; }
+    .win-footer-link--kofi {
+      color: var(--of-gold);
+      border: 1px solid rgba(232,185,35,0.3);
+      padding: 0.4rem 0.75rem;
+      border-radius: 100px;
+    }
+    .win-footer-link--kofi:hover { color: var(--of-gold); border-color: var(--of-gold); }
+    .win-footer-methodology { margin-bottom: var(--space-md); }
+    .win-footer-methodology summary {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: #4a465e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: var(--touch);
+      user-select: none;
+    }
+    .win-footer-methodology summary::-webkit-details-marker { display: none; }
+    .win-footer-methodology summary::before {
+      content: '+';
+      font-family: var(--font-mono);
+      color: var(--of-gold);
+      font-size: 0.9rem;
+    }
+    details[open] .win-footer-methodology summary::before { content: '−'; }
+    .win-footer-methodology-body {
+      padding: 1rem 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 0.5rem;
+    }
+    .win-footer-methodology-note {
+      font-size: var(--text-small);
+      color: #4a465e;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .win-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .win-footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: #222;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .win-hero-stats { grid-template-columns: 1fr; }
+      .win-journey-grid { grid-template-columns: 1fr; }
+      .win-stat-row { flex-direction: column; }
+      .section-nav { flex-wrap: wrap; gap: 0.5rem; }
+      .win-chart-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span style="color:#3d2480;">Obsidian Futures</span>
+  <span class="ai-breadcrumb-sep">›</span>
+  <a href="/what-in-a-name/">What's in a Name</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Part 2</span>
+</div>
+
+<!-- HERO -->
+<header class="win-hero" role="banner">
+  <div class="win-hero-inner">
+    <span class="win-hero-eyebrow">✦ Obsidian Futures · What's in a Name · Part 2</span>
+    <h1 class="win-hero-headline">The Living Room</h1>
+    <p class="win-hero-dek">Carlton was not cool. But people liked Alfonso Ribeiro enough to name their child that anyway. The sitcom data reveals two different kinds of cultural authority — and one clear counter-example.</p>
+    <div class="win-hero-stats">
+      <div class="win-stat-card">
+        <div class="win-stat-num">47×</div>
+        <div class="win-stat-label">Khadijah's growth after Living Single premiered</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">111×</div>
+        <div class="win-stat-label">Tatyana Ali's name growth during Fresh Prince</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">390×</div>
+        <div class="win-stat-label">Whitley — the character name that moved more than the actress</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- JOURNEY BLOCK -->
+<section class="win-journey" aria-label="Follow the platform">
+  <div class="win-journey-inner">
+    <div class="win-journey-grid">
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Watch on YouTube">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">▶</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Watch</span>
+          <span class="win-journey-dest">YouTube →</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-journey-item" aria-label="Read on Substack">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">✦</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Read</span>
+          <span class="win-journey-dest">Substack →</span>
+        </div>
+      </a>
+      <a href="/" class="win-journey-item" aria-label="All pieces">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">◎</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">All Pieces</span>
+          <span class="win-journey-dest">Hub →</span>
+        </div>
+      </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">$</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Back this work</span>
+          <span class="win-journey-dest">Ko-fi →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAB BAR -->
+<nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" data-tab="1" data-target="#tab-overview" role="tab">Overview</button>
+  <button class="ai-tab" data-tab="2" data-target="#tab-living-single" role="tab">Living Single</button>
+  <button class="ai-tab" data-tab="3" data-target="#tab-different-world" role="tab">A Different World</button>
+  <button class="ai-tab" data-tab="4" data-target="#tab-fresh-prince" role="tab">Fresh Prince</button>
+  <button class="ai-tab" data-tab="5" data-target="#tab-counter" role="tab">The Counter-Example</button>
+  <button class="ai-tab" data-tab="6" data-target="#tab-sources" role="tab">Sources</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     TAB 1 — OVERVIEW
+══════════════════════════════════════ -->
+<section id="tab-overview" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Overview · Part 1</span>
+    <h2 class="win-h2">The musicians crossed over. The sitcoms did something different.</h2>
+
+    <p class="win-body">Part 1 of this series showed what happens when a name becomes too famous to be racially legible — Whitney Houston peaking at 9,536 babies in a single year, Mariah Carey sustaining elevation for two decades. Both Black and white families responded. The fame was total enough to temporarily override the coding.</p>
+
+    <p class="win-body">Sitcom names don't work that way. The numbers are smaller. The reach is narrower. But the pattern is sharper — and the argument it makes is more specific.</p>
+
+    <p class="win-body">When Black families named their daughters Khadijah in 1994, they weren't doing it because everyone else was. They were doing it because something in that name, as embodied by that character in that show, felt worth carrying forward. That's a different kind of authority than crossover fame. It's community authority — deliberate, specific, and entirely legible to the people exercising it.</p>
+
+    <p class="win-body">This episode maps that pattern across three shows: Living Single, A Different World, and The Fresh Prince of Bel-Air. Each one reveals something different about how television names move — and why.</p>
+
+    <div class="win-stat-row">
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">47×</div>
+        <div class="win-stat-item-label">Khadijah's growth after Living Single premiered</div>
+      </div>
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">111×</div>
+        <div class="win-stat-item-label">Tatyana Ali's name growth during Fresh Prince</div>
+      </div>
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">390×</div>
+        <div class="win-stat-item-label">Whitley — character name that moved more than the actress</div>
+      </div>
+    </div>
+
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <a href="#tab-living-single" class="section-nav-btn next" data-nav-to="2">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Living Single</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 2 — LIVING SINGLE
+══════════════════════════════════════ -->
+<section id="tab-living-single" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Living Single · Part 2</span>
+    <h2 class="win-h2">Three names. One show. One season. They moved together.</h2>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">1,615</div>
+        <div class="win-chart-stat-label">Khadijah peak (1994)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">47×</div>
+        <div class="win-chart-stat-label">Khadijah growth</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">174</div>
+        <div class="win-chart-stat-label">Regine peak (1994)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">300</div>
+        <div class="win-chart-stat-label">Latifah peak (1990, before the show)</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Khadijah, Regine &amp; Latifah — Indexed to 1993 = 100 (show debut year)</div>
+      <div class="win-chart-legend">
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#E8B923;"></div> Khadijah (character)</div>
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#a855f7;"></div> Regine (character)</div>
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#3dd9eb;"></div> Latifah (actress)</div>
+      </div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartLivingSingle"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <p class="win-body">Living Single premiered on Fox in 1993. Six Black friends in Brooklyn. Five seasons. The show was funny, sharp, and culturally specific in a way that prime-time television rarely was.</p>
+
+    <p class="win-body">Look at what it did to names. All three moved together — Khadijah, Regine, and Latifah in the same season, in the same direction. This is not one character dominating. This is an ensemble creating ensemble legitimacy.</p>
+
+    <p class="win-body">Khadijah James was the lead — magazine editor, intelligent, and notably the character carried a Muslim name. Khadijah is the name of Prophet Muhammad's first wife. For that name to move through an American sitcom into American nurseries required a specific kind of trust. Black families watching Living Single didn't just love the character. They decided her name was worth giving a daughter.</p>
+
+    <p class="win-body">Regine Hunter was fashion-obsessed, aspirational, French-named. The name Regine is not common in American usage. It moved anyway — because the character made it feel possible.</p>
+
+    <p class="win-body">Latifah peaked in 1990, before the show, driven entirely by Queen Latifah's music career. Living Single sustained it. Note the line: it doesn't spike with the show's debut. It was already there. The show added weight to something that existed.</p>
+
+    <p class="win-body">This is the ensemble effect — when a show creates a world cohesive enough that parents respond not just to one character but to the whole. The names moved because the world felt real.</p>
+
+    <div class="section-nav">
+      <a href="#tab-overview" class="section-nav-btn" data-nav-to="1">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Overview</span>
+      </a>
+      <a href="#tab-different-world" class="section-nav-btn next" data-nav-to="3">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">A Different World</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 3 — A DIFFERENT WORLD
+══════════════════════════════════════ -->
+<section id="tab-different-world" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">A Different World · Part 3</span>
+    <h2 class="win-h2">Whitley Gilbert moved more than Jasmine Guy. That's the point.</h2>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">508</div>
+        <div class="win-chart-stat-label">Whitley peak (1988)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">390×</div>
+        <div class="win-chart-stat-label">Whitley growth</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">12,063</div>
+        <div class="win-chart-stat-label">Jasmine peak (1993, same year as Aladdin)</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Jasmine (actress) vs Whitley (character) — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-legend">
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#E8B923;"></div> Jasmine (actress)</div>
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#a855f7;"></div> Whitley (character)</div>
+      </div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartDifferentWorld"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <p class="win-body">A Different World ran from 1987 to 1993 on NBC. A Cosby Show spinoff set at a fictional HBCU. It was, for a specific generation of Black families, aspirational television — the show that said going to a Black college was something to want.</p>
+
+    <p class="win-body">The naming data reveals something specific about how that aspiration operated. Jasmine Guy played Whitley Gilbert — a Southern, upper-class Black woman, bougie and unapologetic about it. The character was deliberately coded as a type: old Black money, finishing school manners, a name that sounded like it belonged on a historic estate.</p>
+
+    <p class="win-body">Whitley grew 390× from its pre-show baseline. That is one of the largest character name increases in this entire dataset.</p>
+
+    <p class="win-body">Jasmine — Jasmine Guy's actual first name — is harder to read. It peaked in 1993, the same year Disney released Aladdin, which featured a character named Princess Jasmine. We cannot separate these signals from SSA data alone. This is a genuine limitation of the data — and an honest one. What we can say is that Whitley moved more clearly and more dramatically than Jasmine, which suggests the character's identity was the engine, not the actress's personal fame.</p>
+
+    <p class="win-body">Kadeem Hardison played Dwayne Wayne on the same show. His name — Kadeem, Arabic in origin, distinctively racialized — grew 47× during the show's run. Here the actor's name moved, not the character's. Dwayne is too common to track. Kadeem was specific enough that its movement is legible.</p>
+
+    <p class="win-body">Two mechanisms, same show: a character whose identity moved her name (Whitley), and an actor whose name moved because of who he was (Kadeem). Neither required mainstream crossover. Both required Black families deciding something was worth carrying forward.</p>
+
+    <div class="section-nav">
+      <a href="#tab-living-single" class="section-nav-btn" data-nav-to="2">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Living Single</span>
+      </a>
+      <a href="#tab-fresh-prince" class="section-nav-btn next" data-nav-to="4">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Fresh Prince</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 4 — FRESH PRINCE
+══════════════════════════════════════ -->
+<section id="tab-fresh-prince" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Fresh Prince · Part 4</span>
+    <h2 class="win-h2">Carlton was not cool. Alfonso Ribeiro was beloved. The data knows the difference.</h2>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">544</div>
+        <div class="win-chart-stat-label">Alfonso peak (1993)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">847</div>
+        <div class="win-chart-stat-label">Carlton peak (1960) — decades before the show</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">111×</div>
+        <div class="win-chart-stat-label">Tatyana Ali name growth during show run</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Alfonso (actor) vs Carlton (character) — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-legend">
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#E8B923;"></div> Alfonso (actor)</div>
+        <div class="win-legend-item"><div class="win-legend-swatch" style="background:#3dd9eb;"></div> Carlton (character)</div>
+      </div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartFreshPrince"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+    </div>
+
+    <p class="win-body">The Fresh Prince of Bel-Air gave us one of the clearest actor-versus-character contrasts in this dataset.</p>
+
+    <p class="win-body">Carlton Banks was the preppy, square, deliberately uncool cousin — coded as someone who had traded Black cultural identity for upper-class assimilation. The character was the butt of jokes. His name, Carlton, peaked in 1960 and was already in long-term decline before the show premiered in 1990. The show did not move Carlton upward. If anything, attaching it to that character may have reinforced its decline.</p>
+
+    <p class="win-body">Alfonso Ribeiro — the actor who played him — is a different story. Alfonso held steady and saw modest growth during the show's run. The actor was beloved even when the character wasn't. People liked Alfonso Ribeiro enough to name their child after him.</p>
+
+    <p class="win-body">This is the distinction the data makes visible. Carlton the character represented something Black families were not selecting. Alfonso the actor represented something they were. The name you choose for your child is a signal about aspiration, identity, and belonging — and the Carlton/Alfonso split shows that signal operating at the level of individual characters within the same show.</p>
+
+    <p class="win-body">The counter-example is worth sitting with: not every sitcom name moves. Not every beloved show generates naming data. The pattern requires something specific — a name that feels available, that carries the right weight, that lands in a community ready to receive it.</p>
+
+    <p class="win-body">Tatyana Ali, who played Ashley Banks, grew 111× during the show's run. Her name is Russian in origin, distinctively spelled. It moved because she was beloved and her name was specific enough to track. Will Smith's name — Will, or Willard — is too common to measure. The data captures distinction. Common names disappear into the noise.</p>
+
+    <div class="section-nav">
+      <a href="#tab-different-world" class="section-nav-btn" data-nav-to="3">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">A Different World</span>
+      </a>
+      <a href="#tab-counter" class="section-nav-btn next" data-nav-to="5">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">The Counter-Example</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 5 — THE COUNTER-EXAMPLE
+══════════════════════════════════════ -->
+<section id="tab-counter" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">The Counter-Example · Part 5</span>
+    <h2 class="win-h2">Tisha Campbell's name peaked in 1971. Martin premiered in 1992.</h2>
+
+    <p class="win-body">We did not cherry-pick. The data includes names that did not follow the pattern — and those cases are as instructive as the ones that did.</p>
+
+    <p class="win-body">Tisha Campbell played Gina on Martin, one of the defining Black sitcoms of the 1990s. The show ran from 1992 to 1997 on Fox. It was enormously popular. Tisha Campbell was a genuine star.</p>
+
+    <p class="win-body">The name Tisha peaked in 1971 — twenty-one years before Martin premiered. By the time the show aired, the name was already in long decline. The show produced no measurable spike.</p>
+
+    <p class="win-body">We cannot ask the SSA why. But we can ask you: what do you think made the difference? Why did Khadijah move and Tisha didn't? Was it the name's distinctiveness? The character's identity? The show's cultural positioning? The moment in the culture when the show aired?</p>
+
+    <p class="win-body">This series argues that naming is never neutral — that names move for reasons. But the counter-examples remind us that the reasons are not always legible in the data alone. The data shows what happened. The why requires asking people who were there.</p>
+
+    <div class="community-prompt">
+      <p>If you were named after a TV character or actor from this era, or if you named a child after one, we want to hear about it. Share your story on <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">Substack</a> or in the YouTube comments.</p>
+    </div>
+
+    <p class="win-body">Tichina Arnold (Pam on Martin) — same pattern. Her name shows no spike during the show's run. Two major female leads from the same show, both counterexamples. The Martin data is, on this measure, a null result. That's honest. That's what the data shows.</p>
+
+    <!-- SHARE BLOCK -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">Share what surprises you — copy the link or post directly.</p>
+      <div class="share-block-btns">
+        <button class="share-btn share-btn--outline" id="part2-copy-btn" onclick="(function(btn){navigator.clipboard.writeText(window.location.href).then(function(){btn.textContent='Copied ✓';setTimeout(function(){btn.innerHTML='<span>◎</span> Copy link';},2000)});})(this)">
+          <span>◎</span> Copy link
+        </button>
+        <a href="https://twitter.com/intent/tweet?text=Carlton+was+not+cool.+Alfonso+Ribeiro+was+beloved.+The+Fresh+Prince+naming+data+knows+the+difference.&url=https%3A%2F%2Finteractive.alterrell.com%2Fwhat-in-a-name%2Fpart-2%2F&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline">
+          <span>✕</span> Share on X
+        </a>
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="share-btn share-btn--filled">
+          <span>$</span> Back this work
+        </a>
+      </div>
+      <p class="share-block-substack">Get early access to every episode → <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-fresh-prince" class="section-nav-btn" data-nav-to="4">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">Fresh Prince</span>
+      </a>
+      <a href="#tab-sources" class="section-nav-btn next" data-nav-to="6">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">Sources</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 6 — SOURCES
+══════════════════════════════════════ -->
+<section id="tab-sources" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">Sources · Part 6</span>
+    <h2 class="win-h2">Methodology &amp; Sources</h2>
+
+    <div class="win-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset (ssa.gov/oact/babynames/), which records names given to at least 5 babies per year. Data covers 1960–2019. Charts display raw counts or indexed values as noted. Show premiere dates from IMDb. Actor and character name attributions from show credits.
+
+A note on the Jasmine/Aladdin problem: where a name spike coincides with multiple cultural events in the same year, this series notes the ambiguity explicitly rather than attributing causation to either source. The data is directional. Parental intent is not captured in SSA records.</div>
+
+    <ol class="win-sources-list">
+      <li>Social Security Administration. Baby Names from Social Security Card Applications — National Data. ssa.gov/oact/babynames/limits.html</li>
+      <li>Living Single (Fox, 1993–1998). Created by Yvette Lee Bowser.</li>
+      <li>A Different World (NBC, 1987–1993). Created by Bill Cosby, produced by Debbie Allen.</li>
+      <li>The Fresh Prince of Bel-Air (NBC, 1990–1996). Created by Andy Borowitz and Susan Borowitz.</li>
+      <li>Martin (Fox, 1992–1997). Created by Martin Lawrence, John Bowman, Topper Carew, Carl Craig.</li>
+      <li>Bertrand, M. &amp; Mullainathan, S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? <em>American Economic Review</em>, 94(4), 991–1013.</li>
+      <li>IMDb show premiere and cast records.</li>
+    </ol>
+
+    <div class="section-nav">
+      <a href="#tab-counter" class="section-nav-btn" data-nav-to="5">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">The Counter-Example</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="win-footer" role="contentinfo">
+  <div class="win-footer-inner">
+    <div class="win-footer-brand">
+      <div class="win-footer-wordmark"><span>Obsidian Futures</span> · Alterrell Interactive</div>
+      <div class="win-footer-tagline">The data was always there — now it's yours.</div>
+    </div>
+
+    <div class="win-footer-links">
+      <a href="/" class="win-footer-link">← All Projects</a>
+      <a href="/what-in-a-name/part-0/" class="win-footer-link">← Part 0: The Name Was Always Yours</a>
+      <a href="/what-in-a-name/" class="win-footer-link">← Part 1: The Fame Effect</a>
+      <a href="/what-in-a-name/part-2/" class="win-footer-link" style="color:var(--of-muted);">Part 3: Coming Soon</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">$ Back this work</a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-footer-link">Substack</a>
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-footer-link">YouTube</a>
+    </div>
+
+    <details class="win-footer-methodology">
+      <summary>Methodology &amp; Data Notes</summary>
+      <div class="win-footer-methodology-body">
+        <p class="win-footer-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset, which records names given to at least 5 babies per year in the United States. Data covers 1960–2019. Charts display raw counts per year or indexed values. Annotation dates are derived from publicly available broadcast records.</p>
+      </div>
+    </details>
+
+    <div class="win-footer-bottom">
+      <span class="win-footer-copy">© 2026 · interactive.alterrell.com · Data as Dignity</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+<script>
+Chart.register(window['chartjs-plugin-annotation']);
+
+const GOLD   = '#E8B923';
+const PURPLE = '#a855f7';
+const CYAN   = '#3dd9eb';
+const MUTED  = 'rgba(248,246,241,0.35)';
+const GRID   = 'rgba(255,255,255,0.05)';
+
+const YEARS = [1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019];
+
+function makeYears() { return YEARS.map(String); }
+
+function annotLine(xVal, color, label, dashed) {
+  return {
+    type: 'line',
+    xMin: xVal, xMax: xVal,
+    borderColor: color,
+    borderWidth: 1.5,
+    borderDash: dashed ? [4,4] : [],
+    label: {
+      display: true,
+      content: label,
+      position: 'start',
+      font: { family: "'DM Mono', monospace", size: 9 },
+      color: color,
+      backgroundColor: 'transparent',
+      padding: 2,
+    }
+  };
+}
+
+const commonScales = {
+  x: {
+    grid: { color: GRID },
+    ticks: { color: MUTED, font: { family: "'DM Mono', monospace", size: 9 }, maxTicksLimit: 12, maxRotation: 0 },
+    border: { color: GRID }
+  },
+  y: {
+    beginAtZero: true,
+    grid: { color: GRID },
+    ticks: { color: MUTED, font: { family: "'DM Mono', monospace", size: 9 }, callback: v => v.toLocaleString() },
+    border: { color: GRID }
+  }
+};
+
+// ── LIVING SINGLE — Indexed to 1993 = 100 ──
+// Khadijah 1993=435, Regine 1993=55, Latifah 1993=73 (raw from SSA)
+// Index = (raw / base) * 100
+const khadiahRaw = [0,0,5,10,10,8,5,10,8,18,19,20,24,38,28,33,38,60,72,76,67,69,56,59,57,65,77,69,76,77,100,97,159,435,1615,438,261,198,188,127,104,94,95,107,89,77,59,62,76,73,81,95,84,107,109,107,138,131,136,130];
+const regineRaw  = [6,14,7,8,11,9,14,18,9,17,21,18,15,12,10,18,19,23,23,16,26,17,24,26,21,28,26,26,27,22,21,31,21,55,174,123,59,60,49,25,38,21,21,15,16,7,8,8,5,0,0,0,7,0,0,0,0,0,0,5];
+const latifahRaw = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,6,11,25,28,24,26,20,16,19,13,14,19,13,8,93,300,150,251,73,74,34,18,15,14,18,24,17,7,0,14,9,6,7,0,0,7,8,9,8,9,0,7,8,5,11];
+
+const KHADIJAH_BASE = 435; // 1993 raw count
+const REGINE_BASE = 55;
+const LATIFAH_BASE = 73;
+
+const khadiahIdx = khadiahRaw.map(v => KHADIJAH_BASE > 0 ? +(v / KHADIJAH_BASE * 100).toFixed(1) : 0);
+const regineIdx  = regineRaw.map(v => REGINE_BASE > 0 ? +(v / REGINE_BASE * 100).toFixed(1) : 0);
+const latifahIdx = latifahRaw.map(v => LATIFAH_BASE > 0 ? +(v / LATIFAH_BASE * 100).toFixed(1) : 0);
+
+new Chart(document.getElementById('chartLivingSingle'), {
+  type: 'line',
+  data: {
+    labels: makeYears(),
+    datasets: [
+      { label: 'Khadijah', data: khadiahIdx, borderColor: GOLD, backgroundColor: 'rgba(232,185,35,0.12)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 },
+      { label: 'Regine',   data: regineIdx,  borderColor: PURPLE, backgroundColor: 'rgba(168,85,247,0.10)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 },
+      { label: 'Latifah',  data: latifahIdx, borderColor: CYAN, backgroundColor: 'rgba(61,217,235,0.08)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { mode: 'index', intersect: false, backgroundColor: '#1a1a26', titleColor: MUTED, bodyColor: GOLD, borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1,
+        callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} (index)` }
+      },
+      annotation: { annotations: {
+        debut:  annotLine('1993', MUTED, 'Premiere', true),
+        peak:   annotLine('1994', GOLD, 'Peak', false),
+        finale: annotLine('1998', MUTED, 'Finale', true),
+      }}
+    },
+    scales: { ...commonScales, y: { ...commonScales.y, ticks: { ...commonScales.y.ticks, callback: v => v } } }
+  }
+});
+
+// ── A DIFFERENT WORLD — Jasmine vs Whitley ──
+const jasmineRaw = [33,34,26,32,27,31,39,25,45,54,64,84,90,149,283,382,525,720,797,1042,1187,1400,1449,1569,1929,2708,2991,3724,6445,9549,11035,11525,10476,12063,11712,10278,9708,9679,9484,9351,9098,8957,8868,8063,8490,7867,7518,6769,5527,4881,4177,3702,3386,3055,3034,2806,2644,2264,2136,2092];
+const whitleyRaw = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,8,50,508,480,432,365,236,206,182,140,127,105,110,104,104,90,99,83,92,82,81,75,75,106,121,156,157,170,197,222,251,258,262,280];
+
+new Chart(document.getElementById('chartDifferentWorld'), {
+  type: 'line',
+  data: {
+    labels: makeYears(),
+    datasets: [
+      { label: 'Jasmine (actress)', data: jasmineRaw, borderColor: GOLD, backgroundColor: 'rgba(232,185,35,0.12)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 },
+      { label: 'Whitley (character)', data: whitleyRaw, borderColor: PURPLE, backgroundColor: 'rgba(168,85,247,0.10)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { mode: 'index', intersect: false, backgroundColor: '#1a1a26', titleColor: MUTED, bodyColor: GOLD, borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1 },
+      annotation: { annotations: {
+        debut:  annotLine('1987', MUTED, 'Premiere', true),
+        peak:   annotLine('1988', PURPLE, 'Whitley peak', false),
+        finale: annotLine('1993', MUTED, 'Finale', true),
+      }}
+    },
+    scales: commonScales
+  }
+});
+
+// ── FRESH PRINCE — Alfonso vs Carlton ──
+const alfonsoRaw = [383,398,353,399,390,384,367,380,357,363,407,417,385,427,396,433,382,413,415,442,448,460,429,420,399,457,490,437,501,496,537,573,531,544,529,493,508,505,485,490,476,428,468,455,458,455,457,499,430,382,304,279,282,286,263,293,229,278,234,228];
+const carltonRaw = [847,770,815,762,777,640,649,612,602,510,584,595,464,478,450,497,396,465,436,469,442,391,444,383,367,378,376,352,381,478,529,469,437,396,356,328,284,269,246,224,225,208,175,154,137,180,143,146,128,114,122,102,100,87,88,99,80,72,64,68];
+
+new Chart(document.getElementById('chartFreshPrince'), {
+  type: 'line',
+  data: {
+    labels: makeYears(),
+    datasets: [
+      { label: 'Alfonso (actor)', data: alfonsoRaw, borderColor: GOLD, backgroundColor: 'rgba(232,185,35,0.12)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 },
+      { label: 'Carlton (character)', data: carltonRaw, borderColor: CYAN, backgroundColor: 'rgba(61,217,235,0.08)', borderWidth: 2.5, fill: true, tension: 0.3, pointRadius: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { mode: 'index', intersect: false, backgroundColor: '#1a1a26', titleColor: MUTED, bodyColor: GOLD, borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1 },
+      annotation: { annotations: {
+        debut:  annotLine('1990', MUTED, 'Premiere', true),
+        peak:   annotLine('1993', GOLD, 'Alfonso peak', false),
+        finale: annotLine('1996', MUTED, 'Finale', true),
+      }}
+    },
+    scales: commonScales
+  }
+});
+
+// ── TAB SWITCHING ──
+(function() {
+  const tabs = document.querySelectorAll('.ai-tab');
+  const tabBar = document.querySelector('.ai-tabs');
+  const sections = [];
+
+  tabs.forEach(tab => {
+    const target = document.querySelector(tab.dataset.target);
+    if (target) sections.push({ tab, target });
+  });
+
+  const navOffset = 52 + 32 + 44;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.target);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('[data-nav-to]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const tabNum = btn.dataset.navTo;
+      const targetTab = document.querySelector(`.ai-tab[data-tab="${tabNum}"]`);
+      if (targetTab) targetTab.click();
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sections.forEach(s => s.tab.classList.remove('active'));
+        const active = sections.find(s => s.target === entry.target);
+        if (active) {
+          active.tab.classList.add('active');
+          active.tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: `-${navOffset}px 0px -60% 0px`, threshold: 0 });
+
+  sections.forEach(s => observer.observe(s.target));
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+})();
+</script>
+
+</body>
+</html>

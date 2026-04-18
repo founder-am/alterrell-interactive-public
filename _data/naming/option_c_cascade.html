@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option C: Timeline Cascade - Mariah</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+        
+        /* Section spacing */
+        section {
+            margin-bottom: 80px;
+        }
+        
+        /* Thesis */
+        .thesis-section {
+            max-width: 800px;
+        }
+        
+        .thesis-quote {
+            font-size: 2.2rem;
+            font-style: italic;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .thesis-highlight {
+            color: #E8B923;
+            font-weight: 500;
+        }
+        
+        .thesis-attribution {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+        
+        /* Name hero */
+        .name-section {
+            margin-bottom: 60px;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            background: #E8B923;
+            color: #000000;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+        
+        .name-title {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #E8B923;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .name-subtitle {
+            font-size: 1.1rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+        
+        /* Chart section */
+        .chart-section {
+            background: #0a0a0a;
+            padding: 50px 40px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .chart-title {
+            font-size: 1rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .chart-container {
+            position: relative;
+        }
+        
+        /* Timeline strip */
+        .timeline-section {
+            background: #0a0a0a;
+            padding: 35px 40px;
+            margin-top: -1px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .timeline-title {
+            font-size: 0.85rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .milestone {
+            display: flex;
+            gap: 15px;
+            align-items: start;
+        }
+        
+        .milestone-icon {
+            width: 30px;
+            height: 30px;
+            background: #E8B923;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        .milestone-content {
+            flex: 1;
+        }
+        
+        .milestone-year {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #E8B923;
+            margin-bottom: 4px;
+        }
+        
+        .milestone-text {
+            font-size: 0.85rem;
+            color: #cccccc;
+            line-height: 1.4;
+        }
+        
+        /* Stats grid */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
+        .stat-box {
+            background: #0a0a0a;
+            padding: 30px 25px;
+            text-align: center;
+            border-top: 2px solid #E8B923;
+        }
+        
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #E8B923;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+        
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .brand-o {
+            color: #ffffff;
+        }
+        
+        .brand-f {
+            color: #E8B923;
+        }
+        
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: #666666;
+            font-style: italic;
+        }
+        
+        .source {
+            font-size: 0.75rem;
+            color: #666666;
+            text-align: right;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Thesis -->
+        <section class="thesis-section">
+            <p class="thesis-quote">
+                A name is not <span class="thesis-highlight">"ghetto"</span> until you're popular.
+            </p>
+            <p class="thesis-attribution">An investigation into cultural legitimacy through data</p>
+        </section>
+        
+        <!-- Name -->
+        <section class="name-section">
+            <div class="category-badge">Music</div>
+            <h1 class="name-title">MARIAH</h1>
+            <p class="name-subtitle">Carey • June 1990–Present</p>
+        </section>
+        
+        <!-- Chart -->
+        <section class="chart-section">
+            <div class="chart-title">60 Years of Name Popularity (1960–2019)</div>
+            <div class="chart-container">
+                <canvas id="mariahChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline-title">Key Milestones</div>
+            <div class="timeline-grid">
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-content">
+                        <div class="milestone-year">1990</div>
+                        <div class="milestone-text">Debut album, 4 #1 singles</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">⚬</div>
+                    <div class="milestone-content">
+                        <div class="milestone-year">1991</div>
+                        <div class="milestone-text">Grammy: Best New Artist</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-content">
+                        <div class="milestone-year">1993</div>
+                        <div class="milestone-text">Music Box (28M sold)</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-content">
+                        <div class="milestone-year">1995</div>
+                        <div class="milestone-text">Daydream, "One Sweet Day"</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats -->
+        <section class="stats-section">
+            <div class="stat-box">
+                <div class="stat-value">1990</div>
+                <div class="stat-label">Debut Year</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">5,446</div>
+                <div class="stat-label">Peak Year (1996)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">108K</div>
+                <div class="stat-label">Total Names</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">25×</div>
+                <div class="stat-label">Increase</div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="brand">
+                <div class="brand-name">
+                    <span class="brand-o">obsidian</span>
+                    <span class="brand-f">futures</span>
+                </div>
+                <div class="brand-tagline">data-driven insights and analysis of black culture</div>
+            </div>
+            <div class="source">
+                Data Source<br>
+                Social Security Administration<br>
+                Baby Names Database
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            years: [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            counts: [26, 33, 14, 22, 11, 5, 12, 19, 14, 13, 5, 6, 11, 61, 135, 118, 156, 190, 299, 289, 305, 386, 322, 361, 335, 311, 342, 272, 437, 424, 399, 1103, 5192, 4711, 4092, 4750, 5446, 4803, 5085, 4646, 4104, 3585, 2670, 3073, 2981, 3841, 4073, 3705, 4035, 3599, 3109, 2990, 2896, 2764, 2402, 2111, 1924, 1611, 1423, 1180]
+        };
+        
+        const milestones = [
+            { year: 1990, label: '1990' },
+            { year: 1993, label: '1993' },
+            { year: 1995, label: '1995' },
+            { year: 1996, label: 'PEAK' }
+        ];
+        
+        const ctx = document.getElementById('mariahChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [{
+                    label: 'Babies Named Mariah',
+                    data: data.counts,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.12)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 2.2,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 11
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: '#1a1a1a',
+                            drawTicks: false
+                        }
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 11
+                            },
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12
+                        },
+                        grid: {
+                            color: '#151515',
+                            drawTicks: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Add milestone markers
+        Chart.register({
+            id: 'milestoneMarkers',
+            afterDatasetsDraw: function(chart) {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y;
+                
+                ctx.save();
+                
+                milestones.forEach(milestone => {
+                    const x = xAxis.getPixelForValue(milestone.year);
+                    const dataIndex = data.years.indexOf(milestone.year);
+                    const y = yAxis.getPixelForValue(data.counts[dataIndex]);
+                    
+                    // Draw vertical line
+                    ctx.strokeStyle = '#E8B923';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([4, 4]);
+                    ctx.beginPath();
+                    ctx.moveTo(x, yAxis.bottom);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    
+                    // Draw circle marker
+                    ctx.fillStyle = '#E8B923';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Draw label
+                    ctx.fillStyle = '#E8B923';
+                    ctx.font = 'bold 11px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(milestone.label, x, y - 15);
+                });
+                
+                ctx.restore();
+            }
+        });
+    </script>
+</body>
+</html>

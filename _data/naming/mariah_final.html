@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariah - Final</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 50px 80px;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .top-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+        
+        .category-badge {
+            background: #E8B923;
+            color: #000000;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+        }
+        
+        .thesis-compact {
+            font-size: 1rem;
+            font-style: italic;
+            color: #888888;
+            max-width: 500px;
+        }
+        
+        .thesis-highlight {
+            color: #E8B923;
+        }
+        
+        .name-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #E8B923;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .name-subtitle {
+            font-size: 0.95rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        /* Milestones above chart */
+        .milestones-section {
+            background: #0a0a0a;
+            padding: 20px 30px;
+            margin-bottom: 2px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .milestones-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .milestone {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .milestone-icon {
+            width: 24px;
+            height: 24px;
+            background: #000000;
+            border: 2px solid #E8B923;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            color: #E8B923;
+        }
+        
+        .milestone-text {
+            flex: 1;
+        }
+        
+        .milestone-year {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #E8B923;
+            line-height: 1.2;
+        }
+        
+        .milestone-desc {
+            font-size: 0.7rem;
+            color: #888888;
+            line-height: 1.2;
+        }
+        
+        /* Chart */
+        .chart-section {
+            background: #0a0a0a;
+            padding: 35px 30px 30px;
+            margin-bottom: 2px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 450px;
+        }
+        
+        /* Stats below chart */
+        .stats-section {
+            background: #0a0a0a;
+            padding: 25px 30px;
+            border-left: 3px solid #E8B923;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #E8B923;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        /* Narrative at bottom */
+        .narrative-section {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+        
+        .narrative-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+        
+        .narrative-text p {
+            margin-bottom: 20px;
+        }
+        
+        .narrative-highlight {
+            color: #E8B923;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .footer {
+            padding-top: 25px;
+            border-top: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+        
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .brand-o {
+            color: #ffffff;
+        }
+        
+        .brand-f {
+            color: #E8B923;
+        }
+        
+        .brand-tagline {
+            font-size: 0.65rem;
+            color: #666666;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        
+        .source {
+            font-size: 0.7rem;
+            color: #666666;
+            text-align: right;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="top-line">
+                <div class="category-badge">Music</div>
+                <div class="thesis-compact">
+                    A name is not <span class="thesis-highlight">"ghetto"</span> until you're popular.
+                </div>
+            </div>
+            <h1 class="name-title">MARIAH</h1>
+            <p class="name-subtitle">Carey • Debut June 1990</p>
+        </div>
+        
+        <!-- Milestones above chart -->
+        <section class="milestones-section">
+            <div class="milestones-grid">
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1990</div>
+                        <div class="milestone-desc">Debut, 4 #1s</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">○</div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1991</div>
+                        <div class="milestone-desc">Grammy</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1993</div>
+                        <div class="milestone-desc">Music Box</div>
+                    </div>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-icon">♪</div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1995</div>
+                        <div class="milestone-desc">Daydream</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Chart -->
+        <section class="chart-section">
+            <div class="chart-container">
+                <canvas id="mariahChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Stats below chart -->
+        <section class="stats-section">
+            <div class="stat-item">
+                <div class="stat-value">1990</div>
+                <div class="stat-label">Debut Year</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5,446</div>
+                <div class="stat-label">Peak (1996)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">108K</div>
+                <div class="stat-label">Total Names</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">25×</div>
+                <div class="stat-label">Increase</div>
+            </div>
+        </section>
+        
+        <!-- Narrative at bottom -->
+        <section class="narrative-section">
+            <div class="narrative-text">
+                <p>
+                    For <span class="narrative-highlight">thirty years</span>, the name Mariah 
+                    averaged fewer than 400 babies annually. It wasn't trendy. It wasn't popular. 
+                    It simply existed in obscurity.
+                </p>
+                
+                <p>
+                    Then came June 12, 1990. A 20-year-old with a five-octave range released her 
+                    self-titled debut. "Vision of Love" topped charts. The whistle notes became legendary. 
+                    And suddenly, Mariah <span class="narrative-highlight">meant something</span>.
+                </p>
+                
+                <p>
+                    By 1992, the name exploded to <span class="narrative-highlight">5,192 babies</span>. 
+                    The peak came in 1996 with <span class="narrative-highlight">5,446</span>—right after 
+                    <em>Daydream</em> dominated radio worldwide.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="brand">
+                <div class="brand-name">
+                    <span class="brand-o">obsidian</span>
+                    <span class="brand-f">futures</span>
+                </div>
+                <div class="brand-tagline">data-driven insights and analysis of black culture</div>
+            </div>
+            <div class="source">
+                Social Security Administration<br>
+                Baby Names Database
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            years: [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            counts: [26, 33, 14, 22, 11, 5, 12, 19, 14, 13, 5, 6, 11, 61, 135, 118, 156, 190, 299, 289, 305, 386, 322, 361, 335, 311, 342, 272, 437, 424, 399, 1103, 5192, 4711, 4092, 4750, 5446, 4803, 5085, 4646, 4104, 3585, 2670, 3073, 2981, 3841, 4073, 3705, 4035, 3599, 3109, 2990, 2896, 2764, 2402, 2111, 1924, 1611, 1423, 1180]
+        };
+        
+        // Create arrays for point styling - most points invisible, milestones visible
+        const pointRadiusArray = new Array(60).fill(0);
+        const pointBgColorArray = new Array(60).fill('transparent');
+        const pointBorderColorArray = new Array(60).fill('transparent');
+        const pointBorderWidthArray = new Array(60).fill(0);
+        
+        // Milestone years: 1990 (index 30), 1993 (index 33), 1995 (index 35), 1996 (index 36)
+        const milestones = [
+            { index: 30, size: 10 }, // 1990
+            { index: 33, size: 10 }, // 1993
+            { index: 35, size: 10 }, // 1995
+            { index: 36, size: 12 }  // 1996 - peak, slightly larger
+        ];
+        
+        milestones.forEach(m => {
+            pointRadiusArray[m.index] = m.size;
+            pointBgColorArray[m.index] = '#E8B923';
+            pointBorderColorArray[m.index] = '#0a0a0a';
+            pointBorderWidthArray[m.index] = 3;
+        });
+        
+        const ctx = document.getElementById('mariahChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [{
+                    label: 'Babies Named Mariah',
+                    data: data.counts,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: pointRadiusArray,
+                    pointBackgroundColor: pointBgColorArray,
+                    pointBorderColor: pointBorderColorArray,
+                    pointBorderWidth: pointBorderWidthArray,
+                    pointHoverRadius: pointRadiusArray
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 11
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            },
+                            padding: 10
+                        },
+                        grid: {
+                            color: '#1a1a1a',
+                            drawTicks: false
+                        }
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 11
+                            },
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12,
+                            padding: 10
+                        },
+                        grid: {
+                            color: '#151515',
+                            drawTicks: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denzel Washington - Malcolm X Over Oscar</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+        }
+        h1 {
+            color: #E8B923;
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .stat-highlight {
+            color: #E8B923;
+            font-weight: 700;
+        }
+        .stat-contrast {
+            color: #a855f7;
+            font-weight: 700;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 450px;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .insight-box {
+            background: #050505;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 3px solid #a855f7;
+        }
+        .insight-box h3 {
+            color: #a855f7;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+        }
+        .insight-box p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .milestones {
+            background: #050505;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .milestones h3 {
+            color: #E8B923;
+            font-size: 0.9rem;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .milestone-icon {
+            width: 24px;
+            height: 24px;
+            background: #E8B923;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .milestone-oscar {
+            background: #a855f7;
+        }
+        .milestone-text {
+            flex: 1;
+        }
+        .milestone-year {
+            color: #E8B923;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .milestone-year-oscar {
+            color: #a855f7;
+        }
+        .milestone-desc {
+            color: #aaa;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>DENZEL WASHINGTON</h1>
+        <p class="subtitle">
+            Peak: <span class="stat-highlight">767 babies (1992 - Malcolm X year)</span><br>
+            Oscar year (2001): <span class="stat-contrast">196 babies</span> • Cultural impact > Academy validation
+        </p>
+        
+        <div class="chart-wrapper">
+            <canvas id="denzelChart"></canvas>
+        </div>
+        
+        <div class="insight-box">
+            <h3>The Malcolm X Effect</h3>
+            <p>
+                Denzel won Best Actor in 2001 for "Training Day"—only the second Black man ever to win Lead Actor. But his name peaked in <strong>1992</strong>, the year of "Malcolm X." Spike Lee's epic was culturally massive, especially in Black communities. It was political, powerful, necessary. For Black audiences, portraying Malcolm X carried more weight than an Oscar for playing a corrupt cop.
+            </p>
+        </div>
+        
+        <div class="milestones">
+            <h3>Career Milestones</h3>
+            <div class="milestone-grid">
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1989</div>
+                        <div class="milestone-desc">Glory (Supporting Actor Oscar)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1992</div>
+                        <div class="milestone-desc">Malcolm X - 767 babies (PEAK)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1993</div>
+                        <div class="milestone-desc">The Pelican Brief, Philadelphia</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1999</div>
+                        <div class="milestone-desc">The Hurricane (Oscar nom)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon milestone-oscar"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year milestone-year-oscar">2001</div>
+                        <div class="milestone-desc">Training Day (Best Actor Oscar)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2016</div>
+                        <div class="milestone-desc">Fences (directed & starred)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const denzel = [7, 9, 7, 8, 10, 12, 8, 5, 7, 0, 6, 7, 6, 7, 0, 0, 0, 0, 0, 0, 5, 0, 7, 15, 28, 16, 28, 41, 53, 56, 6, 720, 767, 5, 736, 548, 464, 382, 295, 182, 214, 196, 253, 209, 249, 201, 196, 187, 212, 202, 180, 155, 200, 203, 183, 187, 175, 194, 181, 164];
+        
+        // Create marker points for key years
+        const pointRadius = new Array(years.length).fill(0);
+        const pointBorderColor = new Array(years.length).fill('transparent');
+        const pointBorderWidth = new Array(years.length).fill(0);
+        
+        // Mark 1992 (Malcolm X peak) and 2001 (Oscar)
+        [32, 41].forEach((idx, i) => {
+            pointRadius[idx] = 10;
+            pointBorderColor[idx] = i === 0 ? '#E8B923' : '#a855f7';
+            pointBorderWidth[idx] = 3;
+        });
+        
+        const ctx = document.getElementById('denzelChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Denzel',
+                    data: denzel,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: pointRadius,
+                    pointBackgroundColor: 'transparent',
+                    pointBorderColor: pointBorderColor,
+                    pointBorderWidth: pointBorderWidth
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {
+                        annotations: {
+                            malcolmx: {
+                                type: 'line',
+                                xMin: 1992,
+                                xMax: 1992,
+                                borderColor: '#E8B923',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1992 MALCOLM X: 767',
+                                    position: 'end',
+                                    backgroundColor: '#E8B923',
+                                    color: '#000',
+                                    font: { size: 10, weight: 'bold' },
+                                    padding: 4
+                                }
+                            },
+                            oscar: {
+                                type: 'line',
+                                xMin: 2001,
+                                xMax: 2001,
+                                borderColor: '#a855f7',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '2001 Oscar: 196',
+                                    position: 'start',
+                                    backgroundColor: '#a855f7',
+                                    color: '#fff',
+                                    font: { size: 10, weight: 'bold' },
+                                    padding: 4
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Number of Babies Named Denzel',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

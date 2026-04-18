@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gender &amp; Genre: The Hidden Concert Tax — Obsidian Futures · Alterrell Interactive</title>
+  <meta name="description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="Gender &amp; Genre: The Hidden Concert Tax" />
+  <meta property="og:description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it." />
+  <meta property="og:image" content="https://interactive.alterrell.com/og/concert-tax.png" />
+  <meta property="og:url" content="https://interactive.alterrell.com/concert-tax/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="Gender &amp; Genre: The Hidden Concert Tax">
+  <meta name="twitter:description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/concert-tax.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+
+  <style>
+    /* ── OBSIDIAN FUTURES COLOR TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #111118;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.12);
+      --of-gold-mid:  rgba(232,185,35,0.65);
+      --of-teal:      #0a7c72;
+      --of-teal-dim:  rgba(10,124,114,0.18);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.08);
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    /* ── NAV / BREADCRUMB OVERRIDES ── */
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-tabs { background: #0d0d18; border-bottom-color: var(--of-border); }
+    .ai-tab { color: var(--of-muted); }
+    .ai-tab:hover { color: var(--of-body); }
+    .ai-tab.active { color: var(--of-gold); border-bottom-color: var(--of-gold); }
+
+    /* ── CRITICAL LAYOUT ── */
+    .ct-section {
+      padding: var(--space-lg) 1.25rem var(--space-xl);
+      background: var(--of-bg);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 128px);
+    }
+    .ct-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .ct-inner--wide {
+      max-width: 960px;
+    }
+
+    /* ── SECTION FLOOR NAV ── */
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0 0;
+      margin-top: auto;
+      border-top: 1px solid var(--of-border);
+      gap: 1rem;
+    }
+    .section-nav--maintab {
+      margin-top: 1.25rem;
+      padding-top: 0.875rem;
+      border-top: 1px dashed rgba(255,255,255,0.06);
+    }
+    .section-nav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      text-decoration: none;
+      gap: 2px;
+    }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .section-nav-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: var(--of-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .section-nav--maintab .section-nav-direction { font-size: 0.6rem; opacity: 0.6; }
+    .section-nav--maintab .section-nav-label { font-size: var(--text-micro); color: var(--of-gold-mid); }
+    .section-nav-spacer { flex: 1; }
+
+    /* ── EYEBROW / HEADLINES ── */
+    .ct-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .ct-hero-headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.0;
+      color: #ffffff;
+      margin: 0 0 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .ct-h2 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: #ffffff;
+      margin: 0 0 0.5rem;
+    }
+    .ct-subhead {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--of-body);
+      line-height: 1.6;
+      margin: 0 0 var(--space-md);
+      max-width: none;
+    }
+    .ct-body {
+      font-size: 1rem;
+      line-height: 1.72;
+      color: var(--of-body);
+      margin-bottom: var(--space-sm);
+    }
+    .ct-body + .ct-body { margin-top: 0.25rem; }
+
+    /* ── STAT BLOCK ── */
+    .ct-stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: var(--space-md) 0;
+    }
+    .ct-stat-card {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+    }
+    .ct-stat-number {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--of-gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .ct-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--of-muted);
+    }
+    .ct-stat-note {
+      font-size: 0.78rem;
+      color: var(--of-muted);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    /* ── PULL QUOTE ── */
+    .ct-pullquote {
+      border-left: 3px solid var(--of-gold);
+      padding: 1rem 1.25rem;
+      margin: var(--space-md) 0;
+      background: var(--of-gold-dim);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .ct-pullquote blockquote {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--of-body);
+      margin: 0 0 0.5rem;
+      line-height: 1.55;
+    }
+    .ct-pullquote cite {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--of-muted);
+      font-style: normal;
+    }
+
+    /* ── CARDI B CALLOUT ── */
+    .ct-callout {
+      border-left: 3px solid var(--of-gold);
+      background: rgba(232,185,35,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+      margin: var(--space-md) 0;
+    }
+    .ct-callout-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .ct-callout blockquote {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--of-body);
+      margin: 0 0 0.5rem;
+      line-height: 1.6;
+    }
+    .ct-callout cite {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-muted);
+      font-style: normal;
+    }
+
+    /* ── BENNETT QUOTE ── */
+    .ct-bennett-quote {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-top: 3px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: var(--space-md) 0;
+      text-align: center;
+    }
+    .ct-bennett-quote blockquote {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: rgba(248,246,241,0.75);
+      margin: 0 0 0.75rem;
+      line-height: 1.6;
+    }
+    .ct-bennett-quote cite {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--of-muted);
+      font-style: normal;
+    }
+
+    /* ── SUB-TABS ── */
+    .ct-subtabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--of-border);
+      margin: var(--space-sm) 0 0;
+    }
+    .ct-subtab {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.6rem 1.1rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-muted);
+      cursor: pointer;
+      margin-bottom: -1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .ct-subtab:hover { color: var(--of-body); }
+    .ct-subtab.active {
+      color: var(--of-gold);
+      border-bottom-color: var(--of-gold);
+    }
+
+    /* ── SUB-SECTIONS ── */
+    .ct-subsection {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      padding-top: var(--space-md);
+    }
+    .ct-subsection.active {
+      display: flex;
+    }
+
+    /* ── T-CHART ── */
+    .ct-tchart {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: var(--space-md) 0;
+    }
+    .ct-tchart-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid var(--of-border);
+    }
+    .ct-tchart-col-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.875rem 1rem;
+    }
+    .ct-tchart-col-label--women {
+      color: var(--of-gold);
+      border-right: 1px solid var(--of-border);
+    }
+    .ct-tchart-col-label--men {
+      color: #4db3a8;
+      text-align: right;
+    }
+    .ct-tchart-pairing {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ct-tchart-pairing:last-child { border-bottom: none; }
+    .ct-tchart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .ct-tchart-cell {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.5rem 1rem;
+      line-height: 1.45;
+    }
+    .ct-tchart-cell--women {
+      color: rgba(232,185,35,0.85);
+      border-right: 1px solid var(--of-border);
+    }
+    .ct-tchart-cell--men {
+      color: rgba(77,179,168,0.85);
+      text-align: right;
+    }
+    .ct-tchart-question {
+      padding: 0.875rem 1rem;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--of-muted);
+      border-top: 1px solid var(--of-border);
+      background: rgba(232,185,35,0.03);
+    }
+    .ct-tchart-pairing-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(248,246,241,0.3);
+      padding: 0.6rem 1rem 0.2rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .ct-tchart-pairing:first-child .ct-tchart-pairing-label { border-top: none; }
+
+    /* ── LEDGER ── */
+    .ct-ledger {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+      margin: var(--space-md) 0 0;
+    }
+    .ct-ledger-panel { background: var(--of-card); padding: 1.25rem; }
+    .ct-ledger-header {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .ct-ledger-panel--human .ct-ledger-header { color: var(--of-gold); }
+    .ct-ledger-panel--hardware .ct-ledger-header { color: #4db3a8; }
+    .ct-ledger-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      gap: 0.5rem;
+    }
+    .ct-ledger-row:last-child { border-bottom: none; }
+    .ct-ledger-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--of-muted);
+    }
+    .ct-ledger-value {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--of-body);
+      white-space: nowrap;
+    }
+    .ct-ledger-conclusion {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--of-border);
+      border-top: none;
+      background: rgba(232,185,35,0.04);
+      border-radius: 0 0 var(--radius) var(--radius);
+      color: var(--of-body);
+      margin-bottom: var(--space-md);
+    }
+
+    /* ── D3 CHART CONTAINER ── */
+    .ct-chart-wrap {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin: var(--space-md) 0 0.5rem;
+      overflow: hidden;
+    }
+    .ct-chart-title {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--of-muted);
+      margin-bottom: 0.5rem;
+    }
+    #ct-chart-bubble { width: 100%; }
+    .ct-chart-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin: 0.75rem 0 0;
+      flex-wrap: wrap;
+    }
+    .ct-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-muted);
+    }
+    .ct-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ct-screenshot-nudge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--of-muted);
+      text-align: right;
+      font-style: italic;
+      margin-top: 0.4rem;
+    }
+
+    /* ── TOOLTIP ── */
+    #ct-tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: #1a1a26;
+      border: 1px solid var(--of-border);
+      border-radius: 6px;
+      padding: 0.625rem 0.875rem;
+      font-size: 0.78rem;
+      max-width: 240px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.12s;
+      line-height: 1.5;
+      color: var(--of-body);
+    }
+    #ct-tooltip.visible { opacity: 1; }
+    #ct-tooltip strong {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── HISTORY SECTIONS (Tab 5 inline scroll) ── */
+    .ct-history-section {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--of-border);
+    }
+    .ct-history-section:last-of-type { border-bottom: none; }
+    .ct-history-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ct-history-h3 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: #ffffff;
+      margin: 0 0 0.75rem;
+    }
+
+    /* ── SHARE BLOCK ── */
+    .ct-share-block {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: var(--space-md) 0;
+    }
+    .ct-share-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--of-muted);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .ct-share-nudge {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--of-muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .ct-share-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+    .ct-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border: 1px solid var(--of-gold);
+      text-decoration: none;
+      min-height: var(--touch);
+      background: none;
+      color: var(--of-gold);
+      transition: background 0.15s;
+    }
+    .ct-share-btn:hover { background: rgba(232,185,35,0.08); }
+    .ct-share-btn--filled {
+      background: var(--of-gold);
+      color: #0a0a12;
+    }
+    .ct-share-btn--filled:hover { background: #f0c82a; }
+    .ct-share-substack {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--of-muted);
+      margin-top: 0.875rem;
+    }
+    .ct-share-substack a { color: var(--of-gold); text-decoration: none; }
+    .ct-share-substack a:hover { text-decoration: underline; }
+
+    /* ── JOURNEY BLOCK ── */
+    .ct-journey {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: var(--space-md) 0;
+    }
+    .ct-journey-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-decoration: none;
+      min-height: var(--touch);
+      transition: border-color 0.15s;
+    }
+    .ct-journey-item:hover { border-color: var(--of-gold); }
+    .ct-journey-action {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--of-gold);
+    }
+    .ct-journey-dest {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(248,246,241,0.88);
+    }
+
+    /* ── SOURCES ── */
+    .ct-sources-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-sm) 0;
+    }
+    .ct-sources-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--of-border);
+      font-size: 0.88rem;
+      color: var(--of-body);
+      line-height: 1.5;
+    }
+    .ct-sources-list li:last-child { border-bottom: none; }
+    .ct-source-outlet {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-gold);
+      margin-right: 0.5rem;
+    }
+    .ct-methodology-note {
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin: var(--space-md) 0;
+      font-size: 0.85rem;
+      color: var(--of-muted);
+      line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .ct-hero-headline { white-space: normal; font-size: 1.6rem; }
+      .ct-tchart-header { grid-template-columns: 1fr 1fr; }
+      .ct-ledger { grid-template-columns: 1fr; }
+      .ct-journey { grid-template-columns: 1fr; }
+      .ct-stat-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .ct-stat-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── PART 2 TEASE ── */
+    .ct-part2-tease {
+      border: 1px solid rgba(248,246,241,0.15);
+      background: #111118;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: var(--space-md);
+    }
+    .ct-part2-tease p {
+      font-size: 0.95rem;
+      color: var(--of-body);
+      line-height: 1.7;
+      margin: 0 0 1rem;
+    }
+    .ct-part2-notify {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-muted);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .ct-part2-link {
+      color: var(--of-gold);
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+    .ct-part2-link:hover { text-decoration: underline; }
+
+    /* ── SURCHARGE SECTION ── */
+    .ct-surcharge-section { margin: 0 0 var(--space-md); }
+    .ct-surcharge-header {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ct-surcharge-subhead {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: rgba(248,246,241,0.75);
+      margin: 0 0 0.875rem;
+    }
+    .ct-surcharge-intro {
+      font-size: 0.95rem;
+      color: var(--of-body);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+    .ct-city-cards { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.75rem; }
+    .ct-city-card {
+      background: #111118;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .ct-city-card-header {
+      background: #161620;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--of-gold);
+    }
+    .ct-city-card-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .ct-city-col { background: #111118; padding: 1.25rem 1rem; }
+    .ct-city-col-header {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ct-city-col-header--male { color: #4db3a8; }
+    .ct-city-col-header--female { color: var(--of-gold); }
+    .ct-city-artist-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--of-body);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ct-city-stat {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--of-muted);
+      display: block;
+      line-height: 1.7;
+    }
+    .ct-city-pct {
+      display: block;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1;
+      margin: 0.75rem 0 0.25rem;
+    }
+    .ct-city-pct--male { color: #4db3a8; }
+    .ct-city-pct--female { color: var(--of-gold); }
+    .ct-city-pct-label {
+      font-size: 0.78rem;
+      color: var(--of-muted);
+      display: block;
+    }
+    .ct-city-card-sentence {
+      background: #1a1a24;
+      padding: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: rgba(248,246,241,0.75);
+      line-height: 1.55;
+    }
+    .ct-surcharge-method {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--of-muted);
+      text-align: right;
+      line-height: 1.65;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .ct-surcharge-nudge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--of-muted);
+      text-align: right;
+      font-style: italic;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ── ACTION BULLETS ── */
+    .ct-action-header {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--of-gold);
+      display: block;
+      margin: var(--space-md) 0 0.875rem;
+    }
+    .ct-action-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-md);
+    }
+    .ct-action-list li {
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--of-border);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--of-body);
+    }
+    .ct-action-list li:last-child { border-bottom: none; }
+    .ct-action-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--of-gold);
+      margin-bottom: 0.35rem;
+    }
+    .ct-closing-line {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--of-gold);
+      text-align: center;
+      margin: 2rem 0 var(--space-md);
+      line-height: 1.3;
+    }
+
+    @media (max-width: 600px) {
+      .ct-city-card-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="ai-nav" role="navigation" aria-label="Site navigation">
+  <div class="ai-nav-inner">
+    <a href="/" class="ai-nav-logo">Alterrell Interactive</a>
+    <div class="ai-nav-links">
+      <a href="https://alterrell.substack.com" class="ai-nav-link" target="_blank" rel="noopener">Substack</a>
+      <a href="https://youtube.com/@alterrell" class="ai-nav-link" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://ko-fi.com/alterrell" class="ai-nav-link ai-nav-link--cta" target="_blank" rel="noopener">$ Support</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── BREADCRUMB ── -->
+<div class="ai-breadcrumb" aria-label="Breadcrumb">
+  <div class="ai-breadcrumb-inner">
+    <a href="/" class="ai-breadcrumb-link">Alterrell Interactive</a>
+    <span class="ai-breadcrumb-sep" aria-hidden="true">›</span>
+    <span class="ai-breadcrumb-link">Obsidian Futures</span>
+    <span class="ai-breadcrumb-sep" aria-hidden="true">›</span>
+    <span class="ai-breadcrumb-current">Concert Tax</span>
+  </div>
+</div>
+
+<!-- ── TAB BAR ── -->
+<nav class="ai-tabs" id="ct-tabs" aria-label="Piece sections">
+  <button class="ai-tab active" data-nav="0">Overview</button>
+  <button class="ai-tab" data-nav="1">The Data</button>
+  <button class="ai-tab" data-nav="2">Double Standard</button>
+  <button class="ai-tab" data-nav="3">The Burden</button>
+  <button class="ai-tab" data-nav="4">How We Got Here</button>
+  <button class="ai-tab" data-nav="5">Sources</button>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     TAB 1: OVERVIEW
+     ════════════════════════════════════════════ -->
+<section id="ct-overview" class="ct-section" role="tabpanel">
+  <div class="ct-inner">
+
+    <span class="ct-eyebrow">Obsidian Futures · Concert Economics</span>
+    <h1 class="ct-hero-headline">The Hidden Concert Tax</h1>
+    <p class="ct-subhead">Men set the ceiling for what the industry will pay. Women are bounded by that ceiling and simultaneously required to deliver more to justify their place beneath it.</p>
+
+    <!-- Hero stats -->
+    <div class="ct-stat-row">
+      <div class="ct-stat-card">
+        <span class="ct-stat-number">$10M+</span>
+        <span class="ct-stat-label">Bieber / Coachella 2026</span>
+        <span class="ct-stat-note">Highest fee in festival history. Laptop. YouTube videos. No dancers.</span>
+      </div>
+      <div class="ct-stat-card">
+        <span class="ct-stat-number">~$5M</span>
+        <span class="ct-stat-label">Carpenter / Coachella 2026</span>
+        <span class="ct-stat-note">Estimated. Full theatrical set. Celebrity cameos. Choreography. Costume changes.</span>
+      </div>
+      <div class="ct-stat-card">
+        <span class="ct-stat-number">$8M</span>
+        <span class="ct-stat-label">Beyonce / Coachella 2018</span>
+        <span class="ct-stat-note">Fee matched production cost. Broke even before the Netflix deal.</span>
+      </div>
+    </div>
+
+    <p class="ct-body">This is not a story about individual artists making bad business decisions. It is a story about a structural tax built into the industry's expectations of women: produce at the highest level, or lose your credibility. Accept the ceiling, or lose your booking.</p>
+
+    <!-- Share block -->
+    <div class="ct-share-block">
+      <span class="ct-share-label">Share This Piece</span>
+      <span class="ct-share-nudge">Screenshot any chart and tag the source.</span>
+      <div class="ct-share-btns">
+        <button class="ct-share-btn" id="ct-copy-link" onclick="copyLink()">&#9678; Copy Link</button>
+        <a class="ct-share-btn" href="https://twitter.com/intent/tweet?text=Men+set+the+ceiling.+Women+are+required+to+deliver+more+to+justify+their+place+beneath+it.+The+hidden+concert+tax%3A&url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&via=alterrell" target="_blank" rel="noopener">&#10005; Share on X</button>
+        <a class="ct-share-btn ct-share-btn--filled" href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
+      </div>
+      <span class="ct-share-substack">Get early access to future pieces &#8594; <a href="https://alterrell.substack.com" target="_blank" rel="noopener">alterrell.substack.com</a></span>
+    </div>
+
+    <!-- Journey block -->
+    <div class="ct-journey">
+      <a href="https://youtube.com/@alterrell" class="ct-journey-item" target="_blank" rel="noopener">
+        <span class="ct-journey-action">Watch</span>
+        <span class="ct-journey-dest">YouTube</span>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive" class="ct-journey-item" target="_blank" rel="noopener">
+        <span class="ct-journey-action">Read</span>
+        <span class="ct-journey-dest">Substack</span>
+      </a>
+      <a href="/" class="ct-journey-item">
+        <span class="ct-journey-action">Explore</span>
+        <span class="ct-journey-dest">All Pieces</span>
+      </a>
+      <a href="https://ko-fi.com/alterrell" class="ct-journey-item" target="_blank" rel="noopener">
+        <span class="ct-journey-action">$</span>
+        <span class="ct-journey-dest">Back This Work</span>
+      </a>
+    </div>
+
+    <!-- Floor nav -->
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <button type="button" class="section-nav-btn next" data-nav-to="1">
+        <span class="section-nav-direction">Next &#8594;</span>
+        <span class="section-nav-label">The Data</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     TAB 2: THE DATA
+     ════════════════════════════════════════════ -->
+<section id="ct-data" class="ct-section" role="tabpanel" hidden>
+  <div class="ct-inner ct-inner--wide">
+
+    <span class="ct-eyebrow">Production Intensity vs. Revenue Efficiency</span>
+    <h2 class="ct-h2">Where the Pattern Lives</h2>
+    <p class="ct-body">Each bubble represents a major touring artist. Horizontal position shows production intensity: how many people are on that stage with them. Vertical position shows revenue efficiency: estimated gross revenue per show relative to estimated production overhead. Bubble size represents career gross.</p>
+    <p class="ct-body">The Profit Kings quadrant is almost entirely male. The Underchargers quadrant skews female and genre-minority. Bubble size shows this is not a popularity story.</p>
+
+    <div class="ct-chart-wrap">
+      <div class="ct-chart-title">2×2 Production Matrix: Top Touring Artists (2019–2026)</div>
+      <div id="ct-chart-bubble"></div>
+      <div class="ct-chart-legend">
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:#E8B923;"></div>
+          <span>Female artists</span>
+        </div>
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:#0a7c72;"></div>
+          <span>Male artists</span>
+        </div>
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:rgba(248,246,241,0.35);border:1px solid rgba(255,255,255,0.2);"></div>
+          <span>Bubble size = career gross (est.)</span>
+        </div>
+      </div>
+    </div>
+    <p class="ct-screenshot-nudge">Screenshot this chart to share the pattern.</p>
+
+    <p class="ct-body" style="margin-top:var(--space-sm)">Production intensity is measured here as a proxy: estimated number of on-stage personnel including dancers and band members. It does not capture every form of spectacle, but it captures the labor-dependent spectacle that costs the most per show and recurs nightly.</p>
+
+    <div class="ct-methodology-note">
+      <strong style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--of-gold);display:block;margin-bottom:0.5rem;">Methodology Note</strong>
+      Revenue efficiency is estimated using publicly reported tour grosses divided by estimated show counts and an industry-standard production overhead range of 30 to 50 percent of gross. On-stage personnel counts are drawn from verified press, production company disclosures, and documentary sources. Where data is estimated, the chart reflects conservative figures. R&amp;B, country, rock, and EDM artists are underrepresented in this dataset due to limited public production data. That gap is noted, not papered over.
+    </div>
+
+    <p class="ct-body" id="ct-chart-transition" style="margin-top:var(--space-md)">The same structural gap shows up across four decades of touring history. When you plot production tier against year for the artists who defined stadium and arena touring, the pattern is not random noise — it is a directional skew that predates streaming, predates Coachella's current fee structure, and predates any individual artist's decision-making.</p>
+
+    <div class="ct-chart-wrap">
+      <div class="ct-chart-title">Production Tier Over Time: Top Touring Artists 1987–2026</div>
+      <div id="ct-chart-historical"></div>
+      <div class="ct-chart-legend">
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:#E8B923;"></div>
+          <span>Female artists</span>
+        </div>
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:#0a7c72;"></div>
+          <span>Male artists</span>
+        </div>
+        <div class="ct-legend-item">
+          <div class="ct-legend-dot" style="background:rgba(248,246,241,0.35);border:1px solid rgba(255,255,255,0.2);"></div>
+          <span>Dot size = tour gross (est.)</span>
+        </div>
+        <div class="ct-legend-item" style="font-family:var(--font-mono);font-size:0.65rem;color:var(--of-muted);letter-spacing:0.08em;">
+          <span>--- dashed line = same artist over time</span>
+        </div>
+      </div>
+    </div>
+    <p class="ct-screenshot-nudge">Screenshot this chart and tag us.</p>
+
+    <!-- Floor nav -->
+    <div class="section-nav">
+      <button type="button" class="section-nav-btn" data-nav-to="0">
+        <span class="section-nav-direction">&#8592; Back</span>
+        <span class="section-nav-label">Overview</span>
+      </button>
+      <button type="button" class="section-nav-btn next" data-nav-to="2">
+        <span class="section-nav-direction">Next &#8594;</span>
+        <span class="section-nav-label">Double Standard</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     TAB 3: THE DOUBLE STANDARD
+     ════════════════════════════════════════════ -->
+<section id="ct-standard" class="ct-section" role="tabpanel" hidden>
+  <div class="ct-inner">
+
+    <span class="ct-eyebrow">The Double Standard</span>
+    <h2 class="ct-h2">What the Fee Buys</h2>
+
+    <!-- Sub-tab nav -->
+    <nav class="ct-subtabs" id="ct-standard-subtabs" aria-label="Double Standard sub-sections">
+      <button class="ct-subtab active" data-subtab="ct-standard-festival">At the Festival</button>
+      <button class="ct-subtab" data-subtab="ct-standard-math">The Math</button>
+      <button class="ct-subtab" data-subtab="ct-standard-pattern">The Pattern</button>
+    </nav>
+
+    <!-- ── SUB-TAB 3A: AT THE FESTIVAL ── -->
+    <div id="ct-standard-festival" class="ct-subsection active">
+
+      <p class="ct-body">Coachella 2026 handed us a controlled experiment. Same festival. Same weekend. Three headliner slots. The divergence in what each fee purchased is documented.</p>
+
+      <!-- T-chart -->
+      <div class="ct-tchart" aria-label="Coachella 2026 performance comparison">
+        <div class="ct-tchart-header">
+          <div class="ct-tchart-col-label ct-tchart-col-label--women">Women</div>
+          <div class="ct-tchart-col-label ct-tchart-col-label--men">Men</div>
+        </div>
+
+        <div class="ct-tchart-pairing">
+          <div class="ct-tchart-pairing-label">Sabrina Carpenter vs. Justin Bieber</div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Estimated $5M fee (reported)</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">$10M+ fee (Rolling Stone confirmed)</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Hollywood-themed "Sabrinawood" set design</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">Laptop. YouTube videos of himself. Blue lights. Fog.</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Will Ferrell, Susan Sarandon, Samuel L. Jackson, Sam Elliott as cameos</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">No special guests</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Multiple outfit changes. Full choreography. Theatrical staging.</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">Plain tee. No outfit changes. No choreography.</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Negotiated through management</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">Negotiated directly. No agent. Kept full fee.</div>
+          </div>
+          <div class="ct-tchart-question">Same weekend. Same festival. What accounts for the gap in both fee and expected output?</div>
+        </div>
+
+        <div class="ct-tchart-pairing">
+          <div class="ct-tchart-pairing-label">Karol G vs. Justin Bieber</div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Estimated $5M–$10M (industry sources)</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">$10M+ (confirmed record)</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">First Latina Coachella headliner. High-energy choreography. Cultural tributes. Surprise guests.</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">Highest paid performance in festival's 27-year history. Stripped-back set.</div>
+          </div>
+          <div class="ct-tchart-question">She broke a ceiling as the first Latina headliner. He set a new ceiling for fees. Both are headliners. Why does one come with implied obligations the other does not?</div>
+        </div>
+
+        <div class="ct-tchart-pairing">
+          <div class="ct-tchart-pairing-label">Beyonce 2018 vs. The Weeknd 2018</div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">$8M fee. 50+ dancers. Full band. Homecoming: two-hour show with HBCU tribute. Production cost: ~$8M.</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">~$8.5M fee. Solo performer. Standard production. Net margin intact.</div>
+          </div>
+          <div class="ct-tchart-row">
+            <div class="ct-tchart-cell ct-tchart-cell--women">Net margin near zero before Netflix deal. Had to broker an additional revenue stream to make the economics work.</div>
+            <div class="ct-tchart-cell ct-tchart-cell--men">No additional deal required. Standard booking. Standard economics.</div>
+          </div>
+          <div class="ct-tchart-question">Same year. Comparable fees. Why did one performance require a separate business negotiation to break even?</div>
+        </div>
+      </div>
+
+      <!-- Cardi B callout -->
+      <div class="ct-callout">
+        <span class="ct-callout-label">From the audience / April 2026</span>
+        <blockquote>"Female artists give full effort: flying, high notes, fireworks, outfits. Meanwhile, Bieber sits in a plain tee, plays YouTube, no makeup, and still gets a pass. Switch the roles, and a woman would get dragged immediately."</blockquote>
+        <cite>Social media response, widely circulated, April 2026</cite>
+      </div>
+
+      <p class="ct-body">The social media response to Bieber's Coachella set was split along predictable lines. Critics who called it underwhelming were countered by fans who called it "authentic." The word "authentic" did not appear in reviews of Carpenter's full theatrical production. That asymmetry is not incidental. It is the tax named.</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <span class="section-nav-spacer"></span>
+        <button type="button" class="section-nav-btn next" data-subtab-to="ct-standard-math">
+          <span class="section-nav-direction">Next &#8594;</span>
+          <span class="section-nav-label">The Math</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-standard-festival -->
+
+    <!-- ── SUB-TAB 3B: THE MATH ── -->
+    <div id="ct-standard-math" class="ct-subsection">
+
+      <p class="ct-body">The fee gap is one part of the equation. The production cost gap is the other. Female-dominated spectacle relies primarily on human production: dancers, choreographers, wardrobe staff, rehearsal time. Male-dominated spectacle has increasingly substituted hardware for humans.</p>
+
+      <!-- Ledger -->
+      <div class="ct-ledger">
+        <div class="ct-ledger-panel ct-ledger-panel--human">
+          <span class="ct-ledger-header">Human Production (recurring cost)</span>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Dancers / performer (per diem)</span>
+            <span class="ct-ledger-value">$50–$100/day</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Dancer rehearsal period</span>
+            <span class="ct-ledger-value">3–6 months</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Beyonce / Homecoming dancers</span>
+            <span class="ct-ledger-value">50+</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Taylor Swift / Eras crew bonus pool</span>
+            <span class="ct-ledger-value">$197M</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Eras Tour trucks (verified floor)</span>
+            <span class="ct-ledger-value">50 semis</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Costume changes per show (Eras)</span>
+            <span class="ct-ledger-value">16</span>
+          </div>
+        </div>
+        <div class="ct-ledger-panel ct-ledger-panel--hardware">
+          <span class="ct-ledger-header">Hardware Production (fixed rental cost)</span>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Drake / arena screens, lasers, drones</span>
+            <span class="ct-ledger-value">Fixed rental</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Drake / 30-ft inflatables, 3 stages</span>
+            <span class="ct-ledger-value">Fixed rental</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Drake / dancer payroll</span>
+            <span class="ct-ledger-value">Near zero</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Drake / technical rehearsal</span>
+            <span class="ct-ledger-value">1–2 weeks</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Bieber / Coachella wardrobe dept.</span>
+            <span class="ct-ledger-value">Zero</span>
+          </div>
+          <div class="ct-ledger-row">
+            <span class="ct-ledger-item">Bieber / Coachella choreography budget</span>
+            <span class="ct-ledger-value">Zero</span>
+          </div>
+        </div>
+      </div>
+      <div class="ct-ledger-conclusion">Hardware can be spectacular. But it does not require 50 people to be paid, housed, insured, and rehearsed for six months.</div>
+
+      <p class="ct-body">Drake's It's All a Blur Tour grossed $320.5M across 80 shows, averaging roughly $4M per show. His chief brand officer described it as using "the largest fleet of trucks ever deployed for an arena trek." That claim belongs in a different column than Taylor Swift's verified 50 semis carrying costumes and crew for 74,000-seat stadiums. The truck count conceals what is actually inside them.</p>
+
+      <p class="ct-body">Ed Sheeran's Mathematics Tour grossed $776M as a solo performer with roughly 60 trucks devoted almost entirely to 360-degree stage infrastructure. Near-zero on-stage overhead. The highest-grossing tour of its era. The pattern holds.</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <button type="button" class="section-nav-btn" data-subtab-to="ct-standard-festival">
+          <span class="section-nav-direction">&#8592; Back</span>
+          <span class="section-nav-label">At the Festival</span>
+        </button>
+        <button type="button" class="section-nav-btn next" data-subtab-to="ct-standard-pattern">
+          <span class="section-nav-direction">Next &#8594;</span>
+          <span class="section-nav-label">The Pattern</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-standard-math -->
+
+    <!-- ── SUB-TAB 3C: THE PATTERN ── -->
+    <div id="ct-standard-pattern" class="ct-subsection">
+
+      <p class="ct-body">[AMA to paste approved copy: Genre-by-genre breakdown. Rap: male audience majority, explicit production scrutiny. Pop: same dynamic. R&B: more balanced, honest gap in data. Country/rock/EDM: unknown, name the gap.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: The container argument. Male headliners define the upper boundary of what a festival or tour will pay. Female artists negotiate within that container. They cannot exceed it regardless of streaming numbers, ticket demand, or cultural dominance.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: R&B honest limitation note. This is the section where the pattern is less clear. Worth naming that directly.]</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <button type="button" class="section-nav-btn" data-subtab-to="ct-standard-math">
+          <span class="section-nav-direction">&#8592; Back</span>
+          <span class="section-nav-label">The Math</span>
+        </button>
+        <span class="section-nav-spacer"></span>
+      </div>
+      <!-- Main tab floor nav -->
+      <div class="section-nav section-nav--maintab">
+        <button type="button" class="section-nav-btn" data-nav-to="1">
+          <span class="section-nav-direction">&#8592; Tab</span>
+          <span class="section-nav-label">The Data</span>
+        </button>
+        <button type="button" class="section-nav-btn next" data-nav-to="3">
+          <span class="section-nav-direction">Tab &#8594;</span>
+          <span class="section-nav-label">The Burden</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-standard-pattern -->
+
+  </div><!-- /ct-inner -->
+</section><!-- /ct-standard -->
+
+
+<!-- ════════════════════════════════════════════
+     TAB 4: THE BURDEN OF BREAKING THE CEILING
+     ════════════════════════════════════════════ -->
+<section id="ct-burden" class="ct-section" role="tabpanel" hidden>
+  <div class="ct-inner">
+
+    <span class="ct-eyebrow">The Burden of Breaking the Ceiling</span>
+    <h2 class="ct-h2">First, Prove You Belong</h2>
+
+    <!-- Sub-tab nav -->
+    <nav class="ct-subtabs" id="ct-burden-subtabs" aria-label="The Burden sub-sections">
+      <button class="ct-subtab active" data-subtab="ct-burden-first">When You're First</button>
+      <button class="ct-subtab" data-subtab="ct-burden-apology">The Apology</button>
+      <button class="ct-subtab" data-subtab="ct-burden-bearer">The Standard Bearer</button>
+    </nav>
+
+    <!-- ── SUB-TAB 4A: WHEN YOU'RE FIRST ── -->
+    <div id="ct-burden-first" class="ct-subsection active">
+
+      <p class="ct-body">[AMA to paste approved copy: When you are the first woman in a slot, a genre, a venue, or a festival history, the ceiling is not just a fee limit. It is a credibility test. Every performance becomes a referendum on whether the slot was deserved. No male headliner performs under that condition.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: Karol G as first Latina Coachella headliner. The weight of representation. What it costs to carry a community's expectations in addition to the industry's production demands. The festival got a cultural moment it did not build. She paid for it with her budget.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: Historical pattern. Female headliner firsts at major festivals and how their production demands compared to the male acts they shared a bill with. Not individual stories of sacrifice -- structural pattern of what "first" requires.]</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <span class="section-nav-spacer"></span>
+        <button type="button" class="section-nav-btn next" data-subtab-to="ct-burden-apology">
+          <span class="section-nav-direction">Next &#8594;</span>
+          <span class="section-nav-label">The Apology</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-burden-first -->
+
+    <!-- ── SUB-TAB 4B: THE APOLOGY ── -->
+    <div id="ct-burden-apology" class="ct-subsection">
+
+      <p class="ct-body">[AMA to paste approved copy: The apology is the over-production. When you expect to be judged more harshly, you respond by leaving no surface unpolished. Every outfit change, every celebrity cameo, every rehearsal month is a pre-emptive defense against the criticism that would come if you didn't.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: The invisible cost of the apology. It is not in the fee negotiations. It is in the calculation artists make before they ever reach the negotiating table. The expected standard shapes the production plan, which shapes the cost structure, which shapes the net margin before a single ticket is sold.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: What this looks like in rap specifically. Megan, Cardi, Nicki -- each has faced explicit production scrutiny that male rappers simply do not. The scrutiny predates the performance. It shapes what gets budgeted.]</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <button type="button" class="section-nav-btn" data-subtab-to="ct-burden-first">
+          <span class="section-nav-direction">&#8592; Back</span>
+          <span class="section-nav-label">When You're First</span>
+        </button>
+        <button type="button" class="section-nav-btn next" data-subtab-to="ct-burden-bearer">
+          <span class="section-nav-direction">Next &#8594;</span>
+          <span class="section-nav-label">The Standard Bearer</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-burden-apology -->
+
+    <!-- ── SUB-TAB 4C: THE STANDARD BEARER ── -->
+    <div id="ct-burden-bearer" class="ct-subsection">
+
+      <p class="ct-body">[AMA to paste approved copy: Beyonce as the sharpest case study. Not the protagonist of this piece but the clearest illustration of what the ceiling costs at the highest level. Homecoming was not a business mistake. It was the tax made visible.]</p>
+
+      <!-- Cardi B callout (second instance) -->
+      <div class="ct-callout">
+        <span class="ct-callout-label">The Tax, Named</span>
+        <blockquote>"She had to broker a Netflix deal to make the math work that a male artist never would have needed to negotiate."</blockquote>
+        <cite>Framing from this piece / Beyonce Homecoming 2018</cite>
+      </div>
+
+      <!-- LeRoy Bennett quote -->
+      <div class="ct-bennett-quote">
+        <blockquote>&ldquo;Because Beyonc&eacute; came in last year and did her thing and kind of set the bar, basically Coachella becomes a competition, which is ridiculous.&rdquo;</blockquote>
+        <cite>LeRoy Bennett &middot; Production Designer &middot; Hollywood Reporter 2019</cite>
+      </div>
+
+      <p class="ct-body">[AMA to paste approved copy: What standard-bearer status costs beyond the one performance. Future fee negotiations anchored to what you last spent. The ratchet problem: once you have performed at a certain production level, the expectation follows you. Lowering it reads as decline. Male artists do not carry this ratchet.]</p>
+
+      <p class="ct-body">[AMA to paste approved copy: Agency section. What would need to change for the tax to be removed. Industry-side: booking standards, fee transparency, production cost accountability. Artist-side: collective negotiation, public fee disclosure as leverage. Audience-side: what we ask for and what we reward.]</p>
+
+      <!-- Sub-tab floor nav -->
+      <div class="section-nav">
+        <button type="button" class="section-nav-btn" data-subtab-to="ct-burden-apology">
+          <span class="section-nav-direction">&#8592; Back</span>
+          <span class="section-nav-label">The Apology</span>
+        </button>
+        <span class="section-nav-spacer"></span>
+      </div>
+      <!-- Main tab floor nav -->
+      <div class="section-nav section-nav--maintab">
+        <button type="button" class="section-nav-btn" data-nav-to="2">
+          <span class="section-nav-direction">&#8592; Tab</span>
+          <span class="section-nav-label">Double Standard</span>
+        </button>
+        <button type="button" class="section-nav-btn next" data-nav-to="4">
+          <span class="section-nav-direction">Tab &#8594;</span>
+          <span class="section-nav-label">How We Got Here</span>
+        </button>
+      </div>
+
+    </div><!-- /ct-burden-bearer -->
+
+  </div><!-- /ct-inner -->
+</section><!-- /ct-burden -->
+
+
+<!-- ════════════════════════════════════════════
+     TAB 5: HOW WE GOT HERE
+     ════════════════════════════════════════════ -->
+<section id="ct-history" class="ct-section" role="tabpanel" hidden>
+  <div class="ct-inner">
+
+    <span class="ct-eyebrow">How We Got Here</span>
+    <h2 class="ct-h2">The Architecture of the Expectation</h2>
+    <p class="ct-body">This pattern did not appear with Coachella 2026. It was built over decades of booking decisions, audience conditioning, and industry norms that were never written down because they did not need to be.</p>
+
+    <!-- Section 1: Roots -->
+    <div class="ct-history-section">
+      <span class="ct-history-label">01 / The Roots</span>
+      <h3 class="ct-history-h3">Where the Expectation Gap Began</h3>
+      <p class="ct-body">[AMA to paste approved copy: Historical roots of the production expectation gap. How the post-MTV era created visual performance standards that were applied unequally by gender. How the festival circuit as a business model created incentive structures that rewarded hardware investment over human investment for male artists, while female artists were rewarded for human spectacle.]</p>
+      <p class="ct-body">[AMA to paste approved copy: The role of audience conditioning. What fans were trained to expect from a female headliner versus a male one. How those expectations calcify into booking requirements. The invisible spec sheet no one shows the artist.]</p>
+    </div>
+
+    <!-- Section 2: The Ceiling Mechanism -->
+    <div class="ct-history-section">
+      <span class="ct-history-label">02 / The Mechanism</span>
+      <h3 class="ct-history-h3">How the Fee Ceiling Works</h3>
+      <p class="ct-body">[AMA to paste approved copy: How fee benchmarks are set in the touring industry. The role of agents, promoters, and festival bookers in anchoring female artist fees below male artist fees even when streaming data and ticket demand are comparable or higher. The Grey Journal / Billboard standard Coachella headliner benchmark of $5M per weekend as a structural anchor.]</p>
+      <p class="ct-body">[AMA to paste approved copy: The compound effect. Lower fee plus higher expected production cost equals a structural margin disadvantage that does not exist for male artists at the same level. The math is not hidden. It just has never been displayed side by side.]</p>
+    </div>
+
+    <!-- Section 3: The Netflix Precedent -->
+    <div class="ct-history-section">
+      <span class="ct-history-label">03 / The Netflix Precedent</span>
+      <h3 class="ct-history-h3">When the Math Required a Workaround</h3>
+      <p class="ct-body">Beyonce's Homecoming was described by critics as one of the greatest live performances in American history. She grossed $8M from Coachella 2018. Her production cost was also approximately $8M. Net margin: near zero.</p>
+      <p class="ct-body">She brokered a Netflix documentary deal to make the economics work. The deal was praised as a business innovation. It was also a workaround that no male headliner in a comparable position had needed to engineer. That is the Homecoming data point that matters. Not that she spent too much. That the system required her to find a second revenue stream to break even on a performance that male artists at comparable fee levels did not need to subsidize.</p>
+      <p class="ct-body">[AMA to paste approved copy: What happened after Homecoming. How the Netflix deal reframed the precedent: future female artists were told to seek media deals as part of their tour economics. The workaround became the expectation. The tax became the cost of doing business.]</p>
+    </div>
+
+    <!-- Section 4: What Would Change -->
+    <div class="ct-history-section">
+      <span class="ct-history-label">04 / What Would Change</span>
+      <h3 class="ct-history-h3">If the Tax Were Removed</h3>
+      <p class="ct-body">[AMA to paste approved copy: What the industry would look like if the production expectation were equalized. Not that female artists would produce less -- some of them choose the spectacle. But that the choice would be theirs, not a tax levied in advance by audience expectation and booking norms.]</p>
+      <p class="ct-body">[AMA to paste approved copy: What you can do. Naming the agency. Where audience behavior, critical framing, and booking transparency can move the line. The audience is not passive in this system.]</p>
+    </div>
+
+    <!-- Part 2 tease -->
+    <div class="ct-part2-tease">
+      <p>Part 2 will cover how the booking industry set the fee ceiling, why the MTV era made spectacle a survival strategy for Black artists, and what the compound effect of lower fees plus higher production costs actually costs female artists over a career.</p>
+      <span class="ct-part2-notify">Get notified when it drops</span>
+      <a href="https://alterrell.substack.com" class="ct-part2-link" target="_blank" rel="noopener">alterrell.substack.com</a>
+    </div>
+
+    <!-- Surcharge city cards -->
+    <div class="ct-surcharge-section">
+      <span class="ct-surcharge-header">The Male Concert Laziness Surcharge</span>
+      <p class="ct-surcharge-subhead">What you're actually paying for when you buy that ticket</p>
+      <p class="ct-surcharge-intro">Here is a number that does not appear on your ticket: the surcharge you pay when a male artist decides his name is the product, his fee is non-negotiable, and the stage is optional. The industry calls it minimal production. Fans call it intimate or authentic. We're calling it what it is.</p>
+
+      <div class="ct-city-cards">
+
+        <!-- Card 1: NYC -->
+        <div class="ct-city-card">
+          <div class="ct-city-card-header">New York City &middot; Madison Square Garden &middot; 20,789 cap.</div>
+          <div class="ct-city-card-cols">
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--male">Male Artist</span>
+              <span class="ct-city-artist-name">Drake</span>
+              <span class="ct-city-stat">Avg ticket: $342</span>
+              <span class="ct-city-stat">Dancers: 0</span>
+              <span class="ct-city-pct ct-city-pct--male">~4%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--female">Female Artist</span>
+              <span class="ct-city-artist-name">Beyonc&eacute;</span>
+              <span class="ct-city-stat">Avg ticket: $545</span>
+              <span class="ct-city-stat">Dancers: 20&ndash;25</span>
+              <span class="ct-city-pct ct-city-pct--female">~33%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+          </div>
+          <div class="ct-city-card-sentence">For every $100 you spend on Drake at MSG, about $4 goes to what&rsquo;s on stage. For Beyonc&eacute;, it&rsquo;s $33.</div>
+        </div>
+
+        <!-- Card 2: LA -->
+        <div class="ct-city-card">
+          <div class="ct-city-card-header">Los Angeles &middot; Kia Forum &middot; 17,500 cap.</div>
+          <div class="ct-city-card-cols">
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--male">Male Artist</span>
+              <span class="ct-city-artist-name">Ed Sheeran</span>
+              <span class="ct-city-stat">Avg ticket: $200</span>
+              <span class="ct-city-stat">Dancers: 0</span>
+              <span class="ct-city-pct ct-city-pct--male">~5%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--female">Female Artist</span>
+              <span class="ct-city-artist-name">P!nk</span>
+              <span class="ct-city-stat">Avg ticket: $200</span>
+              <span class="ct-city-stat">Dancers: Full aerial + corps</span>
+              <span class="ct-city-pct ct-city-pct--female">~40%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+          </div>
+          <div class="ct-city-card-sentence">For every $100 you spend on Ed Sheeran at the Kia Forum, about $5 goes to what&rsquo;s on stage. For P!nk, it&rsquo;s $40.</div>
+        </div>
+
+        <!-- Card 3: Chicago -->
+        <div class="ct-city-card">
+          <div class="ct-city-card-header">Chicago &middot; United Center &middot; 20,000 cap.</div>
+          <div class="ct-city-card-cols">
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--male">Male Artist</span>
+              <span class="ct-city-artist-name">Post Malone</span>
+              <span class="ct-city-stat">Avg ticket: $350</span>
+              <span class="ct-city-stat">Dancers: 0</span>
+              <span class="ct-city-pct ct-city-pct--male">~6%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--female">Female Artist</span>
+              <span class="ct-city-artist-name">Sabrina Carpenter</span>
+              <span class="ct-city-stat">Avg ticket: $300</span>
+              <span class="ct-city-stat">Dancers: 12</span>
+              <span class="ct-city-pct ct-city-pct--female">~33%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+          </div>
+          <div class="ct-city-card-sentence">For every $100 you spend on Post Malone at United Center, about $6 goes to what&rsquo;s on stage. For Sabrina Carpenter, it&rsquo;s $33.</div>
+        </div>
+
+        <!-- Card 4: Atlanta -->
+        <div class="ct-city-card">
+          <div class="ct-city-card-header">Atlanta &middot; State Farm Arena &middot; 21,000 cap.</div>
+          <div class="ct-city-card-cols">
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--male">Male Artist</span>
+              <span class="ct-city-artist-name">Drake</span>
+              <span class="ct-city-stat">Avg ticket: $342</span>
+              <span class="ct-city-stat">Dancers: 0</span>
+              <span class="ct-city-pct ct-city-pct--male">~4%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--female">Female Artist</span>
+              <span class="ct-city-artist-name">Nicki Minaj</span>
+              <span class="ct-city-stat">Avg ticket: $200</span>
+              <span class="ct-city-stat">Dancers: Full corps</span>
+              <span class="ct-city-pct ct-city-pct--female">~35%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+          </div>
+          <div class="ct-city-card-sentence">For every $100 you spend on Drake at State Farm Arena, about $4 goes to what&rsquo;s on stage. For Nicki Minaj, it&rsquo;s $35.</div>
+        </div>
+
+        <!-- Card 5: Miami -->
+        <div class="ct-city-card">
+          <div class="ct-city-card-header">Miami &middot; Kaseya Center &middot; 19,600 cap.</div>
+          <div class="ct-city-card-cols">
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--male">Male Artist</span>
+              <span class="ct-city-artist-name">Post Malone</span>
+              <span class="ct-city-stat">Avg ticket: $350</span>
+              <span class="ct-city-stat">Dancers: 0</span>
+              <span class="ct-city-pct ct-city-pct--male">~6%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+            <div class="ct-city-col">
+              <span class="ct-city-col-header ct-city-col-header--female">Female Artist</span>
+              <span class="ct-city-artist-name">Dua Lipa</span>
+              <span class="ct-city-stat">Avg ticket: $250</span>
+              <span class="ct-city-stat">Dancers: Full choreography</span>
+              <span class="ct-city-pct ct-city-pct--female">~34%</span>
+              <span class="ct-city-pct-label">of your ticket goes to the stage</span>
+            </div>
+          </div>
+          <div class="ct-city-card-sentence">For every $100 you spend on Post Malone at Kaseya Center, about $6 goes to what&rsquo;s on stage. For Dua Lipa, it&rsquo;s $34.</div>
+        </div>
+
+      </div><!-- /ct-city-cards -->
+
+      <p class="ct-surcharge-method">Production cost per ticket estimated using industry standard 30&ndash;50% of gross allocated to production, divided by avg attendance. Human production overhead for hardware-heavy tours estimated conservatively at 15% of gross. Ticket prices: SeatPick, TicketSmarter, Gametime. All figures approximate.</p>
+      <p class="ct-surcharge-nudge">Screenshot your city and tag us.</p>
+
+      <span class="ct-action-header">What You Can Do With This</span>
+      <ul class="ct-action-list">
+        <li>
+          <span class="ct-action-label">Ask before you buy.</span>
+          What is this artist bringing that you cannot get from their Spotify? If the answer is a loop pedal and fog, price accordingly.
+        </li>
+        <li>
+          <span class="ct-action-label">Say it out loud when it disappoints you.</span>
+          Not &ldquo;that was bad&rdquo; but &ldquo;I paid Beyonc&eacute; prices for a listening party.&rdquo; Name the gap. The market responds to what audiences say they expected.
+        </li>
+        <li>
+          <span class="ct-action-label">Let female artists scale back when they want to.</span>
+          The escalation trap only holds because audiences enforce it. If your favorite female artist does a sparse intimate tour next cycle, the correct response is not &ldquo;she&rsquo;s declining.&rdquo; It is that she is making a choice her male peers have always been allowed to make.
+        </li>
+      </ul>
+
+      <p class="ct-closing-line">You paid for a concert. Make sure you got one.</p>
+    </div><!-- /ct-surcharge-section -->
+
+    <!-- Share block (second instance, Tab 5) -->
+    <div class="ct-share-block">
+      <span class="ct-share-label">Share This Piece</span>
+      <span class="ct-share-nudge">Screenshot any chart and tag the source.</span>
+      <div class="ct-share-btns">
+        <button class="ct-share-btn" onclick="copyLink()">&#9678; Copy Link</button>
+        <a class="ct-share-btn" href="https://twitter.com/intent/tweet?text=Men+set+the+ceiling.+Women+are+required+to+deliver+more+to+justify+their+place+beneath+it.+The+hidden+concert+tax%3A&url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&via=alterrell" target="_blank" rel="noopener">&#10005; Share on X</button>
+        <a class="ct-share-btn ct-share-btn--filled" href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
+      </div>
+      <span class="ct-share-substack">Get early access to future pieces &#8594; <a href="https://alterrell.substack.com" target="_blank" rel="noopener">alterrell.substack.com</a></span>
+    </div>
+
+    <!-- Floor nav -->
+    <div class="section-nav">
+      <button type="button" class="section-nav-btn" data-nav-to="3">
+        <span class="section-nav-direction">&#8592; Back</span>
+        <span class="section-nav-label">The Burden</span>
+      </button>
+      <button type="button" class="section-nav-btn next" data-nav-to="5">
+        <span class="section-nav-direction">Next &#8594;</span>
+        <span class="section-nav-label">Sources</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     TAB 6: SOURCES
+     ════════════════════════════════════════════ -->
+<section id="ct-sources" class="ct-section" role="tabpanel" hidden>
+  <div class="ct-inner">
+
+    <span class="ct-eyebrow">Sources &amp; Methodology</span>
+    <h2 class="ct-h2">Where the Data Comes From</h2>
+
+    <p class="ct-body">All fee figures are publicly reported or industry-sourced estimates. Where figures are estimated, this piece uses conservative values and notes the uncertainty. Production cost calculations use the industry-standard 30 to 50 percent gross revenue overhead range unless a more specific figure was available.</p>
+
+    <ul class="ct-sources-list">
+      <li>
+        <span class="ct-source-outlet">Rolling Stone</span>
+        Justin Bieber Coachella 2026 fee "north of $10 million." Confirmed as highest in the festival's 27-year history.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Grey Journal / Billboard</span>
+        Standard Coachella headliner fee benchmark: $5 million per weekend. Sabrina Carpenter estimate based on this benchmark and slot positioning.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Variety</span>
+        Drake "It's All a Blur" tour: described by chief brand officer as using "the largest fleet of trucks ever used for an arena trek." Gross: $320.5M across 80 shows.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Jalopnik / Corrected</span>
+        Taylor Swift Eras Tour: approximately 50 confirmed semis (person familiar with tour operations). Some reports cite 90. This piece uses 50 as the verified floor.
+      </li>
+      <li>
+        <span class="ct-source-outlet">WSJ / Morson</span>
+        Eras Tour described as "most technically ambitious production of the 21st century."
+      </li>
+      <li>
+        <span class="ct-source-outlet">Billboard / Multiple</span>
+        Industry standard production and operating overhead: 30 to 50 percent of gross revenue for major stadium tours.
+      </li>
+      <li>
+        <span class="ct-source-outlet">The New Yorker</span>
+        Lady Gaga Coachella 2017 fee: $3 million to $4 million.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Industry Estimate</span>
+        Beyonce Homecoming 2018: $8M fee, approximately $8M production cost. Netflix deal brokered to make economics viable.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Industry Estimate</span>
+        Ariana Grande Coachella 2019: $8M fee. The Weeknd Coachella 2022: $8.5M fee.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Self-Reported</span>
+        Tyler, the Creator: eight-figure Coachella fee (referenced in lyrics).
+      </li>
+      <li>
+        <span class="ct-source-outlet">Industry Standard</span>
+        Per diem costs for touring dancers and band members: $50 to $100 per day. Rehearsal period estimates: 3 to 6 months for major female pop headliners; 1 to 2 weeks technical rehearsal for rapper and singer-songwriter formats.
+      </li>
+      <li>
+        <span class="ct-source-outlet">Social Media Documentation</span>
+        Audience response to Bieber vs. Carpenter production comparison, April 2026. Multiple independently verified quotes.
+      </li>
+    </ul>
+
+    <div class="ct-methodology-note">
+      <strong style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--of-gold);display:block;margin-bottom:0.5rem;">Chart Methodology</strong>
+      The 2x2 production matrix uses estimated on-stage personnel (dancers plus band members, not crew) as a proxy for production intensity. Revenue efficiency is estimated from publicly reported tour grosses divided by estimated show counts and an industry-standard overhead range. Bubble size represents estimated career gross across all touring activity. R&amp;B, country, rock, and EDM artists are underrepresented due to limited public production data -- that gap is named, not hidden. This piece does not claim exact figures where exact figures are not available. It claims a directional pattern that the available data supports.
+    </div>
+
+    <!-- Floor nav -->
+    <div class="section-nav">
+      <button type="button" class="section-nav-btn" data-nav-to="4">
+        <span class="section-nav-direction">&#8592; Back</span>
+        <span class="section-nav-label">How We Got Here</span>
+      </button>
+      <span class="section-nav-spacer"></span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════ -->
+<footer style="background:#06060d;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.25rem 2rem;">
+  <div style="max-width:var(--max-editorial);margin:0 auto;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+      <a href="/" style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--of-muted);text-decoration:none;">&#8592; All Projects</a>
+      <div style="display:flex;gap:1.25rem;">
+        <a href="https://alterrell.substack.com" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--of-muted);text-decoration:none;">Substack</a>
+        <a href="https://youtube.com/@alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--of-muted);text-decoration:none;">YouTube</a>
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--of-gold);border:1px solid var(--of-gold);padding:0.3rem 0.7rem;border-radius:4px;text-decoration:none;">$ Ko-fi</a>
+      </div>
+    </div>
+
+    <details style="margin-bottom:1rem;">
+      <summary style="font-family:var(--font-mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--of-muted);cursor:pointer;">Methodology</summary>
+      <div style="margin-top:0.875rem;font-size:0.82rem;color:var(--of-muted);line-height:1.65;">
+        All fee figures are publicly reported or conservative industry estimates. Production cost calculations use the 30 to 50 percent gross overhead standard unless a specific figure was available. On-stage personnel counts drawn from verified press and documentary sources. Chart data is directionally accurate, not actuarially precise. Gaps in R&amp;B, country, rock, and EDM data are named in the methodology note within the piece. This is a structural argument built on documented data points, not an audit of individual artist finances.
+      </div>
+    </details>
+
+    <p style="font-family:var(--font-mono);font-size:0.6rem;color:rgba(248,246,241,0.2);margin:0;">
+      Alterrell Interactive &middot; Obsidian Futures &middot; &copy; 2026
+    </p>
+
+  </div>
+</footer>
+
+
+<!-- ── TOOLTIP ── -->
+<div id="ct-tooltip" role="tooltip" aria-hidden="true"></div>
+
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script>
+/* ── TAB SWITCHING ── */
+(function() {
+  const sections = ['ct-overview','ct-data','ct-standard','ct-burden','ct-history','ct-sources'];
+  const tabBar = document.getElementById('ct-tabs');
+
+  function showTab(idx) {
+    sections.forEach((id, i) => {
+      const sec = document.getElementById(id);
+      const btn = tabBar.querySelector(`[data-nav="${i}"]`);
+      if (i === idx) {
+        sec.hidden = false;
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      } else {
+        sec.hidden = true;
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (idx === 1) {
+      if (!window._bubbleInited) initBubbleChart();
+      if (!window._historicalInited) initHistoricalChart();
+    }
+  }
+
+  tabBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-nav]');
+    if (!btn) return;
+    showTab(parseInt(btn.dataset.nav, 10));
+  });
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-nav-to]');
+    if (!btn) return;
+    showTab(parseInt(btn.dataset.navTo, 10));
+  });
+})();
+
+/* ── SUB-TAB SWITCHING ── */
+function initSubtabGroup(subtabNavId) {
+  const nav = document.getElementById(subtabNavId);
+  if (!nav) return;
+  const parent = nav.closest('.ct-inner');
+  const subtabs = nav.querySelectorAll('.ct-subtab');
+
+  nav.addEventListener('click', (e) => {
+    const btn = e.target.closest('.ct-subtab');
+    if (!btn) return;
+    subtabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    parent.querySelectorAll('.ct-subsection').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(btn.dataset.subtab);
+    if (target) target.classList.add('active');
+  });
+
+  parent.querySelectorAll('[data-subtab-to]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetBtn = nav.querySelector(`[data-subtab="${btn.dataset.subtabTo}"]`);
+      if (targetBtn) targetBtn.click();
+      const section = parent.closest('.ct-section');
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - 144;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+initSubtabGroup('ct-standard-subtabs');
+initSubtabGroup('ct-burden-subtabs');
+
+/* ── COPY LINK ── */
+function copyLink() {
+  navigator.clipboard.writeText('https://interactive.alterrell.com/concert-tax/').then(() => {
+    const btns = document.querySelectorAll('#ct-copy-link, .ct-share-btn[onclick="copyLink()"]');
+    btns.forEach(b => { b.textContent = 'Copied!'; setTimeout(() => { b.textContent = '\u25CE Copy Link'; }, 2000); });
+  }).catch(() => {});
+}
+
+/* ── D3 BUBBLE CHART ── */
+function initBubbleChart() {
+  window._bubbleInited = true;
+
+  const ARTISTS = [
+    // Male (teal)
+    { name: 'Justin Bieber',   g:'M', x:1.0, y:14.0, r:820,  genre:'Pop',      note:'$10M+ Coachella fee. Laptop set. No dancers.' },
+    { name: 'Ed Sheeran',      g:'M', x:1.2, y:12.5, r:1100, genre:'Pop',      note:'$776M tour gross. Solo performer. Near-zero overhead.' },
+    { name: 'Drake',           g:'M', x:2.8, y:10.0, r:980,  genre:'Rap',      note:'$320.5M / 80 shows. Hardware-heavy. Near-zero dancer payroll.' },
+    { name: 'Post Malone',     g:'M', x:1.5, y:9.5,  r:560,  genre:'Pop/Rap',  note:'Consistent high efficiency with minimal production.' },
+    { name: 'The Weeknd',      g:'M', x:2.2, y:8.0,  r:740,  genre:'R&B',      note:'Arena and stadium touring. Moderate production.' },
+    { name: 'Kendrick Lamar',  g:'M', x:2.0, y:8.5,  r:480,  genre:'Rap',      note:'Stadium touring. Theatrics but limited dance production.' },
+    { name: 'Harry Styles',    g:'M', x:2.4, y:9.0,  r:680,  genre:'Pop',      note:'Love on Tour. High gross, moderate production overhead.' },
+    { name: 'Bad Bunny',       g:'M', x:3.0, y:9.5,  r:870,  genre:'Latin',    note:'Most-streamed artist. High-energy production. Strong fee.' },
+    // Female (gold)
+    { name: 'Taylor Swift',    g:'F', x:4.2, y:10.5, r:2100, genre:'Pop',      note:'$2B+ Eras Tour gross. 50 semis. 16 costume changes. $197M crew bonuses.' },
+    { name: 'Beyonce',         g:'F', x:4.0, y:6.0,  r:1750, genre:'R&B/Pop',  note:'Homecoming: $8M fee, ~$8M production cost. Netflix deal to break even.' },
+    { name: 'Sabrina Carpenter',g:'F',x:3.5, y:3.5,  r:210,  genre:'Pop',      note:'Coachella 2026: est. $5M. Full theatrical "Sabrinawood" set. Hollywood cameos.' },
+    { name: 'Karol G',         g:'F', x:3.2, y:4.5,  r:390,  genre:'Latin',    note:'First Latina Coachella headliner. High choreography. Est. $5M–$10M.' },
+    { name: 'Megan Thee Stallion',g:'F',x:3.0,y:3.0, r:240,  genre:'Rap',      note:'High-production rap performances. Explicit scrutiny male peers do not face.' },
+    { name: 'Ariana Grande',   g:'F', x:3.8, y:6.5,  r:880,  genre:'Pop',      note:'$8M Coachella 2019. Full production. Strong gross but high overhead.' },
+    { name: 'SZA',             g:'F', x:2.8, y:4.5,  r:340,  genre:'R&B',      note:'SOS Tour. Growing production demands. R&B audience -- pattern less clear.' },
+    { name: 'Doja Cat',        g:'F', x:3.0, y:4.0,  r:290,  genre:'Pop/Rap',  note:'Elaborate visuals and production at festival and arena scale.' },
+  ];
+
+  const el = document.getElementById('ct-chart-bubble');
+  if (!el) return;
+  const W = Math.max(el.clientWidth || 700, 320);
+  const H = Math.round(W * 0.58);
+  const M = { top: 44, right: 28, bottom: 60, left: 68 };
+  const iW = W - M.left - M.right;
+  const iH = H - M.top - M.bottom;
+
+  const svg = d3.select('#ct-chart-bubble').append('svg')
+    .attr('width', '100%')
+    .attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+
+  const g = svg.append('g').attr('transform', `translate(${M.left},${M.top})`);
+
+  const xScale = d3.scaleLinear().domain([0.5, 4.8]).range([0, iW]);
+  const yScale = d3.scaleLinear().domain([0, 16]).range([iH, 0]);
+  const rScale = d3.scaleSqrt().domain([0, 2200]).range([5, 36]);
+
+  const QX = xScale(2.5);
+  const QY = yScale(7.0);
+
+  // Quadrant fills
+  const quadFills = [
+    { x: 0,  y: 0,   w: QX,     h: QY,        label: 'PROFIT KINGS',   lx: QX * 0.5,           ly: QY * 0.5 },
+    { x: QX, y: 0,   w: iW-QX,  h: QY,        label: 'LEGACY BUILDERS',lx: QX + (iW-QX)*0.5,   ly: QY * 0.5 },
+    { x: 0,  y: QY,  w: QX,     h: iH-QY,     label: 'BUILDING',       lx: QX * 0.5,           ly: QY + (iH-QY)*0.5 },
+    { x: QX, y: QY,  w: iW-QX,  h: iH-QY,     label: 'UNDERCHARGERS',  lx: QX + (iW-QX)*0.5,   ly: QY + (iH-QY)*0.5 },
+  ];
+
+  quadFills.forEach(q => {
+    g.append('rect')
+      .attr('x', q.x).attr('y', q.y)
+      .attr('width', q.w).attr('height', q.h)
+      .attr('fill', 'rgba(255,255,255,0.015)');
+    g.append('text')
+      .attr('x', q.lx).attr('y', q.ly)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('font-family', 'DM Mono, monospace')
+      .attr('font-size', Math.max(8, W * 0.014))
+      .attr('fill', 'rgba(255,255,255,0.12)')
+      .attr('letter-spacing', '0.14em')
+      .text(q.label);
+  });
+
+  // Divider lines
+  g.append('line')
+    .attr('x1', QX).attr('x2', QX)
+    .attr('y1', 0).attr('y2', iH)
+    .attr('stroke', 'rgba(255,255,255,0.12)')
+    .attr('stroke-dasharray', '4,4');
+  g.append('line')
+    .attr('x1', 0).attr('x2', iW)
+    .attr('y1', QY).attr('y2', QY)
+    .attr('stroke', 'rgba(255,255,255,0.12)')
+    .attr('stroke-dasharray', '4,4');
+
+  // Axes
+  g.append('g')
+    .attr('transform', `translate(0,${iH})`)
+    .call(d3.axisBottom(xScale)
+      .tickValues([1, 2, 3, 4])
+      .tickFormat(d => ['', 'Minimal', 'Moderate', 'Intensive', 'Full Spectacle'][d] || '')
+    )
+    .call(ax => ax.select('.domain').attr('stroke', 'rgba(255,255,255,0.15)'))
+    .call(ax => ax.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,0.1)'))
+    .call(ax => ax.selectAll('.tick text')
+      .attr('fill', 'rgba(248,246,241,0.4)')
+      .attr('font-family', 'DM Mono, monospace')
+      .attr('font-size', Math.max(8, W * 0.013)));
+
+  g.append('g')
+    .call(d3.axisLeft(yScale).ticks(4).tickFormat(d => `$${d}M`))
+    .call(ax => ax.select('.domain').attr('stroke', 'rgba(255,255,255,0.15)'))
+    .call(ax => ax.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,0.1)'))
+    .call(ax => ax.selectAll('.tick text')
+      .attr('fill', 'rgba(248,246,241,0.4)')
+      .attr('font-family', 'DM Mono, monospace')
+      .attr('font-size', Math.max(8, W * 0.013)));
+
+  // Axis labels
+  g.append('text')
+    .attr('x', iW / 2).attr('y', iH + 48)
+    .attr('text-anchor', 'middle')
+    .attr('font-family', 'DM Mono, monospace')
+    .attr('font-size', Math.max(8, W * 0.013))
+    .attr('fill', 'rgba(248,246,241,0.35)')
+    .attr('letter-spacing', '0.12em')
+    .text('PRODUCTION INTENSITY (on-stage personnel proxy)');
+
+  g.append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -iH / 2).attr('y', -54)
+    .attr('text-anchor', 'middle')
+    .attr('font-family', 'DM Mono, monospace')
+    .attr('font-size', Math.max(8, W * 0.013))
+    .attr('fill', 'rgba(248,246,241,0.35)')
+    .attr('letter-spacing', '0.12em')
+    .text('REVENUE EFFICIENCY (gross/show est., $M)');
+
+  // Bubbles
+  const TOOLTIP = document.getElementById('ct-tooltip');
+
+  const highlighted = ['Justin Bieber','Beyonce','Taylor Swift','Sabrina Carpenter','Karol G','Ed Sheeran'];
+
+  g.selectAll('.ct-bubble')
+    .data(ARTISTS)
+    .join('circle')
+    .attr('class', 'ct-bubble')
+    .attr('cx', d => xScale(d.x))
+    .attr('cy', d => yScale(d.y))
+    .attr('r', d => rScale(d.r))
+    .attr('fill', d => d.g === 'F' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)')
+    .attr('stroke', d => d.g === 'F' ? '#E8B923' : '#0a7c72')
+    .attr('stroke-width', 1)
+    .style('cursor', 'pointer')
+    .on('mouseover', function(event, d) {
+      d3.select(this).attr('fill', d.g === 'F' ? 'rgba(232,185,35,0.85)' : 'rgba(10,124,114,0.85)');
+      TOOLTIP.innerHTML = `<strong>${d.name}</strong><br>${d.genre}<br>${d.note}`;
+      TOOLTIP.classList.add('visible');
+      moveTip(event);
+    })
+    .on('mousemove', function(event) { moveTip(event); })
+    .on('mouseleave', function(event, d) {
+      d3.select(this).attr('fill', d.g === 'F' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)');
+      TOOLTIP.classList.remove('visible');
+    });
+
+  // Labels for key artists
+  g.selectAll('.ct-blabel')
+    .data(ARTISTS.filter(d => highlighted.includes(d.name)))
+    .join('text')
+    .attr('class', 'ct-blabel')
+    .attr('x', d => xScale(d.x) + rScale(d.r) + 4)
+    .attr('y', d => yScale(d.y) + 4)
+    .attr('font-family', 'DM Mono, monospace')
+    .attr('font-size', Math.max(8, W * 0.014))
+    .attr('fill', d => d.g === 'F' ? 'rgba(232,185,35,0.85)' : 'rgba(10,124,114,0.85)')
+    .text(d => d.name.split(' ').slice(-1)[0]);
+
+  function moveTip(event) {
+    const tx = Math.min(event.clientX + 14, window.innerWidth - 260);
+    TOOLTIP.style.left = tx + 'px';
+    TOOLTIP.style.top = Math.max(event.clientY - 10, 10) + 'px';
+  }
+}
+
+/* ── D3 HISTORICAL CONNECTED DOT CHART ── */
+function initHistoricalChart() {
+  window._historicalInited = true;
+
+  const DATA = [
+    {name:'Tina Turner',       x:1987,y:2,r:60,  gender:'female',note:'Break Every Rule — highest-grossing female tour of 1980s'},
+    {name:'Whitney Houston',   x:1994,y:2,r:75,  gender:'female',note:'The Bodyguard Tour — voice as production'},
+    {name:'Mariah Carey',      x:1996,y:2,r:40,  gender:'female',note:'Daydream World Tour — voice as production'},
+    {name:'Madonna',           x:1990,y:4,r:62,  gender:'female',note:'Blond Ambition — female outlier, always theatrical'},
+    {name:'Beyoncé',           x:2007,y:3,r:90,  gender:'female',note:'The Beyoncé Experience — already escalating'},
+    {name:'Adele',             x:2011,y:2,r:15,  gender:'female',note:'Adele Live — 5-piece band, 96 lampshades, by design'},
+    {name:'Adele',             x:2016,y:3,r:278, gender:'female',note:'Adele Live 2016 — rebuilt. Revenue multiplies 18x.'},
+    {name:'Beyoncé',           x:2018,y:4,r:8,   gender:'female',note:'Homecoming — $8M fee, ~$0 net before Netflix'},
+    {name:'Dua Lipa',          x:2022,y:3,r:100, gender:'female',note:'Future Nostalgia — post-correction, full production'},
+    {name:'Nicki Minaj',       x:2024,y:4,r:100, gender:'female',note:'Pink Friday 2 — first major solo arena run at this scale'},
+    {name:'Sabrina Carpenter', x:2025,y:4,r:77,  gender:'female',note:'Short n\' Sweet — arena debut, full theatrical'},
+    {name:'Bruce Springsteen', x:1988,y:2,r:55,  gender:'male',  note:'Tunnel of Love — band-forward, no choreography'},
+    {name:'Jay-Z',             x:2001,y:1,r:30,  gender:'male',  note:'Blueprint Tour — minimal production, rap standard'},
+    {name:'Drake',             x:2016,y:2,r:85,  gender:'male',  note:'Summer Sixteen — same approach, rap standard'},
+    {name:'Ed Sheeran',        x:2017,y:1,r:432, gender:'male',  note:'Divide Tour — solo, loop pedal, $776M total'},
+    {name:'Drake',             x:2024,y:2,r:321, gender:'male',  note:'It\'s All a Blur — production flat, revenue 4x'},
+    {name:'Justin Bieber',     x:2026,y:1,r:10,  gender:'male',  note:'Coachella 2026 — record fee, laptop set'},
+    {name:'Michael Jackson',   x:1987,y:4,r:125, gender:'male',  note:'Bad Tour — singular. The standard female pop headliners are measured against.'}
+  ];
+
+  const el = document.getElementById('ct-chart-historical');
+  if (!el) return;
+  const W = Math.max(el.clientWidth || 700, 320);
+  const H = Math.round(W * 0.56);
+  const M = { top: 44, right: 40, bottom: 56, left: 140 };
+  const iW = W - M.left - M.right;
+  const iH = H - M.top - M.bottom;
+
+  const svg = d3.select('#ct-chart-historical').append('svg')
+    .attr('width', '100%')
+    .attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+
+  const g = svg.append('g').attr('transform', `translate(${M.left},${M.top})`);
+
+  const xScale = d3.scaleLinear().domain([1985, 2027]).range([0, iW]);
+  const yScale = d3.scaleLinear().domain([0.5, 4.5]).range([iH, 0]);
+  const rScale = d3.scaleSqrt().domain([0, 432]).range([4, 22]);
+
+  const yTierLabels = {1:'Solo / Minimal', 2:'Small Band', 3:'Dancers + Band', 4:'Full Theatrical'};
+
+  // Y gridlines + labels
+  [1,2,3,4].forEach(tick => {
+    g.append('line')
+      .attr('x1', 0).attr('x2', iW)
+      .attr('y1', yScale(tick)).attr('y2', yScale(tick))
+      .attr('stroke', 'rgba(255,255,255,0.07)')
+      .attr('stroke-dasharray', '4,4');
+    g.append('text')
+      .attr('x', -10).attr('y', yScale(tick) + 4)
+      .attr('text-anchor', 'end')
+      .attr('font-family', 'DM Mono, monospace')
+      .attr('font-size', Math.max(7, W * 0.012))
+      .attr('fill', 'rgba(248,246,241,0.38)')
+      .text(yTierLabels[tick]);
+  });
+
+  // X axis
+  g.append('g')
+    .attr('transform', `translate(0,${iH})`)
+    .call(d3.axisBottom(xScale)
+      .tickValues([1990,1995,2000,2005,2010,2015,2020,2025])
+      .tickFormat(d3.format('d'))
+    )
+    .call(ax => ax.select('.domain').attr('stroke','rgba(255,255,255,0.15)'))
+    .call(ax => ax.selectAll('.tick line').attr('stroke','rgba(255,255,255,0.1)'))
+    .call(ax => ax.selectAll('.tick text')
+      .attr('fill','rgba(248,246,241,0.4)')
+      .attr('font-family','DM Mono, monospace')
+      .attr('font-size', Math.max(7, W * 0.012)));
+
+  g.append('text')
+    .attr('x', iW / 2).attr('y', iH + 46)
+    .attr('text-anchor','middle')
+    .attr('font-family','DM Mono, monospace')
+    .attr('font-size', Math.max(7, W * 0.012))
+    .attr('fill','rgba(248,246,241,0.28)')
+    .attr('letter-spacing','0.12em')
+    .text('YEAR');
+
+  // Connect same-named artists with dashed lines
+  const byName = d3.group(DATA, d => d.name);
+  byName.forEach(pts => {
+    if (pts.length < 2) return;
+    const sorted = pts.slice().sort((a,b) => a.x - b.x);
+    const col = sorted[0].gender === 'female' ? '#E8B923' : '#0a7c72';
+    for (let i = 0; i < sorted.length - 1; i++) {
+      g.append('line')
+        .attr('x1', xScale(sorted[i].x)).attr('y1', yScale(sorted[i].y))
+        .attr('x2', xScale(sorted[i+1].x)).attr('y2', yScale(sorted[i+1].y))
+        .attr('stroke', col)
+        .attr('stroke-width', 1.5)
+        .attr('stroke-dasharray', '5,4')
+        .attr('opacity', 0.45);
+    }
+  });
+
+  // Dots
+  const TOOLTIP2 = document.getElementById('ct-tooltip');
+
+  g.selectAll('.ct-hdot')
+    .data(DATA)
+    .join('circle')
+    .attr('class', 'ct-hdot')
+    .attr('cx', d => xScale(d.x))
+    .attr('cy', d => yScale(d.y))
+    .attr('r',  d => rScale(d.r))
+    .attr('fill',   d => d.gender === 'female' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)')
+    .attr('stroke', d => d.gender === 'female' ? '#E8B923' : '#0a7c72')
+    .attr('stroke-width', 1)
+    .style('cursor','pointer')
+    .on('mouseover', function(event, d) {
+      d3.select(this).attr('fill', d.gender === 'female' ? 'rgba(232,185,35,0.85)' : 'rgba(10,124,114,0.85)');
+      TOOLTIP2.innerHTML = `<strong>${d.name} &middot; ${d.x}</strong><br>${d.note}`;
+      TOOLTIP2.classList.add('visible');
+      moveTipH(event);
+    })
+    .on('mousemove', function(event) { moveTipH(event); })
+    .on('mouseleave', function(event, d) {
+      d3.select(this).attr('fill', d.gender === 'female' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)');
+      TOOLTIP2.classList.remove('visible');
+    });
+
+  // Static callout annotations
+  const fs = Math.max(7, W * 0.011);
+
+  // Adele: annotate near midpoint of connecting line
+  const adele11 = DATA.find(d => d.name === 'Adele' && d.x === 2011);
+  const adele16 = DATA.find(d => d.name === 'Adele' && d.x === 2016);
+  if (adele11 && adele16) {
+    g.append('text')
+      .attr('x', xScale(2012.5)).attr('y', yScale(2.62))
+      .attr('font-family','DM Mono, monospace').attr('font-size', fs)
+      .attr('fill','rgba(232,185,35,0.72)')
+      .text('Same artist. Same voice. Revenue ×18.');
+  }
+
+  // Drake: annotate above the flat connecting line
+  const drake16 = DATA.find(d => d.name === 'Drake' && d.x === 2016);
+  const drake24 = DATA.find(d => d.name === 'Drake' && d.x === 2024);
+  if (drake16 && drake24) {
+    g.append('text')
+      .attr('x', xScale(2018)).attr('y', yScale(1.6))
+      .attr('font-family','DM Mono, monospace').attr('font-size', fs)
+      .attr('fill','rgba(10,124,114,0.72)')
+      .text('Production flat. Revenue ×4.');
+  }
+
+  // Michael Jackson
+  const mj = DATA.find(d => d.name === 'Michael Jackson');
+  if (mj) {
+    g.append('text')
+      .attr('x', xScale(1987) + rScale(mj.r) + 5).attr('y', yScale(4.28))
+      .attr('font-family','DM Mono, monospace').attr('font-size', fs)
+      .attr('fill','rgba(248,246,241,0.5)')
+      .text('Singular. The standard.');
+  }
+
+  // Madonna
+  const madonna = DATA.find(d => d.name === 'Madonna');
+  if (madonna) {
+    g.append('text')
+      .attr('x', xScale(1990) + rScale(madonna.r) + 5).attr('y', yScale(3.62))
+      .attr('font-family','DM Mono, monospace').attr('font-size', fs)
+      .attr('fill','rgba(232,185,35,0.72)')
+      .text('Always theatrical. Always fighting for fee parity.');
+  }
+
+  function moveTipH(event) {
+    const tx = Math.min(event.clientX + 14, window.innerWidth - 260);
+    TOOLTIP2.style.left = tx + 'px';
+    TOOLTIP2.style.top = Math.max(event.clientY - 10, 10) + 'px';
+  }
+}
+</script>
+</body>
+</html>

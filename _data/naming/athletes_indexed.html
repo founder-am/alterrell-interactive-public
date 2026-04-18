@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athletes - Indexed Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 50px 80px;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .category-badge {
+            background: #E8B923;
+            color: #000000;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        
+        .name-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #E8B923;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .name-subtitle {
+            font-size: 0.95rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        
+        .narrative-section {
+            margin-bottom: 40px;
+        }
+        
+        .narrative-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+        
+        .narrative-text p {
+            margin-bottom: 20px;
+        }
+        
+        .narrative-highlight {
+            color: #E8B923;
+            font-weight: 600;
+        }
+        
+        .chart-section {
+            background: #0a0a0a;
+            padding: 35px 30px 30px;
+            margin-bottom: 2px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 500px;
+        }
+        
+        .legend-section {
+            background: #0a0a0a;
+            padding: 25px 30px;
+            border-left: 3px solid #E8B923;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        
+        .legend-item {
+            text-align: center;
+        }
+        
+        .legend-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .legend-sport {
+            font-size: 0.7rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .legend-peak {
+            font-size: 0.85rem;
+            color: #cccccc;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+        
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .brand-o {
+            color: #ffffff;
+        }
+        
+        .brand-f {
+            color: #E8B923;
+        }
+        
+        .source {
+            font-size: 0.7rem;
+            color: #666666;
+            text-align: right;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="category-badge">Sports</div>
+            <h1 class="name-title">ATHLETES</h1>
+            <p class="name-subtitle">Indexed to Debut Year = 100</p>
+        </div>
+        
+        <section class="narrative-section">
+            <div class="narrative-text">
+                <p>
+                    Not all athletic greatness translates equally to baby names. <span class="narrative-highlight">Kobe Bryant</span> created a 1,784 index spike (17.8×) in his rookie year. Meanwhile, <span class="narrative-highlight">LeBron James</span>—arguably more dominant—peaked at just 262 index (2.6×).
+                </p>
+                <p>
+                    <span class="narrative-highlight">Serena Williams</span> barely moved the needle despite Grand Slam dominance. <span class="narrative-highlight">Tiger Woods</span> peaked in 2010—his scandal year—not his championship years. And <span class="narrative-highlight">Shaquille O'Neal</span> spiked huge initially, then faded fast.
+                </p>
+                <p>
+                    The lesson: Fame doesn't guarantee naming impact. Timing, novelty, and cultural moment matter more than championships.
+                </p>
+            </div>
+        </section>
+        
+        <section class="chart-section">
+            <div class="chart-container">
+                <canvas id="athletesChart"></canvas>
+            </div>
+        </section>
+        
+        <section class="legend-section">
+            <div class="legend-item">
+                <div class="legend-name" style="color: #E8B923;">Kobe</div>
+                <div class="legend-sport">Basketball</div>
+                <div class="legend-peak">1784 Index<br>(1998)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-name" style="color: #10b981;">Shaquille</div>
+                <div class="legend-sport">Basketball</div>
+                <div class="legend-peak">340 Index<br>(1993)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-name" style="color: #3b82f6;">LeBron</div>
+                <div class="legend-sport">Basketball</div>
+                <div class="legend-peak">262 Index<br>(2007)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-name" style="color: #a855f7;">Tiger</div>
+                <div class="legend-sport">Golf</div>
+                <div class="legend-peak">722 Index<br>(2010)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-name" style="color: #ec4899;">Serena</div>
+                <div class="legend-sport">Tennis</div>
+                <div class="legend-peak">104 Index<br>(2000)</div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="brand">
+                <div class="brand-name">
+                    <span class="brand-o">obsidian</span><span class="brand-f">futures</span>
+                </div>
+            </div>
+            <div class="source">
+                Source: Social Security Administration<br>
+                Baby Name Data, 1960-2019<br>
+                Indexed to debut year = 100
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const kobe = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 10, 100, 402, 1269, 989, 1646, 1784, 1600, 1394, 718, 509, 539, 659, 839, 789, 740, 636, 605, 634, 598, 534, 670, 608, 549, 574];
+        
+        const serena = [8, 10, 12, 12, 14, 13, 14, 18, 31, 47, 44, 41, 31, 28, 27, 31, 31, 35, 33, 35, 44, 37, 41, 41, 40, 39, 31, 31, 29, 31, 33, 35, 35, 38, 43, 58, 64, 84, 97, 100, 104, 90, 91, 89, 74, 60, 56, 56, 61, 56, 48, 47, 50, 52, 49, 54, 50, 53, 54, 52];
+        
+        const lebron = [24, 17, 24, 21, 0, 33, 14, 12, 21, 0, 17, 0, 17, 24, 14, 14, 14, 17, 12, 12, 12, 17, 0, 21, 12, 26, 12, 17, 0, 0, 0, 12, 0, 17, 0, 0, 0, 0, 14, 0, 0, 14, 14, 100, 229, 214, 238, 262, 200, 231, 236, 136, 129, 136, 93, 83, 69, 57, 76, 50];
+        
+        const shaquille = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 18, 38, 100, 340, 243, 94, 48, 18, 13, 7, 11, 8, 6, 6, 5, 3, 3, 1, 2, 2, 4, 6, 9, 10, 11, 10, 10, 9, 10, 9];
+        
+        const tiger = [0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 0, 0, 28, 0, 0, 33, 39, 33, 0, 56, 67, 100, 367, 539, 194, 200, 233, 250, 156, 144, 156, 272, 172, 217, 222, 722, 144, 139, 183, 183, 161, 156, 156, 178, 161];
+        
+        const ctx = document.getElementById('athletesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Kobe Bryant',
+                        data: kobe,
+                        borderColor: '#E8B923',
+                        backgroundColor: 'rgba(232, 185, 35, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Shaquille O\'Neal',
+                        data: shaquille,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'LeBron James',
+                        data: lebron,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Tiger Woods',
+                        data: tiger,
+                        borderColor: '#a855f7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Serena Williams',
+                        data: serena,
+                        borderColor: '#ec4899',
+                        backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Index (Debut Year = 100)',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

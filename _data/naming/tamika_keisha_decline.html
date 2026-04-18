@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamika & Keisha - Generational Decline</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+        }
+        h1 {
+            color: #E8B923;
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .stat-highlight {
+            color: #E8B923;
+            font-weight: 700;
+        }
+        .stat-decline {
+            color: #ef4444;
+            font-weight: 700;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 450px;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            margin-top: 20px;
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-line {
+            width: 30px;
+            height: 3px;
+        }
+        .insight-box {
+            background: #050505;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 3px solid #ef4444;
+        }
+        .insight-box h3 {
+            color: #ef4444;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+        }
+        .insight-box p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+        .insight-box p:last-child {
+            margin: 0;
+        }
+        .milestones {
+            background: #050505;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .milestones h3 {
+            color: #E8B923;
+            font-size: 0.9rem;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .milestone-icon {
+            width: 24px;
+            height: 24px;
+            background: #E8B923;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .milestone-decline {
+            background: #ef4444;
+        }
+        .milestone-text {
+            flex: 1;
+        }
+        .milestone-year {
+            color: #E8B923;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .milestone-year-decline {
+            color: #ef4444;
+        }
+        .milestone-desc {
+            color: #aaa;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>TAMIKA & KEISHA</h1>
+        <p class="subtitle">
+            Tamika: <span class="stat-highlight">2,160 (1975)</span> → <span class="stat-decline">32 (2005)</span> • 99% decline<br>
+            Keisha: <span class="stat-highlight">1,051 (1977)</span> → <span class="stat-decline">90 (2005)</span> • 91% decline<br>
+            What parents chose in 1975 is NOT what their children chose in 2005
+        </p>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-line" style="background: #E8B923;"></div>
+                <span>Tamika</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line" style="background: #a855f7;"></div>
+                <span>Keisha</span>
+            </div>
+        </div>
+        
+        <div class="chart-wrapper">
+            <canvas id="declineChart"></canvas>
+        </div>
+        
+        <div class="insight-box">
+            <h3>The Generational Shift</h3>
+            <p>
+                <strong>Why did these names fade?</strong> Not because they were tied to celebrities who fell from grace. These were generational choices—names that felt revolutionary in 1975 felt dated by 2005.
+            </p>
+            <p>
+                The parents of the 1970s were Baby Boomers and early Gen X—first generation post-segregation, asserting Black identity through names. Their millennial children, naming babies in the 2000s, had different contexts.
+            </p>
+            <p>
+                By the 2000s, Blackness was mainstream differently. Hip-hop was global. Obama was approaching presidency. The names that represented resistance in 1975 represented a past era in 2005. Naming patterns are generational—what defines you is what you reject from your parents.
+            </p>
+        </div>
+        
+        <div class="milestones">
+            <h3>Timeline: Rise & Fall</h3>
+            <div class="milestone-grid">
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1970s</div>
+                        <div class="milestone-desc">Baby Boomers name babies</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1975</div>
+                        <div class="milestone-desc">Tamika peaks (2,160)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1977</div>
+                        <div class="milestone-desc">Keisha peaks (1,051)</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon milestone-decline"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year milestone-year-decline">1990s</div>
+                        <div class="milestone-desc">Steady decline begins</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon milestone-decline"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year milestone-year-decline">2000s</div>
+                        <div class="milestone-desc">Millennials reject parents' choices</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon milestone-decline"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year milestone-year-decline">2005</div>
+                        <div class="milestone-desc">Both names nearly extinct</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const tamika = [0, 0, 0, 28, 30, 16, 20, 36, 182, 174, 259, 401, 627, 809, 1038, 2160, 1866, 1696, 1637, 1414, 1279, 1187, 1056, 921, 833, 704, 557, 545, 491, 381, 404, 326, 259, 220, 160, 147, 115, 107, 100, 75, 68, 51, 53, 39, 35, 32, 25, 29, 19, 21, 20, 9, 11, 9, 5, 10, 0, 8, 7, 9];
+        
+        const keisha = [0, 6, 5, 7, 48, 90, 89, 145, 184, 330, 490, 647, 804, 963, 979, 1015, 1027, 1051, 985, 938, 883, 720, 667, 582, 519, 667, 731, 751, 651, 710, 657, 590, 458, 396, 359, 333, 360, 259, 200, 169, 136, 133, 125, 76, 94, 90, 103, 76, 85, 51, 60, 72, 60, 70, 51, 59, 27, 37, 36, 44];
+        
+        const ctx = document.getElementById('declineChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Tamika',
+                        data: tamika,
+                        borderColor: '#E8B923',
+                        backgroundColor: 'rgba(232, 185, 35, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.35
+                    },
+                    {
+                        label: 'Keisha',
+                        data: keisha,
+                        borderColor: '#a855f7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.35
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {
+                        annotations: {
+                            peak: {
+                                type: 'line',
+                                xMin: 1975,
+                                xMax: 1975,
+                                borderColor: '#E8B923',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1975 Tamika Peak',
+                                    position: 'start',
+                                    backgroundColor: '#E8B923',
+                                    color: '#000',
+                                    font: { size: 9, weight: 'bold' },
+                                    padding: 4
+                                }
+                            },
+                            decline: {
+                                type: 'line',
+                                xMin: 2005,
+                                xMax: 2005,
+                                borderColor: '#ef4444',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '2005 Nearly Extinct',
+                                    position: 'end',
+                                    backgroundColor: '#ef4444',
+                                    color: '#fff',
+                                    font: { size: 9, weight: 'bold' },
+                                    padding: 4
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Number of Babies',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

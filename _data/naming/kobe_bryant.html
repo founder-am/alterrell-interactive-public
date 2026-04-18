@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kobe Bryant - Extreme Draft Year Spike</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+        }
+        h1 {
+            color: #E8B923;
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .stat-highlight {
+            color: #E8B923;
+            font-weight: 700;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 450px;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            margin-top: 20px;
+        }
+        .insight-box {
+            background: #050505;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 3px solid #a855f7;
+        }
+        .insight-box h3 {
+            color: #a855f7;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+        }
+        .insight-box p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+        .insight-box p:last-child {
+            margin: 0;
+        }
+        .milestones {
+            background: #050505;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .milestones h3 {
+            color: #E8B923;
+            font-size: 0.9rem;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .milestone-icon {
+            width: 24px;
+            height: 24px;
+            background: #E8B923;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .milestone-text {
+            flex: 1;
+        }
+        .milestone-year {
+            color: #E8B923;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .milestone-desc {
+            color: #aaa;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>KOBE BRYANT</h1>
+        <p class="subtitle">
+            Peak: <span class="stat-highlight">1,552 babies (2001)</span> • Draft year spike: <span class="stat-highlight">87 babies (1996)</span><br>
+            From essentially 0 to 1,552 in 5 years • Increase: <span class="stat-highlight">222× from pre-1996</span> • Highest factor spike
+        </p>
+        
+        <div class="chart-wrapper">
+            <canvas id="kobeChart"></canvas>
+        </div>
+        
+        <div class="insight-box">
+            <h3>The Draft Year Phenomenon</h3>
+            <p>
+                Before 1996, the name "Kobe" barely existed—an average of 7 babies per year, mostly unrelated to basketball. Then Kobe Bryant was drafted #13 overall by the Los Angeles Lakers in 1996, straight out of high school.
+            </p>
+            <p>
+                <strong>Immediate impact:</strong> 87 babies in 1996 (draft year). Parents didn't wait—they saw a teenage prodigy and claimed the name instantly. By 1998 (rookie breakout), it hit 1,104. By 2001 (first championship), 1,552—the peak.
+            </p>
+            <p>
+                This pattern is unique to sports: names spike the moment a player enters professional leagues, before they've proven themselves. Parents are betting on potential, not achievements. "Kobe" became aspirational before Kobe was legendary.
+            </p>
+        </div>
+        
+        <div class="milestones">
+            <h3>Career Milestones</h3>
+            <div class="milestone-grid">
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1996</div>
+                        <div class="milestone-desc">NBA Draft - 87 babies</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">1998</div>
+                        <div class="milestone-desc">Rookie breakout - 1,104 babies</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2000-2002</div>
+                        <div class="milestone-desc">Three-peat championships</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2001</div>
+                        <div class="milestone-desc">Peak year - 1,552 babies</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2009-2010</div>
+                        <div class="milestone-desc">Final championships</div>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon"></div>
+                    <div class="milestone-text">
+                        <div class="milestone-year">2020</div>
+                        <div class="milestone-desc">Death - legacy cemented</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const kobe = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 9, 87, 350, 1104, 860, 1432, 1552, 1392, 1213, 625, 443, 469, 573, 730, 686, 644, 553, 526, 552, 520, 465, 583, 529, 478, 499];
+        
+        // Create marker points for key years
+        const pointRadius = new Array(years.length).fill(0);
+        const pointBorderColor = new Array(years.length).fill('transparent');
+        const pointBorderWidth = new Array(years.length).fill(0);
+        
+        // Mark 1996 (draft), 1998 (breakout), 2001 (peak)
+        [36, 38, 41].forEach(idx => {
+            pointRadius[idx] = 10;
+            pointBorderColor[idx] = '#E8B923';
+            pointBorderWidth[idx] = 3;
+        });
+        
+        const ctx = document.getElementById('kobeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Kobe',
+                    data: kobe,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: pointRadius,
+                    pointBackgroundColor: 'transparent',
+                    pointBorderColor: pointBorderColor,
+                    pointBorderWidth: pointBorderWidth
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {
+                        annotations: {
+                            draft: {
+                                type: 'line',
+                                xMin: 1996,
+                                xMax: 1996,
+                                borderColor: '#a855f7',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1996 Draft',
+                                    position: 'start',
+                                    backgroundColor: '#a855f7',
+                                    color: '#fff',
+                                    font: { size: 10, weight: 'bold' },
+                                    padding: 4
+                                }
+                            },
+                            peak: {
+                                type: 'line',
+                                xMin: 2001,
+                                xMax: 2001,
+                                borderColor: '#E8B923',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '2001 PEAK: 1,552',
+                                    position: 'end',
+                                    backgroundColor: '#E8B923',
+                                    color: '#000',
+                                    font: { size: 10, weight: 'bold' },
+                                    padding: 4
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Number of Babies Named Kobe',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

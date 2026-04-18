@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Classic Names - Gender Divide</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 50px 80px;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .category-badge {
+            background: #E8B923;
+            color: #000000;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        
+        .name-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #E8B923;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .name-subtitle {
+            font-size: 0.95rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        
+        .narrative-section {
+            margin-bottom: 40px;
+        }
+        
+        .narrative-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+        
+        .narrative-text p {
+            margin-bottom: 20px;
+        }
+        
+        .narrative-highlight {
+            color: #E8B923;
+            font-weight: 600;
+        }
+        
+        .chart-section {
+            background: #0a0a0a;
+            padding: 35px 30px 30px;
+            margin-bottom: 2px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 500px;
+        }
+        
+        .legend-section {
+            background: #0a0a0a;
+            padding: 25px 30px;
+            border-left: 3px solid #E8B923;
+        }
+        
+        .legend-title {
+            font-size: 0.9rem;
+            color: #E8B923;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .legend-column h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .legend-item {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 3px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+        
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .brand-o {
+            color: #ffffff;
+        }
+        
+        .brand-f {
+            color: #E8B923;
+        }
+        
+        .source {
+            font-size: 0.7rem;
+            color: #666666;
+            text-align: right;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="category-badge">Black Classics</div>
+            <h1 class="name-title">GENDER DIVIDE</h1>
+            <p class="name-subtitle">Male Names Sustained • Female Names Faded</p>
+        </div>
+        
+        <section class="narrative-section">
+            <div class="narrative-text">
+                <p>
+                    A striking pattern emerges when we compare male vs. female Black Classic names from the 1970s. <span class="narrative-highlight">Male names sustained or grew</span>: Malik exploded to 3,272 index, Darius climbed to 713, Kareem stayed stable near 100.
+                </p>
+                <p>
+                    Meanwhile, <span class="narrative-highlight">female names collapsed</span>. Latoya peaked at 420 index (1984), now sits at 1. Tamika peaked in 1975, essentially extinct by 2005. Keisha, Ebony, Tanisha—all faded.
+                </p>
+                <p>
+                    Why? Female names in the 1970s were often more innovative, distinctive. By the 2000s, they felt dated. Male names—often Arabic/Islamic in origin—had deeper cultural/religious roots that transcended generational taste shifts.
+                </p>
+            </div>
+        </section>
+        
+        <section class="chart-section">
+            <div class="chart-container">
+                <canvas id="genderChart"></canvas>
+            </div>
+        </section>
+        
+        <section class="legend-section">
+            <div class="legend-title">Names Indexed to 1975 = 100</div>
+            <div class="legend-grid">
+                <div class="legend-column">
+                    <h4 style="color: #3b82f6;">Male Names (Sustained/Grew)</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #E8B923;"></div>
+                            <span>Malik (peaked 3,272 in 1996)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #10b981;"></div>
+                            <span>Darius (peaked 713 in 1994)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3b82f6;"></div>
+                            <span>Rashad (peaked 569 in 1990)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #06b6d4;"></div>
+                            <span>Jamal (peaked 265 in 1993)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #8b5cf6;"></div>
+                            <span>Kareem (peaked 110 in 1980)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend-column">
+                    <h4 style="color: #ec4899;">Female Names (Faded)</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #f97316;"></div>
+                            <span>Latoya (peaked 420 in 1984, now 1)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ec4899;"></div>
+                            <span>Ebony (peaked 370 in 1982, now 6)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #a855f7;"></div>
+                            <span>Tanisha (peaked 120 in 1982, now 6)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #f43f5e;"></div>
+                            <span>Keisha (peaked 104 in 1977, now 4)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #fb923c;"></div>
+                            <span>Tamika (peaked 100 in 1975, now 0)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="brand">
+                <div class="brand-name">
+                    <span class="brand-o">obsidian</span><span class="brand-f">futures</span>
+                </div>
+            </div>
+            <div class="source">
+                Source: Social Security Administration<br>
+                Baby Name Data, 1960-2019<br>
+                Indexed to 1975 = 100
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        // Male names
+        const malik = [0, 0, 0, 0, 6, 7, 14, 17, 29, 41, 103, 107, 110, 102, 89, 100, 113, 116, 136, 120, 137, 107, 93, 93, 93, 98, 103, 125, 128, 182, 267, 298, 472, 623, 694, 2200, 3272, 2749, 2190, 1826, 1694, 1515, 1349, 1224, 1119, 1018, 968, 1020, 989, 1104, 969, 802, 741, 764, 682, 698, 684, 702, 706, 715];
+        
+        const darius = [28, 32, 36, 42, 41, 41, 41, 54, 56, 72, 85, 85, 95, 93, 97, 100, 89, 118, 115, 151, 163, 158, 161, 159, 196, 199, 212, 295, 310, 492, 664, 692, 628, 648, 713, 631, 578, 618, 696, 557, 511, 512, 465, 421, 365, 370, 406, 356, 343, 312, 303, 250, 238, 235, 201, 189, 190, 189, 180, 158];
+        
+        const rashad = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 61, 100, 94, 261, 296, 292, 266, 273, 220, 183, 155, 142, 402, 511, 463, 555, 569, 508, 453, 403, 446, 394, 350, 308, 288, 223, 236, 253, 287, 249, 222, 184, 292, 369, 318, 342, 333, 269, 219, 204, 197, 187, 155, 176, 162, 170];
+        
+        const jamal = [4, 5, 5, 6, 5, 5, 8, 9, 19, 54, 60, 88, 92, 89, 97, 100, 117, 124, 118, 112, 124, 111, 120, 99, 110, 131, 172, 210, 217, 235, 237, 237, 254, 265, 262, 225, 210, 177, 147, 170, 154, 167, 154, 139, 125, 118, 109, 103, 97, 87, 87, 74, 73, 64, 65, 70, 75, 66, 64, 54];
+        
+        const kareem = [0, 0, 0, 0, 2, 0, 1, 1, 0, 0, 3, 11, 91, 58, 78, 100, 91, 108, 87, 86, 110, 76, 76, 75, 59, 67, 61, 70, 69, 71, 75, 80, 83, 76, 86, 70, 72, 71, 75, 72, 73, 78, 76, 71, 83, 71, 73, 75, 74, 75, 80, 73, 75, 84, 75, 80, 83, 84, 83, 92];
+        
+        // Female names
+        const latoya = [0, 0, 0, 0, 1, 1, 0, 1, 1, 2, 6, 12, 25, 41, 80, 100, 171, 193, 170, 156, 208, 355, 266, 262, 420, 283, 211, 179, 151, 122, 93, 67, 48, 31, 18, 14, 11, 9, 6, 7, 6, 5, 5, 4, 6, 4, 5, 5, 3, 3, 4, 2, 2, 2, 2, 2, 1, 2, 1, 1];
+        
+        const ebony = [0, 0, 0, 0, 0, 0, 1, 1, 3, 5, 9, 27, 38, 49, 81, 100, 146, 188, 214, 234, 257, 252, 370, 360, 346, 290, 270, 284, 280, 256, 254, 248, 219, 189, 161, 147, 130, 117, 100, 86, 77, 62, 60, 54, 50, 42, 37, 34, 29, 28, 19, 16, 15, 17, 12, 9, 11, 8, 7, 6];
+        
+        const tanisha = [0, 0, 0, 0, 0, 0, 0, 1, 2, 4, 20, 59, 100, 83, 97, 100, 104, 117, 103, 109, 119, 110, 120, 115, 104, 100, 108, 109, 98, 97, 108, 108, 106, 92, 91, 71, 67, 46, 39, 29, 26, 26, 23, 21, 22, 22, 22, 21, 21, 13, 17, 15, 11, 9, 8, 8, 7, 6, 6, 6];
+        
+        const keisha = [0, 1, 0, 1, 5, 9, 9, 14, 18, 33, 48, 64, 79, 95, 96, 100, 101, 104, 97, 92, 87, 71, 66, 57, 51, 66, 72, 74, 64, 70, 65, 58, 45, 39, 35, 33, 35, 26, 20, 17, 13, 13, 12, 7, 9, 9, 10, 7, 8, 5, 6, 7, 6, 7, 5, 6, 3, 4, 4, 4];
+        
+        const tamika = [0, 0, 0, 1, 1, 1, 1, 2, 8, 8, 12, 19, 29, 37, 48, 100, 86, 79, 76, 65, 59, 55, 49, 43, 39, 33, 26, 25, 23, 18, 19, 15, 12, 10, 7, 7, 5, 5, 5, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0];
+        
+        const ctx = document.getElementById('genderChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    // Male names
+                    {
+                        label: 'Malik (M)',
+                        data: malik,
+                        borderColor: '#E8B923',
+                        borderWidth: 3,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Darius (M)',
+                        data: darius,
+                        borderColor: '#10b981',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Rashad (M)',
+                        data: rashad,
+                        borderColor: '#3b82f6',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Jamal (M)',
+                        data: jamal,
+                        borderColor: '#06b6d4',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Kareem (M)',
+                        data: kareem,
+                        borderColor: '#8b5cf6',
+                        borderWidth: 2,
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    // Female names
+                    {
+                        label: 'Latoya (F)',
+                        data: latoya,
+                        borderColor: '#f97316',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Ebony (F)',
+                        data: ebony,
+                        borderColor: '#ec4899',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Tanisha (F)',
+                        data: tanisha,
+                        borderColor: '#a855f7',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Keisha (F)',
+                        data: keisha,
+                        borderColor: '#f43f5e',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.35,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Tamika (F)',
+                        data: tamika,
+                        borderColor: '#fb923c',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.35,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#555',
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Index (1975 = 100)',
+                            color: '#888',
+                            font: { size: 11 }
+                        }
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#555', 
+                            maxTicksLimit: 12,
+                            font: { size: 11 }
+                        },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -235,9 +235,24 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 0 0;
-      margin-top: var(--space-lg);
+      margin-top: auto;
       border-top: 1px solid var(--of-border);
       gap: 1rem;
+    }
+
+    /* ── CRITICAL LAYOUT — section ends at viewport bottom ── */
+    .win-section {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 128px); /* nav(52) + breadcrumb(32) + tabs(44) */
+    }
+    .win-inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
     }
     .section-nav-btn {
       display: flex;
@@ -1092,7 +1107,9 @@
 
     <div class="win-footer-links">
       <a href="/" class="win-footer-link">← All Projects</a>
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">☕ Support on Ko-fi</a>
+      <a href="/what-in-a-name/part-0/" class="win-footer-link">← Part 0: The Name Was Always Yours</a>
+      <a href="/what-in-a-name/part-2/" class="win-footer-link">Part 2: The Living Room →</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">$ Back this work</a>
       <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-footer-link">Substack</a>
       <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-footer-link">YouTube</a>
     </div>
@@ -1101,13 +1118,6 @@
       <summary>Methodology &amp; Data Notes</summary>
       <div class="win-footer-methodology-body">
         <p class="win-footer-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset, which records names given to at least 5 babies per year in the United States. Data covers 1960–2019. Charts display raw counts per year. Annotation dates are derived from publicly available release and broadcast records.</p>
-        <ul class="win-footer-sources">
-          <li>Social Security Administration. Baby Names from Social Security Card Applications — National Data. ssa.gov/oact/babynames/limits.html</li>
-          <li>Bertrand, M. &amp; Mullainathan, S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? <em>American Economic Review</em>, 94(4), 991–1013.</li>
-          <li>Quillian, L. et al. (2017). Meta-analysis of field experiments shows no change in racial discrimination in hiring over time. <em>PNAS</em>, 114(41).</li>
-          <li>UC Berkeley &amp; University of Chicago. (2024). A Discrimination Report Card. Reported by NPR, April 11, 2024.</li>
-          <li>Queen Latifah Rock and Roll Hall of Fame induction, 2025.</li>
-        </ul>
       </div>
     </details>
 
