@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arab Names with Historical Context</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .chart-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            padding: 30px;
+            border-left: 3px solid #E8B923;
+        }
+        h1 {
+            color: #E8B923;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 450px;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            margin-top: 20px;
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-line {
+            width: 30px;
+            height: 3px;
+        }
+        .milestones {
+            background: #050505;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        .milestones h3 {
+            color: #E8B923;
+            font-size: 1rem;
+            margin: 0 0 15px 0;
+        }
+        .milestone-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .milestone-item {
+            display: flex;
+            gap: 10px;
+        }
+        .milestone-year {
+            color: #E8B923;
+            font-weight: 700;
+            min-width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>Arab Names & Black Cultural History</h1>
+        <p class="subtitle">
+            Indexed to 1980 = 100 | Selected Names: Jamal, Aaliyah, Khadijah<br>
+            Historical markers show key moments in Black Muslim/Arab identity adoption
+        </p>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-line" style="background: #E8B923;"></div>
+                <span>Jamal (male)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line" style="background: #3dd9eb;"></div>
+                <span>Aaliyah (female)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line" style="background: #a855f7;"></div>
+                <span>Khadijah (female)</span>
+            </div>
+        </div>
+        
+        <div class="chart-wrapper">
+            <canvas id="combinedChart"></canvas>
+        </div>
+        
+        <div class="milestones">
+            <h3>Historical Context Markers</h3>
+            <div class="milestone-list">
+                <div class="milestone-item">
+                    <span class="milestone-year">1964</span>
+                    <span>Muhammad Ali name change (Cassius Clay rejected)</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">1971</span>
+                    <span>Kareem Abdul-Jabbar converts (Lew Alcindor)</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">1987</span>
+                    <span>A Different World debuts (Kadeem, Jasmine)</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">1989</span>
+                    <span>Queen Latifah breakthrough + Kareem retires</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">1993</span>
+                    <span>Living Single debuts (Khadijah character)</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">1994</span>
+                    <span>Aaliyah "Age Ain't Nothing But a Number" album</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">2001</span>
+                    <span>Aaliyah dies in plane crash (posthumous surge begins)</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-year">2012</span>
+                    <span>Aaliyah name reaches peak (141× from 1980)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+        
+        const jamal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7.7, 0, 0, 0, 7.7, 61.5, 7.7, 0, 15.4, 15.4, 100, 100, 69.2, 107.7, 92.3, 69.2, 138.5, 138.5, 169.2, 161.5, 276.9, 338.5, 446.2, 538.5, 9461.5, 4861.5, 4138.5, 3761.5, 3661.5, 3053.8, 3361.5, 3153.8, 2900.0, 2746.2, 2430.8, 2238.5, 2023.1, 1938.5, 1900.0, 1815.4, 1715.4, 1600.0, 1492.3, 1415.4, 1330.8, 1246.2, 1123.1, 1046.2, 915.4, 907.7];
+        
+        const aaliyah = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 46.2, 102.6, 117.9, 97.4, 100.0, 71.8, 71.8, 51.3, 53.8, 25.6, 46.2, 35.9, 43.6, 35.9, 30.8, 38.5, 64.1, 56.4, 3720.5, 3217.9, 2130.8, 4459.0, 3587.2, 2789.7, 3835.9, 8594.9, 12251.3, 9417.9, 8951.3, 8866.7, 9600.0, 10148.7, 10361.5, 11212.8, 11969.2, 13130.8, 14128.2, 13425.6, 12538.5, 12476.9, 11907.7, 10720.5, 9825.6, 9323.1];
+
+        const khadijah = [0.0, 0.0, 7.5, 14.9, 14.9, 11.9, 7.5, 14.9, 11.9, 26.9, 28.4, 29.9, 35.8, 56.7, 41.8, 49.3, 56.7, 89.6, 107.5, 113.4, 100.0, 103.0, 83.6, 88.1, 85.1, 97.0, 114.9, 103.0, 113.4, 114.9, 149.3, 144.8, 237.3, 649.3, 2410.4, 653.7, 389.6, 295.5, 280.6, 189.6, 155.2, 140.3, 141.8, 159.7, 132.8, 114.9, 88.1, 92.5, 113.4, 109.0, 120.9, 141.8, 125.4, 159.7, 162.7, 159.7, 206.0, 195.5, 203.0, 194.0];
+        
+        const ctx = document.getElementById('combinedChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Jamal (male)',
+                        data: jamal,
+                        borderColor: '#E8B923',
+                        backgroundColor: 'rgba(232, 185, 35, 0.05)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Aaliyah (female)',
+                        data: aaliyah,
+                        borderColor: '#3dd9eb',
+                        backgroundColor: 'rgba(61, 217, 235, 0.05)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Khadijah (female)',
+                        data: khadijah,
+                        borderColor: '#a855f7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.05)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {
+                        annotations: {
+                            ali1964: {
+                                type: 'line',
+                                xMin: 1964,
+                                xMax: 1964,
+                                borderColor: '#E8B923',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1964 Ali',
+                                    position: 'start',
+                                    color: '#E8B923',
+                                    font: { size: 9 }
+                                }
+                            },
+                            kareem1971: {
+                                type: 'line',
+                                xMin: 1971,
+                                xMax: 1971,
+                                borderColor: '#a855f7',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1971 Kareem',
+                                    position: 'start',
+                                    color: '#a855f7',
+                                    font: { size: 9 }
+                                }
+                            },
+                            tv1987: {
+                                type: 'line',
+                                xMin: 1987,
+                                xMax: 1987,
+                                borderColor: '#3dd9eb',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1987 ADW',
+                                    position: 'start',
+                                    color: '#3dd9eb',
+                                    font: { size: 9 }
+                                }
+                            },
+                            aaliyahdeath: {
+                                type: 'line',
+                                xMin: 2001,
+                                xMax: 2001,
+                                borderColor: '#ef4444',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '2001 Aaliyah dies',
+                                    position: 'start',
+                                    color: '#ef4444',
+                                    font: { size: 9 }
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#555' },
+                        grid: { color: '#1a1a1a' },
+                        title: {
+                            display: true,
+                            text: 'Index (1980 = 100)',
+                            color: '#888'
+                        }
+                    },
+                    x: {
+                        ticks: { color: '#555', maxTicksLimit: 12 },
+                        grid: { color: '#151515' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

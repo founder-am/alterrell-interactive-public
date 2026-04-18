@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariah - Option 1: Classic Obsidian</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 60px 40px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .name-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #E8B923;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #888888;
+            font-weight: 400;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-box {
+            background: #111111;
+            border: 1px solid #222222;
+            padding: 24px;
+            border-radius: 4px;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #E8B923;
+        }
+        
+        .chart-container {
+            background: #111111;
+            border: 1px solid #222222;
+            padding: 40px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        
+        .branding {
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        .brand-text {
+            font-size: 0.85rem;
+            color: #666666;
+            font-weight: 500;
+        }
+        
+        .brand-name {
+            color: #E8B923;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name-title">MARIAH</h1>
+            <p class="subtitle">Name popularity 1960–2019 | Music</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-label">Pre-Debut Avg</div>
+                <div class="stat-value">220</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Peak (1996)</div>
+                <div class="stat-value">5,446</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Total</div>
+                <div class="stat-value">108K</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Increase</div>
+                <div class="stat-value">25x</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="mariahChart"></canvas>
+        </div>
+        
+        <div class="branding">
+            <span class="brand-text">Data & Analysis: <span class="brand-name">obsidian futures</span></span>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            years: [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            counts: [26, 33, 14, 22, 11, 5, 12, 19, 14, 13, 5, 6, 11, 61, 135, 118, 156, 190, 299, 289, 305, 386, 322, 361, 335, 311, 342, 272, 437, 424, 399, 1103, 5192, 4711, 4092, 4750, 5446, 4803, 5085, 4646, 4104, 3585, 2670, 3073, 2981, 3841, 4073, 3705, 4035, 3599, 3109, 2990, 2896, 2764, 2402, 2111, 1924, 1611, 1423, 1180]
+        };
+        
+        const ctx = document.getElementById('mariahChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [{
+                    label: 'Babies Named Mariah',
+                    data: data.counts,
+                    borderColor: '#E8B923',
+                    backgroundColor: 'rgba(232, 185, 35, 0.1)',
+                    borderWidth: 2.5,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 2.5,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#666666',
+                            font: {
+                                size: 11
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: '#222222',
+                            drawTicks: false
+                        }
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#666666',
+                            font: {
+                                size: 11
+                            },
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12
+                        },
+                        grid: {
+                            color: '#1a1a1a',
+                            drawTicks: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Add vertical line for debut (1990)
+        const debutYear = 1990;
+        const debutIndex = data.years.indexOf(debutYear);
+        
+        Chart.register({
+            id: 'debutLine',
+            afterDatasetsDraw: function(chart) {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y;
+                const x = xAxis.getPixelForValue(debutYear);
+                
+                ctx.save();
+                ctx.strokeStyle = '#E8B923';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(x, yAxis.top);
+                ctx.lineTo(x, yAxis.bottom);
+                ctx.stroke();
+                
+                // Label
+                ctx.fillStyle = '#E8B923';
+                ctx.font = '11px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('1990 Debut', x, yAxis.top - 10);
+                ctx.restore();
+            }
+        });
+    </script>
+</body>
+</html>

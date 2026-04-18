@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Name Was Always Yours — What's in a Name · Obsidian Futures</title>
+  <meta name="description" content="Black Americans were stripped of the naming infrastructure other cultures take for granted. The first name became the site of reclamation. Here's why that matters.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="The Name Was Always Yours — What's in a Name · Obsidian Futures">
+  <meta property="og:description" content="Black Americans were stripped of the naming infrastructure other cultures take for granted. The first name became the site of reclamation. Here's why that matters.">
+  <meta property="og:url" content="https://interactive.alterrell.com/what-in-a-name/part-0/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/part0.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="The Name Was Always Yours — What's in a Name · Obsidian Futures">
+  <meta name="twitter:description" content="Black Americans were stripped of the naming infrastructure other cultures take for granted. The first name became the site of reclamation. Here's why that matters.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/part0.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../alterrell-interactive.css">
+
+  <style>
+    /* ── OBSIDIAN FUTURES COLOR TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #111118;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.18);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.08);
+      --of-indigo:    #3d2480;
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+
+    .ai-tabs {
+      background: #0d0d18;
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .ai-tab { color: var(--of-muted); }
+    .ai-tab:hover { color: var(--of-body); }
+    .ai-tab.active {
+      color: var(--of-gold);
+      border-bottom-color: var(--of-gold);
+    }
+
+    /* ── HERO ── */
+    .win-hero {
+      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .win-hero-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .win-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.0;
+      color: rgba(248,246,241,0.96);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .win-hero-dek {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--of-muted);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* ── JOURNEY BLOCK ── */
+    .win-journey {
+      background: var(--of-card);
+      border-bottom: 1px solid var(--of-border);
+      padding: var(--space-sm) 1.25rem;
+    }
+    .win-journey-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-journey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .win-journey-item {
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      grid-template-columns: 38% 62%;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: 80px;
+    }
+    .win-journey-item:hover { background: var(--of-gold-dim); text-decoration: none; }
+    .win-journey-icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--of-border);
+      padding: 1rem 0.5rem;
+    }
+    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(232,185,35,0.2); }
+    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--of-gold); }
+    .win-journey-text-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0.875rem 1rem;
+    }
+    .win-journey-action {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--of-body);
+      line-height: 1.2;
+    }
+    .win-journey-dest {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+    }
+
+    /* ── TAB SECTIONS — critical layout ── */
+    .win-section {
+      padding: var(--space-lg) 1.25rem var(--space-xl);
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 128px); /* nav(52) + breadcrumb(32) + tabs(44) */
+    }
+    .win-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── SECTION-FLOOR NAV ── */
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0 0;
+      margin-top: auto;
+      border-top: 1px solid var(--of-border);
+      gap: 1rem;
+    }
+    .section-nav-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-decoration: none;
+      min-height: var(--touch);
+      justify-content: center;
+      transition: opacity 0.15s;
+    }
+    .section-nav-btn:hover { opacity: 0.7; text-decoration: none; }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--of-muted);
+    }
+    .section-nav-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 600;
+      color: var(--of-gold);
+    }
+    .section-nav-spacer { flex: 1; }
+
+    /* ── TYPOGRAPHY ── */
+    .win-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .win-h2 {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: rgba(248,246,241,0.96);
+      margin-bottom: 1rem;
+    }
+    .win-body {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--of-body);
+      max-width: 720px;
+    }
+    .win-body + .win-body { margin-top: 1.25rem; }
+    .win-body strong { color: rgba(248,246,241,0.96); font-weight: 600; }
+
+    /* ── PULL QUOTE ── */
+    .win-pullquote {
+      border-left: 3px solid var(--of-gold);
+      padding: 1rem 1.5rem;
+      margin: var(--space-md) 0;
+      background: rgba(232,185,35,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      max-width: 680px;
+    }
+    .win-pullquote-text {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(248,246,241,0.9);
+      line-height: var(--leading-snug);
+    }
+
+    /* ── SOURCES ── */
+    .win-methodology-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: var(--space-md);
+      padding: 1rem 1.25rem;
+      background: var(--of-card);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+    }
+    .win-sources-list {
+      list-style: none;
+      counter-reset: sources;
+      max-width: 720px;
+    }
+    .win-sources-list li {
+      counter-increment: sources;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--of-muted);
+      line-height: 1.7;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--of-border);
+      display: flex;
+      gap: 1rem;
+    }
+    .win-sources-list li::before {
+      content: counter(sources, decimal-leading-zero);
+      color: rgba(232,185,35,0.3);
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    /* ── SHARE BLOCK ── */
+    .share-block { background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
+    .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 0.4rem; }
+    .share-block-nudge { font-family: var(--font-body); font-style: italic; font-size: var(--text-small); color: var(--of-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .share-block-btns { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 0.875rem; }
+    .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); min-height: var(--touch); text-decoration: none; cursor: pointer; transition: opacity 0.15s; border: none; }
+    .share-btn:hover { opacity: 0.82; text-decoration: none; }
+    .share-btn--outline { background: transparent; border: 1.5px solid var(--of-gold); color: var(--of-gold); }
+    .share-btn--filled { background: var(--of-gold); color: #111118; font-weight: 600; }
+    .share-block-substack { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); }
+    .share-block-substack a { color: var(--of-gold); }
+
+    /* ── FOOTER ── */
+    .win-footer {
+      background: #0a0a0a;
+      padding: var(--space-xl) 1.25rem var(--space-md);
+      border-top: 1px solid var(--of-border);
+    }
+    .win-footer-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-footer-brand {
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-wordmark {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3d3a55;
+      margin-bottom: 0.35rem;
+    }
+    .win-footer-wordmark span { color: var(--of-gold); }
+    .win-footer-tagline {
+      font-family: var(--font-editorial);
+      font-size: 1rem;
+      font-style: italic;
+      color: #4a465e;
+      line-height: 1.5;
+    }
+    .win-footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .win-footer-link {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      text-decoration: none;
+      min-height: var(--touch);
+      display: flex;
+      align-items: center;
+      transition: color 0.15s;
+    }
+    .win-footer-link:hover { color: #888; text-decoration: none; }
+    .win-footer-link--kofi {
+      color: var(--of-gold);
+      border: 1px solid rgba(232,185,35,0.3);
+      padding: 0.4rem 0.75rem;
+      border-radius: 100px;
+    }
+    .win-footer-link--kofi:hover { color: var(--of-gold); border-color: var(--of-gold); }
+    .win-footer-methodology {
+      margin-bottom: var(--space-md);
+    }
+    .win-footer-methodology summary {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: #4a465e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: var(--touch);
+      user-select: none;
+    }
+    .win-footer-methodology summary::-webkit-details-marker { display: none; }
+    .win-footer-methodology summary::before {
+      content: '+';
+      font-family: var(--font-mono);
+      color: var(--of-gold);
+      font-size: 0.9rem;
+    }
+    details[open] .win-footer-methodology summary::before { content: '−'; }
+    .win-footer-methodology-body {
+      padding: 1rem 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 0.5rem;
+    }
+    .win-footer-methodology-note {
+      font-size: var(--text-small);
+      color: #4a465e;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .win-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .win-footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: #222;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .win-journey-grid { grid-template-columns: 1fr; }
+      .section-nav { flex-wrap: wrap; gap: 0.5rem; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span style="color:#3d2480;">Obsidian Futures</span>
+  <span class="ai-breadcrumb-sep">›</span>
+  <a href="/what-in-a-name/">What's in a Name</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Part 0</span>
+</div>
+
+<!-- HERO -->
+<header class="win-hero" role="banner">
+  <div class="win-hero-inner">
+    <span class="win-hero-eyebrow">✦ Obsidian Futures · What's in a Name · Part 0</span>
+    <h1 class="win-hero-headline">The Name Was Always Yours</h1>
+    <p class="win-hero-dek">Black Americans were stripped of the naming infrastructure other cultures take for granted. The first name became the site of reclamation. Here's why that matters — before the data.</p>
+  </div>
+</header>
+
+<!-- JOURNEY BLOCK -->
+<section class="win-journey" aria-label="Follow the platform">
+  <div class="win-journey-inner">
+    <div class="win-journey-grid">
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Watch on YouTube">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">▶</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Watch</span>
+          <span class="win-journey-dest">YouTube →</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-journey-item" aria-label="Read on Substack">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">✦</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Read</span>
+          <span class="win-journey-dest">Substack →</span>
+        </div>
+      </a>
+      <a href="/" class="win-journey-item" aria-label="All pieces">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">◎</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">All Pieces</span>
+          <span class="win-journey-dest">Hub →</span>
+        </div>
+      </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">$</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Back this work</span>
+          <span class="win-journey-dest">Ko-fi →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAB BAR -->
+<nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" data-tab="1" data-target="#tab-leash" role="tab">The Leash With Syllables</button>
+  <button class="ai-tab" data-tab="2" data-target="#tab-lastname" role="tab">The Last Name Problem</button>
+  <button class="ai-tab" data-tab="3" data-target="#tab-firstname" role="tab">So the First Name Became the Work</button>
+  <button class="ai-tab" data-tab="4" data-target="#tab-data" role="tab">What the Data Can and Cannot Tell Us</button>
+  <button class="ai-tab" data-tab="5" data-target="#tab-about" role="tab">About This Series</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     TAB 1 — THE LEASH WITH SYLLABLES
+══════════════════════════════════════ -->
+<section id="tab-leash" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">The Leash With Syllables · Part 1</span>
+    <h2 class="win-h2">There is a scene in Roots that has lived in Black American households for nearly fifty years.</h2>
+
+    <p class="win-body">A man named Kunta Kinte is beaten — methodically, repeatedly — until he says a different name. Toby. The enslavers needed him to accept the name because the name was the point. Not just identification. Ownership. A name given by someone else, for someone else's purposes, is a leash with syllables.</p>
+
+    <p class="win-body">My mother told me about that scene before I ever watched it. Most Black American children hear it the same way — not as history lesson but as inheritance. This happened to us. This is why names matter in our family. This is why we say them carefully.</p>
+
+    <p class="win-body">I am Alterrell Mills. I know exactly what one of those names means and almost nothing about where the other one came from.</p>
+
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <a href="#tab-lastname" class="section-nav-btn next" data-nav-to="2">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">The Last Name Problem</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 2 — THE LAST NAME PROBLEM
+══════════════════════════════════════ -->
+<section id="tab-lastname" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">The Last Name Problem · Part 2</span>
+    <h2 class="win-h2">Mills is English. It does not point to my place or my people.</h2>
+
+    <p class="win-body">Mills probably refers to someone who worked at or lived near a mill — a geographical surname, pointing to a place or an occupation. But not my place. Not my people's occupation.</p>
+
+    <p class="win-body">At Harvard Business School I sat in a first-year discussion group with two other people named Mills. One came from a family whose name is literally on chocolate sold globally. For them, Mills is a lineage. A provenance. A thing that points somewhere specific and says: we built this.</p>
+
+    <p class="win-body">For me, Mills points to whoever owned my ancestors. That is the most honest thing I can say about it.</p>
+
+    <p class="win-body">This is not unique to me. It is the condition of most Black Americans whose families were enslaved on American soil. Denzel Washington may share a last name with George Washington — and there is likely a reason for that, and it is not a reason that connects him to the first president as kin.</p>
+
+    <p class="win-body">You cannot do with a name like that what an Italian American can do with a name pointing to a specific village in Calabria. You cannot do what an Icelander can do with a surname built from their father's first name — Eriksson, Björnsdóttir — a naming tradition that encodes parentage into identity. You cannot do what someone with a West African family name can do, tracing lineage through names that have been continuous for centuries, that say not just who you are but whose you are and where you belong.</p>
+
+    <p class="win-body">In Denmark, you cannot name your child whatever you want — there is an approved list. Germany, Japan, Iceland, Sweden, Portugal, Morocco, Argentina all have formal or informal approval systems. The implicit standard in every case is the dominant culture's naming tradition. What counts as acceptable is what has always been acceptable to the people writing the rules.</p>
+
+    <p class="win-body">The last name, for many Black Americans, is a locked door. The record behind it belongs to someone else.</p>
+
+    <div class="win-pullquote">
+      <div class="win-pullquote-text">"You cannot trace a name like Mills back to a region, a tribe, a lineage. It traces back to ownership. That is a different kind of inheritance."</div>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-leash" class="section-nav-btn" data-nav-to="1">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">The Leash With Syllables</span>
+      </a>
+      <a href="#tab-firstname" class="section-nav-btn next" data-nav-to="3">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">So the First Name Became the Work</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 3 — SO THE FIRST NAME BECAME THE WORK
+══════════════════════════════════════ -->
+<section id="tab-firstname" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">So the First Name Became the Work · Part 3</span>
+    <h2 class="win-h2">When you cannot build lineage through the last name, you build it through the first.</h2>
+
+    <p class="win-body">You reach for something that points somewhere — to a language, a faith, a cultural tradition, an aspiration, a person you want your child to become. You coin something entirely new, something that has never existed before and therefore belongs to your child first, free of any prior owner.</p>
+
+    <p class="win-body">Muhammad Ali did not keep Cassius Clay. The name his enslaved ancestors were given by a Kentucky landowner was not, in his judgment, his to keep. He chose Muhammad Ali — Arabic, Muslim, deliberate — at personal cost, in public, in a country that was not ready for it. Kareem Abdul-Jabbar did the same. These were not casual decisions. They were acts of reclamation made legible through a name.</p>
+
+    <p class="win-body">When Black families named their daughters Latifah in 1990, or Khadijah in 1994, they were participating in the same tradition. Not all of them consciously. But the data shows the pattern. Arabic names. Muslim names. Names that pointed somewhere specific and said: we are aligned with something older and larger than what was done to us here.</p>
+
+    <p class="win-body">And when Black parents coined names that had never existed before — Moesha, Jaleesa, Akeelah — that was its own form of authority. The creative naming that gets dismissed as unsophisticated is often the most sophisticated act in the room. It is the construction of a lineage from scratch, with the only tool available: the first name.</p>
+
+    <div class="win-pullquote">
+      <div class="win-pullquote-text">"A creative name is not an absence of tradition. It is the exercise of an authority that was supposed to have been taken permanently."</div>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-lastname" class="section-nav-btn" data-nav-to="2">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">The Last Name Problem</span>
+      </a>
+      <a href="#tab-data" class="section-nav-btn next" data-nav-to="4">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">What the Data Can and Cannot Tell Us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 4 — WHAT THE DATA CAN AND CANNOT TELL US
+══════════════════════════════════════ -->
+<section id="tab-data" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">What the Data Can and Cannot Tell Us · Part 4</span>
+    <h2 class="win-h2">The Social Security Administration records what parents chose. It does not record why.</h2>
+
+    <p class="win-body">The SSA has published baby name counts since 1880 — every name given to at least five children per year in the United States. That archive is a quiet record of cultural permission. Of which names America decided were safe to give a child, and when.</p>
+
+    <p class="win-body">What it cannot tell you is intention. When Jasmine spiked in 1992, we cannot know from SSA data alone how much came from Jasmine Guy on A Different World and how much came from Princess Jasmine in Aladdin, which released the same year. The data is directional. The intention belongs to the parents.</p>
+
+    <p class="win-body">This series does not claim otherwise. What we can measure is that names move — that something in the culture shifts, and the shift shows up in what parents choose to give their children. And in that movement, if you look carefully, you can see people exercising the only naming authority that was never fully taken from them.</p>
+
+    <p class="win-body">The résumé callback studies this series documents show that same authority gets penalized in the labor market. White-sounding names receive 50% more callbacks than Black-sounding names on identical résumés. That gap has not changed since 1989. The name that is an act of reclamation is also, in the American labor market, a liability.</p>
+
+    <p class="win-body">That tension — between naming as freedom and naming as risk — is what this series is about.</p>
+
+    <div class="win-pullquote">
+      <div class="win-pullquote-text">"It's only ghetto until you're famous. The data agrees. It just also shows you how long that takes."</div>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-firstname" class="section-nav-btn" data-nav-to="3">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">So the First Name Became the Work</span>
+      </a>
+      <a href="#tab-about" class="section-nav-btn next" data-nav-to="5">
+        <span class="section-nav-direction">Next →</span>
+        <span class="section-nav-label">About This Series</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 5 — ABOUT THIS SERIES
+══════════════════════════════════════ -->
+<section id="tab-about" class="win-section">
+  <div class="win-inner">
+    <span class="win-eyebrow">About This Series · Part 5</span>
+    <h2 class="win-h2">What's in a Name is an Obsidian Futures data series.</h2>
+
+    <p class="win-body">Each episode uses Social Security Administration name frequency data to track how names move in response to cultural events — fame, representation, reclamation, and sometimes nothing we can pin down at all.</p>
+
+    <p class="win-body">The series does not argue that any naming choice is right or wrong. It argues that naming choices are never neutral — that they happen inside systems of race, class, visibility, and history that shape which names feel possible and which feel risky.</p>
+
+    <p class="win-body"><strong>Episodes:</strong></p>
+    <p class="win-body">Part 0 — The Name Was Always Yours (this piece): Context and argument<br>
+    Part 1 — The Fame Effect (live): Queen Latifah, Whitney Houston, Mariah Carey<br>
+    Part 2 — The Living Room (coming): Sitcoms, character names, Black community authority<br>
+    Part 3 — Black Classics (coming): Names that moved without a single celebrity behind them</p>
+
+    <p class="win-body"><strong>Data source:</strong> Social Security Administration, Baby Names from Social Security Card Applications, National Data. ssa.gov/oact/babynames/limits.html</p>
+
+    <p class="win-body"><strong>Methodology note:</strong> SSA data records names given to at least 5 babies per year. Data shown covers 1960–2019 unless otherwise noted. All counts reflect US births registered with Social Security. The data cannot record parental intent, regional variation within years, or names given to fewer than 5 children.</p>
+
+    <!-- SHARE BLOCK -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">Share what resonates — copy the link or post directly.</p>
+      <div class="share-block-btns">
+        <button class="share-btn share-btn--outline" id="part0-copy-btn" onclick="(function(btn){navigator.clipboard.writeText(window.location.href).then(function(){btn.textContent='Copied ✓';setTimeout(function(){btn.innerHTML='<span>◎</span> Copy link';},2000)});})(this)">
+          <span>◎</span> Copy link
+        </button>
+        <a href="https://twitter.com/intent/tweet?text=Black+Americans+were+stripped+of+the+naming+infrastructure+other+cultures+take+for+granted.+The+first+name+became+the+site+of+reclamation.&url=https%3A%2F%2Finteractive.alterrell.com%2Fwhat-in-a-name%2Fpart-0%2F&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline">
+          <span>✕</span> Share on X
+        </a>
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="share-btn share-btn--filled">
+          <span>$</span> Back this work
+        </a>
+      </div>
+      <p class="share-block-substack">Get early access to every episode → <a href="https://alterrell.substack.com/" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+    </div>
+
+    <span class="win-eyebrow" style="margin-top: var(--space-md);">Sources</span>
+
+    <ol class="win-sources-list">
+      <li>Social Security Administration. Baby Names from Social Security Card Applications — National Data. ssa.gov/oact/babynames/limits.html</li>
+      <li>Haley, A. (1976). <em>Roots: The Saga of an American Family.</em></li>
+      <li>Roots (TV miniseries, 1977 and 2016 remake).</li>
+      <li>Bertrand, M. &amp; Mullainathan, S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? <em>American Economic Review</em>, 94(4), 991–1013.</li>
+      <li>Quillian, L. et al. (2017). Meta-analysis of field experiments shows no change in racial discrimination in hiring over time. <em>PNAS</em>, 114(41).</li>
+      <li>Statistics Iceland — Icelandic naming conventions and patronymic/matronymic system.</li>
+      <li>Gesellschaft für deutsche Sprache — German name approval regulations.</li>
+    </ol>
+
+    <div class="section-nav">
+      <a href="#tab-data" class="section-nav-btn" data-nav-to="4">
+        <span class="section-nav-direction">← Previous</span>
+        <span class="section-nav-label">What the Data Can and Cannot Tell Us</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="win-footer" role="contentinfo">
+  <div class="win-footer-inner">
+    <div class="win-footer-brand">
+      <div class="win-footer-wordmark"><span>Obsidian Futures</span> · Alterrell Interactive</div>
+      <div class="win-footer-tagline">The data was always there — now it's yours.</div>
+    </div>
+
+    <div class="win-footer-links">
+      <a href="/" class="win-footer-link">← All Projects</a>
+      <a href="/what-in-a-name/" class="win-footer-link">← Part 1: The Fame Effect</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">$ Back this work</a>
+      <a href="https://alterrell.substack.com/" target="_blank" rel="noopener" class="win-footer-link">Substack</a>
+      <a href="https://www.youtube.com/@Alterrell" target="_blank" rel="noopener" class="win-footer-link">YouTube</a>
+    </div>
+
+    <details class="win-footer-methodology">
+      <summary>Methodology &amp; Data Notes</summary>
+      <div class="win-footer-methodology-body">
+        <p class="win-footer-methodology-note">SSA data records names given to at least 5 babies per year in the United States. Data covers 1960–2019 unless otherwise noted. The data cannot record parental intent, regional variation within years, or names given to fewer than 5 children.</p>
+      </div>
+    </details>
+
+    <div class="win-footer-bottom">
+      <span class="win-footer-copy">© 2026 · interactive.alterrell.com · Data as Dignity</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('.ai-tab');
+  const tabBar = document.querySelector('.ai-tabs');
+  const sections = [];
+
+  tabs.forEach(tab => {
+    const target = document.querySelector(tab.dataset.target);
+    if (target) sections.push({ tab, target });
+  });
+
+  const navOffset = 52 + 32 + 44;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.target);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('[data-nav-to]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const tabNum = btn.dataset.navTo;
+      const targetTab = document.querySelector(`.ai-tab[data-tab="${tabNum}"]`);
+      if (targetTab) targetTab.click();
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sections.forEach(s => s.tab.classList.remove('active'));
+        const active = sections.find(s => s.target === entry.target);
+        if (active) {
+          active.tab.classList.add('active');
+          active.tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: `-${navOffset}px 0px -60% 0px`, threshold: 0 });
+
+  sections.forEach(s => observer.observe(s.target));
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+})();
+</script>
+
+</body>
+</html>

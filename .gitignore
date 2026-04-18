@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment
+.env
+.env.local
+
+# Node (if ever used)
+node_modules/
+npm-debug.log*
+
+# Large data files (raw SSA data, CSVs)
+_data/**/*.txt
+_data/**/*.csv
+_data/naming/raw/
+_data/naming/*.csv
+_data/naming/**/*.csv
+
+# Keep markdown and HTML in _data tracked
+!_data/**/*.md
+!_data/**/*.html

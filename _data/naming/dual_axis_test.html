@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Axis Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background: #000000;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .chart-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-wrapper">
+        <canvas id="dualAxisChart"></canvas>
+    </div>
+
+    <script>
+        const data = {
+            years: [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            jasmine: [33, 25, 31, 39, 51, 72, 95, 152, 192, 312, 472, 662, 898, 1220, 1596, 1914, 2165, 2392, 2576, 2872, 3211, 3651, 3870, 4135, 4386, 4634, 4932, 5199, 5932, 6738, 7690, 9196, 11156, 12063, 11536, 9976, 8609, 7494, 6681, 5969, 5308, 4770, 4335, 4077, 3863, 3645, 3361, 3150, 2921, 2734, 2585, 2461, 2320, 2251, 2217, 2274, 2283, 2235, 2176, 2092],
+            whitley: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 0, 7, 6, 5, 12, 508, 452, 424, 420, 352, 309, 231, 154, 131, 83, 63, 42, 35, 28, 21, 13, 16, 11, 13, 10, 5, 6, 8, 0, 5, 0, 0, 0, 0, 0, 0, 0]
+        };
+        
+        // Markers for key years
+        const jasmineRadius = new Array(60).fill(0);
+        const whitleyRadius = new Array(60).fill(0);
+        const jasmineBorder = new Array(60).fill('transparent');
+        const whitleyBorder = new Array(60).fill('transparent');
+        const jasmineBorderWidth = new Array(60).fill(0);
+        const whitleyBorderWidth = new Array(60).fill(0);
+        
+        // Mark 1987, 1991, 1993
+        [27, 31, 33].forEach(idx => {
+            jasmineRadius[idx] = 10;
+            jasmineBorder[idx] = '#E8B923';
+            jasmineBorderWidth[idx] = 3;
+            
+            whitleyRadius[idx] = 10;
+            whitleyBorder[idx] = '#a855f7';
+            whitleyBorderWidth[idx] = 3;
+        });
+        
+        const ctx = document.getElementById('dualAxisChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.years,
+                datasets: [
+                    {
+                        label: 'Jasmine (actress)',
+                        data: data.jasmine,
+                        borderColor: '#E8B923',
+                        backgroundColor: 'rgba(232, 185, 35, 0.15)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.35,
+                        pointRadius: jasmineRadius,
+                        pointBackgroundColor: 'transparent',
+                        pointBorderColor: jasmineBorder,
+                        pointBorderWidth: jasmineBorderWidth,
+                        yAxisID: 'y-jasmine'
+                    },
+                    {
+                        label: 'Whitley (character)',
+                        data: data.whitley,
+                        borderColor: '#a855f7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.35,
+                        pointRadius: whitleyRadius,
+                        pointBackgroundColor: 'transparent',
+                        pointBorderColor: whitleyBorder,
+                        pointBorderWidth: whitleyBorderWidth,
+                        yAxisID: 'y-whitley'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#cccccc',
+                            font: {
+                                size: 13
+                            },
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    'y-jasmine': {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#E8B923',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            },
+                            padding: 10
+                        },
+                        grid: {
+                            color: '#1a1a1a',
+                            drawTicks: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jasmine (actress)',
+                            color: '#E8B923',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    'y-whitley': {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#a855f7',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            },
+                            padding: 10
+                        },
+                        grid: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Whitley (character)',
+                            color: '#a855f7',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#555555',
+                            font: {
+                                size: 11
+                            },
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12,
+                            padding: 10
+                        },
+                        grid: {
+                            color: '#151515',
+                            drawTicks: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
