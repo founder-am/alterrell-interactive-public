@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Tier Over Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+      font-size: 1.2rem;
+      color: #1a1a1a;
+      margin-bottom: 0.35rem;
+      font-weight: 400;
+    }
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.78rem;
+      color: #555;
+      align-items: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-dash {
+      width: 22px;
+      height: 0;
+      border-top: 2px dashed #999;
+      flex-shrink: 0;
+    }
+    #chart {
+      width: 900px;
+      height: 480px;
+      position: relative;
+    }
+    .tooltip {
+      position: fixed;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.12s;
+      z-index: 100;
+      max-width: 220px;
+    }
+    .tooltip strong { display: block; margin-bottom: 2px; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <h1>Production Tier Over Time: Top Touring Artists 1987–2026</h1>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#E8B923;"></div>
+      Female artists
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#0a7c72;"></div>
+      Male artists
+    </div>
+    <div class="legend-item">
+      <div class="legend-dash"></div>
+      Same artist over time
+    </div>
+  </div>
+  <div id="chart"></div>
+  <div class="tooltip" id="tooltip"></div>
+
+  <script>
+    const HISTORICAL = [
+      {name:"Tina Turner",      x:1987, y:2, r:60,  gender:"female", note:"Break Every Rule Tour"},
+      {name:"Whitney Houston",  x:1994, y:2, r:75,  gender:"female", note:"The Bodyguard Tour"},
+      {name:"Mariah Carey",     x:1996, y:2, r:40,  gender:"female", note:"Daydream World Tour"},
+      {name:"Madonna",          x:1990, y:4, r:62,  gender:"female", note:"Blond Ambition Tour"},
+      {name:"Beyoncé",          x:2007, y:3, r:90,  gender:"female", note:"The Beyoncé Experience"},
+      {name:"Adele",            x:2011, y:2, r:15,  gender:"female", note:"Adele Live 2011"},
+      {name:"Adele",            x:2016, y:3, r:278, gender:"female", note:"Adele Live 2016"},
+      {name:"Beyoncé",          x:2018, y:4, r:20,  gender:"female", note:"Homecoming"},
+      {name:"Dua Lipa",         x:2022, y:3, r:100, gender:"female", note:"Future Nostalgia Tour"},
+      {name:"Nicki Minaj",      x:2024, y:4, r:100, gender:"female", note:"Pink Friday 2 Tour"},
+      {name:"Sabrina Carpenter",x:2025, y:4, r:77,  gender:"female", note:"Short n Sweet Tour"},
+      {name:"Bruce Springsteen",x:1988, y:2, r:55,  gender:"male",   note:"Tunnel of Love Tour"},
+      {name:"Jay-Z",            x:2001, y:1, r:30,  gender:"male",   note:"Blueprint Tour"},
+      {name:"Drake",            x:2016, y:2, r:85,  gender:"male",   note:"Summer Sixteen Tour"},
+      {name:"Ed Sheeran",       x:2017, y:1, r:432, gender:"male",   note:"Divide Tour"},
+      {name:"Drake",            x:2024, y:2, r:321, gender:"male",   note:"It's All a Blur Tour"},
+      {name:"Justin Bieber",    x:2026, y:1, r:10,  gender:"male",   note:"Coachella 2026"},
+      {name:"Michael Jackson",  x:1987, y:4, r:125, gender:"male",   note:"Bad Tour — singular"}
+    ];
+
+    const TIER_LABELS = {1:"Solo/Minimal", 2:"Small Band", 3:"Dancers+Band", 4:"Full Theatrical"};
+
+    const CONNECTIONS = [
+      { name: "Adele",   gender: "female" },
+      { name: "Beyoncé", gender: "female" },
+      { name: "Drake",   gender: "male"   },
+    ];
+
+    const LABELED = new Set([
+      "Tina Turner","Michael Jackson","Madonna","Ed Sheeran","Sabrina Carpenter"
+    ]);
+    // Adele and Drake (2024) handled separately
+
+    const LABEL_OFFSETS = {
+      "Tina Turner":       { dx: 0,   dy: -16, anchor: "middle"  },
+      "Michael Jackson":   { dx: 0,   dy: -16, anchor: "middle"  },
+      "Madonna":           { dx: 0,   dy: -16, anchor: "middle"  },
+      "Ed Sheeran":        { dx: 14,  dy:   0, anchor: "start"   },
+      "Sabrina Carpenter": { dx: 0,   dy: -16, anchor: "middle"  },
+    };
+
+    const W = 900, H = 480;
+    const M = { top: 36, right: 48, bottom: 64, left: 72 };
+    const iW = W - M.left - M.right;
+    const iH = H - M.top - M.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', W).attr('height', H);
+
+    const g = svg.append('g').attr('transform', `translate(${M.left},${M.top})`);
+
+    const xScale = d3.scaleLinear().domain([1985, 2027]).range([0, iW]);
+    const yScale = d3.scaleLinear().domain([0.5, 4.5]).range([iH, 0]);
+
+    const rExtent = d3.extent(HISTORICAL, d => d.r);
+    const rScale = d3.scaleLog().domain(rExtent).range([4, 18]);
+
+    // Grid lines
+    g.append('g')
+      .attr('transform', `translate(0,${iH})`)
+      .call(d3.axisBottom(xScale)
+        .ticks(8)
+        .tickFormat(d3.format('d'))
+        .tickSize(-iH))
+      .call(ax => ax.select('.domain').remove())
+      .call(ax => ax.selectAll('.tick line').attr('stroke','#eee').attr('stroke-dasharray','3,3'))
+      .call(ax => ax.selectAll('.tick text').attr('fill','#666').attr('font-size','11px').attr('dy','1.2em'));
+
+    g.append('g')
+      .call(d3.axisLeft(yScale)
+        .tickValues([1,2,3,4])
+        .tickFormat(d => TIER_LABELS[d])
+        .tickSize(-iW))
+      .call(ax => ax.select('.domain').remove())
+      .call(ax => ax.selectAll('.tick line').attr('stroke','#eee').attr('stroke-dasharray','3,3'))
+      .call(ax => ax.selectAll('.tick text').attr('fill','#666').attr('font-size','11px'));
+
+    // Dashed connecting lines
+    CONNECTIONS.forEach(conn => {
+      const pts = HISTORICAL.filter(d => d.name === conn.name).sort((a, b) => a.x - b.x);
+      if (pts.length < 2) return;
+      for (let i = 0; i < pts.length - 1; i++) {
+        g.append('line')
+          .attr('x1', xScale(pts[i].x))
+          .attr('y1', yScale(pts[i].y))
+          .attr('x2', xScale(pts[i+1].x))
+          .attr('y2', yScale(pts[i+1].y))
+          .attr('stroke', conn.gender === 'female' ? '#E8B923' : '#0a7c72')
+          .attr('stroke-width', 1.5)
+          .attr('stroke-dasharray', '5,4')
+          .attr('opacity', 0.7);
+      }
+    });
+
+    // Tooltip
+    const tip = document.getElementById('tooltip');
+    function showTip(e, d) {
+      tip.innerHTML = `<strong>${d.name}</strong>${d.x}<br>${d.note}`;
+      tip.style.opacity = 1;
+      moveTip(e);
+    }
+    function moveTip(e) {
+      tip.style.left = (e.clientX + 14) + 'px';
+      tip.style.top  = (e.clientY - 10) + 'px';
+    }
+    function hideTip() { tip.style.opacity = 0; }
+
+    // Dots
+    g.selectAll('.hdot')
+      .data(HISTORICAL)
+      .join('circle')
+        .attr('class', 'hdot')
+        .attr('cx', d => xScale(d.x))
+        .attr('cy', d => yScale(d.y))
+        .attr('r',  d => rScale(d.r))
+        .attr('fill', d => d.gender === 'female' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)')
+        .attr('stroke', d => d.gender === 'female' ? '#E8B923' : '#0a7c72')
+        .attr('stroke-width', 1.5)
+        .style('cursor', 'pointer')
+        .on('mouseover', (e, d) => {
+          d3.select(e.currentTarget)
+            .attr('fill', d.gender === 'female' ? 'rgba(232,185,35,0.85)' : 'rgba(10,124,114,0.85)');
+          showTip(e, d);
+        })
+        .on('mousemove', moveTip)
+        .on('mouseout', (e, d) => {
+          d3.select(e.currentTarget)
+            .attr('fill', d.gender === 'female' ? 'rgba(232,185,35,0.55)' : 'rgba(10,124,114,0.55)');
+          hideTip();
+        });
+
+    // Standard labels
+    HISTORICAL.filter(d => LABELED.has(d.name)).forEach(d => {
+      const off = LABEL_OFFSETS[d.name] || { dx: 0, dy: -14, anchor: 'middle' };
+      g.append('text')
+        .attr('x', xScale(d.x) + off.dx)
+        .attr('y', yScale(d.y) + off.dy)
+        .attr('text-anchor', off.anchor)
+        .attr('fill', '#1a1a1a')
+        .attr('font-size', '10px')
+        .attr('font-weight', '600')
+        .text(d.name);
+    });
+
+    // Adele labels (both points)
+    const adelePoints = HISTORICAL.filter(d => d.name === 'Adele').sort((a,b) => a.x - b.x);
+    adelePoints.forEach((d, i) => {
+      g.append('text')
+        .attr('x', xScale(d.x))
+        .attr('y', yScale(d.y) - 14)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#1a1a1a')
+        .attr('font-size', '10px')
+        .attr('font-weight', '600')
+        .text(`Adele ${d.x}`);
+    });
+
+    // Drake 2024 label only
+    const drake2024 = HISTORICAL.find(d => d.name === 'Drake' && d.x === 2024);
+    if (drake2024) {
+      g.append('text')
+        .attr('x', xScale(drake2024.x))
+        .attr('y', yScale(drake2024.y) - 14)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#1a1a1a')
+        .attr('font-size', '10px')
+        .attr('font-weight', '600')
+        .text('Drake');
+    }
+
+    // Annotations
+    // Between Adele 2011 and 2016
+    const a11 = HISTORICAL.find(d => d.name === 'Adele' && d.x === 2011);
+    const a16 = HISTORICAL.find(d => d.name === 'Adele' && d.x === 2016);
+    if (a11 && a16) {
+      const mx = (xScale(a11.x) + xScale(a16.x)) / 2;
+      const my = (yScale(a11.y) + yScale(a16.y)) / 2;
+      g.append('text')
+        .attr('x', mx)
+        .attr('y', my + 22)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#E8B923')
+        .attr('font-size', '9.5px')
+        .attr('font-style', 'italic')
+        .text('Same voice. 18x revenue.');
+    }
+
+    // Between Drake 2016 and 2024
+    const d16 = HISTORICAL.find(d => d.name === 'Drake' && d.x === 2016);
+    const d24 = HISTORICAL.find(d => d.name === 'Drake' && d.x === 2024);
+    if (d16 && d24) {
+      const mx = (xScale(d16.x) + xScale(d24.x)) / 2;
+      const my = (yScale(d16.y) + yScale(d24.y)) / 2;
+      g.append('text')
+        .attr('x', mx)
+        .attr('y', my + 22)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#0a7c72')
+        .attr('font-size', '9.5px')
+        .attr('font-style', 'italic')
+        .text('Same production. 4x revenue.');
+    }
+
+    // Near Michael Jackson
+    const mj = HISTORICAL.find(d => d.name === 'Michael Jackson');
+    if (mj) {
+      g.append('text')
+        .attr('x', xScale(mj.x) + 12)
+        .attr('y', yScale(mj.y) + 4)
+        .attr('text-anchor', 'start')
+        .attr('fill', '#0a7c72')
+        .attr('font-size', '9.5px')
+        .attr('font-style', 'italic')
+        .text('Singular.');
+    }
+  </script>
+</body>
+</html>

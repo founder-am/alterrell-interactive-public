@@ -326,6 +326,33 @@ One commit per logical change set to minimize Netlify deploy fees.
 6. Commit + push
 7. Netlify deploys ~30 seconds
 
+**SESSION OPENER CONFIRMATION (required format for every Claude Code session)**
+
+Before touching any file, Claude Code must state the following
+out loud at the start of every session:
+
+"I have read:
+1. alterrell-interactive.css
+2. _data/DEPLOY-CHECKLIST.md
+3. _data/PLATFORM-BRIEF.md
+4. [relevant piece brief]
+5. [reference piece file]
+
+The deploy checklist requires:
+- No em dashes in copy
+- Tables and dense copy on white/paper background only — never dark
+- YouTube and Substack links: rgba(248,246,241,0.88) font-weight 500
+- Ko-fi uses $ not emoji
+- No [AMA to paste] placeholders remaining
+- Hero headline on one line at all viewports
+- Hub card in same commit as new piece
+
+I will confirm all checklist items before outputting any file."
+
+This confirmation is non-negotiable. If a Claude Code session
+does not open with this confirmation, AMA should restart the
+session and paste the opener prompt again.
+
 **Reference files Claude Code always reads:**
 - alterrell-interactive.css
 - fast-food-sodium/index.html (tab architecture reference)
