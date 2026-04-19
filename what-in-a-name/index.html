@@ -702,6 +702,11 @@
     .share-block-substack a { color: var(--of-gold); }
     /* ── CHART SCREENSHOT NUDGE ── */
     .chart-screenshot-nudge { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.08em; color: rgba(232,185,35,0.5); margin-top: 0.5rem; text-align: right; }
+    /* ── STUDY LIST ── */
+    .win-study-list { list-style: none; padding: 0; margin: var(--space-sm) 0; max-width: 720px; }
+    .win-study-list li { padding: 0.6rem 0 0.6rem 1.25rem; border-bottom: 1px solid var(--of-border); font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); color: var(--of-body); position: relative; }
+    .win-study-list li::before { content: '—'; position: absolute; left: 0; color: var(--of-gold); font-family: var(--font-mono); }
+    .win-study-list li:last-child { border-bottom: none; }
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .win-hero-stats { grid-template-columns: 1fr; }
@@ -710,6 +715,44 @@
       .win-stat-row { flex-direction: column; }
       .section-nav { flex-wrap: wrap; gap: 0.5rem; }
       .win-chart-stats { flex-direction: column; }
+    }
+
+    /* ── 1-IN-X FIGURE GRID ── */
+    .win-onein-item { margin: 1.5rem 0; }
+    .win-onein-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248,246,241,0.45);
+      margin-bottom: 0.3rem;
+    }
+    .win-onein-stat {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: #E8B923;
+      margin-bottom: 0.1rem;
+    }
+    .win-onein-ctx {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(248,246,241,0.55);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    .win-onein-figs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: flex-end;
+    }
+    .win-onein-fig-muted svg circle,
+    .win-onein-fig-muted svg path {
+      fill: rgba(248,246,241,0.25);
+    }
+    .win-onein-fig-gold svg circle,
+    .win-onein-fig-gold svg path {
+      fill: #E8B923;
     }
   </style>
 </head>
@@ -838,31 +881,19 @@
     <span class="win-eyebrow">The System · Part 2</span>
     <h2 class="win-h2">Before the fame effect, there's the penalty.</h2>
 
-    <p class="win-intro">The stakes of a name are not just social. They are economic. And they have been documented with unusual precision.</p>
+    <p class="win-body">The stakes of a name are not just social, they are economic. And it has been documented.</p>
 
-    <div class="win-study">
-      <div class="win-study-label">The landmark study</div>
-      <div class="win-study-title">Are Emily and Greg More Employable than Lakisha and Jamal? — Bertrand &amp; Mullainathan, NBER, 2003</div>
-      <div class="win-study-stats">
-        <span class="win-study-stat">5,000+ résumés sent</span>
-        <span class="win-study-stat">50% more callbacks for white-sounding names</span>
-        <span class="win-study-stat">10 vs 15 résumés needed per callback</span>
-      </div>
-      <p class="win-study-body">Researchers sent identical résumés to over 1,300 job postings in Boston and Chicago. The only variable was the name at the top. Applicants with white-sounding names needed 10 résumés to get one callback. Those with Black-sounding names needed 15. A better résumé helped white applicants 30% more. For Black-named applicants, the improvement produced almost no difference. <strong>Federal contractors and self-described Equal Opportunity Employers discriminated equally.</strong></p>
-    </div>
+    <p class="win-body">Researchers sent identical résumés to over 1,300 job postings in Boston and Chicago. The only variable was the name at the top.</p>
 
-    <div class="win-study">
-      <div class="win-study-label">Two decades later — nothing changed</div>
-      <div class="win-study-title">Meta-analysis of field experiments, 1989–2015 — Quillian et al., PNAS, 2017</div>
-      <div class="win-study-stats">
-        <span class="win-study-stat">24 studies analyzed</span>
-        <span class="win-study-stat">36% more callbacks for white applicants on average</span>
-        <span class="win-study-stat">Zero measurable reduction in discrimination since 1989</span>
-      </div>
-      <p class="win-study-body">A 2024 study expanded the original: 83,000 fake applications to 11,000 Fortune 500 positions. The typical employer called back white-sounding applicants 9% more. The worst offenders: 24% more. <strong>Equal Opportunity Employer labels made no difference.</strong></p>
-    </div>
+    <ul class="win-study-list">
+      <li>Applicants with white-sounding names needed 10 résumés to get one callback. Those with Black-sounding names needed 15.</li>
+      <li>A better résumé helped white applicants 30% more. For Black-named applicants, improving the résumé produced almost no difference.</li>
+      <li>Federal contractors and self-described Equal Opportunity Employers discriminated equally.</li>
+    </ul>
 
-    <p class="win-body">This is the structural backdrop against which the naming data should be read. The fame effect does not eliminate this penalty. It creates a temporary override — a window where a name is too visible to be dismissed. The data shows when those windows open. And how quickly they close.</p>
+    <p class="win-body">That study was published in 2003. The 2017 follow-up analyzed 24 studies across 26 years and found no measurable reduction in discrimination since 1989. A 2024 expansion sent 83,000 fake applications to 11,000 Fortune 500 positions. The typical employer called back white-sounding applicants 9% more often.</p>
+
+    <p class="win-body">This is the backdrop against which the naming data should be read. The fame effect does not eliminate this penalty. It creates a temporary override: a window where a name is too visible to be dismissed. The data shows when those windows open and how quickly they close.</p>
 
     <div class="section-nav">
       <a href="#tab-overview" class="section-nav-btn" data-nav-to="1">
@@ -885,11 +916,9 @@
     <span class="win-eyebrow">Queen Latifah · Part 3</span>
     <h2 class="win-h2">Her music moved the name before her television career began.</h2>
 
-    <p class="win-body">Queen Latifah was inducted into the Rock and Roll Hall of Fame this week. Her stage name is Arabic — Latifah means "gentle" or "kind." It is a Muslim name, part of a deliberate tradition of cultural and spiritual reclamation running through Black American history.</p>
+    <p class="win-body">Queen Latifah was inducted into the Rock and Roll Hall of Fame this year. Her stage name is Arabic — Latifah means "gentle" or "kind." It is a Muslim name, part of a deliberate tradition of cultural and spiritual reclamation running through Black American history.</p>
 
-    <p class="win-body">Muhammad Ali changed his name in 1964. Kareem Abdul-Jabbar followed in 1971. These were not incidental decisions. They were political acts, at personal cost, in a country that was not receptive to them. Many of the most prominent Black Americans in music, sport, and culture are Muslim, or have chosen Arabic names as acts of identity and conviction. In a country that has grown more openly hostile to Islam, these names were — and remain — an act of claiming. The data shows Black communities chose them anyway.</p>
-
-    <p class="win-body" style="margin-bottom: var(--space-md);">A deeper episode on Arabic names and Black Muslim identity in America is forthcoming in this series.</p>
+    <p class="win-body">Muhammad Ali changed his name in 1964. Kareem Abdul-Jabbar followed in 1971. These were political acts, at personal cost, in a country that was not receptive to them. Many of the most prominent Black Americans in music, sport, and culture are Muslim, or have chosen Arabic names as acts of identity and conviction. In a country that has grown more openly hostile to Islam, these names were and remain an act of claiming. The data shows Black communities chose them anyway.</p>
 
     <div class="win-pullquote">
       <div class="win-pullquote-text">"It's only ghetto until you're famous."</div>
@@ -900,7 +929,7 @@
       <div class="win-chart-canvas-wrap">
         <canvas id="chartLatifah"></canvas>
       </div>
-      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
     </div>
 
     <div class="win-chart-stats">
@@ -918,7 +947,15 @@
       </div>
     </div>
 
-    <p class="win-body">The peak is modest in raw numbers. But the increase factor is 26×. That's not crossover. That's community. Black families were naming their daughters Latifah deliberately, in response to something specific they saw in her. The television show sustained the name — but she didn't need it to create the initial effect.</p>
+    <div class="win-onein-item" style="margin: 1.5rem 0;">
+      <div class="win-onein-name">LATIFAH · 1990 PEAK</div>
+      <div class="win-onein-stat">1 in 155</div>
+      <div class="win-onein-ctx">One per wedding — you would know
+  her name by the end of the night</div>
+      <div class="win-onein-figs" id="win-figs-latifah"></div>
+    </div>
+
+    <p class="win-body">The peak in the naming data is modest in raw numbers but the scale of increase is noteworthy. Increasing by a factor of 26 times shows how impactful women like Queen Latifah are. Black families were naming their daughters Latifah deliberately, in response to something specific they saw in her. The television show Living Single sustained it but she did not need it to create the initial effect.</p>
 
     <div class="section-nav">
       <a href="#tab-system" class="section-nav-btn" data-nav-to="2">
@@ -958,15 +995,22 @@
       </div>
     </div>
 
+    <div class="win-onein-item" style="margin: 1.5rem 0;">
+      <div class="win-onein-name">WHITNEY HOUSTON · 1986 PEAK</div>
+      <div class="win-onein-stat">1 in 26</div>
+      <div class="win-onein-ctx">One per classroom</div>
+      <div class="win-onein-figs" id="win-figs-whitney"></div>
+    </div>
+
     <div class="win-chart-wrap" style="height:auto;padding-bottom:1.25rem;">
       <div class="win-chart-title">Whitney — US baby name frequency, 1960–2019</div>
       <div class="win-chart-canvas-wrap">
         <canvas id="chartWhitney"></canvas>
       </div>
-      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
     </div>
 
-    <div class="win-chart-editorial">The spike is almost vertical. Her debut dropped in 1985. In 1986, 9,536 babies were named Whitney — the largest single-year peak in this entire dataset. For a brief window, naming your daughter Whitney stopped being a cultural signal and became simply what you did if you wanted a name that felt current and powerful. That's what mainstream crossover looks like. The fame becomes so total it temporarily overrides the racial coding.</div>
+    <div class="win-chart-editorial">The spike is almost vertical. Her debut dropped in 1985. In 1986, 9,536 babies were named Whitney — the largest single-year peak in this entire dataset. For a brief window, naming your daughter Whitney stopped being a cultural signal and became simply what you did if you wanted a name that felt current and powerful. That's what mainstream crossover looks like. For a brief window, Whitney was just a name. Not a Black name, not a statement. Just what you named your daughter that year if you wanted something that felt current and powerful.</div>
 
     <div class="win-chart-divider"></div>
 
@@ -987,12 +1031,19 @@
       </div>
     </div>
 
+    <div class="win-onein-item" style="margin: 1.5rem 0;">
+      <div class="win-onein-name">MARIAH CAREY · 1996 PEAK</div>
+      <div class="win-onein-stat">1 in 46</div>
+      <div class="win-onein-ctx">One school bus, every seat taken</div>
+      <div class="win-onein-figs" id="win-figs-mariah"></div>
+    </div>
+
     <div class="win-chart-wrap" style="height:auto;padding-bottom:1.25rem;">
       <div class="win-chart-title">Mariah — US baby name frequency, 1960–2019</div>
       <div class="win-chart-canvas-wrap">
         <canvas id="chartMariah"></canvas>
       </div>
-      <p class="chart-screenshot-nudge">📲 Screenshot this chart to share</p>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
     </div>
 
     <div class="win-chart-editorial">Compare to Whitney's spike and you see a different mechanism. Mariah's name climbed and stayed elevated for nearly two decades. She released albums, came back from setbacks, dominated the holidays, returned again. Every wave of cultural presence added something. The plateau is rarer than the spike — and arguably a stronger argument about durability.</div>
@@ -1031,7 +1082,13 @@
       </div>
     </div>
 
-    <p class="win-body">The structural penalty — the résumé callback gap that has not changed in 35 years — doesn't disappear for either type. It just becomes temporarily illegible. The name is too present to dismiss. What the data can't tell you is whether that visibility is permanent. The Whitney chart answers that question: it is not.</p>
+    <p class="win-body">There are seemingly two patterns. Neither cancels out the other.</p>
+
+    <p class="win-body">The first is mainstream crossover. What happened with the names Whitney and Mariah? The name becomes so culturally dominant it stops being racially coded. Based on the numbers of Black and non-Black children born in the 1990s, it would seem that the inspiration for these names were two Black women singers.</p>
+
+    <p class="win-body">The second is community authority. What happened with Latifah? In Part 2, we will go deeper with sitcom names that spread throughout the community. Although the raw numbers are smaller, the intention seems clear. Names are being claimed, not simply popularized, because the most prominent person with that name is Black.</p>
+
+    <p class="win-body">The structural penalty, the résumé callback gap that has not changed in 35 years, does not disappear for either pattern. It just becomes blurry.</p>
 
     <div class="win-teaser">
       <div class="win-teaser-label">Coming in Part 2</div>
@@ -1301,6 +1358,23 @@ buildChart('chartMariah', makeYears(1960, 60), mariahData, {
   checkTabOverflow();
   window.addEventListener('resize', checkTabOverflow);
 })();
+
+function buildFigGrid(containerId, n) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const highlight = Math.floor(Math.random() * n);
+  for (let i = 0; i < n; i++) {
+    const isGold = i === highlight;
+    const span = document.createElement('span');
+    span.className = isGold ? 'win-onein-fig-gold' : 'win-onein-fig-muted';
+    span.innerHTML = '<svg width="16" height="24" viewBox="0 0 16 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="6" r="4"/><path d="M1 23c0-3.866 3.134-7 7-7s7 3.134 7 7"/></svg>';
+    el.appendChild(span);
+  }
+}
+
+buildFigGrid('win-figs-whitney', 26);
+buildFigGrid('win-figs-mariah', 46);
+buildFigGrid('win-figs-latifah', 155);
 </script>
 
 </body>
