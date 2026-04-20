@@ -242,9 +242,12 @@
 
     /* ── CRITICAL LAYOUT — section ends at viewport bottom ── */
     .win-section {
-      display: flex;
+      display: none;
       flex-direction: column;
       min-height: calc(100vh - 128px); /* nav(52) + breadcrumb(32) + tabs(44) */
+    }
+    .win-section.active {
+      display: flex;
     }
     .win-inner {
       flex: 1;
@@ -850,7 +853,7 @@
 <!-- ══════════════════════════════════════
      TAB 1 — OVERVIEW
 ══════════════════════════════════════ -->
-<section id="tab-overview" class="win-section">
+<section id="tab-overview" class="win-section active">
   <div class="win-inner">
     <span class="win-eyebrow">Overview · Part 1</span>
     <h2 class="win-h2">I've had a complicated relationship with my own name.</h2>
@@ -1307,53 +1310,36 @@ buildChart('chartMariah', makeYears(1960, 60), mariahData, {
 (function() {
   const tabs = document.querySelectorAll('.ai-tab');
   const tabBar = document.querySelector('.ai-tabs');
-  const sections = [];
+
+  function switchTab(targetSelector) {
+    document.querySelectorAll('.win-section').forEach(s => s.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
+    const section = document.querySelector(targetSelector);
+    const tab = document.querySelector(`.ai-tab[data-target="${targetSelector}"]`);
+    if (section) section.classList.add('active');
+    if (tab) {
+      tab.classList.add('active');
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    const navTop = document.querySelector('.ai-tabs') ? document.querySelector('.ai-tabs').getBoundingClientRect().bottom + window.scrollY : 0;
+    window.scrollTo({ top: navTop, behavior: 'smooth' });
+  }
 
   tabs.forEach(tab => {
-    const target = document.querySelector(tab.dataset.target);
-    if (target) sections.push({ tab, target });
+    tab.addEventListener('click', () => switchTab(tab.dataset.target));
   });
 
-  const navOffset = 52 + 32 + 44; // nav + breadcrumb + tabbar
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = document.querySelector(tab.dataset.target);
-      if (!target) return;
-      const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 16;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-
-  // Section-floor nav buttons
   document.querySelectorAll('[data-nav-to]').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       const tabNum = btn.dataset.navTo;
       const targetTab = document.querySelector(`.ai-tab[data-tab="${tabNum}"]`);
-      if (targetTab) targetTab.click();
+      if (targetTab) switchTab(targetTab.dataset.target);
     });
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        sections.forEach(s => s.tab.classList.remove('active'));
-        const active = sections.find(s => s.target === entry.target);
-        if (active) {
-          active.tab.classList.add('active');
-          active.tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-      }
-    });
-  }, { rootMargin: `-${navOffset}px 0px -60% 0px`, threshold: 0 });
-
-  sections.forEach(s => observer.observe(s.target));
-
   function checkTabOverflow() {
-    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
-      tabBar.classList.add('no-fade');
-    }
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) tabBar.classList.add('no-fade');
   }
   checkTabOverflow();
   window.addEventListener('resize', checkTabOverflow);

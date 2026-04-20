@@ -255,6 +255,9 @@ button { cursor: pointer; font-family: var(--font-body); }
   flex-direction: column;
   min-height: calc(100vh - 128px);
 }
+.ai-section:not(.active) {
+  display: none;
+}
 .ai-section--tight {
   padding: var(--space-lg) 1.25rem;
 }
