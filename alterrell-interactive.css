@@ -160,10 +160,11 @@ button { cursor: pointer; font-family: var(--font-body); }
   line-height: 1.4;
 }
 .ai-nav-meta a {
-  color: #444;
+  color: rgba(248,246,241,0.88);
+  font-weight: 500;
   text-decoration: none;
 }
-.ai-nav-meta a:hover { color: #888; }
+.ai-nav-meta a:hover { color: rgba(248,246,241,1); }
 
 /* Breadcrumb */
 .ai-breadcrumb {
@@ -939,7 +940,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 .ai-footer-journey-name {
   font-size: var(--text-small);
   font-weight: 500;
-  color: #9896b0;
+  color: rgba(248,246,241,0.88);
 }
 .ai-footer-journey-item:hover .ai-footer-journey-name { color: var(--paper); }
 
