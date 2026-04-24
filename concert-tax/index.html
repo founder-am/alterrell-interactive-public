@@ -40,6 +40,7 @@
 
     /* ── NAV / BREADCRUMB OVERRIDES ── */
     .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-nav-meta a { color: rgba(248,246,241,0.88) !important; font-weight: 500 !important; }
     .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
     .ai-tabs { background: #0d0d18; border-bottom-color: var(--of-border); }
     .ai-tab { color: var(--of-muted); }
@@ -462,6 +463,7 @@
       margin-bottom: 0.5rem;
     }
     #ct-chart-bubble { width: 100%; }
+    #ct-chart-historical { width: 100%; }
     .ct-chart-legend {
       display: flex;
       gap: 1.5rem;
@@ -941,19 +943,73 @@
     .ct-accordion-body.open {
       display: block;
     }
+
+    /* ── DATA TABLES ── */
+    .ct-data-table {
+      margin-top: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .ct-data-table summary {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--of-teal);
+      cursor: pointer;
+      padding: 12px 0;
+      padding-left: 16px;
+      list-style: none;
+      user-select: none;
+      display: block;
+    }
+    .ct-data-table summary::-webkit-details-marker { display: none; }
+    .ct-data-table summary::marker { content: none; }
+    .ct-data-table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ct-data-table table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #0a0a12;
+      min-width: 480px;
+    }
+    .ct-data-table thead th {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(248,246,241,0.5);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      white-space: nowrap;
+    }
+    .ct-data-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ct-data-table tbody tr:last-child { border-bottom: none; }
+    .ct-data-table tbody td {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--of-body);
+      padding: 12px 16px;
+      white-space: nowrap;
+    }
+    .ct-data-table tbody tr.row--female { border-left: 3px solid #E8B923; }
+    .ct-data-table tbody tr.row--male   { border-left: 3px solid #0a7c72; }
   </style>
 </head>
-<body>
+<body class="has-breadcrumb">
 
 <!-- ── NAV ── -->
 <nav class="ai-nav" role="navigation" aria-label="Site navigation">
-  <div class="ai-nav-inner">
-    <a href="/" class="ai-nav-logo">Alterrell Interactive</a>
-    <div class="ai-nav-links">
-      <a href="https://alterrell.substack.com" class="ai-nav-link" target="_blank" rel="noopener">Substack</a>
-      <a href="https://youtube.com/@alterrell" class="ai-nav-link" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://ko-fi.com/alterrell" class="ai-nav-link ai-nav-link--cta" target="_blank" rel="noopener">$ Support</a>
-    </div>
+  <a href="/" class="ai-nav-brand">Alterrell Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://youtube.com/@alterrell" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Ko-fi</a>
   </div>
 </nav>
 
@@ -985,7 +1041,7 @@
   <div class="ct-inner">
 
     <span class="ct-eyebrow">Obsidian Futures · Concert Economics</span>
-    <h1 class="ct-hero-headline">The Hidden Concert Tax</h1>
+    <h1 class="ct-hero-headline">The Male Laziness Epidemic</h1>
     <p class="ct-subhead">Men set the ceiling for what the industry will pay. Women are bounded by that ceiling and simultaneously required to deliver more to justify their place beneath it.</p>
 
     <!-- Hero stats -->
@@ -1079,12 +1135,43 @@
     <p class="ct-body">The Profit Kings quadrant is almost entirely male. The Underchargers quadrant skews female and genre-minority. Some of the largest bubbles in the chart sit in the Underchargers quadrant.</p>
 
     <div class="ct-chart-wrap">
-      <img
-        src="/concert-tax/assets/chart-bubble.png"
-        alt="Bubble chart showing production intensity vs revenue per show for top touring artists. Gold bubbles are female artists, teal are male. The Profit Kings quadrant is almost entirely male. The Underchargers quadrant skews female."
-        style="width:100%;height:auto;display:block;border-radius:8px;">
+      <div id="ct-chart-bubble"></div>
     </div>
     <p class="ct-screenshot-nudge">Screenshot this chart to share the pattern.</p>
+    <details class="ct-data-table">
+      <summary>See the data behind this chart</summary>
+      <div class="ct-data-table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Artist</th>
+              <th>Gender</th>
+              <th>Revenue Per Show</th>
+              <th>Tour Gross (Avg / Show)</th>
+              <th>Production Intensity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>72% est.</td><td>65,000</td><td>35 on-stage</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>48% est.</td><td>50,000</td><td>55 on-stage</td></tr>
+            <tr class="row--female"><td>Ariana Grande</td><td>Female</td><td>52% est.</td><td>22,000</td><td>28 on-stage</td></tr>
+            <tr class="row--female"><td>Sabrina Carpenter</td><td>Female</td><td>60% est.</td><td>18,000</td><td>22 on-stage</td></tr>
+            <tr class="row--female"><td>Karol G</td><td>Female</td><td>52% est.</td><td>16,000</td><td>20 on-stage</td></tr>
+            <tr class="row--female"><td>Dua Lipa</td><td>Female</td><td>52% est.</td><td>17,000</td><td>16 on-stage</td></tr>
+            <tr class="row--female"><td>Cardi B</td><td>Female</td><td>25% est.</td><td>12,000</td><td>18 on-stage</td></tr>
+            <tr class="row--female"><td>P!nk</td><td>Female</td><td>50% est.</td><td>20,000</td><td>30 on-stage</td></tr>
+            <tr class="row--female"><td>Nicki Minaj</td><td>Female</td><td>42% est.</td><td>16,000</td><td>24 on-stage</td></tr>
+            <tr class="row--male"><td>Ed Sheeran</td><td>Male</td><td>90% est.</td><td>72,000</td><td>3 on-stage</td></tr>
+            <tr class="row--male"><td>Drake</td><td>Male</td><td>82% est.</td><td>20,000</td><td>5 on-stage</td></tr>
+            <tr class="row--male"><td>Post Malone</td><td>Male</td><td>80% est.</td><td>17,000</td><td>4 on-stage</td></tr>
+            <tr class="row--male"><td>Justin Bieber</td><td>Male</td><td>92% est.</td><td>22,000</td><td>2 on-stage</td></tr>
+            <tr class="row--male"><td>The Weeknd</td><td>Male</td><td>78% est.</td><td>25,000</td><td>7 on-stage</td></tr>
+            <tr class="row--male"><td>Tyler the Creator</td><td>Male</td><td>72% est.</td><td>18,000</td><td>14 on-stage</td></tr>
+            <tr class="row--male"><td>Frank Ocean</td><td>Male</td><td>65% est.</td><td>15,000</td><td>4 on-stage</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
 
     <p class="ct-body" style="margin-top:var(--space-sm)">Production intensity is measured here as a proxy: estimated number of on-stage personnel including dancers and band members. It does not capture every form of spectacle, but it captures the labor-dependent spectacle that costs the most per show and recurs nightly.</p>
 
@@ -1096,12 +1183,59 @@
     <p class="ct-body" id="ct-chart-transition" style="margin-top:var(--space-md)">The same structural gap shows up across four decades of touring history. When you plot production tier against year for the artists who defined stadium and arena touring, the pattern holds: a directional skew that predates streaming, predates Coachella's current fee structure, and predates any individual artist's career decisions. Female artists escalate. Male artists stay flat. Revenue grows for both.</p>
 
     <div class="ct-chart-wrap">
-      <img
-        src="/concert-tax/assets/chart-historical.png"
-        alt="Connected dot plot showing production tier over time for top touring artists 1987 to 2026. Female artist lines trend upward. Male artist lines stay flat."
-        style="width:100%;height:auto;display:block;border-radius:8px;">
+      <div id="ct-chart-historical"></div>
     </div>
     <p class="ct-screenshot-nudge">Screenshot this chart and tag us.</p>
+    <details class="ct-data-table">
+      <summary>See the data behind this chart</summary>
+      <div class="ct-data-table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Artist</th>
+              <th>Gender</th>
+              <th>Year</th>
+              <th>Production Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row--female"><td>Whitney Houston</td><td>Female</td><td>1987</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Whitney Houston</td><td>Female</td><td>1991</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Whitney Houston</td><td>Female</td><td>1994</td><td>Full</td></tr>
+            <tr class="row--female"><td>Whitney Houston</td><td>Female</td><td>2000</td><td>Full</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>2003</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>2007</td><td>Full</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>2013</td><td>Full</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>2018</td><td>Theatrical</td></tr>
+            <tr class="row--female"><td>Beyoncé</td><td>Female</td><td>2023</td><td>Theatrical</td></tr>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>2010</td><td>Basic</td></tr>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>2013</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>2015</td><td>Full</td></tr>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>2018</td><td>Full</td></tr>
+            <tr class="row--female"><td>Taylor Swift</td><td>Female</td><td>2024</td><td>Theatrical</td></tr>
+            <tr class="row--female"><td>Ariana Grande</td><td>Female</td><td>2015</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Ariana Grande</td><td>Female</td><td>2017</td><td>Standard</td></tr>
+            <tr class="row--female"><td>Ariana Grande</td><td>Female</td><td>2019</td><td>Full</td></tr>
+            <tr class="row--female"><td>Ariana Grande</td><td>Female</td><td>2024</td><td>Full</td></tr>
+            <tr class="row--male"><td>Ed Sheeran</td><td>Male</td><td>2015</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Ed Sheeran</td><td>Male</td><td>2017</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Ed Sheeran</td><td>Male</td><td>2019</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Ed Sheeran</td><td>Male</td><td>2023</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Drake</td><td>Male</td><td>2011</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Drake</td><td>Male</td><td>2014</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Drake</td><td>Male</td><td>2016</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Drake</td><td>Male</td><td>2022</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Post Malone</td><td>Male</td><td>2018</td><td>Minimal</td></tr>
+            <tr class="row--male"><td>Post Malone</td><td>Male</td><td>2021</td><td>Minimal</td></tr>
+            <tr class="row--male"><td>Post Malone</td><td>Male</td><td>2024</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Justin Bieber</td><td>Male</td><td>2013</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Justin Bieber</td><td>Male</td><td>2016</td><td>Standard</td></tr>
+            <tr class="row--male"><td>Justin Bieber</td><td>Male</td><td>2021</td><td>Basic</td></tr>
+            <tr class="row--male"><td>Justin Bieber</td><td>Male</td><td>2026</td><td>Minimal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
 
     <!-- Floor nav -->
     <div class="section-nav">
@@ -1669,72 +1803,77 @@
 <!-- ── TOOLTIP ── -->
 <div id="ct-tooltip" role="tooltip" aria-hidden="true"></div>
 
+<!-- D3 -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
 
 <!-- ════════════════════════════════════════════
      SCRIPTS
      ════════════════════════════════════════════ -->
 <script>
-/* ── TAB SWITCHING ── */
-(function() {
-  const sections = ['ct-overview','ct-data','ct-tab-surcharge','ct-standard','ct-burden','ct-sources'];
-  const tabBar = document.getElementById('ct-tabs');
+/* TAB SWITCHING */
+const _ctSections = ['ct-overview','ct-data','ct-tab-surcharge','ct-standard','ct-burden','ct-sources'];
+const _ctTabBar = document.getElementById('ct-tabs');
 
-  function showTab(idx) {
-    sections.forEach((id, i) => {
-      const sec = document.getElementById(id);
-      const btn = tabBar.querySelector(`[data-nav="${i}"]`);
-      if (i === idx) {
-        sec.hidden = false;
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-      } else {
-        sec.hidden = true;
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      }
+function showTab(idx) {
+  _ctSections.forEach(function(id, i) {
+    const sec = document.getElementById(id);
+    const btn = _ctTabBar.querySelector('[data-nav="' + i + '"]');
+    if (i === idx) {
+      sec.hidden = false;
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    } else {
+      sec.hidden = true;
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    }
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (idx === 1) {
+    requestAnimationFrame(function() {
+      initBubbleChart();
+      initHistoricalChart();
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+}
 
-  tabBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-nav]');
-    if (!btn) return;
-    showTab(parseInt(btn.dataset.nav, 10));
-  });
+_ctTabBar.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-nav]');
+  if (!btn) return;
+  showTab(parseInt(btn.dataset.nav, 10));
+});
 
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-nav-to]');
-    if (!btn) return;
-    showTab(parseInt(btn.dataset.navTo, 10));
-  });
-})();
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-nav-to]');
+  if (!btn) return;
+  showTab(parseInt(btn.dataset.navTo, 10));
+});
 
-/* ── SUB-TAB SWITCHING ── */
+/* SUB-TAB SWITCHING */
 function initSubtabGroup(subtabNavId) {
   const nav = document.getElementById(subtabNavId);
   if (!nav) return;
   const parent = nav.closest('.ct-inner');
   const subtabs = nav.querySelectorAll('.ct-subtab');
-
-  nav.addEventListener('click', (e) => {
+  nav.addEventListener('click', function(e) {
     const btn = e.target.closest('.ct-subtab');
     if (!btn) return;
-    subtabs.forEach(t => t.classList.remove('active'));
+    subtabs.forEach(function(t) { t.classList.remove('active'); });
     btn.classList.add('active');
-    parent.querySelectorAll('.ct-subsection').forEach(s => s.classList.remove('active'));
+    parent.querySelectorAll('.ct-subsection').forEach(function(s) { s.classList.remove('active'); });
     const target = document.getElementById(btn.dataset.subtab);
     if (target) target.classList.add('active');
   });
-
-  parent.querySelectorAll('[data-subtab-to]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  parent.querySelectorAll('[data-subtab-to]').forEach(function(fBtn) {
+    fBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetBtn = nav.querySelector(`[data-subtab="${btn.dataset.subtabTo}"]`);
+      const targetBtn = nav.querySelector('[data-subtab="' + fBtn.dataset.subtabTo + '"]');
       if (targetBtn) targetBtn.click();
       const section = parent.closest('.ct-section');
       if (section) {
         const top = section.getBoundingClientRect().top + window.scrollY - 144;
-        window.scrollTo({ top, behavior: 'smooth' });
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
   });
@@ -1743,7 +1882,7 @@ function initSubtabGroup(subtabNavId) {
 initSubtabGroup('ct-standard-subtabs');
 initSubtabGroup('ct-burden-subtabs');
 
-/* ── ACCORDION ── */
+/* ACCORDION */
 function toggleAccordion(btn) {
   const body = btn.nextElementSibling;
   const isOpen = btn.classList.contains('open');
@@ -1751,12 +1890,242 @@ function toggleAccordion(btn) {
   body.classList.toggle('open', !isOpen);
 }
 
-/* ── COPY LINK ── */
+/* COPY LINK */
 function copyLink() {
-  navigator.clipboard.writeText('https://interactive.alterrell.com/concert-tax/').then(() => {
+  navigator.clipboard.writeText('https://interactive.alterrell.com/concert-tax/').then(function() {
     const btns = document.querySelectorAll('#ct-copy-link, .ct-share-btn[onclick="copyLink()"]');
-    btns.forEach(b => { b.textContent = 'Copied!'; setTimeout(() => { b.textContent = '\u25CE Copy Link'; }, 2000); });
-  }).catch(() => {});
+    btns.forEach(function(b) {
+      b.textContent = 'Copied!';
+      setTimeout(function() { b.textContent = '\u25CE Copy Link'; }, 2000);
+    });
+  }).catch(function() {});
+}
+
+/* BUBBLE CHART */
+function initBubbleChart() {
+  const container = document.getElementById('ct-chart-bubble');
+  if (!container || container.offsetWidth === 0) return;
+  if (window._bubbleInited) return;
+  window._bubbleInited = true;
+
+  const data = [
+    { name: 'Taylor Swift',      gender: 'F', production: 35, efficiency: 72, tickets: 65000 },
+    { name: 'Beyonc\u00e9',          gender: 'F', production: 55, efficiency: 48, tickets: 50000 },
+    { name: 'Ariana Grande',     gender: 'F', production: 28, efficiency: 52, tickets: 22000 },
+    { name: 'Sabrina Carpenter', gender: 'F', production: 22, efficiency: 60, tickets: 18000 },
+    { name: 'Karol G',           gender: 'F', production: 20, efficiency: 52, tickets: 16000 },
+    { name: 'Dua Lipa',          gender: 'F', production: 16, efficiency: 52, tickets: 17000 },
+    { name: 'Cardi B',           gender: 'F', production: 18, efficiency: 25, tickets: 12000 },
+    { name: 'P!nk',              gender: 'F', production: 30, efficiency: 50, tickets: 20000 },
+    { name: 'Nicki Minaj',       gender: 'F', production: 24, efficiency: 42, tickets: 16000 },
+    { name: 'Ed Sheeran',        gender: 'M', production: 3,  efficiency: 90, tickets: 72000 },
+    { name: 'Drake',             gender: 'M', production: 5,  efficiency: 82, tickets: 20000 },
+    { name: 'Post Malone',       gender: 'M', production: 4,  efficiency: 80, tickets: 17000 },
+    { name: 'Justin Bieber',     gender: 'M', production: 2,  efficiency: 92, tickets: 22000 },
+    { name: 'The Weeknd',        gender: 'M', production: 7,  efficiency: 78, tickets: 25000 },
+    { name: 'Tyler the Creator', gender: 'M', production: 14, efficiency: 72, tickets: 18000 },
+    { name: 'Frank Ocean',       gender: 'M', production: 4,  efficiency: 65, tickets: 15000 },
+  ];
+
+  const labelMap = {
+    'Taylor Swift': 'Swift',
+    'Beyonc\u00e9': 'Beyonc\u00e9',
+    'Ed Sheeran': 'Sheeran',
+    'Justin Bieber': 'Bieber',
+    'Drake': 'Drake',
+    'Cardi B': 'Cardi B'
+  };
+
+  const W = container.offsetWidth;
+  const H = Math.max(320, Math.round(W * 0.62));
+  const mg = { top: 36, right: 20, bottom: 56, left: 56 };
+  const iw = W - mg.left - mg.right;
+  const ih = H - mg.top - mg.bottom;
+
+  const svg = d3.select(container).append('svg')
+    .attr('width', W).attr('height', H).style('display', 'block');
+  const g = svg.append('g').attr('transform', 'translate(' + mg.left + ',' + mg.top + ')');
+
+  const xScale = d3.scaleLinear().domain([0, 65]).range([0, iw]);
+  const yScale = d3.scaleLinear().domain([15, 100]).range([ih, 0]);
+  const rScale = d3.scaleSqrt().domain([0, 72000]).range([5, Math.min(34, iw * 0.055)]);
+
+  const xMid = xScale(20);
+  const yMid = yScale(58);
+
+  g.append('rect').attr('x', 0).attr('y', 0).attr('width', xMid).attr('height', yMid)
+    .attr('fill', 'rgba(10,124,114,0.05)');
+  g.append('rect').attr('x', xMid).attr('y', 0).attr('width', iw - xMid).attr('height', yMid)
+    .attr('fill', 'rgba(232,185,35,0.04)');
+  g.append('line').attr('x1', xMid).attr('y1', 0).attr('x2', xMid).attr('y2', ih)
+    .attr('stroke', 'rgba(255,255,255,0.12)').attr('stroke-dasharray', '4,4');
+  g.append('line').attr('x1', 0).attr('y1', yMid).attr('x2', iw).attr('y2', yMid)
+    .attr('stroke', 'rgba(255,255,255,0.12)').attr('stroke-dasharray', '4,4');
+
+  const qlFill = 'rgba(248,246,241,0.18)';
+  const qlFont = 'DM Mono, monospace';
+  g.append('text').attr('x', 4).attr('y', 13).text('PROFIT KINGS')
+    .attr('fill', qlFill).attr('font-size', '8px').attr('font-family', qlFont).attr('letter-spacing', '0.1em');
+  g.append('text').attr('x', xMid + 4).attr('y', 13).text('LEGACY BUILDERS')
+    .attr('fill', qlFill).attr('font-size', '8px').attr('font-family', qlFont).attr('letter-spacing', '0.1em');
+  g.append('text').attr('x', 4).attr('y', ih - 7).text('BUILDING')
+    .attr('fill', qlFill).attr('font-size', '8px').attr('font-family', qlFont).attr('letter-spacing', '0.1em');
+  g.append('text').attr('x', xMid + 4).attr('y', ih - 7).text('UNDERCHARGERS')
+    .attr('fill', qlFill).attr('font-size', '8px').attr('font-family', qlFont).attr('letter-spacing', '0.1em');
+
+  g.append('g').attr('transform', 'translate(0,' + ih + ')')
+    .call(d3.axisBottom(xScale).ticks(6))
+    .call(function(ax) {
+      ax.select('.domain').attr('stroke', 'rgba(255,255,255,0.2)');
+      ax.selectAll('text').attr('fill', 'rgba(248,246,241,0.5)').attr('font-size', '10px').attr('font-family', qlFont);
+      ax.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,0.1)');
+    });
+  g.append('g').call(d3.axisLeft(yScale).ticks(5).tickFormat(function(d) { return d + '%'; }))
+    .call(function(ax) {
+      ax.select('.domain').attr('stroke', 'rgba(255,255,255,0.2)');
+      ax.selectAll('text').attr('fill', 'rgba(248,246,241,0.5)').attr('font-size', '10px').attr('font-family', qlFont);
+      ax.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,0.1)');
+    });
+
+  g.append('text').attr('x', iw / 2).attr('y', ih + 46)
+    .attr('text-anchor', 'middle').attr('fill', 'rgba(248,246,241,0.38)')
+    .attr('font-size', '9px').attr('font-family', qlFont).attr('letter-spacing', '0.1em')
+    .text('PRODUCTION INTENSITY \u2014 ON-STAGE PERSONNEL');
+  g.append('text').attr('transform', 'rotate(-90)').attr('x', -(ih / 2)).attr('y', -44)
+    .attr('text-anchor', 'middle').attr('fill', 'rgba(248,246,241,0.38)')
+    .attr('font-size', '9px').attr('font-family', qlFont).attr('letter-spacing', '0.1em')
+    .text('REVENUE EFFICIENCY (EST. %)');
+
+  const tooltip = d3.select('#ct-tooltip');
+
+  g.selectAll('.ct-bubble').data(data).join('circle')
+    .attr('class', 'ct-bubble')
+    .attr('cx', function(d) { return xScale(d.production); })
+    .attr('cy', function(d) { return yScale(d.efficiency); })
+    .attr('r', function(d) { return rScale(d.tickets); })
+    .attr('fill', function(d) { return d.gender === 'F' ? 'rgba(232,185,35,0.72)' : 'rgba(10,124,114,0.72)'; })
+    .attr('stroke', function(d) { return d.gender === 'F' ? '#E8B923' : '#0a7c72'; })
+    .attr('stroke-width', 1.5).attr('cursor', 'pointer')
+    .on('pointerenter', function(event, d) {
+      d3.select(this).attr('fill', d.gender === 'F' ? 'rgba(232,185,35,0.95)' : 'rgba(10,124,114,0.95)');
+      tooltip.classed('visible', true)
+        .html('<strong>' + d.name + '</strong><br>Production: ' + d.production + ' on-stage personnel<br>Efficiency: ' + d.efficiency + '% est.<br>Avg tickets / show: ' + d.tickets.toLocaleString());
+    })
+    .on('pointermove', function(event) {
+      tooltip.style('left', (event.clientX + 14) + 'px').style('top', (event.clientY - 10) + 'px');
+    })
+    .on('pointerleave', function(event, d) {
+      d3.select(this).attr('fill', d.gender === 'F' ? 'rgba(232,185,35,0.72)' : 'rgba(10,124,114,0.72)');
+      tooltip.classed('visible', false);
+    });
+
+  g.selectAll('.ct-bubble-label')
+    .data(data.filter(function(d) { return labelMap[d.name]; }))
+    .join('text')
+    .attr('class', 'ct-bubble-label')
+    .attr('x', function(d) { return xScale(d.production); })
+    .attr('y', function(d) { return yScale(d.efficiency) - rScale(d.tickets) - 5; })
+    .attr('text-anchor', 'middle')
+    .attr('fill', function(d) { return d.gender === 'F' ? 'rgba(232,185,35,0.82)' : 'rgba(120,210,200,0.82)'; })
+    .attr('font-size', '8px').attr('font-family', qlFont).attr('pointer-events', 'none')
+    .text(function(d) { return labelMap[d.name]; });
+}
+
+/* HISTORICAL CHART */
+function initHistoricalChart() {
+  const container = document.getElementById('ct-chart-historical');
+  if (!container || container.offsetWidth === 0) return;
+  if (window._historicalInited) return;
+  window._historicalInited = true;
+
+  const tierLabels = ['Minimal', 'Basic', 'Standard', 'Full', 'Theatrical'];
+
+  const artists = [
+    { name: 'Whitney Houston', gender: 'F', points: [{year:1987,tier:3},{year:1991,tier:3},{year:1994,tier:4},{year:2000,tier:4}] },
+    { name: 'Beyonc\u00e9',    gender: 'F', points: [{year:2003,tier:3},{year:2007,tier:4},{year:2013,tier:4},{year:2018,tier:5},{year:2023,tier:5}] },
+    { name: 'Taylor Swift',    gender: 'F', points: [{year:2010,tier:2},{year:2013,tier:3},{year:2015,tier:4},{year:2018,tier:4},{year:2024,tier:5}] },
+    { name: 'Ariana Grande',   gender: 'F', points: [{year:2015,tier:3},{year:2017,tier:3},{year:2019,tier:4},{year:2024,tier:4}] },
+    { name: 'Ed Sheeran',      gender: 'M', points: [{year:2015,tier:2},{year:2017,tier:2},{year:2019,tier:2},{year:2023,tier:2}] },
+    { name: 'Drake',           gender: 'M', points: [{year:2011,tier:3},{year:2014,tier:3},{year:2016,tier:3},{year:2022,tier:3}] },
+    { name: 'Post Malone',     gender: 'M', points: [{year:2018,tier:1},{year:2021,tier:1},{year:2024,tier:2}] },
+    { name: 'Justin Bieber',   gender: 'M', points: [{year:2013,tier:3},{year:2016,tier:3},{year:2021,tier:2},{year:2026,tier:1}] },
+  ];
+
+  const W = container.offsetWidth;
+  const H = Math.max(280, Math.round(W * 0.52));
+  const mg = { top: 24, right: 90, bottom: 46, left: 82 };
+  const iw = W - mg.left - mg.right;
+  const ih = H - mg.top - mg.bottom;
+
+  const svg = d3.select(container).append('svg')
+    .attr('width', W).attr('height', H).style('display', 'block');
+  const g = svg.append('g').attr('transform', 'translate(' + mg.left + ',' + mg.top + ')');
+
+  const xScale = d3.scaleLinear().domain([1985, 2028]).range([0, iw]);
+  const yScale = d3.scaleLinear().domain([0.5, 5.5]).range([ih, 0]);
+
+  [1,2,3,4,5].forEach(function(t) {
+    g.append('line').attr('x1', 0).attr('y1', yScale(t)).attr('x2', iw).attr('y2', yScale(t))
+      .attr('stroke', 'rgba(255,255,255,0.07)').attr('stroke-width', 1);
+  });
+
+  const monoFont = 'DM Mono, monospace';
+  tierLabels.forEach(function(label, i) {
+    g.append('text').attr('x', -8).attr('y', yScale(i + 1))
+      .attr('text-anchor', 'end').attr('dominant-baseline', 'middle')
+      .attr('fill', 'rgba(248,246,241,0.45)').attr('font-size', '9px')
+      .attr('font-family', monoFont).attr('letter-spacing', '0.06em')
+      .text(label.toUpperCase());
+  });
+
+  g.append('g').attr('transform', 'translate(0,' + ih + ')')
+    .call(d3.axisBottom(xScale)
+      .tickValues([1990,1995,2000,2005,2010,2015,2020,2026])
+      .tickFormat(function(d) { return String(d); }))
+    .call(function(ax) {
+      ax.select('.domain').attr('stroke', 'rgba(255,255,255,0.2)');
+      ax.selectAll('text').attr('fill', 'rgba(248,246,241,0.5)').attr('font-size', '10px').attr('font-family', monoFont);
+      ax.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,0.1)');
+    });
+
+  const lineFn = d3.line()
+    .x(function(d) { return xScale(d.year); })
+    .y(function(d) { return yScale(d.tier); })
+    .curve(d3.curveMonotoneX);
+
+  const tooltip = d3.select('#ct-tooltip');
+
+  artists.forEach(function(artist) {
+    const col  = artist.gender === 'F' ? '#E8B923' : '#0a7c72';
+    const colD = artist.gender === 'F' ? 'rgba(232,185,35,0.4)' : 'rgba(10,124,114,0.4)';
+
+    g.append('path').datum(artist.points)
+      .attr('fill', 'none').attr('stroke', colD).attr('stroke-width', 2)
+      .attr('d', lineFn);
+
+    g.selectAll(null).data(artist.points).join('circle')
+      .attr('cx', function(d) { return xScale(d.year); })
+      .attr('cy', function(d) { return yScale(d.tier); })
+      .attr('r', 4)
+      .attr('fill', col).attr('stroke', '#0a0a12').attr('stroke-width', 1.5)
+      .attr('cursor', 'pointer')
+      .on('pointerenter', function(event, d) {
+        tooltip.classed('visible', true)
+          .html('<strong>' + artist.name + '</strong><br>' + d.year + ': ' + tierLabels[d.tier - 1]);
+      })
+      .on('pointermove', function(event) {
+        tooltip.style('left', (event.clientX + 14) + 'px').style('top', (event.clientY - 10) + 'px');
+      })
+      .on('pointerleave', function() { tooltip.classed('visible', false); });
+
+    const last = artist.points[artist.points.length - 1];
+    g.append('text')
+      .attr('x', xScale(last.year) + 7).attr('y', yScale(last.tier))
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', col).attr('font-size', '8px').attr('font-family', monoFont)
+      .attr('pointer-events', 'none')
+      .text(artist.name.split(' ').pop());
+  });
 }
 
 </script>
