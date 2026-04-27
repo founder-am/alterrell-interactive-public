@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advice From Your Thick Gay Uncles &middot; Alterrell Interactive</title>
+  <meta name="description" content="What the data says about where bigger Black gay men are loved.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="Advice From Your Thick Gay Uncles &middot; Alterrell Interactive">
+  <meta property="og:description" content="What the data says about where bigger Black gay men are loved.">
+  <meta property="og:url" content="https://interactive.alterrell.com/big-black-love/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/big-black-love.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="Advice From Your Thick Gay Uncles &middot; Alterrell Interactive">
+  <meta name="twitter:description" content="What the data says about where bigger Black gay men are loved.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/big-black-love.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+  <style>
+    /* ── Obsidian Futures dark theme — piece-local ── */
+    body {
+      background: #0a0a12;
+      color: rgba(248,246,241,0.88);
+    }
+
+    /* Tab bar dark override */
+    .ai-tabs {
+      background: #0d0b18;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .ai-tab { color: rgba(248,246,241,0.38); }
+    .ai-tab:hover { color: rgba(248,246,241,0.7); }
+    .ai-tab.active {
+      color: #E8B923;
+      border-bottom-color: #E8B923;
+    }
+
+    /* Section shell — [hidden] attribute pattern */
+    .bbl-section {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 128px);
+      padding: var(--space-xl) 1.25rem;
+      background: #0a0a12;
+    }
+    .bbl-section[hidden] { display: none; } /* override flex */
+
+    .bbl-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero typography */
+    .bbl-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E8B923;
+      margin-bottom: 0.875rem;
+      display: block;
+    }
+    .bbl-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 8vw, 5.5rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.0;
+      color: rgba(248,246,241,0.95);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.625rem;
+    }
+    .bbl-hero-subtitle {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      color: rgba(248,246,241,0.38);
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    /* Section heading */
+    .bbl-section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E8B923;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .bbl-section-title {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-style: italic;
+      line-height: 1.15;
+      color: rgba(248,246,241,0.92);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Body copy */
+    .bbl-body { max-width: 640px; }
+    .bbl-body p {
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: rgba(248,246,241,0.78);
+      margin-bottom: 1rem;
+    }
+    .bbl-body p:last-child { margin-bottom: 0; }
+    .bbl-body strong { color: rgba(248,246,241,0.95); font-weight: 500; }
+    .bbl-body em { font-style: italic; }
+
+    /* Placeholder marker */
+    .bbl-placeholder {
+      background: rgba(232,185,35,0.08);
+      border-left: 3px solid #E8B923;
+      border-radius: 0 3px 3px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: rgba(232,185,35,0.7);
+      letter-spacing: 0.08em;
+    }
+
+    /* Pull quote */
+    .bbl-pullquote {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.5;
+      color: rgba(248,246,241,0.65);
+      border-left: 3px solid #E8B923;
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+      max-width: 560px;
+    }
+
+    /* Stat callout */
+    .bbl-stat-callout {
+      background: rgba(232,185,35,0.06);
+      border: 1px solid rgba(232,185,35,0.15);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      max-width: 480px;
+    }
+    .bbl-stat-callout-number {
+      font-family: var(--font-editorial);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1;
+      color: #E8B923;
+      margin-bottom: 0.35rem;
+    }
+    .bbl-stat-callout-text {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: rgba(248,246,241,0.6);
+      line-height: 1.5;
+    }
+
+    /* Uncle disclaimer — visually distinct from generic placeholder */
+    .bbl-uncle-disclaimer {
+      border-color: rgba(232,185,35,0.4) !important;
+      background: rgba(232,185,35,0.04) !important;
+    }
+
+    /* Share block */
+    .bbl-share-section { margin-top: 2.5rem; }
+    .bbl-share-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248,246,241,0.3);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .bbl-share-nudge {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: var(--text-small);
+      color: rgba(248,246,241,0.35);
+      margin-bottom: 0.75rem;
+    }
+    .bbl-share-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .bbl-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      min-height: var(--touch);
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .bbl-share-btn:hover { opacity: 0.85; text-decoration: none; }
+    .bbl-share-btn--copy { background: #E8B923; color: #0a0a12; }
+    .bbl-share-btn--x {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(248,246,241,0.7);
+    }
+    .bbl-share-btn--kofi {
+      background: transparent;
+      border: 1px solid rgba(232,185,35,0.3);
+      color: #E8B923;
+    }
+    .bbl-substack-nudge {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.06em;
+      color: rgba(248,246,241,0.3);
+      margin-top: 0.5rem;
+    }
+    .bbl-substack-nudge a { color: #E8B923; text-decoration: none; }
+    .bbl-substack-nudge a:hover { text-decoration: underline; }
+
+    /* Poll bar charts */
+    .bbl-chart-section { margin: 0 0 1.5rem; }
+    .bbl-chart-header {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248,246,241,0.3);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .bbl-bar-chart { width: 100%; max-width: 540px; }
+    .bbl-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .bbl-bar-row:last-child { border-bottom: none; }
+    .bbl-bar-city {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(248,246,241,0.7);
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .bbl-bar-track {
+      flex: 1;
+      height: 22px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .bbl-bar-fill {
+      height: 100%;
+      background: #E8B923;
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .bbl-bar-val {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(248,246,241,0.45);
+      flex-shrink: 0;
+      min-width: 40px;
+      text-align: right;
+    }
+    .bbl-chart-subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: var(--text-micro);
+      color: rgba(248,246,241,0.38);
+      line-height: 1.5;
+      margin-top: 0.75rem;
+      max-width: 540px;
+    }
+    .bbl-chart-note {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      color: rgba(248,246,241,0.2);
+      margin-top: 0.5rem;
+      line-height: 1.55;
+    }
+    .bbl-screenshot-nudge {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      color: rgba(248,246,241,0.18);
+      text-align: right;
+      margin: 0.5rem 0 1.5rem;
+      max-width: 540px;
+    }
+    .bbl-chart-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 2rem 0;
+      max-width: 540px;
+    }
+
+    /* Scatter/bubble chart stub (Tab 4) */
+    .bbl-scatter-wrap {
+      width: 100%;
+      max-width: 680px;
+      aspect-ratio: 4/3;
+      background: #111118;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 0.5rem;
+    }
+    .bbl-scatter-stub { text-align: center; padding: 1rem; }
+    .bbl-scatter-stub p {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: rgba(248,246,241,0.2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.9;
+    }
+    .bbl-log-note {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      color: rgba(248,246,241,0.2);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    /* Hold Your Ground accordions */
+    .bbl-accordion-wrap { max-width: 640px; margin: 1.5rem 0; }
+    .bbl-accordion { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .bbl-accordion:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .bbl-accordion-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      list-style: none;
+      min-height: var(--touch);
+      user-select: none;
+    }
+    .bbl-accordion-summary::-webkit-details-marker { display: none; }
+    .bbl-accordion-title {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      font-style: italic;
+      color: rgba(248,246,241,0.88);
+      line-height: 1.3;
+    }
+    .bbl-accordion-toggle {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: #E8B923;
+      flex-shrink: 0;
+      width: 1.25rem;
+      text-align: center;
+    }
+    details.bbl-accordion[open] .bbl-accordion-toggle::before { content: '\2212'; }
+    details.bbl-accordion:not([open]) .bbl-accordion-toggle::before { content: '+'; }
+    .bbl-accordion-body { padding: 0 0 1.75rem; }
+
+    /* Sub-tabs (Tab 6: Your Move) */
+    .bbl-subtabs {
+      background: #161620;
+      border-radius: 6px;
+      padding: 0.4rem;
+      display: flex;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .bbl-subtab {
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(248,246,241,0.4);
+      border: none;
+      min-height: var(--touch);
+      transition: background 0.15s, color 0.15s;
+    }
+    .bbl-subtab.active { background: #E8B923; color: #0a0a12; font-weight: 600; }
+    .bbl-subtab:hover:not(.active) { color: rgba(248,246,241,0.75); }
+    .bbl-subpanel[hidden] { display: none; }
+
+    /* Section floor nav */
+    .bbl-floor {
+      margin-top: auto;
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+    .bbl-floor-btn {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: rgba(248,246,241,0.35);
+      background: none;
+      border: none;
+      cursor: pointer;
+      min-height: var(--touch);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.15s;
+      padding: 0;
+    }
+    .bbl-floor-btn:hover { color: #E8B923; }
+    .bbl-floor-spacer { flex: 1; }
+
+    /* Journey block dark override — 4-item 2×2 grid */
+    .bbl-journey {
+      background: #0d0b18;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: none;
+    }
+    .bbl-journey .ai-journey-inner {
+      background: rgba(255,255,255,0.04);
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .bbl-journey .ai-journey-path { background: #111118; }
+    .bbl-journey .ai-journey-path:hover { background: #1a1826; text-decoration: none; }
+    .bbl-journey .ai-journey-path.primary  { border-top-color: #E8B923; }
+    .bbl-journey .ai-journey-path.secondary { border-top-color: rgba(201,95,26,0.6); }
+    .bbl-journey .ai-journey-path.tertiary  { border-top-color: rgba(255,255,255,0.12); }
+    .bbl-journey .ai-journey-label  { color: rgba(248,246,241,0.28); }
+    .bbl-journey .ai-journey-title  { color: rgba(248,246,241,0.88); }
+    .bbl-journey .ai-journey-cta    { color: #E8B923; }
+    .bbl-journey .ai-journey-path.secondary .ai-journey-cta { color: rgba(201,95,26,0.85); }
+    .bbl-journey .ai-journey-path.tertiary  .ai-journey-cta { color: rgba(248,246,241,0.4); }
+
+    @media (max-width: 520px) {
+      .bbl-journey .ai-journey-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="has-breadcrumb">
+
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Substack</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
+
+<div class="ai-breadcrumb" role="navigation" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">&middot;</span>
+  <span>Obsidian Futures</span>
+  <span class="ai-breadcrumb-sep">&middot;</span>
+  <span class="ai-breadcrumb-current">Advice From Your Thick Gay Uncles</span>
+</div>
+
+<div class="ai-tabs" role="tablist" aria-label="Piece navigation">
+  <button class="ai-tab bbl-tab active" role="tab" aria-selected="true"  onclick="showTab(0)">Overview</button>
+  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(1)">My Story</button>
+  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(2)">The Poll</button>
+  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(3)">The Data</button>
+  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(4)">Hold Your Ground</button>
+  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(5)">Your Move</button>
+</div>
+
+
+<!-- ══ JOURNEY BLOCK — 4-item 2×2 ══════════════════════════════ -->
+<div class="ai-journey bbl-journey" aria-label="Continue the journey">
+  <div class="ai-journey-inner">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+       target="_blank" rel="noopener" class="ai-journey-path primary" aria-label="Watch on YouTube">
+      <span class="ai-journey-icon">&#9654;</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">All pieces on YouTube</span>
+      <span class="ai-journey-cta">YouTube &rarr;</span>
+    </a>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+       target="_blank" rel="noopener" class="ai-journey-path secondary" aria-label="Read on Substack">
+      <span class="ai-journey-icon">&#10022;</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">Get early access on Substack</span>
+      <span class="ai-journey-cta">Substack &rarr;</span>
+    </a>
+    <a href="/" class="ai-journey-path tertiary" aria-label="Explore all pieces">
+      <span class="ai-journey-icon">&#9611;</span>
+      <span class="ai-journey-label">Explore</span>
+      <span class="ai-journey-title">All Alterrell Interactive pieces</span>
+      <span class="ai-journey-cta">All pieces &rarr;</span>
+    </a>
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary" aria-label="Support on Ko-fi">
+      <span class="ai-journey-icon">$</span>
+      <span class="ai-journey-label">Back this work</span>
+      <span class="ai-journey-title">Support on Ko-fi</span>
+      <span class="ai-journey-cta">Ko-fi &rarr;</span>
+    </a>
+  </div>
+</div>
+
+
+<!-- ══ TAB 1: OVERVIEW ══════════════════════════════════════════ -->
+<!-- Placeholder copy — AMA rewrite pending. Em dashes present; flag for voice pass before deploy. -->
+<section class="bbl-section" id="tab-overview">
+  <div class="bbl-inner">
+
+    <span class="bbl-eyebrow">Obsidian Futures &nbsp;&middot;&nbsp; Personal Data Essay</span>
+    <h1 class="bbl-hero-title">Advice From Your<br>Thick Gay Uncles</h1>
+    <p class="bbl-hero-subtitle">What the data says about where bigger Black gay men are loved</p>
+
+    <div class="bbl-body">
+      <p>There was a moment &mdash; not a revelation, just a noticing. I was in a city that wasn't mine, and something was different. Men were looking. Not in the way you hope someone will when you're trying to convince yourself you're fine. In the way that makes you realize you'd stopped expecting it.</p>
+      <p>I came home and couldn't explain it. My friends had explanations ready. Confidence. Energy. Putting yourself out there. All the things people say when they don't want to tell you the market has a structure and you're on the wrong side of it.</p>
+      <p>So I asked. I posted a poll on TikTok &mdash; where did you, a bigger Black man, find your Black partner? I expected a handful of responses. I got a flood. And the same cities kept appearing. Atlanta. Chicago. Houston. DC. Not randomly. Not because bigger Black gay men only exist there. Because something about those cities created conditions where Black love could find you.</p>
+      <p>This piece is what I found when I tried to understand why.</p>
+      <p>It is not a confidence guide. Your uncle is not here to tell you to love yourself harder. You already do. This is a geography guide. It's data from your community about where the market gets it right &mdash; and the socioeconomic story underneath that explains how those cities got there.</p>
+      <p>If you're a bigger Black man who has wondered whether what you're experiencing is in your head &mdash; it isn't. It's in the zip code.</p>
+    </div>
+
+    <div class="bbl-share-section">
+      <span class="bbl-share-label">Share this piece</span>
+      <p class="bbl-share-nudge">Screenshot the chart. Send someone the link. Tell your people where to go.</p>
+      <div class="bbl-share-actions">
+        <button class="bbl-share-btn bbl-share-btn--copy" onclick="copyLink(this)">&#9675; Copy link</button>
+        <a class="bbl-share-btn bbl-share-btn--x"
+           href="https://twitter.com/intent/tweet?text=Where%20bigger%20Black%20gay%20men%20are%20loved%20%E2%80%94%20the%20data.&url=https%3A%2F%2Finteractive.alterrell.com%2Fbig-black-love%2F"
+           target="_blank" rel="noopener">&#10005; Share on X</a>
+        <a class="bbl-share-btn bbl-share-btn--kofi"
+           href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
+      </div>
+      <p class="bbl-substack-nudge">Get early access &rarr; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+    </div>
+
+    <div class="bbl-floor">
+      <span class="bbl-floor-spacer"></span>
+      <button class="bbl-floor-btn" onclick="showTab(1)">My Story &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAB 2: MY STORY ══════════════════════════════════════════ -->
+<!-- Placeholder copy — AMA rewrite pending. Em dashes present; flag for voice pass before deploy. -->
+<section class="bbl-section" id="tab-story" hidden>
+  <div class="bbl-inner">
+
+    <span class="bbl-section-eyebrow">My Story</span>
+    <h2 class="bbl-section-title">I Wasn't Always This Size</h2>
+
+    <div class="bbl-body">
+      <p>That sentence matters for this piece because my vantage point is specific. I know what it felt like to move through gay Black spaces when my body fit closer to what those spaces reward. I got attention I didn't have to work for. I made assumptions about desire that turned out to be assumptions about access. I didn't know the difference yet.</p>
+      <p>When my body changed, the rules I'd internalized stopped working. Not all at once. Gradually, then obviously. The apps felt different. Certain rooms felt different. The baseline assumption I'd carried &mdash; that I was someone who got looked at &mdash; quietly stopped being true in most places.</p>
+      <p>I want to be honest about what that means for this piece. I am writing from the experience of someone who crossed over. I had access I didn't earn and didn't fully recognize until it was gone. Some of you reading this were never on the other side of that wall. You were socialized into bigger bodies from the beginning and never had the privilege I'm describing to lose. My experience is not more valid than yours. It is just a particular angle of vision &mdash; I can see both sides of the wall, which is useful for making the argument this piece makes.</p>
+      <p>The hearing world analogy is the one that helped me most. Someone who loses their hearing as an adult grieves differently than someone born deaf. They also see the hearing world's assumptions differently &mdash; from the outside, having once been inside. That's the vantage point I'm writing from. Not better. Just specific.</p>
+      <p>What the TikTok poll gave me was confirmation that what I was noticing was real. I had felt the difference between cities. I had felt Atlanta differently than I felt other places. I thought maybe it was circumstance, or luck, or the particular room I'd walked into. Then four hundred people told me where they'd found their person, and the same cities came back over and over, and I understood that what I'd felt was structural.</p>
+      <p>This piece is me trying to show you the structure.</p>
+    </div>
+
+    <div class="bbl-floor">
+      <button class="bbl-floor-btn" onclick="showTab(0)">&larr; Overview</button>
+      <button class="bbl-floor-btn" onclick="showTab(2)">The Poll &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAB 3: THE POLL ═══════════════════════════════════════════ -->
+<section class="bbl-section" id="tab-poll" hidden>
+  <div class="bbl-inner">
+
+    <span class="bbl-section-eyebrow">The Poll</span>
+    <div class="bbl-placeholder">[AMA TO PASTE] Section heading</div>
+    <div class="bbl-placeholder">[AMA TO PASTE] Framing copy &mdash; poll context, community signal framing, what the data does and doesn't claim</div>
+
+    <!-- Chart 1: Raw response counts -->
+    <div class="bbl-chart-section">
+      <span class="bbl-chart-header">Response count &mdash; n=77</span>
+      <div class="bbl-bar-chart" id="bbl-chart-count" role="img" aria-label="Poll response counts by city, bigger Black gay men"></div>
+      <p class="bbl-chart-subtitle">Responses from bigger Black gay men who successfully partnered with another Black man</p>
+      <p class="bbl-chart-note">Community poll &middot; TikTok (@alterrell) &middot; April 2026 &middot; n=77 voluntary responses &middot; Not a representative sample</p>
+      <p class="bbl-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+    </div>
+
+    <div class="bbl-chart-divider"></div>
+
+    <!-- Chart 2: Percentage of total (n=77) -->
+    <div class="bbl-chart-section">
+      <span class="bbl-chart-header">Percentage of total responses &mdash; n=77</span>
+      <div class="bbl-bar-chart" id="bbl-chart-pct" role="img" aria-label="Poll response percentages by city, bigger Black gay men"></div>
+      <p class="bbl-chart-subtitle">Responses from bigger Black gay men who successfully partnered with another Black man</p>
+      <p class="bbl-chart-note">Percentages calculated from n=77 total responses &middot; Cities reported voluntarily by respondents</p>
+      <p class="bbl-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+    </div>
+
+    <div class="bbl-placeholder">[AMA TO PASTE] Context copy below charts</div>
+
+    <div class="bbl-floor">
+      <button class="bbl-floor-btn" onclick="showTab(1)">&larr; My Story</button>
+      <button class="bbl-floor-btn" onclick="showTab(3)">The Data &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAB 4: THE DATA ═══════════════════════════════════════════ -->
+<!-- Scatter/bubble: x=Black pop (log), y=Gay pop (log), bubble size=poll n, one color per city -->
+<!-- Dashed diagonal reference line · city labels + leader lines · right-side legend -->
+<!-- [CHART BUILD: T2 chart session — D3 or SVG render deferred] -->
+<section class="bbl-section" id="tab-data" hidden>
+  <div class="bbl-inner">
+
+    <span class="bbl-section-eyebrow">The Data</span>
+    <div class="bbl-placeholder">[AMA TO PASTE] Section heading</div>
+    <div class="bbl-placeholder">[AMA TO PASTE] Framing copy &mdash; what the scatter shows, how to read overperforming vs. underperforming, why log scale</div>
+
+    <div class="bbl-scatter-wrap" id="bbl-scatter" role="img" aria-label="Scatter chart: Black population vs. gay population by city; bubble size equals poll response count">
+      <div class="bbl-scatter-stub">
+        <p>SCATTER / BUBBLE CHART</p>
+        <p>X &mdash; Black population (log scale)</p>
+        <p>Y &mdash; Gay population (log scale)</p>
+        <p>Bubble size &mdash; poll response count</p>
+        <p>One color per city &middot; dashed reference line</p>
+        <p style="margin-top:1rem;font-size:0.58rem;opacity:0.55;text-transform:none;letter-spacing:0;">[Chart build &mdash; T2 chart session]</p>
+      </div>
+    </div>
+    <p class="bbl-log-note">Both axes log scale &mdash; prevents white-space compression from population outliers (NYC Black pop: 1.9M). Cities above the reference line overperform relative to their demographics; cities below underperform. Gay population figures are directional estimates, not race-adjusted (Williams Institute).</p>
+    <p class="bbl-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="bbl-placeholder">[AMA TO PASTE] Analysis copy &mdash; which cities overperform, what that means, the argument underneath</div>
+
+    <div class="bbl-floor">
+      <button class="bbl-floor-btn" onclick="showTab(2)">&larr; The Poll</button>
+      <button class="bbl-floor-btn" onclick="showTab(4)">Hold Your Ground &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAB 5: HOLD YOUR GROUND ══════════════════════════════════ -->
+<section class="bbl-section" id="tab-ground" hidden>
+  <div class="bbl-inner">
+
+    <span class="bbl-section-eyebrow">Hold Your Ground</span>
+    <div class="bbl-placeholder">[AMA TO PASTE] Section opening &mdash; uncle voice, tone-setting for the five sections</div>
+
+    <div class="bbl-accordion-wrap">
+
+      <!-- Section 1: The Before/After Lie — open by default -->
+      <details class="bbl-accordion" open>
+        <summary class="bbl-accordion-summary">
+          <span class="bbl-accordion-title">The Before/After Lie</span>
+          <span class="bbl-accordion-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="bbl-accordion-body">
+          <div class="bbl-placeholder">[AMA TO PASTE] The Before/After Lie</div>
+          <!-- Pull quote or stat callout — required for visual relief on mobile -->
+          <div class="bbl-placeholder">[PULL QUOTE OR STAT CALLOUT PLACEHOLDER &mdash; required for visual relief on mobile before deploy]</div>
+        </div>
+      </details>
+
+      <!-- Section 2: Fitness Is Not Therapy -->
+      <details class="bbl-accordion">
+        <summary class="bbl-accordion-summary">
+          <span class="bbl-accordion-title">Fitness Is Not Therapy</span>
+          <span class="bbl-accordion-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="bbl-accordion-body">
+          <div class="bbl-placeholder">[AMA TO PASTE] Fitness Is Not Therapy</div>
+          <div class="bbl-placeholder">[PULL QUOTE OR STAT CALLOUT PLACEHOLDER &mdash; required for visual relief on mobile before deploy]</div>
+        </div>
+      </details>
+
+      <!-- Section 3: This Is Environmental -->
+      <details class="bbl-accordion">
+        <summary class="bbl-accordion-summary">
+          <span class="bbl-accordion-title">This Is Environmental</span>
+          <span class="bbl-accordion-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="bbl-accordion-body">
+          <div class="bbl-placeholder">[AMA TO PASTE] This Is Environmental</div>
+          <div class="bbl-placeholder">[PULL QUOTE OR STAT CALLOUT PLACEHOLDER &mdash; required for visual relief on mobile before deploy]</div>
+        </div>
+      </details>
+
+      <!-- Section 4: The New Attention Problem — uncle disclaimer lives here -->
+      <details class="bbl-accordion">
+        <summary class="bbl-accordion-summary">
+          <span class="bbl-accordion-title">The New Attention Problem</span>
+          <span class="bbl-accordion-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="bbl-accordion-body">
+          <div class="bbl-placeholder">[AMA TO PASTE] The New Attention Problem</div>
+          <!-- ★ UNCLE DISCLAIMER — required before deploy ★ -->
+          <div class="bbl-placeholder bbl-uncle-disclaimer">[UNCLE DISCLAIMER &mdash; Required before deploy: "I'm not your doctor and I'm not your therapist, but here's what I wish I'd known." AMA writes the final version of this line.]</div>
+          <div class="bbl-placeholder">[PULL QUOTE OR STAT CALLOUT PLACEHOLDER &mdash; required for visual relief on mobile before deploy]</div>
+        </div>
+      </details>
+
+      <!-- Section 5: Do You Still Belong -->
+      <details class="bbl-accordion">
+        <summary class="bbl-accordion-summary">
+          <span class="bbl-accordion-title">Do You Still Belong</span>
+          <span class="bbl-accordion-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="bbl-accordion-body">
+          <div class="bbl-placeholder">[AMA TO PASTE] Do You Still Belong</div>
+          <div class="bbl-placeholder">[PULL QUOTE OR STAT CALLOUT PLACEHOLDER &mdash; required for visual relief on mobile before deploy]</div>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="bbl-floor">
+      <button class="bbl-floor-btn" onclick="showTab(3)">&larr; The Data</button>
+      <button class="bbl-floor-btn" onclick="showTab(5)">Your Move &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAB 6: YOUR MOVE ═════════════════════════════════════════ -->
+<section class="bbl-section" id="tab-move" hidden>
+  <div class="bbl-inner">
+
+    <span class="bbl-section-eyebrow">Your Move</span>
+    <!-- Orienting line: one sentence in uncle voice, before sub-tabs render -->
+    <div class="bbl-placeholder">[AMA TO PASTE] One sentence in uncle voice telling the reader to pick their seat.</div>
+
+    <div class="bbl-subtabs" role="tablist" aria-label="Audience navigation">
+      <button class="bbl-subtab active" role="tab" aria-selected="true"  onclick="showSubTab(0)">For the Big Men</button>
+      <button class="bbl-subtab"        role="tab" aria-selected="false" onclick="showSubTab(1)">For the Chasers</button>
+      <button class="bbl-subtab"        role="tab" aria-selected="false" onclick="showSubTab(2)">For the Friend Group</button>
+    </div>
+
+    <div class="bbl-subpanel" id="subpanel-0" role="tabpanel">
+      <div class="bbl-placeholder">[AMA TO PASTE] For the Big Men &mdash; where to visit, where to consider, how to find your people</div>
+      <div class="bbl-placeholder">[AMA TO PASTE] City recommendations with rationale</div>
+      <div class="bbl-placeholder">[AMA TO PASTE] Big boy weekends / events calendar note</div>
+    </div>
+
+    <div class="bbl-subpanel" id="subpanel-1" role="tabpanel" hidden>
+      <div class="bbl-placeholder">[AMA TO PASTE] For the Chasers &mdash; what participation in the market looks like</div>
+      <div class="bbl-placeholder">[AMA TO PASTE] How to make spaces more inviting</div>
+    </div>
+
+    <div class="bbl-subpanel" id="subpanel-2" role="tabpanel" hidden>
+      <div class="bbl-placeholder">[AMA TO PASTE] For the Friend Group &mdash; coordinate around big boy events</div>
+      <div class="bbl-placeholder">[AMA TO PASTE] Introduce networks, show up together</div>
+    </div>
+
+    <div class="bbl-floor">
+      <button class="bbl-floor-btn" onclick="showTab(4)">&larr; Hold Your Ground</button>
+      <span class="bbl-floor-spacer"></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+      <div class="ai-footer-tagline">See the architecture. The data was always there &mdash; now it&rsquo;s yours.</div>
+    </div>
+
+    <div class="ai-footer-journey">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+         target="_blank" rel="noopener" class="ai-footer-journey-item">
+        <span class="ai-footer-journey-icon">&#9654;</span>
+        <span class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Watch</span>
+          <span class="ai-footer-journey-name">Alterrell Interactive on YouTube</span>
+        </span>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+         target="_blank" rel="noopener" class="ai-footer-journey-item">
+        <span class="ai-footer-journey-icon">&#10022;</span>
+        <span class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Read</span>
+          <span class="ai-footer-journey-name">Alterrell Interactive on Substack</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">&larr; All Projects</a>
+    </div>
+
+    <!-- Methodology accordion — first section open by default -->
+    <details class="ai-footer-methodology" open>
+      <summary>Methodology &amp; Sources</summary>
+      <div class="ai-footer-methodology-body">
+        <p class="ai-footer-methodology-note">
+          This piece draws on community-generated poll data from a TikTok post and overlays it with publicly available socioeconomic data. The poll is not a representative sample. Cities were reported voluntarily by respondents and reflect one week of responses. n=77 total responses. Percentages calculated from n=77.
+        </p>
+        <ul class="ai-footer-sources">
+          <li>Community poll data: TikTok (@alterrell), April 2026. n=77 voluntary responses. Cities reported by respondents identifying as bigger Black gay men who found their Black partner. Not statistically representative.</li>
+          <li>Black population by city: US Census Bureau, American Community Survey (ACS) 2023 5-year estimates.</li>
+          <li>Gay population estimates: Williams Institute, UCLA School of Law. LGBT adult population by metro area. Figures are directional estimates, not race-adjusted.</li>
+          <li>Scatter chart uses log scale on both axes to prevent white-space compression from population outliers (NYC/Brooklyn Black pop: 1.9M). Log scale is the correct default for any population scatter on this platform.</li>
+          <li>Gay bars excluded from data layer &mdash; not a reliable proxy for Black gay infrastructure. Jack&rsquo;s market presence and CDC body size data pending source verification. See BLACK-GAY-GEOGRAPHY-BRIEF.md open questions.</li>
+          <li>Accent color #E8B923 is a placeholder for this piece, acceptable until the second Obsidian Futures piece ships.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">&copy; 2026 &middot; interactive.alterrell.com</span>
+      <a href="https://interactive.alterrell.com/big-black-love/" class="ai-footer-url">interactive.alterrell.com/big-black-love/</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- D3 v7 — loaded for scatter chart build (T2 chart session) -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Poll data — verified April 26 2026 · n=77 (corrected; erroneous 97 figure in T2 prompt) ── */
+  var pollData = [
+    { city: 'Atlanta',           n: 15, pct: 19.5 },
+    { city: 'Chicago',           n: 15, pct: 19.5 },
+    { city: 'Houston',           n: 11, pct: 14.3 },
+    { city: 'DMV / DC / Balt.', n: 10, pct: 13.0 },
+    { city: 'NYC / Brooklyn',   n:  7, pct:  9.1 },
+    { city: 'Philadelphia',      n:  6, pct:  7.8 },
+    { city: 'Detroit',           n:  4, pct:  5.2 },
+    { city: 'Los Angeles',       n:  4, pct:  5.2 },
+    { city: 'New Orleans',       n:  2, pct:  2.6 },
+    { city: 'Oakland',           n:  2, pct:  2.6 },
+    { city: 'Dallas',            n:  1, pct:  1.3 }
+  ];
+
+  /* ── Scatter/bubble data — log scale chart · visual build deferred to T2 chart session ──
+     x = Black population (thousands) · y = Gay population (thousands) · size = poll n
+     One color per city · dashed diagonal reference line · city labels + leader lines
+     Legend: cities sorted largest n → smallest n (right of chart)
+     Gay pop figures: directional estimates, not race-adjusted (Williams Institute)          */
+  var scatterData = [
+    { city: 'Atlanta',        blackPop: 235,  gayPop:  22, n: 15 },
+    { city: 'Chicago',        blackPop: 744,  gayPop: 125, n: 15 },
+    { city: 'Houston',        blackPop: 506,  gayPop:  75, n: 11 },
+    { city: 'DC',             blackPop: 294,  gayPop:  67, n: 10 },
+    { city: 'NYC / Brooklyn', blackPop: 1909, gayPop: 415, n:  7 },
+    { city: 'Philadelphia',   blackPop: 596,  gayPop:  95, n:  6 },
+    { city: 'Detroit',        blackPop: 485,  gayPop:  24, n:  4 },
+    { city: 'Los Angeles',    blackPop: 304,  gayPop: 201, n:  4 },
+    { city: 'New Orleans',    blackPop: 230,  gayPop:  19, n:  2 },
+    { city: 'Oakland',        blackPop:  92,  gayPop:  26, n:  2 },
+    { city: 'Dallas',         blackPop: 299,  gayPop:  55, n:  1 }
+  ];
+  /* City coordinates for future map build (if needed):
+     ATL [33.749,-84.388]  CHI [41.878,-87.629]  HOU [29.760,-95.369]
+     DC  [38.907,-77.036]  NYC [40.712,-74.005]  PHL [39.952,-75.163]
+     DET [42.332,-83.047]  LA  [34.052,-118.243] NOLA [29.954,-90.074]
+     OAK [37.804,-122.270] DAL [32.776,-96.796]                        */
+
+  /* ── Tab switching ── */
+  function showTab(idx) {
+    var sections = document.querySelectorAll('.bbl-section');
+    var tabs     = document.querySelectorAll('.bbl-tab');
+    sections.forEach(function (s, i) {
+      if (i === idx) { s.removeAttribute('hidden'); }
+      else           { s.setAttribute('hidden', ''); }
+    });
+    tabs.forEach(function (t, i) {
+      t.classList.toggle('active', i === idx);
+      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    window.scrollTo(0, 0);
+    if (idx === 2) { buildPollCharts(); }
+  }
+
+  /* ── Sub-tab switching (Tab 6: Your Move) ── */
+  function showSubTab(idx) {
+    document.querySelectorAll('.bbl-subpanel').forEach(function (p, i) {
+      if (i === idx) { p.removeAttribute('hidden'); }
+      else           { p.setAttribute('hidden', ''); }
+    });
+    document.querySelectorAll('.bbl-subtab').forEach(function (t, i) {
+      t.classList.toggle('active', i === idx);
+      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+  }
+
+  /* ── Share: copy link ── */
+  function copyLink(btn) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.innerHTML = '&#9675; Copy link'; }, 2000);
+      });
+    }
+  }
+
+  /* ── Poll charts ── */
+  var chartsBuilt = false;
+
+  function buildPollCharts() {
+    if (chartsBuilt) { return; }
+    buildBarChart('bbl-chart-count', 15,   function (d) { return d.n; },   function (d) { return String(d.n); });
+    buildBarChart('bbl-chart-pct',   19.5, function (d) { return d.pct; }, function (d) { return d.pct + '%'; });
+    chartsBuilt = true;
+  }
+
+  function buildBarChart(containerId, maxVal, valFn, labelFn) {
+    var container = document.getElementById(containerId);
+    if (!container) { return; }
+    var isMobile = window.innerWidth < 540;
+    var cityW    = isMobile ? 82 : 118;
+    var GAP      = 8;
+    var valW     = 42;
+    var chartW   = Math.min(container.offsetWidth || 340, 540);
+    var barAreaW = Math.max(40, chartW - cityW - GAP - valW - GAP);
+    container.innerHTML = '';
+    pollData.forEach(function (d) {
+      var barPx  = Math.max(2, Math.round((valFn(d) / maxVal) * barAreaW));
+      var row    = document.createElement('div');
+      row.className = 'bbl-bar-row';
+      var cityEl = document.createElement('div');
+      cityEl.className = 'bbl-bar-city';
+      cityEl.style.width = cityW + 'px';
+      cityEl.textContent = d.city;
+      var trackEl = document.createElement('div');
+      trackEl.className = 'bbl-bar-track';
+      trackEl.style.maxWidth = barAreaW + 'px';
+      var fillEl = document.createElement('div');
+      fillEl.className = 'bbl-bar-fill';
+      fillEl.style.width = barPx + 'px';
+      fillEl.setAttribute('aria-label', d.city + ': ' + labelFn(d));
+      var valEl = document.createElement('div');
+      valEl.className = 'bbl-bar-val';
+      valEl.textContent = labelFn(d);
+      trackEl.appendChild(fillEl);
+      row.appendChild(cityEl);
+      row.appendChild(trackEl);
+      row.appendChild(valEl);
+      container.appendChild(row);
+    });
+  }
+
+  /* ── Resize: rebuild charts if viewport changes significantly ── */
+  var lastW = window.innerWidth;
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (Math.abs(window.innerWidth - lastW) > 40) {
+        lastW = window.innerWidth;
+        chartsBuilt = false;
+        var pollSection = document.getElementById('tab-poll');
+        if (pollSection && !pollSection.hasAttribute('hidden')) { buildPollCharts(); }
+      }
+    }, 120);
+  });
+
+  /* ── Expose to inline onclick ── */
+  window.showTab    = showTab;
+  window.showSubTab = showSubTab;
+  window.copyLink   = copyLink;
+
+}());
+</script>
+</body>
+</html>

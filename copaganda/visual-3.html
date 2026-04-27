@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 3 — Who Gets Paid · SVU Deep Dive · Alterrell Interactive</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v3 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v3-eyebrow {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bbb;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .v3-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .v3-subhead {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    #v3-chart {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .v3-annotation {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: #777;
+      margin-bottom: 32px;
+      padding-left: 2px;
+    }
+
+    .v3-cards-eyebrow {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #bbb;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .v3-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .v3-card {
+      border-top: 3px solid;
+      padding: 14px 12px 12px;
+      background: #f6f6f6;
+    }
+
+    .v3-card-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+
+    .v3-card-role {
+      font-size: 0.7rem;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .v3-card-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .v3-card-years {
+      font-size: 0.65rem;
+      color: #aaa;
+      margin-top: 3px;
+      line-height: 1.45;
+    }
+
+    .v3-footnote {
+      font-size: 0.65rem;
+      color: #bbb;
+      line-height: 1.65;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v3 { padding: 32px 20px 48px; }
+      .v3-title { font-size: 1.5rem; }
+      .v3-cards { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v3">
+    <p class="v3-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 3 of 5</p>
+    <h2 class="v3-title">Who Gets Paid</h2>
+    <p class="v3-subhead">Annual earnings in the SVU ecosystem &middot; 2023 snapshot &middot; All values annual</p>
+
+    <div id="v3-chart"></div>
+    <p class="v3-annotation">This is one year. SVU has been airing since 1999.</p>
+
+    <p class="v3-cards-eyebrow">Actor detail</p>
+    <div class="v3-cards">
+      <div class="v3-card" style="border-color:#0F6E56;">
+        <div class="v3-card-name" style="color:#0F6E56;">Mariska Hargitay</div>
+        <div class="v3-card-role">Olivia Benson</div>
+        <div class="v3-card-value" style="color:#0F6E56;">~$15M</div>
+        <div class="v3-card-years">27 seasons &middot; SVU 1999&ndash;present</div>
+      </div>
+      <div class="v3-card" style="border-color:#993C1D;">
+        <div class="v3-card-name" style="color:#993C1D;">Christopher Meloni</div>
+        <div class="v3-card-role">Elliot Stabler</div>
+        <div class="v3-card-value" style="color:#993C1D;">~$10M</div>
+        <div class="v3-card-years">SVU 1999&ndash;2011 &middot; Organized Crime 2021&ndash;present</div>
+      </div>
+      <div class="v3-card" style="border-color:#3C3489;">
+        <div class="v3-card-name" style="color:#3C3489;">Ice-T</div>
+        <div class="v3-card-role">Fin Tutuola</div>
+        <div class="v3-card-value" style="color:#3C3489;">~$5.5M</div>
+        <div class="v3-card-years">26 seasons &middot; SVU 1999&ndash;present &middot; wrote &#8220;Cop Killer&#8221;</div>
+      </div>
+    </div>
+
+    <p class="v3-footnote">
+      Annual earnings: Actor salaries from industry reporting (Variety, The Hollywood Reporter). Creator fee (Dick Wolf) estimated from industry range for EP/showrunner at Wolf Entertainment scale. NBC cop primetime estimate: ~20% share of NBC primetime hours (Wolf properties), S&amp;P Global / Kagan 2023 broadcast revenue data; conservative floor excludes reruns, marathons, syndication, and Peacock streaming.
+      * Actor tiles not to full scale &mdash; minimum size applied for readability.
+    </p>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Floor in $M applied to actor tiles only for readability.
+      // NBC cop est. and Dick Wolf are at true proportional scale.
+      var FLOOR_M = 20;
+
+      var nodes = [
+        {
+          id: 'nbccop',
+          nameParts: ['NBC cop', 'primetime est.'],
+          sublabel: 'NBC only · conservative · excludes reruns + streaming',
+          actual: '~$220M',
+          actualM: 220,
+          color: '#378ADD',
+          floored: false
+        },
+        {
+          id: 'wolf',
+          nameParts: ['Dick Wolf'],
+          sublabel: 'creator',
+          actual: '~$150M',
+          actualM: 150,
+          color: '#854F0B',
+          floored: false
+        },
+        {
+          id: 'hargitay',
+          nameParts: ['Mariska', 'Hargitay'],
+          sublabel: 'Olivia Benson · 27 seasons',
+          actual: '~$15M',
+          actualM: 15,
+          color: '#0F6E56',
+          floored: true
+        },
+        {
+          id: 'meloni',
+          nameParts: ['Christopher', 'Meloni'],
+          sublabel: 'Elliot Stabler',
+          actual: '~$10M',
+          actualM: 10,
+          color: '#993C1D',
+          floored: true
+        },
+        {
+          id: 'icet',
+          nameParts: ['Ice-T'],
+          sublabel: 'wrote “Cop Killer” · 26 seasons',
+          actual: '~$5.5M',
+          actualM: 5.5,
+          color: '#3C3489',
+          floored: true
+        }
+      ];
+
+      var FONT = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
+
+      function txt(parent, str, x, y, size, weight, fill) {
+        parent.append('text')
+          .attr('x', x)
+          .attr('y', y)
+          .attr('font-family', FONT)
+          .attr('font-size', size + 'px')
+          .attr('font-weight', weight)
+          .attr('fill', fill)
+          .text(str);
+      }
+
+      function renderTileText(g, d) {
+        var w = d.x1 - d.x0;
+        var h = d.y1 - d.y0;
+        var area = w * h;
+        var PAD = 10;
+
+        var clipId = 'clip-v3-' + d.data.id;
+        g.append('clipPath').attr('id', clipId)
+          .append('rect')
+          .attr('width', Math.max(0, w - PAD))
+          .attr('height', Math.max(0, h - PAD));
+
+        var tg = g.append('g').attr('clip-path', 'url(#' + clipId + ')');
+
+        var parts = d.data.nameParts;
+        var val = d.data.actual + (d.data.floored ? ' *' : '');
+        var isLarge = area > 60000;
+
+        var nameSize = isLarge ? 15 : 10;
+        var nameGap  = isLarge ? 5  : 3;
+        var valSize  = isLarge ? 28 : 13;
+        var valGap   = isLarge ? 14 : 8;
+        var subSize  = 10;
+
+        // Name — first baseline at PAD + nameSize
+        var nameBaseY = PAD + nameSize;
+        parts.forEach(function (part, i) {
+          txt(tg, part, PAD, nameBaseY + i * (nameSize + nameGap), nameSize, 700, '#fff');
+        });
+
+        // Value — after last name line
+        var valY = nameBaseY + (parts.length - 1) * (nameSize + nameGap) + valGap + valSize;
+        txt(tg, val, PAD, valY, valSize, 800, 'rgba(255,255,255,0.92)');
+
+        // Sublabel — large tiles only, when tile is tall enough to fit it
+        if (isLarge) {
+          var subY = valY + valSize + subSize;
+          if (subY < h - PAD) {
+            txt(tg, d.data.sublabel, PAD, subY, subSize, 400, 'rgba(255,255,255,0.48)');
+          }
+        }
+      }
+
+      function buildChart() {
+        var container = document.getElementById('v3-chart');
+        var totalW = container.offsetWidth || 736;
+        var totalH = Math.round(totalW * 0.60);
+
+        var chartData = {
+          name: 'root',
+          children: nodes.map(function (d) {
+            return Object.assign({}, d, { value: Math.max(d.actualM, FLOOR_M) });
+          })
+        };
+
+        var root = d3.hierarchy(chartData)
+          .sum(function (d) { return d.value || 0; })
+          .sort(function (a, b) { return b.value - a.value; });
+
+        d3.treemap()
+          .size([totalW, totalH])
+          .paddingOuter(2)
+          .paddingInner(3)
+          .round(true)(root);
+
+        var svg = d3.select('#v3-chart')
+          .append('svg')
+          .attr('viewBox', '0 0 ' + totalW + ' ' + totalH)
+          .attr('preserveAspectRatio', 'xMidYMid meet')
+          .style('width', '100%')
+          .style('height', 'auto')
+          .style('display', 'block');
+
+        var cell = svg.selectAll('g.tile')
+          .data(root.leaves())
+          .enter()
+          .append('g')
+          .attr('class', 'tile')
+          .attr('transform', function (d) {
+            return 'translate(' + d.x0 + ',' + d.y0 + ')';
+          });
+
+        cell.append('rect')
+          .attr('width', function (d) { return Math.max(0, d.x1 - d.x0); })
+          .attr('height', function (d) { return Math.max(0, d.y1 - d.y0); })
+          .attr('fill', function (d) { return d.data.color; });
+
+        cell.each(function (d) {
+          renderTileText(d3.select(this), d);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildChart);
+      } else {
+        buildChart();
+      }
+    }());
+  </script>
+</body>
+</html>

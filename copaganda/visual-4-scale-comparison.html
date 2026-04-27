@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 4 &mdash; Follow the Money &middot; Scale Comparison &middot; Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v4 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v4-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bbb;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v4-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .v4-subhead {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 32px;
+      line-height: 1.55;
+    }
+
+    /* Band container */
+    .v4-band {
+      border: 1px solid #e8e5e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .v4-band + .v4-band { margin-top: 4px; }
+
+    .v4-band-header {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 500;
+      color: #0a7c72;
+      padding: 8px 16px;
+      background: #f8f6f1;
+      border-bottom: 1px solid #e8e5e0;
+    }
+
+    .v4-band-rows { padding: 6px 16px 10px; }
+
+    /* Bar row */
+    .v4-bar-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 4px 0;
+    }
+    .v4-bar-row + .v4-bar-row { border-top: 1px solid rgba(0,0,0,0.04); }
+
+    .v4-entity-name {
+      flex-shrink: 0;
+      font-size: 0.71rem;
+      font-weight: 500;
+      color: #333;
+      line-height: 1.25;
+      padding-top: 2px;
+    }
+
+    .v4-entity-note {
+      display: block;
+      font-size: 0.58rem;
+      color: #aaa;
+      font-weight: 400;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .v4-bar-segment {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    .v4-bar {
+      height: 20px;
+      border-radius: 2px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .v4-bar-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Scale note inside Band 1 */
+    .v4-scale-note {
+      font-size: 0.59rem;
+      color: #ccc;
+      font-style: italic;
+      padding: 2px 16px 8px;
+      line-height: 1.4;
+    }
+
+    /* Band 1 annotation block */
+    .v4-band-annotation {
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: #444;
+      background: #f8f6f1;
+      border-left: 3px solid #0a7c72;
+      padding: 14px 16px;
+      margin: 10px 0;
+    }
+
+    /* Connector callout between bands */
+    .v4-connector {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f8f6f1;
+      border-radius: 3px;
+      padding: 11px 16px;
+      margin: 6px 0;
+    }
+    .v4-connector-icon {
+      font-size: 1rem;
+      color: #0a7c72;
+      flex-shrink: 0;
+      line-height: 1.3;
+      margin-top: 1px;
+    }
+    .v4-connector-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0a7c72;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .v4-connector-values {
+      font-size: 0.77rem;
+      color: #222;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+    .v4-connector-desc {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 3px;
+      line-height: 1.45;
+    }
+
+    /* Cumulative stat callout */
+    .v4-stat-callout {
+      background: #0a7c72;
+      color: #fff;
+      padding: 20px 24px;
+      border-radius: 4px;
+      margin: 14px 0 24px;
+    }
+    .v4-stat-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+    .v4-stat-callout p {
+      font-size: 0.84rem;
+      line-height: 1.7;
+    }
+    .v4-stat-callout strong { font-weight: 700; }
+
+    /* Screenshot nudge */
+    .v4-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin-bottom: 28px;
+    }
+
+    /* Footnote */
+    .v4-footnote {
+      font-size: 0.64rem;
+      color: #bbb;
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v4 { padding: 32px 20px 48px; }
+      .v4-title { font-size: 1.5rem; }
+      .v4-entity-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v4">
+    <p class="v4-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 4 of 5</p>
+    <h2 class="v4-title">Follow the Money</h2>
+    <p class="v4-subhead">The content machine. The police it funds culturally. The armies they equal.</p>
+
+    <div id="v4-chart"></div>
+
+    <p class="v4-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <p class="v4-footnote">
+      Network revenue: NBCUniversal/Comcast 2023 annual reports. Cop content estimates: S&amp;P Global/Kagan broadcast revenue data, hours-based calculation. Police budgets: city FY docs. Military budgets: SIPRI 2024. All cop content estimates are conservative primetime-only floors.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var TEAL   = '#0a7c72';
+      var INDIGO = '#1e1040';
+      var CORAL  = '#993C1D';
+
+      var bands = [
+        {
+          id: 'content',
+          header: 'WHAT THE MACHINE EARNS (ANNUAL · 2023)',
+          barColor: INDIGO,
+          scaleType: 'sqrt',
+          scaleNote: 'Band 1 uses square-root compression for readability; values labeled. Comcast bar at 100%, all others scaled proportionally.',
+          annotation: 'Combined conservative cop primetime estimate: <strong>~$527M/yr</strong><br>Law &amp; Order premiered September 13, 1990.<br>This is one year. The machine has been running for 35.',
+          entities: [
+            { name: 'Comcast',        note: 'total revenue',                              value: 124000, label: '$124B'  },
+            { name: 'NBCUniversal',   note: 'total ad revenue · all properties',     value:   8600, label: '$8.6B'  },
+            { name: 'CBS / Paramount',note: 'broadcast ad revenue',                       value:    930, label: '~$930M' },
+            { name: 'CBS cop est.',   note: 'CBS primetime only · conservative floor',value:    307, label: '~$307M' },
+            { name: 'NBC cop est.',   note: 'NBC primetime only · conservative floor',value:    220, label: '~$220M' }
+          ]
+        },
+        {
+          id: 'police',
+          header: 'TOP 10 US CITY POLICE BUDGETS (FY2023–24)',
+          barColor: TEAL,
+          scaleType: 'linear',
+          scaleNote: null,
+          annotation: null,
+          entities: [
+            { name: 'NYPD',            value: 5400, label: '$5.4B'  },
+            { name: 'Chicago PD',      value: 1940, label: '$1.94B' },
+            { name: 'LAPD',            value: 1860, label: '$1.86B' },
+            { name: 'Houston PD',      value: 1070, label: '$1.07B' },
+            { name: 'Phoenix PD',      value: 1000, label: '~$1.0B' },
+            { name: 'Philadelphia PD', value:  877, label: '$877M'  },
+            { name: 'Washington DC',   value:  700, label: '~$700M' },
+            { name: 'Dallas PD',       value:  719, label: '$719M'  },
+            { name: 'San Diego PD',    value:  600, label: '~$600M' },
+            { name: 'San Antonio PD',  value:  570, label: '$570M'  }
+          ]
+        },
+        {
+          id: 'military',
+          header: 'COMPARABLE NATIONAL MILITARY BUDGETS (SIPRI 2024)',
+          barColor: CORAL,
+          scaleType: 'linear',
+          scaleNote: null,
+          annotation: null,
+          entities: [
+            { name: 'Norway',                  value: 5000, label: '~$5.0B' },
+            { name: 'Slovakia',                value: 2400, label: '~$2.4B' },
+            { name: 'Slovenia + Croatia',      value: 2000, label: '~$2.0B' },
+            { name: 'Ireland',                 value: 1300, label: '~$1.3B' },
+            { name: 'Latvia',                  value: 1100, label: '~$1.1B' },
+            { name: 'Lithuania',               value: 1100, label: '~$1.1B' },
+            { name: 'Kenya',                   value:  750, label: '~$750M' },
+            { name: 'Croatia',                 value:  742, label: '~$742M' },
+            { name: 'Albania + N. Macedonia',  value:  550, label: '~$550M' },
+            { name: 'Bosnia-Herzegovina',      value:  500, label: '~$500M' }
+          ]
+        }
+      ];
+
+      var connectorsAfterContent = [
+        {
+          label: 'MACHINE VS. MILITARY',
+          values: 'Combined cop TV est. ~$527M/yr ↔ Bosnia-Herzegovina ~$500M',
+          desc: 'One year of conservative cop TV ad revenue equals Bosnia’s entire military budget. Bosnia has a standing defense ministry and NATO candidacy. This is one year of primetime-only broadcast, excluding reruns and streaming.'
+        },
+        {
+          label: 'CONTENT VS. POLICING',
+          values: 'NBCUniversal $8.6B > NYPD $5.4B + Chicago PD $1.94B combined ($7.34B)',
+          desc: 'NBCUniversal’s total ad revenue exceeds the combined police budgets of America’s two largest departments.'
+        }
+      ];
+
+      var connectorsAfterPolice = [
+        {
+          label: 'ONE CITY. ONE NATO NATION. SAME BUDGET.',
+          values: 'NYPD $5.4B ↔ Norway ~$5.0B',
+          desc: 'Norway has a standing army, a navy, an air force, and defense obligations to 30 NATO allies. New York City has a police department.'
+        }
+      ];
+
+      var MIN_BAR_PX = 3;
+
+      function scaledW(value, maxVal, barAreaW, isSqrt) {
+        var ratio = isSqrt
+          ? Math.sqrt(value / maxVal)
+          : value / maxVal;
+        return Math.max(MIN_BAR_PX, Math.round(ratio * barAreaW));
+      }
+
+      function makeBand(band, nameW, barAreaW) {
+        var isSqrt = band.scaleType === 'sqrt';
+        var maxVal = Math.max.apply(null, band.entities.map(function (e) { return e.value; }));
+
+        var el = document.createElement('div');
+        el.className = 'v4-band';
+
+        var hdrEl = document.createElement('div');
+        hdrEl.className = 'v4-band-header';
+        hdrEl.innerHTML = band.header;
+        el.appendChild(hdrEl);
+
+        var rowsEl = document.createElement('div');
+        rowsEl.className = 'v4-band-rows';
+
+        band.entities.forEach(function (e) {
+          var rowEl = document.createElement('div');
+          rowEl.className = 'v4-bar-row';
+
+          var nameEl = document.createElement('div');
+          nameEl.className = 'v4-entity-name';
+          nameEl.style.width = nameW + 'px';
+          nameEl.style.minWidth = nameW + 'px';
+          nameEl.textContent = e.name;
+          if (e.note) {
+            var noteSpan = document.createElement('span');
+            noteSpan.className = 'v4-entity-note';
+            noteSpan.textContent = e.note;
+            nameEl.appendChild(noteSpan);
+          }
+
+          var segEl = document.createElement('div');
+          segEl.className = 'v4-bar-segment';
+
+          var barEl = document.createElement('div');
+          barEl.className = 'v4-bar';
+          barEl.style.width = scaledW(e.value, maxVal, barAreaW, isSqrt) + 'px';
+          barEl.style.background = band.barColor;
+
+          var valEl = document.createElement('span');
+          valEl.className = 'v4-bar-value';
+          valEl.style.color = band.barColor;
+          valEl.textContent = e.label;
+
+          segEl.appendChild(barEl);
+          segEl.appendChild(valEl);
+          rowEl.appendChild(nameEl);
+          rowEl.appendChild(segEl);
+          rowsEl.appendChild(rowEl);
+        });
+
+        el.appendChild(rowsEl);
+
+        if (band.scaleNote) {
+          var noteEl = document.createElement('p');
+          noteEl.className = 'v4-scale-note';
+          noteEl.textContent = band.scaleNote;
+          el.appendChild(noteEl);
+        }
+
+        return el;
+      }
+
+      function makeAnnotation(html) {
+        var el = document.createElement('div');
+        el.className = 'v4-band-annotation';
+        el.innerHTML = html;
+        return el;
+      }
+
+      function makeConnector(c) {
+        var el = document.createElement('div');
+        el.className = 'v4-connector';
+
+        var iconEl = document.createElement('div');
+        iconEl.className = 'v4-connector-icon';
+        iconEl.textContent = '↕';
+
+        var bodyEl = document.createElement('div');
+
+        var labelEl = document.createElement('div');
+        labelEl.className = 'v4-connector-label';
+        labelEl.textContent = c.label;
+
+        var valEl = document.createElement('div');
+        valEl.className = 'v4-connector-values';
+        valEl.textContent = c.values;
+
+        var descEl = document.createElement('div');
+        descEl.className = 'v4-connector-desc';
+        descEl.textContent = c.desc;
+
+        bodyEl.appendChild(labelEl);
+        bodyEl.appendChild(valEl);
+        bodyEl.appendChild(descEl);
+        el.appendChild(iconEl);
+        el.appendChild(bodyEl);
+        return el;
+      }
+
+      function makeStatCallout() {
+        var el = document.createElement('div');
+        el.className = 'v4-stat-callout';
+
+        var lbl = document.createElement('div');
+        lbl.className = 'v4-stat-callout-label';
+        lbl.textContent = 'THE CUMULATIVE ARGUMENT';
+        el.appendChild(lbl);
+
+        var p = document.createElement('p');
+        p.innerHTML = [
+          'These are 2023 figures only.',
+          'Law &amp; Order has been airing since September 13, 1990.',
+          'Conservative cumulative primetime broadcast cop content ad revenue from NBC and CBS alone since 1990 exceeds <strong>$10 billion</strong>.',
+          'That is a floor, not a ceiling.',
+          'It excludes reruns, marathons, syndication, and streaming.'
+        ].join('<br>');
+        el.appendChild(p);
+
+        return el;
+      }
+
+      function build() {
+        var container = document.getElementById('v4');
+        var chart     = document.getElementById('v4-chart');
+        var isMobile  = container.offsetWidth < 540;
+
+        var NAME_W   = isMobile ? 100 : 160;
+        var COL_GAP  = 10;
+        var innerW   = container.offsetWidth - 64;
+        var barAreaW = Math.max(60, innerW - NAME_W - COL_GAP);
+
+        chart.innerHTML = '';
+
+        // Band 1 + annotation
+        chart.appendChild(makeBand(bands[0], NAME_W, barAreaW));
+        chart.appendChild(makeAnnotation(bands[0].annotation));
+
+        // Connectors that belong between Band 1 and Band 2
+        connectorsAfterContent.forEach(function (c) { chart.appendChild(makeConnector(c)); });
+
+        // Band 2
+        chart.appendChild(makeBand(bands[1], NAME_W, barAreaW));
+
+        // Connector between Band 2 and Band 3
+        connectorsAfterPolice.forEach(function (c) { chart.appendChild(makeConnector(c)); });
+
+        // Band 3
+        chart.appendChild(makeBand(bands[2], NAME_W, barAreaW));
+
+        // Stat callout
+        chart.appendChild(makeStatCallout());
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(build, 100);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', build);
+      } else {
+        build();
+      }
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 5 — City Budget Comparator · Copaganda · Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v5 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 32px 56px;
+    }
+
+    /* ── Eyebrow ─── */
+    .v5-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 12px;
+    }
+
+    /* ── Title block ─── */
+    .v5-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .v5-subhead {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #888;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    /* ── Legend ─── */
+    .v5-legend {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .v5-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .v5-legend-swatch {
+      width: 20px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Chart wrapper ─── */
+    .v5-chart {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    /* Column headers */
+    .v5-col-headers {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .v5-col-hdr-left {
+      flex: 1;
+      min-width: 0;
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0a7c72;
+    }
+
+    .v5-col-hdr-center {
+      width: 164px;
+      flex-shrink: 0;
+    }
+
+    .v5-col-hdr-right {
+      flex: 1;
+      min-width: 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1e1040;
+    }
+
+    /* Data rows */
+    .v5-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    .v5-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Left column — city police bar */
+    .v5-left-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .v5-val-left {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #0a7c72;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 42px;
+      text-align: right;
+    }
+
+    .v5-bar-teal {
+      height: 26px;
+      background: #0a7c72;
+      border-radius: 2px 0 0 2px;
+      flex-shrink: 0;
+      width: 0; /* set by JS */
+      transition: width 0.3s ease;
+    }
+
+    /* Center column */
+    .v5-center-col {
+      width: 164px;
+      flex-shrink: 0;
+      text-align: center;
+      padding: 0 6px;
+    }
+
+    .v5-city-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .v5-ratio {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-style: italic;
+      font-size: 0.62rem;
+      color: #aaa;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    .v5-country-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: #666;
+      margin-top: 2px;
+      line-height: 1.2;
+    }
+
+    /* Right column — country military bar */
+    .v5-right-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 7px;
+    }
+
+    .v5-bar-indigo {
+      height: 26px;
+      background: #1e1040;
+      border-radius: 0 2px 2px 0;
+      flex-shrink: 0;
+      width: 0; /* set by JS */
+      transition: width 0.3s ease;
+    }
+
+    .v5-val-right {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #1e1040;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 42px;
+    }
+
+    /* Screenshot nudge */
+    .v5-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: #ccc;
+      text-align: right;
+      margin-top: 6px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Annotation callouts ─── */
+    .v5-annotations {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .v5-callout {
+      border-left: 3px solid #0a7c72;
+      padding: 14px 14px 14px 16px;
+      background: #f5fbfa;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .v5-callout-city {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0a7c72;
+      margin-bottom: 8px;
+    }
+
+    .v5-callout-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #444;
+      line-height: 1.65;
+    }
+
+    .v5-callout-punch {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #111;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Footer note ─── */
+    .v5-footnote {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 400;
+      color: #bbb;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+      font-style: italic;
+    }
+
+    /* ── Responsive ─── */
+    @media (max-width: 600px) {
+      #v5 { padding: 28px 16px 40px; }
+      .v5-col-hdr-center { width: 100px; }
+      .v5-center-col { width: 100px; }
+      .v5-ratio { display: none; }
+      .v5-bar-teal, .v5-bar-indigo { height: 20px; }
+      .v5-annotations { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v5">
+
+    <p class="v5-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 5 of 5</p>
+
+    <h2 class="v5-title">$5 Billion. NATO Military or American City Police Force?</h2>
+    <p class="v5-subhead">The budget is the same. The territory isn't.</p>
+
+    <div class="v5-legend">
+      <div class="v5-legend-item">
+        <div class="v5-legend-swatch" style="background:#0a7c72;"></div>
+        City police budget
+      </div>
+      <div class="v5-legend-item">
+        <div class="v5-legend-swatch" style="background:#1e1040;"></div>
+        Country military budget
+      </div>
+    </div>
+
+    <div class="v5-chart">
+
+      <div class="v5-col-headers">
+        <div class="v5-col-hdr-left">City police budget</div>
+        <div class="v5-col-hdr-center"></div>
+        <div class="v5-col-hdr-right">Country military budget</div>
+      </div>
+
+      <!-- Row 1: New York / Norway -->
+      <div class="v5-row" data-city="5400" data-country="5000">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$5.4B</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">New York</div>
+          <div class="v5-ratio">489&times; the land area</div>
+          <div class="v5-country-name">Norway</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$5.0B</span>
+        </div>
+      </div>
+
+      <!-- Row 2: Chicago / Slovenia + Croatia -->
+      <div class="v5-row" data-city="1940" data-country="2000">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$1.94B</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Chicago</div>
+          <div class="v5-ratio">Two sovereign NATO nations</div>
+          <div class="v5-country-name">Slovenia + Croatia</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$2.0B</span>
+        </div>
+      </div>
+
+      <!-- Row 3: Los Angeles / Slovakia -->
+      <div class="v5-row" data-city="1860" data-country="2400">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$1.86B</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Los Angeles</div>
+          <div class="v5-ratio">NATO member</div>
+          <div class="v5-country-name">Slovakia</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$2.4B</span>
+        </div>
+      </div>
+
+      <!-- Row 4: Houston / Latvia -->
+      <div class="v5-row" data-city="1070" data-country="1100">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$1.07B</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Houston</div>
+          <div class="v5-ratio">NATO, Russian border</div>
+          <div class="v5-country-name">Latvia</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$1.1B</span>
+        </div>
+      </div>
+
+      <!-- Row 5: Phoenix / Lithuania -->
+      <div class="v5-row" data-city="1000" data-country="1100">
+        <div class="v5-left-col">
+          <span class="v5-val-left">~$1.0B</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Phoenix</div>
+          <div class="v5-ratio">NATO, Russian border</div>
+          <div class="v5-country-name">Lithuania</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$1.1B</span>
+        </div>
+      </div>
+
+      <!-- Row 6: Philadelphia / Ireland -->
+      <div class="v5-row" data-city="877" data-country="1300">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$877M</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Philadelphia</div>
+          <div class="v5-ratio">Neutral, no NATO</div>
+          <div class="v5-country-name">Ireland</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$1.3B</span>
+        </div>
+      </div>
+
+      <!-- Row 7: Washington DC / Kenya -->
+      <div class="v5-row" data-city="700" data-country="750">
+        <div class="v5-left-col">
+          <span class="v5-val-left">~$700M</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Washington DC</div>
+          <div class="v5-ratio">AU peacekeeping</div>
+          <div class="v5-country-name">Kenya</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$750M</span>
+        </div>
+      </div>
+
+      <!-- Row 8: Dallas / Croatia -->
+      <div class="v5-row" data-city="719" data-country="742">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$719M</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">Dallas</div>
+          <div class="v5-ratio">Near-exact match</div>
+          <div class="v5-country-name">Croatia</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$742M</span>
+        </div>
+      </div>
+
+      <!-- Row 9: San Diego / Albania + N. Macedonia -->
+      <div class="v5-row" data-city="600" data-country="550">
+        <div class="v5-left-col">
+          <span class="v5-val-left">~$600M</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">San Diego</div>
+          <div class="v5-ratio">Two NATO nations</div>
+          <div class="v5-country-name">Albania + N. Macedonia</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$550M</span>
+        </div>
+      </div>
+
+      <!-- Row 10: San Antonio / Bosnia-Herzegovina -->
+      <div class="v5-row" data-city="570" data-country="500">
+        <div class="v5-left-col">
+          <span class="v5-val-left">$570M</span>
+          <div class="v5-bar-teal"></div>
+        </div>
+        <div class="v5-center-col">
+          <div class="v5-city-name">San Antonio</div>
+          <div class="v5-ratio">Post-conflict, rebuilding</div>
+          <div class="v5-country-name">Bosnia-Herzegovina</div>
+        </div>
+        <div class="v5-right-col">
+          <div class="v5-bar-indigo"></div>
+          <span class="v5-val-right">~$500M</span>
+        </div>
+      </div>
+
+    </div><!-- /.v5-chart -->
+
+    <p class="v5-screenshot-nudge">screenshot to share</p>
+
+    <div class="v5-annotations">
+
+      <div class="v5-callout">
+        <p class="v5-callout-city">New York vs. Norway</p>
+        <p class="v5-callout-body">The NYPD patrols 304 square miles and 8.5 million people. Norway defends 385,000 square kilometers of land, nearly 2 million square kilometers of sea territory, and has NATO obligations against a nuclear neighbor.</p>
+        <p class="v5-callout-punch">Same budget.</p>
+      </div>
+
+      <div class="v5-callout">
+        <p class="v5-callout-city">Dallas vs. Croatia</p>
+        <p class="v5-callout-body">Dallas PD and Croatia's entire military cost roughly the same to run. Croatia has fighter jets, a navy, and defense obligations to 30 NATO allies.</p>
+        <p class="v5-callout-punch">Dallas has 385 square miles.</p>
+      </div>
+
+    </div>
+
+    <p class="v5-footnote">Police budget figures FY2023&ndash;2024. Military figures SIPRI 2024. Territory ratios calculated from city sq miles vs. country sq km. Conservative estimates where noted. SIPRI country figures should be verified at sipri.org before publication.</p>
+
+  </div><!-- /#v5 -->
+
+  <script>
+    (function () {
+      'use strict';
+
+      var MAX_M = 5400; // $5.4B — NYPD, largest value in set
+
+      function sizeBars() {
+        var rows = document.querySelectorAll('.v5-row');
+
+        rows.forEach(function (row) {
+          var cityM    = parseInt(row.dataset.city, 10);
+          var countryM = parseInt(row.dataset.country, 10);
+
+          var leftCol  = row.querySelector('.v5-left-col');
+          var rightCol = row.querySelector('.v5-right-col');
+          var barTeal  = row.querySelector('.v5-bar-teal');
+          var barIndi  = row.querySelector('.v5-bar-indigo');
+          var valLeft  = row.querySelector('.v5-val-left');
+          var valRight = row.querySelector('.v5-val-right');
+
+          // Available bar width = column width minus label width minus gap
+          var GAP = 7;
+          var leftAvail  = leftCol.offsetWidth  - valLeft.offsetWidth  - GAP;
+          var rightAvail = rightCol.offsetWidth - valRight.offsetWidth - GAP;
+
+          barTeal.style.width = Math.max(2, Math.round(cityM    / MAX_M * leftAvail))  + 'px';
+          barIndi.style.width = Math.max(2, Math.round(countryM / MAX_M * rightAvail)) + 'px';
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', sizeBars);
+      } else {
+        sizeBars();
+      }
+
+      window.addEventListener('resize', sizeBars);
+    }());
+  </script>
+</body>
+</html>

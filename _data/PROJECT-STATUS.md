@@ -2,7 +2,7 @@
 
 **Read this file at the start of every Claude Code session.**
 **Update this file before every deploy commit.**
-Last updated: 2026-04-23 — T3 platform session (naming series hub cards + concert-tax h1)
+Last updated: 2026-04-26 — T2 build session (Gay Uncles scaffold + hub card)
 
 ---
 
@@ -98,6 +98,35 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] config.js rolled out + URLs canonical
 - **Next session:** T1 editorial · fold into same session as Part 0 and Part 1
 
+### Advice From Your Thick Gay Uncles (`/big-black-love/`)
+- [x] Brief — complete, updated April 26 2026
+- [x] Tab map — locked April 26 2026 (T1 session) · 6 tabs + 3 sub-tabs (Your Move)
+- [x] Visual spec — locked April 26 2026 (T1 session)
+- [x] Copy draft — Overview + My Story tabs (placeholder, AMA rewrite pending)
+- [x] Build scaffold — T2 session April 26 2026
+  - `big-black-love/index.html` — OF dark theme (#0a0a12), `.bbl-section[hidden]` pattern
+  - Tab 1 (Overview): hero, placeholder copy, share block
+  - Tab 2 (My Story): placeholder copy
+  - Tab 3 (The Poll): two horizontal bar charts (raw count + %, n=77 corrected), both wired in JS
+  - Tab 4 (The Data): scatter/bubble stub — JS data array wired, D3 visual deferred to T2 chart session
+  - Tab 5 (Hold Your Ground): 5 accordions (first open), uncle disclaimer in Section 4, pull quote placeholders in all 5
+  - Tab 6 (Your Move): 3 sub-tabs (Big Men / Chasers / Friend Group)
+  - Journey block 4-item 2×2 grid · methodology accordion open by default · D3 v7 loaded
+- [x] Hub card — coming soon, in index.html · `data-lane="of"` · stat/stakes `[AMA TO CONFIRM]`
+- [x] Poll data corrected — n=77 (erroneous 97 in T2 prompt; brief updated)
+- [ ] AMA rewrite — Overview + My Story tabs `current` `[AMA]`
+- [ ] Copy draft — Tabs 3, 4, 5, 6 `T1`
+- [ ] Voice pass — all tabs `T1`
+- [ ] AMA rewrite — all tabs `[AMA]`
+- [ ] Chart refinement — scatter/bubble visual pass (D3 build) `T2`
+- [ ] Data sourcing — confirm gay pop estimates, Jack'd claim, CDC proxy `[AMA]`
+- [ ] Full build — charts wired, all copy in `T2`
+- [ ] QA `T2`
+- [ ] Deploy `T2`
+- **Current step:** AMA rewrite · Overview + My Story
+- **Next session:** T1 editorial · AMA rewrite pass + chart refinement + Tabs 3-6 copy draft
+- **Blocking:** Nothing (accent color placeholder #E8B923 acceptable until second OF piece ships)
+
 ---
 
 ## PARKED — ready when calendar gap opens
@@ -143,18 +172,32 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [ ] Deploy `blocked`
 - **Next session:** T1 editorial · May 2026
 
-### Gay Uncles / Bigger Black Men Advice
-- [x] Brief exists in _data/
-- [ ] Copy map `blocked` `T1` — not calendared
-- [ ] Build `blocked` `T2`
-- [ ] Deploy `blocked`
-- **Next session:** T1 editorial · calendar TBD
-
 ### Copaganda
-- [x] Brief exists in _data/
-- [ ] Sketch / explore session `next` `T1` — AMA wants to develop further
-- [ ] Build `blocked` `T2` — not calendared
-- **Next session:** T1 editorial · exploratory
+- [x] Brief exists in _data/ — fully locked April 25 2026
+- [x] Visual suite locked (5 visuals, build order V3→V5→V4→V2→V1)
+- [x] Visual 3 (SVU treemap) built — `copaganda/visual-3.html` (T2, April 2026)
+  - Treemap: 5 tiles (NBC cop, Wolf, Hargitay, Meloni, Ice-T), locked colors, FLOOR_M=20
+  - Actor cards: Hargitay, Meloni, Ice-T with name/role/earnings/years
+  - Annotation: "This is one year. SVU has been airing since 1999."
+- [x] Visual 5 (butterfly bar) built — `copaganda/visual-5-city-budgets.html` (T2, April 2026)
+  - 10 city/country pairings, locked data (SIPRI 2024 + city FY2023-24)
+  - Teal #0a7c72 left bars (city police), indigo #1e1040 right bars (country military)
+  - DM Serif Display title + ratio labels, DM Sans labels, DM Mono values
+  - JS proportional bar sizing against $5.4B max, resize-responsive
+  - Two annotation callouts: NYPD/Norway, Dallas/Croatia
+  - Screenshot nudge present
+- [x] Visual 4 (scale comparison) built — `copaganda/visual-4-scale-comparison.html` (T2, April 2026)
+  - Three bands: Band 1 content machine (sqrt compression, indigo #1e1040), Band 2 city police (linear, teal #0a7c72), Band 3 military (linear, coral #993C1D)
+  - 3 connector callouts between bands + cumulative stat callout
+  - Band 1 entities: Comcast $124B, NBCU $8.6B, CBS/Paramount ~$930M, CBS cop ~$307M, NBC cop ~$220M
+- [x] Visual 2 (producer stacked bar) built — `copaganda/visual-2-producers.html` (T2, April 2026)
+  - 6 producers: Wolf 150s, Bruckheimer 41s, Bellisario 33s, Spelling 29s, Gordon 23s, Bochco 19s
+  - Network colors, segment labels, Wolf $0 annotation, two callout blocks
+- [ ] Visual 1 (Gantt timeline) `next` `T2` — most complex, build last
+- [ ] Copy drafting `blocked` `T1` — after AMA chooses T1 or T2 priority
+- [ ] Full piece build `blocked` `T2` — after all copy AMA-approved
+- **Next session:** T2 visual build (Visual 1 Gantt) OR T1 copy (AMA decides)
+- **Blocking:** Part 2 Tab 3 copy blocked until Wolf 990 review
 
 ---
 
