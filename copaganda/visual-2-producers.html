@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 2 — The Machine · Producer View · Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v2 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v2-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bbb;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v2-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .v2-subhead {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Legend */
+    .v2-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-bottom: 28px;
+    }
+    .v2-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      color: #555;
+    }
+    .v2-legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Chart rows */
+    .v2-chart { margin-bottom: 10px; }
+
+    .v2-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 0 0;
+    }
+    .v2-row + .v2-row {
+      border-top: 1px solid #f0ede6;
+    }
+    .v2-row:last-child { padding-bottom: 9px; }
+
+    .v2-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 26px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .v2-bar-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .v2-bar-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .v2-bar {
+      height: 26px;
+      display: flex;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .v2-seg {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .v2-seg-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.57rem;
+      color: rgba(255, 255, 255, 0.85);
+      white-space: nowrap;
+      padding: 0 5px;
+      pointer-events: none;
+    }
+
+    .v2-right-label {
+      font-size: 0.69rem;
+      line-height: 1.4;
+      color: #777;
+      flex-shrink: 0;
+    }
+    .v2-right-label span { display: block; }
+
+    .v2-annotation {
+      font-size: 0.71rem;
+      margin-top: 5px;
+      line-height: 1.45;
+      padding-bottom: 9px;
+    }
+    .v2-annotation--wolf {
+      font-weight: 600;
+      color: #0a7c72;
+    }
+    .v2-annotation--hist {
+      font-style: italic;
+      color: #999;
+    }
+
+    /* Screenshot nudge */
+    .v2-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin: 4px 0 28px;
+    }
+
+    /* Callouts */
+    .v2-callouts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .v2-callout {
+      border-left: 3px solid #0a7c72;
+      padding: 14px 16px;
+      background: #f8f6f1;
+    }
+    .v2-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0a7c72;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .v2-callout p {
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: #333;
+    }
+
+    /* Footnote */
+    .v2-footnote {
+      font-size: 0.65rem;
+      color: #bbb;
+      line-height: 1.65;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v2 { padding: 32px 20px 48px; }
+      .v2-title { font-size: 1.5rem; }
+      .v2-callouts { grid-template-columns: 1fr; }
+      .v2-right-label { display: none; }
+      .v2-name { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v2">
+    <p class="v2-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 2 of 5</p>
+    <h2 class="v2-title">The Machine</h2>
+    <p class="v2-subhead">Aggregate cop show seasons by producer &middot; Major broadcast networks &middot; 1968&ndash;present</p>
+
+    <div class="v2-legend">
+      <div class="v2-legend-item"><span class="v2-legend-swatch" style="background:#1e1040"></span>NBC</div>
+      <div class="v2-legend-item"><span class="v2-legend-swatch" style="background:#185FA5"></span>CBS</div>
+      <div class="v2-legend-item"><span class="v2-legend-swatch" style="background:#993C1D"></span>ABC</div>
+      <div class="v2-legend-item"><span class="v2-legend-swatch" style="background:#854F0B"></span>Fox</div>
+      <div class="v2-legend-item"><span class="v2-legend-swatch" style="background:#5F5E5A"></span>Multi-network</div>
+    </div>
+
+    <div class="v2-chart" id="v2-chart"></div>
+
+    <p class="v2-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="v2-callouts">
+      <div class="v2-callout">
+        <div class="v2-callout-label">Dick Wolf</div>
+        <p>One producer. ~150 seasons of cop content across NBC and CBS. Documented charitable giving: theaters, museums, a hospital wing, Renaissance art. Criminal justice reform organizations: $0.</p>
+      </div>
+      <div class="v2-callout">
+        <div class="v2-callout-label">The Machine</div>
+        <p>Six producers. ~295 aggregate seasons of cop content. Spanning 1968 to today. Three deceased. The playbook never changed.</p>
+      </div>
+    </div>
+
+    <p class="v2-footnote">
+      Season counts approximate. Career earnings estimated from public records, divorce court filings, and Forbes data. Wolf $0 giving to criminal justice reform documented via Wolf Family Foundation official statement.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var NET_COLORS = {
+        NBC:   '#1e1040',
+        CBS:   '#185FA5',
+        ABC:   '#993C1D',
+        Fox:   '#854F0B',
+        Multi: '#5F5E5A'
+      };
+
+      var MAX_S        = 150;
+      var SEG_LABEL_MIN = 30;
+
+      var producers = [
+        {
+          name: 'Dick Wolf',
+          total: 150,
+          rightLabel: ['~150 seasons total', '~$4B+ career earnings est.'],
+          annotation: { text: '$0 documented to criminal justice reform organizations', style: 'wolf' },
+          segments: [
+            { label: 'L&O',       s: 23, net: 'NBC' },
+            { label: 'SVU',       s: 27, net: 'NBC' },
+            { label: 'CI',        s: 10, net: 'NBC' },
+            { label: 'OC',        s:  5, net: 'NBC' },
+            { label: 'Chi PD',    s: 13, net: 'NBC' },
+            { label: 'Chi Fire',  s: 14, net: 'NBC' },
+            { label: 'Chi Med',   s: 11, net: 'NBC' },
+            { label: 'FBI',       s:  8, net: 'CBS' },
+            { label: 'FBI MW',    s:  6, net: 'CBS' },
+            { label: 'FBI Intl',  s:  4, net: 'CBS' }
+          ]
+        },
+        {
+          name: 'Jerry Bruckheimer',
+          total: 41,
+          rightLabel: ['~41 seasons', 'CBS dominant'],
+          annotation: null,
+          segments: [
+            { label: 'CSI',        s: 15, net: 'CBS' },
+            { label: 'CSI Miami',  s: 10, net: 'CBS' },
+            { label: 'CSI NY',     s:  9, net: 'CBS' },
+            { label: 'W/o Trace',  s:  7, net: 'CBS' }
+          ]
+        },
+        {
+          name: 'Aaron Spelling',
+          total: 29,
+          rightLabel: ['~29 seasons', '1968–1987 · Deceased 2006'],
+          annotation: { text: 'Invented valorization through aesthetics. Originator of ‘jiggle TV.’', style: 'hist' },
+          segments: [
+            { label: 'Mod Squad',   s: 5, net: 'ABC'   },
+            { label: 'Starsky',     s: 4, net: 'ABC'   },
+            { label: 'Angels',      s: 5, net: 'ABC'   },
+            { label: 'T.J. Hooker', s: 5, net: 'Multi' },
+            { label: 'Hart to Hart',s: 5, net: 'ABC'   },
+            { label: 'The Rookies', s: 4, net: 'ABC'   },
+            { label: 'S.W.A.T.',    s: 1, net: 'ABC'   }
+          ]
+        },
+        {
+          name: 'Donald Bellisario',
+          total: 33,
+          rightLabel: ['~33 seasons', 'CBS only'],
+          annotation: null,
+          segments: [
+            { label: 'NCIS', s: 23, net: 'CBS' },
+            { label: 'JAG',  s: 10, net: 'CBS' }
+          ]
+        },
+        {
+          name: 'Mark Gordon',
+          total: 23,
+          rightLabel: ['~23 seasons', 'active'],
+          annotation: null,
+          segments: [
+            { label: 'Criminal Minds', s: 15, net: 'CBS' },
+            { label: 'The Rookie',     s:  8, net: 'ABC' }
+          ]
+        },
+        {
+          name: 'Steven Bochco',
+          total: 19,
+          rightLabel: ['~19 seasons', '1981–2005 · Deceased 2018'],
+          annotation: { text: 'Pioneered prestige ensemble cop drama.', style: 'hist' },
+          segments: [
+            { label: 'NYPD Blue',         s: 12, net: 'ABC' },
+            { label: 'Hill Street Blues', s:  7, net: 'NBC' }
+          ]
+        }
+      ];
+
+      function buildChart() {
+        var container = document.getElementById('v2');
+        var chart     = document.getElementById('v2-chart');
+        var isMobile  = container.offsetWidth < 540;
+
+        var NAME_W   = isMobile ? 80  : 140;
+        var RLABEL_W = isMobile ? 0   : 165;
+        var COL_GAP  = isMobile ? 8   : 12;
+
+        // container.offsetWidth includes the 32px*2 = 64px padding
+        var innerW    = container.offsetWidth - 64;
+        var barColW   = Math.max(60, innerW - NAME_W - RLABEL_W - COL_GAP * (RLABEL_W > 0 ? 2 : 1));
+
+        chart.innerHTML = '';
+
+        producers.forEach(function (p) {
+          var barPx    = Math.round((p.total / MAX_S) * barColW);
+          var segTotal = p.segments.reduce(function (acc, sg) { return acc + sg.s; }, 0);
+
+          var row = document.createElement('div');
+          row.className = 'v2-row';
+
+          // Name column
+          var nameEl = document.createElement('div');
+          nameEl.className = 'v2-name';
+          nameEl.style.width = NAME_W + 'px';
+          nameEl.textContent = p.name;
+          row.appendChild(nameEl);
+
+          // Bar + annotation column
+          var barColEl = document.createElement('div');
+          barColEl.className = 'v2-bar-col';
+
+          // Bar line (bar + right label side by side)
+          var barLineEl = document.createElement('div');
+          barLineEl.className = 'v2-bar-line';
+
+          var barEl = document.createElement('div');
+          barEl.className = 'v2-bar';
+          barEl.style.width = barPx + 'px';
+
+          p.segments.forEach(function (seg) {
+            var segPx = Math.round(seg.s / segTotal * barPx);
+            if (segPx < 1) { return; }
+
+            var segEl = document.createElement('div');
+            segEl.className = 'v2-seg';
+            segEl.style.width = segPx + 'px';
+            segEl.style.background = NET_COLORS[seg.net] || '#888';
+            segEl.title = seg.label + ' · ' + seg.s + ' seasons · ' + seg.net;
+
+            if (segPx >= SEG_LABEL_MIN) {
+              var lbl = document.createElement('span');
+              lbl.className = 'v2-seg-label';
+              lbl.textContent = seg.label;
+              segEl.appendChild(lbl);
+            }
+
+            barEl.appendChild(segEl);
+          });
+
+          barLineEl.appendChild(barEl);
+
+          if (!isMobile && RLABEL_W > 0) {
+            var rlEl = document.createElement('div');
+            rlEl.className = 'v2-right-label';
+            rlEl.style.width = RLABEL_W + 'px';
+            p.rightLabel.forEach(function (line) {
+              var span = document.createElement('span');
+              span.textContent = line;
+              rlEl.appendChild(span);
+            });
+            barLineEl.appendChild(rlEl);
+          }
+
+          barColEl.appendChild(barLineEl);
+
+          if (p.annotation) {
+            var annEl = document.createElement('div');
+            annEl.className = 'v2-annotation v2-annotation--' + p.annotation.style;
+            annEl.textContent = p.annotation.text;
+            barColEl.appendChild(annEl);
+          }
+
+          row.appendChild(barColEl);
+          chart.appendChild(row);
+        });
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildChart, 120);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildChart);
+      } else {
+        buildChart();
+      }
+    }());
+  </script>
+</body>
+</html>

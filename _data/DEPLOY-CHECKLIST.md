@@ -17,6 +17,7 @@ Confirm every applicable item before outputting any file.
 - [ ] OG meta tags present (title, description, image, url, twitter:card)
 - [ ] Breadcrumb present
 - [ ] Journey block present — all 4 items (Watch, Read, Explore, $ Ko-fi)
+- [ ] Journey block position confirmed: appears after tab nav, before first .ct-section — not after tab sections
 - [ ] Share block present — on Overview tab or most emotionally compelling tab
 - [ ] Section floor nav on every tab and sub-tab (margin-top: auto)
 - [ ] Screenshot nudge below every chart (DM Mono, right-aligned, muted)

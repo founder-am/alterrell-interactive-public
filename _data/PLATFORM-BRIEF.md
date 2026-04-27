@@ -232,6 +232,25 @@ For AI lane pieces, swap #E8B923 active background for #0a7c72
 
 ---
 
+## CANONICAL HTML ORDER
+
+Every new piece HTML file must follow this structure in this exact order. Claude Code must confirm this order before any scaffold is accepted.
+
+1. `<head>` — meta, OG tags, CSS links
+2. `<body>` — opens with `has-breadcrumb` class if breadcrumb present
+3. Breadcrumb nav
+4. Main nav — `.ai-nav-brand` / `.ai-nav-meta` canonical classes
+5. Hero — headline on ONE line, subhead full editorial container width
+6. Tab navigation bar
+7. Journey block — Watch / Read / Explore / Ko-fi (4 items)
+8. Tab sections — `.ct-section` elements with `[hidden]` attribute on all except first
+9. Dark footer — collapsible methodology accordion, first section open
+10. Scripts — D3, Chart.js, or other libraries loaded at end of body
+
+Any scaffold that places the journey block after the tab sections is incorrect and must be rebuilt before any other work continues.
+
+---
+
 ## SOCIAL SHARING (every page)
 
 OG meta tags required on every page:
