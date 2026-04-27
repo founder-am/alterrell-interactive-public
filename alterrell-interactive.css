@@ -771,7 +771,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 /* ── 11. JOURNEY BLOCK ──────────────────────────────────────── */
 /* Sits at top of every piece, below hero, above first section  */
 .ai-journey {
-  background: var(--paper-card);
+  background: #ffffff; /* explicit — piece journey blocks always white; hub uses .hub-journey */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -858,6 +858,10 @@ button { cursor: pointer; font-family: var(--font-body); }
   content: ' · Coming soon';
   color: var(--ink-muted);
 }
+
+/* OF pieces on white journey block — dark gold for contrast (#E8B923 fails on #ffffff) */
+.of-piece .ai-journey .ai-journey-label,
+.of-piece .ai-journey .ai-journey-cta { color: #9a6b00; }
 
 
 /* ── 12. FOOTER ─────────────────────────────────────────────── */

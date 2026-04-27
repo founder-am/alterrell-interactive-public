@@ -241,13 +241,37 @@ Every new piece HTML file must follow this structure in this exact order. Claude
 3. Breadcrumb nav
 4. Main nav — `.ai-nav-brand` / `.ai-nav-meta` canonical classes
 5. Hero — headline on ONE line, subhead full editorial container width
-6. Tab navigation bar
-7. Journey block — Watch / Read / Explore / Ko-fi (4 items)
+6. Journey block — Watch / Read / Support (3 items in pieces; hub uses 4 — see Journey Block Rules)
+7. Tab navigation bar
 8. Tab sections — `.ct-section` elements with `[hidden]` attribute on all except first
 9. Dark footer — collapsible methodology accordion, first section open
 10. Scripts — D3, Chart.js, or other libraries loaded at end of body
 
 Any scaffold that places the journey block after the tab sections is incorrect and must be rebuilt before any other work continues.
+
+---
+
+## JOURNEY BLOCK RULES
+
+**Background:**
+- Inside pieces: white `#ffffff` on both AI and OF lane pieces
+- Hub (`index.html`): paper `#f8f6f1` (existing behavior, do not change)
+
+**Items inside pieces — 3 items only, never 4:**
+- **Watch** — links to YouTube playlist until piece-specific video is ready. When video is ready, update via Batch C commit. This is the standing two-step deploy pattern for all pieces.
+- **Read** — links to Substack. Label: "Go deeper". Use piece-specific post URL when available, section URL until then.
+- **Support** — Ko-fi link. Label: "Back this work" / KO-FI →
+
+Explore is never included in piece-level journey blocks. It is hub-only.
+
+**Items on hub — 4 items:** Watch, Read, Explore, Support. Hub pattern unchanged.
+
+**Accent color on white background:**
+- AI pieces: teal `#0a7c72` on white — passes contrast, no change needed
+- OF pieces: gold `#E8B923` on white — fails contrast. Use `#9a6b00` (dark gold) for text and labels on white journey block background only. Accent color `#E8B923` remains correct for all other OF contexts.
+
+**YouTube production pattern (standing rule):**
+Record a 15–30 second unlisted placeholder video for each piece before deploy. Upload to YouTube, grab the URL, wire into the piece. Swap full video in when ready via YouTube Studio Upload Replacement Video. Flip to public when swapping. This gives a stable URL at deploy time and a teaser for early visitors.
 
 ---
 

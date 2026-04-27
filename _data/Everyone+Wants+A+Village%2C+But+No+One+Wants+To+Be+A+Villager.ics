@@ -1,0 +1,102 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//Meetup Calendar 1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+NAME:Meaningful Dialogue 🗣️🔊
+X-WR-CALNAME:Meaningful Dialogue 🗣️🔊
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+TZURL:http://tzurl.org/zoneinfo-outlook/America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:event_314339768@meetup.com
+SEQUENCE:1
+DTSTAMP:20260427T152712Z
+DTSTART;TZID=America/Los_Angeles:20260503T180000
+DTEND;TZID=America/Los_Angeles:20260503T220000
+SUMMARY:Everyone Wants A Village\, But No One Wants To Be A Villager
+DESCRIPTION:Meaningful Dialogue 🗣️🔊\nI often hear phrases like: "I
+ t takes a village to raise a child\\!" \\| "Everyone needs a community\\!"
+  \\| "We need friends in life to combat loneliness\\!" but the truth is\\\
+ , pretty much no one has the time or care for one and another\\. Leading t
+ o feelings of loneliness and sadness whenever we try to make new friendshi
+ ps only to be met with: "Sorry\\\, I'm just too busy right now\\." Well\\\
+ , who the hell isn't busy?\\!\n\nI've often noticed the people who constan
+ tly preach the importance of community & friendship\, but are unwilling to
+  put in the effort of being a good friend.\n\nI understand that friendship
+ s gets harder as we grow older due to different life trajectories ranging 
+ from families to careers. However\, I still think we have a choice to be a
+  good friend for others.\n\n**Humans are intrinsically social creatures an
+ d we need each other. So how do we foster small communities in our world w
+ hen almost no one is available?**\n\n**Questions to Ponder:**\n\n* Is the 
+ American notion of individualism a detriment to the collective mental well
+ being?\n* What is a good friend to you?\n* Are you too cynical about peopl
+ e?\n* Why is it harder to have new friends as we grow older?\n* Can someon
+ e with opposing politics and religious beliefs be your friend?\n* Is it be
+ st practice to find people with common interests to become friends with?\n
+ * Do you care about what other people are going through?\n* Are we obligat
+ ed to care about other people?\n* When does self-care become narcissistic?
+ \n* Are you more judgmental or empathetic?\n* Are people truly to busy to 
+ care about others or are they using being busy as an excuse to avoid other
+ s?\n* Why do some people give up on finding friends completely and live a 
+ life of solitude?\n* From your experience\, do you find most people insuff
+ erable?\n* Are most people fake?\n* Are all relationships and friendships 
+ transactional?\n* Do you fear making new friends because you fear you migh
+ t drag them down with your own negativity?\n* How do you feel when another
+  person uses you to vent their feelings?\n* Are you looking for friends ju
+ st to talk or get together and do things?\n* Should you tolerate an asymme
+ try friendship?\n* Why do most friends stop texting you as soon as you don
+ 't keep reaching out? (Does it seem one sided?)\n* Do you see the best in 
+ people?\n* Do you see the worst in people?\n* Is human nature more selfish
+  or altruistic?\n* To what extent should tolerate negativity from friends?
+ \n* What kind of things should we tolerate or no tolerate from friends?\n*
+  What do you think is the worst that can happen when revealing vulnerabili
+ ties to others?\n* Is showing vulnerability a sign of strength or weakness
+ ?\n* Do most people have an ulterior motive in seeking friendships?\n* Was
+  friendship more intimate back then?\n* Should we compromise our core valu
+ es to gain friends?\n* What are somethings you're uncompromising about?\n*
+  Do you value honest conflict or dishonest harmony?\n* Is technology like 
+ social media making people more social or more lonely?\n* Do you fear that
+  political polarization is making prospects of friendship more difficult?\
+ n* How can we be better friends for others?\n\n**Guidelines**:\n\n* **If y
+ our name on Zoom does not match your Zoom name\, you will be removed or no
+ t admitted.**\n* Hand raises are required. There are no limits on how many
+  times you can raise your hand.\n* There will be a 2-3 minute timer for ev
+ ery person depending the size of attendees. However\, in this group\, I do
+  allow a brief back and fourth interjection from others if it's something 
+ that's related to the person who was just speaking. This is a way to preve
+ nt the group from feeling too "robotic" in style and get your pressing que
+ stion asked to the speaker and get the answer right away without waiting a
+ ll the way back to your turn again.\n* Be authentic & civil!\n* Please ref
+ rain from using Ad Hominem (personal) attacks. This includes in voice\, in
+  meeting chat\, and in the comments section below. Instead\, please attack
+  the points from others. Severe Ad Hominem such as racist behavior will re
+ sult in being removed from the meeting.\n* Zoom link is posted well before
+  the day of the meeting but you will not be able to join until 10 minutes 
+ before the meeting start time.
+URL;VALUE=URI:https://www.meetup.com/meaningful-dialogue/events/314339768/
+STATUS:CONFIRMED
+CREATED:20260417T212239Z
+LAST-MODIFIED:20260417T212239Z
+CLASS:PUBLIC
+END:VEVENT
+X-ORIGINAL-URL:https://www.meetup.com/meaningful-dialogue/events/ical/Mean
+ ingful+Dialogue 🗣️🔊.ics
+X-WR-CALNAME:Meaningful Dialogue 🗣️🔊
+END:VCALENDAR

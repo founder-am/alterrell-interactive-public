@@ -16,8 +16,16 @@ Confirm every applicable item before outputting any file.
 ## NEW PIECE
 - [ ] OG meta tags present (title, description, image, url, twitter:card)
 - [ ] Breadcrumb present
-- [ ] Journey block present — all 4 items (Watch, Read, Explore, $ Ko-fi)
-- [ ] Journey block position confirmed: appears after tab nav, before first .ct-section — not after tab sections
+- [ ] Journey block present — 3 items in pieces (Watch, Read, Support), 4 items on hub (Watch, Read, Explore, Support)
+- [ ] Journey block position confirmed: appears after hero, before tab nav — not after tab sections
+
+## JOURNEY BLOCK
+- [ ] Background is white #ffffff (pieces) or paper #f8f6f1 (hub only)
+- [ ] Exactly 3 items in piece journey blocks: Watch, Read, Support — no Explore
+- [ ] Gold on white: text uses #9a6b00 not #E8B923 for OF pieces
+- [ ] YouTube link present — playlist URL acceptable until piece video is ready
+- [ ] No "Get early access" copy anywhere — use "Go deeper" for Substack label
+
 - [ ] Share block present — on Overview tab or most emotionally compelling tab
 - [ ] Section floor nav on every tab and sub-tab (margin-top: auto)
 - [ ] Screenshot nudge below every chart (DM Mono, right-aligned, muted)
