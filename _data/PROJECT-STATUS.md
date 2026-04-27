@@ -2,7 +2,7 @@
 
 **Read this file at the start of every Claude Code session.**
 **Update this file before every deploy commit.**
-Last updated: 2026-04-26 — T2 build session (Gay Uncles scaffold + hub card)
+Last updated: 2026-04-27 — T2 build session (Concert Tax structural fix: hero + journey block extracted to canonical position)
 
 ---
 
@@ -27,6 +27,7 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] Sodium → flipped to coming soon (T3 session, April 2026)
 - [x] Shared URL config (_data/config.js) created + rolled out to all pieces (T3 session, April 2026)
 - [x] Left border color system — 6px, data-lane: teal AI / gold OF (T3 session, April 2026)
+- [x] **Batch A (2026-04-27):** Ko-fi icon ♥ → $ in journey block (line 150) and footer (line 402)
 - [x] Hub stat Part 2 corrected: 3 sitcoms + 1 counter-example (was "4 sitcoms")
 - [x] Where's Beyoncé? coming soon hub card — complete (T3, April 2026): lane AI, title, lede, stat label, stakes all confirmed
 - [x] Sodium hub card moved to COMING SOON section (T3, April 2026) — was incorrectly first in grid before active cards
@@ -64,11 +65,26 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
   - Female rows gold left border `#E8B923`, male rows teal `#0a7c72`
   - `'Mid'` → `'Standard'` production tier label replaced in JS tierLabels array and all HTML table cells
   - Note: tables use dark `#0a0a12` background per AMA instruction (deploy checklist deviation)
+- [x] **Structural fix (T2, 2026-04-27):** Hero section + journey block extracted from Tab 1 to canonical position
+  - `<header class="ct-hero-section">` (eyebrow + h1 + subhead) placed between breadcrumb and journey block
+  - `.ct-journey-standalone` wrapper placed between hero and tab nav
+  - Journey block reduced from 4 → 3 items: removed "Explore / All Pieces" link; kept Watch, Read, Ko-fi
+  - YouTube URL updated to canonical playlist URL
+  - Substack URL in journey block updated to section URL + UTM param
+  - CSS added: `.ct-hero-section` (padding + OF background) and `.ct-journey-standalone` (wrapper + 3-col grid)
+- [x] **OG meta fixed (T2, 2026-04-27):** `<title>`, `og:title`, `twitter:title` all updated to "The Male Laziness Epidemic — Obsidian Futures" (was "Gender & Genre: The Hidden Concert Tax")
 - [ ] AMA visual review on live server — charts + data tables render correct? `current` `[AMA]`
-- [ ] Hub card title decision resolved `[AMA]`
 - [ ] Deploy `blocked until AMA confirms charts + tables render`
-- **Next session:** T3 platform · deploy after AMA confirms · same commit as hub card fix
-- **Blocking:** Nothing
+- **Remaining deviations (for future sessions):**
+  - Journey block items use `background: var(--of-card)` (#111118 dark) — deploy checklist requires white #ffffff for piece journey blocks. Deferred: design decision needed before fix.
+  - Data tables use dark `#0a0a12` background — documented AMA override, intentional deviation.
+  - Nav meta has 3 items (Substack · YouTube · $ Ko-fi) — standard is 2 items; Ko-fi in nav is non-standard.
+  - Nav Substack URL is root `https://alterrell.substack.com` — should be section URL.
+  - Part 2 tease Substack link is root URL — should be section URL.
+  - Voice pass not yet done — all body copy is AI-drafted and awaiting AMA rewrite.
+  - Tab structure (6 tabs) does not match CONCERT-TAX-BRIEF.md (5 tabs) — deferred.
+- **Next session:** T3 platform · deploy after AMA confirms visual review · same commit as hub card fix if any
+- **Blocking:** AMA visual review
 
 ### Naming Series — Part 0 (`/what-in-a-name/part-0/`)
 - [x] Build
@@ -230,3 +246,17 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - All copy must pass AI voice pass + AMA rewrite before deploy
 - Substack URL: https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page
 - YouTube URL: https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS
+- **"Get early access" copy is retired platform-wide (2026-04-27).** Replace with: "Get the story behind the story →" in all share blocks. AMA authorized combined Batch A + C deploy.
+- **Substack nudge in share blocks must link to section URL** `/s/alterrell-interactive?utm_source=newsletter_page` — never root URL.
+
+### "Get early access" retirement log (2026-04-27)
+Changed in this commit:
+- index.html (hub): no instance found — clean
+- fast-food-sodium/index.html: share block line 1545 ✓
+- what-in-a-name/part-0/index.html: share block line 656 ✓
+- what-in-a-name/index.html (Part 1): share block line 1117 ✓
+- what-in-a-name/part-2/index.html: share block line 916 ✓
+- concert-tax/index.html: share block line 1090 + root URL fixed ✓
+
+**NOT changed — outside session scope:**
+- big-black-love/index.html: "Get early access on Substack" in journey block Read item title (line ~500). Fix in next big-black-love build session before deploy.

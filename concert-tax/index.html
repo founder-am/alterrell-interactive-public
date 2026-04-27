@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gender &amp; Genre: The Hidden Concert Tax — Obsidian Futures · Alterrell Interactive</title>
+  <title>The Male Laziness Epidemic — Obsidian Futures · Alterrell Interactive</title>
   <meta name="description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alterrell Interactive">
-  <meta property="og:title" content="Gender &amp; Genre: The Hidden Concert Tax" />
+  <meta property="og:title" content="The Male Laziness Epidemic — Obsidian Futures" />
   <meta property="og:description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it." />
   <meta property="og:image" content="https://interactive.alterrell.com/og/concert-tax.png" />
   <meta property="og:url" content="https://interactive.alterrell.com/concert-tax/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@alterrell">
-  <meta name="twitter:title" content="Gender &amp; Genre: The Hidden Concert Tax">
+  <meta name="twitter:title" content="The Male Laziness Epidemic — Obsidian Futures">
   <meta name="twitter:description" content="Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.">
   <meta name="twitter:image" content="https://interactive.alterrell.com/og/concert-tax.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -999,6 +999,28 @@
     }
     .ct-data-table tbody tr.row--female { border-left: 3px solid #E8B923; }
     .ct-data-table tbody tr.row--male   { border-left: 3px solid #0a7c72; }
+
+    /* ── HERO SECTION (standalone, outside tabs) ── */
+    .ct-hero-section {
+      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+
+    /* ── JOURNEY BLOCK (standalone, between hero and tab nav) ── */
+    .ct-journey-standalone {
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+      padding: var(--space-sm) 1.25rem;
+    }
+    .ct-journey-standalone .ct-journey {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 600px) {
+      .ct-journey-standalone .ct-journey { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body class="has-breadcrumb">
@@ -1024,6 +1046,33 @@
   </div>
 </div>
 
+<!-- ── HERO (standalone, outside tabs) ── -->
+<header class="ct-hero-section" role="banner">
+  <div class="ct-inner">
+    <span class="ct-eyebrow">Obsidian Futures · Concert Economics</span>
+    <h1 class="ct-hero-headline">The Male Laziness Epidemic</h1>
+    <p class="ct-subhead">Men set the ceiling for what the industry will pay. Women are bounded by that ceiling and simultaneously required to deliver more to justify their place beneath it.</p>
+  </div>
+</header>
+
+<!-- ── JOURNEY BLOCK (standalone, 3 items: Watch · Read · Support) ── -->
+<div class="ct-journey-standalone">
+  <div class="ct-journey">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" class="ct-journey-item" target="_blank" rel="noopener">
+      <span class="ct-journey-action">Watch</span>
+      <span class="ct-journey-dest">YouTube</span>
+    </a>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" class="ct-journey-item" target="_blank" rel="noopener">
+      <span class="ct-journey-action">Read</span>
+      <span class="ct-journey-dest">Substack</span>
+    </a>
+    <a href="https://ko-fi.com/alterrell" class="ct-journey-item" target="_blank" rel="noopener">
+      <span class="ct-journey-action">$</span>
+      <span class="ct-journey-dest">Back This Work</span>
+    </a>
+  </div>
+</div>
+
 <!-- ── TAB BAR ── -->
 <nav class="ai-tabs" id="ct-tabs" aria-label="Piece sections">
   <button class="ai-tab active" data-nav="0">Overview</button>
@@ -1039,10 +1088,6 @@
      ════════════════════════════════════════════ -->
 <section id="ct-overview" class="ct-section" role="tabpanel">
   <div class="ct-inner">
-
-    <span class="ct-eyebrow">Obsidian Futures · Concert Economics</span>
-    <h1 class="ct-hero-headline">The Male Laziness Epidemic</h1>
-    <p class="ct-subhead">Men set the ceiling for what the industry will pay. Women are bounded by that ceiling and simultaneously required to deliver more to justify their place beneath it.</p>
 
     <!-- Hero stats -->
     <div class="ct-stat-row">
@@ -1087,28 +1132,9 @@
         <a class="ct-share-btn" href="https://twitter.com/intent/tweet?text=Men+set+the+ceiling.+Women+are+required+to+deliver+more+to+justify+their+place+beneath+it.+The+hidden+concert+tax%3A&url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&via=alterrell" target="_blank" rel="noopener">&#10005; Share on X</button>
         <a class="ct-share-btn ct-share-btn--filled" href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
       </div>
-      <span class="ct-share-substack">Get early access to future pieces &#8594; <a href="https://alterrell.substack.com" target="_blank" rel="noopener">alterrell.substack.com</a></span>
+      <span class="ct-share-substack">Get the story behind the story → <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">alterrell.substack.com</a></span>
     </div>
 
-    <!-- Journey block -->
-    <div class="ct-journey">
-      <a href="https://youtube.com/@alterrell" class="ct-journey-item" target="_blank" rel="noopener">
-        <span class="ct-journey-action">Watch</span>
-        <span class="ct-journey-dest">YouTube</span>
-      </a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive" class="ct-journey-item" target="_blank" rel="noopener">
-        <span class="ct-journey-action">Read</span>
-        <span class="ct-journey-dest">Substack</span>
-      </a>
-      <a href="/" class="ct-journey-item">
-        <span class="ct-journey-action">Explore</span>
-        <span class="ct-journey-dest">All Pieces</span>
-      </a>
-      <a href="https://ko-fi.com/alterrell" class="ct-journey-item" target="_blank" rel="noopener">
-        <span class="ct-journey-action">$</span>
-        <span class="ct-journey-dest">Back This Work</span>
-      </a>
-    </div>
 
     <!-- Floor nav -->
     <div class="section-nav">
