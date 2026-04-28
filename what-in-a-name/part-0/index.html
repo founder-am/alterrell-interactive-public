@@ -87,8 +87,8 @@
 
     /* ── JOURNEY BLOCK ── */
     .win-journey {
-      background: var(--of-card);
-      border-bottom: 1px solid var(--of-border);
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
       padding: var(--space-sm) 1.25rem;
     }
     .win-journey-inner { max-width: var(--max-editorial); margin: 0 auto; }
@@ -96,29 +96,29 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1px;
-      background: var(--of-border);
-      border: 1px solid var(--of-border);
+      background: var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
     }
     .win-journey-item {
-      background: rgba(255,255,255,0.02);
+      background: var(--paper-card);
       display: grid;
       grid-template-columns: 38% 62%;
       text-decoration: none;
       transition: background 0.15s;
       min-height: 80px;
     }
-    .win-journey-item:hover { background: var(--of-gold-dim); text-decoration: none; }
+    .win-journey-item:hover { background: rgba(154,107,0,0.08); text-decoration: none; }
     .win-journey-icon-cell {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid var(--of-border);
+      border-right: 1px solid var(--border);
       padding: 1rem 0.5rem;
     }
-    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(232,185,35,0.2); }
-    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--of-gold); }
+    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(154,107,0,0.2); }
+    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: #9a6b00; }
     .win-journey-text-cell {
       display: flex;
       flex-direction: column;
@@ -130,7 +130,7 @@
       font-family: var(--font-body);
       font-size: var(--text-body);
       font-weight: 600;
-      color: var(--of-body);
+      color: var(--ink);
       line-height: 1.2;
     }
     .win-journey-dest {
@@ -138,7 +138,7 @@
       font-size: var(--text-micro);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--of-gold);
+      color: #9a6b00;
     }
 
     /* ── TAB SECTIONS — critical layout ── */
