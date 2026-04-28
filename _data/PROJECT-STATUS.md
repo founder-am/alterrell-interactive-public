@@ -2,7 +2,7 @@
 
 **Read this file at the start of every Claude Code session.**
 **Update this file before every deploy commit.**
-Last updated: 2026-04-27 — T3 platform session (Naming series: Sources tab removed from Parts 1 + 2; journey block background corrected to white on all 3 parts)
+Last updated: 2026-04-27 — T1 editorial session (Bullets files generated for Big Black Love + Naming Parts 0, 1, 2)
 
 ---
 
@@ -96,7 +96,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] config.js rolled out + URLs canonical
 - [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — was var(--of-card) #111118 dark; text colors updated: icon + dest → #9a6b00 (dark gold); action label → var(--ink); grid/border dividers → var(--border)
 - **Note:** Part 0 had no standalone Sources tab in nav (sources inline in Tab 5 "About This Series"); no tab removal needed; footer accordion sources unchanged
-- **Next session:** T1 editorial · voice pass all three parts in one session
+- [x] **Bullets file generated (T1, 2026-04-27):** `_data/copy-drafts/naming-part-0-BULLETS-2026-04-27.md` · 5 tabs · all tabs [IN PROGRESS] · AMA to react and redirect before sentences
+- **Next session:** AMA reacts to bullets · lock argument · AMA writes sentences async
 
 ### Naming Series — Part 1 (`/what-in-a-name/`)
 - [x] Build
@@ -107,7 +108,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] config.js rolled out + URLs canonical
 - [x] **Sources tab removed (T3 Batch A, 2026-04-27)** — tab button (data-tab="6") removed from nav; entire `<section id="tab-sources">` section removed; Tab 5 "What the Data Shows" floor nav updated: "Next → Sources" button replaced with spacer; tab count 6 → 5. Footer accordion sources untouched.
 - [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — same corrections as Part 0
-- **Next session:** T1 editorial · fold into same session as Part 0 voice pass
+- [x] **Bullets file generated (T1, 2026-04-27):** `_data/copy-drafts/naming-part-1-BULLETS-2026-04-27.md` · 5 tabs (Sources removed) · all tabs [IN PROGRESS] · AMA to react and redirect before sentences
+- **Next session:** AMA reacts to bullets · lock argument · AMA writes sentences async
 
 ### Naming Series — Part 2 (`/what-in-a-name/part-2/`)
 - [x] Build
@@ -118,7 +120,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] config.js rolled out + URLs canonical
 - [x] **Sources tab removed (T3 Batch A, 2026-04-27)** — same as Part 1: tab button (data-tab="6") removed; `<section id="tab-sources">` removed; Tab 5 "The Counter-Example" floor nav updated: "Next → Sources" button replaced with spacer; tab count 6 → 5. Footer accordion sources untouched.
 - [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — same corrections as Parts 0 + 1
-- **Next session:** T1 editorial · fold into same session as Part 0 and Part 1
+- [x] **Bullets file generated (T1, 2026-04-27):** `_data/copy-drafts/naming-part-2-BULLETS-2026-04-27.md` · 5 tabs (Sources removed) · all tabs [IN PROGRESS] · AMA to react and redirect before sentences
+- **Next session:** AMA reacts to bullets · lock argument · AMA writes sentences async
 
 ### Advice From Your Thick Gay Uncles (`/big-black-love/`)
 - [x] Brief — complete, updated April 26 2026
@@ -137,7 +140,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] Hub card — coming soon, in index.html · `data-lane="of"` · stat/stakes `[AMA TO CONFIRM]`
 - [x] Poll data corrected — n=77 (erroneous 97 in T2 prompt; brief updated)
 - [ ] AMA rewrite — Overview + My Story tabs `current` `[AMA]`
-- [ ] Copy draft — Tabs 3, 4, 5, 6 `T1`
+- [x] **Bullets file generated (T1, 2026-04-27):** `_data/copy-drafts/big-black-love-BULLETS-2026-04-27.md` · 6 tabs + 3 sub-tabs · all tabs [IN PROGRESS] · AMA to react and redirect before sentences
+- [ ] AMA reaction to bullets — all 6 tabs `current` `[AMA]`
 - [ ] Voice pass — all tabs `T1`
 - [ ] AMA rewrite — all tabs `[AMA]`
 - [ ] Chart refinement — scatter/bubble visual pass (D3 build) `T2`
