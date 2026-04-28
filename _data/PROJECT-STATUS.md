@@ -2,7 +2,7 @@
 
 **Read this file at the start of every Claude Code session.**
 **Update this file before every deploy commit.**
-Last updated: 2026-04-27 — T2 build session (Concert Tax structural fix: hero + journey block extracted to canonical position)
+Last updated: 2026-04-27 — T3 platform session (Naming series: Sources tab removed from Parts 1 + 2; journey block background corrected to white on all 3 parts)
 
 ---
 
@@ -94,6 +94,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [x] Stale copy fix: "Part 2 coming" → live link (T3 Batch C, April 2026)
 - [x] Footer forward link to Part 2 added (T3 Batch C, April 2026)
 - [x] config.js rolled out + URLs canonical
+- [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — was var(--of-card) #111118 dark; text colors updated: icon + dest → #9a6b00 (dark gold); action label → var(--ink); grid/border dividers → var(--border)
+- **Note:** Part 0 had no standalone Sources tab in nav (sources inline in Tab 5 "About This Series"); no tab removal needed; footer accordion sources unchanged
 - **Next session:** T1 editorial · voice pass all three parts in one session
 
 ### Naming Series — Part 1 (`/what-in-a-name/`)
@@ -103,6 +105,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [ ] AMA rewrite `[AMA]`
 - [x] Stale copy fix: "(coming in Part 2)" removed, teaser updated to live link (T3 Batch C, April 2026)
 - [x] config.js rolled out + URLs canonical
+- [x] **Sources tab removed (T3 Batch A, 2026-04-27)** — tab button (data-tab="6") removed from nav; entire `<section id="tab-sources">` section removed; Tab 5 "What the Data Shows" floor nav updated: "Next → Sources" button replaced with spacer; tab count 6 → 5. Footer accordion sources untouched.
+- [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — same corrections as Part 0
 - **Next session:** T1 editorial · fold into same session as Part 0 voice pass
 
 ### Naming Series — Part 2 (`/what-in-a-name/part-2/`)
@@ -112,6 +116,8 @@ Status: `done` · `current` · `next` · `blocked` · `parked`
 - [ ] AMA rewrite `[AMA]`
 - [x] Part 3 footer href fixed: was self-referencing /part-2/, now /part-3/ (T3 Batch C, April 2026)
 - [x] config.js rolled out + URLs canonical
+- [x] **Sources tab removed (T3 Batch A, 2026-04-27)** — same as Part 1: tab button (data-tab="6") removed; `<section id="tab-sources">` removed; Tab 5 "The Counter-Example" floor nav updated: "Next → Sources" button replaced with spacer; tab count 6 → 5. Footer accordion sources untouched.
+- [x] **Journey block background: #ffffff (T3 Batch A, 2026-04-27)** — same corrections as Parts 0 + 1
 - **Next session:** T1 editorial · fold into same session as Part 0 and Part 1
 
 ### Advice From Your Thick Gay Uncles (`/big-black-love/`)
