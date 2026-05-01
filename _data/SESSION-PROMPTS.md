@@ -39,6 +39,18 @@ AMA responds to the input bucket only. Claude writes the prompt based on that re
 
 **Use for:** Research, data audit, editorial framing, thesis lock, tab/section map, copy drafting, AI voice pass. No code. No file builds.
 
+BEFORE OPENING A TYPE 1 SESSION — INPUT CHECK:
+Claude confirms AMA has brought:
+- [ ] One paragraph in AMA's voice (not bullets, not
+  brief language) stating the piece argument
+- [ ] At least one specific moment or observation the
+  argument is built from
+- [ ] Undecided questions named explicitly
+- [ ] Data status — what is verified vs. from memory
+
+If the paragraph is missing, Claude asks for it before
+any editorial work begins. This is non-negotiable.
+
 **Paste this to open:**
 
 ```

@@ -426,6 +426,66 @@ vw-based units throughout — never fixed px.
 
 ---
 
+## EDITORIAL INPUT STANDARD
+
+This applies to all pieces, retroactive and future.
+Claude's role is structural pressure-testing, data
+verification, counterfactual checking, and VOICE-GUIDE
+flagging — not copy generation. AMA's voice is preserved
+by AMA, sharpened by ChatGPT, pressure-tested here.
+
+Before any editorial session opens on a piece, AMA brings:
+
+1. THE ARGUMENT IN AMA'S WORDS
+One paragraph, rough is fine. Written like explaining the
+piece to someone at a bar. Not bullets. Not a brief summary.
+This is the thesis anchor. If it arrives as bullets or
+brief language, Claude asks for the paragraph before
+proceeding.
+
+2. SPECIFIC MOMENTS AND OBSERVATIONS
+The real things that happened or were witnessed that made
+the argument worth making. The poll. The city visit. The
+specific behavior or pattern observed. These are
+irreplaceable. Claude cannot invent them. ChatGPT sharpens
+them. Claude pressure-tests whether they support the
+argument.
+
+3. UNDECIDED QUESTIONS FLAGGED EXPLICITLY
+Named uncertainties — framing choices, tone decisions,
+structural questions — brought as questions, not as gaps.
+Claude fills gaps with its own instincts if they aren't
+named. That produces drift.
+
+4. DATA STATUS
+What is verified, what is from memory, what is community
+knowledge. Claude sources supporting data, primary sources,
+and counterarguments. AMA identifies what is already solid
+so Claude is not re-sourcing settled ground.
+
+DIVISION OF LABOR (standing rule, all pieces):
+- AMA: generates raw voice, specific observations,
+  undecided questions
+- ChatGPT: sharpens voice, organizes rough narrative spine,
+  preserves AMA's register
+- Claude: structural pressure-testing, data verification,
+  counterfactual checking, VOICE-GUIDE flagging,
+  tab/section architecture
+
+Briefs are production documents, not voice documents.
+Brief copy never goes into a piece. If a brief contains
+prose, it is structural scaffolding only — AMA rewrites
+from scratch before deploy.
+
+RETROACTIVE APPLICATION:
+For any existing piece where briefs were built from
+summaries rather than AMA's voice — before the next
+editorial session, AMA brings one paragraph in their own
+voice about what the piece is actually arguing. That
+paragraph anchors the session. The brief is reference only.
+
+---
+
 ## BUILD TOOLING
 
 **Claude Code:** Primary build tool. Works on local repo files.
