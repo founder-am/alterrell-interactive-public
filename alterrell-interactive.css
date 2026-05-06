@@ -231,7 +231,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   font-size: var(--text-small);
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--ink-muted);
+  color: var(--ink);
   border: none;
   background: none;
   border-bottom: 2px solid transparent;
@@ -762,7 +762,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 .ai-share-btn--download {
   background: #1e1c2a;
-  color: #888;
+  color: #f8f6f1;
   border: 1px solid #2a2838;
 }
 .ai-share-btn--download:hover { color: var(--paper); }
@@ -847,7 +847,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   gap: 0.3rem;
 }
 .ai-journey-path.secondary .ai-journey-cta { color: var(--orange); }
-.ai-journey-path.tertiary  .ai-journey-cta { color: var(--ink-muted); }
+.ai-journey-path.tertiary  .ai-journey-cta { color: var(--ink); }
 
 /* Placeholder state */
 .ai-journey-path.placeholder {
