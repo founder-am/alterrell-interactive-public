@@ -1,0 +1,492 @@
+
+<style>
+  :root { --teal: #0a7c72; --orange: #c95f1a; --indigo: #1e1040; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+
+  .tree { width: 100%; padding: 1.5rem 0; }
+
+  .layer-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin: 0 0 8px 0;
+    padding-left: 4px;
+  }
+
+  .layer { margin-bottom: 6px; }
+
+  .decision-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
+
+  .node {
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md, 8px);
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+    flex: 1;
+    min-width: 160px;
+    position: relative;
+  }
+  .node:hover { background: var(--color-background-secondary); border-color: var(--color-border-primary); }
+  .node.locked { border-left: 3px solid #0a7c72; }
+  .node.revisit { border-left: 3px solid #c95f1a; }
+  .node.missing { border-left: 3px solid #7c3a8e; }
+  .node.process { border-left: 3px solid #1856a0; }
+
+  .node-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 3px;
+  }
+  .node-sub {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+  .node-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .tag-locked { background: #e1f5ee; color: #085041; }
+  .tag-revisit { background: #faeeda; color: #633806; }
+  .tag-missing { background: #f0e6f8; color: #4a1060; }
+  .tag-process { background: #e6f1fb; color: #042c53; }
+
+  .connector {
+    width: 2px;
+    height: 18px;
+    background: var(--color-border-tertiary);
+    margin: 0 auto 0 22px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin: 18px 0 14px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+  .legend-pip {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .panel {
+    display: none;
+    margin-top: 8px;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md, 8px);
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+  .panel.open { display: block; }
+  .panel ul { padding-left: 16px; margin-top: 6px; }
+  .panel li { margin-bottom: 4px; }
+  .panel strong { color: var(--color-text-primary); font-weight: 500; }
+  .panel .q {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 5px;
+  }
+</style>
+
+<div class="tree">
+
+  <div class="layer-label">Layer 0 — Before you decide anything</div>
+  <div class="layer">
+    <div class="decision-row">
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Governance first</div>
+        <div class="node-title">What does "done" mean for a piece?</div>
+        <div class="node-sub">The platform has no shared definition. Multiple pieces are "built" but editorially incomplete.</div>
+        <div class="panel">
+          <div class="q">Decisions needed</div>
+          <ul>
+            <li>Define the 5 gates a piece must pass: <strong>Brief locked → Data audited → Copy voice-passed → Build complete → Deploy checklist green</strong></li>
+            <li>No piece can be called live until all 5 gates pass</li>
+            <li>This gate definition becomes the new PROJECT-STATUS.md schema</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Governance first</div>
+        <div class="node-title">Which pieces are active vs. parked?</div>
+        <div class="node-sub">Right now, 8+ pieces compete for attention with no triage order.</div>
+        <div class="panel">
+          <div class="q">Decisions needed</div>
+          <ul>
+            <li>Enforce a hard <strong>two-piece limit</strong>: one in active build, one in active editorial</li>
+            <li>Everything else is Parked — no sessions opened, no briefs modified</li>
+            <li>Parked pieces get a one-line status note; nothing more until unparked</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="layer-label">Layer 1 — Component decisions (lock or revisit)</div>
+  <div class="layer">
+    <div class="decision-row">
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Lock confirmed</div>
+        <div class="node-title">CSS design system</div>
+        <div class="node-sub">alterrell-interactive.css is canonical. Typography, color tokens, spacing scale.</div>
+        <div class="panel">
+          <div class="q">What's locked</div>
+          <ul>
+            <li>All four typefaces and their roles</li>
+            <li>--teal, --orange, --paper, deep indigo — no new accent colors</li>
+            <li>No piece rebuilds the system; all pieces extend it only</li>
+          </ul>
+          <div class="q" style="margin-top:10px">Exception to decide</div>
+          <ul>
+            <li>Does Obsidian Futures need its own CSS extension file, or do we keep patching inline?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Lock confirmed</div>
+        <div class="node-title">Title / subhead register</div>
+        <div class="node-sub">Tabloid provocation title. Systemic argument subhead. Never NYT register.</div>
+        <div class="panel">
+          <div class="q">What's locked</div>
+          <ul>
+            <li>Title: scrollstopper, cultural or zany, one clear point of view</li>
+            <li>Subhead: one sentence, systemic argument, readable without clicking</li>
+            <li>These are editorial decisions — CBUXO enforces, EIC approves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node revisit" onclick="toggle(this)">
+        <div class="node-tag tag-revisit">Needs decision</div>
+        <div class="node-title">Tab architecture</div>
+        <div class="node-sub">Two systems co-exist: scroll-spy (legacy) and show/hide tabs. Needs hard rule.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Is scroll-spy retired for all new pieces — yes or no?</li>
+            <li>Does retrofit of sodium + naming pieces have a committed timeline, or is it permanent debt?</li>
+            <li>What is the accordion rule? (First open, rest closed — is this locked?)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:8px"></div>
+
+    <div class="decision-row">
+      <div class="node revisit" onclick="toggle(this)">
+        <div class="node-tag tag-revisit">Needs decision</div>
+        <div class="node-title">Card system (hub)</div>
+        <div class="node-sub">Hub cards exist but no formal spec for what a card must contain or how it renders across lanes.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>What are the <strong>required fields</strong> on every hub card? (Title, lane label, status, teaser, CTA)</li>
+            <li>Do Alterrell Interactive and Obsidian Futures cards look different, or only differ by accent color?</li>
+            <li>What does a "Coming Soon" card look like vs. a live card?</li>
+            <li>Is there a card spec doc, or does the hub HTML serve as the spec?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node revisit" onclick="toggle(this)">
+        <div class="node-tag tag-revisit">Needs decision</div>
+        <div class="node-title">Share block</div>
+        <div class="node-sub">Rule updated: share block goes on most emotionally compelling tab. But no enforcement mechanism exists.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Is the share block a component in the CSS system, or rebuilt per piece?</li>
+            <li>Who decides which tab is "most emotionally compelling"? (CBUXO call, confirmed by EIC?)</li>
+            <li>Does every piece need one, or only pieces with a clear action ask?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node revisit" onclick="toggle(this)">
+        <div class="node-tag tag-revisit">Needs decision</div>
+        <div class="node-title">Journey block</div>
+        <div class="node-sub">Links are currently playlist/section defaults. Will change to piece-specific after 3 pieces ship.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Is the "after 3 pieces" trigger still the right one, or does it happen per-piece now?</li>
+            <li>Does every piece have the same three destinations (YouTube, Substack, Interactive), or can pieces vary?</li>
+            <li>High-contrast fix on YouTube/Substack links — is this Batch A, and when does it ship?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:8px"></div>
+
+    <div class="decision-row">
+      <div class="node revisit" onclick="toggle(this)">
+        <div class="node-tag tag-revisit">Needs decision</div>
+        <div class="node-title">Breadcrumb nav</div>
+        <div class="node-sub">Required per spec, but no formal rule on format, placement, or what it links to.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>What is the breadcrumb path? (Home → Lane → Piece, or simpler?)</li>
+            <li>Does it render differently on mobile vs desktop?</li>
+            <li>Is this the same component in CSS for all pieces?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Lock confirmed</div>
+        <div class="node-title">Copy voice standard</div>
+        <div class="node-sub">AMA rewrites all copy. Claude drafts. No AI copy deploys without voice pass.</div>
+        <div class="panel">
+          <div class="q">What's locked</div>
+          <ul>
+            <li>Conversational register, full thoughts, personal observation → systemic reframe</li>
+            <li>No em dashes, no "it is worth noting" constructions, no fragments</li>
+            <li>Voice pass is a required gate before any Type 2 build session starts on copy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Lock confirmed</div>
+        <div class="node-title">Dark section rule</div>
+        <div class="node-sub">Dark backgrounds only on sections with no tables and no dense reading copy.</div>
+        <div class="panel">
+          <div class="q">What's locked</div>
+          <ul>
+            <li>Tables and dense copy: white or paper backgrounds only, always</li>
+            <li>Dark sections are hero, stat callout, or pull quote moments only</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="layer-label">Layer 2 — Role audit</div>
+  <div class="layer">
+    <div class="decision-row">
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Role active</div>
+        <div class="node-title">EIC</div>
+        <div class="node-sub">Mobilization, urgency, calendar ownership. Works for single-piece. Needs scope at portfolio scale.</div>
+        <div class="panel">
+          <div class="q">Gap to address</div>
+          <ul>
+            <li>EIC currently has no authority to <strong>pause or park</strong> a piece — that's a new responsibility</li>
+            <li>EIC should own the two-piece limit: nothing moves to active without EIC sign-off</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Role active</div>
+        <div class="node-title">CBUXO</div>
+        <div class="node-sub">Design system, emotional arc, analytical literacy check. Works per piece.</div>
+        <div class="panel">
+          <div class="q">Gap to address</div>
+          <ul>
+            <li>CBUXO has no cross-piece role — no one is checking whether the hub as a whole reads for a non-analytical visitor</li>
+            <li>Should CBUXO sign off on hub layout changes the same way it does piece builds?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Role active</div>
+        <div class="node-title">Sr. Data Architect</div>
+        <div class="node-sub">Session structure, briefs, context limits, handoffs. Pipeline enforcement.</div>
+        <div class="panel">
+          <div class="q">Gap to address</div>
+          <ul>
+            <li>Data Architect currently has no authority to <strong>reject a session opener</strong> that mixes session types — that needs to be an explicit call</li>
+            <li>No one owns PROJECT-STATUS.md updates between sessions — pieces drift in status</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node locked" onclick="toggle(this)">
+        <div class="node-tag tag-locked">Role active</div>
+        <div class="node-title">Editorial Partner</div>
+        <div class="node-sub">Voice pass, copy critique, thesis check. Active in Type 1 sessions only.</div>
+        <div class="panel">
+          <div class="q">Gap to address</div>
+          <ul>
+            <li>No role currently covers <strong>post-deploy editorial review</strong> — checking if a live piece is landing with readers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:8px"></div>
+
+    <div class="decision-row">
+      <div class="node missing" onclick="toggle(this)">
+        <div class="node-tag tag-missing">Role missing</div>
+        <div class="node-title">Portfolio Manager</div>
+        <div class="node-sub">No role owns the full piece inventory, status triage, or debt tracking across all pieces.</div>
+        <div class="panel">
+          <div class="q">What this role would own</div>
+          <ul>
+            <li>Maintaining the active/parked/complete status of every piece</li>
+            <li>Flagging when a piece has been in the same status for 2+ sessions with no movement</li>
+            <li>Deciding when a parked piece gets unparked and why</li>
+            <li><strong>Decision needed:</strong> Does this become a standing session opener role, or a scheduled quarterly review?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node missing" onclick="toggle(this)">
+        <div class="node-tag tag-missing">Role missing</div>
+        <div class="node-title">QA / Reader Advocate</div>
+        <div class="node-sub">No one tests a piece as a cold reader before deploy. CBUXO flags risk; no one actually reads it cold.</div>
+        <div class="panel">
+          <div class="q">What this role would own</div>
+          <ul>
+            <li>A mandatory cold-read pass before every deploy: reads the piece as someone who has never heard of the platform</li>
+            <li>Asks three questions: <strong>Do I know what this is about in 5 seconds? Do I feel something in the first tab? Do I know what to do next?</strong></li>
+            <li>This could be a Claude prompt mode or a human reader check — decision needed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node missing" onclick="toggle(this)">
+        <div class="node-tag tag-missing">Role missing</div>
+        <div class="node-title">Platform Debt Owner</div>
+        <div class="node-sub">Known debt exists (nav contrast, scroll-spy retrofit, journey block links) with no owner and no timeline.</div>
+        <div class="panel">
+          <div class="q">What this role would own</div>
+          <ul>
+            <li>A running debt log with severity: <strong>blocks deploy / degrades experience / cosmetic</strong></li>
+            <li>Ensures at least one Batch A (platform) session ships per quarter</li>
+            <li>Prevents debt from becoming invisible — it gets named, sized, and scheduled</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="layer-label">Layer 3 — Process decisions</div>
+  <div class="layer">
+    <div class="decision-row">
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Revise</div>
+        <div class="node-title">Session types</div>
+        <div class="node-sub">Type 1/2/3 works but has no portfolio-level session type. Pieces are managed one at a time.</div>
+        <div class="panel">
+          <div class="q">Question to answer</div>
+          <ul>
+            <li>Add <strong>Type 0 — Portfolio Review</strong>: runs once per quarter, reads PROJECT-STATUS.md and all piece briefs, outputs a triage decision and the next 90-day active list. No code. No copy. Decisions only.</li>
+            <li>Should Type 0 be a Claude.ai session (editorial) or a Claude Code session (file reads)?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Revise</div>
+        <div class="node-title">Brief schema</div>
+        <div class="node-sub">PIECE-BRIEF.md format was designed for one piece. No brief format exists for tools (FrameShift, Forever Loved).</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Do FrameShift and Forever Loved get PIECE-BRIEFs or a separate TOOL-BRIEF schema?</li>
+            <li>Should every brief have a <strong>mandatory "what would kill this piece"</strong> field — the conditions under which it gets parked permanently?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Revise</div>
+        <div class="node-title">Deploy checklist</div>
+        <div class="node-sub">Checklist exists but is not gated — sessions have continued past warnings without completing it.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Does the checklist need a <strong>hard stop rule</strong> — if any item fails, the session closes and a new session opens with the fix as the only task?</li>
+            <li>Is there a separate checklist for hub-only deploys vs. full piece deploys?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:8px"></div>
+
+    <div class="decision-row">
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Revise</div>
+        <div class="node-title">Two-lane publishing</div>
+        <div class="node-sub">Alterrell Interactive (teal) and Obsidian Futures (indigo) have different audiences and aesthetics but share one pipeline.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Does Obsidian Futures need its own TYPE 2 build session opener with different rules?</li>
+            <li>Should the hub render the two lanes separately (separate sections or separate pages), or continue as one mixed feed?</li>
+            <li>Is there a separate editorial calendar for each lane, or one shared one?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node process" onclick="toggle(this)">
+        <div class="node-tag tag-process">Revise</div>
+        <div class="node-title">Separate products pipeline</div>
+        <div class="node-sub">FrameShift and Forever Loved are separate products with separate stacks (Vite/React/Netlify). No formal session rules exist for them.</div>
+        <div class="panel">
+          <div class="q">Questions to answer</div>
+          <ul>
+            <li>Do these products get their own session types, or do they use Type 2/3 with a product flag?</li>
+            <li>Should they have a shared PLATFORM-BRIEF equivalent, or remain fully separate?</li>
+            <li>Is Claude Code the right tool for these, or does the Vite/React stack need a different session structure?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-pip" style="background:#0a7c72"></div> Lock confirmed — no decision needed</div>
+    <div class="legend-item"><div class="legend-pip" style="background:#c95f1a"></div> Needs a decision before next build</div>
+    <div class="legend-item"><div class="legend-pip" style="background:#7c3a8e"></div> Role gap — decide if/how to fill</div>
+    <div class="legend-item"><div class="legend-pip" style="background:#1856a0"></div> Process revision needed</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const panel = el.querySelector('.panel');
+  if (!panel) return;
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.panel.open').forEach(p => p.classList.remove('open'));
+  if (!isOpen) panel.classList.add('open');
+}
+</script>
