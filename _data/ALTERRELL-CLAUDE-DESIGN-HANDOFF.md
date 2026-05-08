@@ -1,9 +1,17 @@
 # ALTERRELL INTERACTIVE — CLAUDE DESIGN HANDOFF
-## Card Component System · May 2026
+## Card Component System · Updated May 7, 2026
 
-This document is the single source of truth for Claude Design onboarding.
-Read this before generating any card component. Every token, rule, and
-pattern here is locked — do not invent alternatives.
+This document is the single source of truth for card component generation.
+Read this before generating any card. Every token, rule, and pattern here
+is locked. The CHART-LIBRARY-REFERENCE.html file is the canonical visual
+reference — if this doc and that file conflict, the HTML file wins.
+
+**What changed from v1 (May 4):**
+- Obsidian Futures dark lane is RETIRED as a card surface. All cards use
+  the Alterrell Interactive teal/white/paper system.
+- Card format is 1080×1080 square (share cards). Not full-width editorial.
+- Visual standard is now CHART-LIBRARY-REFERENCE.html, not the OF dark spec.
+- Concert Tax piece cards use the same system as all other pieces.
 
 ---
 
@@ -16,604 +24,323 @@ reveals structural systems, never judges individuals.
 **Tagline (locked):** "See the architecture. The data was always there —
 now it's yours."
 
-**Two content lanes:**
-- **Alterrell Interactive** — civic/policy/institutional critique
-  (teal `#0a7c72` accent, paper `#f8f6f1` background)
-- **Obsidian Futures** — cultural data storytelling
-  (gold `#E8B923` accent, dark `#0a0a12` background)
+**All pieces are Alterrell Interactive.** There are no separate lanes.
+Content is organized by tags. The "Obsidian Futures" label may appear on
+hub cards as a content mode tag (cultural/celebratory) but it does NOT
+trigger a separate dark design system. All pieces use the same tokens.
 
 **GitHub repo:** https://github.com/founder-am/alterrell-interactive-public/
-**Canonical CSS:** `alterrell-interactive.css` at repo root — never modify,
-only extend with piece-local styles.
+**Canonical CSS:** `alterrell-interactive.css` at repo root.
+**Visual reference:** `CHART-LIBRARY-REFERENCE.html` — read before building.
 
 ---
 
 ## 2. DESIGN SYSTEM TOKENS
 
-### Typography (Google Fonts)
+### Typography (Google Fonts — required import)
 ```
-Spectral 700 italic     → hero headlines ONLY (one per page)
-DM Serif Display        → h2/h3, section headers, pull quotes,
-                          stat numbers, chart titles, subject names
-DM Sans 400/500/600     → all body copy, interface, labels
-DM Mono 400             → nav labels, source stamps, methodology,
-                          eyebrows, captions, monospaced data ONLY
+Spectral 800         → hero headlines, large stat numbers, artist/subject
+                       names in bar charts, delta/multiplier callouts
+DM Serif Display     → h2/h3, section headers, pull quote text,
+                       chart titles, editorial lines
+DM Sans 400/500/800  → all body copy, interface, labels, annotations
+DM Mono 400/700      → nav labels, source stamps, methodology,
+                       comp-tags, captions, data values ONLY
 ```
 
 **Google Fonts import (every piece):**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Spectral:ital,wght@1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;800&family=DM+Mono:wght@400;700&display=swap" rel="stylesheet">
 ```
 
-### Colors — Alterrell Interactive lane
+### Color tokens (locked)
 ```
---teal:           #0a7c72   (primary accent)
---teal-light:     #0d9488
---teal-bg:        #f0faf9
---orange:         #c95f1a   (secondary accent)
---orange-bg:      #fff4ee
---ink:            #111111
---ink-secondary:  #444444
---ink-muted:      #888888
---paper:          #f8f6f1   (page background)
---paper-warm:     #f0ede6
---paper-card:     #ffffff
---border:         #e0dcd4
---dark-section:   #16141f
+--teal:      #0a7c72   primary accent, bar fills (Option 1 field + Option 2 bars)
+--orange:    #c95f1a   secondary accent, female/contrast values
+--paper:     #f8f6f1   page background
+--ink:       #111111   all primary text
+--muted:     #888888   source stamps, comp-tags ONLY — never on primary content
+--border:    #e0dcd4   dividers, row separators
+--track-bg:  #e8e5e0   bar track backgrounds (Option 2)
+--danger-hatch: repeating-linear-gradient(-45deg, #c0392b 0px, #c0392b 4px,
+               #d9645a 4px, #d9645a 10px)   danger zone fill on bars
 ```
 
-### Colors — Obsidian Futures lane
+### Two surface options — every component has both
 ```
---of-bg:          #0a0a12   (page background — NOT #1e1040)
---of-card:        #111118   (card background)
---of-gold:        #E8B923   (primary accent)
---of-gold-dk:     #9a7200   (gold on white backgrounds)
---of-teal:        #0a7c72   (secondary, same as AI lane)
---of-body:        rgba(248,246,241,0.88)
---of-muted:       rgba(248,246,241,0.45)
---of-border:      rgba(255,255,255,0.08)
+Option 1 — Teal field:
+  background: #0a7c72
+  padding: 26px
+  Primary text: #fff
+  Bar tracks: rgba(0,0,0,0.25)
+  Bar fills: #fff
+  Muted/source: rgba(255,255,255,0.45)
+  Dividers: rgba(255,255,255,0.2)
+
+Option 2 — White + teal left border:
+  background: #fff
+  border-left: 7px solid #0a7c72
+  padding: 26px
+  Primary text: #111
+  Bar tracks: #e8e5e0
+  Bar fills: #0a7c72
+  Muted/source: #888
+  Dividers: #e0dcd4
 ```
 
-### Layout
-```
---max-editorial:  860px
---max-tool:       680px
---nav-height:     52px
---tab-height:     44px
---touch:          44px (minimum touch target everywhere)
---radius:         6px
---radius-sm:      3px
-```
+AMA locks one surface option per component per piece before deploy.
+Never mix surfaces within a single card.
 
 ---
 
-## 3. STRUCTURAL RULES (NON-NEGOTIABLE)
+## 3. SHARE CARD FORMAT (LOCKED — updated May 7, 2026)
 
-### Background rules
-- **White or paper backgrounds:** ALL tables, dense copy, charts,
-  comparison grids, receipts, calculators
-- **Dark backgrounds:** hero sections, decorative stat callouts,
-  nav, footer ONLY — NEVER tables or dense reading copy
-- **Obsidian Futures pieces:** outer card is dark `#111118`,
-  chart/table content inside card is white `#ffffff`
+All share cards are **1080×1080 square**. This is non-negotiable.
 
-### Typography rules
-- Gray text on dark backgrounds: FORBIDDEN. Use white or gold.
-- Text minimum on white: `#333333`. Never use muted gray on white.
-- Chart titles: DM Serif Display, 14–16px, `#111111`
-- Chart index labels/captions: DM Mono 500, 12px, `#333333`
-- Artist/subject names in charts: DM Serif Display, 14px minimum
-- Eyebrows: DM Mono, 9px, letter-spacing 0.16em, uppercase,
-  gold at 55% opacity (Obsidian Futures) or teal (AI lane)
-
-### Card anatomy (Obsidian Futures)
-```
-.card (dark #111118, border 0.5px rgba(255,255,255,0.08))
-  ├── .card-eyebrow (DM Mono, 9px, gold 55% opacity)
-  ├── .card-headline (DM Serif Display, 18px, white)
-  ├── .chart-wrap (white #ffffff, border 1px #d4d1cc, radius 8px)
-  │     ├── .chart-title (DM Serif Display, 14–16px, #111111)
-  │     └── [chart content]
-  ├── .verdict (gold left border 3px, bg rgba(232,185,35,0.1))
-  │     └── .verdict-text (DM Serif Display italic, 13px,
-  │                        rgba(248,246,241,0.9))
-  └── .card-caption (DM Mono, 9.5px, rgba(248,246,241,0.45))
+```css
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 28px;
+}
 ```
 
-### Swipe gallery rules (all pieces)
-- CSS scroll snap: `scroll-snap-type: x mandatory` on container
-- Each card: `scroll-snap-align: start`
-- Swipe hint text: **"Swipe for more cards →"** — always this exact text
-- No JavaScript for swipe behavior — CSS only
-- No dot navigation unless explicitly approved
-
-### Chart color rules
-- **Single color for all bars in one chart** — `#0a7c72` teal default
-- No gender color coding within a single chart
-- Gender is communicated by artist names, not color
-- Left border on rows: amber `#9a7200` for female, teal `#0a7c72`
-  for male — ONLY when rows are interleaved and color is needed
-  to aid scanning. Remove if it feels like over-explanation.
-- Categorical data: assign distinct purposeful colors per category
-  (not gradient families, not gender-coded families)
-- No gray gradients. No amber gradient families. Ever.
-
-### Verdict block rule
-Always: gold left border `3px solid #E8B923`, background
-`rgba(232,185,35,0.1)`, DM Serif Display italic 13px,
-`rgba(248,246,241,0.9)` text. Never omit from a completed card.
-
-### File versioning rule
-Never overwrite files. Always version: `filename-v1.html`,
-`filename-v2.html`. Keep all iterations.
+Cards must work at 1080×1080 rendered. Use `aspect-ratio: 1/1` in preview.
+No full-width editorial layout. No portrait format unless explicitly approved.
+Save/Share mechanic: Camera Roll + native Share Sheet. Square only.
 
 ---
 
-## 4. FIVE-TAB PLATFORM STANDARD
+## 4. APPROVED COMPONENTS — from CHART-LIBRARY-REFERENCE.html
 
-All five-tab pieces follow this structure (locked):
-```
-Tab 1: Overview
-Tab 2: [Piece-specific data name]
-Tab 3: [Piece-specific systemic name]
-Tab 4: History
-Tab 5: Take Action
-```
-Sources: accordion at bottom of Tab 5, not a separate tab.
-Share block: Tab 1 (Overview) only — most emotionally compelling.
-Section floor nav: every tab and sub-tab.
+These are the locked approved components. Every component has Option 1
+(teal field) and Option 2 (white + teal border) unless noted.
 
----
+### A1 — Horizontal Bar with Color Split (.ac-hbar)
+Bar chart sorted by value. Danger zone hatch for bars exceeding a threshold.
+- Bar labels: Spectral 800, 28px, label column = 40% of card
+- Bar tracks: height 38px, fills from left
+- Values: DM Mono 700, 14px, right-aligned to track edge always
+- Benchmark label: DM Mono 700, 14px, right-aligned above bars
+- Scaling rule: longest bar = 90% of track. All bars = (value/max)×90
+- Tick mark at threshold: 3px wide, full height of track
+- Annotation below row: DM Sans italic 12px, indented to bar start
+- Delta/summary at bottom: Spectral 800, 30px + DM Sans 500 13px span
 
-## 5. APPROVED CARD TYPES
+**Reference in this session (May 7):** Used in Beyoncé piece for giving
+comparison. Tabled — scaling breaks on extreme wealth gaps. Revisit
+component choice before deploy.
 
-These are the confirmed, approved card types from the concert tax
-piece build sessions (April–May 2026). Each includes visual spec,
-data pattern, and standing rules.
+### A2 — Decade Timeline (.ac-segbar)
+Segmented bars by decade/period with optional toggle.
+- Period label: Spectral 800, 30px, width 35%
+- Track: width 55%, height 38px
+- Value: DM Mono 700, 14px, width 10%
+- Toggle buttons: DM Sans 800, 10px uppercase
 
----
+### A3 — Budget/Gap Multiplier (.ac-budget)
+Two-line comparison per entry with multiplier callout.
+- Entry name: Spectral 800, 24px
+- Labels: DM Sans 800, 12px uppercase
+- Amounts: DM Mono 700, 22px
+- Multiplier: Spectral 800, 30px + DM Sans 500 13px span
+- Entries separated by divider lines
+- Last entry: no bottom border
 
-### CARD TYPE A — Side-by-Side Comparison Table
+**Reference in this session (May 7):**
+- Beyoncé/Where's Beyoncé? — Maria vs Harvey FEMA gap cards (approved)
+  Option 2 white. Color adaptation: teal for federal, red for celebrity.
+  ⚠ Color adaptation not in original spec — confirm before build.
+- Concert Tax Card G — gross revenue per tour. A3 structure adapted to
+  show artist name / gross / show count / production tier per entry.
+  Teal for male gross, orange for female gross.
 
-**Use for:** Two-entity direct comparison (festival vs festival,
-artist vs artist). The argument is in the contrast.
+### B1 — Before / After Bar (.ac-beforeafter)
+Two rows showing change over time with delta multiplier.
+Same bar anatomy as A1. Delta at bottom.
 
-**Approved instance:** Bieber vs Carpenter, Coachella 2026
-`tab1-card2-comparison.html`
+### B2 — Ranked List (.ac-ranked)
+Bars ranked high to low with annotations on key entries.
+Same bar anatomy as A1. Annotations indented to bar start.
 
-**Structure:**
-```
-White table (border: 1px solid #d4d1cc, radius: 8px)
-  ├── Header row (background: #f8f6f1)
-  │     Left col:  Context line (DM Mono 8px #888)
-  │                First name (DM Sans 700, 18px, 2 lines)
-  │                Last name  (DM Sans 700, 18px, 2 lines)
-  │     Right col: Same treatment — MUST match layout exactly
-  ├── Fee row (background: #ffffff)
-  │     Label: DM Mono 8px uppercase #888
-  │     Amount: DM Serif Display 30px — teal for male, #9a7200 for female
-  ├── Section label row (background: #f0ede8)
-  │     DM Mono 8px uppercase #888
-  └── Data rows (alternating border-bottom: 1px #eeebe5)
-        Dot (5px circle, teal/amber) + DM Sans 12px #333
-```
+### C1 — Moment Timeline (.ac-timeline)
+Horizontal dot-and-line timeline with peak stat callout.
+Option 2 (white) only.
+- Subject label: Spectral 800, 20px
+- Timeline line: 3px, full width
+- Dots: 14px circles, peak dot 18px with teal ring
+- Labels above: DM Sans 800, 11px uppercase, max-width 80px
+- Values below: DM Mono 700, 13px
+- Years: DM Mono 700, 11px, color #888
+- Peak stat: Spectral 800, 28px
 
-**Rules:**
-- Both artist name columns must have identical structure
-- First name line 1, last name line 2 — both sides, always
-- Fee amount is the dominant visual element
-- Max 5–6 rows per column before it becomes unreadable on mobile
+### C2 — Decade Segmented Bar (variation of A2)
+Same as A2 but used for decade-by-decade data with toggle.
 
----
+### D1 — Stat Callout (.ac-stat)
+Large hero number with unit and explanatory line.
+Option 2 (white) only.
+- Number: Spectral 800, clamp(64px,12vw,96px)
+- Unit: Spectral 800, clamp(28px,5vw,40px), teal color
+- Explanatory line: DM Sans 500, 15px, border-top 2px #e0dcd4
+- Comp label: DM Mono 700, 12px uppercase, color #888
 
-### CARD TYPE B — Stacked Vertical Bar Chart ($100 Index)
+**Reference in this session (May 7):**
+- Beyoncé/Where's Beyoncé? — 0.1% stat card (approved, Option 2 white)
 
-**Use for:** Cost composition indexed to a common unit ($100).
-Shows what something is made of, not just how big it is.
+### D2 — Pull Quote (.ac-pullquote)
+Quote with attribution. Both Option 1 (teal field) and Option 2 (white).
+- Quote text: DM Serif Display italic, 20px, line-height 1.5
+- Open/close quote marks via CSS quotes property
+- Attribution: DM Sans 800, 11px uppercase, letter-spacing .1em
+- Attribution separator: "── " in DM Mono before text
+- Divider above attribution: 1px (white version) or rgba white (teal)
 
-**Approved instance:** Typical male vs female headliner production costs
-`tab1-card3-stacked-bar.html`
+**Reference in this session (May 7):**
+- Beyoncé/Where's Beyoncé? — Hart quote card (approved, teal field)
+- Concert Tax Card E — Cardi B quote. D2 on teal field with three
+  stat figures (fee/spend/net) above the quote block. Spectral 800
+  for figures, DM Mono for labels.
 
-**Structure:**
-```
-Two bars, same height (260px), side by side
-Grid: [bar col] [axis col 28px] [bar col]
-  ├── Subject name: DM Serif Display 14px, centered above bar
-  ├── Bar: flex column (top to bottom = top to bottom visually)
-  │     border: 1.5px solid #d4d1cc (the "glow")
-  │     border-radius: 4px, overflow: hidden
-  │     Each slice: width 100%, height = % of total
-  │       Labels inside slice if height ≥ 28px:
-  │         Amount: DM Mono 13px 500 weight
-  │         Name: DM Mono 8px, 80% opacity
-  │         Dark text on light slices, white on dark slices
-  └── Center axis: $100/$50/$0 tick labels (DM Mono 8px #aaaaaa)
-```
-
-**Slice colors (categorical, not gendered):**
-- Dancers/human labor: `#c95f1a` (platform orange)
-- Wardrobe/styling: `#534AB7` (purple)
-- Crew/logistics: `#185FA5` (blue)
-- Venue/promoter: `#444441` (dark charcoal)
-- Hardware/production: `#0a7c72` (teal)
-- Artist net: tinted version of dominant bar color at 15–18% opacity,
-  with `border: 1px solid #d4d1cc`
-
-**Rules:**
-- Index to $100 always — not raw figures
-- Label as "modeled estimate" in caption
-- Same-height bars even if gross amounts differ
-- Methodology note always in caption
-
----
-
-### CARD TYPE C — Horizontal Production Intensity Bar Chart
-
-**Use for:** Ranking multiple entities on a single ordinal scale.
-Works for cohorts, tiers, any ranked comparison.
-
-**Approved instances:**
-- Cohort rap 2010–2012: `tab1-card4a-cohort-rap.html`
-- Cohort pop 2006–2011: `tab1-card4b-cohort-pop.html`
-- Stadium production 2022–2025: `tab2-card-optionA-stadium-production-v3.html`
-
-**Structure:**
-```
-White chart-wrap (border: 1px solid #d4d1cc, radius: 8px)
-  ├── Chart title: DM Serif Display 14–16px #111111
-  ├── Chart subtitle (optional): DM Mono 9px #888888
-  ├── Legend (when gender coding is used):
-  │     Swatch 10px + DM Mono 8.5px #555
-  ├── Tier header row: [spacer col] [tier label row]
-  │     Tier labels: flex space-between, DM Mono 7.5px 500
-  │     First=left, middle=center, last=right
-  │     Divider: 1px #e8e5e0 below header
-  └── Artist rows: grid [name col 58%] [bar col 42%]
-        Left border: 2px (amber for female, teal for male)
-          — only use when rows are interleaved
-          — remove when all one gender or over-complicated
-        Artist name: DM Sans 600 12–13px #111111
-        Tour/context: DM Mono 8px #aaaaaa
-        Bar track: height 14px, bg #f0ede8, border: 1px #d4d1cc
-          border-radius: 3px, overflow: hidden
-        Bar fill: #0a7c72 (single color for all bars)
-          Tier boundaries: 33.33% / 66.66% / 100%
-          White tick lines at boundaries: 1.5px #ffffff z-index 3
-          Fill snaps to exact boundary — no partial fills
-        Row divider: 1px #f0ede8
-```
-
-**3 production tiers (locked):**
-- Solo / Minimal = 33.33%
-- Small production = 66.66%
-- Large production = 100%
-
-**Rules:**
-- Sort by production intensity high to low, then A–Z within tier
-- No empty visual gap between tier groups — let the bars do it
-- Artist column at 58% minimum — bar never more than 42%
-- Tour names on one line — truncate if needed
-- No separate legend when single color is used
+### Disaster Map (new — approved May 7, 2026)
+Static inline SVG using real Census Bureau state boundaries.
+Source: us-atlas + topojson-simplify (presimplify 0.05).
+Projection: d3.geoAlbersUsa, scale 1280, translate [480, 300].
+No external fetch — all paths inline in HTML.
+Card wrapper: Option 2 (white + teal border).
+Puerto Rico: callout box, not on contiguous map.
+Disaster type colors:
+  hurricane        #0a7c72
+  wildfire         #c95f1a
+  tornado          #d4a017
+  flood            #2563c4
+  hurricane+tornado #7a7a1a
+  flood+tornado    #5b5fa0
+  not in scope     #e8e4de
+⚠ Build session should replace inline paths with proper D3 topology
+  render exported as verified static SVG.
 
 ---
 
-### CARD TYPE D — Iceberg Visual
+## 5. COMPONENTS UNDER DEVELOPMENT (not yet in library)
 
-**Use for:** Above/below threshold metaphor. What's visible vs
-what's hidden. Coachella = tip, touring economy = body.
+These were specced in prior sessions but are not in CHART-LIBRARY-REFERENCE.html.
+Do not build against the OF dark spec. When built, they follow the teal/white system.
 
-**Approved instance:** `tab1-card1-iceberg.html`
-*Note: Still needs visual refinement to match TMM deck iceberg style.
-Refer to TMM_April_2026_Overview.html for the reference treatment.*
+### Concert Tax Card G — Gross Revenue Table
+Adapted from A3. Per-artist rows: name + tour / gross / show count / tier pill.
+Teal for male gross values, orange (#c95f1a) for female gross values.
+Tier pills: small colored labels (Large / Small / Solo).
+No multiplier callout — argument is in the gross + show count combination.
+Sort: gross high to low.
+⚠ Not yet approved — current renders don't match the standard. Revisit.
 
-**Structure:**
-```
-Dark card background
-  ├── Eyebrow + headline (standard card anatomy)
-  └── Iceberg visual:
-        Above waterline:
-          Zone label: DM Mono 9px uppercase, gold (#E8B923)
-          SVG polygon (narrow triangle): gold stroke/fill at 16% opacity
-        Waterline:
-          Flex row: [rule] [label] [rule]
-          Rule: flex-1, height 1px, rgba(248,246,241,0.4)
-          Label: DM Mono 8px uppercase, rgba(248,246,241,0.75)
-        Below waterline:
-          Zone label: DM Mono 9px uppercase, teal (#0a7c72)
-          SVG polygon (wide trapezoid): teal stroke/fill at 13% opacity
-          Economy rows: border 0.5px rgba(10,124,114,0.3),
-            each row: dot (teal) + DM Mono 10.5px rgba(248,246,241,0.82)
-```
-
-**Rules:**
-- Labels outside shapes — never inside the polygon
-- Text inside shapes only if shape is large enough for 13px+
-- Waterline label must be white/near-white — never gray
+### Concert Tax Card J — Two-Column Language Comparison
+Two-column grid: Male artist | Female artist.
+Column headers: DM Sans 800, 11px uppercase. Teal for male, orange for female.
+Quote pairs: DM Serif Display italic, 16px minimum, color #111. Full column width.
+Source below each quote: DM Mono 9px #888.
+Editorial line at bottom: DM Serif Display italic.
+⚠ Not yet approved — quote text needs to be larger and bolder than current renders.
+⚠ All quotes require source verification before deploy.
 
 ---
 
-### CARD TYPE E — Quote Card
+## 6. LOCKED RULES (apply to every component)
 
-**Use for:** Primary source quotes where the words themselves are
-the data. Named source + outlet + year always required.
-
-**Approved instance:** Cardi B Coachella 2018 (Tab 2, not yet built
-as HTML but approved in session)
-
-**Structure:**
-```
-White chart-wrap (same border/radius as other cards)
-  ├── Context header: Artist name (DM Serif Display large),
-  │     event + year (DM Mono 9px #888)
-  ├── Key figures (if applicable):
-  │     Fee: DM Serif Display 28–30px, teal
-  │     Spend: DM Serif Display 28–30px, orange
-  │     Net: DM Serif Display 28–30px with +/- sign
-  ├── Quote block:
-  │     Left border: 3px solid #0a7c72 (AI lane) or #E8B923 (OF)
-  │     Quote text: DM Serif Display italic 14px #111111
-  │     Attribution: DM Mono 9px #888888 — Source · Publication · Year
-  └── Net result callout (if applicable):
-        Bold figure + plain language explanation
-```
-
-**Rules:**
-- Quote must be primary source — no paraphrase
-- Attribution always: Name · Publication · Year
-- If quote + figures: figures above quote, never below
-- Net loss shown as negative number with explanation
+1. **Bar scaling:** Longest bar = 90% of track. All bars = (value/max)×90.
+   Never hardcode from raw percentages.
+2. **Value alignment:** All bar values right-aligned to track right edge.
+   Never inside the bar. Never moves based on bar length.
+3. **Primary label scale:** Spectral 800, 24–32px minimum. Never shrink
+   font to fit column — expand column instead.
+4. **Label column:** 40% of card width. 20px minimum gap to track.
+5. **No gray on primary content:** #888 permitted only on source stamps
+   and comp-tags. Never on labels, values, editorial lines, or annotations.
+6. **Tables and dense copy:** white or paper backgrounds ONLY. Never dark.
+7. **Dark backgrounds:** hero sections, D2 teal field, decorative stat
+   callouts only. Never under tables or dense reading copy.
+8. **Share card format:** 1080×1080 square. aspect-ratio: 1/1. Always.
+9. **Surface options:** Every component has Option 1 (teal field) and
+   Option 2 (white + teal border). AMA locks one per component before deploy.
+10. **File versioning:** Never overwrite. Always version: v1, v2, v3.
+11. **Four fonts only:** Spectral, DM Serif Display, DM Sans, DM Mono.
+    No other fonts introduced.
+12. **Comp-tag:** Always present. DM Mono 9px, color #888 (white surface)
+    or rgba(255,255,255,0.45) (teal field). States piece + tab + component.
+13. **Source stamp:** Always present. DM Mono 10px. Same muted color as comp-tag.
+14. **Editorial line:** DM Serif Display italic or DM Sans italic 13px.
+    The argument in one sentence. Never omit from a completed card.
+15. **Danger zone hatch:** Only permitted texture. Diagonal stripe on bars
+    exceeding a defined threshold. No other textures or gradients.
 
 ---
 
-### CARD TYPE F — Badge/Signal Row List
+## 7. WHAT THE VISUAL STANDARD IS NOW
 
-**Use for:** Multiple entities ranked by a categorical signal.
-Inspired by TMM Decision Rights Status list (Image 3 in session).
-Clean rows, signal badge on right, no chart needed.
+The approved visual reference for all new card work is the cards built
+in this session (May 7, 2026):
 
-**Not yet built — approved direction from May 4 session.**
+**Approved and locked:**
+- D1 Stat: Beyoncé 0.1% card — Option 2 white. See conversation history.
+- D2 Quote: Beyoncé Hart quote card — teal field. See conversation history.
+- A3 Gap: Beyoncé FEMA vs celebrity gap — Option 2 white. See conversation history.
+- Disaster Map: Beyoncé disaster states — Option 2 white wrapper, inline SVG.
 
-**Structure:**
-```
-White chart-wrap
-  └── Rows: [Entity name left] [Badge right]
-        Entity: DM Sans 600 14px #111111
-        Sub-context: DM Mono 8px #aaaaaa
-        Badge: DM Mono 9px 500 uppercase, padding 3px 8px,
-          border-radius 3px
-        Badge colors:
-          LARGE: bg #0a7c72, text white
-          SMALL: bg #c95f1a, text white
-          SOLO: bg #444441, text white
-          (Or: OVERLAP/CLEAR/ABDICATE from TMM for other pieces)
-        Row divider: 1px #f0ede8
-```
+**Previously approved (Concert Tax, from prior sessions):**
+- Tab1 Card A: Bieber/Carpenter comparison — `tab1-card2-comparison.html`
+- Tab1 Card B: $100 indexed stacked bar — `tab1-card3-stacked-bar.html`
+- Tab1 Card C: Cohort rap — `tab1-card4a-cohort-rap.html`
+- Tab1 Card C: Cohort pop — `tab1-card4b-cohort-pop.html`
+- Tab2 Card: Stadium production — `tab2-card-optionA-stadium-production-v3.html`
 
-**Rules:**
-- No bars — badge IS the signal
-- Works when the category is binary or has 3 clear options
-- Stronger than bars when the number of categories is small
-- Sort by badge value, then A–Z within badge group
+**Not yet approved (needs rebuild against this doc):**
+- Concert Tax Card E (Cardi B quote)
+- Concert Tax Card G (Gross revenue table)
+- Concert Tax Card J (Language comparison)
 
 ---
 
-### CARD TYPE G — Gross Revenue Table with Production Indicator
+## 8. WHAT NOT TO DO
 
-**Use for:** Multiple entities, showing both a quantitative figure
-(gross) and a qualitative signal (production tier) in one view.
-
-**Approved direction from May 4 session (Option C). Not yet built.**
-
-**Structure:**
-```
-White chart-wrap
-  ├── Chart title: DM Serif Display 15px
-  └── Table rows: [Artist + year] [Gross] [Shows] [Tier bar]
-        Column widths: 50% / 20% / 15% / 15%
-        Artist: DM Sans 600 12px #111111
-        Year/tour: DM Mono 8px #aaaaaa
-        Gross: DM Mono 500 11px #333333
-        Shows: DM Mono 11px #888888
-        Tier bar: narrow (15% col width), height 10px,
-          same fill logic as Card Type C
-          Solo=33%, Small=66%, Large=100% of column width
-```
-
-**Rules:**
-- Sort by gross high to low
-- Show count always shown — it contextualizes gross
-- Tier bar is narrow — argument is in gross + shows, not bar
-- No legend needed — Solo/Small/Large legible from bar length
-
----
-
-### CARD TYPE H — Loop/Feedback Diagram
-
-**Use for:** Cyclical processes where each stage feeds the next.
-The Dua Lipa feedback loop (criticism → escalation → expectation).
-
-**Not yet built — approved from May 4 card map.**
-
-**Structure:**
-```
-Dark card (OF lane)
-  └── Loop visual (CSS/SVG, no JS):
-        Central label: "go girl give us nothing" (DM Mono, gold)
-        4 nodes around it, connected by curved arrows:
-          Criticism → More production → Higher expectations
-          → More criticism risk → (back to start)
-        Each node: small rounded rect, DM Mono 10px
-        Arrows: gold (#E8B923), thin stroke
-```
-
-**Rules:**
-- No animation — static only
-- Center label must be legible at mobile size
-- Gold accent throughout (OF lane)
-
----
-
-### CARD TYPE I — Timeline (3-Step Arc)
-
-**Use for:** Documented before/after arcs with named dates.
-The Dua Lipa arc: 2018 comment → 2021 acknowledgment → 2022 tour.
-
-**Not yet built — approved from May 4 card map.**
-
-**Structure:**
-```
-White chart-wrap
-  └── 3-step horizontal timeline:
-        Step number: DM Mono 9px gold/teal circle
-        Year: DM Serif Display 18px bold
-        Event: DM Sans 500 12px #333333 (1–2 lines max)
-        Connector: thin horizontal rule between steps
-        Source: DM Mono 8px #888888 below event
-```
-
-**Rules:**
-- Max 3 steps per timeline card — more belongs in accordion
-- Year is the hero — larger than the event text
-- Source required on each step
-- No decorative flourishes
-
----
-
-### CARD TYPE J — Two-Column Language Comparison
-
-**Use for:** Same behavior described differently by gender/context.
-Media language gap: "authentic" vs "not enough."
-
-**Not yet built — approved from May 4 card map.**
-
-**Structure:**
-```
-White chart-wrap
-  ├── Column headers: Male / Female (DM Sans 600 12px, teal/amber)
-  └── Quote rows:
-        Each row: [quote left] [quote right]
-        Quote: DM Serif Display italic 13px #111111
-        Source: DM Mono 8px #888888 below quote
-        Row divider: 1px #f0ede8
-```
-
-**Rules:**
-- Quotes must be from named publications — no social media
-- Source logo or outlet name on each quote
-- 3–4 rows maximum — brevity is the point
-- The contrast is the argument — no explanatory text needed
-
----
-
-## 6. CARD COMPONENT REQUESTS FOR CLAUDE DESIGN
-
-When opening Claude Design, provide this as the generation prompt:
-
-```
-Read the Alterrell Interactive design system from this document.
-Then generate 10–20 card component options using the approved
-card types (A through J). Each card should:
-
-1. Use Obsidian Futures lane tokens (dark #111118 outer card,
-   white #ffffff inner chart, gold #E8B923 accent)
-2. Follow the exact typography rules — DM Serif Display for
-   chart titles and subject names, DM Mono for labels/captions,
-   DM Sans for body and artist names
-3. Include a swipe hint "Swipe for more cards →" at top
-4. Include an eyebrow, headline, chart-wrap, verdict block,
-   and caption — in that order
-5. Have a visible border on bar tracks (1.5px solid #d4d1cc)
-   to create the "glow" effect on white backgrounds
-
-Generate these specific card variants:
-- Card Type A: Artist comparison table (2 artists, 6 data rows)
-- Card Type B: $100 indexed stacked bar (2 bars, 4–5 slices)
-- Card Type C: Production intensity bars (8 artists, 3 tiers)
-- Card Type D: Iceberg metaphor (2 zones, labeled rows)
-- Card Type E: Quote card with figures (1 quote, 3 figures)
-- Card Type F: Badge signal list (8 rows, 3 badge types)
-- Card Type G: Gross + production table (7 rows, 4 columns)
-- Card Type H: Feedback loop diagram (4 nodes, center label)
-- Card Type I: 3-step timeline arc (3 steps, sources)
-- Card Type J: Two-column language comparison (4 quote pairs)
-
-Also generate these variants for the Alterrell Interactive
-lane (light/paper background, teal accent):
-- Card Type C variant: teal accent, paper background
-- Card Type F variant: teal badges, paper background
-- Stat card: large number + label + source
-- Callout card: left border teal, pull quote treatment
-```
-
----
-
-## 7. PIECES THIS SYSTEM APPLIES TO
-
-All current and pipeline pieces use these components:
-
-**Live pieces (Alterrell Interactive lane — teal):**
-- Fast Food Sodium ("Fast Food's Hidden Sodium Tax")
-- Ethnic Naming Series (Parts 0, 1, 2 — needs voice pass)
-- Hub (interactive.alterrell.com)
-
-**In build (Obsidian Futures lane — gold):**
-- Concert Tax ("The Gendered Burden of Women on Stage")
-  Cards approved: A (Bieber/Carpenter), B ($100 index),
-  C (cohort rap + pop, stadium tours), D (iceberg)
-  Cards pending: E (Cardi B), F (stadium badges),
-  G (gross table), H (loop), I (Dua Lipa arc), J (language gap)
-
-**Pipeline pieces:**
-- Where's Beyoncé? (Alterrell Interactive lane, teal)
-- HBS Digital Museum (Alterrell Interactive lane)
-- Congress Part 1A "Senator Selfish" (Alterrell Interactive lane)
-- Gay Uncles (Obsidian Futures lane, gold)
-- Musical Queens (Obsidian Futures lane, gold)
-
----
-
-## 8. WHAT NOT TO DO IN CLAUDE DESIGN
-
-- Do not build a new design system from scratch — this one exists
-- Do not use purple `#1e1040` as a background — use `#0a0a12`
-- Do not use amber/gold gradients as categorical data colors
-- Do not put text inside shapes unless the shape is large enough
-- Do not use gray text on dark backgrounds
-- Do not add animation or JavaScript to card components
-- Do not use dots, scatter plots, or pie/donut charts
-- Do not introduce new font families — four fonts only
+- Do not use the Obsidian Futures dark system (#111118 bg, #E8B923 gold)
+  for card components — that system is retired for cards
+- Do not use full-width editorial layout for share cards — square only
+- Do not use portrait or landscape format — square only
+- Do not put gray text on dark backgrounds
+- Do not use gradients of any kind (except the approved danger zone hatch)
+- Do not introduce new fonts — four only
 - Do not gender-code colors within a single chart
-- Do not add left borders to rows unless gender interleaving
-  requires it and it doesn't feel like over-explanation
-- Do not overwrite previous versions — version all files
+- Do not overwrite previous file versions — always version
+- Do not build Concert Tax cards against the v1 handoff doc OF spec
+- Do not approximate from memory — read CHART-LIBRARY-REFERENCE.html first
 
 ---
 
-## 9. STANDING RULES LOCKED THIS SESSION (May 4, 2026)
+## 9. PIECES THIS SYSTEM APPLIES TO
 
-These were established through iteration and must be applied
-proactively — not reactively after AMA flags them:
+All pieces. No exceptions.
 
-1. White charts inside dark cards — always
-2. No gray text on dark backgrounds — ever
-3. Labels inside bars if slice height ≥ 28px; outside otherwise
-4. DM Serif Display for all chart subject/artist names, 14px min
-5. Chart index labels: DM Sans 500, 12px, #333333
-6. No gradient color families for categorical data
-7. Verdict block: gold left border, DM Serif Display italic,
-   rgba(248,246,241,0.9) — every completed card
-8. Swipe hint: "Swipe for more cards →" exact text, always
-9. Single color for all bars in one chart (#0a7c72 default)
-10. Bar tracks: border 1.5px solid #d4d1cc (the glow)
-11. Tier boundaries snap exactly: 33.33% / 66.66% / 100%
-12. Artist names: two-line treatment (first / last) when
-    side-by-side — both sides must match exactly
-13. File versioning: v1, v2, v3 — never overwrite
-14. No JavaScript for swipe/gallery behavior — CSS scroll snap only
-15. Five-tab platform standard: Overview / [Data] / [Systemic] /
-    History / Take Action — Sources accordion in Tab 5
+**Currently active:**
+- Where's Beyoncé? — civic/teal — cards approved May 7, 2026
+- Concert Tax ("The Male Laziness Epidemic") — cultural — cards in progress
+- Fast Food's Hidden Sodium Tax — civic/teal — legacy build, retrofit deferred
+- Ethnic Naming Series (Parts 0, 1, 2) — identity — needs voice pass first
+
+**Pipeline:**
+- HBS Digital Museum — civic/teal
+- Congress Part 1A "Senator Selfish" — civic/teal
+- Gay Uncles — cultural
+- Musical Queens — cultural
+- Specialist Map — civic/teal
 
 ---
 
-*Generated May 4, 2026 · Alterrell Interactive project folder*
-*For use in Claude Design onboarding — read before generating*
+*Updated May 7, 2026. Supersedes v1 (May 4, 2026).*
+*Source of truth for visual rendering: CHART-LIBRARY-REFERENCE.html*
+*Source of truth for decisions: conversation history May 7, 2026*
