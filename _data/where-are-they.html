@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Are They? | Alterrell Interactive</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&family=Spectral:ital,wght@1,700&display=swap" rel="stylesheet">
+    
+    <style>
+/* ═══════════════════════════════════════════════════════════════
+   WHERE ARE THEY? — OBSIDIAN FUTURES LANE
+   Defined sections for easy editing:
+   1. CSS Variables
+   2. Base Styles
+   3. Breadcrumb
+   4. Hero
+   5. Tab Navigation
+   6. Content Sections
+   7. Accordion System
+   8. Tables
+   9. Contrast Cards
+   10. Tool Section
+   11. Footer
+   12. Responsive
+═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────
+   1. CSS VARIABLES
+───────────────────────────────────────────────────────────── */
+:root {
+    /* Platform colors */
+    --paper: #f8f6f1;
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --teal: #0a7c72;
+    --orange: #c95f1a;
+    
+    /* Obsidian Futures lane */
+    --obsidian: #1e1040;
+    --obsidian-light: #2d1a5c;
+    --obsidian-glow: rgba(74, 48, 128, 0.15);
+    
+    /* Typography */
+    --font-display: 'Spectral', Georgia, serif;
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    
+    /* Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    
+    /* Layout */
+    --max-editorial: 860px;
+    --max-tool: 680px;
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   2. BASE STYLES
+───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+}
+
+a { color: var(--obsidian); }
+a:hover { color: var(--obsidian-light); }
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+/* ─────────────────────────────────────────────────────────────
+   3. BREADCRUMB
+───────────────────────────────────────────────────────────── */
+.breadcrumb {
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+    color: var(--ink-light);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.breadcrumb a {
+    color: var(--ink-light);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { color: var(--obsidian); }
+
+.breadcrumb span {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   4. HERO
+───────────────────────────────────────────────────────────── */
+.hero {
+    background: linear-gradient(135deg, var(--obsidian) 0%, #0d0820 100%);
+    color: #fff;
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+}
+
+.hero-inner {
+    max-width: var(--max-editorial);
+    margin: 0 auto;
+}
+
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: var(--space-sm);
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.hero-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   5. TAB NAVIGATION
+───────────────────────────────────────────────────────────── */
+.tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.tab-nav-inner {
+    max-width: var(--max-editorial);
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.tab-nav-inner::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+    flex-shrink: 0;
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+    color: var(--ink-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.tab-btn:hover { color: var(--obsidian); }
+
+.tab-btn.active {
+    color: var(--obsidian);
+    border-bottom-color: var(--obsidian);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   6. CONTENT SECTIONS
+───────────────────────────────────────────────────────────── */
+.content {
+    max-width: var(--max-editorial);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.section-intro {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+}
+
+h2.section-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--obsidian);
+    margin-bottom: var(--space-sm);
+}
+
+.body-text {
+    margin-bottom: var(--space-sm);
+}
+
+/* Stat Callout */
+.stat-callout {
+    background: var(--obsidian);
+    color: #fff;
+    padding: var(--space-md);
+    border-radius: 4px;
+    margin: var(--space-md) 0;
+}
+
+.stat-callout .stat-number {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.stat-callout .stat-label {
+    font-size: var(--text-sm);
+    opacity: 0.9;
+}
+
+/* Key Points Box */
+.key-points {
+    background: #fff;
+    border-left: 3px solid var(--obsidian);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+}
+
+.key-points h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--obsidian);
+    margin-bottom: var(--space-sm);
+}
+
+.key-points ul { list-style: none; }
+
+.key-points li {
+    padding: var(--space-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.key-points li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--obsidian);
+}
+
+/* Pull Quote */
+.pull-quote {
+    border-left: 3px solid var(--obsidian);
+    padding-left: var(--space-md);
+    margin: var(--space-md) 0;
+}
+
+.pull-quote-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: var(--space-xs);
+}
+
+.pull-quote-source {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--ink-light);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   7. ACCORDION SYSTEM
+───────────────────────────────────────────────────────────── */
+.accordion-group {
+    margin: var(--space-md) 0;
+}
+
+.accordion-item {
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-left: 4px solid var(--obsidian);
+    transition: background 0.2s ease;
+}
+
+.accordion-header:hover {
+    background: var(--obsidian-glow);
+}
+
+.accordion-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--obsidian);
+    min-width: 2rem;
+}
+
+.accordion-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    flex: 1;
+}
+
+.accordion-subtitle {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--ink-light);
+}
+
+.accordion-chevron {
+    font-size: var(--text-sm);
+    color: var(--obsidian);
+    transition: transform 0.2s ease;
+}
+
+.accordion-header.collapsed .accordion-chevron {
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    padding: 0 var(--space-md) var(--space-md) var(--space-md);
+    border-left: 4px solid var(--obsidian);
+}
+
+.accordion-body.hidden { display: none; }
+
+/* Disaster context inside accordion */
+.disaster-context {
+    background: var(--obsidian-glow);
+    padding: var(--space-sm);
+    border-radius: 4px;
+    margin-bottom: var(--space-md);
+    font-size: var(--text-sm);
+}
+
+.disaster-context strong {
+    color: var(--obsidian);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   8. TABLES
+───────────────────────────────────────────────────────────── */
+.table-wrapper {
+    overflow-x: auto;
+    margin: var(--space-sm) 0;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: var(--text-sm);
+}
+
+.data-table th {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: var(--space-sm);
+    border-bottom: 2px solid var(--obsidian);
+    color: var(--ink-light);
+}
+
+.data-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    vertical-align: top;
+}
+
+.data-table tr:hover {
+    background: var(--obsidian-glow);
+}
+
+.data-table .name { font-weight: 500; }
+
+.data-table .category {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--ink-light);
+}
+
+.data-table .net-worth {
+    font-family: var(--font-serif);
+    text-align: right;
+}
+
+/* Status badges */
+.status {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+}
+
+.status.asked {
+    background: rgba(201, 95, 26, 0.15);
+    color: var(--orange);
+}
+
+.status.not-asked {
+    background: rgba(0,0,0,0.06);
+    color: var(--ink-light);
+}
+
+/* Divider rows in tables */
+.divider-row {
+    background: var(--obsidian-glow) !important;
+}
+
+.divider-row td {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--obsidian);
+    padding: var(--space-xs) var(--space-sm);
+}
+
+/* Framing tags */
+.framing { font-style: italic; }
+.framing.warm { color: var(--teal); }
+.framing.critical { color: var(--orange); }
+
+/* ─────────────────────────────────────────────────────────────
+   9. CONTRAST CARDS (Dolly/Oprah)
+───────────────────────────────────────────────────────────── */
+.contrast-cards {
+    display: grid;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.contrast-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: var(--space-md);
+    border-left: 4px solid var(--obsidian);
+}
+
+.contrast-card.positive { border-left-color: var(--teal); }
+.contrast-card.negative { border-left-color: var(--orange); }
+
+.contrast-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.contrast-card .disaster-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.contrast-card .mechanism-tag {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    padding: 0.25rem 0.5rem;
+    font-size: var(--text-sm);
+    border-radius: 2px;
+    margin-bottom: var(--space-sm);
+}
+
+.contrast-card .outcome {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+}
+
+.contrast-card blockquote {
+    border-left: 2px solid var(--ink-light);
+    padding-left: var(--space-sm);
+    font-style: italic;
+    color: var(--ink-light);
+    margin: var(--space-xs) 0;
+    font-size: var(--text-sm);
+}
+
+.contrast-card .framing-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    margin-top: var(--space-sm);
+}
+
+.framing-tag.positive {
+    background: rgba(10, 124, 114, 0.15);
+    color: var(--teal);
+}
+
+.framing-tag.negative {
+    background: rgba(201, 95, 26, 0.15);
+    color: var(--orange);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   10. TOOL SECTION
+───────────────────────────────────────────────────────────── */
+.tool-section {
+    max-width: var(--max-tool);
+    margin: 0 auto;
+}
+
+.tool-intro {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.tool-intro h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--obsidian);
+    margin-bottom: var(--space-sm);
+}
+
+.state-selector {
+    background: #fff;
+    padding: var(--space-md);
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: var(--space-lg);
+}
+
+.state-selector label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.state-selector select {
+    width: 100%;
+    padding: var(--space-sm);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    border: 2px solid var(--obsidian);
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.state-selector select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--obsidian-glow);
+}
+
+.tool-results {
+    background: #fff;
+    border-radius: 4px;
+    padding: var(--space-md);
+}
+
+.tool-results h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+    color: var(--obsidian);
+}
+
+.coming-soon {
+    text-align: center;
+    padding: var(--space-lg);
+    color: var(--ink-light);
+    font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   11. FOOTER
+───────────────────────────────────────────────────────────── */
+.site-footer {
+    background: var(--obsidian);
+    color: rgba(255,255,255,0.7);
+    padding: var(--space-lg) var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.footer-inner {
+    max-width: var(--max-editorial);
+    margin: 0 auto;
+}
+
+.footer-brand {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: var(--space-xs);
+}
+
+.footer-tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+    margin-bottom: var(--space-md);
+}
+
+.footer-links { font-size: var(--text-sm); }
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    margin-right: var(--space-md);
+}
+
+.footer-links a:hover { color: #fff; }
+
+/* Sources section */
+.methodology {
+    background: #fff;
+    padding: var(--space-md);
+    border-radius: 4px;
+    margin-bottom: var(--space-lg);
+}
+
+.methodology h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+}
+
+.methodology p {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+}
+
+.source-list { font-size: var(--text-sm); }
+
+.source-list h3 {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.source-list ul { list-style: none; }
+
+.source-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.source-list .source-title { font-weight: 500; }
+
+.source-list .source-pub {
+    color: var(--ink-light);
+    font-size: var(--text-xs);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   12. RESPONSIVE
+───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .hero h1 { font-size: 2rem; }
+    
+    .data-table { font-size: var(--text-xs); }
+    
+    .data-table th,
+    .data-table td { padding: var(--space-xs); }
+    
+    .accordion-header {
+        flex-wrap: wrap;
+    }
+    
+    .accordion-subtitle {
+        width: 100%;
+        margin-top: var(--space-xs);
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BREADCRUMB
+═══════════════════════════════════════════════════════════════ -->
+<nav class="breadcrumb">
+    <a href="/">Alterrell Interactive</a>
+    <span>·</span>
+    <a href="#">Obsidian Futures</a>
+    <span>·</span>
+    Where Are They?
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-label">Obsidian Futures</div>
+        <h1>Where Are They?</h1>
+        <p class="hero-subtitle">White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible.</p>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TAB NAVIGATION
+═══════════════════════════════════════════════════════════════ -->
+<nav class="tab-nav">
+    <div class="tab-nav-inner">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="data">Data & Headlines</button>
+        <button class="tab-btn" data-tab="wealthy">The Wealthy</button>
+        <button class="tab-btn" data-tab="tool">The Tool</button>
+        <button class="tab-btn" data-tab="sources">Sources</button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════════════════════ -->
+<main class="content">
+
+<!-- ───────────────────────────────────────────────────────────────
+     TAB 1: OVERVIEW
+─────────────────────────────────────────────────────────────── -->
+<section class="tab-panel active" id="overview">
+    
+    <h2 class="section-title">The Question No One's Asking</h2>
+    <p class="body-text">Every disaster produces the same scene: a Black artist is tagged on social media before she's checked if her family is safe. The man who owns the team in her hometown — worth 11× her net worth — is not mentioned.</p>
+    <p class="body-text">This isn't random. It's architecture.</p>
+
+    <div class="stat-callout">
+        <span class="stat-number">75%</span>
+        <span class="stat-label">Of celebrities Kevin Hart called out for Harvey 2017 were Black — while Houston billionaires worth 11× more were never named</span>
+    </div>
+
+    <div class="key-points">
+        <h3>What This Piece Reveals</h3>
+        <ul>
+            <li><strong>Government abdication</strong> — Why are private individuals asked at all?</li>
+            <li><strong>Same mechanism, different reaction</strong> — Dolly Parton and Oprah Winfrey launched identical fund structures. Only one faced conspiracy theories.</li>
+            <li><strong>The Black Tax at scale</strong> — The structural expectation that visible Black wealth compensate for government failure.</li>
+            <li><strong>Domicile = obligation</strong> — If you chose Florida's no-income-tax structure, you chose Florida's disasters. Yet Florida billionaires are never asked.</li>
+            <li><strong>Owners vs. players</strong> — NFL and NBA athletes are called out. The team owners who profit from their labor are not.</li>
+        </ul>
+    </div>
+
+    <h2 class="section-title" style="margin-top: var(--space-lg);">Kevin Hart's Challenge — The Receipts</h2>
+    <p class="body-text">In August 2017, Kevin Hart launched the "Hurricane Harvey Relief Challenge," publicly calling out specific celebrities to donate $25,000 each.</p>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Celebrity Called Out</th>
+                    <th>Race</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">Beyoncé</td><td>Black</td></tr>
+                <tr><td class="name">Jay-Z</td><td>Black</td></tr>
+                <tr><td class="name">Chris Rock</td><td>Black</td></tr>
+                <tr><td class="name">Dave Chappelle</td><td>Black</td></tr>
+                <tr><td class="name">Steve Harvey</td><td>Black</td></tr>
+                <tr><td class="name">Dwayne Johnson</td><td>Black / Samoan</td></tr>
+                <tr><td class="name">Justin Timberlake</td><td>White</td></tr>
+                <tr><td class="name">Jerry Seinfeld</td><td>White</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p class="body-text" style="margin-top: var(--space-sm);"><strong>6 Black celebrities. 2 white celebrities. 0 Houston billionaires.</strong></p>
+
+    <h2 class="section-title" style="margin-top: var(--space-lg);">What This Tool Does</h2>
+    <p class="body-text">Select a disaster state. See every major wealth holder — by domicile and birth state. See who was publicly asked to give. See who was not.</p>
+    <p class="body-text">Equal asks. Equal visibility. What accountability looks like when it follows the money.</p>
+
+</section>
+
+<!-- ───────────────────────────────────────────────────────────────
+     TAB 2: DATA & HEADLINES
+─────────────────────────────────────────────────────────────── -->
+<section class="tab-panel" id="data">
+    
+    <div class="section-label">The Mechanism</div>
+    
+    <div class="contrast-cards">
+        
+        <!-- Dolly Card -->
+        <div class="contrast-card positive">
+            <h3>Dolly Parton</h3>
+            <div class="disaster-label">Gatlinburg wildfire — Tennessee, 2016</div>
+            <div class="mechanism-tag">Celebrity seeds fund + asks public to donate</div>
+            <p class="outcome">Raised $12M · ~900 families · fund named "My People Fund"</p>
+            <blockquote>"Dolly Parton just gave wildfire victims an incredibly generous gift"</blockquote>
+            <blockquote>"She provides fire victims a shoulder to lean on"</blockquote>
+            <span class="framing-tag positive">National treasure · Zero criticism</span>
+        </div>
+        
+        <!-- Oprah Card -->
+        <div class="contrast-card negative">
+            <h3>Oprah Winfrey</h3>
+            <div class="disaster-label">Lahaina wildfire — Maui, 2023</div>
+            <div class="mechanism-tag">Celebrity seeds fund + asks public to donate</div>
+            <p class="outcome">Raised $60M · 8,100 families · $10M personal seed</p>
+            <blockquote>"Why are two wealthy celebrities soliciting donations from the public?"</blockquote>
+            <blockquote>"Oprah faces backlash over Maui wildfires response"</blockquote>
+            <span class="framing-tag negative">Conspiracy theories · 12M+ views · "attacks, lies"</span>
+        </div>
+        
+    </div>
+    
+    <p class="text-center body-text" style="font-style: italic; color: var(--ink-light); margin-bottom: var(--space-lg);">
+        Same mechanism. Same structure. Dolly even modeled it first and praised Oprah for following her approach.<br>
+        <strong>The only variable: race.</strong>
+    </p>
+
+    <div class="section-label">Same Act — Documented Headline Sentiment</div>
+    
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Person</th>
+                    <th>Race</th>
+                    <th>Disaster</th>
+                    <th>Amount</th>
+                    <th>Publication</th>
+                    <th class="text-right">Reach</th>
+                    <th>Framing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">Dolly Parton</td>
+                    <td>White</td>
+                    <td>Gatlinburg 2016</td>
+                    <td>$12M raised</td>
+                    <td>CNN, People</td>
+                    <td class="text-right">297M+</td>
+                    <td class="framing warm">"National treasure"</td>
+                </tr>
+                <tr>
+                    <td class="name">Taylor Swift</td>
+                    <td>White</td>
+                    <td>Helene/Milton 2024</td>
+                    <td>$5M</td>
+                    <td>CNN, Newsweek</td>
+                    <td class="text-right">95M+</td>
+                    <td class="framing warm">"Incredibly grateful"</td>
+                </tr>
+                <tr>
+                    <td class="name">Morgan Wallen</td>
+                    <td>White</td>
+                    <td>Helene 2024</td>
+                    <td>$500K</td>
+                    <td>Billboard</td>
+                    <td class="text-right">Trade</td>
+                    <td class="framing warm">"Heartfelt," "compassion"</td>
+                </tr>
+                <tr>
+                    <td class="name">Oprah Winfrey</td>
+                    <td>Black</td>
+                    <td>Maui 2023</td>
+                    <td>$25M+</td>
+                    <td>Atlanta Black Star</td>
+                    <td class="text-right">14M</td>
+                    <td class="framing critical">"Ain't them your neighbors?"</td>
+                </tr>
+                <tr>
+                    <td class="name">Oprah Winfrey</td>
+                    <td>Black</td>
+                    <td>Maui 2023</td>
+                    <td>$25M+</td>
+                    <td>Newsweek</td>
+                    <td class="text-right">95M+</td>
+                    <td class="framing critical">"Accused of 'playing the victim'"</td>
+                </tr>
+                <tr>
+                    <td class="name">Beyoncé</td>
+                    <td>Black</td>
+                    <td>LA Fires 2025</td>
+                    <td>$2.5M</td>
+                    <td>Music Times</td>
+                    <td class="text-right">~5M</td>
+                    <td class="framing critical">"Raises eyebrows"</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p class="body-text" style="margin-top: var(--space-md);">
+        <strong>The pattern:</strong> Criticism of Black giving originates in Black media, then gets amplified to mainstream outlets with 7× the reach. White celebrities receive warmth framing in the same mainstream outlets — no backlash to report.
+    </p>
+
+    <div class="section-label" style="margin-top: var(--space-xl);">The Wealth That Was Never Asked — Harvey 2017, Houston</div>
+    
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Person</th>
+                    <th class="text-right">Net Worth</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="divider-row">
+                    <td colspan="3">Kevin Hart's challenge targeted →</td>
+                </tr>
+                <tr>
+                    <td class="name">Beyoncé</td>
+                    <td class="net-worth">$1B</td>
+                    <td><span class="status asked">Asked</span></td>
+                </tr>
+                <tr>
+                    <td class="name">Jay-Z</td>
+                    <td class="net-worth">~$2B</td>
+                    <td><span class="status asked">Asked</span></td>
+                </tr>
+                <tr class="divider-row">
+                    <td colspan="3">Never named, despite direct Houston domicile →</td>
+                </tr>
+                <tr>
+                    <td class="name">Tilman Fertitta</td>
+                    <td class="net-worth">$11B</td>
+                    <td><span class="status not-asked">Not asked</span></td>
+                </tr>
+                <tr>
+                    <td class="name">Richard Kinder</td>
+                    <td class="net-worth">$10.6B</td>
+                    <td><span class="status not-asked">Not asked</span></td>
+                </tr>
+                <tr>
+                    <td class="name">Jeffery Hildebrand</td>
+                    <td class="net-worth">$10B</td>
+                    <td><span class="status not-asked">Not asked</span></td>
+                </tr>
+                <tr>
+                    <td class="name">Janice McNair</td>
+                    <td class="net-worth">$7.3B</td>
+                    <td><span class="status not-asked">Not asked</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p class="body-text" style="margin-top: var(--space-md);">
+        Tilman Fertitta — Houston Rockets owner — is worth <strong>11× Beyoncé's net worth</strong>. He lives in Houston. He was not named.
+    </p>
+
+</section>
+
+<!-- ───────────────────────────────────────────────────────────────
+     TAB 3: THE WEALTHY
+─────────────────────────────────────────────────────────────── -->
+<section class="tab-panel" id="wealthy">
+    
+    <p class="section-intro">State-by-state wealth rosters. Major disasters. Who lives there. Who was asked.</p>
+    <p class="body-text" style="margin-bottom: var(--space-md); font-size: var(--text-sm); color: var(--ink-light);">Tap to expand each state. Net worth from Forbes 2025. "Asked" status based on documented public call-outs or media campaigns.</p>
+
+    <div class="accordion-group">
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 1: TEXAS
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                <span class="accordion-num">01</span>
+                <span class="accordion-title">Texas</span>
+                <span class="accordion-subtitle">Harvey 2017 · Ike 2008 · Winter Storm 2021</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body">
+                <div class="disaster-context">
+                    <strong>43 Forbes 400 billionaires</strong> · 4th most billionaires nationally · Major disasters: hurricanes, floods, drought, winter storms
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Business</td></tr>
+                            <tr>
+                                <td class="name">Elon Musk</td>
+                                <td class="category">Tech</td>
+                                <td class="net-worth">$428B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Alice Walton</td>
+                                <td class="category">Walmart heir</td>
+                                <td class="net-worth">$106B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Tilman Fertitta</td>
+                                <td class="category">Hospitality</td>
+                                <td class="net-worth">$11B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Richard Kinder</td>
+                                <td class="category">Energy</td>
+                                <td class="net-worth">$10.6B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Jeffery Hildebrand</td>
+                                <td class="category">Oil</td>
+                                <td class="net-worth">$10B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Team Owners</td></tr>
+                            <tr>
+                                <td class="name">Tilman Fertitta</td>
+                                <td class="category">Houston Rockets</td>
+                                <td class="net-worth">$11B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Janice McNair</td>
+                                <td class="category">Houston Texans</td>
+                                <td class="net-worth">$7.3B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Musicians — TX Birth State</td></tr>
+                            <tr>
+                                <td class="name">Beyoncé</td>
+                                <td class="category">Musician</td>
+                                <td class="net-worth">$1B</td>
+                                <td><span class="status asked">Asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Travis Scott</td>
+                                <td class="category">Musician</td>
+                                <td class="net-worth">$80M</td>
+                                <td><span class="status asked">Asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Athletes</td></tr>
+                            <tr>
+                                <td class="name">J.J. Watt</td>
+                                <td class="category">NFL (Texans)</td>
+                                <td class="net-worth">$100M</td>
+                                <td><span class="status asked">Asked (self-initiated)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 2: FLORIDA
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">02</span>
+                <span class="accordion-title">Florida</span>
+                <span class="accordion-subtitle">Ian 2022 · Milton 2024 · Multiple hurricanes</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>116 Forbes billionaires</strong> · 3rd most nationally · Most are <em>transplants</em> who moved for tax purposes · Major disasters: hurricanes, flooding
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Business — Tax Transplants</td></tr>
+                            <tr>
+                                <td class="name">Jeff Bezos</td>
+                                <td class="category">Amazon (moved 2023)</td>
+                                <td class="net-worth">$214B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Thomas Peterffy</td>
+                                <td class="category">Finance (moved 2014)</td>
+                                <td class="net-worth">$77.3B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Ken Griffin</td>
+                                <td class="category">Citadel (moved 2022)</td>
+                                <td class="net-worth">$47B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Julia Koch</td>
+                                <td class="category">Koch Industries heir</td>
+                                <td class="net-worth">$75.7B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Stephen Schwarzman</td>
+                                <td class="category">Blackstone</td>
+                                <td class="net-worth">$47.9B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Team Owners</td></tr>
+                            <tr>
+                                <td class="name">Micky Arison</td>
+                                <td class="category">Miami Heat</td>
+                                <td class="net-worth">$10B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Athletes — FL Domicile</td></tr>
+                            <tr>
+                                <td class="name">Michael Jordan</td>
+                                <td class="category">NBA legend</td>
+                                <td class="net-worth">$3B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="body-text" style="margin-top: var(--space-md); font-size: var(--text-sm);">
+                    <strong>Editorial note:</strong> Florida's billionaire class is largely transplants who moved specifically for tax advantages. If you chose Florida's no-income-tax structure, you chose Florida's disasters.
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 3: CALIFORNIA
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">03</span>
+                <span class="accordion-title">California</span>
+                <span class="accordion-subtitle">LA Fires 2025 · Annual wildfires · Drought</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>194 Forbes billionaires</strong> · Most of any state · Tech wealth largely invisible in disaster discourse · Major disasters: wildfires, drought, earthquakes
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Tech</td></tr>
+                            <tr>
+                                <td class="name">Mark Zuckerberg</td>
+                                <td class="category">Meta</td>
+                                <td class="net-worth">$220B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Larry Page</td>
+                                <td class="category">Google</td>
+                                <td class="net-worth">$135B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Sergey Brin</td>
+                                <td class="category">Google</td>
+                                <td class="net-worth">$129B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Jensen Huang</td>
+                                <td class="category">Nvidia</td>
+                                <td class="net-worth">$159B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Musicians — CA Domicile</td></tr>
+                            <tr>
+                                <td class="name">Beyoncé</td>
+                                <td class="category">Musician (Malibu)</td>
+                                <td class="net-worth">$1B</td>
+                                <td><span class="status asked">Asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Jay-Z</td>
+                                <td class="category">Musician/Business</td>
+                                <td class="net-worth">$2.5B</td>
+                                <td><span class="status asked">Asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Rihanna</td>
+                                <td class="category">Musician/Fenty</td>
+                                <td class="net-worth">$1.4B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Athletes — CA Domicile</td></tr>
+                            <tr>
+                                <td class="name">LeBron James</td>
+                                <td class="category">NBA (Lakers)</td>
+                                <td class="net-worth">$1B+</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 4: HAWAII
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">04</span>
+                <span class="accordion-title">Hawaii</span>
+                <span class="accordion-subtitle">Maui 2023 — Deadliest US wildfire in a century</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Billionaire land concentration</strong> · Ellison owns 98% of Lānaʻi · Zuckerberg owns 2,300 acres on Kauaʻi · Major disasters: wildfires, hurricanes, flooding
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Major Landowners</td></tr>
+                            <tr>
+                                <td class="name">Larry Ellison</td>
+                                <td class="category">Oracle · Owns 98% of Lānaʻi</td>
+                                <td class="net-worth">$206B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Mark Zuckerberg</td>
+                                <td class="category">Meta · 2,300 acres Kauaʻi</td>
+                                <td class="net-worth">$220B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Jeff Bezos</td>
+                                <td class="category">Amazon · Maui/Big Island</td>
+                                <td class="net-worth">$214B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Media / Entertainment</td></tr>
+                            <tr>
+                                <td class="name">Oprah Winfrey</td>
+                                <td class="category">Media · ~1,000 acres Maui</td>
+                                <td class="net-worth">$3B</td>
+                                <td><span class="status asked">Asked · Gave $25M+ · Faced conspiracy theories</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="body-text" style="margin-top: var(--space-md); font-size: var(--text-sm);">
+                    <strong>The sharpest contrast:</strong> Ellison owns 98% of the island adjacent to Maui. Zuckerberg's compound spend exceeds Kauaʻi's entire FY2024 operating budget ($311M). Neither was publicly asked to contribute. Oprah — who gave $25M+ and was on the ground distributing aid — faced viral conspiracy theories with 12M+ views.
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 5: LOUISIANA
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">05</span>
+                <span class="accordion-title">Louisiana</span>
+                <span class="accordion-subtitle">Ida 2021 · Katrina 2005 · Annual hurricanes</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Only 3 Forbes billionaires</strong> · The asymmetry is the argument · When Katrina hit, people asked Beyoncé (TX-born) — not Louisiana's billionaire class · Major disasters: hurricanes, flooding
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Business</td></tr>
+                            <tr>
+                                <td class="name">Todd Graves</td>
+                                <td class="category">Raising Cane's</td>
+                                <td class="net-worth">$22B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Team Owners</td></tr>
+                            <tr>
+                                <td class="name">Gayle Benson</td>
+                                <td class="category">Saints / Pelicans</td>
+                                <td class="net-worth">$7.9B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 6: NORTH CAROLINA
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">06</span>
+                <span class="accordion-title">North Carolina</span>
+                <span class="accordion-subtitle">Helene 2024 · Florence 2018 · Hurricanes</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Limited billionaire presence</strong> · Michael Jordan (NC-born, $3B) never called out for NC disasters · Major disasters: hurricanes, flooding
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Business</td></tr>
+                            <tr>
+                                <td class="name">James Goodnight</td>
+                                <td class="category">SAS Institute</td>
+                                <td class="net-worth">$12B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Athletes — NC Birth State</td></tr>
+                            <tr>
+                                <td class="name">Michael Jordan</td>
+                                <td class="category">NBA legend (born Wilmington)</td>
+                                <td class="net-worth">$3B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STATE 7: GEORGIA
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">07</span>
+                <span class="accordion-title">Georgia</span>
+                <span class="accordion-subtitle">Hurricanes · Severe storms · Tornadoes</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Atlanta cultural wealth</strong> · Home to significant Black entertainment wealth · Limited billionaire class · Major disasters: hurricanes, tornadoes, severe storms
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Business</td></tr>
+                            <tr>
+                                <td class="name">Jim Kennedy</td>
+                                <td class="category">Cox Media</td>
+                                <td class="net-worth">$10B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Team Owners</td></tr>
+                            <tr>
+                                <td class="name">Arthur Blank</td>
+                                <td class="category">Falcons / Atlanta United</td>
+                                <td class="net-worth">$9B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            
+                            <tr class="divider-row"><td colspan="4">Musicians — Atlanta Scene</td></tr>
+                            <tr>
+                                <td class="name">Usher</td>
+                                <td class="category">Musician</td>
+                                <td class="net-worth">$180M</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             REGION 8: PACIFIC NORTHWEST
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">08</span>
+                <span class="accordion-title">Pacific Northwest</span>
+                <span class="accordion-subtitle">Washington · Oregon · Wildfires · Atmospheric rivers</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Tech wealth concentration</strong> · Amazon/Microsoft wealth largely invisible in disaster discourse · Major disasters: wildfires, drought, atmospheric rivers, earthquakes
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Billionaires / Tech</td></tr>
+                            <tr>
+                                <td class="name">Steve Ballmer</td>
+                                <td class="category">Microsoft</td>
+                                <td class="net-worth">$118B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Jeff Bezos</td>
+                                <td class="category">Amazon (born WA)</td>
+                                <td class="net-worth">$214B</td>
+                                <td><span class="status not-asked">Not asked</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             REGION 9: TORNADO ALLEY / DIXIE ALLEY
+        ═══════════════════════════════════════════════════════ -->
+        <div class="accordion-item">
+            <button class="accordion-header collapsed" onclick="toggleAccordion(this)" aria-expanded="false">
+                <span class="accordion-num">09</span>
+                <span class="accordion-title">Tornado Alley / Dixie Alley</span>
+                <span class="accordion-subtitle">Oklahoma · Kansas · Alabama · Tennessee · Tornadoes</span>
+                <span class="accordion-chevron">▲</span>
+            </button>
+            <div class="accordion-body hidden">
+                <div class="disaster-context">
+                    <strong>Highest tornado frequency globally</strong> · Oklahoma averages 62 tornadoes/year · White country artists framed as "heroes" while Black artists are "demanded of" · Major disasters: tornadoes, severe storms
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="text-right">Net Worth</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider-row"><td colspan="4">Musicians — Oklahoma</td></tr>
+                            <tr>
+                                <td class="name">Blake Shelton</td>
+                                <td class="category">Country (OK native)</td>
+                                <td class="net-worth">$100M</td>
+                                <td><span class="status asked">Asked · Framed as "hero"</span></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Carrie Underwood</td>
+                                <td class="category">Country (OK native)</td>
+                                <td class="net-worth">$200M</td>
+                                <td><span class="status asked">Asked · Framed as "hero"</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="body-text" style="margin-top: var(--space-md); font-size: var(--text-sm);">
+                    <strong>The contrast:</strong> Blake Shelton and Carrie Underwood are both asked — and both praised. "Heartwarming home-state hero" framing. Beyoncé and Oprah are both asked — and both interrogated. Same act, different cultural script.
+                </p>
+            </div>
+        </div>
+
+    </div><!-- end accordion-group -->
+
+</section>
+
+<!-- ───────────────────────────────────────────────────────────────
+     TAB 4: THE TOOL
+─────────────────────────────────────────────────────────────── -->
+<section class="tab-panel" id="tool">
+    
+    <div class="tool-section">
+        <div class="tool-intro">
+            <h2>Equal Asks. Equal Visibility.</h2>
+            <p class="body-text">Select a disaster state to see every major wealth holder — by domicile and birth state — and whether they were publicly asked to contribute.</p>
+        </div>
+        
+        <div class="state-selector">
+            <label for="state-select">Select Disaster State</label>
+            <select id="state-select">
+                <option value="">Choose a state...</option>
+                <option value="texas">Texas (Harvey 2017)</option>
+                <option value="florida">Florida (Ian, Milton)</option>
+                <option value="california">California (Wildfires)</option>
+                <option value="hawaii">Hawaii (Maui 2023)</option>
+                <option value="louisiana">Louisiana (Ida, Katrina)</option>
+                <option value="north-carolina">North Carolina (Helene 2024)</option>
+                <option value="georgia">Georgia</option>
+                <option value="pacific-northwest">Pacific Northwest</option>
+                <option value="tornado-alley">Tornado Alley / Dixie Alley</option>
+            </select>
+        </div>
+        
+        <div class="tool-results" id="tool-results">
+            <div class="coming-soon">
+                <p><strong>Interactive lookup coming in V2.</strong></p>
+                <p style="font-size: var(--text-sm); margin-top: var(--space-xs);">For now, explore the full wealth database in "The Wealthy" tab.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ───────────────────────────────────────────────────────────────
+     TAB 5: SOURCES
+─────────────────────────────────────────────────────────────── -->
+<section class="tab-panel" id="sources">
+    
+    <h2 class="section-title">Methodology</h2>
+    
+    <div class="methodology">
+        <h3>What This Tool Measures</h3>
+        <p>This tool tracks <strong>public accountability discourse</strong> — who is publicly called upon to give during disasters, and who is not. It does not track private giving, which is unknowable.</p>
+        <p>The tool uses two inclusion criteria:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            <li><strong>Domicile state</strong> — Primary residence as documented by Forbes, tax records, or property records</li>
+            <li><strong>Birth state</strong> — State of origin, which often triggers public expectation of connection</li>
+        </ul>
+        <p>Net worth figures are from Forbes 2025 for consistency. "Asked" status is documented through news coverage, social media call-outs, or viral campaigns.</p>
+    </div>
+    
+    <div class="methodology">
+        <h3>The Black Tax — Academic Framing</h3>
+        <p>The concept of "Black Tax" comes from peer-reviewed research. The University of Minnesota Gender Policy Report defines it as the structural expectation that Black families compensate for government neglect:</p>
+        <div class="pull-quote">
+            <div class="pull-quote-text">"Black families literally do the work of nation states in building a robust social safety net for their communities... The Black Tax is both a hallmark of traditional racial solidarity and evidence of government neglect."</div>
+            <div class="pull-quote-source">University of Minnesota Gender Policy Report</div>
+        </div>
+        <p style="margin-top: var(--space-sm);">This tool argues that celebrity disaster accountability discourse is the Black Tax operating at scale — visible Black wealth is expected to compensate for structural failure, while white wealth of equal or greater magnitude is not.</p>
+    </div>
+    
+    <div class="source-list">
+        <h3>Primary Sources</h3>
+        <ul>
+            <li><span class="source-title">Forbes Billionaires List 2025</span> <span class="source-pub">— Net worth figures (primary source for all wealth data)</span></li>
+            <li><span class="source-title">University of Minnesota Gender Policy Report</span> <span class="source-pub">— "The Black Tax" (peer-reviewed)</span></li>
+            <li><span class="source-title">Billboard</span> <span class="source-pub">— Kevin Hart Hurricane Harvey Challenge documentation (Aug 2017)</span></li>
+            <li><span class="source-title">Newsweek</span> <span class="source-pub">— Oprah Maui backlash coverage (Aug–Sept 2023)</span></li>
+            <li><span class="source-title">Atlanta Black Star</span> <span class="source-pub">— Oprah Maui criticism (Sept 2023)</span></li>
+            <li><span class="source-title">Spectrum News Hawaii</span> <span class="source-pub">— People's Fund of Maui ($60M raised, 8,100 recipients)</span></li>
+            <li><span class="source-title">NPR, ABC News</span> <span class="source-pub">— Dolly Parton My People Fund documentation</span></li>
+            <li><span class="source-title">Wired / Hawaii Public Radio</span> <span class="source-pub">— Zuckerberg Kauaʻi compound (Guthrie Scrimgeour, 2025)</span></li>
+            <li><span class="source-title">Group Processes & Intergroup Relations</span> <span class="source-pub">— White vs. Black athlete racial activism (Howell, Ratliff, Smith, 2026)</span></li>
+        </ul>
+        
+        <h3>Publication Reach Data</h3>
+        <ul>
+            <li><span class="source-title">Newsweek</span> <span class="source-pub">— 95M+ monthly visitors (Similarweb 2024)</span></li>
+            <li><span class="source-title">Atlanta Black Star</span> <span class="source-pub">— 14M monthly visitors (Wikipedia / Kochava)</span></li>
+            <li><span class="source-title">CNN</span> <span class="source-pub">— 297M+ monthly visits</span></li>
+        </ul>
+    </div>
+
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">Alterrell Interactive</div>
+        <div class="footer-tagline">See the architecture. The data was always there — now it's yours.</div>
+        <div class="footer-links">
+            <a href="#">Substack</a>
+            <a href="#">About</a>
+            <a href="#">Ko-fi</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+});
+
+// Accordion toggle
+function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const isCollapsed = header.classList.contains('collapsed');
+    
+    if (isCollapsed) {
+        header.classList.remove('collapsed');
+        header.setAttribute('aria-expanded', 'true');
+        body.classList.remove('hidden');
+    } else {
+        header.classList.add('collapsed');
+        header.setAttribute('aria-expanded', 'false');
+        body.classList.add('hidden');
+    }
+}
+</script>
+
+</body>
+</html>
