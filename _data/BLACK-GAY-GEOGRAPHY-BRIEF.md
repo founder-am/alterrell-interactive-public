@@ -1,6 +1,6 @@
 # ADVICE FROM YOUR THICK GAY UNCLES — PIECE BRIEF
 **Platform:** Obsidian Futures
-**Status:** Tab map locked · Copy draft next · Not calendared
+**Status:** Build complete (May 17) · Copy draft next · Not calendared
 **Last updated:** April 26, 2026 — T1 session (thesis lock, title lock, tab map)
 **Note:** AMA is the subject and narrator. First-person piece.
 

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Male Concert Laziness Surcharge — Alterrell Interactive</title>
+  <title>Female Musicians Earn Less But Share More — Alterrell Interactive</title>
   <meta name="description" content="Men set the ceiling. Women are required to exceed it just to belong. The numbers behind who performs more and earns less.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alterrell Interactive">
-  <meta property="og:title" content="The Male Concert Laziness Surcharge — Alterrell Interactive">
+  <meta property="og:title" content="Female Musicians Earn Less But Share More — Alterrell Interactive">
   <meta property="og:description" content="Men set the ceiling. Women are required to exceed it just to belong.">
   <meta property="og:image" content="https://interactive.alterrell.com/og/concert-tax.png">
   <meta property="og:url" content="https://interactive.alterrell.com/concert-tax/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@alterrell">
-  <meta name="twitter:title" content="The Male Concert Laziness Surcharge — Alterrell Interactive">
+  <meta name="twitter:title" content="Female Musicians Earn Less But Share More — Alterrell Interactive">
   <meta name="twitter:description" content="Men set the ceiling. Women are required to exceed it just to belong.">
   <meta name="twitter:image" content="https://interactive.alterrell.com/og/concert-tax.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,10 +95,20 @@
       padding-top: 8px;
     }
 
+    /* ── SECTION OVERRIDES ── */
+    .ai-section {
+      padding: 2.5rem 10px;
+    }
+    @media (max-width: 640px) {
+      .ai-section {
+        padding: 2rem 10px;
+      }
+    }
+
     /* ── HERO ── */
     .ct-hero {
       background: var(--paper);
-      padding: 2.5rem 1.25rem 2rem;
+      padding: 1.5rem 10px 1rem;
       border-bottom: 1px solid var(--border);
     }
     .ct-hero-inner {
@@ -107,27 +117,28 @@
     }
     .ct-hero-row {
       display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.625rem;
     }
     .ct-hero-hed {
-      flex: 0 0 44%;
-      max-width: 44%;
+      flex: none;
+      max-width: none;
+    }
+    .ai-hero-hed.ct-hero-hed {
+      font-size: clamp(2rem, 5vw, 3rem);
     }
     .ct-hero-sub {
-      flex: 1;
+      flex: none;
       font-family: var(--font-body);
-      font-size: clamp(0.875rem, 1.6vw, 1rem);
+      font-size: 1rem;
       font-weight: 400;
       line-height: var(--leading-body);
       color: var(--ink-secondary);
-      padding-top: 0.5rem;
+      padding-top: 0;
     }
     @media (max-width: 640px) {
-      .ct-hero-row  { flex-direction: column; gap: 0.75rem; }
-      .ct-hero-hed  { flex: none; max-width: none; }
-      .ct-hero-sub  { flex: none; padding-top: 0; }
+      .ct-hero-row  { gap: 0.5rem; }
     }
 
     /* ── TAGS ── */
@@ -153,18 +164,51 @@
     .ct-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2rem;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
     }
     @media (max-width: 560px) {
-      .ct-gallery { grid-template-columns: 1fr; }
+      .ct-gallery {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 4px;
+      }
+      .ct-gallery > .card-square,
+      .ct-gallery > .card-tall {
+        flex: 0 0 calc(100vw - 56px);
+        scroll-snap-align: start;
+      }
+    }
+    .ct-swipe-cta {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--teal);
+      text-align: center;
+      padding: 8px 0 16px;
+    }
+    @media (max-width: 560px) {
+      .ct-swipe-cta { display: block; }
     }
 
     /* ── PROSE PLACEHOLDER ── */
     .ct-prose {
-      max-width: 640px;
-      margin-bottom: 2rem;
+      width: 100%;
+      margin-bottom: 1.75rem;
     }
+    .ct-prose .ai-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .ct-prose .ai-body:last-child { margin-bottom: 0; }
     .ct-voice-pass {
       border-left: 3px solid var(--border);
       padding: 1rem 1.25rem;
@@ -332,8 +376,8 @@
 <header class="ct-hero" role="banner">
   <div class="ct-hero-inner">
     <div class="ct-hero-row">
-      <h1 class="ai-hero-hed ct-hero-hed">The Male Concert Laziness Surcharge</h1>
-      <p class="ct-hero-sub">Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it. Six tabs of data, history, and argument.</p>
+      <h1 class="ai-hero-hed ct-hero-hed">Female Musicians Earn Less But Share More</h1>
+      <p class="ct-hero-sub">Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.</p>
     </div>
     <div class="ct-tags" aria-label="Tags">
       <span class="ct-tag">Concert Tax</span>
@@ -417,22 +461,24 @@
 
       <!-- CARD 4: "Men set the ceiling" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
-        <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men set the ceiling. Women are required to exceed it just to belong."</div>
-        <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men set the ceiling. Women are required to exceed it just to belong."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
         <div class="card-foot">
           <span class="source-stamp on-teal">Concert Tax · Overview</span>
           <span class="source-stamp on-teal">alterrell interactive</span>
         </div>
       </div>
 
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
     </div><!-- /.ct-gallery -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — 2–3 paragraphs]</p>
-        <p>Opening argument establishing the premise. What the Concert Tax is, why it exists, and what this piece proves.</p>
-      </div>
+      <p class="ai-body">The modern concert industry runs on an uneven equation. Male performers often establish the financial ceiling for ticket prices, booking fees, and headliner status while operating with comparatively sparse production requirements. Women enter that same market under entirely different expectations. They are expected to sing, dance, reinvent, costume, conceptualize, and advance the art of performance. Spectacle is not simply a creative choice for female performers: it has become the cost of legitimacy.</p>
+      <p class="ai-body">Once you notice the pattern, it becomes hard to unsee. A male artist can walk onstage with a microphone, a smoke machine, and vibes. A female artist is expected to deliver a near-Broadway production. One performer is evaluated on presence while the other is evaluated as a production system where every missed note, awkward transition, or weak visual becomes evidence of failure.</p>
+      <p class="ai-body">This is not just a pop music issue. It is a labor issue hidden beneath the surface. Women are often carrying larger human-centered productions with dancers, stylists, choreographers, rehearsal teams, creative directors, wardrobe staff, and touring infrastructure that expands in complexity every time a show moves cities or countries. Men frequently retain more financial upside because concert production minimalism is socially acceptable for them. Women are forced to absorb more cost because the standards are not equally enforced for what is deemed a performance or listening party.</p>
     </div>
 
     <!-- Section floor nav -->
@@ -468,7 +514,7 @@
         <div class="t-body" style="font-weight:500; font-size:14px; color:var(--paper); margin-bottom:2px;">Spent on production</div>
         <div class="t-hero" style="font-size:44px; color:var(--paper); line-height:1; margin-bottom:16px;">~$300K</div>
         <div class="t-hero" style="font-size:44px; color:var(--orange); line-height:1; margin-bottom:16px;">−$230K</div>
-        <div class="editorial-line on-teal" style="font-size:15px;">[AMA EDITORIAL LINE]</div>
+        <div class="editorial-line on-teal" style="font-size:15px;">A man can headline with momentum. A woman often has to underwrite a Broadway-scale argument for her own legitimacy.</div>
         <div class="card-foot">
           <span class="source-stamp on-teal">Source: Cardi B, SiriusXM interview, 2018</span>
           <span class="source-stamp on-teal">Concert Tax · The Data</span>
@@ -586,14 +632,15 @@
         </div>
       </div>
 
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
     </div><!-- /.ct-gallery -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — 2–3 paragraphs]</p>
-        <p>What the numbers mean together. The Cardi B figure, the gross tier patterns, and what the rap comparison reveals about expectations vs. output.</p>
-      </div>
+      <p class="ai-body">The production gap is not abstract: it appears directly in touring economics, staffing complexity, and take-home margins.</p>
+      <p class="ai-body">Male artists frequently operate with hardware-heavy productions that can be reused across cities with relatively stable costs. Female artists disproportionately rely on human-heavy systems where every additional city means more labor, rehearsal, insurance, travel, coordination, and risk.</p>
+      <p class="ai-body">Cardi B's 2018 Coachella performance cost nearly $300,000 while she reportedly earned around $70,000 for her set. These economics reflect an understanding that female rappers are rarely afforded the privilege of minimalism while still being perceived as legitimate performers.</p>
+      <p class="ai-body">The numbers also complicate how audiences discuss touring success. Taylor Swift and Beyoncé generated massive grosses through highly complex productions involving enormous human coordination. Yet artists like Ed Sheeran demonstrate that audiences are fully willing to support minimalist performance models at scale when attached to male performers. Revenue alone does not explain the production expectations gap.</p>
     </div>
 
     <!-- Section floor nav -->
@@ -649,7 +696,7 @@
             <div class="t-body" style="font-size:12px; color:var(--ink-mid); line-height:1.4;">Full spectacle. Dancers, costumes, staging. Critically praised as a performance revelation.</div>
           </div>
         </div>
-        <div class="editorial-line" style="margin-top:14px; padding-top:10px; border-top:1px solid var(--border);">[AMA EDITORIAL LINE]</div>
+
         <div class="card-foot">
           <span class="source-stamp">Sources: public discourse, tour documentation</span>
           <span class="source-stamp">Concert Tax · The Double Standard</span>
@@ -690,7 +737,7 @@
             <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Wrong era</span>
           </div>
         </div>
-        <div class="editorial-line" style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border);">[AMA EDITORIAL LINE]</div>
+        <div class="editorial-line" style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border);">The same low-effort performance that makes a man look effortless can make a woman look unprofessional. Men are allowed to appear casual onstage because the industry already assumes their legitimacy.</div>
         <div class="card-foot">
           <span class="source-stamp">Concert Tax · The Double Standard</span>
           <span class="source-stamp">alterrell interactive</span>
@@ -703,21 +750,21 @@
         <div class="t-hero" style="font-size:22px; color:var(--ink); line-height:1.3; margin-bottom:24px;">Beyoncé sets the standard through extraordinary labor.</div>
         <div style="width:40px; height:3px; background:var(--teal); margin-bottom:24px;"></div>
         <div class="t-hero" style="font-size:22px; color:var(--teal); line-height:1.3; margin-bottom:24px;">Every woman after her inherits it. None of them inherit the fee.</div>
-        <div class="editorial-line" style="margin-top:auto;">[AMA EDITORIAL LINE]</div>
+        <div class="editorial-line" style="margin-top:auto;">When men change genres, it's treated as artistic evolution. When women do it, they're expected to compensate with bigger visuals, tighter execution, and total reinvention.</div>
         <div class="card-foot">
           <span class="source-stamp">Concert Tax · The Double Standard</span>
           <span class="source-stamp">alterrell interactive</span>
         </div>
       </div>
 
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
     </div><!-- /.ct-gallery -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — 2–3 paragraphs]</p>
-        <p>The mechanism behind the double standard. What the Dua Lipa arc reveals. Why the standard that Beyoncé built travels without the compensation.</p>
-      </div>
+      <p class="ai-body">Social media transformed concert discourse into a real-time feedback loop where viral clips, memes, and criticism can permanently alter an artist's reputation.</p>
+      <p class="ai-body">Audiences now play a major role in enforcing performance expectations. These critiques often focus on women as performers rather than men as entertainers. Dua Lipa became the clearest example. The phrase "go girl, give us nothing" became shorthand for a female performer serving minimalism. Her eventual reinvention through Future Nostalgia was widely celebrated, but it also normalized the expectation that women must dramatically escalate their performance complexity in order to reclaim legitimacy.</p>
+      <p class="ai-body">Male artists are rarely subjected to the same standards. Standing still, minimal staging, repeated outfits, or "vibes-based" performance styles are often treated as authentic, relaxed, or cool for male musicians. Women performing at the same level are framed as lazy, awkward, under-rehearsed, or lacking star power.</p>
     </div>
 
     <!-- Section floor nav -->
@@ -749,8 +796,10 @@
 
       <!-- CARD 14: "Men performed" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
-        <div class="t-section" style="font-style:italic; font-size:28px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men performed. Women entertained."</div>
-        <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:28px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men performed. Women entertained."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
         <div class="card-foot">
           <span class="source-stamp on-teal">Concert Tax · History</span>
           <span class="source-stamp on-teal">alterrell interactive</span>
@@ -786,14 +835,15 @@
         </div>
       </div>
 
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
     </div><!-- /.ct-gallery -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — 2–3 paragraphs]</p>
-        <p>How the spectacle standard formed historically. When did "men perform, women entertain" become the unspoken contract? What genre crossover reveals about who carries the obligation.</p>
-      </div>
+      <p class="ai-body">The production gap did not emerge in a vacuum: it developed through a history of racial segregation, genre segmentation, and unequal expectations around performance.</p>
+      <p class="ai-body">Black women in particular have often been required to redefine the medium itself before receiving equal recognition. Beyoncé's Coachella performance did not simply raise the bar for female performers. Beychella transformed the expectation attached to modern headlining itself. Her female musical peers were either silent or recreated the gender hierarchy, swapping one privileged class for another.</p>
+      <p class="ai-body">Ariana Grande's production team openly discussed the production pressure of following Beyoncé. Three years later, Billie Eilish publicly apologized for not being Beyoncé while headlining Coachella herself.</p>
+      <p class="ai-body">Male artists rarely position themselves this way. No major male headliner walks onstage apologizing for not being Michael Jackson. Nor is MJ the frequently mentioned comparison for streams, physical sales, concert attendance, or other superlatives within male-only comparisons.</p>
     </div>
 
     <!-- Section floor nav -->
@@ -825,8 +875,10 @@
 
       <!-- CARD 16: "Beyoncé prices" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
-        <div class="t-section" style="font-style:italic; font-size:24px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"I paid Beyoncé prices for a listening party."</div>
-        <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:24px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"I paid Beyoncé prices for a listening party."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
         <div class="card-foot">
           <span class="source-stamp on-teal">Concert Tax · Take Action</span>
           <span class="source-stamp on-teal">alterrell interactive</span>
@@ -835,8 +887,10 @@
 
       <!-- CARD 17: "Longer tables" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
-        <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Women create longer tables. Men often feast alone."</div>
-        <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Women create longer tables. Men often feast alone."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
         <div class="card-foot">
           <span class="source-stamp on-teal">Concert Tax · Take Action</span>
           <span class="source-stamp on-teal">alterrell interactive</span>
@@ -862,21 +916,21 @@
         <div style="height:3px; background:rgba(248,246,241,.2); margin:16px 0;"></div>
         <div class="t-body" style="font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--paper); margin-bottom:8px;">What audiences accept from men</div>
         <div class="t-hero" style="font-size:48px; color:var(--paper); line-height:1; margin-bottom:8px;">A microphone.</div>
-        <div class="editorial-line on-teal" style="font-size:14px; margin-top:auto;">[AMA EDITORIAL LINE]</div>
+
         <div class="card-foot">
           <span class="source-stamp on-teal">Concert Tax · alterrell interactive</span>
           <span class="source-stamp on-teal">Take Action</span>
         </div>
       </div>
 
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
     </div><!-- /.ct-gallery -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — 2–3 paragraphs]</p>
-        <p>What action looks like here. Name the tax when you see it. Demand more from the industry. Support the work that holds these standards accountable.</p>
-      </div>
+      <p class="ai-body">Audiences already understand value when it comes to theater, sports, and film production. Music has obscured that conversation because we tend to flatten concerts into the same pricing category regardless of labor complexity. Two artists can charge identical ticket prices while one artist employs dozens more workers, rehearses for months longer, and assumes substantially higher production risk.</p>
+      <p class="ai-body">Consumers are often paying Beyoncé prices for what amounts to a listening party. The goal is not to demand that every artist become Beyoncé. The goal is consistency. If audiences value minimalism, then women should be granted the same freedom to scale back without career punishment. If audiences value theatricality, then male performers should be evaluated against the same standards around staging, innovation, choreography, transitions, and visual ambition.</p>
+      <p class="ai-body">Shifting the expectation requires changing the language around performance itself. We should ask what labor is invisible inside a concert ticket. Who created jobs? Who absorbed risk? Who rehearsed longer? Who built a larger creative ecosystem around their work? Female artists are often creating longer tables while receiving a smaller share of the meal. Once audiences begin recognizing that imbalance, the economics of live performance start to look less natural and more structural.</p>
     </div>
 
     <!-- Section floor nav -->
@@ -904,6 +958,347 @@
     <span class="ai-eyebrow">Spread the Word</span>
     <h2 class="ai-h2" style="margin-bottom:0.5rem;">Share this piece.</h2>
     <p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">Sharing is how this argument reaches people who haven't heard it yet. Pick a destination.</p>
+
+    <!-- All shareable cards -->
+    <div class="ct-gallery ct-card-gallery">
+
+      <!-- CARD 1: Bieber vs Carpenter (A4 contrast) -->
+      <div class="card-square" style="flex-direction: column;">
+        <div style="flex:1; background:var(--teal); display:flex; flex-direction:column; justify-content:center; padding:24px 22px;">
+          <div class="t-hero" style="font-size:20px; color:#fff; line-height:1; margin-bottom:4px; text-align:center;">Justin Bieber</div>
+          <div class="t-hero" style="font-size:52px; color:var(--paper); line-height:1; margin-bottom:10px; text-align:center;">~$10M</div>
+          <div class="t-body" style="font-size:14px; color:rgba(255,255,255,.85); line-height:1.55; text-align:center;">No dancers. No choreography. No costume changes. <strong style="font-weight:800;">Laptop, projector, and guest appearances.</strong></div>
+          <div class="t-body" style="font-size:11px; color:rgba(255,255,255,.6); margin-top:auto; padding-top:6px; text-align:center;">Coachella 2026 · headliner fee</div>
+        </div>
+        <div style="flex:1; background:var(--white); display:flex; flex-direction:column; justify-content:center; padding:24px 22px;">
+          <div class="t-hero" style="font-size:20px; color:var(--ink); line-height:1; margin-bottom:4px; text-align:center;">Sabrina Carpenter</div>
+          <div class="t-hero" style="font-size:44px; color:var(--teal); line-height:1; margin-bottom:10px; text-align:center;">~$5M</div>
+          <div class="t-body" style="font-size:14px; color:var(--ink-mid); line-height:1.55; text-align:center;">Full choreography. Multiple costume changes. 60+ visible crew. <strong style="font-weight:800;">Complete theatrical staging.</strong></div>
+          <div class="source-stamp" style="margin-top:auto; padding-top:6px;">Sources: public reporting, Coachella fee estimates</div>
+        </div>
+      </div>
+
+      <!-- CARD 4: "Men set the ceiling" (D2 pull quote) -->
+      <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men set the ceiling. Women are required to exceed it just to belong."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Concert Tax · Overview</span>
+          <span class="source-stamp on-teal">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 5: Cardi B fee vs spend (D1/D2 hybrid) -->
+      <div class="card-square" style="background:var(--teal); padding:24px 20px;">
+        <div class="t-body" style="font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:rgba(248,246,241,.7); margin-bottom:20px;">Cardi B · Coachella 2018 · 35 min set · 7 months pregnant</div>
+        <div class="t-body" style="font-weight:500; font-size:14px; color:var(--paper); margin-bottom:2px;">Earned in fees</div>
+        <div class="t-hero" style="font-size:44px; color:var(--paper); line-height:1; margin-bottom:16px;">~$70K</div>
+        <div style="width:60px; height:3px; background:rgba(248,246,241,.25); margin-bottom:16px;"></div>
+        <div class="t-body" style="font-weight:500; font-size:14px; color:var(--paper); margin-bottom:2px;">Spent on production</div>
+        <div class="t-hero" style="font-size:44px; color:var(--paper); line-height:1; margin-bottom:16px;">~$300K</div>
+        <div class="t-hero" style="font-size:44px; color:var(--orange); line-height:1; margin-bottom:16px;">−$230K</div>
+        <div class="editorial-line on-teal" style="font-size:15px;">A man can headline with momentum. A woman often has to underwrite a Broadway-scale argument for her own legitimacy.</div>
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Source: Cardi B, SiriusXM interview, 2018</span>
+          <span class="source-stamp on-teal">Concert Tax · The Data</span>
+        </div>
+      </div>
+
+      <!-- CARD 7a: Gross revenue pt 1 (Taylor, Ed, Beyoncé) -->
+      <div class="card-square" style="background:var(--white); padding:22px 18px;">
+        <div class="t-hero" style="font-size:22px; color:var(--ink); line-height:1.1; margin-bottom:14px;">Who's grossing what</div>
+        <div style="display:flex; gap:14px; margin-bottom:18px;">
+          <div style="display:flex; align-items:center; gap:5px;"><span style="width:12px; height:12px; background:var(--teal); display:inline-block;"></span><span class="t-mono" style="font-size:9px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em;">Large production</span></div>
+          <div style="display:flex; align-items:center; gap:5px;"><span style="width:12px; height:12px; background:var(--orange); display:inline-block;"></span><span class="t-mono" style="font-size:9px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em;">Solo / minimal</span></div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:space-around;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">Taylor Swift</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$2.07B</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:90%; background:var(--teal); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">Eras Tour · 149 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--teal); color:#fff;">Large</span>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">Ed Sheeran</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$876M</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:38%; background:var(--orange); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">Mathematics · 188 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--orange); color:#fff;">Solo</span>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">Beyoncé</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$580M</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:25%; background:var(--teal); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">Renaissance · 56 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--teal); color:#fff;">Large</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp">Sources: Billboard Boxscore, Pollstar</span>
+          <span class="source-stamp">Concert Tax · The Data</span>
+        </div>
+      </div>
+
+      <!-- CARD 7b: Gross revenue pt 2 (Bad Bunny, Harry Styles, P!nk) -->
+      <div class="card-square" style="background:var(--white); padding:22px 18px;">
+        <div class="t-hero" style="font-size:22px; color:var(--ink); line-height:1.1; margin-bottom:14px;">Who's grossing what</div>
+        <div style="display:flex; gap:14px; margin-bottom:18px;">
+          <div style="display:flex; align-items:center; gap:5px;"><span style="width:12px; height:12px; background:var(--teal); display:inline-block;"></span><span class="t-mono" style="font-size:9px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em;">Large production</span></div>
+          <div style="display:flex; align-items:center; gap:5px;"><span style="width:12px; height:12px; background:var(--orange); display:inline-block;"></span><span class="t-mono" style="font-size:9px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em;">Small</span></div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:space-around;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">Bad Bunny</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$435M</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:75%; background:var(--teal); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">World's Hottest · 81 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--teal); color:#fff;">Large</span>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">Harry Styles</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$400M</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:69%; background:var(--orange); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">Love on Tour · 42 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--orange); color:#fff;">Small</span>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+              <span class="t-body" style="font-weight:800; font-size:18px; color:var(--ink);">P!nk</span>
+              <span class="t-hero" style="font-size:24px; color:var(--ink);">$249M</span>
+            </div>
+            <div style="width:100%; height:30px; background:var(--surface); position:relative;"><div style="height:100%; width:43%; background:var(--teal); position:absolute; left:0; top:0;"></div></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="t-body" style="font-size:12px; color:var(--ink-muted);">Summer Carnival · 93 shows</span>
+              <span class="t-mono" style="font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; background:var(--teal); color:#fff;">Large</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp">Sources: Billboard Boxscore, Pollstar</span>
+          <span class="source-stamp">Concert Tax · The Data</span>
+        </div>
+      </div>
+
+      <!-- CARD 8: Male vs female rap headliners (A4 contrast) -->
+      <div class="card-square" style="flex-direction: column;">
+        <div style="flex:1; background:var(--teal); display:flex; flex-direction:column; justify-content:center; padding:24px 22px;">
+          <div class="t-hero" style="font-size:20px; color:#fff; line-height:1; margin-bottom:4px; text-align:center;">Male rap headliners</div>
+          <div class="t-hero" style="font-size:36px; color:var(--paper); line-height:1.1; margin-bottom:12px; text-align:center;">Minimal</div>
+          <div class="t-body" style="font-size:14px; color:rgba(255,255,255,.85); line-height:1.55; text-align:center;">0–2 dancers. No choreography. 0–1 costume changes. <strong style="font-weight:800;">High audience forgiveness.</strong></div>
+        </div>
+        <div style="flex:1; background:var(--white); display:flex; flex-direction:column; justify-content:center; padding:24px 22px;">
+          <div class="t-hero" style="font-size:20px; color:var(--ink); line-height:1; margin-bottom:4px; text-align:center;">Female rap headliners</div>
+          <div class="t-hero" style="font-size:36px; color:var(--teal); line-height:1.1; margin-bottom:12px; text-align:center;">Full spectacle</div>
+          <div class="t-body" style="font-size:14px; color:var(--ink-mid); line-height:1.55; text-align:center;">8–20+ dancers. Full choreography. 3–6 costume changes. <strong style="font-weight:800;">Low audience forgiveness.</strong></div>
+          <div class="source-stamp" style="margin-top:auto; padding-top:8px;">Concert Tax · The Data · alterrell interactive</div>
+        </div>
+      </div>
+
+      <!-- CARD 9: Dua Lipa arc (C1 timeline) -->
+      <div class="card-square" style="background:var(--white); padding:22px 18px;">
+        <div class="comp-tag" style="margin-bottom:8px;">The Double Standard · Dua Lipa</div>
+        <div class="t-hero" style="font-size:20px; color:var(--ink); line-height:1.15; margin-bottom:4px;">The cost of "give us nothing"</div>
+        <div class="t-body" style="font-size:13px; color:var(--ink-mid); margin-bottom:20px; line-height:1.4;">One meme reshaped an entire career.</div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:space-between; position:relative; padding-left:28px;">
+          <div style="position:absolute; left:10px; top:8px; bottom:8px; width:3px; background:var(--teal);"></div>
+          <div style="position:relative; padding:4px 0;">
+            <div style="position:absolute; left:-24px; top:8px; width:14px; height:14px; border-radius:50%; background:var(--teal); border:3px solid #fff; box-shadow:0 0 0 2px var(--teal);"></div>
+            <div class="t-mono" style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:2px;">2018</div>
+            <div class="t-hero" style="font-size:16px; color:var(--ink); line-height:1.2; margin-bottom:3px;">"Go girl, give us nothing"</div>
+            <div class="t-body" style="font-size:12px; color:var(--ink-mid); line-height:1.4;">Internet meme mocking her stage presence goes viral. Dua later calls it humiliating.</div>
+          </div>
+          <div style="position:relative; padding:4px 0;">
+            <div style="position:absolute; left:-24px; top:8px; width:14px; height:14px; border-radius:50%; background:var(--teal); border:3px solid #fff; box-shadow:0 0 0 2px var(--teal);"></div>
+            <div class="t-mono" style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:2px;">2019–2020</div>
+            <div class="t-hero" style="font-size:16px; color:var(--ink); line-height:1.2; margin-bottom:3px;">Complete performance rebuild</div>
+            <div class="t-body" style="font-size:12px; color:var(--ink-mid); line-height:1.4;">New choreography team. Movement training. Visual direction overhaul. Full production redesign.</div>
+          </div>
+          <div style="position:relative; padding:4px 0;">
+            <div style="position:absolute; left:-24px; top:8px; width:14px; height:14px; border-radius:50%; background:var(--teal); border:3px solid #fff; box-shadow:0 0 0 2px var(--teal);"></div>
+            <div class="t-mono" style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:2px;">2022</div>
+            <div class="t-hero" style="font-size:16px; color:var(--ink); line-height:1.2; margin-bottom:3px;">Future Nostalgia Tour</div>
+            <div class="t-body" style="font-size:12px; color:var(--ink-mid); line-height:1.4;">Full spectacle. Dancers, costumes, staging. Critically praised as a performance revelation.</div>
+          </div>
+        </div>
+
+        <div class="card-foot">
+          <span class="source-stamp">Sources: public discourse, tour documentation</span>
+          <span class="source-stamp">Concert Tax · The Double Standard</span>
+        </div>
+      </div>
+
+      <!-- CARD 10: Double standard ✓/✗ (D3 annotation) -->
+      <div class="card-square" style="background:var(--white); padding:22px 18px;">
+        <div class="comp-tag" style="margin-bottom:8px;">The Double Standard</div>
+        <div class="t-hero" style="font-size:19px; color:var(--ink); line-height:1.15; margin-bottom:16px;">Women are critiqued as performers. Men are allowed to be personalities.</div>
+        <div style="margin-bottom:16px; flex:1;">
+          <div style="display:flex; align-items:center; gap:6px; margin-bottom:10px;">
+            <div class="t-body" style="font-weight:800; font-size:16px; width:24px; height:24px; display:flex; align-items:center; justify-content:center; background:var(--teal); color:#fff;">✓</div>
+            <div class="t-body" style="font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);">What men are forgiven for</div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:5px;">
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">Minimal staging</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">No choreography</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">Repeat outfits</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">Low energy</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">"Vibes-based" sets</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--teal-light); color:var(--teal-dark);">Standing still</span>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; gap:6px; margin-bottom:10px;">
+            <div class="t-body" style="font-weight:800; font-size:16px; width:24px; height:24px; display:flex; align-items:center; justify-content:center; background:var(--orange); color:#fff;">✗</div>
+            <div class="t-body" style="font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);">What women are penalized for</div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:5px;">
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Weak vocals</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Awkward dancing</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Bad styling</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Low energy</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Poor concepts</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Boring staging</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Imperfect choreography</span>
+            <span class="t-body" style="font-weight:500; font-size:13px; padding:6px 12px; background:var(--orange-light); color:var(--orange-dark);">Wrong era</span>
+          </div>
+        </div>
+        <div class="editorial-line" style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border);">The same low-effort performance that makes a man look effortless can make a woman look unprofessional. Men are allowed to appear casual onstage because the industry already assumes their legitimacy.</div>
+        <div class="card-foot">
+          <span class="source-stamp">Concert Tax · The Double Standard</span>
+          <span class="source-stamp">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 12: Standard travels (D4 connector) -->
+      <div class="card-square" style="background:var(--white); justify-content:center; padding:28px 24px;">
+        <div class="comp-tag" style="margin-bottom:24px;">The Double Standard</div>
+        <div class="t-hero" style="font-size:22px; color:var(--ink); line-height:1.3; margin-bottom:24px;">Beyoncé sets the standard through extraordinary labor.</div>
+        <div style="width:40px; height:3px; background:var(--teal); margin-bottom:24px;"></div>
+        <div class="t-hero" style="font-size:22px; color:var(--teal); line-height:1.3; margin-bottom:24px;">Every woman after her inherits it. None of them inherit the fee.</div>
+        <div class="editorial-line" style="margin-top:auto;">When men change genres, it's treated as artistic evolution. When women do it, they're expected to compensate with bigger visuals, tighter execution, and total reinvention.</div>
+        <div class="card-foot">
+          <span class="source-stamp">Concert Tax · The Double Standard</span>
+          <span class="source-stamp">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 14: "Men performed" (D2 pull quote) -->
+      <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:28px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Men performed. Women entertained."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Concert Tax · History</span>
+          <span class="source-stamp on-teal">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 15: Genre shift (A4 contrast) -->
+      <div class="card-square" style="background:var(--white); flex-direction:column;">
+        <div style="flex:1; padding:18px 18px; display:flex; flex-direction:column; justify-content:center;">
+          <div class="comp-tag" style="margin-bottom:6px;">Crossed into pop · no spectacle inherited</div>
+          <div class="t-hero" style="font-size:18px; color:var(--ink); line-height:1.2; margin-bottom:12px;">These men kept it minimal</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Drake</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Ed Sheeran</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Post Malone</span>
+          </div>
+          <div class="t-body" style="font-size:13px; color:var(--ink-mid); line-height:1.45;">No dancers. No choreography. No costume changes. <strong style="font-weight:800; color:var(--ink);">No visual direction required.</strong></div>
+        </div>
+        <div style="height:7px; background:var(--teal); flex-shrink:0;"></div>
+        <div style="flex:1; padding:18px 18px; display:flex; flex-direction:column; justify-content:center;">
+          <div class="comp-tag" style="margin-bottom:6px;">Crossed into pop · full spectacle inherited</div>
+          <div class="t-hero" style="font-size:18px; color:var(--ink); line-height:1.2; margin-bottom:12px;">These women inherited everything</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Dua Lipa</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Lizzo</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Doja Cat</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Cardi B</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Megan Thee Stallion</span>
+            <span class="t-body" style="font-weight:800; font-size:13px; padding:7px 14px; color:var(--ink); background:var(--surface);">Karol G</span>
+          </div>
+          <div class="t-body" style="font-size:13px; color:var(--ink-mid); line-height:1.45;">Dancers. Choreography. Costumes. Visual direction. Conceptual eras. <strong style="font-weight:800; color:var(--ink);">All mandatory.</strong></div>
+          <div class="source-stamp" style="margin-top:auto; padding-top:4px;">Concert Tax · History · alterrell interactive</div>
+        </div>
+      </div>
+
+      <!-- CARD 16: "Beyoncé prices" (D2 pull quote) -->
+      <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:24px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"I paid Beyoncé prices for a listening party."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Concert Tax · Take Action</span>
+          <span class="source-stamp on-teal">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 17: "Longer tables" (D2 pull quote) -->
+      <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="t-section" style="font-style:italic; font-size:26px; color:var(--paper); line-height:1.35; margin-bottom:24px; text-align:center;">"Women create longer tables. Men often feast alone."</div>
+          <div class="t-mono" style="font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(248,246,241,.6); text-align:center;">— The Male Concert Laziness Surcharge</div>
+        </div>
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Concert Tax · Take Action</span>
+          <span class="source-stamp on-teal">alterrell interactive</span>
+        </div>
+      </div>
+
+      <!-- CARD 18: Expectation asymmetry (D4 connector) -->
+      <div class="card-square" style="background:var(--teal); padding:24px 20px;">
+        <div class="comp-tag on-teal" style="margin-bottom:10px;">Concert Tax · Take Action</div>
+        <div class="t-body" style="font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--paper); margin-bottom:10px;">What audiences demand from women</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Vocals</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Dance</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Styling</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Staging</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Eras</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Reinvention</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Perfection</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Choreography</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Costumes</span>
+          <span class="t-body" style="font-weight:800; font-size:14px; padding:8px 14px; background:rgba(248,246,241,.15); color:var(--paper);">Stamina</span>
+        </div>
+        <div style="height:3px; background:rgba(248,246,241,.2); margin:16px 0;"></div>
+        <div class="t-body" style="font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--paper); margin-bottom:8px;">What audiences accept from men</div>
+        <div class="t-hero" style="font-size:48px; color:var(--paper); line-height:1; margin-bottom:8px;">A microphone.</div>
+
+        <div class="card-foot">
+          <span class="source-stamp on-teal">Concert Tax · alterrell interactive</span>
+          <span class="source-stamp on-teal">Take Action</span>
+        </div>
+      </div>
+
+
+      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
+    </div><!-- /.ct-gallery shareable -->
+
 
     <!-- Share destinations -->
     <div class="ct-share-grid" role="group" aria-label="Share destinations">
@@ -980,10 +1375,8 @@
 
     <!-- Voice pass -->
     <div class="ct-prose">
-      <div class="ct-voice-pass">
-        <p>[AMA VOICE PASS — optional closing note]</p>
-        <p>Optional: a direct note to the reader about why sharing matters here specifically.</p>
-      </div>
+      <p class="ai-body">One of the most impactful ways to help shift the narrative and balance the scales is to spread awareness of the core issue. The below shareable cards can be shared across Instagram, X/Twitter, and other social media platforms.</p>
+      <p class="ai-body">If you enjoyed this article, please consider supporting this independent publication that is a one-person operation. We operate on tips and donations to avoid any perceived or actual conflicts of interest.</p>
     </div>
 
     <!-- Section floor nav (last tab — no next) -->
