@@ -1,447 +1,409 @@
 # STRUCTURAL AUDIT REPORT
-# Alterrell Interactive — Repo vs. Briefs
-# Generated: May 15, 2026
-# Session type: Audit only — no files modified except this one.
+**Alterrell Interactive — _data/ briefs vs. repo state**
+**Audit date:** May 17, 2026
+**Session type:** Read-only audit. No files modified except this report.
+**Auditor:** Claude Code (claude-sonnet-4-6)
 
 ---
 
 ## SCOPE
 
 Files read:
-- All .md files in `_data/`
-- `alterrell-interactive.css`
+- All .md files in `_data/` (including subdirectories)
 - `index.html` (hub)
-- `what-in-a-name/index.html`
-- `fast-food-sodium/index.html`
+- `alterrell-interactive.css`
 - `big-black-love/index.html`
-- `concert-tax/index.html` (rebuilt May 14)
+- `concert-tax/index.html`
+- `fast-food-sodium/index.html`
+- `what-in-a-name/index.html`
+- `copaganda/` (no index.html present — HTML partials only)
 
 ---
 
-## SECTION A — FILE INVENTORY
+## SECTION A: FILE INVENTORY
 
-All .md files in `_data/`. Last-modified dates from `git log`.
+### Root _data/ files
 
-| File | Last Git Commit | Governs | Duplicate/Overlap |
+| File | Last committed | Governs | Duplicate / overlap |
 |---|---|---|---|
-| BRAND-BRIEF.md | 2026-05-07 | Platform design — color, type, spacing, components | Overlaps with DESIGN-DECISION-LOG on nearly all decisions. DDL is more current. |
-| DEPLOY-CHECKLIST.md | 2026-05-05 | Build-time rules, structure order, pre-commit gate | Conflicts with DESIGN-DECISION-LOG on journey block count |
-| PLATFORM-BRIEF.md | 2026-05-05 | Roles (AMA / ChatGPT / Claude), workflow, Claude limits | Duplicates some BRAND-BRIEF rules |
-| PROJECT-STATUS.md | 2026-05-05 | Production tracking per piece | Stale — Concert Tax and Big Black Love statuses don't match reality |
-| CONTENT-TAXONOMY.md | 2026-05-07 | Tag system, content modes, tag-to-piece assignments | Accurate |
-| DESIGN-DECISION-LOG.md | 2026-05-14 | Cumulative platform + piece decisions — most current source | Partially overlaps every other doc |
-| SESSION-PROMPTS.md | 2026-05-05 | Session type templates and pre-build check | Accurate |
-| VOICE-GUIDE.md | 2026-05-05 | AMA writing voice — only used in editorial sessions | Accurate |
-| ALTERRELL-CLAUDE-DESIGN-HANDOFF.md | 2026-05-07 | Card component system — tokens, components, locked rules | Overlaps CHART-LIBRARY-SPEC on component definitions |
-| CHART-LIBRARY-SPEC.md | 2026-05-07 | Chart component spec (alterrell-charts.css) | Overlaps ALTERRELL-CLAUDE-DESIGN-HANDOFF |
-| TAG-AND-SHARE-BUILD-SPEC.md | 2026-05-07 | Tag system + shareable assets tab build spec | Not yet built — still relevant |
-| CONCERT-TAX-BRIEF.md | 2026-04-16 | Concert Tax piece — April 16 state | **STALE.** Wrong lane, wrong tabs, wrong interactive target. Superseded by DDL + FACTPACK. |
-| CONCERT-TAX-FACTPACK.md | 2026-05-05 | Concert Tax verified data | Accurate for data |
-| concert-tax-card-workbench.html | 2026-05-14 | Approved card HTML for Concert Tax | Not a .md, but source of truth for in-piece cards |
-| concert-tax-COPY-DRAFT-2026-04-27.md | 2026-04-27 | Editorial copy draft | Pre-dates tab structure finalization — check before voice pass |
-| NAMING-SERIES-BRIEF.md | 2026-04-16 | Naming series argument + data infrastructure | Lane says "Obsidian Futures" — now non-compliant with May 6 rebrand |
-| NAMING-SERIES-FACTPACK.md | 2026-05-08 | Naming series data | Accurate |
-| CONGRESS-BRIEF.md | 2026-04-16 | Congress Part 1A — architecture + locked decisions | Accurate for scope; timing still valid (Sept 2026) |
-| CONGRESS-1A-FACTPACK.md | 2026-05-08 | Congress Part 1A data | Accurate |
-| HBS-BRIEF.md | 2026-04-16 | HBS Digital Museum — architecture | Timing alert: June 2026 target. If missed, piece loses impact. |
-| HBS-FACTPACK.md | 2026-05-08 | HBS data | Accurate |
-| WHERE-ARE-THEY-BRIEF.md | 2026-04-16 | Pointer to WHERES-BEYONCE-FACTPACK | Accurate pointer only |
-| WHERES-BEYONCE-FACTPACK.md | 2026-05-07 | Where's Beyoncé? data + decisions | Accurate — most recent beyoncé file |
-| BLACK-SITCOMS-BRIEF.md | 2026-04-16 | Black Sitcoms piece — concept stage | Accurate for concept stage |
-| FRAMESHIFT-BRIEF.md | 2026-04-16 | FrameShift health tool — MVP + validation plan | Accurate |
-| FRAMESHIFT-FACTPACK.md | 2026-05-08 | FrameShift data | Accurate |
-| BLACK-GAY-GEOGRAPHY-BRIEF.md | 2026-04-26 | Advice From Your Thick Gay Uncles — tab map | Lane says "Obsidian Futures" — now non-compliant with May 6 rebrand |
-| GAY-UNCLES-FACTPACK.md | 2026-05-08 | Gay Uncles data | Accurate |
-| SODIUM-FACTPACK.md | 2026-05-08 | Sodium data | Accurate |
-| FOREVER-LOVED-FACTPACK.md | 2026-05-08 | Forever Loved data | Accurate |
-| COPAGANDA-PIECE-BRIEF.md | 2026-04-25 | Copaganda — full research brief | Accurate; listed as PARKED in PROJECT-STATUS |
+| ALTERRELL-CLAUDE-DESIGN-HANDOFF.md | May 7, 2026 | Card component system (tokens, surface options, approved components) | Overlaps CHART-LIBRARY-SPEC.md significantly — both define tokens and component rules |
+| BLACK-GAY-GEOGRAPHY-BRIEF.md | Apr 26, 2026 | Gay Uncles piece (v1 brief) | SUPERSEDED by v2 in _data/ |
+| BLACK-GAY-GEOGRAPHY-BRIEF-v2.md | May 17, 2026 | Gay Uncles piece (v2 brief — locked) | Duplicate exists at `concert-tax/BLACK-GAY-GEOGRAPHY-BRIEF-v2.md` (untracked — delete it) |
+| BLACK-SITCOMS-BRIEF.md | Apr 16, 2026 | Black Sitcoms piece (concept stage) | None |
+| BRAND-BRIEF.md | May 7, 2026 | Platform visual identity, color system, typography (LOCKED) | Overlaps DESIGN-DECISION-LOG.md; conflicts documented in Section F |
+| CHART-LIBRARY-SPEC.md | May 7, 2026 | Chart component specs (A1–E2) | Overlaps ALTERRELL-CLAUDE-DESIGN-HANDOFF.md on tokens and component definitions |
+| CONCERT-TAX-BRIEF.md | Apr 16, 2026 | Concert Tax piece (original brief — STALE) | Superseded by CONCERT-TAX-FACTPACK.md; describes wrong lane, wrong chart type, wrong tab names |
+| concert-tax-COPY-DRAFT-2026-04-27.md | Apr 27, 2026 | Concert Tax copy draft (April) | Superseded by the actual concert-tax/ build |
+| CONCERT-TAX-FACTPACK.md | May 2026 | Concert Tax data, quotes, tab structure | Tab names and title differ from live HTML — partially stale |
+| CONGRESS-1A-FACTPACK.md | May 2026 | Congress Part 1A data and structure | Overlaps CONGRESS-BRIEF.md — factpack is more current |
+| CONGRESS-BRIEF.md | Apr 16, 2026 | Congress Part 1A architecture | Partially superseded by factpack; still useful for slug/timing decisions |
+| CONTENT-TAXONOMY.md | May 6, 2026 | Tag system and lanes (LOCKED) | Overlaps BRAND-BRIEF.md on lane retirement |
+| COPAGANDA-PIECE-BRIEF.md | Apr 25, 2026 | Copaganda two-part piece | No factpack exists yet |
+| DEPLOY-CHECKLIST.md | May 2026 | Pre-deploy gates for all pieces | None |
+| DESIGN-DECISION-LOG.md | May 14, 2026 | Session-by-session decision log (platform + visual library) | Most comprehensive single source — overlaps BRAND-BRIEF, CHART-LIBRARY-SPEC, DESIGN-HANDOFF |
+| FOREVER-LOVED-FACTPACK.md | unknown | Forever Loved tool | No corresponding brief in _data/ |
+| FRAMESHIFT-BRIEF.md | Apr 16, 2026 | FrameShift tool | No factpack |
+| FRAMESHIFT-FACTPACK.md | unknown | FrameShift tool data | No brief in same update cycle |
+| GAY-UNCLES-FACTPACK.md | May 2026 | **CRITICAL: Describes a DIFFERENT PIECE than what was built.** See Section F. | Conflicts with BLACK-GAY-GEOGRAPHY-BRIEF-v2.md on piece identity |
+| HBS-BRIEF.md | Apr 16, 2026 | HBS Digital Museum piece | No factpack in same cycle |
+| HBS-FACTPACK.md | unknown | HBS piece data | — |
+| NAMING-SERIES-BRIEF.md | Apr 16, 2026 | What's in a Name series | Overlaps naming/ subfolder |
+| NAMING-SERIES-FACTPACK.md | unknown | Naming series data | Overlaps naming/ subfolder |
+| PLATFORM-BRIEF.md | May 2026 | Platform workflow, roles, output priorities | Overlaps BRAND-BRIEF and DDL on Claude's role |
+| PROJECT-STATUS.md | May 2026 | Production tracking (PARTIALLY STALE — see Section B) | — |
+| SESSION-PROMPTS.md | May 2026 | Session type prompts (T1/T2/T3) | None |
+| SODIUM-FACTPACK.md | May 2026 | Fast Food Sodium piece data | No corresponding brief file |
+| STRUCTURAL-AUDIT-REPORT.md | May 17, 2026 | This document | — |
+| TAG-AND-SHARE-BUILD-SPEC.md | May 6, 2026 | Tag system + shareable assets tab build spec | Overlaps CONTENT-TAXONOMY.md on tag rules |
+| VOICE-GUIDE.md | May 2026 | AMA's writing voice (editorial sessions only) | None |
+| WHERE-ARE-THEY-BRIEF.md | Apr 16, 2026 | POINTER FILE — references a nonexistent file | Points to `WHERES-BEYONCE-PIECE-BRIEF.md` which does not exist in repo |
+| WHERES-BEYONCE-FACTPACK.md | May 7, 2026 | Where's Beyoncé? full fact pack | WHERE-ARE-THEY-BRIEF.md is a stale pointer to a nonexistent file |
 
-**Non-.md files in `_data/` worth noting:**
-- `alterrell_platform_decision_tree.html` — visual decision tree, unclear how current
-- `CHART-LIBRARY-REFERENCE.html` — canonical visual reference for chart components; authoritative per BRAND-BRIEF
-- `concert-tax-card-workbench.html` — source of truth for Concert Tax card HTML
-- `where-are-they.html` — appears to be a build artifact or prototype
-- `sodium index.html` — legacy sodium file (note: space in filename); superseded by `/fast-food-sodium/index.html`
-- `config.js` — platform config, linked from naming and sodium pieces
-- `naming/` subdirectory — raw SSA data files + naming analysis references
+### _data/copy-drafts/ (4 files)
+Old April 27 bullets for big-black-love and naming Parts 0, 1, 2. All superseded by later builds and briefs.
+
+### _data/naming/ (18 files)
+Production content for Naming Series — scripts, captions, tier lists, validation files. Piece-specific research subfolder. Not in scope for this platform-level audit.
 
 ---
 
-## SECTION B — PROJECT-STATUS.md ACCURACY
+## SECTION B: PROJECT-STATUS.md ACCURACY
 
-### Hub
-**STATUS FILE SAYS:** LIVE
-**REALITY:** LIVE ✓ — `index.html` exists and renders.
-
----
-
-### Naming Series — Part 1
-**STATUS FILE SAYS:** LIVE
-**REALITY:** LIVE ✓ — `what-in-a-name/index.html` exists. Hub links to it with `data-status="live"`.
-
-### Naming Series — Part 0
-**STATUS FILE SAYS:** BUILT
-**REALITY:** BUILT ✓ — `what-in-a-name/part-0/index.html` exists.
-**Gap:** Hub does not directly link to Part 0. Hub card links to `/what-in-a-name/` only. Internal linking from Part 1 presumably handles navigation.
-
-### Naming Series — Part 2
-**STATUS FILE SAYS:** BUILT
-**REALITY:** BUILT ✓ — `what-in-a-name/part-2/index.html` exists.
-**Gap:** Same as Part 0 — hub does not directly surface it.
+### Hub — LIVE
+**Reality:** ✓ Correct. Hub index.html exists and renders.
 
 ---
 
-### Concert Tax
-**STATUS FILE SAYS:** IN PROGRESS — Blocker: visual review + copy finalization
-**REALITY:** Rebuilt May 14, 2026. Six tabs, all 14 cards transferred. Hub card updated to `data-lane="ai"` and correct title. Voice pass placeholders (`[AMA EDITORIAL LINE]`, `[AMA VOICE PASS]`) remain — 11 total.
-**Recommended status update:** `IN PROGRESS — Voice pass remaining (11 placeholders). Do not mark LIVE until AMA completes editorial lines and voice pass paragraphs.`
+### Naming Series Part 1 — LIVE
+**Reality:** ✓ Partially correct. `what-in-a-name/` exists with full index.html. Hub card is `hub-card--active` and linked.
+**Discrepancy:** The Part 0 / Part 1 / Part 2 naming from the brief does not map clearly to what's built. The `what-in-a-name/` piece contains all content — it is not labeled "Part 1" in the HTML. No separate folders for Parts 0 or 2.
+
+### Naming Series Parts 0 and 2 — BUILT
+**Reality:** ⚠ Ambiguous. No `/what-in-a-name/part-0/` or `/what-in-a-name/part-2/` folders exist. These appear as "Coming Soon" cards on the hub with no linked folders. Needs AMA clarification on whether Parts 0 and 2 are sections inside the current index.html or separate pages to be built.
 
 ---
 
-### Big Black Love
-**STATUS FILE SAYS:** IN PROGRESS — Blocker: AMA rewrite of tabs
-**REALITY:** IN PROGRESS ✓ — `big-black-love/index.html` exists with 6 tabs. Content is partially placeholder.
-**Gap:** Hub card for "Advice From Your Thick Gay Uncles" shows `data-status="soon"` with `[AMA TO CONFIRM]` placeholder stat block. The piece folder exists but hub does not link to it. Status is consistent with blocking state.
+### Concert Tax — IN PROGRESS
+**Reality:** ⚠ Status conflict. `concert-tax/index.html` is a fully built 6-tab piece. The hub card is `hub-card--active` with a working link. Concert Tax is functionally live on the hub but PROJECT-STATUS marks it IN PROGRESS. Either the hub card should not be active until a voice pass is complete, or status should be updated to LIVE.
 
 ---
 
-### Sodium
-**STATUS FILE SAYS:** PARKED
-**REALITY:** `fast-food-sodium/index.html` exists with full content (7 tabs, all data, live Ko-fi). Hub card shows `data-status="soon"` — piece is not linked as active from hub. The piece is functionally complete but intentionally parked.
-**Flag:** A fully-built piece with `data-status="soon"` on the hub is easily mistaken for "not built." Consider using a dedicated status like `READY — awaiting hub activation` in PROJECT-STATUS rather than "PARKED."
-**Note:** There is also a `sodium index.html` file directly in `_data/` (with a space in the filename). Unclear if this is a legacy version or a draft. Requires AMA confirmation — do not delete without checking.
+### Big Black Love — IN PROGRESS
+**Reality:** ✓ Accurate. `big-black-love/index.html` exists (restructured May 17 this session). Hub card is "Coming Soon" — not linked. AMA rewrite pending.
+**Note:** Hub card has `[AMA TO CONFIRM]` placeholders in stat block and stakes — must be resolved before status change.
 
 ---
 
-### Copaganda
-**STATUS FILE SAYS:** PARKED
-**REALITY:** No folder exists. Only `COPAGANDA-PIECE-BRIEF.md` in `_data/`. Consistent with PARKED status.
+### Sodium — PARKED
+**Reality:** ✓ Accurate. `fast-food-sodium/index.html` exists with full content. "Coming Soon" on hub, not linked. Factpack confirms ready to re-activate.
 
 ---
 
-### Congress
-**STATUS FILE SAYS:** PARKED
-**REALITY:** No folder exists. Only `CONGRESS-BRIEF.md` and `CONGRESS-1A-FACTPACK.md` in `_data/`. Consistent with PARKED status.
+### Copaganda — PARKED
+**Reality:** ✓ Status is accurate, but incomplete. `copaganda/` folder exists with 4 visual HTML partials (`visual-2-producers.html`, `visual-3.html`, etc.) — no index.html. No hub card. PROJECT-STATUS should note that visual partials exist in the folder.
 
 ---
 
-### Pieces in repo NOT listed in PROJECT-STATUS.md
-None. All folders accounted for.
-
-### Hub cards for pieces without folders
-The hub has "Coming Soon" cards for: What's in a Name Parts 1B/1C, Congressional Selfishness, Who Do We Call During a Disaster, Harvard Business School & Race, Black Music Royalty, Where's Beyoncé?, Advice From Your Thick Gay Uncles. None have corresponding piece folders — this is expected for unbuilt pieces.
+### Congress — PARKED
+**Reality:** ✓ Accurate. No `congress/` or `congress-salary/` folder exists.
 
 ---
 
-## SECTION C — BRIEF-TO-REPO STRUCTURAL CHECKS
+### Missing from PROJECT-STATUS.md
 
-### What's in a Name (Part 1) — `what-in-a-name/index.html`
+**Where's Beyoncé? / where-are-they** — Not listed as a separate entry. WHERES-BEYONCE-FACTPACK.md is fully researched and the piece is hub-ready as "Coming Soon." No `where-are-they/` folder exists in the repo. The hub has a "Coming Soon" card titled "Who Do We Call During a Disaster" which appears to represent this piece.
 
-| Check | Brief says | HTML has | Match? |
+---
+
+## SECTION C: BRIEF-TO-REPO STRUCTURAL CHECKS
+
+### big-black-love/ — Advice From Your Thick Gay Uncles
+
+| Check | Brief (v2) | HTML | Match? |
 |---|---|---|---|
-| Tab count | Not specified in brief | 5 tabs | — |
-| Tab names | Not listed in brief | Overview · The System · Queen Latifah · Whitney & Mariah · What the Data Shows | — |
-| URL slug | `/what-in-a-name/` | `/what-in-a-name/` | ✓ |
-| Lane/accent | "Obsidian Futures" (April brief) | Dark bg + gold (#E8B923) active tabs | ✓ for brief; ✗ per May 6 rebrand decision |
-| Journey block | — | YES — custom `win-journey`, 4 items: YouTube, Substack, All Pieces, Ko-fi | — |
-| Ko-fi block | — | YES — in journey + footer | ✓ |
-| Share block | — | YES | ✓ |
-| OG tags | — | YES — all 4 (title, description, image, url) | ✓ |
-| Breadcrumb | — | YES — line 777 | ✓ |
+| Tab count | 5 | 5 | ✓ |
+| Tab names | Overview / My Story / The Map / Why These Cities / Your Move | Overview / My Story / The Map / Why These Cities / Your Move | ✓ |
+| URL slug | implied `big-black-love` | `big-black-love/` | ✓ |
+| Background | #0a0a12 dark | body { background: #0a0a12 } | ✓ |
+| Accent (UI) | Gold #E8B923 tabs/eyebrows | .ai-tab.active { color: #E8B923 } | ✓ |
+| Card border | 7px teal #0a7c72 on white | .bbl-card { border: 7px solid #0a7c72 } | ✓ |
+| Journey block | 4-item (Watch/Read/Explore/Ko-fi) | 4-item present | ✓ |
+| Ko-fi | Required | Present in journey block + share block | ✓ |
+| Share block | Overview tab | Present on Overview tab | ✓ |
+| OG tags | Required | og:title, og:description, og:url, og:image, twitter:* all present | ✓ |
+| Breadcrumb | Required | Present | ✓ |
 
-**Structure order issue:** `<nav class="ai-nav">` appears at line 767, `<div class="ai-breadcrumb">` at line 777. Deploy checklist requires breadcrumb before nav. These two are both `position: fixed` so visual rendering is identical, but DOM order does not match the checklist.
-
-**Journey block item count:** 4 items (YouTube, Substack, All Pieces, Ko-fi). Deploy checklist says "Pieces: 3 items only." The "All Pieces" item replaces the Support/Ko-fi pattern — Ko-fi is a separate fourth item. This is a checklist deviation.
+**Flags:**
+- "My Story" section carries h2 heading "I Wasn't Always This Size" — carryover from pre-v2 build. Not in v2 brief. AMA should decide on voice pass.
+- Hub card has `[AMA TO CONFIRM]` placeholders — must be resolved before Going Live.
+- Dead CSS present (`.bbl-scatter-wrap`, `.bbl-accordion-wrap`) — no HTML uses it, harmless.
 
 ---
 
-### Fast Food's Hidden Sodium Tax — `fast-food-sodium/index.html`
+### concert-tax/ — Female Musicians Earn Less But Share More
 
-| Check | Brief says | HTML has | Match? |
+| Check | Factpack | HTML | Match? |
 |---|---|---|---|
-| Tab count | No brief file (factpack only) | 7 tabs | — |
-| Tab names | — | Overview · The System · Systemic Issues · Compare Your Order · Data · By Franchise · Sources | — |
-| URL slug | — | `/fast-food-sodium/` | — |
-| Lane/accent | — | Teal accent, dark section hero | ✓ |
-| Journey block | — | YES — custom `sodium-journey`, 3 items: Watch, Read, Explore (internal anchor) | ✓ count |
-| Ko-fi block | — | YES — in footer and share section | ✓ |
-| Share block | — | YES | ✓ |
-| OG tags | — | YES — all 4 | ✓ |
-| Breadcrumb | — | YES — line 808 | ✓ |
-
-**Structure order issue:** `<nav class="ai-nav">` at line 798, `<div class="ai-breadcrumb">` at line 808. Same DOM-order deviation as naming piece.
-
-**Journey "Explore" item:** The third journey item links to `#compare` (an anchor within the same page) rather than Ko-fi. Checklist says pieces have Watch / Read / Support. Sodium's third item is "Explore" (internal link). Deviation from checklist; Ko-fi appears in other locations.
-
-**No brief file:** No `SODIUM-BRIEF.md` exists — only `SODIUM-FACTPACK.md`. If a brief was written, it was not committed.
+| Tab count | 6 (per Section 14) | 6 | ✓ |
+| Tab names | Overview / The Data / The Double Standard / The Burden of Breaking the Ceiling / How We Got Here / Sources | Overview / The Data / The Double Standard / History / Take Action / Spread the Word | ✗ 3 of 6 differ |
+| Title | "The Male Laziness Epidemic" | "Female Musicians Earn Less But Share More" | ✗ |
+| Hub card title | "The Male Concert Laziness Surcharge" | — | ✗ Three different titles across three files |
+| URL slug | `concert-tax` | `concert-tax/` | ✓ |
+| Background | Rebuilt to teal/paper per DDL | White/paper sections | ✓ |
+| Journey block | Required | 3-item present (Watch/Read/Ko-fi) | ✓ |
+| Ko-fi | Required | Present | ✓ |
+| Share block | "Overview tab only" per factpack | Dedicated "Spread the Word" tab | ⚠ moved to separate tab |
+| OG tags | Required | All present | ✓ |
+| Breadcrumb | Required | Present | ✓ |
 
 ---
 
-### Big Black Love (Advice From Your Thick Gay Uncles) — `big-black-love/index.html`
+### fast-food-sodium/ — Fast Food's Hidden Sodium Tax
 
-| Check | Brief says | HTML has | Match? |
+| Check | Factpack | HTML | Match? |
 |---|---|---|---|
-| Tab count | 6 (Overview, My Story, The Poll, The Data, Hold Your Ground, Your Move) | 6 tabs | ✓ |
-| Tab names | Overview · My Story · The Poll · The Data · Hold Your Ground · Your Move | Overview · My Story · The Poll · The Data · Hold Your Ground · Your Move | ✓ |
-| URL slug | Not in brief | `/big-black-love/` | — |
-| Lane/accent | "Obsidian Futures" (April 26 brief) | Dark bg + gold (#E8B923) active tabs | ✓ for brief; ✗ per May 6 rebrand decision |
-| Journey block | — | YES — 3 items: YouTube, Substack, Ko-fi | ✓ |
-| Ko-fi block | — | YES | ✓ |
-| Share block | — | YES | ✓ |
-| OG tags | — | YES — all 4 | ✓ |
-| Breadcrumb | — | YES — line 477 | ✓ |
-
-**Structure order:** `<nav class="ai-nav">` at line 468, `<div class="ai-breadcrumb">` at line 477. Same DOM-order deviation.
-
-**Hub card status:** Hub card for this piece has `data-status="soon"` and `[AMA TO CONFIRM]` placeholder stat numbers. Piece is partially complete per PROJECT-STATUS blocker.
+| Navigation type | Scroll-spy (legacy) | Scroll-spy | ✓ |
+| Tab count | Not locked in factpack | 7 tabs | N/A |
+| URL slug | `fast-food-sodium` | `fast-food-sodium/` | ✓ |
+| Background | Teal/paper civic lane | Dark hero + paper content sections | ✓ |
+| Journey block | Required | 3-item (Watch/Read/Explore) — NO Ko-fi | ✗ Ko-fi missing from journey block |
+| Ko-fi | BRAND-BRIEF: required deploy gate | Present in share block but not journey block | ⚠ |
+| Share block | Required | Present | ✓ |
+| OG tags | Required | All present | ✓ |
+| Breadcrumb | Required | Present | ✓ |
 
 ---
 
-### Concert Tax (rebuilt May 14) — `concert-tax/index.html`
+### what-in-a-name/ — What's in a Name: The Fame Effect
 
-| Check | Brief says | HTML has | Match? |
+| Check | Brief | HTML | Match? |
 |---|---|---|---|
-| Tab count | CONCERT-TAX-BRIEF: 5 tabs (stale) | 6 tabs | ✗ brief; ✓ DESIGN-DECISION-LOG |
-| Tab names | BRIEF: Overview · The Double Standard · The Chart · Genre by Genre · Sources | Overview · The Data · The Double Standard · History · Take Action · Spread the Word | ✗ brief; ✓ DDL |
-| URL slug | `/concert-tax/` | `/concert-tax/` | ✓ |
-| Lane/accent | BRIEF: Obsidian Futures / gold | Teal/paper (Alterrell Interactive) | ✗ brief; ✓ DDL (May 14 confirmed) |
-| Journey block | DDL: 4 items / Checklist: 3 items | 3 items: Watch, Read, Support (Ko-fi) | ✓ checklist |
-| Ko-fi block | BRAND-BRIEF: required | YES — journey block + Spread the Word tab | ✓ |
-| Share block | — | YES — Spread the Word tab (6 destinations) | ✓ |
-| OG tags | — | YES — all 4 | ✓ |
-| Breadcrumb | — | YES — line 315 | ✓ |
+| Tab count | Not specified for Part 1 HTML | 5 tabs | N/A |
+| URL slug | `/what-in-a-name/` | `what-in-a-name/` | ✓ |
+| Background | Obsidian Futures dark (#0a0a12) | --of-bg: #0a0a12 | ✓ |
+| Accent | Gold #E8B923 | Yes | ✓ |
+| Journey block | 4-item | 4-item (Watch/Read/All Pieces/Ko-fi) | ✓ |
+| Ko-fi | Required | Present in journey block | ✓ |
+| Share block | Required | Not confirmed present in quick audit | ⚠ |
+| OG tags | Required | Present — but includes "Obsidian Futures" in OG title | ⚠ Retired brand label in metadata |
+| Breadcrumb | Required | Present | ✓ |
 
-**Structure order:** Breadcrumb at line 315 → nav at line 322 → hero at line 332 → journey at line 347 → tabs at line 380 → sections → footer → scripts. **CORRECT** — matches deploy checklist order.
-
-**Tab names in CONCERT-TAX-BRIEF are stale.** The brief was written April 16, 2026 before the tab structure was finalized. The DESIGN-DECISION-LOG (May 14) is authoritative.
-
-**11 voice pass placeholders remain:** 5 `[AMA EDITORIAL LINE]` in cards (Cards 5, 9, 10, 12, 18) and 6 `[AMA VOICE PASS]` paragraph blocks (one per tab). This is expected — piece is IN PROGRESS.
+**Flag:** NAMING-SERIES-BRIEF.md notes that `what-in-a-name/` will become a series index when Part 3 ships, and Part 1 will move to `/what-in-a-name/part-1/`. That URL migration has not happened. Plan a redirect before Part 3 deploys.
 
 ---
 
-## SECTION D — DESIGN SYSTEM COMPLIANCE
+## SECTION D: DESIGN SYSTEM COMPLIANCE
 
-### What's in a Name — `what-in-a-name/index.html`
-1. **Background:** `#0a0a12` (dark). BRAND-BRIEF (May 6) says "All content backgrounds: White `#FFFFFF`. Paper retired." Non-compliant per current brief — but this piece was built before the May 6 decision. Retrofit is a separate Type 2 session.
-2. **Fonts loaded:** Spectral 700/italic, DM Serif Display italic, DM Sans 400/500/600, DM Mono 400/500. Missing: DM Sans 800 (needed for tab labels per brand brief). Weight 600 loaded instead of 800 in some pieces.
-3. **Off-spec inline colors:** `#0a0a12`, `#111118`, `#E8B923`, `rgba(232,185,35,*)`, `#3d2480` (indigo — not in any brief), `rgba(248,246,241,*)`. All are Obsidian Futures tokens not in the master CSS token list. Acceptable as piece-local overrides.
-4. **CSS linked:** YES — `../alterrell-interactive.css` ✓. Does not modify master CSS ✓.
-5. **Structure order:** Nav before breadcrumb — does not match deploy checklist (breadcrumb should be first).
+### big-black-love/index.html
 
-### Fast Food's Hidden Sodium Tax — `fast-food-sodium/index.html`
-1. **Background:** Dark section for hero (`var(--dark-section)` = `#16141f`), white/paper for content sections. Compliant with "dark bands only where content earns it" rule ✓.
-2. **Fonts loaded:** Same as naming piece — DM Sans 600 loaded, 800 not loaded. Same gap.
-3. **Off-spec inline colors:** `rgba(255,255,255,0.08)` for borders — reasonable dark-on-dark treatment. Multiple `rgba(255,255,255,*)` for dark section text — acceptable.
-4. **CSS linked:** YES ✓. Does not modify master CSS ✓.
-5. **Structure order:** Nav before breadcrumb — same deviation.
-
-### Big Black Love — `big-black-love/index.html`
-1. **Background:** `#0a0a12` (dark). Same non-compliance as naming piece per May 6 brief.
-2. **Fonts loaded:** Same four fonts, same weight gap (no DM Sans 800).
-3. **Off-spec inline colors:** `#0a0a12`, `#111118`, `#E8B923`, `#0d0b18`, `rgba(248,246,241,*)` — all Obsidian Futures tokens.
-4. **CSS linked:** YES ✓. Does not modify master CSS ✓.
-5. **Structure order:** Nav before breadcrumb — same deviation.
-
-### Concert Tax (rebuilt May 14) — `concert-tax/index.html`
-1. **Background:** Hero uses `var(--paper)` = `#f8f6f1`. Content areas white. BRAND-BRIEF says paper retired, but DESIGN-DECISION-LOG explicitly says "teal/paper rebuild." No conflict with intent — but creates tension with the BRAND-BRIEF rule.
-2. **Fonts loaded:** Spectral 700/italic, DM Serif Display italic, DM Sans 400/500/600/800, DM Mono 400/500. **Best font load of all pieces** — DM Sans 800 included ✓.
-3. **Off-spec colors:** None. Uses only master CSS tokens and workbench card tokens (`--surface`, `--white`, etc.) defined locally ✓.
-4. **CSS linked:** YES ✓. Does not modify master CSS ✓.
-5. **Structure order:** Correct — breadcrumb → nav → hero → journey → tabs → sections → footer → scripts ✓.
+| Check | Spec | Actual | Compliant? |
+|---|---|---|---|
+| Background | #0a0a12 (piece-specific OF, grandfathered) | #0a0a12 | ✓ |
+| Fonts | Spectral 700, DM Serif Display, DM Sans, DM Mono | All four loaded at correct weights | ✓ |
+| alterrell-interactive.css linked | Required | Yes | ✓ |
+| Local overrides | Permitted in `<style>` block | Yes, bbl- prefixed | ✓ |
+| Structure order | head → nav → breadcrumb → journey → tabs → sections → footer → scripts | Same | ✓ |
+| Unauthorized colors | None | Gold #E8B923, teal #0a7c72 — both spec'd | ✓ |
+| D3 dependency | Should be absent | Absent (removed this session) | ✓ |
 
 ---
 
-## SECTION E — CSS AUDIT (`alterrell-interactive.css`)
+### concert-tax/index.html
 
-### Colors not in BRAND-BRIEF
-The following hardcoded values appear in the master CSS but have no token in BRAND-BRIEF:
+| Check | Spec | Actual | Compliant? |
+|---|---|---|---|
+| Background | White/paper (teal lane) | White/paper | ✓ |
+| Fonts | Four-font system | All four, including DM Sans 800 | ✓ |
+| alterrell-interactive.css linked | Required | Yes | ✓ |
+| Local overrides | Permitted | Yes, ct- prefixed | ✓ |
+| Structure order | head → breadcrumb → nav → hero → journey → tabs → sections → footer → scripts | Correct | ✓ |
+| Undocumented color | None allowed | `--surface: #f0ede8` not in any spec document | ⚠ |
 
-| Value | Where used | Impact |
-|---|---|---|
-| `#1a1a1a` | Breadcrumb background | Reasonable dark variant; not blocking |
-| `#1e1e1e` | Nav bottom border | Minor; not blocking |
-| `#9896b0` | Dark section body text, pull quote | Not in any brief; used widely in dark-section contexts |
-| `#504d68` | Footer wordmark, footer source stamps | Not in brief; purple-grey footer tone |
-| `#6e6a88` | Footer text, methodology | Not in brief |
-| `#2a2838` | Footer border, footer journey divider | Not in brief |
-| `#1e1c2a` | Footer journey item background | Not in brief |
-| `#252333` | Footer journey item hover | Not in brief |
-| `#9a6b00` | OF-piece journey label on white | Dark gold fallback for contrast; reasonable but undocumented |
-| `--dark-section: #16141f` | Dark section backgrounds | Brief has `#0F172A` (navy) and pieces use `#0a0a12` (OF dark) — this is a third dark value |
+---
 
-**None of these are blocking issues.** They are footer, dark-section, and breadcrumb utility colors not covered by the brand brief. However, they represent undocumented design decisions.
+### fast-food-sodium/index.html
+
+| Check | Spec | Actual | Compliant? |
+|---|---|---|---|
+| Background | Paper/teal | Dark hero + paper content | ✓ |
+| Fonts | Four-font system | All four | ✓ |
+| alterrell-interactive.css linked | Required | Yes | ✓ |
+| Ko-fi in journey block | Required per BRAND-BRIEF | Missing from journey block | ✗ |
+
+---
+
+### what-in-a-name/index.html
+
+| Check | Spec | Actual | Compliant? |
+|---|---|---|---|
+| Background | #0a0a12 (OF, grandfathered) | --of-bg: #0a0a12 | ✓ |
+| Fonts | Four-font system | All four | ✓ |
+| alterrell-interactive.css linked | Required | Yes | ✓ |
+| OG title brand label | "Obsidian Futures" retired | OG title includes "— Obsidian Futures" | ✗ Retired label in metadata |
+
+---
+
+## SECTION E: CSS AUDIT — alterrell-interactive.css
+
+### Color values in CSS vs. BRAND-BRIEF
+
+| CSS token | Value | BRAND-BRIEF status | Status |
+|---|---|---|---|
+| `--teal: #0a7c72` | Teal | "Retired from piece page backgrounds, nav, UI." Still used for active tab color, link colors, journey icons throughout. | ⚠ Not yet migrated — awaiting highlight color decision |
+| `--paper: #f8f6f1` | Paper warm | "Retired from piece page backgrounds. Active as chart token only." Still in root CSS and used in concert-tax. | ⚠ Not yet migrated |
+| Active tab: `var(--teal)` | #0a7c72 | BRAND-BRIEF says active tab = full navy #0F172A fill, white text. CSS uses teal text, no fill. | ✗ Not implemented |
+| Hub card left border (in hub local CSS) | Teal or gold by data-lane (6px) | BRAND-BRIEF says electric blue #2563EB, 3px | ✗ Not implemented |
+| `--orange: #c95f1a` | Orange | Not in main color system, but in chart library tokens — acceptable | ✓ |
 
 ### Font families
-Four fonts only: Spectral, DM Serif Display, DM Sans, DM Mono. No extra fonts ✓.
+All four correct: Spectral, DM Serif Display, DM Sans, DM Mono. No unauthorized fonts.
 
-### Hub card structure in CSS
-- `.hub-card-stat-block`: height 88px, `#16141f` bg — matches DESIGN-DECISION-LOG ✓
-- Hub card left border: `data-lane="ai"` → teal `#0a7c72`; `data-lane="of"` → gold `#E8B923`
-- **CONFLICT:** BRAND-BRIEF and DESIGN-DECISION-LOG both specify electric blue `#2563EB` for active hub card left borders. CSS uses lane-based teal/gold. This is a meaningful disagreement — see Section F, item 4.
+**Note:** Google Fonts imports across all pieces load `Spectral:ital,wght@0,700;1,700` — only weight 700. BRAND-BRIEF says 800, DESIGN-DECISION-LOG says 700 (AMA's actual decision). Weight 700 is what was decided in the March 12 design audit. BRAND-BRIEF has not been updated to reflect this.
 
-### Nav background
-- CSS: `background: var(--ink)` = `#111111` (dark)
-- BRAND-BRIEF: "White background" for nav
-- This conflict has existed since the first build — the nav has always been dark. The BRAND-BRIEF's "white background" rule is either aspirational or an error.
+### Hub card element order vs. BRAND-BRIEF LOCKED ORDER
 
----
+BRAND-BRIEF locked order: (1) Stat band, (2) Headline + subhead inline row, (3) Tags below headline, (4) CTA row last.
 
-## SECTION F — CROSS-DOCUMENT CONFLICTS
+Hub actual: (1) `.hub-card-stat-block` ✓, (2) `.hub-card-title` ✓, (3) `.hub-card-lede` (body — stacked below title, not inline with headline), (4) `.hub-card-footer` with pill + stakes.
 
-Each conflict is flagged with which source is likely more current and why.
+**Gap 1:** Headline and subhead are stacked, not inline on the same row. BRAND-BRIEF explicitly says "never stacked."
+**Gap 2:** No tag pills are rendered on hub cards. TAG-AND-SHARE-BUILD-SPEC.md is a planned but unbuilt feature.
 
 ---
 
-**Conflict 1: Nav background color**
-- Decision: What color is the nav bar?
-- BRAND-BRIEF (May 6) says: "White background"
-- CSS (all dates) says: `background: var(--ink)` = `#111111` (dark)
-- Every piece HTML says: Dark nav (either inheriting from CSS or overriding to darker)
-- **More current:** The CSS and all rendered pieces — the nav has always been dark. The BRAND-BRIEF may have been written describing a planned redesign that was never built. Do not update CSS without AMA decision.
+## SECTION F: CROSS-DOCUMENT CONFLICTS
+
+### CONFLICT 1 — Gay Uncles piece identity (CRITICAL)
+**Decision:** What piece is "Advice From Your Thick Gay Uncles"?
+**GAY-UNCLES-FACTPACK.md:** Intergenerational mentorship piece about AIDS crisis survivors, chosen family structures, LGBTQ+ youth outcomes, "gay uncle" archetype. Lane: Obsidian Futures deep indigo `#1e1040`.
+**BLACK-GAY-GEOGRAPHY-BRIEF-v2.md:** Personal data essay about where bigger Black gay men find romantic partners, TikTok poll, socioeconomic analysis of top cities. Lane: #0a0a12 dark, gold accent.
+**big-black-love/index.html reflects:** The dating geography thesis.
+**Which is current:** v2 brief is authoritative — it was the basis for the May 17 build session. GAY-UNCLES-FACTPACK.md appears to be an earlier, now-abandoned concept that shared a title before the piece pivoted to the dating geography argument.
+**Risk:** A Claude session reading GAY-UNCLES-FACTPACK.md without the v2 brief will build the wrong piece.
 
 ---
 
-**Conflict 2: Spectral weight**
-- Decision: What weight is Spectral for headlines?
-- BRAND-BRIEF (May 6) says: "Spectral 800"
-- DESIGN-DECISION-LOG (May 14) says: "Spectral 700 (serif). Full opacity always."
-- CSS says: Loads Spectral 700. All piece hero headlines use weight 700.
-- ALTERRELL-CLAUDE-DESIGN-HANDOFF (May 7) says: "Spectral 800" in the token table but also loads `Spectral:wght@800` in the recommended import
-- **More current:** DESIGN-DECISION-LOG (May 14) and actual CSS. BRAND-BRIEF and DESIGN-HANDOFF are wrong on this point. Update BRAND-BRIEF to say 700.
+### CONFLICT 2 — Concert Tax title (three different values)
+**CONCERT-TAX-BRIEF.md:** "Male Concert Laziness Surcharge" (working title)
+**CONCERT-TAX-FACTPACK.md Section 1:** "The Male Laziness Epidemic" (locked)
+**concert-tax/index.html `<title>`:** "Female Musicians Earn Less But Share More"
+**Hub card:** "The Male Concert Laziness Surcharge"
+**Which is current:** The deployed HTML is the live artifact. "Female Musicians Earn Less But Share More" is the current live piece title. Hub card and factpack are stale. AMA must lock one title and update all files.
 
 ---
 
-**Conflict 3: Paper background retirement**
-- Decision: Is `#f8f6f1` (paper) permitted on piece pages?
-- BRAND-BRIEF (May 6) says: "Paper `#f8f6f1` is retired from piece page backgrounds"
-- DESIGN-DECISION-LOG (May 14) says: "Concert Tax rebuilds in teal/paper from scratch"
-- CSS body default says: `background: var(--paper)` = `#f8f6f1`
-- Concert Tax rebuild (May 14) uses paper for hero background
-- **More current:** DESIGN-DECISION-LOG. The BRAND-BRIEF's retirement appears to apply to pieces using Obsidian Futures dark system, not to teal-lane pieces where paper is part of the "teal/paper" identity. The CSS body default has always been paper. Needs explicit AMA clarification in BRAND-BRIEF.
+### CONFLICT 3 — Spectral font weight: 700 vs. 800
+**BRAND-BRIEF.md:** "Spectral 800 — never lighter for headlines"
+**DESIGN-DECISION-LOG.md (March 12 session):** "Hero headlines: Spectral 700 (serif). Full opacity always. Do not use DM Serif Display for heroes — AMA flagged it as 'matrixy and too cold on mobile.'"
+**All HTML files load:** `Spectral:ital,wght@0,700;1,700` (700 only).
+**Which is current:** DDL records AMA's actual decision from a design audit. DDL is more recent and more authoritative than BRAND-BRIEF for this specific decision. 700 is what's built.
+**Action needed:** Update BRAND-BRIEF.md: change Spectral 800 → 700.
 
 ---
 
-**Conflict 4: Hub card active left border color**
-- Decision: What color is the left border on active hub cards?
-- BRAND-BRIEF (May 6) says: "Left border: 3px solid electric blue `#2563EB`"
-- TAG-AND-SHARE-BUILD-SPEC (May 6) says: "Hub card left border color: electric blue `#2563EB` for all active pieces"
-- DESIGN-DECISION-LOG (May 14) says: "Left border: 3px solid electric blue #2563EB (signals live/active)"
-- CSS says: `data-lane="ai"` → teal `#0a7c72`; `data-lane="of"` → gold `#E8B923`
-- **More current on intent:** BRAND-BRIEF, TAG-AND-SHARE-BUILD-SPEC, and DESIGN-DECISION-LOG all agree electric blue. The CSS is out of sync. **This is an actionable discrepancy** — the CSS needs to be updated in a Type 3 session to use electric blue for active cards.
+### CONFLICT 4 — Teal active status
+**BRAND-BRIEF.md:** Teal `#0a7c72` "retired from piece page backgrounds, nav, and UI elements. Active as chart library token only."
+**alterrell-interactive.css:** Teal is still used for active tab color, link colors, journey block icons, stat callout numbers throughout all pieces.
+**Which is current:** The CSS migration away from teal in UI elements has not happened. It is blocked on the highlight color decision. Teal is functionally still the active UI color. Neither is wrong — this is a transition in progress.
 
 ---
 
-**Conflict 5: Concert Tax lane and tab structure**
-- Decision: What lane and tabs does Concert Tax use?
-- CONCERT-TAX-BRIEF (April 16) says: Obsidian Futures, gold accent, 5 tabs (Overview, The Double Standard, The Chart, Genre by Genre, Sources), bubble chart as centerpiece
-- DESIGN-DECISION-LOG (May 14) says: Alterrell Interactive, teal/paper, 6 tabs (Overview, The Data, The Double Standard, History, Take Action, Spread the Word)
-- Concert Tax HTML (May 14) matches: DESIGN-DECISION-LOG ✓
-- **More current:** DESIGN-DECISION-LOG and the rebuilt HTML. CONCERT-TAX-BRIEF.md is fully superseded and should be retired.
+### CONFLICT 5 — Paper background status
+**BRAND-BRIEF.md:** Paper `#f8f6f1` "retired from piece page backgrounds."
+**concert-tax/index.html:** Uses paper throughout as section background.
+**CHART-LIBRARY-SPEC.md + DESIGN-DECISION-LOG.md:** Paper flagged as an active chart token with three conflicting values (#f8f6f1, #e8e5e0, #e8e4de).
+**Which is current:** The retirement has not been enforced in any build. Awaiting AMA decision on paper value unification.
 
 ---
 
-**Conflict 6: Journey block item count for pieces**
-- Decision: How many items in the piece journey block?
-- DEPLOY-CHECKLIST (May 5) says: "Pieces: 3 items only (Watch / Read / Support)"
-- DESIGN-DECISION-LOG (May 14) says: "Four items ordered by commitment hierarchy: Share, YouTube, Substack, Ko-fi"
-- What's in a Name HTML: 4 items (YouTube, Substack, All Pieces, Ko-fi) — inconsistent with both specs
-- Sodium HTML: 3 items (Watch, Read, Explore-internal) — 3rd item is not Support/Ko-fi
-- Big Black Love HTML: 3 items (YouTube, Substack, Ko-fi) — matches checklist
-- Concert Tax HTML: 3 items (Watch, Read, Support/Ko-fi) — matches checklist
-- **Unresolved.** DEPLOY-CHECKLIST and DESIGN-DECISION-LOG conflict. DESIGN-DECISION-LOG says Share should be item 1 (a full-width share grid) — this was implemented as a tab (Spread the Word) in Concert Tax rather than a journey block item. No piece has implemented the DDL's 4-item pattern as described. **AMA decision needed** before any piece journey blocks are standardized.
+### CONFLICT 6 — Obsidian Futures: retired or grandfathered
+**BRAND-BRIEF.md (May 7):** "Lanes (Alterrell Interactive / Obsidian Futures) are retired. All pieces are Alterrell Interactive."
+**DESIGN-DECISION-LOG.md (May 14):** Confirmed retired, but "Concert Tax dark/gold treatment acceptable for now" — then immediately overridden by "AMA confirmed Concert Tax rebuilds in teal/paper from scratch."
+**what-in-a-name/index.html:** Still uses `--of-bg: #0a0a12` and `#E8B923` gold.
+**big-black-love/index.html:** Still uses `#0a0a12` and `#E8B923` gold.
+**Which is current:** OF dark is retired for new builds and card components. Existing pieces (what-in-a-name, big-black-love) are grandfathered — no retrofit scheduled. Concert Tax was explicitly rebuilt to teal/paper. This is a managed transition.
 
 ---
 
-**Conflict 7: Tab bar active state**
-- Decision: How does the active tab look?
-- BRAND-BRIEF (May 6) says: "Active tab: full navy `#0F172A` fill, white text"
-- CSS says: `.ai-tab.active { color: var(--teal); border-bottom-color: var(--teal); }` — teal underline only, no fill
-- All piece HTMLs: Use teal underline (inheriting from CSS) for teal-lane pieces; gold underline for OF pieces
-- **More current:** CSS and all rendered pieces. The BRAND-BRIEF's "full navy fill" has never been implemented. If AMA wants full navy fill, this requires a Type 3 CSS update.
+### CONFLICT 7 — Hub card left border color
+**BRAND-BRIEF.md:** "Left border: 3px solid electric blue `#2563EB` — signals live/active piece"
+**hub index.html:** `hub-card[data-lane="ai"]{ border-left: 6px solid #0a7c72 }` and `hub-card[data-lane="of"]{ border-left: 6px solid #E8B923 }` — teal or gold by lane, 6px not 3px.
+**Which is current:** The hub HTML is the live artifact. BRAND-BRIEF describes an aspirational rebrand state that has not been implemented. Electric blue `#2563EB` currently only appears in the nav wordmark ("Interactive").
 
 ---
 
-**Conflict 8: DOM order — breadcrumb vs. nav**
-- Decision: Which appears first in the HTML: breadcrumb or nav?
-- DEPLOY-CHECKLIST (May 5) says: Structure order #2 = breadcrumb, #3 = nav
-- What's in a Name, Sodium, Big Black Love: nav appears before breadcrumb in DOM
-- Concert Tax (rebuilt May 14): breadcrumb before nav ✓ — correctly follows checklist
-- **More current (intent):** DEPLOY-CHECKLIST. Concert Tax is correct. Legacy pieces need DOM order update in future build sessions (visual rendering is identical since both are `position: fixed`; this is a semantic/accessibility concern).
+### CONFLICT 8 — WHERE-ARE-THEY-BRIEF.md broken pointer
+**WHERE-ARE-THEY-BRIEF.md:** "Full brief in WHERES-BEYONCE-PIECE-BRIEF.md — do not duplicate here."
+**Repo state:** `WHERES-BEYONCE-PIECE-BRIEF.md` does not exist anywhere in the repo.
+**Which is current:** WHERES-BEYONCE-FACTPACK.md is the full authoritative file. The pointer is permanently broken.
 
 ---
 
-**Conflict 9: Tagline**
-- Decision: What is the platform tagline?
-- BRAND-BRIEF (May 6) says: "Tagline: Unravel the Data (under review — may be retired)"
-- ALTERRELL-CLAUDE-DESIGN-HANDOFF (May 7) says: "Tagline (locked): 'See the architecture. The data was always there — now it's yours.'"
-- Hub HTML says: "Data unravels the structure." (hero) and "The data was always there — now it's yours." (footer)
-- **More current:** ALTERRELL-CLAUDE-DESIGN-HANDOFF (May 7) and hub HTML. Update BRAND-BRIEF.
+### CONFLICT 9 — Concert Tax background at build time
+**CONCERT-TAX-BRIEF.md (Apr 16):** "Lane: Obsidian Futures (gold #E8B923, dark #0a0a12 bg)"
+**CONCERT-TAX-FACTPACK.md:** "Lane: Obsidian Futures" / "Background: #0a0a12"
+**DESIGN-DECISION-LOG.md (May 14):** "Concert Tax rebuilds in teal/paper from scratch"
+**concert-tax/index.html:** Built in teal/paper.
+**Which is current:** DDL (May 14) is definitive. Both brief and factpack are stale on the lane decision.
 
 ---
 
-**Conflict 10: DM Sans weight for body copy**
-- Decision: What weight is DM Sans for body copy?
-- BRAND-BRIEF (May 6) says: "Body: DM Sans 400"
-- CSS body default says: `font-weight: 500`
-- DESIGN-DECISION-LOG says: "DM Sans 400 (body), 500 (emphasis)"
-- **Effectively resolved:** 500 is the default as-built. BRAND-BRIEF is technically wrong on this. Minor.
+## SECTION G: RECOMMENDED FILE ACTIONS
 
----
-
-## SECTION G — RECOMMENDED FILE ACTIONS
-
-| File | Recommendation | Reason |
+| File | Action | Reason |
 |---|---|---|
-| BRAND-BRIEF.md | **UPDATE** | Stale on: nav color (dark not white), Spectral weight (700 not 800), hub card border (teal/gold not electric blue), tagline, paper retirement clarification, tab active state (teal not navy fill), DM Sans body weight (500 not 400) |
-| DEPLOY-CHECKLIST.md | **UPDATE** | Journey block count conflict with DESIGN-DECISION-LOG unresolved. Also: sodium index.html in _data/ should be noted or removed. |
-| PLATFORM-BRIEF.md | **KEEP** | Accurate. Roles and workflow rules still valid. |
-| PROJECT-STATUS.md | **UPDATE** | Concert Tax: change to "IN PROGRESS — voice pass remaining." Sodium: clarify distinction between "parked" and "built but not hub-activated." Add Big Black Love note about tab rewrite status. |
-| CONTENT-TAXONOMY.md | **KEEP** | Accurate and current. Tag assignments reflect active piece state. |
-| DESIGN-DECISION-LOG.md | **KEEP** | Most current source of truth on all platform and piece decisions. Should be updated at the end of every session. |
-| SESSION-PROMPTS.md | **KEEP** | Accurate. |
-| VOICE-GUIDE.md | **KEEP** | Accurate. |
-| ALTERRELL-CLAUDE-DESIGN-HANDOFF.md | **UPDATE** | Spectral weight listed as 800 in token table but CSS and DDL say 700. Fix this one field. Otherwise accurate and current. |
-| CHART-LIBRARY-SPEC.md | **KEEP** | Accurate spec. Note: `alterrell-charts.css` referenced but does not exist yet. |
-| TAG-AND-SHARE-BUILD-SPEC.md | **KEEP** | Unbuilt — spec still needed. Feature is not yet implemented on any piece. |
-| CONCERT-TAX-BRIEF.md | **RETIRE** | Fully superseded. Wrong lane, wrong tabs, wrong interactive target (bubble chart never built and not planned). Replace pointer with: "See DESIGN-DECISION-LOG and CONCERT-TAX-FACTPACK.md." |
-| CONCERT-TAX-FACTPACK.md | **KEEP** | Data is verified. Weeknd gross discrepancy flagged in DDL — resolve before voice pass. |
-| concert-tax-COPY-DRAFT-2026-04-27.md | **KEEP** (review) | Pre-dates final tab structure. AMA should verify which copy is still usable for the voice pass. |
-| NAMING-SERIES-BRIEF.md | **UPDATE** | Lane field says "Obsidian Futures" — now non-compliant with May 6 rebrand. Update lane to Alterrell Interactive. |
-| NAMING-SERIES-FACTPACK.md | **KEEP** | Accurate. |
-| CONGRESS-BRIEF.md | **KEEP** | Scope accurate. Timing still valid (Sept 2026). |
-| CONGRESS-1A-FACTPACK.md | **KEEP** | Accurate. Data verification items still open. |
-| HBS-BRIEF.md | **KEEP** ⚠ | **TIMING ALERT:** June 2026 reunion target. If not already in active planning, this piece is at risk of missing its window. |
-| HBS-FACTPACK.md | **KEEP** | Accurate. |
-| WHERE-ARE-THEY-BRIEF.md | **KEEP** | Accurate pointer. No content duplication needed. |
-| WHERES-BEYONCE-FACTPACK.md | **KEEP** | Most recent and complete beyoncé file. |
-| BLACK-SITCOMS-BRIEF.md | **UPDATE** | Lane says "Obsidian Futures" — update to Alterrell Interactive per May 6 decision. Design section still says `#0a0a12 bg, #E8B923 gold` — remove or flag as superseded. |
-| BLACK-GAY-GEOGRAPHY-BRIEF.md | **UPDATE** | Lane says "Obsidian Futures." Big Black Love piece uses it — update lane field and background color to Alterrell Interactive when piece design is locked. |
-| FRAMESHIFT-BRIEF.md | **KEEP** | Accurate. Separate product — not in platform repo scope. |
-| FRAMESHIFT-FACTPACK.md | **KEEP** | Accurate. |
-| GAY-UNCLES-FACTPACK.md | **KEEP** | Accurate. |
-| SODIUM-FACTPACK.md | **KEEP** | Accurate. |
-| FOREVER-LOVED-FACTPACK.md | **KEEP** | Accurate. |
-| COPAGANDA-PIECE-BRIEF.md | **KEEP** | Detailed brief. Piece is parked — no urgency but brief is well-formed for when it activates. |
+| ALTERRELL-CLAUDE-DESIGN-HANDOFF.md | UPDATE | Section 7 references May 7 conversation history and Beyoncé cards not in repo. Update "What the Visual Standard Is Now" to reflect current approved cards. Note grandfathered pieces. |
+| BLACK-GAY-GEOGRAPHY-BRIEF.md (v1) | RETIRE | v2 is locked and authoritative. v1 served its April 26 purpose. Archive label or delete. |
+| BLACK-GAY-GEOGRAPHY-BRIEF-v2.md | KEEP | Locked May 17. Authoritative for big-black-love/ build. Delete the untracked duplicate at `concert-tax/BLACK-GAY-GEOGRAPHY-BRIEF-v2.md`. |
+| BLACK-SITCOMS-BRIEF.md | KEEP | Concept stage brief. No urgency. |
+| BRAND-BRIEF.md | UPDATE | Three specific changes: (1) Spectral 800 → 700. (2) Add note that teal retirement from UI is pending highlight color decision — CSS migration deferred. (3) Add note that OF dark treatment is grandfathered in pre-existing pieces (big-black-love, what-in-a-name) — no retrofit scheduled. |
+| CHART-LIBRARY-SPEC.md | KEEP | Well-structured. Paper color discrepancy flag already documented inside it. |
+| CONCERT-TAX-BRIEF.md | RETIRE | Describes wrong lane (OF dark), wrong centerpiece (D3 bubble chart), wrong tab names. A stale brief this far wrong is a hazard in future build sessions. |
+| concert-tax-COPY-DRAFT-2026-04-27.md | RETIRE | Superseded by the actual build. |
+| CONCERT-TAX-FACTPACK.md | UPDATE | Three changes: (1) Lock the title — update from "The Male Laziness Epidemic" to the live HTML title or confirm a new one. (2) Update tab names in Section 11 and Section 14 to match live HTML. (3) Update lane from "Obsidian Futures" to "teal/paper (rebuilt per DDL May 14)." |
+| CONGRESS-1A-FACTPACK.md | KEEP | Current. No build started. |
+| CONGRESS-BRIEF.md | KEEP | Useful for timing and framing. Factpack is more detailed. |
+| CONTENT-TAXONOMY.md | UPDATE | Add Gay Uncles to the piece tag assignment table: `Gay Uncles | Culture · Health · Identity`. Currently absent. |
+| COPAGANDA-PIECE-BRIEF.md | KEEP | Current as of Apr 25. No build started. |
+| copy-drafts/ folder (4 files) | RETIRE | All superseded. No value retained. |
+| DEPLOY-CHECKLIST.md | KEEP | Accurate, lightweight, used every session. |
+| DESIGN-DECISION-LOG.md | KEEP + UPDATE | Most comprehensive document in the repo. Add: May 17 Gay Uncles restructure decisions (5 tabs, D3 removed, v2 poll data, card map locked). Update after every session per the file's own rule. |
+| FOREVER-LOVED-FACTPACK.md | KEEP | Self-contained factpack. No brief needed urgently. |
+| FRAMESHIFT-BRIEF.md | KEEP | Not urgent. |
+| FRAMESHIFT-FACTPACK.md | KEEP | Not urgent. |
+| GAY-UNCLES-FACTPACK.md | REWRITE | **Critical.** Describes a completely different piece (AIDS crisis/intergenerational mentorship) than what was built (dating geography). Will mislead any future build session for big-black-love/. Either rename it to signal it is a different concept (`OF-THICK-UNCLES-LEGACY-CONCEPT.md`) or rewrite it to describe the actual built piece. |
+| HBS-BRIEF.md | KEEP | Not urgent. No build started. |
+| HBS-FACTPACK.md | KEEP | Not urgent. |
+| NAMING-SERIES-BRIEF.md | UPDATE | Add note: Part 0/1/2 folder split has not been implemented. All content at `what-in-a-name/`. URL migration to `/what-in-a-name/part-1/` must be planned before Part 3 deploys. |
+| NAMING-SERIES-FACTPACK.md | KEEP | Internal research reference. |
+| PLATFORM-BRIEF.md | KEEP | Accurate. Lightweight. |
+| PROJECT-STATUS.md | UPDATE | Three changes: (1) Concert Tax: update from IN PROGRESS to LIVE (or "Hub card live — pending voice pass"). (2) Add `Where's Beyoncé?` as a separate entry — status NOT STARTED, no folder. (3) Add note under Copaganda: "visual partials exist in copaganda/ folder." |
+| SESSION-PROMPTS.md | KEEP | Lightweight and functional. |
+| SODIUM-FACTPACK.md | KEEP | Status accurate. Piece complete and parked. |
+| STRUCTURAL-AUDIT-REPORT.md | KEEP | This document. |
+| TAG-AND-SHARE-BUILD-SPEC.md | KEEP | Tag system not yet built. Spec remains relevant. Note: the file list includes `where-are-they/index.html` — that folder does not yet exist. |
+| VOICE-GUIDE.md | KEEP | Accurate, correctly scoped. |
+| WHERE-ARE-THEY-BRIEF.md | RETIRE | Broken pointer to a nonexistent file. All useful content is in WHERES-BEYONCE-FACTPACK.md. Remove or replace with a one-line pointer to the factpack. |
+| WHERES-BEYONCE-FACTPACK.md | KEEP | Updated May 7. Comprehensive. Authoritative. |
 
 ---
 
-## PRIORITY ACTION LIST (ordered by impact)
+## CRITICAL ISSUES — ACTION REQUIRED BEFORE NEXT BUILD SESSION
 
-**Immediate (before next build session):**
-1. **Hub card left border:** Update CSS and hub HTML to use electric blue `#2563EB` for active piece borders — BRAND-BRIEF, TAG-AND-SHARE-BUILD-SPEC, and DESIGN-DECISION-LOG all agree. CSS is the only holdout. Type 3 session.
-2. **CONCERT-TAX-BRIEF.md:** Retire or add a clear header: "SUPERSEDED — see DESIGN-DECISION-LOG.md." Prevents future sessions from reading stale lane/tab info.
-3. **PROJECT-STATUS.md:** Update Concert Tax and add sodium distinction.
+1. **GAY-UNCLES-FACTPACK.md describes the wrong piece.** Any future Claude session reading this file without the v2 brief will plan and possibly build a fundamentally different piece. Must be renamed or rewritten before the next big-black-love/ build session.
 
-**Before next piece deploys:**
-4. **Journey block standard:** AMA decision needed on 3 vs. 4 items. Resolve the DEPLOY-CHECKLIST / DESIGN-DECISION-LOG conflict so all pieces follow the same pattern.
-5. **BRAND-BRIEF.md:** Update Spectral weight (800→700), tagline, nav background note, hub border color, tab active state description.
+2. **Concert Tax has three different titles across three files.** Hub card, factpack, and live HTML all say different things. AMA must lock one title and update all files before the piece is considered truly shipped.
 
-**Lower priority (housekeeping):**
-6. **DOM order in legacy pieces:** Update naming, sodium, and big-black-love to put breadcrumb before nav per checklist. Visual impact: none. Semantic/audit impact: cleanliness.
-7. **DM Sans 800 weight:** Load it in naming, sodium, and big-black-love Google Fonts imports (currently only loading up to 600).
-8. **`_data/sodium index.html`:** Confirm what this file is. If superseded by `fast-food-sodium/index.html`, archive or delete.
+3. **WHERE-ARE-THEY-BRIEF.md points to a nonexistent file.** The file it cites (`WHERES-BEYONCE-PIECE-BRIEF.md`) does not exist. The pointer is permanently broken.
+
+4. **Sodium journey block missing Ko-fi.** BRAND-BRIEF says Ko-fi is a required deploy gate. `fast-food-sodium/` journey block has Watch, Read, Explore — no Ko-fi. It exists in the share block, but not the journey block. Decision needed before the piece re-activates.
+
+5. **Big Black Love hub card has `[AMA TO CONFIRM]` placeholders** in the stat number, stat label, and stakes fields. Must be resolved before the hub card status changes from Coming Soon.
+
+6. **Duplicate v2 brief.** `concert-tax/BLACK-GAY-GEOGRAPHY-BRIEF-v2.md` is an untracked copy of the v2 brief. Delete it — the authoritative copy is in `_data/`.
+
+7. **CONCERT-TAX-BRIEF.md is actively wrong.** It describes OF dark styling, D3 bubble chart as centerpiece, and wrong lane. It is a hazard if read in any future session without the factpack.
 
 ---
 
-*Report generated: 2026-05-15. Read-only audit — no production files modified.*
-*Files read: 28 .md files in _data/, alterrell-interactive.css, index.html (hub), 4 piece index.html files.*
+*End of report. Written May 17, 2026. Read-only audit session — no other files were modified.*
