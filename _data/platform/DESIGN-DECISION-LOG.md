@@ -452,5 +452,389 @@ Forever Loved: Fully scoped. Vite/React/Tailwind. Ready to build.
 10. Card 16: "I paid Beyoncé prices for a listening party" — this is a phrase, not a stat. D2 pull quote or D4 connector? AMA decision needed.
 
 ---
+# DESIGN DECISION LOG — MAY 18, 2026 UPDATE
+# Session type: Type 1 Editorial (claude.ai)
+# Scope: Staleness audit + template standardization + process improvements
+# Method: Dual audit (Claude.ai decision audit + Claude Code structural audit)
+# Append this below existing DESIGN-DECISION-LOG.md content
+
+---
+---
+
+# PART 4 — STALENESS AUDIT RESULTS (May 18, 2026)
+
+---
+
+## DOCUMENT ACTIONS
+
+### Files deleted
+- `GAY-UNCLES-FACTPACK.md` — described wrong piece. Canonical: `BLACK-GAY-GEOGRAPHY-BRIEF.md`
+- `WHERE-ARE-THEY-BRIEF.md` — broken pointer, wrong title, wrong lane. Canonical: `WHERES-BEYONCE-FACTPACK.md`. Built HTML shell exists at `where-are-they/index.html`
+- Duplicate v2 brief inside `concert-tax/` folder
+
+### Files retired (moved to `_data/archive/` with SUPERSEDED header)
+- `CONGRESS-BRIEF.md` → superseded by `CONGRESS-1A-FACTPACK.md`
+- `HBS-BRIEF.md` → superseded by `HBS-FACTPACK.md`
+- `CONCERT-TAX-BRIEF.md` → piece is 99% done. Brief describes wrong lane, wrong tabs, wrong centerpiece. Add SUPERSEDED header pointing to `concert-tax/index.html` and this decision log
+
+### One canonical file per piece (standing rule — NEW)
+Named `[PIECE]-BRIEF.md`. When a research session produces deeper material, it replaces the brief. Old version moves to `_data/archive/` with date suffix. No piece should have both a brief and a factpack in active folders.
+
+---
+
+## `_data/` FOLDER RESTRUCTURE
+
+```
+_data/
+├── platform/          ← Claude Code reads this folder every session
+│   ├── BRAND-BRIEF.md
+│   ├── PLATFORM-BRIEF.md
+│   ├── DEPLOY-CHECKLIST.md
+│   ├── DESIGN-DECISION-LOG.md
+│   ├── VOICE-GUIDE.md
+│   ├── CONTENT-TAXONOMY.md
+│   ├── SESSION-PROMPTS.md
+│   ├── CHART-LIBRARY-SPEC.md
+│   └── TAG-AND-SHARE-BUILD-SPEC.md
+│
+├── pieces/            ← one canonical file per piece + status tracker
+│   ├── PROJECT-STATUS.md
+│   ├── CONCERT-TAX-BRIEF.md
+│   ├── WHERES-BEYONCE-FACTPACK.md
+│   ├── COPAGANDA-PIECE-BRIEF.md
+│   ├── CONGRESS-1A-FACTPACK.md
+│   ├── SODIUM-FACTPACK.md
+│   ├── NAMING-SERIES-BRIEF.md
+│   ├── HBS-FACTPACK.md
+│   ├── BLACK-GAY-GEOGRAPHY-BRIEF.md
+│   ├── BLACK-SITCOMS-BRIEF.md
+│   ├── FRAMESHIFT-BRIEF.md
+│   └── FOREVER-LOVED-FACTPACK.md
+│
+├── archive/           ← superseded files, old index snapshots
+│   └── (versioned with date suffixes)
+│
+└── templates/         ← built in Type 3 session after Concert Tax deploys
+    ├── piece-template.html
+    ├── pre-build-checklist.md
+    └── partials/
+```
+
+Session prompts reference folders, not individual files: "read everything in `_data/platform/`" is sufficient. Claude Code can list and read subfolder contents without enumerated filenames.
+
+---
+
+## LANE / DESIGN SYSTEM DECISIONS
+
+### Lanes retired — OF is a per-piece CSS treatment
+- All pieces are Alterrell Interactive. Obsidian Futures is a tag, not a design system.
+- "Dark treatment" = piece-local `<style>` block overriding CSS custom properties. "Standard treatment" = default. The term "lane" is retired as a structural concept.
+- AMA approves or declines dark treatment at build step per piece.
+- Override properties for dark treatment: `--piece-bg`, `--piece-accent`, `--piece-card-bg`, `--piece-text`, `--piece-muted`, `--piece-border`
+- CSS must support a clear mechanism to "turn on" dark background per piece.
+
+### Pieces using dark treatment
+- Concert Tax — dark bg `#0a0a12`, teal accents. CONFIRMED still dark (prior log entry saying "rebuilds in teal/paper" was incorrect).
+- Naming Series Parts 0–2 — dark bg `#0a0a12`, gold `#E8B923`. Staying dark, no retrofit.
+- Big Black Love / Gay Uncles Geography — dark bg `#0a0a12`, gold `#E8B923` (from brief).
+- Black Sitcoms — expected dark treatment.
+- Future Naming Series parts — expected dark treatment.
+
+### Teal color status — OPEN, needs AMA decision
+- BRAND-BRIEF says teal retired from "piece page backgrounds, nav, and UI elements."
+- Concert Tax shipped with teal as accent in tab indicators, section borders, card components on piece page.
+- Specific locations where teal appears: tab active states, left borders on cards, bar chart fills, section accents. Does NOT appear in hub/nav (navy there).
+- Question: is teal retired only as a background/fill color, or also as a piece-level accent?
+- **AMA to decide. Add clarification to BRAND-BRIEF when resolved.**
+
+### Highlight accent color — VOIDED
+- Deep Crimson `#C41230`, Forest `#1B6B3A`, Burgundy `#7D1D3F` candidates are voided.
+- No longer being tracked. If needed in future, scope fresh.
+- Remove from BRAND-BRIEF open decisions.
+
+---
+
+## TITLE / NAMING DECISIONS
+
+### Concert Tax
+- **Display title (from index file, May 17):** "Female Musicians Earn Less But Share More"
+- **Subhead:** "Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it."
+- Hub card: still says "The Male Concert Laziness Surcharge" — Batch A update pending.
+- URL slug: `concert-tax` (unchanged).
+
+### Where's Beyoncé
+- **Working title:** "Where's Beyoncé?" — not necessarily the final piece title.
+- URL slug: `where-are-they` (stays as-is, slug does not need to match title).
+
+### Big Black Love / Gay Uncles Geography
+- Brief title: "Advice From Your Thick Gay Uncles"
+- "Big Black Love" retired as working title in status tracking.
+- Display title may change after essay is finalized.
+
+### Title tracking standard (NEW — all pieces)
+Every piece brief must include:
+```
+Working title: [internal reference name]
+Display title: [h1 text — LOCKED or TBD]
+Hub card title: [matches display title unless intentionally different]
+URL slug: [locked separately]
+```
+When display title changes, brief + index h1 + OG tags + hub card all update in same commit.
+
+---
+
+## JOURNEY BLOCK
+
+- **Pieces:** 3 items — Watch / Read / Support. "Explore It" retired from piece journey blocks.
+- **Hub:** keeps 4 items. The 4th item ("Explore") earns its place when `/explore/` sub-area exists for deeper D3 interactives. Until then, hub keeps it as the platform-level explore function.
+- Ko-fi addition to Sodium: apply before piece is pushed back to live (not retroactively now).
+- YouTube/Substack link contrast fix (font-weight 500–600): confirmed pending, apply in next Batch A.
+
+### `/explore/` sub-area concept (OPEN — not blocking any builds)
+- Standalone interactive pages at `interactive.alterrell.com/explore/[piece]-[chart]/`
+- Houses D3 interactives, filters, hover states — the "go deeper" versions
+- Pieces stay card-gallery clean. Explore pages are the analytical layer.
+- The hub's 4th journey block item links here when content exists.
+- Not scoped for build yet. Decision logged for when D3 interactives are ready.
+
+---
+
+## TAGLINE
+
+- **Locked tagline:** "Unravel the Data." Lives in BRAND-BRIEF only.
+- "See the architecture. The data was always there — now it's yours." = platform description/mission statement, NOT tagline. Label differently in future documents.
+- Do not repeat tagline in piece briefs. Reference BRAND-BRIEF.
+- Footer tagline retired (per T-9 below). Tagline may appear on hub and about page.
+
+---
+
+## CONCERT TAX — FINAL STATUS
+
+- **Status:** 99% done. Final file: May 17.
+- **Remaining:** Hub card title + tagline update (Batch A) to match "Female Musicians Earn Less But Share More."
+- **Editorial lines:** Cards 5, 8, 10, 12 have AMA-written lines. Cards 9 and 18 intentionally deleted.
+- **Tab prose:** Voice pass complete on all 6 tabs.
+- **Tab structure (locked):** Overview / The Data / The Double Standard / History / Take Action / Spread the Word.
+
+### Concert Tax inconsistencies — resolved
+- Card 2 (iceberg): CUT permanently (May 14)
+- Card 6 (hardware vs human): CUT permanently (May 14)
+- Card 3 (tier grid): PARKED pending AMA roster reconfirmation
+- Card 5 (Cardi B): accepted as piece-specific D2 variant with stats
+- Tab names: locked per built file (see above)
+- A4 side-by-side: permanent platform override (not stacked vertical)
+
+### Concert Tax inconsistencies — still open
+- Paper color values reconciliation
+- The Weeknd gross (single tour vs career)
+- Card 11 quote source verification
+- Card 15 component type (AMA decision needed)
+- Card 16 component type (AMA decision needed)
+
+---
+
+## EDITORIAL CALENDAR — confirmed May 18
+
+- **HBS:** Q2 2026, June reunion. URGENT — almost nothing locked. AMA gathering materials. Force Type 1 session.
+- **Copaganda:** No change. Research complete. AMA exploring what can be built pre-essay.
+- **Where's Beyoncé:** Q3, Aug–Oct hurricane season.
+- **Congress 1A:** Q3/Q4, Sept–Oct general election.
+
+---
+
+## DEPLOY CHECKLIST ADDITIONS
+
+Add to `_data/platform/DEPLOY-CHECKLIST.md`:
+
+1. Ko-fi block present (deploy gate per Brand Brief)
+2. `data-tags` attribute on hub cards (visible pills deferred until design approved)
+3. Share block on most emotionally compelling tab (typically Overview)
+4. Chart source stamps: every data point has visible source (DM Mono). Pull quotes exempt.
+5. File versioning: never overwrite — always v1, v2, v3
+6. Context limit protocol: flag, update brief, confirm handoff before closing
+7. Before full piece rebuild: copy current index.html to `_data/archive/[piece]-index-[date].html`
+
+---
+
+## PLATFORM-BRIEF.md
+
+- Four-role system (EIC / CBUXO / SDA / Editorial Partner) does not work reliably on Sonnet. Only reliable on Opus.
+- Voice/copy work handled by ChatGPT and other mechanisms, not Claude.
+- Revise PLATFORM-BRIEF to describe Claude's actual operating mode: build engine, design system enforcer, structural auditor. Point to BRAND-BRIEF as authoritative reference.
+- Revision deferred to future session.
+
+---
+
+## FRAMESHIFT
+
+- Free tier MVP built: Navy circumference calculator, BMI comparison, framing layer.
+- Paid tier features NOT BUILT: JSON download/re-upload, batch lab entry, time horizon dropdown, four delivery methods, trend engine, sparklines, radar chart, movement guide. All gated on waitlist validation.
+- Add BUILT / NOT BUILT status markers per feature in FRAMESHIFT-BRIEF.md.
+
+---
+---
+
+# PART 5 — TEMPLATE STANDARDIZATION (May 18, 2026)
+
+All decisions below apply to every new piece going forward unless explicitly overridden in a piece brief.
+
+---
+
+### T-1. Color system is CSS, not HTML
+**LOCKED.** All pieces use identical HTML structure. Visual treatment (standard vs. dark) controlled through piece-local `<style>` block overriding CSS custom properties. No separate HTML templates per treatment. Override properties for dark treatment: `--piece-bg`, `--piece-accent`, `--piece-card-bg`, `--piece-text`, `--piece-muted`, `--piece-border`.
+
+### T-2. Default tab count is 6
+**LOCKED.** Tab 1 = Overview (constant). Tabs 2–4 = argument tabs (named per piece; Tab 4 cut for 5-tab pieces). Tab 5 = Take Action (constant). Tab 6 = Spread the Word (constant). Reference build: Concert Tax.
+
+### T-3. Tab content pattern: card gallery + prose (not accordions by default)
+**LOCKED.** Per-tab layout: section title → 2–4 paragraphs → card gallery (horizontal scroll mobile, grid desktop) → section floor nav. Accordions available ONLY when a tab has 4+ discrete expandable data entries. Test: "Does this tab have 4+ entries that each need their own expandable section?" Yes = accordions. No = card gallery + prose.
+
+### T-4. Card gallery is the default visual unit
+**LOCKED.** Cards: 1:1 aspect ratio, max-width 400px, full teal border (all four sides), white interior. Mobile: horizontal scroll with scroll-snap, peek next card, swipe CTA inside gallery div. Desktop: CSS grid auto-fill. Source stamps on every card. Gallery cards ≠ share cards.
+
+### T-5. Share block: always Tab 1 (Overview)
+**LOCKED.**
+
+### T-6. Journey block: Watch / Read / Support
+**LOCKED.** Three cards on pieces. "Explore It" retired from piece journey blocks. Hub keeps 4 items.
+
+### T-7. Take Action tab (Tab 5) — standardized
+**LOCKED.** Brief must answer: who is the reader talking to, what's the ask, what tool do they need, what's the lowest-friction action. Structure: 2–3 action cards with headlines. Sources accordion at bottom.
+
+### T-8. Spread the Word tab (Tab 6) — standardized
+**LOCKED.** Structure: intro paragraph → shareable card gallery (duplicated from argument tabs) → share destinations grid (6 buttons) → platform CTAs (3 cards). Reference: Concert Tax.
+
+### T-9. Footer: clean, no tagline
+**LOCKED.** Dark footer bar. Links: Substack, About, Ko-fi. No tagline in footer. "The data was always there — now it's yours." retired from footer; may appear on hub/about.
+
+### T-10. Hero: headline + subhead only (stat cards optional)
+**LOCKED.** Default: Spectral 700 headline + DM Serif Display subhead. Stat cards optional — piece brief must specify if used.
+
+### T-11. Upper nav contrast fix
+**LOCKED (pending platform commit).** Font-weight 500–600 on YouTube/Substack links. Platform-wide Batch A fix.
+
+### T-12. Collapsible methodology
+**LOCKED (placement per-piece).** `<details>` wrapper. Lives in Take Action tab or footer — per-piece call. Visual treatment flagged for future review, doesn't block builds.
+
+### T-13. Scripts block
+**LOCKED.** One `<script>` block at end. Tab switching + accordion toggle + mobile swipe. Identical across pieces.
+
+### T-14. Piece-local CSS scoping
+**LOCKED.** All piece CSS in `<style>` in `<head>`, scoped with piece prefix (e.g. `.ct-`). Never modify `alterrell-interactive.css` in piece builds.
+
+---
+
+## EDITORIAL CHECKLIST PER NEW PIECE (pre-build gate)
+
+Before any Type 2 build, the piece brief must answer all 11. If not all checked, the piece is NOT build-ready. Claude Code must refuse to build.
+
+```
+# [PIECE NAME] — Pre-Build Checklist
+- [ ] 1. Dark treatment or standard?
+- [ ] 2. If dark: accent, bg, card bg colors
+- [ ] 3. Headline and subhead (display title LOCKED)
+- [ ] 4. Tab 2 label
+- [ ] 5. Tab 3 label
+- [ ] 6. Tab 4 label (or "cut" for 5-tab)
+- [ ] 7. Accordion tabs? Which tab, how many entries?
+- [ ] 8. Take Action: who / ask / tool / lowest-friction
+- [ ] 9. Spread the Word: share copy
+- [ ] 10. Stat cards in hero? (count + data)
+- [ ] 11. Card map per tab (component type, data, editorial line)
+```
+
+Hub card copy also required before build:
+```
+- [ ] Hub stat number
+- [ ] Hub stat label
+- [ ] Hub headline (matches display title)
+- [ ] Hub lede (≤18 words, present tense)
+- [ ] Hub stakes label (≤6 words)
+- [ ] Hub CTA label
+```
+
+---
+
+## TEMPLATE FILE PLAN
+
+Build in Type 3 session after Concert Tax deploys:
+
+**A. `_data/templates/piece-template.html`** — Single complete HTML file. Token slots marked `{{DOUBLE_BRACES}}`. Both treatment variants with comments.
+
+**B. `_data/templates/partials/`** — Individual component files. When a component changes, update partial, regenerate template. Partials: head, nav, hero, journey-block, tab-bar, tab-panel, card-gallery, share-block, take-action-tab, spread-the-word-tab, footer, methodology, scripts, piece-local-css-dark.
+
+Build order: partials first (B), then assemble template (A).
+
+---
+---
+
+# PART 6 — PROCESS IMPROVEMENTS (May 18, 2026)
+
+---
+
+### P-1. Decision capture protocol
+**Problem:** Decisions made in chat never get written back to files. Sessions end at context limit without AMA choosing when.
+**Solution (two-part):**
+1. **Dedicated decision capture chat** in project folder. Only job: AMA opens it periodically, says "search project folder for [piece/topic] and update decision log with anything locked since [date]." Runs on AMA's schedule — same day or weekly.
+2. **Session opener lookback.** Every session starts: "search project folder for chats about [piece] in last 7 days, flag decisions not reflected in brief or decision log." Catches drift before new work starts.
+
+Neither depends on sessions ending gracefully.
+
+### P-2. Brief lifecycle states
+**Status line at top of every brief:**
+```
+Brief status: CONCEPT | RESEARCH | EDITORIAL LOCKED | BUILD READY | BUILT | LIVE
+Last substantive update: [date]
+```
+- CONCEPT = idea stage
+- RESEARCH = data being gathered
+- EDITORIAL LOCKED = argument, tabs, card map set
+- BUILD READY = copy exists and passed voice review, pre-build checklist complete
+- BUILT = index.html exists, not deployed
+- LIVE = deployed
+
+Claude Code must check status before building. If status is not BUILD READY or later, refuse and flag.
+
+### P-3. Version snapshots before rebuilds
+Before any full rebuild: `cp [piece]/index.html _data/archive/[piece]-index-[date].html`. One-line command at start of Type 2 session. Always diffable.
+
+### P-4. Tag system — clickable filtering (OPEN, not blocking)
+Tags should eventually be clickable on hub for filtering. Timeline TBD. Data attributes (`data-tags`) are the foundation — already specified. Visual filter UI deferred.
+
+---
+
+### P-5. Decision capture — weekly sweep (LOCKED)
+**Mechanism:** One dedicated chat in the project folder. Only job is decision log maintenance.
+**Frequency:** Start of each week's quota (weekly).
+**Process:** AMA opens the chat, pastes the sweep prompt (below). Chat searches project folder for prior week's conversations, flags decisions not yet in the log, AMA confirms, log is updated.
+**Opener prompt for the weekly sweep chat:**
+
+```
+Weekly decision sweep.
+
+Search the project folder for all chats from the last 7 days.
+For each chat that discussed Alterrell Interactive pieces or platform decisions:
+
+1. List every locked decision made (title changes, tab structure changes,
+   design decisions, editorial rulings, scope changes, status changes).
+2. For each decision, check whether it is already reflected in
+   DESIGN-DECISION-LOG.md, the relevant piece brief, and PROJECT-STATUS.md.
+3. Produce a numbered list of decisions that are NOT yet written back,
+   with the exact text to add and which file it goes in.
+
+I will confirm each item before you write anything.
+
+If no new decisions were made this week, say so and we're done.
+```
+
+### P-6. `/explore/` sub-area for deeper interactives (LOCKED concept, build TBD)
+**Decision:** Standalone interactive pages at `interactive.alterrell.com/explore/[piece]-[chart]/`. Houses D3 interactives, filters, hover states, dropdowns — the "go deeper" analytical versions.
+**Relationship to pieces:** Pieces stay card-gallery clean (no D3). Piece can link to its explore page but does not embed it. Explore pages are a separate build scope.
+**Journey block impact:** Pieces ship with 3 journey items (Watch / Read / Support). When a piece has an explore page, the piece brief can optionally add a 4th journey item linking to it — but 3 is the default. Hub keeps 4 items because the hub IS the platform-level explore layer.
+**Build timing:** Not scoped yet. Logged for when D3 interactives are ready to build. Do not pre-build the `/explore/` route or folder structure until at least one interactive is ready to ship.
+
+---
+
+*End of May 18, 2026 update. Three parts: staleness audit (Part 4), template standardization (Part 5), process improvements (Part 6).*
 
 *End of log. Update this file after every session that makes a design decision.*

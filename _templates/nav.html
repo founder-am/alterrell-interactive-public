@@ -1,0 +1,26 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — BREADCRUMB + NAV PARTIAL
+     Extracted from concert-tax/index.html (golden reference), May 2026
+     These two blocks are always adjacent and always required together.
+
+     TOKEN SLOTS:
+       {{PIECE_NAME}} — Display name for breadcrumb
+                        e.g. Concert Tax
+     ────────────────────────────────────────────────────────────── -->
+
+<!-- ── 2. BREADCRUMB ── -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">/</span>
+  <span class="ai-breadcrumb-current">{{PIECE_NAME}}</span>
+</nav>
+
+<!-- ── 3. NAV ── -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
