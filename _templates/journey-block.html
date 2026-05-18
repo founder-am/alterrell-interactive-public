@@ -1,0 +1,52 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — JOURNEY BLOCK PARTIAL
+     Extracted from concert-tax/index.html (golden reference), May 2026
+
+     TOKEN SLOTS:
+       {{PIECE_NAME}}   — Display name used in Watch CTA title
+       {{YOUTUBE_URL}}  — Full YouTube URL for this piece's playlist/video
+       {{SUBSTACK_URL}} — Full Substack URL for this piece's post
+       {{KOFI_URL}}     — Full Ko-fi URL
+
+     RULES (from deploy checklist):
+     - 3 items only: Watch / Read / Support
+     - White background (do not override to dark)
+
+     DEFAULT URLS (use if piece-specific links not yet live):
+       YouTube: https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS
+       Substack: https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page
+       Ko-fi:    https://ko-fi.com/alterrell
+     ────────────────────────────────────────────────────────────── -->
+
+<!-- ── 5. JOURNEY BLOCK ── -->
+<div class="ai-journey" aria-label="Follow this piece">
+  <div class="ai-journey-inner">
+    <a href="{{YOUTUBE_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path primary"
+       aria-label="Watch {{PIECE_NAME}} on YouTube">
+      <div class="ai-journey-icon">&#9654;</div>
+      <div class="ai-journey-label">Watch</div>
+      <div class="ai-journey-title">{{PIECE_NAME}} on YouTube</div>
+      <div class="ai-journey-cta">YouTube &rarr;</div>
+    </a>
+    <a href="{{SUBSTACK_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path secondary"
+       aria-label="Read the full argument on Substack">
+      <div class="ai-journey-icon">&#10022;</div>
+      <div class="ai-journey-label">Read</div>
+      <div class="ai-journey-title">The full argument on Substack</div>
+      <div class="ai-journey-cta">Substack &rarr;</div>
+    </a>
+    <a href="{{KOFI_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path tertiary"
+       aria-label="Support on Ko-fi">
+      <div class="ai-journey-icon">$</div>
+      <div class="ai-journey-label">Support</div>
+      <div class="ai-journey-title">Help keep this work free</div>
+      <div class="ai-journey-cta">Ko-fi &rarr;</div>
+    </a>
+  </div>
+</div>
