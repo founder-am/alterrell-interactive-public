@@ -1,0 +1,68 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — SHARE BLOCK PARTIAL
+     Extracted from Tab 6 — Spread the Word (concert-tax, golden reference)
+     May 2026
+
+     NOTE: The deploy checklist specifies "no missing share block." In
+     concert-tax the share destinations grid lives exclusively in Tab 6
+     (Spread the Word). This partial extracts that block for reuse as a
+     standalone share component — e.g., at the bottom of an Overview tab
+     or any other section where a share prompt is appropriate.
+
+     TOKEN SLOTS:
+       {{SHARE_HEADLINE}} — h2 text  e.g. "Share this piece."
+       {{SHARE_BODY}}     — Intro paragraph (1–2 sentences, AMA voice)
+       {{SHARE_URL}}      — Full canonical URL (plain, not encoded)
+                            This value must be manually URL-encoded when
+                            placed inside href attributes below.
+
+     NOTE: Replace ct- prefix with your piece slug prefix throughout.
+     NOTE: Replace hardcoded copy text (text= parameters) with
+     piece-specific share copy before deploying.
+     ────────────────────────────────────────────────────────────── -->
+
+<h2 class="ai-h2" style="margin-bottom:0.5rem;">{{SHARE_HEADLINE}}</h2>
+<p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">{{SHARE_BODY}}</p>
+
+<!-- Share destinations -->
+<!-- Replace {{SHARE_URL}} with URL-encoded piece URL in each href -->
+<div class="ct-share-grid" role="group" aria-label="Share destinations">
+  <a href="https://twitter.com/intent/tweet?url={{SHARE_URL}}&text={{SHARE_URL_ENCODED_TITLE}}%20%E2%80%94%20%40alterrell"
+     target="_blank" rel="noopener"
+     class="ct-share-dest"
+     aria-label="Share on X">
+    <span class="ct-share-dest-icon">&#120143;</span>
+    <span class="ct-share-dest-label">X / Twitter</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{SHARE_URL}}"
+     target="_blank" rel="noopener"
+     class="ct-share-dest"
+     aria-label="Share on Facebook">
+    <span class="ct-share-dest-icon">f</span>
+    <span class="ct-share-dest-label">Facebook</span>
+  </a>
+  <a href="https://wa.me/?text={{SHARE_URL_ENCODED_TITLE}}%20%E2%80%94%20{{SHARE_URL}}"
+     target="_blank" rel="noopener"
+     class="ct-share-dest"
+     aria-label="Share on WhatsApp">
+    <span class="ct-share-dest-icon">&#9679;</span>
+    <span class="ct-share-dest-label">WhatsApp</span>
+  </a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{SHARE_URL}}&title={{SHARE_URL_ENCODED_TITLE}}"
+     target="_blank" rel="noopener"
+     class="ct-share-dest"
+     aria-label="Share on LinkedIn">
+    <span class="ct-share-dest-icon">in</span>
+    <span class="ct-share-dest-label">LinkedIn</span>
+  </a>
+  <a href="mailto:?subject={{SHARE_HEADLINE}}&body={{SHARE_BODY}}%0A%0A{{SHARE_URL}}"
+     class="ct-share-dest"
+     aria-label="Share by Email">
+    <span class="ct-share-dest-icon">@</span>
+    <span class="ct-share-dest-label">Email</span>
+  </a>
+  <button class="ct-share-dest" id="ct-copy-link" aria-label="Copy link">
+    <span class="ct-share-dest-icon" id="ct-copy-icon">&#10040;</span>
+    <span class="ct-share-dest-label" id="ct-copy-label">Copy Link</span>
+  </button>
+</div>
