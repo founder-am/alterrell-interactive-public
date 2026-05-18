@@ -1,0 +1,141 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — SPREAD THE WORD TAB PARTIAL
+     Extracted from Tab 6 — Spread the Word (concert-tax, golden reference)
+     May 2026
+
+     TOKEN SLOTS:
+       {{PIECE_NAME}}           — Display name  e.g. Concert Tax
+       {{INTRO_SENTENCE}}       — Intro paragraph (1–2 sentences, AMA voice)
+       {{SHAREABLE_GALLERY}}    — All shareable card HTML blocks
+                                  (same cards from earlier tabs, pasted again)
+       {{OG_URL}}               — Full canonical URL — URL-encode when in href
+       {{OG_TITLE}}             — Piece title — URL-encode when in href
+       {{OG_DESCRIPTION}}       — Short description — URL-encode when in href
+       {{SHARE_COPY_X}}         — URL-encoded tweet text (without @alterrell suffix)
+                                  e.g. Female%20Musicians%20Earn%20Less%20But%20Share%20More
+       {{SHARE_COPY_INSTAGRAM}} — Plain text caption for Instagram clipboard copy
+       {{SHARE_COPY_TEXT}}      — URL-encoded text for WhatsApp / SMS
+
+     NOTE: Instagram has no native web share API. The Instagram button copies
+     {{SHARE_COPY_INSTAGRAM}} to the clipboard for manual pasting.
+
+     NOTE: Replace ct- prefix with your piece slug prefix throughout.
+     ────────────────────────────────────────────────────────────── -->
+
+<!-- ════════════════════════════════════
+     TAB 6 — SPREAD THE WORD
+     ════════════════════════════════════ -->
+<section id="tab-spread" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Spread the Word</span>
+    <h2 class="ai-h2" style="margin-bottom:0.5rem;">Share this piece.</h2>
+    <p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">{{INTRO_SENTENCE}}</p>
+
+    <!-- All shareable cards — paste card gallery HTML here -->
+    <div class="ct-gallery ct-card-gallery">
+      {{SHAREABLE_GALLERY}}
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Share destinations -->
+    <!-- NOTE: Replace all {{TOKEN}} values with URL-encoded piece-specific strings -->
+    <div class="ct-share-grid" role="group" aria-label="Share destinations">
+      <a href="https://twitter.com/intent/tweet?url={{OG_URL}}&text={{SHARE_COPY_X}}%20%E2%80%94%20%40alterrell"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on X">
+        <span class="ct-share-dest-icon">&#120143;</span>
+        <span class="ct-share-dest-label">X / Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{OG_URL}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on Facebook">
+        <span class="ct-share-dest-icon">f</span>
+        <span class="ct-share-dest-label">Facebook</span>
+      </a>
+      <a href="https://wa.me/?text={{SHARE_COPY_TEXT}}%20%E2%80%94%20{{OG_URL}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on WhatsApp">
+        <span class="ct-share-dest-icon">&#9679;</span>
+        <span class="ct-share-dest-label">WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{OG_URL}}&title={{OG_TITLE}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on LinkedIn">
+        <span class="ct-share-dest-icon">in</span>
+        <span class="ct-share-dest-label">LinkedIn</span>
+      </a>
+      <a href="mailto:?subject={{OG_TITLE}}&body={{OG_DESCRIPTION}}%0A%0A{{OG_URL}}"
+         class="ct-share-dest"
+         aria-label="Share by Email">
+        <span class="ct-share-dest-icon">@</span>
+        <span class="ct-share-dest-label">Email</span>
+      </a>
+      <button class="ct-share-dest" id="ct-copy-link" aria-label="Copy link">
+        <span class="ct-share-dest-icon" id="ct-copy-icon">&#10040;</span>
+        <span class="ct-share-dest-label" id="ct-copy-label">Copy Link</span>
+      </button>
+    </div>
+
+    <!-- Instagram copy button (clipboard only — no web share API) -->
+    <div style="margin-bottom:1.5rem;">
+      <button class="ct-share-dest"
+              style="width:100%; flex-direction:row; gap:0.75rem; justify-content:flex-start; padding:1rem 1.25rem; border:1px solid var(--border); border-radius:var(--radius);"
+              onclick="if(navigator.clipboard){navigator.clipboard.writeText('{{SHARE_COPY_INSTAGRAM}}');this.querySelector('.ct-share-dest-label').textContent='Copied!';var b=this;setTimeout(function(){b.querySelector('.ct-share-dest-label').textContent='Copy Caption for Instagram';},2000);}"
+              aria-label="Copy caption for Instagram">
+        <span class="ct-share-dest-icon">&#128247;</span>
+        <span class="ct-share-dest-label">Copy Caption for Instagram</span>
+      </button>
+    </div>
+
+    <!-- Platform CTAs (YouTube / Substack / Ko-fi) -->
+    <div class="ct-platform-grid" aria-label="Follow the platform">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Watch on YouTube">
+        <div class="ct-platform-icon">&#9654;</div>
+        <div class="ct-platform-label">Watch</div>
+        <div class="ct-platform-name">{{PIECE_NAME}} on YouTube</div>
+        <div class="ct-platform-cta">YouTube &rarr;</div>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Read on Substack">
+        <div class="ct-platform-icon">&#10022;</div>
+        <div class="ct-platform-label">Read</div>
+        <div class="ct-platform-name">The full argument on Substack</div>
+        <div class="ct-platform-cta">Substack &rarr;</div>
+      </a>
+      <a href="https://ko-fi.com/alterrell"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Support on Ko-fi">
+        <div class="ct-platform-icon">$</div>
+        <div class="ct-platform-label">Support</div>
+        <div class="ct-platform-name">Help keep this work free</div>
+        <div class="ct-platform-cta">Ko-fi &rarr;</div>
+      </a>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- AMA voice pass: sharing note goes here -->
+    </div>
+
+    <!-- Section floor nav (last tab — no next) -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-take-action" aria-label="Go to Take Action">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">Take Action</span>
+      </button>
+      <span></span>
+    </nav>
+
+  </div>
+</section>

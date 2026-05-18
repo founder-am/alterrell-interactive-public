@@ -1,0 +1,33 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — TAB BAR PARTIAL
+     Extracted from concert-tax/index.html (golden reference), May 2026
+
+     TOKEN SLOTS:
+       {{PIECE_NAME}}   — Used in aria-label
+       {{TAB_2_LABEL}}  — Label for argument tab 2  e.g. The Data
+       {{TAB_3_LABEL}}  — Label for argument tab 3  e.g. The Double Standard
+       {{TAB_4_LABEL}}  — Label for argument tab 4  e.g. History
+
+     HARDCODED:
+       Tab 1 = Overview  (always first)
+       Tab 5 = Take Action
+       Tab 6 = Spread the Word
+
+     NOTE: For a 5-tab piece, delete the Tab 4 button here AND its
+     corresponding panel section below.
+
+     Tab IDs used here must match section IDs in the panels:
+       tab-overview, tab-2, tab-3, tab-4, tab-take-action, tab-spread
+     You may rename tab-2 / tab-3 / tab-4 to slug-friendly IDs
+     (e.g. tab-the-data) — keep button data-target and section id in sync.
+     ────────────────────────────────────────────────────────────── -->
+
+<!-- ── 6. TABS ── -->
+<div class="ai-tabs" id="ct-tabs" role="tablist" aria-label="{{PIECE_NAME}} sections">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"    data-target="tab-overview">Overview</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-2"           data-target="tab-2">{{TAB_2_LABEL}}</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-3"           data-target="tab-3">{{TAB_3_LABEL}}</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-4"           data-target="tab-4">{{TAB_4_LABEL}}</button><!-- For a 5-tab piece, delete this line and its panel -->
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action" data-target="tab-take-action">Take Action</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"      data-target="tab-spread">Spread the Word</button>
+</div>

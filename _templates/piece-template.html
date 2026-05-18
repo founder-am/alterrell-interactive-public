@@ -1,0 +1,870 @@
+<!--
+  ALTERRELL INTERACTIVE — PIECE TEMPLATE
+  Generated from concert-tax/index.html (golden reference)
+  Date: May 2026
+
+  TO USE THIS TEMPLATE:
+  1. Copy this file to [piece-slug]/index.html
+  2. Find and replace all {{TOKEN_SLOTS}} with piece-specific content
+  3. Duplicate the Tab 2 panel section for additional argument tabs (tabs 3, 4)
+  4. For dark treatment: uncomment the CSS override block in the <style> tag
+  5. Card HTML comes from card design sessions — paste into gallery containers
+  6. For a 5-tab piece: delete the Tab 4 button in the tab bar and its panel section
+
+  EDITORIAL CHECKLIST (must be answered in piece brief before build):
+  1. Dark treatment or standard?
+  2. If dark: accent color, bg color, card bg color
+  3. Headline and subhead
+  4. Tab 2 label
+  5. Tab 3 label
+  6. Tab 4 label (or "cut" for 5-tab piece)
+  7. Any tabs with data-driven accordions? Which tab, how many entries?
+  8. Take Action: who / ask / tool / lowest-friction action
+  9. Spread the Word: share copy for X, Instagram, text
+  10. Stat cards in hero? (If yes: how many, what data)
+  11. Card map per tab (component type, data, editorial line placeholder)
+
+  FIND/REPLACE GUIDE:
+  — Replace all {{TOKEN}} with piece-specific values before deploying
+  — The ct- class prefix is inherited from the concert-tax golden reference.
+    Replace globally (Cmd+Shift+H) with your piece slug prefix if desired
+    (e.g. cc- for cost-ceiling). Since each piece is its own HTML file,
+    the ct- prefix is technically safe to keep as-is.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ── 1. HEAD ─────────────────────────────────────────────── -->
+  <!-- Source: _templates/head.html -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PIECE_TITLE}} — Alterrell Interactive</title>
+  <meta name="description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="{{OG_TITLE}} — Alterrell Interactive">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:url" content="{{OG_URL}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="{{OG_TITLE}} — Alterrell Interactive">
+  <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+
+  <!-- ── PIECE-LOCAL CSS ────────────────────────────────────── -->
+  <!-- Source: _templates/piece-local-css-standard.html -->
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       {{PIECE_TITLE}} — PIECE-LOCAL STYLES
+       {{PIECE_LANE}} lane. Built {{BUILD_DATE}}.
+       Do not modify alterrell-interactive.css.
+       ═══════════════════════════════════════════════════════ */
+
+    /* DARK TREATMENT — uncomment and fill these values:
+       --piece-bg: ;
+       --piece-accent: ;
+       --piece-card-bg: ;
+       --piece-text: ;
+       --piece-muted: ;
+       --piece-border: ;
+    */
+
+    /* ── SECTION OVERRIDES ── */
+    .ai-section {
+      padding: 2.5rem 10px;
+    }
+    @media (max-width: 640px) {
+      .ai-section {
+        padding: 2rem 10px;
+      }
+    }
+
+    /* ── HERO ── */
+    .ct-hero {
+      background: var(--paper);
+      padding: 1.5rem 10px 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ct-hero-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+    }
+    .ct-hero-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.625rem;
+    }
+    .ct-hero-hed {
+      flex: none;
+      max-width: none;
+    }
+    .ai-hero-hed.ct-hero-hed {
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+    .ct-hero-sub {
+      flex: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: var(--leading-body);
+      color: var(--ink-secondary);
+      padding-top: 0;
+    }
+    @media (max-width: 640px) {
+      .ct-hero-row { gap: 0.5rem; }
+    }
+
+    /* ── TAGS ── */
+    .ct-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.875rem;
+    }
+    .ct-tag {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.2rem 0.65rem;
+      border-radius: 2px;
+    }
+
+    /* ── CARD GALLERY ── */
+    .ct-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 560px) {
+      .ct-gallery {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 4px;
+      }
+      .ct-gallery > .card-square,
+      .ct-gallery > .card-tall {
+        flex: 0 0 calc(100vw - 56px);
+        scroll-snap-align: start;
+      }
+    }
+    .ct-swipe-cta {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--teal);
+      text-align: center;
+      padding: 8px 0 16px;
+    }
+    @media (max-width: 560px) {
+      .ct-swipe-cta { display: block; }
+    }
+
+    /* ── PROSE PLACEHOLDER ── */
+    .ct-prose {
+      width: 100%;
+      margin-bottom: 1.75rem;
+    }
+    .ct-prose .ai-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .ct-prose .ai-body:last-child { margin-bottom: 0; }
+    .ct-voice-pass {
+      border-left: 3px solid var(--border);
+      padding: 1rem 1.25rem;
+      background: var(--paper-warm);
+    }
+    .ct-voice-pass p {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+    }
+    .ct-voice-pass p + p { margin-top: 0.5rem; }
+
+    /* ── SECTION FLOOR NAV ── */
+    .ct-section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding: 1.25rem 0 0;
+      border-top: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .ct-snav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      min-height: var(--touch);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-align: left;
+    }
+    .ct-snav-btn.next { text-align: right; margin-left: auto; }
+    .ct-snav-dir {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .ct-snav-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .ct-snav-btn:hover .ct-snav-label { color: var(--teal); }
+
+    /* ── SPREAD THE WORD — Share grid ── */
+    .ct-share-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 480px) {
+      .ct-share-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .ct-share-dest {
+      background: var(--paper-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 1.25rem 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      min-height: 72px;
+      transition: background 0.15s;
+      font-family: var(--font-body);
+    }
+    .ct-share-dest:hover { background: var(--paper); text-decoration: none; }
+    .ct-share-dest.link-copied { background: var(--paper); }
+    .ct-share-dest-icon { font-size: 1.2rem; line-height: 1; }
+    .ct-share-dest-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .ct-share-dest:hover .ct-share-dest-label,
+    .ct-share-dest.link-copied .ct-share-dest-label { color: var(--teal); }
+    .ct-share-dest.link-copied .ct-share-dest-label { color: var(--success); }
+
+    /* ── PLATFORM CTAs in Spread the Word ── */
+    .ct-platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 640px) {
+      .ct-platform-grid { grid-template-columns: 1fr; }
+    }
+    .ct-platform-item {
+      background: var(--paper-card);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: var(--touch);
+    }
+    .ct-platform-item:hover { background: var(--paper); text-decoration: none; }
+    .ct-platform-icon { font-size: 1.4rem; line-height: 1; margin-bottom: 0.2rem; }
+    .ct-platform-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .ct-platform-name {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .ct-platform-cta {
+      margin-top: auto;
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      padding-top: 0.4rem;
+    }
+
+    /* ── PIECE-SPECIFIC STYLES BELOW ──────────────────── */
+
+  </style>
+</head>
+<body class="has-breadcrumb">
+
+<!-- ── 2. BREADCRUMB ── -->
+<!-- Source: _templates/nav.html -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">/</span>
+  <span class="ai-breadcrumb-current">{{PIECE_NAME}}</span>
+</nav>
+
+<!-- ── 3. NAV ── -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Substack</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</nav>
+
+<!-- ── 4. HERO ── -->
+<!-- Source: _templates/hero.html -->
+<header class="ct-hero" role="banner">
+  <div class="ct-hero-inner">
+    <div class="ct-hero-row">
+      <h1 class="ai-hero-hed ct-hero-hed">{{HERO_HEADLINE}}</h1>
+      <p class="ct-hero-sub">{{HERO_SUBHEAD}}</p>
+    </div>
+    <!-- OPTIONAL: stat cards go here. See concert-tax for reference. -->
+    <!-- OPTIONAL: hero tags -->
+    <div class="ct-tags" aria-label="Tags">
+      <!-- <span class="ct-tag">Tag 1</span> -->
+      <!-- <span class="ct-tag">Tag 2</span> -->
+      <!-- <span class="ct-tag">Tag 3</span> -->
+    </div>
+  </div>
+</header>
+
+<!-- ── 5. JOURNEY BLOCK ── -->
+<!-- Source: _templates/journey-block.html -->
+<!-- Rules: 3 items only (Watch / Read / Support), white background -->
+<div class="ai-journey" aria-label="Follow this piece">
+  <div class="ai-journey-inner">
+    <a href="{{YOUTUBE_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path primary"
+       aria-label="Watch {{PIECE_NAME}} on YouTube">
+      <div class="ai-journey-icon">&#9654;</div>
+      <div class="ai-journey-label">Watch</div>
+      <div class="ai-journey-title">{{PIECE_NAME}} on YouTube</div>
+      <div class="ai-journey-cta">YouTube &rarr;</div>
+    </a>
+    <a href="{{SUBSTACK_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path secondary"
+       aria-label="Read the full argument on Substack">
+      <div class="ai-journey-icon">&#10022;</div>
+      <div class="ai-journey-label">Read</div>
+      <div class="ai-journey-title">The full argument on Substack</div>
+      <div class="ai-journey-cta">Substack &rarr;</div>
+    </a>
+    <a href="{{KOFI_URL}}"
+       target="_blank" rel="noopener"
+       class="ai-journey-path tertiary"
+       aria-label="Support on Ko-fi">
+      <div class="ai-journey-icon">$</div>
+      <div class="ai-journey-label">Support</div>
+      <div class="ai-journey-title">Help keep this work free</div>
+      <div class="ai-journey-cta">Ko-fi &rarr;</div>
+    </a>
+  </div>
+</div>
+
+<!-- ── 6. TABS ── -->
+<!-- Source: _templates/tab-bar.html -->
+<!-- For a 5-tab piece, delete Tab 4 button and panel -->
+<div class="ai-tabs" id="ct-tabs" role="tablist" aria-label="{{PIECE_NAME}} sections">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"    data-target="tab-overview">Overview</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-2"           data-target="tab-2">{{TAB_2_LABEL}}</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-3"           data-target="tab-3">{{TAB_3_LABEL}}</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-4"           data-target="tab-4">{{TAB_4_LABEL}}</button><!-- For a 5-tab piece, delete this line and its panel -->
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action" data-target="tab-take-action">Take Action</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"      data-target="tab-spread">Spread the Word</button>
+</div>
+
+<!-- ── 7. TAB SECTIONS ── -->
+
+<!-- ════════════════════════════════════
+     TAB 1 — OVERVIEW
+     ════════════════════════════════════ -->
+<section id="tab-overview" class="ai-section active" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Overview</span>
+
+    <!-- Card gallery — Source: _templates/card-gallery.html -->
+    <!-- Cards come from card design sessions. Paste card HTML here. -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{OVERVIEW_GALLERY}} -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{OVERVIEW_PROSE}} — AMA voice pass paragraphs -->
+    </div>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <span></span>
+      <button class="ct-snav-btn next" data-goto="tab-2" aria-label="Go to {{TAB_2_LABEL}}">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">{{TAB_2_LABEL}}</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 2 — {{TAB_2_LABEL}}
+     Source: _templates/tab-panel.html
+     ════════════════════════════════════ -->
+<section id="tab-2" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">{{TAB_2_LABEL}}</span>
+
+    <!-- Card gallery -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{TAB_2_GALLERY}} — Cards from card design session -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{TAB_2_PROSE}} — AMA voice pass paragraphs -->
+    </div>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-overview" aria-label="Go to Overview">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">Overview</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="tab-3" aria-label="Go to {{TAB_3_LABEL}}">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">{{TAB_3_LABEL}}</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 3 — {{TAB_3_LABEL}}
+     Duplicate of tab-panel.html pattern
+     ════════════════════════════════════ -->
+<section id="tab-3" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">{{TAB_3_LABEL}}</span>
+
+    <!-- Card gallery -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{TAB_3_GALLERY}} — Cards from card design session -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{TAB_3_PROSE}} — AMA voice pass paragraphs -->
+    </div>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-2" aria-label="Go to {{TAB_2_LABEL}}">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">{{TAB_2_LABEL}}</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="tab-4" aria-label="Go to {{TAB_4_LABEL}}">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">{{TAB_4_LABEL}}</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 4 — {{TAB_4_LABEL}}
+     Duplicate of tab-panel.html pattern
+     For a 5-tab piece: delete this entire section AND the Tab 4 button above.
+     Also update Tab 3 floor nav "next" to point to tab-take-action.
+     ════════════════════════════════════ -->
+<section id="tab-4" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">{{TAB_4_LABEL}}</span>
+
+    <!-- Card gallery -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{TAB_4_GALLERY}} — Cards from card design session -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{TAB_4_PROSE}} — AMA voice pass paragraphs -->
+    </div>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-3" aria-label="Go to {{TAB_3_LABEL}}">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">{{TAB_3_LABEL}}</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="tab-take-action" aria-label="Go to Take Action">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">Take Action</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 5 — TAKE ACTION
+     Source: _templates/take-action-tab.html
+     ════════════════════════════════════ -->
+<section id="tab-take-action" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Take Action</span>
+
+    <!-- Card gallery — action cards from card design session -->
+    <!-- Card brief: who / ask / tool / lowest-friction action -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{ACTION_CARD_1}} -->
+      <!-- {{ACTION_CARD_2}} -->
+      <!-- {{ACTION_CARD_3}} -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{TAKE_ACTION_PROSE}} — AMA voice pass paragraphs -->
+    </div>
+
+    <!-- Sources accordion — Source: _templates/methodology.html -->
+    <details class="ct-sources-accordion" style="margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem;">
+      <summary style="font-family:var(--font-mono); font-size:var(--text-stamp); letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); cursor:pointer; list-style:none;">Sources &amp; Methodology</summary>
+      <div style="margin-top:0.75rem; font-family:var(--font-mono); font-size:var(--text-stamp); color:var(--ink-muted); line-height:1.7;">
+        <!-- {{SOURCES_LIST}} -->
+      </div>
+    </details>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-4" aria-label="Go to {{TAB_4_LABEL}}">
+        <!-- For a 5-tab piece: change data-goto to tab-3 and label to {{TAB_3_LABEL}} -->
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">{{TAB_4_LABEL}}</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="tab-spread" aria-label="Go to Spread the Word">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">Spread the Word</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 6 — SPREAD THE WORD
+     Source: _templates/spread-the-word-tab.html
+     ════════════════════════════════════ -->
+<section id="tab-spread" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Spread the Word</span>
+    <h2 class="ai-h2" style="margin-bottom:0.5rem;">Share this piece.</h2>
+    <p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">{{INTRO_SENTENCE}}</p>
+
+    <!-- All shareable cards — paste gallery HTML here -->
+    <div class="ct-gallery ct-card-gallery">
+      <!-- {{SHAREABLE_GALLERY}} -->
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Share destinations -->
+    <!-- Replace all {{TOKEN}} values with URL-encoded piece-specific strings -->
+    <div class="ct-share-grid" role="group" aria-label="Share destinations">
+      <a href="https://twitter.com/intent/tweet?url={{OG_URL}}&text={{SHARE_COPY_X}}%20%E2%80%94%20%40alterrell"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on X">
+        <span class="ct-share-dest-icon">&#120143;</span>
+        <span class="ct-share-dest-label">X / Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{OG_URL}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on Facebook">
+        <span class="ct-share-dest-icon">f</span>
+        <span class="ct-share-dest-label">Facebook</span>
+      </a>
+      <a href="https://wa.me/?text={{SHARE_COPY_TEXT}}%20%E2%80%94%20{{OG_URL}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on WhatsApp">
+        <span class="ct-share-dest-icon">&#9679;</span>
+        <span class="ct-share-dest-label">WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{OG_URL}}&title={{OG_TITLE}}"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on LinkedIn">
+        <span class="ct-share-dest-icon">in</span>
+        <span class="ct-share-dest-label">LinkedIn</span>
+      </a>
+      <a href="mailto:?subject={{OG_TITLE}}&body={{OG_DESCRIPTION}}%0A%0A{{OG_URL}}"
+         class="ct-share-dest"
+         aria-label="Share by Email">
+        <span class="ct-share-dest-icon">@</span>
+        <span class="ct-share-dest-label">Email</span>
+      </a>
+      <button class="ct-share-dest" id="ct-copy-link" aria-label="Copy link">
+        <span class="ct-share-dest-icon" id="ct-copy-icon">&#10040;</span>
+        <span class="ct-share-dest-label" id="ct-copy-label">Copy Link</span>
+      </button>
+    </div>
+
+    <!-- Instagram copy button (clipboard only — no web share API) -->
+    <div style="margin-bottom:1.5rem;">
+      <button class="ct-share-dest"
+              style="width:100%; flex-direction:row; gap:0.75rem; justify-content:flex-start; padding:1rem 1.25rem; border:1px solid var(--border); border-radius:var(--radius);"
+              onclick="if(navigator.clipboard){navigator.clipboard.writeText('{{SHARE_COPY_INSTAGRAM}}');this.querySelector('.ct-share-dest-label').textContent='Copied!';var b=this;setTimeout(function(){b.querySelector('.ct-share-dest-label').textContent='Copy Caption for Instagram';},2000);}"
+              aria-label="Copy caption for Instagram">
+        <span class="ct-share-dest-icon">&#128247;</span>
+        <span class="ct-share-dest-label">Copy Caption for Instagram</span>
+      </button>
+    </div>
+
+    <!-- Platform CTAs -->
+    <div class="ct-platform-grid" aria-label="Follow the platform">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Watch on YouTube">
+        <div class="ct-platform-icon">&#9654;</div>
+        <div class="ct-platform-label">Watch</div>
+        <div class="ct-platform-name">{{PIECE_NAME}} on YouTube</div>
+        <div class="ct-platform-cta">YouTube &rarr;</div>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Read on Substack">
+        <div class="ct-platform-icon">&#10022;</div>
+        <div class="ct-platform-label">Read</div>
+        <div class="ct-platform-name">The full argument on Substack</div>
+        <div class="ct-platform-cta">Substack &rarr;</div>
+      </a>
+      <a href="https://ko-fi.com/alterrell"
+         target="_blank" rel="noopener"
+         class="ct-platform-item"
+         aria-label="Support on Ko-fi">
+        <div class="ct-platform-icon">$</div>
+        <div class="ct-platform-label">Support</div>
+        <div class="ct-platform-name">Help keep this work free</div>
+        <div class="ct-platform-cta">Ko-fi &rarr;</div>
+      </a>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      <!-- {{SPREAD_PROSE}} — AMA voice pass: sharing note -->
+    </div>
+
+    <!-- Section floor nav (last tab — no next) -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-take-action" aria-label="Go to Take Action">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">Take Action</span>
+      </button>
+      <span></span>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ── 8. FOOTER ── -->
+<!-- Source: _templates/footer.html -->
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+      <div class="ai-footer-tagline">The data was always there &mdash; now it&rsquo;s yours.</div>
+    </div>
+
+    <div class="ai-footer-journey">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+         target="_blank" rel="noopener"
+         class="ai-footer-journey-item"
+         aria-label="Watch on YouTube">
+        <span class="ai-footer-journey-icon">&#9654;</span>
+        <div class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Watch</span>
+          <span class="ai-footer-journey-name">YouTube</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+         target="_blank" rel="noopener"
+         class="ai-footer-journey-item"
+         aria-label="Read on Substack">
+        <span class="ai-footer-journey-icon">&#10022;</span>
+        <div class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Read</span>
+          <span class="ai-footer-journey-name">Substack</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">&larr; All pieces</a>
+    </div>
+
+    <!-- Methodology — Source: _templates/methodology.html -->
+    <details class="ai-footer-methodology">
+      <summary>Methodology &amp; Sources</summary>
+      <div class="ai-footer-methodology-body">
+        <!-- {{METHODOLOGY_CONTENT}} -->
+      </div>
+    </details>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">&copy; 2026 Alterrell Interactive</span>
+      <a href="{{OG_URL}}" class="ai-footer-url">interactive.alterrell.com/{{PIECE_SLUG}}</a>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ── 9. SCRIPTS ── -->
+<!-- Source: _templates/scripts.html — identical across all pieces -->
+<script>
+(function () {
+  var tabs = Array.from(document.querySelectorAll('.ai-tab'));
+  var tabBar = document.querySelector('#ct-tabs');
+  var sections = tabs.map(function (tab) {
+    return document.getElementById(tab.dataset.target);
+  });
+
+  function activateTab(targetId) {
+    tabs.forEach(function (t) {
+      var isActive = t.dataset.target === targetId;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
+    });
+    sections.forEach(function (s) {
+      if (!s) return;
+      s.classList.toggle('active', s.id === targetId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var activeTab = tabs.find(function (t) { return t.dataset.target === targetId; });
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activateTab(tab.dataset.target);
+    });
+  });
+
+  document.querySelectorAll('.ct-snav-btn[data-goto]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activateTab(btn.dataset.goto);
+    });
+  });
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    } else if (tabBar) {
+      tabBar.classList.remove('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+
+  var copyBtn = document.getElementById('ct-copy-link');
+  var copyLabel = document.getElementById('ct-copy-label');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyLabel.textContent = 'Copied!';
+          copyBtn.classList.add('link-copied');
+          setTimeout(function () {
+            copyLabel.textContent = 'Copy Link';
+            copyBtn.classList.remove('link-copied');
+          }, 2000);
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        copyLabel.textContent = 'Copied!';
+        setTimeout(function () { copyLabel.textContent = 'Copy Link'; }, 2000);
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

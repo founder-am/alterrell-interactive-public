@@ -1,0 +1,55 @@
+<!-- ──────────────────────────────────────────────────────────────
+     ALTERRELL INTERACTIVE — ARGUMENT TAB PANEL PARTIAL
+     Modeled on Tab 2 — The Data (concert-tax, golden reference), May 2026
+
+     Duplicate this panel for each argument tab (tabs 2, 3, and optionally 4).
+
+     TOKEN SLOTS:
+       {{TAB_ID}}           — Section id attribute  e.g. tab-the-data
+       {{SECTION_TITLE}}    — Eyebrow + heading text  e.g. The Data
+       {{GALLERY_PLACEHOLDER}} — Card HTML from card design session(s)
+       {{PROSE_PLACEHOLDER}}   — AMA voice pass paragraphs
+
+     FLOOR NAV TOKENS (fill per-panel):
+       {{PREV_TAB_ID}}      — data-goto value for prev button  e.g. tab-overview
+       {{PREV_TAB_LABEL}}   — Label text for prev button  e.g. Overview
+       {{NEXT_TAB_ID}}      — data-goto value for next button  e.g. tab-3
+       {{NEXT_TAB_LABEL}}   — Label text for next button  e.g. The Double Standard
+
+     NOTE: The ct- class prefix is the Concert Tax piece prefix.
+     Replace ct- with your piece slug prefix throughout.
+     ────────────────────────────────────────────────────────────── -->
+
+<!-- ════════════════════════════════════
+     TAB — {{SECTION_TITLE}}
+     ════════════════════════════════════ -->
+<section id="{{TAB_ID}}" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">{{SECTION_TITLE}}</span>
+
+    <!-- Card gallery — cards come from card design sessions -->
+    <div class="ct-gallery ct-card-gallery">
+      {{GALLERY_PLACEHOLDER}}
+      <div class="ct-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
+    </div>
+
+    <!-- Voice pass -->
+    <div class="ct-prose">
+      {{PROSE_PLACEHOLDER}}
+    </div>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="{{PREV_TAB_ID}}" aria-label="Go to {{PREV_TAB_LABEL}}">
+        <span class="ct-snav-dir">&larr; Prev</span>
+        <span class="ct-snav-label">{{PREV_TAB_LABEL}}</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="{{NEXT_TAB_ID}}" aria-label="Go to {{NEXT_TAB_LABEL}}">
+        <span class="ct-snav-dir">Next &rarr;</span>
+        <span class="ct-snav-label">{{NEXT_TAB_LABEL}}</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
