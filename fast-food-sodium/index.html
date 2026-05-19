@@ -88,65 +88,6 @@
       line-height: 1.5;
     }
 
-    /* Journey block — icon left / text right */
-    .sodium-journey {
-      background: var(--paper-warm);
-      border-bottom: 1px solid var(--border);
-      padding: var(--space-sm) 1.25rem;
-    }
-    .sodium-journey-inner {
-      max-width: var(--max-editorial);
-      margin: 0 auto;
-    }
-    .sodium-journey-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .sodium-journey-item {
-      background: var(--paper-card);
-      display: grid;
-      grid-template-columns: 38% 62%;
-      text-decoration: none;
-      transition: background 0.15s;
-      min-height: 80px;
-    }
-    .sodium-journey-item:hover { background: var(--teal-bg); text-decoration: none; }
-    .sodium-journey-icon-cell {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-right: 1px solid var(--border);
-      padding: 1rem 0.5rem;
-    }
-    .sodium-journey-item:hover .sodium-journey-icon-cell { border-right-color: rgba(10,124,114,0.2); }
-    .sodium-journey-icon { font-size: 1.75rem; line-height: 1; color: var(--teal); }
-    .sodium-journey-text-cell {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 0.2rem;
-      padding: 0.875rem 1rem;
-    }
-    .sodium-journey-action {
-      font-family: var(--font-body);
-      font-size: var(--text-body);
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-    .sodium-journey-dest {
-      font-family: var(--font-mono);
-      font-size: var(--text-micro);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-    }
-
     /* Tab content sections */
     .section-intro {
       font-family: var(--font-body);
@@ -779,7 +720,6 @@
 
     @media (max-width: 640px) {
       .sodium-hero-stats { grid-template-columns: 1fr; }
-      .sodium-journey-grid { grid-template-columns: 1fr; }
       .comp-grid { grid-template-columns: 1fr; }
       .savings-row { grid-template-columns: 1fr; }
       .projection-bars { grid-template-columns: 1fr 1fr; }
@@ -794,6 +734,15 @@
 
 <body class="has-breadcrumb">
 
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <a href="/">Fast Food</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Fast Food's Hidden Sodium Tax</span>
+</div>
+
 <!-- NAV -->
 <nav class="ai-nav" role="navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
@@ -804,21 +753,12 @@
   </div>
 </nav>
 
-<!-- BREADCRUMB -->
-<div class="ai-breadcrumb">
-  <a href="/">Alterrell Interactive</a>
-  <span class="ai-breadcrumb-sep">›</span>
-  <a href="/">Fast Food</a>
-  <span class="ai-breadcrumb-sep">›</span>
-  <span class="ai-breadcrumb-current">Fast Food's Hidden Sodium Tax</span>
-</div>
-
 <!-- HERO -->
 <header class="sodium-hero" role="banner">
   <div class="sodium-hero-inner">
     <span class="sodium-hero-eyebrow">Alterrell Interactive · Fast Food Series</span>
-    <h1 class="sodium-hero-headline">The Hidden Cost<br>of Cheap Protein</h1>
-    <p class="sodium-hero-sub">The advertisements targeting your zip code and the sodium in your meal aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
+    <h1 class="sodium-hero-headline">Fast Food's Hidden Sodium Tax</h1>
+    <p class="sodium-hero-sub">The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
     <div class="sodium-hero-stats">
       <div class="sodium-stat-card">
         <div class="sodium-stat-num danger">2.4×</div>
@@ -837,33 +777,24 @@
 </header>
 
 <!-- JOURNEY BLOCK -->
-<section class="sodium-journey">
-  <div class="sodium-journey-inner">
-    <div class="sodium-journey-grid">
-      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Watch on YouTube" data-config-url="youtube">
-        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">▶</span></div>
-        <div class="sodium-journey-text-cell">
-          <span class="sodium-journey-action">Watch</span>
-          <span class="sodium-journey-dest">YouTube →</span>
-        </div>
-      </a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Read on Substack" data-config-url="substack">
-        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">✦</span></div>
-        <div class="sodium-journey-text-cell">
-          <span class="sodium-journey-action">Read</span>
-          <span class="sodium-journey-dest">Substack →</span>
-        </div>
-      </a>
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Support on Ko-fi">
-        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">$</span></div>
-        <div class="sodium-journey-text-cell">
-          <span class="sodium-journey-action">Support</span>
-          <span class="sodium-journey-dest">Ko-fi →</span>
-        </div>
-      </a>
-    </div>
+<nav class="ai-journey-compact" aria-label="Follow this piece">
+  <div class="ai-journey-compact-inner">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-compact-item primary" aria-label="Watch on YouTube" data-config-url="youtube">
+      <span class="ai-journey-compact-action">Watch</span>
+      <span class="ai-journey-compact-dest">YouTube →</span>
+    </a>
+    <div class="ai-journey-compact-divider" aria-hidden="true"></div>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-compact-item secondary" aria-label="Read on Substack" data-config-url="substack">
+      <span class="ai-journey-compact-action">Read</span>
+      <span class="ai-journey-compact-dest">Substack →</span>
+    </a>
+    <div class="ai-journey-compact-divider" aria-hidden="true"></div>
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-compact-item tertiary" aria-label="Support on Ko-fi">
+      <span class="ai-journey-compact-action">Support</span>
+      <span class="ai-journey-compact-dest">Ko-fi →</span>
+    </a>
   </div>
-</section>
+</nav>
 
 <!-- TAB BAR -->
 <nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
@@ -1562,8 +1493,8 @@
 </section>
 
 <!-- FOOTER — dark, platform standard -->
-<footer role="contentinfo" style="background:var(--dark-section);padding:var(--space-md) 1.25rem;">
-  <div style="max-width:var(--max-editorial);margin:0 auto;">
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
 
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:var(--space-md);">
       <div style="display:flex;flex-direction:column;gap:0.25rem;">
@@ -1578,14 +1509,14 @@
       </div>
     </div>
 
-    <!-- Methodology & Sources accordion — relocated from Sources tab -->
-    <details style="border-top:1px solid rgba(255,255,255,0.08);padding-top:var(--space-sm);">
-      <summary style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.12em;text-transform:uppercase;color:#555;cursor:pointer;list-style:none;padding:0.5rem 0;min-height:var(--touch);display:flex;align-items:center;">Methodology &amp; Sources</summary>
-      <div style="padding:var(--space-sm) 0;">
+    <!-- Methodology & Sources accordion -->
+    <details class="ai-footer-methodology">
+      <summary>Methodology &amp; Sources</summary>
+      <div class="ai-footer-methodology-body">
 
-        <p style="font-family:var(--font-mono);font-size:var(--text-micro);color:#444;line-height:1.7;margin-bottom:var(--space-sm);">Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024&ndash;2025. Sodium values for US items were taken directly from each chain&rsquo;s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald&rsquo;s UK, McDonald&rsquo;s Germany, KFC Japan, and McDonald&rsquo;s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g &times; 0.95g serving weight = ~228mg). CEO compensation data is from McDonald&rsquo;s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
+        <p class="ai-footer-methodology-note">Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024&ndash;2025. Sodium values for US items were taken directly from each chain&rsquo;s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald&rsquo;s UK, McDonald&rsquo;s Germany, KFC Japan, and McDonald&rsquo;s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g &times; 0.95g serving weight = ~228mg). CEO compensation data is from McDonald&rsquo;s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
 
-        <ol style="font-family:var(--font-mono);font-size:var(--text-micro);color:#444;line-height:1.8;padding-left:1.25rem;">
+        <ul class="ai-footer-sources">
           <li>McDonald&rsquo;s, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) &middot; 2024 &middot; <em>mcdonalds.com, bk.com, kfc.com and international equivalents</em></li>
           <li>Rudd Center for Food Policy &amp; Health &middot; Fast Food FACTS 2021 &middot; Nielsen data &middot; University of Connecticut &middot; <em>uconnruddcenter.org</em></li>
           <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. <em>Am J Prev Med.</em> 2024;67(6):820&ndash;831</li>
@@ -1601,7 +1532,7 @@
           <li>AFL-CIO Executive PayWatch &middot; 2023 &middot; <em>aflcio.org/paywatch</em></li>
           <li>Gordon M. Houston food deserts hinder healthy eating &middot; Houston Landing &middot; 2023</li>
           <li>Moore M et al. Food access and shopping behavior in Houston&rsquo;s Third Ward &middot; 2019</li>
-        </ol>
+        </ul>
 
       </div>
     </details>
