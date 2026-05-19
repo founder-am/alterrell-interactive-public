@@ -97,18 +97,18 @@
 
     /* ── SECTION OVERRIDES ── */
     .ai-section {
-      padding: 2.5rem 10px;
+      padding: 2.5rem 1.25rem;
     }
     @media (max-width: 640px) {
       .ai-section {
-        padding: 2rem 10px;
+        padding: 2rem 1.25rem;
       }
     }
 
     /* ── HERO ── */
     .ct-hero {
       background: var(--paper);
-      padding: 1.5rem 10px 1rem;
+      padding: 1.5rem 1.25rem 1rem;
       border-bottom: 1px solid var(--border);
     }
     .ct-hero-inner {
@@ -351,6 +351,148 @@
       color: var(--teal);
       padding-top: 0.4rem;
     }
+
+    /* ── TASK 6: TAB BAR ALIGNMENT ── */
+    #ct-tabs {
+      padding-left: max(1.25rem, calc((100% - var(--max-editorial)) / 2));
+      padding-right: max(1.25rem, calc((100% - var(--max-editorial)) / 2));
+    }
+
+    /* ── TASK 2: COMPACT JOURNEY BAR ── */
+    .ct-journey {
+      background: var(--paper-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ct-journey-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+    }
+    .ct-journey-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      text-decoration: none;
+      padding: 0 1.125rem;
+      min-height: var(--touch);
+      transition: opacity 0.15s;
+      flex-shrink: 0;
+    }
+    .ct-journey-item:first-child { padding-left: 0; }
+    .ct-journey-item:hover { opacity: 0.7; text-decoration: none; }
+    .ct-journey-action {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .ct-journey-dest {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ct-journey-primary .ct-journey-dest { color: var(--teal); }
+    .ct-journey-secondary .ct-journey-dest { color: var(--orange); }
+    .ct-journey-tertiary .ct-journey-dest { color: var(--ink-muted); }
+    .ct-journey-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── TASK 4: SWIPEABLE GALLERY ── */
+    .ct-swipeable-outer {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+    .ct-swipeable {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 16px;
+      padding: 4px 2px 8px;
+    }
+    .ct-swipeable::-webkit-scrollbar { display: none; }
+    .ct-swipeable > .card-square,
+    .ct-swipeable > .card-tall {
+      flex: 0 0 300px;
+      width: 300px;
+      scroll-snap-align: center;
+    }
+    @media (max-width: 640px) {
+      .ct-swipeable > .card-square,
+      .ct-swipeable > .card-tall {
+        flex: 0 0 calc(100vw - 3rem);
+        width: calc(100vw - 3rem);
+      }
+    }
+    .ct-swipeable-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      background: var(--paper-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink);
+      z-index: 10;
+      transition: background 0.15s;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .ct-swipeable-btn:hover { background: var(--paper); }
+    .ct-swipeable-btn.prev { left: -4px; }
+    .ct-swipeable-btn.next { right: -4px; }
+    @media (max-width: 640px) { .ct-swipeable-btn { display: none; } }
+    .ct-swipeable-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .ct-swipeable-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.15s;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .ct-swipeable-dot.active { background: var(--teal); }
+
+    /* ── TASK 5: SOURCES GROUP HEADERS ── */
+    .ct-sources-group {
+      counter-increment: none !important;
+      padding-top: 0.75rem !important;
+      font-size: 0.58rem !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7a7890 !important;
+      font-weight: 600;
+      border-bottom: none !important;
+      list-style: none;
+    }
+    .ct-sources-group::before {
+      content: '' !important;
+      display: none !important;
+    }
   </style>
 </head>
 <body class="has-breadcrumb">
@@ -388,34 +530,30 @@
 </header>
 
 <!-- ── 5. JOURNEY BLOCK ── -->
-<div class="ai-journey" aria-label="Follow this piece">
-  <div class="ai-journey-inner">
+<div class="ct-journey" aria-label="Follow this piece">
+  <div class="ct-journey-inner">
     <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
        target="_blank" rel="noopener"
-       class="ai-journey-path primary"
+       class="ct-journey-item ct-journey-primary"
        aria-label="Watch Concert Tax on YouTube">
-      <div class="ai-journey-icon">▶</div>
-      <div class="ai-journey-label">Watch</div>
-      <div class="ai-journey-title">Concert Tax on YouTube</div>
-      <div class="ai-journey-cta">YouTube →</div>
+      <span class="ct-journey-action">Watch</span>
+      <span class="ct-journey-dest">YouTube →</span>
     </a>
+    <div class="ct-journey-divider" aria-hidden="true"></div>
     <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
        target="_blank" rel="noopener"
-       class="ai-journey-path secondary"
+       class="ct-journey-item ct-journey-secondary"
        aria-label="Read the full argument on Substack">
-      <div class="ai-journey-icon">✦</div>
-      <div class="ai-journey-label">Read</div>
-      <div class="ai-journey-title">The full argument on Substack</div>
-      <div class="ai-journey-cta">Substack →</div>
+      <span class="ct-journey-action">Read</span>
+      <span class="ct-journey-dest">Substack →</span>
     </a>
+    <div class="ct-journey-divider" aria-hidden="true"></div>
     <a href="https://ko-fi.com/alterrell"
        target="_blank" rel="noopener"
-       class="ai-journey-path tertiary"
+       class="ct-journey-item ct-journey-tertiary"
        aria-label="Support on Ko-fi">
-      <div class="ai-journey-icon">$</div>
-      <div class="ai-journey-label">Support</div>
-      <div class="ai-journey-title">Help keep this work free</div>
-      <div class="ai-journey-cta">Ko-fi →</div>
+      <span class="ct-journey-action">Support</span>
+      <span class="ct-journey-dest">Ko-fi →</span>
     </a>
   </div>
 </div>
@@ -957,10 +1095,55 @@
 
     <span class="ai-eyebrow">Spread the Word</span>
     <h2 class="ai-h2" style="margin-bottom:0.5rem;">Share this piece.</h2>
-    <p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">Sharing is how this argument reaches people who haven't heard it yet. Pick a destination.</p>
+    <p class="ai-body" style="margin-bottom:1.75rem; max-width:480px;">If you enjoyed this piece, please consider supporting this independent publication — a one-person operation. We operate on tips and donations to avoid any perceived or actual conflicts of interest.</p>
 
-    <!-- All shareable cards -->
-    <div class="ct-gallery ct-card-gallery">
+    <!-- Share destinations -->
+    <div class="ct-share-grid" role="group" aria-label="Share destinations">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&text=Female%20Musicians%20Earn%20Less%20But%20Share%20More%20%E2%80%94%20Men%20set%20the%20ceiling.%20Women%20are%20required%20to%20exceed%20it%20just%20to%20belong.%20%40alterrell"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on X">
+        <span class="ct-share-dest-icon">𝕏</span>
+        <span class="ct-share-dest-label">X / Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on Facebook">
+        <span class="ct-share-dest-icon">f</span>
+        <span class="ct-share-dest-label">Facebook</span>
+      </a>
+      <a href="https://wa.me/?text=Female%20Musicians%20Earn%20Less%20But%20Share%20More%20%E2%80%94%20https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on WhatsApp">
+        <span class="ct-share-dest-icon">●</span>
+        <span class="ct-share-dest-label">WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&title=Female%20Musicians%20Earn%20Less%20But%20Share%20More"
+         target="_blank" rel="noopener"
+         class="ct-share-dest"
+         aria-label="Share on LinkedIn">
+        <span class="ct-share-dest-icon">in</span>
+        <span class="ct-share-dest-label">LinkedIn</span>
+      </a>
+      <a href="mailto:?subject=Female%20Musicians%20Earn%20Less%20But%20Share%20More&body=Men%20set%20the%20ceiling.%20Women%20are%20required%20to%20exceed%20it%20just%20to%20belong.%0A%0Ahttps%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
+         class="ct-share-dest"
+         aria-label="Share by Email">
+        <span class="ct-share-dest-icon">@</span>
+        <span class="ct-share-dest-label">Email</span>
+      </a>
+      <button class="ct-share-dest" id="ct-copy-link" aria-label="Copy link">
+        <span class="ct-share-dest-icon" id="ct-copy-icon">⎘</span>
+        <span class="ct-share-dest-label" id="ct-copy-label">Copy Link</span>
+      </button>
+    </div>
+
+    <!-- Swipeable shareable cards -->
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" id="ct-swipe-prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" id="ct-swipe-next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery" id="ct-swipeable-gallery">
 
       <!-- CARD 1: Bieber vs Carpenter (A4 contrast) -->
       <div class="card-square" style="flex-direction: column;">
@@ -1296,88 +1479,9 @@
       </div>
 
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery shareable -->
-
-
-    <!-- Share destinations -->
-    <div class="ct-share-grid" role="group" aria-label="Share destinations">
-      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&text=Female%20Musicians%20Earn%20Less%20But%20Share%20More%20%E2%80%94%20Men%20set%20the%20ceiling.%20Women%20are%20required%20to%20exceed%20it%20just%20to%20belong.%20%40alterrell"
-         target="_blank" rel="noopener"
-         class="ct-share-dest"
-         aria-label="Share on X">
-        <span class="ct-share-dest-icon">𝕏</span>
-        <span class="ct-share-dest-label">X / Twitter</span>
-      </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
-         target="_blank" rel="noopener"
-         class="ct-share-dest"
-         aria-label="Share on Facebook">
-        <span class="ct-share-dest-icon">f</span>
-        <span class="ct-share-dest-label">Facebook</span>
-      </a>
-      <a href="https://wa.me/?text=Female%20Musicians%20Earn%20Less%20But%20Share%20More%20%E2%80%94%20https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
-         target="_blank" rel="noopener"
-         class="ct-share-dest"
-         aria-label="Share on WhatsApp">
-        <span class="ct-share-dest-icon">●</span>
-        <span class="ct-share-dest-label">WhatsApp</span>
-      </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&title=Female%20Musicians%20Earn%20Less%20But%20Share%20More"
-         target="_blank" rel="noopener"
-         class="ct-share-dest"
-         aria-label="Share on LinkedIn">
-        <span class="ct-share-dest-icon">in</span>
-        <span class="ct-share-dest-label">LinkedIn</span>
-      </a>
-      <a href="mailto:?subject=Female%20Musicians%20Earn%20Less%20But%20Share%20More&body=Men%20set%20the%20ceiling.%20Women%20are%20required%20to%20exceed%20it%20just%20to%20belong.%0A%0Ahttps%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F"
-         class="ct-share-dest"
-         aria-label="Share by Email">
-        <span class="ct-share-dest-icon">@</span>
-        <span class="ct-share-dest-label">Email</span>
-      </a>
-      <button class="ct-share-dest" id="ct-copy-link" aria-label="Copy link">
-        <span class="ct-share-dest-icon" id="ct-copy-icon">⎘</span>
-        <span class="ct-share-dest-label" id="ct-copy-label">Copy Link</span>
-      </button>
-    </div>
-
-    <!-- Platform CTAs -->
-    <div class="ct-platform-grid" aria-label="Follow the platform">
-      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
-         target="_blank" rel="noopener"
-         class="ct-platform-item"
-         aria-label="Watch on YouTube">
-        <div class="ct-platform-icon">▶</div>
-        <div class="ct-platform-label">Watch</div>
-        <div class="ct-platform-name">Concert Tax on YouTube</div>
-        <div class="ct-platform-cta">YouTube →</div>
-      </a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
-         target="_blank" rel="noopener"
-         class="ct-platform-item"
-         aria-label="Read on Substack">
-        <div class="ct-platform-icon">✦</div>
-        <div class="ct-platform-label">Read</div>
-        <div class="ct-platform-name">The full argument on Substack</div>
-        <div class="ct-platform-cta">Substack →</div>
-      </a>
-      <a href="https://ko-fi.com/alterrell"
-         target="_blank" rel="noopener"
-         class="ct-platform-item"
-         aria-label="Support on Ko-fi">
-        <div class="ct-platform-icon">$</div>
-        <div class="ct-platform-label">Support</div>
-        <div class="ct-platform-name">Help keep this work free</div>
-        <div class="ct-platform-cta">Ko-fi →</div>
-      </a>
-    </div>
-
-    <!-- Voice pass -->
-    <div class="ct-prose">
-      <p class="ai-body">One of the most impactful ways to help shift the narrative and balance the scales is to spread awareness of the core issue. The below shareable cards can be shared across Instagram, X/Twitter, and other social media platforms.</p>
-      <p class="ai-body">If you enjoyed this article, please consider supporting this independent publication that is a one-person operation. We operate on tips and donations to avoid any perceived or actual conflicts of interest.</p>
-    </div>
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots" id="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Section floor nav (last tab — no next) -->
     <nav class="ct-section-nav" aria-label="Section navigation">
@@ -1431,13 +1535,38 @@
     <details class="ai-footer-methodology">
       <summary>Methodology &amp; Sources</summary>
       <div class="ai-footer-methodology-body">
-        <p class="ai-footer-methodology-note">Gross revenue figures from Billboard Boxscore and Pollstar, verified against public tour reporting. Production tier classifications based on publicly documented set design, crew size, and choreography credits. Cardi B fee and production spend figures sourced from her 2018 SiriusXM interview. Coachella headliner fee estimates based on public industry reporting; exact figures unconfirmed by either party.</p>
+        <p class="ai-footer-methodology-note">Production intensity scored on a four-tier proxy scale: 1 = solo/minimal instrument, 2 = small band/limited staging, 3 = dancers + full band/multiple costume changes, 4 = full theatrical with architectural set, aerial, or 10+ dancers and narrative structure. Revenue per show = reported tour gross divided by reported shows. Career touring scale (bubble size) = total reported lifetime gross from Billboard Boxscore. Genre classification uses primary Grammy category at time of most recent major tour.</p>
         <ul class="ai-footer-sources">
-          <li>Billboard Boxscore — touring gross revenue data, 2018–2025</li>
-          <li>Pollstar — concert industry revenue reporting</li>
-          <li>Cardi B, SiriusXM interview, 2018 — Coachella fee and production spend</li>
-          <li>Public reporting — Coachella 2026 headliner fee estimates</li>
-          <li>Tour documentation and press materials — production tier classification</li>
+          <li class="ct-sources-group">Coachella fees &amp; production</li>
+          <li>Rolling Stone — Bieber Coachella fee "north of $10M"</li>
+          <li>Grey Journal / Billboard — Standard Coachella headliner $5M per weekend benchmark</li>
+          <li>Stufish Entertainment Architects — Sabrina Carpenter Short n' Sweet set design documentation</li>
+          <li>Wikipedia / Short n' Sweet Tour — 12 dancers, tour production details</li>
+          <li>Hollywood Reporter — Bieber/Carpenter double standard debate, April 2026</li>
+          <li>Rolling Stone — Katy Perry, Lizzo, Zara Larsson reactions to Bieber set</li>
+          <li class="ct-sources-group">Tour grosses</li>
+          <li>Billboard Boxscore — All tour gross figures cited</li>
+          <li>Pollstar Year-End 2024, 2025 — Industry-wide touring data</li>
+          <li>Guinness World Records — Taylor Swift Eras Tour $2.07B confirmed</li>
+          <li>Billboard Top Rap Tours 2024 — Nicki Minaj $99.8M, Megan $40.2M, Doja $46M</li>
+          <li>Billboard Top R&amp;B Tours 2025 — The Weeknd, Usher, Chris Brown figures</li>
+          <li class="ct-sources-group">Production costs</li>
+          <li>Industry standard: 30–50% production/operating burn rate (Billboard, multiple sources)</li>
+          <li>Jalopnik — Taylor Swift Eras Tour ~50 trucks confirmed</li>
+          <li>WSJ / Morson — "Most technically ambitious production of the 21st century"</li>
+          <li>Variety — Drake It's All a Blur production breakdown</li>
+          <li class="ct-sources-group">Historical touring</li>
+          <li>Break Every Rule World Tour Wikipedia / Grokipedia — Tina Turner 1987, $60M gross</li>
+          <li>Adele Live Wikipedia — 2011 sparse staging, production designer intent documented</li>
+          <li>Rolling Stone — Adele Live 2016, $278M gross</li>
+          <li class="ct-sources-group">Dua Lipa / the punishment cycle</li>
+          <li>Rolling Stone, The Guardian, Bustle — "Go girl give us nothing" meme, two-year impact</li>
+          <li>Know Your Meme — Origin documentation, 2018 BRIT Awards</li>
+          <li>Radical Optimism Tour Wikipedia — $141M gross, production upgrade</li>
+          <li class="ct-sources-group">Radio &amp; MTV history</li>
+          <li>Massachusetts Daily Collegian — "Who gets to be Pop?"</li>
+          <li class="ct-sources-group">Industry terms note</li>
+          <li>This piece uses "female artist" and "male artist" following the nomenclature of the Recording Academy, Billboard, Pollstar, and Billboard Boxscore. These are the terms used in the data sources cited throughout.</li>
         </ul>
       </div>
     </details>
@@ -1531,6 +1660,51 @@
         setTimeout(function () { copyLabel.textContent = 'Copy Link'; }, 2000);
       }
     });
+  }
+
+  // Swipeable gallery
+  var gallery = document.getElementById('ct-swipeable-gallery');
+  var dotsContainer = document.getElementById('ct-swipeable-dots');
+  var prevBtn = document.getElementById('ct-swipe-prev');
+  var nextBtn = document.getElementById('ct-swipe-next');
+  if (gallery && dotsContainer) {
+    var cards = Array.from(gallery.children);
+    var dots = [];
+    cards.forEach(function (card, i) {
+      var dot = document.createElement('button');
+      dot.className = 'ct-swipeable-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to card ' + (i + 1));
+      dot.addEventListener('click', function () {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      });
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
+    });
+
+    function updateDots() {
+      var center = gallery.scrollLeft + gallery.offsetWidth / 2;
+      var activeIdx = 0;
+      var minDist = Infinity;
+      cards.forEach(function (card, i) {
+        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        var dist = Math.abs(center - cardCenter);
+        if (dist < minDist) { minDist = dist; activeIdx = i; }
+      });
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === activeIdx); });
+    }
+
+    gallery.addEventListener('scroll', updateDots, { passive: true });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        gallery.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        gallery.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+    }
   }
 })();
 </script>

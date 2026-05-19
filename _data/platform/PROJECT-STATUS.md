@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: May 18, 2026
+Updated: May 18, 2026 (Session 3 — Concert Tax structural fixes)
 
 ---
 
@@ -33,10 +33,11 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 
 ### Concert Tax
 **Title:** Female Musicians Earn Less But Share More
-**Status:** LIVE — hub card updated, showing as View in Industry column
-**Canonical file:** `concert-tax/index.html` (final produced May 17, 2026)
+**Status:** LIVE — structural fixes applied May 18, 2026
+**Canonical file:** `concert-tax/index.html`
 **Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
-**Next:** Session 3 — Type 2 structural fixes (voice pass placeholders, em dashes, AI tone audit).
+**Session 3 complete (Type 2 structural):** Container alignment (1.25rem), compact journey bar, Spread the Word reorder, swipeable card gallery, 22-source footer accordion, tab bar alignment.
+**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs).
 
 ### Naming Series
 - Part 0: LIVE at /naming/part-0/ (voice pass incomplete — em dashes, AI tone present)
