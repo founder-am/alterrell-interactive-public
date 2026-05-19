@@ -44,6 +44,12 @@
   --orange:         #c95f1a;
   --orange-bg:      #fff4ee;
 
+  /* Category system */
+  --category-industry: #0a7c72;
+  --category-culture:  #7B2D8B;
+  --category-govt:     #3B5998;
+  --category-health:   #B85C38;
+
   /* Semantic */
   --danger:         #b91c1c;
   --danger-bg:      #fef2f2;
@@ -85,7 +91,7 @@
   --space-2xl:      7rem;
 
   /* Layout */
-  --max-editorial:  860px;
+  --max-editorial:  1080px;
   --max-tool:       680px;
   --nav-height:     52px;
   --tab-height:     44px;
