@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: May 18, 2026 (Session 3 — Concert Tax structural fixes)
+Updated: 2026-05-19 (Batch B — Sodium Type 2 structural compliance + Concert Tax tab override removal)
 
 ---
 
@@ -33,11 +33,13 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 
 ### Concert Tax
 **Title:** Female Musicians Earn Less But Share More
-**Status:** LIVE — structural fixes applied May 18, 2026
+**Status:** LIVE — structural fixes applied May 18, 2026; tab CSS override removed 2026-05-19
 **Canonical file:** `concert-tax/index.html`
 **Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
 **Session 3 complete (Type 2 structural):** Container alignment (1.25rem), compact journey bar, Spread the Word reorder, swipeable card gallery, 22-source footer accordion, tab bar alignment.
-**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs).
+**Batch B (2026-05-19):** Removed redundant `#ct-tabs` CSS padding override — now inherits global `.ai-tabs` from Batch A.
+**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in next Concert Tax Type 2 session.
+**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs). OR Type 2 journey HTML swap — whichever AMA prioritizes.
 
 ### Naming Series
 - Part 0: LIVE at /naming/part-0/ (voice pass incomplete — em dashes, AI tone present)
@@ -54,11 +56,14 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Note:** Slug renamed from /big-black-love/ to /gay-uncles/. Redirect active in _redirects. OG image needs to be created at og/gay-uncles.png.
 
 ### Sodium
-**Status:** LIVE — deploy blockers resolved May 2026
-**Ko-fi:** Added to journey block (was "Explore" → now "Support / Ko-fi"). Deploy gate cleared.
-**Sources tab:** Relocated to dark footer accordion (collapsible). Tab removed from tab bar.
-**Subhead:** Reads — confirm with AMA: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture..."
-**Remaining:** Data refresh on menu items still needed — requires AMA to provide updated nutrition values. Not a build blocker, but piece data is 2024-2025 vintage.
+**Status:** LIVE — structural compliance complete as of 2026-05-19
+**Ko-fi:** Present in journey block (Watch / Read / Support).
+**Sources:** Dark footer accordion using global `.ai-footer-methodology` + `.ai-footer-sources` CSS classes.
+**Hero title:** "Fast Food's Hidden Sodium Tax" (matched hub card 2026-05-19).
+**Subhead:** AMA-confirmed May 18 version locked: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us."
+**Note — OG/Twitter meta descriptions:** Currently retain older word order + "$219B" stat. AMA to confirm whether to update or leave as social-optimized variant.
+**Batch B (2026-05-19):** Hero title fixed, subhead confirmed, journey block migrated to `.ai-journey-compact`, footer migrated to global classes, nav/breadcrumb DOM order corrected, redundant piece-local journey CSS removed.
+**Remaining:** Data refresh on menu items — requires AMA to provide updated nutrition values. Not a build blocker, piece data is 2024-2025 vintage.
 **Canonical file:** `_data/pieces/SODIUM-FACTPACK.md`
 
 ### Where's Beyoncé
