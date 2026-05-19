@@ -22,7 +22,10 @@ Production tracking file. Answers: what exists, what is in progress, what blocks
 ## PLATFORM
 
 ### Hub
-LIVE
+LIVE — rebuilt May 2026 with two-column category layout (Industry / Culture), filter pills, Coming Next section. Container upgraded to 1080px platform-wide.
+
+### Platform CSS
+Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.
 
 ---
 
@@ -30,11 +33,10 @@ LIVE
 
 ### Concert Tax
 **Title:** Female Musicians Earn Less But Share More
-**Status:** BUILT — awaiting hub card update
-**Blocker:** Hub card title/tagline mismatch (still says "The Male Concert Laziness Surcharge"). Batch A commit pending.
+**Status:** LIVE — hub card updated, showing as View in Industry column
 **Canonical file:** `concert-tax/index.html` (final produced May 17, 2026)
 **Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
-**Next:** Batch A hub card update, then deploy.
+**Next:** Session 2 — Type 2 structural fixes (voice pass placeholders, em dashes, AI tone audit).
 
 ### Naming Series
 - Part 0: LIVE (voice pass incomplete — em dashes, AI tone present)
@@ -50,10 +52,10 @@ LIVE
 **Note:** Working title "Big Black Love" retired from status tracking. Use brief title.
 
 ### Sodium
-**Status:** PARKED (Coming Soon on hub)
-**Blocker before reactivation:** Ko-fi missing from journey block (deploy gate). Data refresh needed on menu items.
+**Status:** Hub card flipped to View (live) on hub — May 2026
+**Deploy blockers still open:** Ko-fi missing from journey block (deploy gate). Data refresh needed on menu items.
 **Canonical file:** `_data/SODIUM-FACTPACK.md`
-**Next:** Type 1 at reactivation — data refresh, Ko-fi addition, subhead lock.
+**Next:** Type 1 at reactivation — data refresh, Ko-fi addition, subhead lock. Hub card is live but piece has open deploy gates.
 
 ### Where's Beyoncé
 **Working title:** Where's Beyoncé?
