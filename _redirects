@@ -6,5 +6,13 @@
 /congress             /congress-salary/      301
 /sodium               /fast-food-sodium/     301
 
+# Slug renames — May 2026
+# IMPORTANT: specific paths must precede the what-in-a-name/* catch-all
+# so Netlify matches part-0 and part-2 before falling through to part-1
+/what-in-a-name/part-0/*  /naming/part-0/:splat  301
+/what-in-a-name/part-2/*  /naming/part-2/:splat  301
+/what-in-a-name/*         /naming/part-1/:splat  301
+/big-black-love/*         /gay-uncles/:splat     301
+
 # Catch-all: anything not matched → 404
 /*    /404.html    404

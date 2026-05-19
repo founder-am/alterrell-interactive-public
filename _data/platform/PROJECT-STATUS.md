@@ -36,26 +36,29 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Status:** LIVE — hub card updated, showing as View in Industry column
 **Canonical file:** `concert-tax/index.html` (final produced May 17, 2026)
 **Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
-**Next:** Session 2 — Type 2 structural fixes (voice pass placeholders, em dashes, AI tone audit).
+**Next:** Session 3 — Type 2 structural fixes (voice pass placeholders, em dashes, AI tone audit).
 
 ### Naming Series
-- Part 0: LIVE (voice pass incomplete — em dashes, AI tone present)
-- Part 1: LIVE (strongest of three)
-- Part 2: LIVE (voice pass incomplete — em dashes, AI tone present)
+- Part 0: LIVE at /naming/part-0/ (voice pass incomplete — em dashes, AI tone present)
+- Part 1: LIVE at /naming/part-1/ (strongest of three)
+- Part 2: LIVE at /naming/part-2/ (voice pass incomplete — em dashes, AI tone present)
+**Slug rename completed May 2026:** /what-in-a-name/* → /naming/*. Redirects active in _redirects.
 **Next:** Type 1 editorial session per part — AI voice pass, then AMA rewrite.
-**Canonical file:** `_data/NAMING-SERIES-BRIEF.md`
+**Canonical file:** `_data/pieces/NAMING-SERIES-BRIEF.md`
 
-### Advice From Your Thick Gay Uncles (Big Black Love)
-**Status:** IN PROGRESS
-**Blocker:** Hub card has [AMA TO CONFIRM] in 3 fields. Essay not complete.
-**Canonical file:** `_data/BLACK-GAY-GEOGRAPHY-BRIEF.md`
-**Note:** Working title "Big Black Love" retired from status tracking. Use brief title.
+### Advice From Your Thick Gay Uncles
+**Status:** IN PROGRESS — folder renamed to /gay-uncles/ (May 2026)
+**Blocker:** Essay/voice pass not complete. [AMA TO PASTE] placeholders throughout piece.
+**Canonical file:** `_data/pieces/BLACK-GAY-GEOGRAPHY-BRIEF.md`
+**Note:** Slug renamed from /big-black-love/ to /gay-uncles/. Redirect active in _redirects. OG image needs to be created at og/gay-uncles.png.
 
 ### Sodium
-**Status:** Hub card flipped to View (live) on hub — May 2026
-**Deploy blockers still open:** Ko-fi missing from journey block (deploy gate). Data refresh needed on menu items.
-**Canonical file:** `_data/SODIUM-FACTPACK.md`
-**Next:** Type 1 at reactivation — data refresh, Ko-fi addition, subhead lock. Hub card is live but piece has open deploy gates.
+**Status:** LIVE — deploy blockers resolved May 2026
+**Ko-fi:** Added to journey block (was "Explore" → now "Support / Ko-fi"). Deploy gate cleared.
+**Sources tab:** Relocated to dark footer accordion (collapsible). Tab removed from tab bar.
+**Subhead:** Reads — confirm with AMA: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture..."
+**Remaining:** Data refresh on menu items still needed — requires AMA to provide updated nutrition values. Not a build blocker, but piece data is 2024-2025 vintage.
+**Canonical file:** `_data/pieces/SODIUM-FACTPACK.md`
 
 ### Where's Beyoncé
 **Working title:** Where's Beyoncé?
