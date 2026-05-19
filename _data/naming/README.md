@@ -22,6 +22,8 @@ Raw SSA data files (.txt, .csv) are gitignored — do not commit them here.
 - mariah_final.html — Mariah chart (built)
 
 ## Series status
-- Part 1 (The Fame Effect): LIVE at /what-in-a-name/
-- Part 2 (The Living Room — Sitcoms): IN DEVELOPMENT
-- Part 3 (Black Classics / Counter-examples): PLANNED
+- Part 0 (The Name Was Always Yours): LIVE at /naming/part-0/
+- Part 1 (The Fame Effect): LIVE at /naming/part-1/
+- Part 2 (The Living Room — Sitcoms): LIVE at /naming/part-2/
+- Part 3 (Black Classics / Counter-examples): PLANNED at /naming/part-3/
+Note: Slugs renamed from /what-in-a-name/* — May 2026. Redirects active.

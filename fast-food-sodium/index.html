@@ -256,16 +256,16 @@
     }
 
     /* ── CRITICAL LAYOUT — section ends at viewport bottom ── */
-    #overview, #the-system, #systemic, #compare, #data, #franchise, #sources {
+    #overview, #the-system, #systemic, #compare, #data, #franchise {
       display: none;
       flex-direction: column;
       min-height: calc(100vh - 128px); /* nav(52) + breadcrumb(32) + tabs(44) */
     }
-    #overview.active, #the-system.active, #systemic.active, #compare.active, #data.active, #franchise.active, #sources.active {
+    #overview.active, #the-system.active, #systemic.active, #compare.active, #data.active, #franchise.active {
       display: flex;
     }
     #overview .ai-inner, #the-system .ai-inner, #systemic .ai-inner,
-    #compare .ai-inner, #data .ai-inner, #franchise .ai-inner, #sources .ai-inner {
+    #compare .ai-inner, #data .ai-inner, #franchise .ai-inner {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -854,11 +854,11 @@
           <span class="sodium-journey-dest">Substack →</span>
         </div>
       </a>
-      <a href="#compare" class="sodium-journey-item" aria-label="Explore the interactive tools">
-        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">◎</span></div>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="sodium-journey-item" aria-label="Support on Ko-fi">
+        <div class="sodium-journey-icon-cell"><span class="sodium-journey-icon">$</span></div>
         <div class="sodium-journey-text-cell">
-          <span class="sodium-journey-action">Explore</span>
-          <span class="sodium-journey-dest">Compare your order ↓</span>
+          <span class="sodium-journey-action">Support</span>
+          <span class="sodium-journey-dest">Ko-fi →</span>
         </div>
       </a>
     </div>
@@ -873,7 +873,6 @@
   <button class="ai-tab" data-target="#compare" role="tab">Compare Your Order</button>
   <button class="ai-tab" data-target="#data" role="tab">Data</button>
   <button class="ai-tab" data-target="#franchise" role="tab">By Franchise</button>
-  <button class="ai-tab" data-target="#sources" role="tab">Sources</button>
 </nav>
 
 <!-- ══════════════════════════════════════
@@ -1094,6 +1093,7 @@
         <span class="section-nav-label">Systemic Issues</span>
       </a>
     </div>
+</section>
 
 <!-- ══════════════════════════════════════
      TAB 3 — SYSTEMIC ISSUES
@@ -1552,76 +1552,60 @@
         <span class="section-nav-label">Data</span>
       </a>
       <span class="section-nav-spacer"></span>
-      <a href="#sources" class="section-nav-btn next">
-        <span class="section-nav-direction">Next →</span>
-        <span class="section-nav-label">Sources</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     TAB 7 — SOURCES
-══════════════════════════════════════ -->
-<section id="sources" class="ai-section ai-section--white">
-  <div class="ai-inner">
-    <p class="ai-eyebrow">Sources</p>
-    <h2 class="ai-h2">The data behind this piece.</h2>
-
-    <details class="ai-details" style="margin-bottom: var(--space-md);">
-      <summary class="ai-details-summary">Methodology</summary>
-      <div class="ai-details-body">
-        <p>Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024–2025. Sodium values for US items were taken directly from each chain's official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald's UK, McDonald's Germany, KFC Japan, and McDonald's France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g × 0.95g serving weight = ~228mg). CEO compensation data is from McDonald's 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
-      </div>
-    </details>
-
-    <ol class="ai-sources-list">
-      <li>McDonald's, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) · 2024 · <em>mcdonalds.com, bk.com, kfc.com and international equivalents</em></li>
-      <li>Rudd Center for Food Policy & Health · Fast Food FACTS 2021 · Nielsen data · University of Connecticut · <em>uconnruddcenter.org</em></li>
-      <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. <em>Am J Prev Med.</em> 2024;67(6):820–831</li>
-      <li>CDC / NCCDPHP. Health and Economic Benefits of High Blood Pressure Interventions · 2024 · <em>cdc.gov/nccdphp</em></li>
-      <li>Martin SS et al.; American Heart Association. 2024 Heart Disease and Stroke Statistics. <em>Circulation.</em> 2024;149(8):e347–e913</li>
-      <li>Joynt Maddox KE et al.; American Heart Association. Forecasting the Economic Burden of Cardiovascular Disease and Stroke Through 2050. <em>Circulation.</em> 2024</li>
-      <li>USDA Economic Research Service · Food Access Research Atlas · 2019 data · <em>ers.usda.gov</em></li>
-      <li>Block JP, Scribner RA, DeSalvo KB. Fast food, race/ethnicity, and income: a geographic analysis. <em>Am J Prev Med.</em> 2004;27(3):211–217</li>
-      <li>Hilmers A, Hilmers DC, Dave J. Neighborhood disparities in access to healthy foods and their effects on environmental justice. <em>Am J Public Health.</em> 2012;102(9):1644–1654</li>
-      <li>Neckerman KM et al. Disparities in food access around homes and schools for New York City children. <em>PLOS One.</em> 2019</li>
-      <li>Arcaya MC et al. Do minority and poor neighborhoods have higher access to fast-food restaurants in the United States? <em>Health &amp; Place.</em> 2016;29:10–17</li>
-      <li>McDonald's 2024 Proxy Statement · SEC filing, 2023 compensation data · <em>sec.gov</em></li>
-      <li>AFL-CIO Executive PayWatch · 2023 · <em>aflcio.org/paywatch</em></li>
-      <li>Gordon M. Houston food deserts hinder healthy eating · Houston Landing · 2023</li>
-      <li>Moore M et al. Food access and shopping behavior in Houston's Third Ward · 2019</li>
-    </ol>
-
-    <!-- SECTION-FLOOR NAV -->
-    <div class="section-nav">
-      <a href="#franchise" class="section-nav-btn">
-        <span class="section-nav-direction">← Previous</span>
-        <span class="section-nav-label">By Franchise</span>
-      </a>
-      <span class="section-nav-spacer"></span>
       <a href="/" class="section-nav-btn next">
-        <span class="section-nav-direction">↑ Back to top</span>
+        <span class="section-nav-direction">↑</span>
         <span class="section-nav-label">All Projects</span>
       </a>
     </div>
+
   </div>
 </section>
 
-<!-- FOOTER — rebuilt tight -->
+<!-- FOOTER — dark, platform standard -->
 <footer role="contentinfo" style="background:var(--dark-section);padding:var(--space-md) 1.25rem;">
-  <div style="max-width:var(--max-editorial);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-    <div style="display:flex;flex-direction:column;gap:0.25rem;">
-      <div style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;"><span style="color:var(--teal);">Alterrell</span> Interactive · Fast Food Series</div>
-      <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;">© 2026 · interactive.alterrell.com/fast-food-sodium · Data as Dignity</div>
+  <div style="max-width:var(--max-editorial);margin:0 auto;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:var(--space-md);">
+      <div style="display:flex;flex-direction:column;gap:0.25rem;">
+        <div style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;"><span style="color:var(--teal);">Alterrell</span> Interactive · Fast Food Series</div>
+        <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;">&copy; 2026 · interactive.alterrell.com/fast-food-sodium · Data as Dignity</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;min-height:var(--touch);display:flex;align-items:center;gap:0.4rem;border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;transition:background 0.15s;" onmouseover="this.style.background='rgba(10,124,114,0.1)'" onmouseout="this.style.background='transparent'">$ Support the work</a>
+        <a href="/" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">&#8592; All Projects</a>
+        <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="substack">Substack</a>
+        <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="youtube">YouTube</a>
+      </div>
     </div>
-    <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;min-height:var(--touch);display:flex;align-items:center;gap:0.4rem;border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;transition:background 0.15s;" onmouseover="this.style.background='rgba(10,124,114,0.1)'" onmouseout="this.style.background='transparent'">$ Support the work</a>
-      <a href="/" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">← All Projects</a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="substack">Substack</a>
-      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="youtube">YouTube</a>
-    </div>
+
+    <!-- Methodology & Sources accordion — relocated from Sources tab -->
+    <details style="border-top:1px solid rgba(255,255,255,0.08);padding-top:var(--space-sm);">
+      <summary style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.12em;text-transform:uppercase;color:#555;cursor:pointer;list-style:none;padding:0.5rem 0;min-height:var(--touch);display:flex;align-items:center;">Methodology &amp; Sources</summary>
+      <div style="padding:var(--space-sm) 0;">
+
+        <p style="font-family:var(--font-mono);font-size:var(--text-micro);color:#444;line-height:1.7;margin-bottom:var(--space-sm);">Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024&ndash;2025. Sodium values for US items were taken directly from each chain&rsquo;s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald&rsquo;s UK, McDonald&rsquo;s Germany, KFC Japan, and McDonald&rsquo;s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g &times; 0.95g serving weight = ~228mg). CEO compensation data is from McDonald&rsquo;s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
+
+        <ol style="font-family:var(--font-mono);font-size:var(--text-micro);color:#444;line-height:1.8;padding-left:1.25rem;">
+          <li>McDonald&rsquo;s, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) &middot; 2024 &middot; <em>mcdonalds.com, bk.com, kfc.com and international equivalents</em></li>
+          <li>Rudd Center for Food Policy &amp; Health &middot; Fast Food FACTS 2021 &middot; Nielsen data &middot; University of Connecticut &middot; <em>uconnruddcenter.org</em></li>
+          <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. <em>Am J Prev Med.</em> 2024;67(6):820&ndash;831</li>
+          <li>CDC / NCCDPHP. Health and Economic Benefits of High Blood Pressure Interventions &middot; 2024 &middot; <em>cdc.gov/nccdphp</em></li>
+          <li>Martin SS et al.; American Heart Association. 2024 Heart Disease and Stroke Statistics. <em>Circulation.</em> 2024;149(8):e347&ndash;e913</li>
+          <li>Joynt Maddox KE et al.; American Heart Association. Forecasting the Economic Burden of Cardiovascular Disease and Stroke Through 2050. <em>Circulation.</em> 2024</li>
+          <li>USDA Economic Research Service &middot; Food Access Research Atlas &middot; 2019 data &middot; <em>ers.usda.gov</em></li>
+          <li>Block JP, Scribner RA, DeSalvo KB. Fast food, race/ethnicity, and income: a geographic analysis. <em>Am J Prev Med.</em> 2004;27(3):211&ndash;217</li>
+          <li>Hilmers A, Hilmers DC, Dave J. Neighborhood disparities in access to healthy foods and their effects on environmental justice. <em>Am J Public Health.</em> 2012;102(9):1644&ndash;1654</li>
+          <li>Neckerman KM et al. Disparities in food access around homes and schools for New York City children. <em>PLOS One.</em> 2019</li>
+          <li>Arcaya MC et al. Do minority and poor neighborhoods have higher access to fast-food restaurants in the United States? <em>Health &amp; Place.</em> 2016;29:10&ndash;17</li>
+          <li>McDonald&rsquo;s 2024 Proxy Statement &middot; SEC filing, 2023 compensation data &middot; <em>sec.gov</em></li>
+          <li>AFL-CIO Executive PayWatch &middot; 2023 &middot; <em>aflcio.org/paywatch</em></li>
+          <li>Gordon M. Houston food deserts hinder healthy eating &middot; Houston Landing &middot; 2023</li>
+          <li>Moore M et al. Food access and shopping behavior in Houston&rsquo;s Third Ward &middot; 2019</li>
+        </ol>
+
+      </div>
+    </details>
+
   </div>
 </footer>
 
@@ -1814,7 +1798,7 @@ const MENU = {
   const tabBar = document.querySelector('.ai-tabs');
 
   function switchTab(targetSelector) {
-    document.querySelectorAll('#overview, #the-system, #systemic, #compare, #data, #franchise, #sources').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('#overview, #the-system, #systemic, #compare, #data, #franchise').forEach(s => s.classList.remove('active'));
     tabs.forEach(t => t.classList.remove('active'));
     const section = document.querySelector(targetSelector);
     const tab = document.querySelector(`.ai-tab[data-target="${targetSelector}"]`);

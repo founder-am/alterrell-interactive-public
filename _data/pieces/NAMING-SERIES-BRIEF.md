@@ -2,10 +2,9 @@
 **Platform:** Obsidian Futures · Cultural data storytelling lane
 **Status:** Series in production · Parts 0, 1, 2 built · Part 3 planned
 **Last updated:** April 16, 2026
-**Series URL:** interactive.alterrell.com/what-in-a-name/
-**Series landing page:** Builds after Part 3 ships. At that point
-  /what-in-a-name/ becomes the index. Part 1 moves to
-  /what-in-a-name/part-1/. Plan URL redirect in advance.
+**Series URL:** interactive.alterrell.com/naming/
+**Slug rename completed May 2026:** /naming/ → /naming/part-1/, /naming/part-0/ → /naming/part-0/, /naming/part-2/ → /naming/part-2/. Redirects in place at _redirects.
+**Series landing page:** Builds after Part 3 ships. Will live at /naming/.
 
 ---
 
@@ -130,7 +129,7 @@ supporting footnotes only.
 
 ### Part 0 — The Name Was Always Yours
 **Status:** Built, pending deploy
-**URL:** /what-in-a-name/part-0/
+**URL:** /naming/part-0/
 **Type:** Editorial essay, no charts
 **Argument:** Context for the entire series. Black Americans were
 stripped of the naming infrastructure other cultures take for granted.
@@ -143,7 +142,7 @@ Mills as a locked door → -son/-dóttir traditions → name approval laws
 ---
 
 ### Part 1 — The Fame Effect
-**Status:** LIVE at /what-in-a-name/
+**Status:** LIVE at /naming/
 **Type:** Data essay with 3 charts
 **Argument:** Fame doesn't just make stars. It makes names safe
 to give your child. Two mechanisms introduced: mainstream crossover
@@ -157,7 +156,7 @@ living_single_indexed.html (Latifah line)
 
 ### Part 2 — The Living Room
 **Status:** Built, pending deploy
-**URL:** /what-in-a-name/part-2/
+**URL:** /naming/part-2/
 **Type:** Data essay with 3 charts
 **Argument:** Sitcoms created two distinct patterns: character identity
 moving a name (Whitley — the role's aspirational coding moved it,
@@ -177,7 +176,7 @@ No data collection on platform.
 
 ### Part 3 — The Keisha Effect
 **Status:** Planned · Research pass needed
-**URL:** /what-in-a-name/part-3/
+**URL:** /naming/part-3/
 **Position:** Episode 3 — placed here deliberately to ground the series.
 Shows the pattern isn't always upward before the success stories pile up.
 **Type:** Data essay with decline charts
@@ -203,7 +202,7 @@ specifically. Connect explicitly.
 
 ### Part 4 — Gone But Not Forgotten
 **Status:** Planned
-**URL:** /what-in-a-name/part-4/
+**URL:** /naming/part-4/
 **Type:** Data essay with 2 charts + 1 stat card
 **Argument:** Death doesn't end a name's life. Sometimes it begins it.
 **Key data:**
@@ -224,7 +223,7 @@ confounding factor.
 
 ### Part 5 — The Big Screen
 **Status:** Planned
-**URL:** /what-in-a-name/part-5/
+**URL:** /naming/part-5/
 **Type:** Data essay with charts
 **Argument:** Awards create legitimacy — but the data shows it's the
 role, not always the award, that moves the name. Sometimes it's the
@@ -246,7 +245,7 @@ Waiting to Exhale name candidates.
 
 ### Part 6 — The Court
 **Status:** Planned
-**URL:** /what-in-a-name/part-6/
+**URL:** /naming/part-6/
 **Type:** Data essay with charts
 **Argument:** Athletes moved names with enormous increase factors
 but small absolute numbers. This is Community Authority, not crossover.
@@ -275,7 +274,7 @@ Pull Hakeem (Olajuwon) — tier list shows 4× from 1989.
 
 ### Part 7 — The Runway
 **Status:** Planned
-**URL:** /what-in-a-name/part-7/
+**URL:** /naming/part-7/
 **Type:** Data essay with charts
 **Argument:** Modeling and fashion operate at the intersection of
 beauty standards and visibility. Who defines what's aspirational
@@ -302,7 +301,7 @@ Kimora Lee Simmons visibility).
 
 ### Part 8 — Bougie by Design
 **Status:** Planned · Research pass needed
-**URL:** /what-in-a-name/part-8/
+**URL:** /naming/part-8/
 **Type:** Data essay with charts
 **Argument:** A specific subset of Black naming choices is
 aspirational by design — names coded as upper-class, educated,
@@ -335,7 +334,7 @@ identification for each name.
 
 ### Part 9 — The Arabic Claim
 **Status:** Planned
-**URL:** /what-in-a-name/part-9/
+**URL:** /naming/part-9/
 **Type:** Data essay — connects back to Part 0 thematically
 **Argument:** Arabic names in Black America are not incidental.
 They represent a deliberate tradition of cultural and spiritual
@@ -370,7 +369,7 @@ The data shows the community chose them anyway."
 
 ### Part 10 — The Page
 **Status:** Planned
-**URL:** /what-in-a-name/part-10/
+**URL:** /naming/part-10/
 **Type:** Data essay with charts
 **Argument:** Literary authority moves names differently than pop fame.
 Slower. Smaller in absolute numbers. Concentrated in communities
@@ -398,7 +397,7 @@ Confirm Maya sustained pattern from raw data.
 
 ### Part 11 — Black Classics
 **Status:** Planned — series finale
-**URL:** /what-in-a-name/part-11/
+**URL:** /naming/part-11/
 **Type:** Data essay — thematic series close
 **Argument:** The most powerful naming act is the one that doesn't
 need permission from a famous person. Jamal, Malik, Darius —
@@ -477,7 +476,7 @@ Each part must be reviewed and deployed before the next begins.
 3. ✅ Part 2 — built, deploy after Part 0
 4. Part 3 — research pass first, then build
 5. Series landing page — builds after Part 3 ships
-   (URL restructure: /what-in-a-name/ becomes index)
+   (URL restructure: /naming/ becomes index)
 6. Parts 4–11 — sequential, one research session per part minimum
 
 **No part should be built without:**
