@@ -837,4 +837,42 @@ If no new decisions were made this week, say so and we're done.
 
 *End of May 18, 2026 update. Three parts: staleness audit (Part 4), template standardization (Part 5), process improvements (Part 6).*
 
+---
+
+## 2026-05-20 SESSION DECISIONS — Concert Tax Type 2 (gallery unification + journey fix)
+
+### D-20. Journey bar item layout — LOCKED standard for all pieces
+
+**Decision:** Compact journey bar items are two-line stacked (not inline). All future pieces must use these values.
+
+| Property | Value | Rationale |
+|---|---|---|
+| `.ct-journey-item` `flex-direction` | `column` | Action word on top, destination stamp below — clear visual hierarchy |
+| `.ct-journey-item` `align-items` | `flex-start` | Left-aligned within each item column |
+| `.ct-journey-item` `gap` | `8px` | Enough separation between action and destination without crowding |
+| `.ct-journey-item` `padding` | `12px 1.25rem` | Top/bottom breathing room; left/right matches content container edge |
+| `.ct-journey-action` `font-size` | `15px` | Reads clearly on desktop and mobile without scaling |
+| `.ct-journey-action` `font-weight` | `600` | Heavier than the destination stamp — creates weight hierarchy |
+| `.ct-journey-dest` `font-size` | `9px` | Mono stamp, secondary — noticeably smaller than action |
+| `.ct-journey-divider` `height` | `36px` | Tall enough to visually separate items without reaching card height |
+
+**Captured from:** Concert Tax piece-local `.ct-journey-*` styles, confirmed 2026-05-20.
+**Template extraction:** When Type 3 template session runs, these values must be captured into `_templates/piece-template.html` journey bar partial. Do NOT use the `.ai-journey-compact` global values (those are the Batch A defaults; the Concert Tax values are the AMA-confirmed standard).
+
+---
+
+### D-21. Card gallery pattern — swipeable carousel is the only gallery layout
+
+**Decision:** `.ct-gallery` (grid layout, desktop → mobile fallback) is retired. All card galleries use `.ct-swipeable-outer` + `.ct-swipeable` at all viewport widths.
+
+**Standard:** Cards fixed at 300px on desktop, `calc(100vw - 3rem)` on mobile. Arrow buttons on desktop (hidden ≤640px). Dot indicators always visible below carousel.
+
+**Applied to:** Concert Tax — Overview, The Data, The Double Standard, History, Take Action (all converted 2026-05-20). Spread the Word was already correct.
+
+**Do NOT:** Reintroduce grid layout for card galleries in any piece. If a piece needs a grid of non-card elements (metric boxes, stat panels), that is a separate component — not `.ct-gallery`.
+
+---
+
+*End of 2026-05-20 update.*
+
 *End of log. Update this file after every session that makes a design decision.*

@@ -160,41 +160,6 @@
       border-radius: 2px;
     }
 
-    /* ── CARD GALLERY ── */
-    .ct-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-    @media (max-width: 560px) {
-      .ct-gallery {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 12px;
-        padding-bottom: 4px;
-      }
-      .ct-gallery > .card-square,
-      .ct-gallery > .card-tall {
-        flex: 0 0 calc(100vw - 56px);
-        scroll-snap-align: start;
-      }
-    }
-    .ct-swipe-cta {
-      display: none;
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--teal);
-      text-align: center;
-      padding: 8px 0 16px;
-    }
-    @media (max-width: 560px) {
-      .ct-swipe-cta { display: block; }
-    }
-
     /* ── PROSE PLACEHOLDER ── */
     .ct-prose {
       width: 100%;
@@ -368,10 +333,11 @@
     }
     .ct-journey-item {
       display: flex;
-      align-items: center;
-      gap: 0.375rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
       text-decoration: none;
-      padding: 0 1.125rem;
+      padding: 12px 1.25rem;
       min-height: var(--touch);
       transition: opacity 0.15s;
       flex-shrink: 0;
@@ -380,13 +346,13 @@
     .ct-journey-item:hover { opacity: 0.7; text-decoration: none; }
     .ct-journey-action {
       font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--ink);
     }
     .ct-journey-dest {
       font-family: var(--font-mono);
-      font-size: var(--text-micro);
+      font-size: 9px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -395,7 +361,7 @@
     .ct-journey-tertiary .ct-journey-dest { color: var(--ink-muted); }
     .ct-journey-divider {
       width: 1px;
-      height: 14px;
+      height: 36px;
       background: var(--border);
       flex-shrink: 0;
     }
@@ -813,7 +779,10 @@
     <span class="ai-eyebrow">Overview</span>
 
     <!-- Card gallery -->
-    <div class="ct-gallery ct-card-gallery">
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery">
 
       <!-- CARD 1: Bieber vs Carpenter (A4 contrast) -->
       <div class="card-square" style="flex-direction: column;">
@@ -843,8 +812,9 @@
         </div>
       </div>
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery -->
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
@@ -875,7 +845,10 @@
     <span class="ai-eyebrow">The Data</span>
 
     <!-- Card gallery -->
-    <div class="ct-gallery ct-card-gallery">
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery">
 
       <!-- CARD 5: Cardi B fee vs spend (D1/D2 hybrid) -->
       <div class="card-square" style="background:var(--teal); padding:24px 20px;">
@@ -1004,8 +977,9 @@
         </div>
       </div>
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery -->
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
@@ -1120,7 +1094,10 @@
     <span class="ai-eyebrow">The Double Standard</span>
 
     <!-- Card gallery -->
-    <div class="ct-gallery ct-card-gallery">
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery">
 
       <!-- CARD 9: Dua Lipa arc (C1 timeline) -->
       <div class="card-square" style="background:var(--white); padding:22px 18px;">
@@ -1209,8 +1186,9 @@
         </div>
       </div>
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery -->
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
@@ -1244,7 +1222,10 @@
     <span class="ai-eyebrow">History</span>
 
     <!-- Card gallery -->
-    <div class="ct-gallery ct-card-gallery">
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery">
 
       <!-- CARD 14: "Men performed" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
@@ -1287,8 +1268,9 @@
         </div>
       </div>
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery -->
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
@@ -1323,7 +1305,10 @@
     <span class="ai-eyebrow">Take Action</span>
 
     <!-- Card gallery -->
-    <div class="ct-gallery ct-card-gallery">
+    <div class="ct-swipeable-outer">
+      <button class="ct-swipeable-btn prev" aria-label="Previous card">‹</button>
+      <button class="ct-swipeable-btn next" aria-label="Next card">›</button>
+      <div class="ct-swipeable ct-card-gallery">
 
       <!-- CARD 16: "Beyoncé prices" (D2 pull quote) -->
       <div class="card-square" style="background:var(--teal); justify-content:center; padding:28px 24px;">
@@ -1375,8 +1360,9 @@
         </div>
       </div>
 
-      <div class="ct-swipe-cta">← Swipe to explore all cards →</div>
-    </div><!-- /.ct-gallery -->
+      </div><!-- /.ct-swipeable -->
+      <div class="ct-swipeable-dots"></div>
+    </div><!-- /.ct-swipeable-outer -->
 
     <!-- Voice pass -->
     <div class="ct-prose">
@@ -1976,14 +1962,16 @@
     });
   }
 
-  // Swipeable gallery
-  var gallery = document.getElementById('ct-swipeable-gallery');
-  var dotsContainer = document.getElementById('ct-swipeable-dots');
-  var prevBtn = document.getElementById('ct-swipe-prev');
-  var nextBtn = document.getElementById('ct-swipe-next');
-  if (gallery && dotsContainer) {
+  // Swipeable galleries — handles every .ct-swipeable-outer on the page
+  document.querySelectorAll('.ct-swipeable-outer').forEach(function (outer) {
+    var gallery = outer.querySelector('.ct-swipeable');
+    var dotsEl  = outer.querySelector('.ct-swipeable-dots');
+    var prevBtn = outer.querySelector('.ct-swipeable-btn.prev');
+    var nextBtn = outer.querySelector('.ct-swipeable-btn.next');
+    if (!gallery || !dotsEl) return;
+
     var cards = Array.from(gallery.children);
-    var dots = [];
+    var dots  = [];
     cards.forEach(function (card, i) {
       var dot = document.createElement('button');
       dot.className = 'ct-swipeable-dot' + (i === 0 ? ' active' : '');
@@ -1991,35 +1979,25 @@
       dot.addEventListener('click', function () {
         card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
-      dotsContainer.appendChild(dot);
+      dotsEl.appendChild(dot);
       dots.push(dot);
     });
 
     function updateDots() {
-      var center = gallery.scrollLeft + gallery.offsetWidth / 2;
+      var center    = gallery.scrollLeft + gallery.offsetWidth / 2;
       var activeIdx = 0;
-      var minDist = Infinity;
+      var minDist   = Infinity;
       cards.forEach(function (card, i) {
-        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        var dist = Math.abs(center - cardCenter);
+        var dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - center);
         if (dist < minDist) { minDist = dist; activeIdx = i; }
       });
       dots.forEach(function (d, i) { d.classList.toggle('active', i === activeIdx); });
     }
 
     gallery.addEventListener('scroll', updateDots, { passive: true });
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        gallery.scrollBy({ left: -320, behavior: 'smooth' });
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        gallery.scrollBy({ left: 320, behavior: 'smooth' });
-      });
-    }
-  }
+    if (prevBtn) prevBtn.addEventListener('click', function () { gallery.scrollBy({ left: -320, behavior: 'smooth' }); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { gallery.scrollBy({ left:  320, behavior: 'smooth' }); });
+  });
 })();
 
 // ── CONCERT BUILDER ──
