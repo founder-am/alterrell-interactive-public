@@ -38,8 +38,13 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
 **Session 3 complete (Type 2 structural):** Container alignment (1.25rem), compact journey bar, Spread the Word reorder, swipeable card gallery, 22-source footer accordion, tab bar alignment.
 **Batch B (2026-05-19):** Removed redundant `#ct-tabs` CSS padding override — now inherits global `.ai-tabs` from Batch A.
-**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in next Concert Tax Type 2 session.
-**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs). OR Type 2 journey HTML swap — whichever AMA prioritizes.
+**2026-05-20 (Type 2 — gallery + journey):**
+- All 5 tab card galleries converted from `.ct-gallery` (grid) to `.ct-swipeable-outer` carousel pattern. `.ct-gallery` CSS removed.
+- Gallery JS generalized: was ID-based single-gallery, now class-based multi-gallery (`querySelectorAll('.ct-swipeable-outer')`).
+- Journey bar items updated: `flex-direction: column`, `gap: 8px`, `padding: 12px 1.25rem`, action 15px/600, dest 9px, divider 36px. Locked as platform standard in DESIGN-DECISION-LOG.md D-20.
+- Concert Builder interactive added to Data tab (previous session).
+**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in Type 3 template extraction session.
+**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs).
 
 ### Naming Series
 - Part 0: LIVE at /naming/part-0/ (voice pass incomplete — em dashes, AI tone present)
