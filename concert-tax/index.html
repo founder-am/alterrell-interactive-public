@@ -487,6 +487,246 @@
       content: '' !important;
       display: none !important;
     }
+
+    /* ── CONCERT BUILDER ── */
+    .cb-wrap {
+      background: #0a0a12;
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      margin-bottom: var(--space-md);
+    }
+    .cb-intro-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E8B923;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    .cb-intro-sub {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: rgba(248,246,241,0.35);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .cb-step { }
+    .cb-step + .cb-step {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .cb-step-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(232,185,35,0.6);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .cb-question {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-weight: 600;
+      color: rgba(248,246,241,0.92);
+      margin-bottom: 1rem;
+    }
+    .cb-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+    @media (max-width: 560px) {
+      .cb-options { grid-template-columns: 1fr; }
+    }
+    .cb-option {
+      background: #ffffff;
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      padding: 1rem 0.875rem;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-height: var(--touch);
+      width: 100%;
+    }
+    .cb-option:hover {
+      border-color: rgba(232,185,35,0.45);
+      background: #fffdf5;
+    }
+    .cb-option.selected {
+      border-color: #E8B923;
+      background: #fffceb;
+    }
+    .cb-option-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      line-height: 1.1;
+      color: #111111;
+    }
+    .cb-option-label {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 400;
+      color: #666666;
+      line-height: 1.3;
+    }
+    .cb-results-area {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .cb-results-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(232,185,35,0.6);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .cb-results-hed {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-weight: 600;
+      color: rgba(248,246,241,0.92);
+      margin-bottom: 1rem;
+    }
+    .cb-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.65rem;
+    }
+    @media (max-width: 400px) {
+      .cb-cards { grid-template-columns: 1fr; }
+    }
+    .cb-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .cb-card.near-match {
+      border: 1.5px solid rgba(232,185,35,0.35);
+      background: #fffcf0;
+    }
+    .cb-card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7a6000;
+      background: rgba(232,185,35,0.15);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .cb-card-name {
+      font-family: var(--font-editorial);
+      font-size: 1.1rem;
+      line-height: 1.2;
+      color: #111;
+    }
+    .cb-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: #555;
+      line-height: 1.55;
+    }
+    .cb-card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+      border-top: 1px solid #eeeeee;
+      padding-top: 0.5rem;
+    }
+    .cb-card-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .cb-card-stat-key {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999999;
+    }
+    .cb-card-stat-val {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: #111111;
+    }
+    .cb-card-stat-val.tbd {
+      color: #bbbbbb;
+      font-style: italic;
+      font-size: var(--text-micro);
+    }
+    .cb-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .cb-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #f0ede8;
+      color: #555555;
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+    }
+    .cb-no-results {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: rgba(248,246,241,0.45);
+      padding: var(--space-sm) 0;
+    }
+    .cb-meta { margin-top: 1rem; }
+    .cb-tbd-note {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: rgba(232,185,35,0.45);
+      line-height: 1.6;
+      margin-bottom: 0.4rem;
+    }
+    .cb-source-note {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: rgba(248,246,241,0.2);
+      line-height: 1.6;
+    }
+    .cb-reset {
+      margin-top: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E8B923;
+      background: none;
+      border: 1px solid rgba(232,185,35,0.25);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1.25rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      min-height: var(--touch);
+      display: inline-flex;
+      align-items: center;
+    }
+    .cb-reset:hover {
+      background: rgba(232,185,35,0.06);
+      border-color: rgba(232,185,35,0.5);
+    }
   </style>
 </head>
 <body class="has-breadcrumb">
@@ -774,6 +1014,86 @@
       <p class="ai-body">Cardi B's 2018 Coachella performance cost nearly $300,000 while she reportedly earned around $70,000 for her set. These economics reflect an understanding that female rappers are rarely afforded the privilege of minimalism while still being perceived as legitimate performers.</p>
       <p class="ai-body">The numbers also complicate how audiences discuss touring success. Taylor Swift and Beyoncé generated massive grosses through highly complex productions involving enormous human coordination. Yet artists like Ed Sheeran demonstrate that audiences are fully willing to support minimalist performance models at scale when attached to male performers. Revenue alone does not explain the production expectations gap.</p>
     </div>
+
+    <!-- ── CONCERT BUILDER ── -->
+    <div class="cb-wrap" id="concert-builder" aria-label="Concert Builder">
+
+      <span class="cb-intro-label">Concert Builder</span>
+      <span class="cb-intro-sub">Configure a concert. See who already built it.</span>
+
+      <!-- Step 1 -->
+      <div class="cb-step" id="cb-step-1">
+        <span class="cb-step-label">Step 1 of 3</span>
+        <div class="cb-question">How many dancers on stage?</div>
+        <div class="cb-options" role="group" aria-label="Dancer count options">
+          <button class="cb-option" data-step="1" data-value="none" aria-pressed="false">
+            <span class="cb-option-num">0</span>
+            <span class="cb-option-label">Just me</span>
+          </button>
+          <button class="cb-option" data-step="1" data-value="few" aria-pressed="false">
+            <span class="cb-option-num">1–5</span>
+            <span class="cb-option-label">A few</span>
+          </button>
+          <button class="cb-option" data-step="1" data-value="full" aria-pressed="false">
+            <span class="cb-option-num">15+</span>
+            <span class="cb-option-label">Full troupe</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2 (revealed after step 1) -->
+      <div class="cb-step" id="cb-step-2" hidden>
+        <span class="cb-step-label">Step 2 of 3</span>
+        <div class="cb-question">Costume changes?</div>
+        <div class="cb-options" role="group" aria-label="Costume change options">
+          <button class="cb-option" data-step="2" data-value="none" aria-pressed="false">
+            <span class="cb-option-num">0</span>
+            <span class="cb-option-label">One look, all night</span>
+          </button>
+          <button class="cb-option" data-step="2" data-value="few" aria-pressed="false">
+            <span class="cb-option-num">2–5</span>
+            <span class="cb-option-label">A few changes</span>
+          </button>
+          <button class="cb-option" data-step="2" data-value="many" aria-pressed="false">
+            <span class="cb-option-num">10+</span>
+            <span class="cb-option-label">Full wardrobe</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3 (revealed after step 2) -->
+      <div class="cb-step" id="cb-step-3" hidden>
+        <span class="cb-step-label">Step 3 of 3</span>
+        <div class="cb-question">Stage production?</div>
+        <div class="cb-options" role="group" aria-label="Stage production options">
+          <button class="cb-option" data-step="3" data-value="minimal" aria-pressed="false">
+            <span class="cb-option-num">Minimal</span>
+            <span class="cb-option-label">You, the band, a mic</span>
+          </button>
+          <button class="cb-option" data-step="3" data-value="mid" aria-pressed="false">
+            <span class="cb-option-num">Custom</span>
+            <span class="cb-option-label">Custom staging, LED, set design</span>
+          </button>
+          <button class="cb-option" data-step="3" data-value="max" aria-pressed="false">
+            <span class="cb-option-num">Spectacle</span>
+            <span class="cb-option-label">Theatrical, aerial, architectural</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Results (revealed after step 3) -->
+      <div class="cb-results-area" id="cb-results" hidden>
+        <span class="cb-results-label">Your concert profile</span>
+        <div class="cb-results-hed" id="cb-results-hed">Artists who built this</div>
+        <div class="cb-cards" id="cb-cards" aria-live="polite"></div>
+        <div class="cb-meta">
+          <p class="cb-tbd-note" id="cb-tbd-note" hidden>* Gross figures marked TBD require source verification before publish.</p>
+          <p class="cb-source-note">Pollstar · Billboard Boxscore · IQ Magazine · Rolling Stone · TAIT staging docs · Wikipedia tour pages</p>
+        </div>
+        <button class="cb-reset" id="cb-reset">Start over</button>
+      </div>
+
+    </div><!-- /.cb-wrap -->
 
     <!-- Section floor nav -->
     <nav class="ct-section-nav" aria-label="Section navigation">
@@ -1700,6 +2020,225 @@
       });
     }
   }
+})();
+
+// ── CONCERT BUILDER ──
+(function () {
+  var ARTISTS = [
+    { name:'Ed Sheeran',      dancers:'none', costumes:'none', staging:'mid',
+      gross:'$876M', shows:'188', dancers_s:'0',   changes:'0',   ticket:'$99',
+      desc:'One man and a guitar grossed $876M across 188 stadium shows. No dancers. No costume changes.',
+      tags:['Solo','Loop pedal','8.8M tickets sold'] },
+    { name:'Zach Bryan',      dancers:'none', costumes:'none', staging:'minimal',
+      gross:'$199M', shows:'49',  dancers_s:'0',   changes:'0',   ticket:'$190',
+      desc:'Jeans, a guitar, and raw vocals. $199M from 49 shows with minimal production.',
+      tags:['Solo/band','No frills','Country/folk'] },
+    { name:'Post Malone',     dancers:'none', costumes:'none', staging:'mid',
+      gross:'TBD',   shows:'Stadium tour ongoing', dancers_s:'0', changes:'0', ticket:'$150+',
+      desc:'Custom circular staging, full band, celebrity walkouts. Zero choreography investment.',
+      tags:['Band','Custom stage','Stadium'] },
+    { name:'Morgan Wallen',   dancers:'none', costumes:'none', staging:'mid',
+      gross:'TBD',   shows:'Stadium tour 2025', dancers_s:'0',    changes:'0',   ticket:'$150+',
+      desc:'Stadium-filling country with custom staging and celebrity guest walkouts. Zero choreography.',
+      tags:['Band','Stadium','Celebrity walkouts'] },
+    { name:'Drake',           dancers:'few',  costumes:'few',  staging:'mid',
+      gross:'$693M', shows:'Varies', dancers_s:'2–4', changes:'2–3', ticket:'$200+',
+      desc:'LED-heavy arena production with a small dancer rotation on select songs and a few outfit changes.',
+      tags:['LED visuals','Arena','A few looks'] },
+    { name:'Bad Bunny',       dancers:'few',  costumes:'few',  staging:'max',
+      gross:'$211M', shows:'Arena/stadium', dancers_s:'4–8', changes:'3–5', ticket:'$280',
+      desc:'Theatrical staging with select dancers and multiple looks. Heavy production, not quite full pop spectacle.',
+      tags:['Theatrical','Latin','$280 avg ticket'] },
+    { name:'Kendrick Lamar',  dancers:'few',  costumes:'few',  staging:'mid',
+      gross:'TBD',   shows:'Stadium 2025', dancers_s:'2–6',  changes:'2–3', ticket:'$150+',
+      desc:'Conceptual staging with select dancers. Super Bowl LIX halftime performer. Growing production ambition.',
+      tags:['Conceptual','Super Bowl LIX','Stadium'] },
+    { name:'SZA',             dancers:'few',  costumes:'few',  staging:'mid',
+      gross:'TBD',   shows:'Arena/stadium', dancers_s:'4–6', changes:'3–5', ticket:'$150+',
+      desc:'Visually rich arena show with a handful of dancers and several costume changes.',
+      tags:['Visual','Arena','R&B'] },
+    { name:'Billie Eilish',   dancers:'few',  costumes:'few',  staging:'mid',
+      gross:'TBD',   shows:'Arena', dancers_s:'2–4',          changes:'2–3', ticket:'$120+',
+      desc:'Visually distinctive arena shows with minimal dancers and a few wardrobe shifts.',
+      tags:['Minimal dancers','Visual','Arena'] },
+    { name:'Sabrina Carpenter',dancers:'few', costumes:'few',  staging:'mid',
+      gross:'TBD',   shows:'Arena', dancers_s:'4–8',          changes:'4–6', ticket:'$150+',
+      desc:'Pop-theatrical arena show with dancers, costume changes, and themed staging.',
+      tags:['Pop','Theatrical','Arena'] },
+    { name:'Dua Lipa',        dancers:'few',  costumes:'few',  staging:'mid',
+      gross:'TBD',   shows:'Arena/stadium', dancers_s:'6–10', changes:'4–6', ticket:'$130+',
+      desc:'Disco-pop production with dancers, multiple looks, and LED-heavy staging. Growing toward full spectacle.',
+      tags:['Dancers','Disco-pop','Arena'] },
+    { name:'Beyoncé',         dancers:'full', costumes:'many', staging:'max',
+      gross:'$579M', shows:'56',  dancers_s:'20+',            changes:'10+', ticket:'$198',
+      desc:'Robotic arms, a mechanical horse, 14 chefs, an automation team. $2.5M per night in production.',
+      tags:['20+ dancers','350+ crew','30 trucks'] },
+    { name:'Taylor Swift',    dancers:'full', costumes:'many', staging:'max',
+      gross:'$2.07B',shows:'149', dancers_s:'15',             changes:'16',  ticket:'$204',
+      desc:'90 trucks. 16 costume changes. Stage design over $100M. First tour to gross $2B.',
+      tags:['15 dancers','16 changes','90 trucks'] },
+    { name:'Madonna',         dancers:'full', costumes:'many', staging:'max',
+      gross:'$179M', shows:'64',  dancers_s:'15+',            changes:'10+', ticket:'$209',
+      desc:'Theatrical pop spectacle with full dance troupe and cinematic staging. Set the template everyone else follows.',
+      tags:['Full troupe','Theatrical','Pioneer'] },
+    { name:'Lady Gaga',       dancers:'full', costumes:'many', staging:'max',
+      gross:'Varies',shows:'Arena/stadium', dancers_s:'12–16', changes:'10+', ticket:'$175+',
+      desc:'Full choreography, elaborate costuming, conceptual staging. One of the highest production-investment artists touring.',
+      tags:['Full troupe','Conceptual','Pop spectacle'] },
+    { name:'Usher',           dancers:'full', costumes:'many', staging:'max',
+      gross:'TBD',   shows:'Arena', dancers_s:'12+',          changes:'8+',  ticket:'$150+',
+      desc:'Full choreography, roller skating, multiple wardrobe changes. Super Bowl LVIII halftime. One of the few men who invests like this.',
+      tags:['Male exception','Super Bowl LVIII','Full choreo'] },
+    { name:'Chris Brown',     dancers:'full', costumes:'many', staging:'max',
+      gross:'TBD',   shows:'Arena', dancers_s:'10–15',        changes:'6–8', ticket:'$120+',
+      desc:'Full dance troupe, multiple costume changes, athletic choreography. One of the few male artists with this production commitment.',
+      tags:['Male exception','Full choreo','Arena'] }
+  ];
+
+  var TBD_VALS = ['TBD','Varies'];
+  function isTbd(v) { return TBD_VALS.some(function(t){ return String(v).indexOf(t) !== -1; }); }
+
+  var sel = { 1: null, 2: null, 3: null };
+
+  function init() {
+    document.querySelectorAll('.cb-option').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var step = parseInt(btn.dataset.step, 10);
+        var val  = btn.dataset.value;
+        sel[step] = val;
+
+        document.querySelectorAll('.cb-option[data-step="' + step + '"]').forEach(function (b) {
+          b.classList.remove('selected');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-pressed', 'true');
+
+        if (step === 1) reveal('cb-step-2');
+        else if (step === 2) reveal('cb-step-3');
+        else if (step === 3) showResults();
+      });
+    });
+
+    document.getElementById('cb-reset').addEventListener('click', reset);
+  }
+
+  function reveal(id) {
+    var el = document.getElementById(id);
+    el.removeAttribute('hidden');
+    setTimeout(function () {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
+  }
+
+  function showResults() {
+    var d = sel[1], c = sel[2], s = sel[3];
+
+    var exact = ARTISTS.filter(function (a) {
+      return a.dancers === d && a.costumes === c && a.staging === s;
+    });
+
+    var near = [];
+    if (!exact.length) {
+      near = ARTISTS.filter(function (a) {
+        var m = 0;
+        if (a.dancers  === d) m++;
+        if (a.costumes === c) m++;
+        if (a.staging  === s) m++;
+        return m === 2;
+      });
+    }
+
+    var hed = document.getElementById('cb-results-hed');
+    var container = document.getElementById('cb-cards');
+    container.innerHTML = '';
+
+    var hasTbd = false;
+
+    if (exact.length) {
+      hed.textContent = 'Artists who built this exact profile';
+      exact.forEach(function (a) {
+        if (isTbd(a.gross)) hasTbd = true;
+        container.appendChild(buildCard(a, false));
+      });
+    } else if (near.length) {
+      hed.textContent = 'Close matches — 2 of 3 criteria';
+      near.forEach(function (a) {
+        if (isTbd(a.gross)) hasTbd = true;
+        container.appendChild(buildCard(a, true));
+      });
+    } else {
+      hed.textContent = 'No matches found';
+      var msg = document.createElement('p');
+      msg.className = 'cb-no-results';
+      msg.textContent = 'No artists in this dataset match that profile. Try a different combination.';
+      container.appendChild(msg);
+    }
+
+    var tbdNote = document.getElementById('cb-tbd-note');
+    hasTbd ? tbdNote.removeAttribute('hidden') : tbdNote.setAttribute('hidden', '');
+
+    reveal('cb-results');
+  }
+
+  function buildCard(artist, near) {
+    var card = document.createElement('div');
+    card.className = 'cb-card' + (near ? ' near-match' : '');
+
+    var html = '';
+    if (near) html += '<span class="cb-card-badge">Close match</span>';
+    html += '<div class="cb-card-name">' + esc(artist.name) + '</div>';
+    html += '<div class="cb-card-desc">'  + esc(artist.desc) + '</div>';
+
+    html += '<div class="cb-card-stats">';
+    [
+      { k:'Dancers', v: artist.dancers_s },
+      { k:'Changes', v: artist.changes   },
+      { k:'Gross',   v: artist.gross     },
+      { k:'Avg ticket', v: artist.ticket }
+    ].forEach(function (item) {
+      var tbd = isTbd(item.v);
+      html += '<div class="cb-card-stat">';
+      html += '<span class="cb-card-stat-key">'   + esc(item.k) + '</span>';
+      html += '<span class="cb-card-stat-val' + (tbd ? ' tbd' : '') + '">' + esc(tbd ? 'TBD*' : item.v) + '</span>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    if (artist.tags && artist.tags.length) {
+      html += '<div class="cb-card-tags">';
+      artist.tags.forEach(function (t) {
+        html += '<span class="cb-card-tag">' + esc(t) + '</span>';
+      });
+      html += '</div>';
+    }
+
+    card.innerHTML = html;
+    return card;
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  function reset() {
+    sel = { 1: null, 2: null, 3: null };
+    document.querySelectorAll('.cb-option').forEach(function (b) {
+      b.classList.remove('selected');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    ['cb-step-2','cb-step-3','cb-results'].forEach(function (id) {
+      document.getElementById(id).setAttribute('hidden', '');
+    });
+    document.getElementById('cb-cards').innerHTML = '';
+    document.getElementById('concert-builder').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  init();
 })();
 </script>
 
