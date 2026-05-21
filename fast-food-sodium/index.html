@@ -718,6 +718,13 @@
     .ai-section--tight { padding: var(--space-md) 1.25rem; }
     .ai-section--dark { padding: var(--space-xl) 1.25rem; }
 
+    /* ── FRANCHISE FILTER PILLS ── */
+    .sodium-filter-pills{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:2px;margin-bottom:var(--space-md);}
+    .sodium-filter-pills::-webkit-scrollbar{display:none;}
+    .sodium-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.08em;text-transform:uppercase;padding:0 0.875rem;height:44px;min-width:max-content;border-radius:100px;border:1px solid var(--border);background:var(--paper-card);color:var(--ink-secondary);cursor:pointer;scroll-snap-align:start;transition:background 0.15s,color 0.15s,border-color 0.15s;white-space:nowrap;flex-shrink:0;}
+    .sodium-pill:hover{border-color:var(--ink-muted);color:var(--ink);}
+    .sodium-pill.active{background:#16141f;color:#fff;border-color:#16141f;}
+
     @media (max-width: 640px) {
       .sodium-hero-stats { grid-template-columns: 1fr; }
       .comp-grid { grid-template-columns: 1fr; }
@@ -802,8 +809,8 @@
   <button class="ai-tab" data-target="#the-system" role="tab">The System</button>
   <button class="ai-tab" data-target="#systemic" role="tab">Systemic Issues</button>
   <button class="ai-tab" data-target="#compare" role="tab">Compare Your Order</button>
-  <button class="ai-tab" data-target="#data" role="tab" style="display:none;">Data</button>
-  <button class="ai-tab" data-target="#franchise" role="tab">By Franchise</button>
+  <button class="ai-tab" data-target="#data" role="tab">By Franchise</button>
+  <button class="ai-tab" data-target="#franchise" role="tab">Best Options</button>
 </nav>
 
 <!-- ══════════════════════════════════════
@@ -842,6 +849,8 @@
     </div>
 
     <p class="ai-body" style="margin-top: var(--space-md);">One more thing the data reveals: fast food protein comes almost entirely without fiber. Protein without fiber means your body absorbs it differently — less satiety, faster blood sugar spikes, and none of the cholesterol and gut health benefits that come with fiber-rich protein sources. The system optimized for palatability and shelf life. Fiber wasn't part of the equation.</p>
+
+    <p class="ai-source" style="margin-top: var(--space-md);">All sources and methodology are documented at the bottom of this page. <a href="#sources-anchor" style="color:var(--teal);text-decoration:underline;">Jump to sources</a></p>
 
     <!-- SECTION-FLOOR NAV -->
     <div class="section-nav">
@@ -1171,20 +1180,24 @@
       <span class="section-nav-spacer"></span>
       <a href="#franchise" class="section-nav-btn next">
         <span class="section-nav-direction">Next &#8594;</span>
-        <span class="section-nav-label">By Franchise</span>
+        <span class="section-nav-label">Best Options</span>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     TAB 5 — DATA
+     TAB 5 — DATA (visible as "By Franchise")
 ══════════════════════════════════════ -->
 <section id="data" class="ai-section ai-section--white">
   <div class="ai-inner">
-    <p class="ai-eyebrow">Data</p>
+    <p class="ai-eyebrow">By Franchise</p>
     <h2 class="ai-h2">Protein efficiency vs. sodium load.</h2>
     <p class="section-intro">Ordered by protein per item, descending. Sodium is color-coded: red is above 65% of the daily limit, amber is 40–65%, green is below 40%. Fiber column reveals which high-protein items deliver zero fiber.</p>
+
+    <div class="sodium-filter-pills" id="franchise-pills" role="group" aria-label="Filter by franchise">
+      <button class="sodium-pill active" data-chain="all">All</button>
+    </div>
 
     <div class="ai-table-wrap">
       <table class="ai-table" id="data-table">
@@ -1205,8 +1218,8 @@
     </div>
     <p class="ai-source">Source: Chain-published nutrition disclosures, 2024–2025. FDA daily sodium limit: 2,300mg. FDA daily fiber value: 28g.</p>
 
-    <!-- SECTION-FLOOR NAV hidden — Data tab not accessible via UI -->
-    <div class="section-nav" style="display:none;" aria-hidden="true">
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
       <a href="#compare" class="section-nav-btn">
         <span class="section-nav-direction">&#8592; Previous</span>
         <span class="section-nav-label">Compare Your Order</span>
@@ -1214,7 +1227,7 @@
       <span class="section-nav-spacer"></span>
       <a href="#franchise" class="section-nav-btn next">
         <span class="section-nav-direction">Next &#8594;</span>
-        <span class="section-nav-label">By Franchise</span>
+        <span class="section-nav-label">Best Options</span>
       </a>
     </div>
   </div>
@@ -1225,7 +1238,7 @@
 ══════════════════════════════════════ -->
 <section id="franchise" class="ai-section">
   <div class="ai-inner">
-    <p class="ai-eyebrow">By Franchise</p>
+    <p class="ai-eyebrow">Best Options</p>
     <h2 class="ai-h2">What better looks like inside each chain.</h2>
     <p class="section-intro">You don't always get to choose the chain. Here's what a lower-sodium order looks like at the places you're most likely to find yourself.</p>
 
@@ -1445,7 +1458,7 @@
     </div>
 
     <!-- Methodology & Sources accordion -->
-    <details class="ai-footer-methodology">
+    <details class="ai-footer-methodology" id="sources-anchor">
       <summary>Methodology &amp; Sources</summary>
       <div class="ai-footer-methodology-body">
 
@@ -1719,7 +1732,7 @@ function toggleAccordion(btn) {
   const allItems = [];
   Object.entries(MENU).forEach(([key, chain]) => {
     chain.items.forEach(item => {
-      allItems.push({ chainName: chain.name, ...item });
+      allItems.push({ chainName: chain.name, chainKey: key, ...item });
     });
   });
 
@@ -1730,6 +1743,7 @@ function toggleAccordion(btn) {
     const sodiumClass = pct >= 65 ? 'ai-text-danger' : pct >= 40 ? 'ai-text-warning' : 'ai-text-success';
     const fiberClass = item.fiber === 0 ? 'ai-text-danger' : item.fiber >= 6 ? 'ai-text-teal' : '';
     const tr = document.createElement('tr');
+    tr.dataset.chain = item.chainKey;
     tr.innerHTML = `
       <td>${item.chainName}</td>
       <td>${item.label}</td>
@@ -1739,6 +1753,29 @@ function toggleAccordion(btn) {
       <td class="text-right ai-num ${fiberClass}">${item.fiber}g</td>
     `;
     tbody.appendChild(tr);
+  });
+})();
+
+// ── FRANCHISE FILTER PILLS ──
+(function buildFilterPills() {
+  const container = document.getElementById('franchise-pills');
+  if (!container) return;
+  Object.entries(MENU).forEach(([key, chain]) => {
+    const btn = document.createElement('button');
+    btn.className = 'sodium-pill';
+    btn.dataset.chain = key;
+    btn.textContent = chain.name;
+    container.appendChild(btn);
+  });
+  container.addEventListener('click', function(e) {
+    const pill = e.target.closest('.sodium-pill');
+    if (!pill) return;
+    container.querySelectorAll('.sodium-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const filter = pill.dataset.chain;
+    document.querySelectorAll('#data-tbody tr').forEach(row => {
+      row.style.display = (filter === 'all' || row.dataset.chain === filter) ? '' : 'none';
+    });
   });
 })();
 
@@ -1929,6 +1966,19 @@ function scrollToTabs() {
   const top = tabBar.getBoundingClientRect().top + window.scrollY - 52 - 32 - 8;
   window.scrollTo({ top, behavior: 'smooth' });
 }
+
+// ── SOURCES ANCHOR ──
+if (location.hash === '#sources-anchor') {
+  const d = document.getElementById('sources-anchor');
+  if (d) d.open = true;
+}
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[href="#sources-anchor"]');
+  if (a) {
+    const d = document.getElementById('sources-anchor');
+    if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth' }); e.preventDefault(); }
+  }
+});
 </script>
 
 </body>
