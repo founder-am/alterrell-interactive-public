@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: 2026-05-21 (Batch C — Sodium Type 2 copy update + Data tab hidden + Systemic Issues accordions 03/04 removed)
+Updated: 2026-05-21 (Batch A — Hub index.html reverted to original card format per D-41)
 
 ---
 
@@ -22,7 +22,7 @@ Production tracking file. Answers: what exists, what is in progress, what blocks
 ## PLATFORM
 
 ### Hub
-LIVE — rebuilt May 2026. Reverted to single card grid 2026-05-21 (Batch A): 3-across desktop, 2-across tablet, 1-across mobile. Stat badges added to card dark blocks. Filter pills removed (parked until 8 pieces). All data attributes (data-category, data-format, data-lane, data-status, data-position) present on all cards for future filter use.
+LIVE — reverted to original card format 2026-05-21 per D-41. 3-across desktop (900px breakpoint to 2-across, 600px to 1-across). Cards: dark stat block (88px min-height, #16141f bg) with large paper-colored number + vertical divider + mono label; title and lede in white card body; stakes label + Explore/Coming Soon pill in footer. No filter pills, no column headers, no category color accents. 3 active cards: Naming Part 0, Concert Tax, Naming Part 1. 4 coming-soon cards: Sodium, Naming Part 2, HBS, Gay Uncles. TBD placeholders on Sodium (stat, stakes), HBS (stat, stakes), Gay Uncles (stat, lede, stakes). Naming Part 2 stat "1863" locked. D-42 (series title architecture for Naming cards) NOT implemented — awaiting mockup approval.
 
 ### Platform CSS
 Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.

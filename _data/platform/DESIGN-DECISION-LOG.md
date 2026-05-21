@@ -893,10 +893,10 @@ Source: May 20 interactive tool session, May 21 production audit and editorial s
 **Research status:** Complete. Production profiles locked. NITO data locked.
 **Do not:** Build a granular per-element calculator (dancers = $X). The data doesn't support that precision. This is a documented comparison, not a calculator.
 
-### D-41. Hub layout: revert to original card format (DECIDED, not yet executed)
+### D-41. Hub layout: revert to original card format (COMPLETE 2026-05-21)
 **Decision:** Revert index.html from the May 19 two-column lane layout (Industry/Culture columns, filter pills) back to the original card format with stat badges, dual CTAs, and 3-across grid.
 **Reason:** The lane system creates unearned visual complexity at 4 published pieces. Revisit the lane/category system at 8 published pieces.
-**Status:** Not yet executed. Requires Type 3 platform session.
+**Status:** Complete. Executed in Type 3 Batch A session 2026-05-21. 3 active + 4 coming-soon cards. TBD placeholders on Sodium, HBS, Gay Uncles.
 
 ### D-42. Naming series: serial title architecture — Option A (DECIDED, needs mockups)
 **Decision:** Naming series hub cards use Option A: series title in the dark header bar, part title as subhead. Series title candidate: "Our Names Are Traditional Too."
