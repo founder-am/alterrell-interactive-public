@@ -8,13 +8,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alterrell Interactive">
   <meta property="og:title" content="Alterrell Interactive: Data unravels the structure.">
-  <meta property="og:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there — now it's yours.">
+  <meta property="og:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there &mdash; now it&rsquo;s yours.">
   <meta property="og:url" content="https://interactive.alterrell.com">
   <meta property="og:image" content="https://interactive.alterrell.com/og/hub.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@alterrell">
   <meta name="twitter:title" content="Alterrell Interactive: Data unravels the structure.">
-  <meta name="twitter:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there — now it's yours.">
+  <meta name="twitter:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it. The data was always there &mdash; now it&rsquo;s yours.">
   <meta name="twitter:image" content="https://interactive.alterrell.com/og/hub.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,27 +51,13 @@
     .hub-grid-section{background:var(--paper);padding:var(--space-lg) 1.25rem var(--space-xl);}
     .hub-grid-section-inner{max-width:1080px;margin:0 auto;}
 
-    /* ── FILTER PILLS ── */
-    .hub-filter-pills{display:flex;gap:0.5rem;margin-bottom:1.75rem;flex-wrap:wrap;}
-    .hub-filter-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.875rem;border-radius:100px;border:1px solid var(--border);background:var(--paper-card);color:var(--ink-muted);cursor:pointer;transition:all 0.15s;}
-    .hub-filter-pill:hover{border-color:var(--ink-muted);color:var(--ink);}
-    .hub-filter-pill.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+    /* ── SINGLE CARD GRID: 3-across desktop, 2-across tablet, 1-across mobile ── */
+    .hub-piece-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:var(--space-md);}
 
-    /* ── TWO-COLUMN PIECE GRID ── */
-    .hub-piece-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.25rem;align-items:stretch;margin-bottom:var(--space-md);}
-
-    /* Filter states — JS adds these classes to #hub-piece-grid */
-    .hub-piece-grid.filter--industry{grid-template-columns:1fr;}
-    .hub-piece-grid.filter--industry .hub-col-header--culture,
-    .hub-piece-grid.filter--industry .hub-card--culture{display:none;}
-    .hub-piece-grid.filter--culture{grid-template-columns:1fr;}
-    .hub-piece-grid.filter--culture .hub-col-header--industry,
-    .hub-piece-grid.filter--culture .hub-card--industry{display:none;}
-
-    /* ── COLUMN HEADERS ── */
-    .hub-col-header{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.15em;text-transform:uppercase;padding-bottom:0.625rem;border-bottom:3px solid var(--border);color:var(--ink-muted);}
-    .hub-col-header--industry{border-bottom-color:var(--category-industry);color:var(--category-industry);}
-    .hub-col-header--culture{border-bottom-color:var(--category-culture);color:var(--category-culture);}
+    /* ── GRID DIVIDER (full-width spanning row) ── */
+    .hub-grid-divider{grid-column:1/-1;display:flex;align-items:center;gap:0.75rem;padding:var(--space-sm) 0 0.5rem;}
+    .hub-grid-divider-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);white-space:nowrap;}
+    .hub-grid-divider-rule{flex:1;height:1px;background:var(--border);}
 
     /* ── CARD BASE ── */
     .hub-card{background:var(--paper-card);border:1px solid var(--border);border-left:5px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
@@ -81,24 +67,21 @@
     .hub-card--live:hover{transform:translateY(-2px);text-decoration:none;}
     .hub-card--next{opacity:0.45;}
 
-    /* ── CARD ANATOMY ── */
-    /* Dark bar: piece title */
-    .hub-card-bar{background:#16141f;padding:0.875rem 1.25rem;flex-shrink:0;}
+    /* ── CARD DARK BLOCK: stat number + title ── */
+    .hub-card-bar{background:#16141f;padding:1rem 1.25rem 0.875rem;flex-shrink:0;}
+    .hub-card--next .hub-card-bar{background:#2a2a2a;}
+    .hub-card-stat-num{display:block;font-family:var(--font-editorial);font-size:1.75rem;line-height:1;color:var(--teal-light);margin-bottom:0.375rem;}
+    .hub-card--next .hub-card-stat-num{color:#555;}
     .hub-card-bar-title{font-family:var(--font-editorial);font-size:13px;font-weight:500;color:rgba(248,246,241,0.95);line-height:1.35;margin:0;}
-    /* White body: subhead + footer */
+
+    /* ── CARD BODY: lede + footer ── */
     .hub-card-body{padding:0.875rem 1.25rem;display:flex;flex-direction:column;gap:0.5rem;flex:1;}
-    .hub-card-sub{font-family:var(--font-body);font-size:12px;font-weight:400;color:var(--ink-secondary);line-height:1.55;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
-    .hub-card-footer{display:flex;align-items:center;margin-top:0.375rem;padding-top:0.5rem;border-top:1px solid var(--border);}
-
-    /* ── PILLS ── */
+    .hub-card-sub{font-family:var(--font-body);font-size:12px;font-weight:400;color:var(--ink-secondary);line-height:1.55;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+    .hub-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:0.375rem;padding-top:0.5rem;border-top:1px solid var(--border);}
+    .hub-card-stakes{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);}
     .hub-card-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;}
-    .pill--view{background:var(--ink);color:var(--paper);border:1px solid var(--ink);}
+    .pill--explore{background:var(--ink);color:var(--paper);border:1px solid var(--ink);}
     .pill--coming-soon{background:var(--paper-warm);color:var(--ink-muted);border:1px solid var(--border);}
-
-    /* ── COMING NEXT SECTION ── */
-    .hub-next-section{margin-top:var(--space-md);padding-top:var(--space-md);border-top:1px solid var(--border);}
-    .hub-next-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1rem;}
-    /* Coming Next grid inherits hub-piece-grid styles; no filter states apply */
 
     /* ── HUB FOOTER ── */
     .hub-footer{background:var(--dark-section);padding:var(--space-md) 1.25rem;}
@@ -115,17 +98,11 @@
     .ai-nav-meta a{color:rgba(248,246,241,0.88) !important;font-weight:500 !important;}
 
     /* ── RESPONSIVE ── */
-    @media(max-width:767px){
-      /* Mobile: flex column with section ordering (industry first, then culture) */
-      .hub-piece-grid{
-        display:flex;
-        flex-direction:column;
-        gap:1rem;
-      }
-      .hub-col-header--industry{order:1;}
-      .hub-card--industry{order:2;}
-      .hub-col-header--culture{order:3;}
-      .hub-card--culture{order:4;}
+    @media(max-width:900px){
+      .hub-piece-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:600px){
+      .hub-piece-grid{grid-template-columns:1fr;}
     }
     @media(max-width:640px){
       .hub-hero-headline{white-space:normal;font-size:clamp(2.6rem,10vw,4rem);}
@@ -197,111 +174,110 @@
 <main id="work" class="hub-grid-section" role="main">
   <div class="hub-grid-section-inner">
 
-    <!-- Filter pills -->
-    <div class="hub-filter-pills" role="group" aria-label="Filter by category">
-      <button class="hub-filter-pill active" data-filter="all">All</button>
-      <button class="hub-filter-pill" data-filter="industry">Industry</button>
-      <button class="hub-filter-pill" data-filter="culture">Culture</button>
-    </div>
-
-    <!-- Two-column piece grid
-         HTML order: [industry header] [culture header] [row 1 industry] [row 1 culture] [row 2 industry] [row 2 culture]
-         Grid auto-placement creates equal-height rows across both columns. -->
     <div class="hub-piece-grid" id="hub-piece-grid">
 
-      <div class="hub-col-header hub-col-header--industry">Industry</div>
-      <div class="hub-col-header hub-col-header--culture">Culture</div>
-
-      <!-- Row 1 -->
+      <!-- Active pieces -->
       <a href="/fast-food-sodium/" class="hub-card hub-card--live hub-card--industry"
+         data-category="industry" data-format="interactive" data-lane="industry" data-status="live" data-position="1"
          aria-label="Fast Food's Hidden Sodium Tax">
         <div class="hub-card-bar">
+          <span class="hub-card-stat-num">2.4&times;</span>
           <h2 class="hub-card-bar-title">Fast Food's Hidden Sodium Tax</h2>
         </div>
         <div class="hub-card-body">
           <p class="hub-card-sub">How the cheapest meals carry the heaviest health cost.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-pill pill--view">View</span>
+            <span class="hub-card-stakes">Public health</span>
+            <span class="hub-card-pill pill--explore">Explore</span>
           </div>
         </div>
       </a>
 
       <a href="/naming/part-0/" class="hub-card hub-card--live hub-card--culture"
+         data-category="culture" data-format="series" data-lane="culture" data-status="live" data-position="1"
          aria-label="That Name Is So Ghetto">
         <div class="hub-card-bar">
+          <span class="hub-card-stat-num">60 yrs</span>
           <h2 class="hub-card-bar-title">That Name Is So Ghetto</h2>
         </div>
         <div class="hub-card-body">
           <p class="hub-card-sub">What 60 years of baby name data reveals about who gets to be &#8220;normal.&#8221;</p>
           <div class="hub-card-footer">
-            <span class="hub-card-pill pill--view">View</span>
+            <span class="hub-card-stakes">Identity</span>
+            <span class="hub-card-pill pill--explore">Explore</span>
           </div>
         </div>
       </a>
 
-      <!-- Row 2 -->
       <a href="/concert-tax/" class="hub-card hub-card--live hub-card--industry"
+         data-category="industry" data-format="interactive" data-lane="industry" data-status="live" data-position="2"
          aria-label="Female Musicians Earn Less But Share More">
         <div class="hub-card-bar">
+          <span class="hub-card-stat-num">8%</span>
           <h2 class="hub-card-bar-title">Female Musicians Earn Less But Share More</h2>
         </div>
         <div class="hub-card-body">
           <p class="hub-card-sub">Men set the ceiling. Women deliver more to justify their place beneath it.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-pill pill--view">View</span>
+            <span class="hub-card-stakes">Pay equity</span>
+            <span class="hub-card-pill pill--explore">Explore</span>
           </div>
         </div>
       </a>
 
       <a href="/naming/part-1/" class="hub-card hub-card--live hub-card--culture"
+         data-category="culture" data-format="series" data-lane="culture" data-status="live" data-position="2"
          aria-label="The Fame Effect">
         <div class="hub-card-bar">
+          <span class="hub-card-stat-num">25&times;</span>
           <h2 class="hub-card-bar-title">The Fame Effect</h2>
         </div>
         <div class="hub-card-body">
           <p class="hub-card-sub">How celebrity reshaped which names America accepted.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-pill pill--view">View</span>
+            <span class="hub-card-stakes">Cultural power</span>
+            <span class="hub-card-pill pill--explore">Explore</span>
           </div>
         </div>
       </a>
 
+      <!-- Coming Next -->
+      <div class="hub-grid-divider" aria-hidden="true">
+        <span class="hub-grid-divider-label">Coming Next</span>
+        <span class="hub-grid-divider-rule"></span>
+      </div>
+
+      <div class="hub-card hub-card--next hub-card--industry" aria-hidden="true"
+           data-category="industry" data-format="interactive" data-lane="industry" data-status="coming-soon" data-position="3">
+        <div class="hub-card-bar">
+          <span class="hub-card-stat-num">&#8212;</span>
+          <h2 class="hub-card-bar-title">Harvard Business School &amp; Race</h2>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-sub">One of the most powerful institutions keeps missing its own bar.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-stakes">Access</span>
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hub-card hub-card--next hub-card--culture" aria-hidden="true"
+           data-category="culture" data-format="series" data-lane="culture" data-status="coming-soon" data-position="3">
+        <div class="hub-card-bar">
+          <span class="hub-card-stat-num">&#8212;</span>
+          <h2 class="hub-card-bar-title">Advice From Your Thick Gay Uncles</h2>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-sub">What the data says about where bigger Black gay men are loved.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-stakes">Community</span>
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /.hub-piece-grid -->
-
-    <!-- Coming Next — always visible regardless of filter -->
-    <div class="hub-next-section">
-      <div class="hub-next-label">Coming Next</div>
-      <div class="hub-piece-grid">
-
-        <div class="hub-col-header hub-col-header--industry">Industry</div>
-        <div class="hub-col-header hub-col-header--culture">Culture</div>
-
-        <div class="hub-card hub-card--next hub-card--industry" aria-hidden="true">
-          <div class="hub-card-bar">
-            <h2 class="hub-card-bar-title">Harvard Business School &amp; Race</h2>
-          </div>
-          <div class="hub-card-body">
-            <p class="hub-card-sub">One of the most powerful institutions keeps missing its own bar.</p>
-            <div class="hub-card-footer">
-              <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hub-card hub-card--next hub-card--culture" aria-hidden="true">
-          <div class="hub-card-bar">
-            <h2 class="hub-card-bar-title">Advice From Your Thick Gay Uncles</h2>
-          </div>
-          <div class="hub-card-body">
-            <p class="hub-card-sub">What the data says about where bigger Black gay men are loved.</p>
-            <div class="hub-card-footer">
-              <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.hub-piece-grid (coming next) -->
-    </div><!-- /.hub-next-section -->
 
   </div><!-- /.hub-grid-section-inner -->
 </main>
@@ -322,23 +298,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-(function () {
-  var pills = document.querySelectorAll('.hub-filter-pill');
-  var grid  = document.getElementById('hub-piece-grid');
-  if (!grid) return;
-  pills.forEach(function (pill) {
-    pill.addEventListener('click', function () {
-      pills.forEach(function (p) { p.classList.remove('active'); });
-      pill.classList.add('active');
-      var filter = pill.dataset.filter;
-      grid.classList.remove('filter--industry', 'filter--culture');
-      if (filter !== 'all') { grid.classList.add('filter--' + filter); }
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
