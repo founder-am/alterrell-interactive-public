@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: 2026-05-19 (Batch B — Sodium Type 2 structural compliance + Concert Tax tab override removal)
+Updated: 2026-05-21 (Batch C — Sodium Type 2 copy update + Data tab hidden + Systemic Issues accordions 03/04 removed)
 
 ---
 
@@ -22,7 +22,7 @@ Production tracking file. Answers: what exists, what is in progress, what blocks
 ## PLATFORM
 
 ### Hub
-LIVE — rebuilt May 2026 with two-column category layout (Industry / Culture), filter pills, Coming Next section. Container upgraded to 1080px platform-wide.
+LIVE — rebuilt May 2026. Reverted to single card grid 2026-05-21 (Batch A): 3-across desktop, 2-across tablet, 1-across mobile. Stat badges added to card dark blocks. Filter pills removed (parked until 8 pieces). All data attributes (data-category, data-format, data-lane, data-status, data-position) present on all cards for future filter use.
 
 ### Platform CSS
 Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.
@@ -69,6 +69,8 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Subhead:** AMA-confirmed May 18 version locked: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us."
 **Note — OG/Twitter meta descriptions:** Currently retain older word order + "$219B" stat. AMA to confirm whether to update or leave as social-optimized variant.
 **Batch B (2026-05-19):** Hero title fixed, subhead confirmed, journey block migrated to `.ai-journey-compact`, footer migrated to global classes, nav/breadcrumb DOM order corrected, redundant piece-local journey CSS removed.
+**Batch C (2026-05-21):** AMA-approved copy placed across Overview, The System, Systemic Issues tabs. Overview: intro paragraph, "Fast food gets blamed" paragraph, 5-item list reduced to 4 (wages/CEO item removed), callout updated, v2-callout div deleted. The System: accordion 01 paragraphs merged/updated, accordion 02 intro and NYC post-compare paragraph updated, accordion 03 (Healthcare Bill) paragraphs updated and "1 in 8" folded into projection paragraph, accordion 04 (Fiber) intro and closing paragraph updated. Systemic Issues: accordion 01 (Formula) paragraph updated and reformulated-for-regulators callout removed; accordion 02 (Advertising) body paragraph, pull quote, and trailing paragraph updated; accordions 03 (Cost) and 04 (Wages) fully deleted. Data tab button hidden (display:none — HTML intact). Section-floor nav links updated to skip hidden Data tab: Compare Next now points to #franchise, Franchise Previous now points to #compare, Data section-floor nav hidden. Compare Your Order section class updated to ai-section--white for visual consistency.
+**FLAG:** Systemic Issues tab intro still reads "Four mechanisms" — now has only 2 accordions. AMA to confirm whether to update intro copy in a subsequent session.
 **Remaining:** Data refresh on menu items — requires AMA to provide updated nutrition values. Not a build blocker, piece data is 2024-2025 vintage.
 **Canonical file:** `_data/pieces/SODIUM-FACTPACK.md`
 
