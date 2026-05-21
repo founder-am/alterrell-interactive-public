@@ -47,9 +47,9 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs).
 
 ### Naming Series
-- Part 0: LIVE at /naming/part-0/ (voice pass incomplete — em dashes, AI tone present)
-- Part 1: LIVE at /naming/part-1/ (strongest of three)
-- Part 2: LIVE at /naming/part-2/ (voice pass incomplete — em dashes, AI tone present)
+- Part 0: LIVE at /naming/part-0/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 4 body tabs. Hero dek updated. Pull quote in Tab 4 shortened. All tabs: Tab 1 (Roots/Kunta Kinte), Tab 2 (Mills surname), Tab 3 (first name reclamation), Tab 4 (SSA data). Tab 5 (About) untouched.
+- Part 1: LIVE at /naming/part-1/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 5 tabs. Overview reframed with personal investment framing. Tab 2 restructured (naming approval systems context added before résumé study). Tab 3 h2 updated. Tab 4 chart-editorial blocks updated for both Whitney and Mariah. Tab 5 pattern descriptions and body copy updated.
+- Part 2: LIVE at /naming/part-2/ (voice pass incomplete — em dashes, AI tone present. Not touched in Batch C.)
 **Slug rename completed May 2026:** /what-in-a-name/* → /naming/*. Redirects active in _redirects.
 **Next:** Type 1 editorial session per part — AI voice pass, then AMA rewrite.
 **Canonical file:** `_data/pieces/NAMING-SERIES-BRIEF.md`
