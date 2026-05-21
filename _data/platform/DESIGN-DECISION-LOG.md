@@ -875,4 +875,71 @@ If no new decisions were made this week, say so and we're done.
 
 *End of 2026-05-20 update.*
 
+# DECISION LOG UPDATE — May 21, 2026
+# Paste this at the end of _data/platform/DESIGN-DECISION-LOG.md, before the "End of log" line.
+
+---
+
+## PART 7 — May 20–21, 2026 Decisions
+
+Source: May 20 interactive tool session, May 21 production audit and editorial session.
+
+---
+
+### D-40. Concert Tax interactive tool: "The Receipt" (LOCKED)
+**Decision:** The Concert Tax piece gets an interactive tool called "The Receipt." User inputs ticket price via slider, sees NITO-sourced revenue split as a receipt visual, then a gender pay comparison line. Below the receipt: 3 production profile tier cards (Solo/Minimal, Band + Staging, Full Production) with documented artist examples showing the structural cost gap.
+**Placement:** The Data tab (tab-the-data), after existing card gallery content.
+**Data source:** NITO revenue split is the single citable anchor. Production profiles sourced from trade press, tour credits, Wikipedia tour pages.
+**Research status:** Complete. Production profiles locked. NITO data locked.
+**Do not:** Build a granular per-element calculator (dancers = $X). The data doesn't support that precision. This is a documented comparison, not a calculator.
+
+### D-41. Hub layout: revert to original card format (DECIDED, not yet executed)
+**Decision:** Revert index.html from the May 19 two-column lane layout (Industry/Culture columns, filter pills) back to the original card format with stat badges, dual CTAs, and 3-across grid.
+**Reason:** The lane system creates unearned visual complexity at 4 published pieces. Revisit the lane/category system at 8 published pieces.
+**Status:** Not yet executed. Requires Type 3 platform session.
+
+### D-42. Naming series: serial title architecture — Option A (DECIDED, needs mockups)
+**Decision:** Naming series hub cards use Option A: series title in the dark header bar, part title as subhead. Series title candidate: "Our Names Are Traditional Too."
+**Do not:** Build until mockups are reviewed and approved by AMA.
+**Status:** Mockups needed before any code.
+
+### D-43. Sodium piece: copy rewrite provided, not yet applied
+**Decision:** AMA provided final approved copy for Sodium with marked deletions: remove Cost tab entirely, remove Wages tab entirely, restructure Data tab (currently too long — needs franchise-level view options), fix white vs paper background inconsistency on compare-your-order tool. Remove "Coming in V2" note from overview.
+**Status:** Copy is final. Sodium is currently Coming Soon on hub. Copy update is a Type 2 Batch C session. Hub status flip is a separate decision (deferred until hub revert is resolved).
+
+### D-44. Naming Part 0: final copy provided
+**Decision:** AMA provided final approved copy for Part 0 ("Our Names Are Traditional Too"). Ready to paste via Type 2 Batch C session.
+**Status:** Part 0 is live with old copy. Update is Priority 1.
+
+### D-45. Naming Part 1: final copy provided
+**Decision:** AMA provided final approved copy for Part 1 ("The Fame Effect"). Ready to paste via Type 2 Batch C session.
+**Status:** Part 1 is live with old copy. Update is Priority 1.
+
+### D-46. Naming Part 2: remains Coming Soon
+**Decision:** Part 2 ("The Living Room") is not live and should remain Coming Soon until further notice.
+
+### D-47. Concert Tax carousel + journey bar: already complete
+**Decision:** Confirmed May 21 that the carousel conversion (.ct-gallery → .ct-swipeable) and journey bar spacing fix were already completed in the May 20 build session. No work needed.
+**Status:** Done. SESSION-PROMPTS file updated to remove this as a pending task.
+
+### D-48. HBS piece: reframed from "Digital Museum" to "The Playbook" (IN PROGRESS)
+**Decision in progress:** Primary argument reframed: elite institutions use a repeatable set of documented tactics to absorb advocacy and neutralize progress. Title candidates: "The Playbook," "They Put You on a Task Force," "Snuffing Out Progress." 5-tab structure proposed (Overview, The Playbook, Recognize It, The Evidence, Sources). Diagnostic widget proposed as interactive centerpiece.
+**Status:** AMA has not yet reacted to the reframe. Decisions 2–4 (format, title, tab architecture) remain open. Q2 June reunion deadline makes this urgent.
+**Do not:** Build anything until AMA confirms.
+
+---
+
+### SESSION PRIORITY ORDER (as of May 21, 2026)
+
+1. **Session A — Type 2 Batch C:** Naming Part 0 + Part 1 copy updates (live pieces, final copy ready)
+2. **Session B — Type 2 Batch B:** Concert Tax Receipt interactive tool build
+3. **Type 3 Batch A:** Hub revert to original card format
+4. **Type 1:** HBS editorial — close the four open decisions (URGENT, June deadline)
+5. **Type 1:** Naming series title mockups (Option A)
+6. **Type 2 Batch C:** Sodium copy updates (when hub status is resolved)
+
+---
+
+*End of May 21, 2026 update.*
+
 *End of log. Update this file after every session that makes a design decision.*

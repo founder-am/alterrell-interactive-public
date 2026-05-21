@@ -43,8 +43,9 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 - Gallery JS generalized: was ID-based single-gallery, now class-based multi-gallery (`querySelectorAll('.ct-swipeable-outer')`).
 - Journey bar items updated: `flex-direction: column`, `gap: 8px`, `padding: 12px 1.25rem`, action 15px/600, dest 9px, divider 36px. Locked as platform standard in DESIGN-DECISION-LOG.md D-20.
 - Concert Builder interactive added to Data tab (previous session).
+**2026-05-21 (Type 2 — The Receipt tool):** Added "Your Ticket, Decoded" interactive to The Data tab. Part 1: slider ($25-$500) + receipt-style revenue breakdown (NITO split: ticketing 27%, venue 17%, promoter/production 30%, management/agent 18%, artist 8%). Part 2: three production profile cards (swipeable carousel, D-21 pattern) documenting Ed Sheeran / Zach Bryan+Post Malone / Beyonce+Taylor Swift tiers. Editorial close quote. All sourced from NITO Dec 2024 survey, IQ Magazine Jan 2026, Pollstar, Guinness WR, Billboard. Note: USC Annenberg "19 cents per dollar" gender pay gap stat UNVERIFIED — AMA to insert citation before publish.
 **Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in Type 3 template extraction session.
-**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs).
+**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs). Also: verify and insert gender pay gap citation in Receipt tool gender note.
 
 ### Naming Series
 - Part 0: LIVE at /naming/part-0/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 4 body tabs. Hero dek updated. Pull quote in Tab 4 shortened. All tabs: Tab 1 (Roots/Kunta Kinte), Tab 2 (Mills surname), Tab 3 (first name reclamation), Tab 4 (SSA data). Tab 5 (About) untouched.
