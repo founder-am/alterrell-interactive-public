@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: 2026-05-22 (Batch C + Batch A — Audit fixes: DOM order, OG tags, journey items, share blocks, footer tagline, CSS active tab)
+Updated: 2026-05-22 (Batch A — Hub card roster update, stat block styling fixed, Sodium activated)
 
 ---
 
@@ -22,7 +22,7 @@ Production tracking file. Answers: what exists, what is in progress, what blocks
 ## PLATFORM
 
 ### Hub
-LIVE — reverted to original card format 2026-05-21 per D-41. 3-across desktop (900px breakpoint to 2-across, 600px to 1-across). Cards: dark stat block (88px min-height, #16141f bg) with large paper-colored number + vertical divider + mono label; title and lede in white card body; stakes label + Explore/Coming Soon pill in footer. No filter pills, no column headers, no category color accents. 3 active cards: Naming Part 0, Concert Tax, Naming Part 1. 4 coming-soon cards: Sodium, Naming Part 2, HBS, Gay Uncles. TBD placeholders on Sodium (stat, stakes), HBS (stat, stakes), Gay Uncles (stat, lede, stakes). Naming Part 2 stat "1863" locked. D-42 (series title architecture for Naming cards) NOT implemented — awaiting mockup approval.
+LIVE — updated 2026-05-22 (Batch A). Stat block CSS fixed: height:88px (was min-height), stat text color set to #f8f6f1 at full opacity (was faint gray/rgba), Coming Soon stat text at opacity:0.7, divider at rgba(248,246,241,0.3), label has -webkit-line-clamp:2. 4 active cards: Naming Part 0, Concert Tax, Naming Part 1, Sodium (activated). 5 coming-soon cards: Naming Part 2, Where's Beyonce?, Benson & Stabler Aren't Coming, Advice From Your Thick Gay Uncles, The Living Room. Harvard Business School & Race removed from hub per AMA decision. All placeholder text ([STAT TBD] etc.) cleared. D-42 (series title architecture for Naming cards) NOT implemented — awaiting mockup approval.
 
 ### Platform CSS
 Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.
@@ -64,7 +64,7 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 **Note:** Slug renamed from /big-black-love/ to /gay-uncles/. Redirect active in _redirects. OG image needs to be created at og/gay-uncles.png.
 
 ### Sodium
-**Status:** LIVE — structural compliance complete as of 2026-05-19
+**Status:** LIVE — hub card activated 2026-05-22. Hub card stat: 2,300mg / "the daily limit one meal can exceed". Stakes: "What's in your order". AMA voice pass still recommended before next editorial push.
 **Ko-fi:** Present in journey block (Watch / Read / Support).
 **Sources:** Dark footer accordion using global `.ai-footer-methodology` + `.ai-footer-sources` CSS classes.
 **Hero title:** "Fast Food's Hidden Sodium Tax" (matched hub card 2026-05-19).

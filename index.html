@@ -66,12 +66,13 @@
     .hub-card--next{opacity:0.45;}
 
     /* ── CARD STAT BLOCK: number + divider + label ── */
-    .hub-card-stat{min-height:88px;background:#16141f;padding:0.875rem 1.25rem;flex-shrink:0;display:flex;align-items:center;gap:0.875rem;}
+    .hub-card-stat{height:88px;background:#16141f;padding:0.875rem 1.25rem;flex-shrink:0;display:flex;align-items:center;gap:0.875rem;overflow:hidden;}
     .hub-card--next .hub-card-stat{background:#2a2a2a;}
-    .hub-card-stat-num{font-family:var(--font-editorial);font-size:clamp(1.5rem,2.5vw,2rem);line-height:1;color:var(--paper);flex-shrink:0;}
-    .hub-card--next .hub-card-stat-num{color:#555;}
-    .hub-card-stat-div{width:1px;height:2rem;background:rgba(248,246,241,0.15);flex-shrink:0;}
-    .hub-card-stat-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.08em;color:rgba(248,246,241,0.5);line-height:1.55;}
+    .hub-card-stat-num{font-family:var(--font-editorial);font-size:clamp(1.5rem,2.5vw,2rem);line-height:1;color:#f8f6f1;flex-shrink:0;opacity:1;}
+    .hub-card--next .hub-card-stat-num{color:#f8f6f1;opacity:0.7;}
+    .hub-card-stat-div{width:1px;height:2rem;background:rgba(248,246,241,0.3);flex-shrink:0;}
+    .hub-card-stat-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.08em;color:#f8f6f1;opacity:1;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+    .hub-card--next .hub-card-stat-label{opacity:0.65;}
 
     /* ── CARD BODY: title + lede + footer ── */
     .hub-card-body{padding:0.875rem 1.25rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;}
@@ -176,7 +177,7 @@
 
     <div class="hub-piece-grid" id="hub-piece-grid">
 
-      <!-- ── ACTIVE PIECES ── -->
+      <!-- ── ACTIVE PIECES (1-4) ── -->
 
       <a href="/naming/part-0/" class="hub-card hub-card--live"
          data-status="live" data-position="1"
@@ -232,25 +233,28 @@
         </div>
       </a>
 
-      <!-- ── COMING NEXT ── -->
-      <div class="hub-grid-divider" aria-hidden="true">
-        <span class="hub-grid-divider-label">Coming Next</span>
-        <span class="hub-grid-divider-rule"></span>
-      </div>
-
-      <div class="hub-card hub-card--next" aria-hidden="true"
-           data-status="coming-soon" data-position="4">
+      <a href="/fast-food-sodium/" class="hub-card hub-card--live"
+         data-status="live" data-position="4"
+         aria-label="Fast Food's Hidden Sodium Tax">
         <div class="hub-card-stat">
-          <span class="hub-card-stat-num">[STAT TBD]</span>
+          <span class="hub-card-stat-num">2,300mg</span>
+          <span class="hub-card-stat-div" aria-hidden="true"></span>
+          <span class="hub-card-stat-label">the daily limit one meal can exceed</span>
         </div>
         <div class="hub-card-body">
           <h2 class="hub-card-title">Fast Food&#8217;s Hidden Sodium Tax</h2>
           <p class="hub-card-sub">How the cheapest meals carry the heaviest health cost.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-stakes">[STAKES TBD]</span>
-            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+            <span class="hub-card-stakes">What&#8217;s in your order</span>
+            <span class="hub-card-pill pill--explore">Explore</span>
           </div>
         </div>
+      </a>
+
+      <!-- ── COMING NEXT (5-9) ── -->
+      <div class="hub-grid-divider" aria-hidden="true">
+        <span class="hub-grid-divider-label">Coming Next</span>
+        <span class="hub-grid-divider-rule"></span>
       </div>
 
       <div class="hub-card hub-card--next" aria-hidden="true"
@@ -273,13 +277,15 @@
       <div class="hub-card hub-card--next" aria-hidden="true"
            data-status="coming-soon" data-position="6">
         <div class="hub-card-stat">
-          <span class="hub-card-stat-num">[STAT TBD]</span>
+          <span class="hub-card-stat-num">$0</span>
+          <span class="hub-card-stat-div" aria-hidden="true"></span>
+          <span class="hub-card-stat-label">amount of accountability applied equally</span>
         </div>
         <div class="hub-card-body">
-          <h2 class="hub-card-title">Harvard Business School &amp; Race</h2>
-          <p class="hub-card-sub">One of the most powerful institutions keeps missing its own bar.</p>
+          <h2 class="hub-card-title">Where&#8217;s Beyonc&#233;?</h2>
+          <p class="hub-card-sub">Black wealth gets asked to save the world. White wealth gets to choose.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-stakes">[STAKES TBD]</span>
+            <span class="hub-card-stakes">Who gets asked and who doesn&#8217;t</span>
             <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
           </div>
         </div>
@@ -288,13 +294,47 @@
       <div class="hub-card hub-card--next" aria-hidden="true"
            data-status="coming-soon" data-position="7">
         <div class="hub-card-stat">
-          <span class="hub-card-stat-num">[STAT TBD]</span>
+          <span class="hub-card-stat-num">24</span>
+          <span class="hub-card-stat-div" aria-hidden="true"></span>
+          <span class="hub-card-stat-label">seasons of copaganda &middot; one franchise &middot; zero accountability</span>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">Benson &amp; Stabler Aren&#8217;t Coming</h2>
+          <p class="hub-card-sub">The most-watched police show in America never showed you the real numbers.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-stakes">What your favorite show costs</span>
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hub-card hub-card--next" aria-hidden="true"
+           data-status="coming-soon" data-position="8">
+        <div class="hub-card-stat">
+          <span class="hub-card-stat-num">12</span>
+          <span class="hub-card-stat-div" aria-hidden="true"></span>
+          <span class="hub-card-stat-label">cities &middot; the map your family won&#8217;t give you</span>
         </div>
         <div class="hub-card-body">
           <h2 class="hub-card-title">Advice From Your Thick Gay Uncles</h2>
-          <p class="hub-card-sub">[LEDE TBD]</p>
+          <p class="hub-card-sub">Where to land, how to live, what nobody told you.</p>
           <div class="hub-card-footer">
-            <span class="hub-card-stakes">[STAKES TBD]</span>
+            <span class="hub-card-stakes">Where to land</span>
+            <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hub-card hub-card--next" aria-hidden="true"
+           data-status="coming-soon" data-position="9">
+        <div class="hub-card-stat">
+          <span class="hub-card-stat-num">&#x2014;</span>
+        </div>
+        <div class="hub-card-body">
+          <h2 class="hub-card-title">The Living Room</h2>
+          <p class="hub-card-sub">The sitcom names that became real names in real households.</p>
+          <div class="hub-card-footer">
+            <span class="hub-card-stakes">What television built</span>
             <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
           </div>
         </div>
