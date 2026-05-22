@@ -225,6 +225,18 @@
     }
     .ct-snav-btn:hover .ct-snav-label { color: var(--teal); }
 
+    /* ── SHARE BLOCK (inline, Tab 1) ── */
+    .share-block{background:var(--paper-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:var(--space-md) 0;}
+    .share-block-label{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.4rem;}
+    .share-block-nudge{font-family:var(--font-body);font-style:italic;font-size:var(--text-small);color:var(--ink-muted);margin-bottom:1rem;line-height:1.5;}
+    .share-block-btns{display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:0.875rem;}
+    .share-btn{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-body);font-size:var(--text-small);font-weight:500;padding:0.65rem 1.1rem;border-radius:var(--radius-sm);min-height:var(--touch);text-decoration:none;cursor:pointer;transition:opacity 0.15s;border:none;}
+    .share-btn:hover{opacity:0.82;text-decoration:none;}
+    .share-btn--outline{background:transparent;border:1.5px solid var(--teal);color:var(--teal);}
+    .share-btn--filled{background:var(--teal);color:#fff;}
+    .share-block-substack{font-family:var(--font-body);font-size:var(--text-small);color:var(--ink-muted);}
+    .share-block-substack a{color:var(--teal);}
+
     /* ── SPREAD THE WORD — Share grid ── */
     .ct-share-grid {
       display: grid;
@@ -1095,11 +1107,26 @@
       <p class="ai-body">This is not just a pop music issue. It is a labor issue hidden beneath the surface. Women are often carrying larger human-centered productions with dancers, stylists, choreographers, rehearsal teams, creative directors, wardrobe staff, and touring infrastructure that expands in complexity every time a show moves cities or countries. Men frequently retain more financial upside because concert production minimalism is socially acceptable for them. Women are forced to absorb more cost because the standards are not equally enforced for what is deemed a performance or listening party.</p>
     </div>
 
+    <!-- SHARE BLOCK (T-5: Tab 1) -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">The charts are screenshot-friendly. Post what surprises you.</p>
+      <div class="share-block-btns">
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&text=Female+Musicians+Earn+Less+But+Share+More+%E2%80%94+Men+set+the+ceiling.+Women+are+required+to+exceed+it+just+to+belong.&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X"><span>&#x58;</span> Share on X</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on Facebook">Facebook</a>
+        <a href="https://api.whatsapp.com/send?text=Female+Musicians+Earn+Less+But+Share+More+https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on WhatsApp">WhatsApp</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on LinkedIn">LinkedIn</a>
+        <a href="mailto:?subject=Female+Musicians+Earn+Less+But+Share+More&body=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F" class="share-btn share-btn--outline" aria-label="Share via Email">Email</a>
+        <button class="share-btn share-btn--outline" onclick="(function(btn){navigator.clipboard.writeText('https://interactive.alterrell.com/concert-tax/').then(function(){btn.textContent='Copied &#x2713;';setTimeout(function(){btn.innerHTML='<span>&#x25CE;</span> Copy link';},2000)});})(this)" aria-label="Copy link"><span>&#x25CE;</span> Copy link</button>
+      </div>
+      <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">alterrell.substack.com</a></p>
+    </div>
+
     <!-- Section floor nav -->
     <nav class="ct-section-nav" aria-label="Section navigation">
       <span></span>
       <button class="ct-snav-btn next" data-goto="tab-the-data" aria-label="Go to The Data">
-        <span class="ct-snav-dir">Next →</span>
+        <span class="ct-snav-dir">Next &#x2192;</span>
         <span class="ct-snav-label">The Data</span>
       </button>
     </nav>
@@ -2248,7 +2275,6 @@
 
     <div class="ai-footer-brand">
       <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
-      <div class="ai-footer-tagline">The data was always there — now it's yours.</div>
     </div>
 
     <div class="ai-footer-journey">

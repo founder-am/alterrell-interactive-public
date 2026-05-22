@@ -251,8 +251,9 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 .ai-tab:hover { color: var(--ink); text-decoration: none; }
 .ai-tab.active {
-  color: var(--teal);
-  border-bottom-color: var(--teal);
+  background: var(--dark-section);
+  color: var(--paper);
+  border-bottom-color: transparent;
 }
 
 /* Tab JS — smooth scroll + active tracking */

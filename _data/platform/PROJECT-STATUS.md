@@ -1,5 +1,5 @@
 # PROJECT STATUS
-Updated: 2026-05-21 (Batch A — Hub index.html reverted to original card format per D-41)
+Updated: 2026-05-22 (Batch C + Batch A — Audit fixes: DOM order, OG tags, journey items, share blocks, footer tagline, CSS active tab)
 
 ---
 
@@ -26,6 +26,7 @@ LIVE — reverted to original card format 2026-05-21 per D-41. 3-across desktop 
 
 ### Platform CSS
 Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.
+**2026-05-22 Batch A:** `.ai-tab.active` updated from teal underline to dark-section fill (`var(--dark-section)`) + paper text (`var(--paper)`), no underline. Matches decision log standard. Naming series pieces use piece-local gold override (unaffected). Concert Tax and Sodium now inherit dark fill correctly.
 
 ---
 
@@ -44,11 +45,12 @@ Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category c
 - Journey bar items updated: `flex-direction: column`, `gap: 8px`, `padding: 12px 1.25rem`, action 15px/600, dest 9px, divider 36px. Locked as platform standard in DESIGN-DECISION-LOG.md D-20.
 - Concert Builder interactive added to Data tab (previous session).
 **2026-05-21 (Type 2 — The Receipt tool):** Added "Your Ticket, Decoded" interactive to The Data tab. Part 1: slider ($25-$500) + receipt-style revenue breakdown (NITO split: ticketing 27%, venue 17%, promoter/production 30%, management/agent 18%, artist 8%). Part 2: three production profile cards (swipeable carousel, D-21 pattern) documenting Ed Sheeran / Zach Bryan+Post Malone / Beyonce+Taylor Swift tiers. Editorial close quote. All sourced from NITO Dec 2024 survey, IQ Magazine Jan 2026, Pollstar, Guinness WR, Billboard. Note: USC Annenberg "19 cents per dollar" gender pay gap stat UNVERIFIED — AMA to insert citation before publish.
-**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in Type 3 template extraction session.
+**2026-05-22 Batch C (audit fixes):** Footer tagline removed (T-9 violation). Share block added to Overview tab (Tab 1) with 6 destinations: X, Facebook, WhatsApp, LinkedIn, Email, Copy Link. Share block CSS (`.share-block`, `.share-btn`) added to piece-local style block.
+**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in Type 3 template extraction session. Pre-existing em dash in share block nudge text (legacy, not introduced this session).
 **Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs). Also: verify and insert gender pay gap citation in Receipt tool gender note.
 
 ### Naming Series
-- Part 0: LIVE at /naming/part-0/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 4 body tabs. Hero dek updated. Pull quote in Tab 4 shortened. All tabs: Tab 1 (Roots/Kunta Kinte), Tab 2 (Mills surname), Tab 3 (first name reclamation), Tab 4 (SSA data). Tab 5 (About) untouched.
+- Part 0: LIVE at /naming/part-0/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 4 body tabs. **2026-05-22 audit fixes:** Breadcrumb now before nav in DOM. OG/twitter title tags updated to Alterrell Interactive. "All Pieces" 4th journey item removed (now 3 items: Watch/Read/Support). 6-destination share block added to Tab 1 (Roots). "Obsidian Futures" remains in hero eyebrow and footer wordmark (visual label, intentional dark treatment).
 - Part 1: LIVE at /naming/part-1/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 5 tabs. Overview reframed with personal investment framing. Tab 2 restructured (naming approval systems context added before résumé study). Tab 3 h2 updated. Tab 4 chart-editorial blocks updated for both Whitney and Mariah. Tab 5 pattern descriptions and body copy updated.
 - Part 2: LIVE at /naming/part-2/ (voice pass incomplete — em dashes, AI tone present. Not touched in Batch C.)
 **Slug rename completed May 2026:** /what-in-a-name/* → /naming/*. Redirects active in _redirects.
