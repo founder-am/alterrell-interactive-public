@@ -942,4 +942,130 @@ Source: May 20 interactive tool session, May 21 production audit and editorial s
 
 *End of May 21, 2026 update.*
 
+---
+
+# PART 8 — May 21–22, 2026 Decisions
+
+Source: Sodium Batch C sessions (May 21), Hub Batch A session (May 21), consistency audit (May 22).
+
+---
+
+### D-49. Sodium: tab renames — Data → By Franchise, By Franchise → Best Options (LOCKED)
+
+**Decision:** The Data tab (section id=data, which shows the full franchise comparison table) was renamed from "Data" to "By Franchise." The By Franchise tab (section id=franchise, which shows curated swap recommendations per chain) was renamed from "By Franchise" to "Best Options."
+
+**Do not:** Rename the section IDs (`id="data"`, `id="franchise"`) — only the visible tab button labels and eyebrow labels changed.
+
+**Status:** Complete. Executed May 21, 2026.
+
+---
+
+### D-50. Sodium: franchise filter pills in By Franchise tab (LOCKED)
+
+**Decision:** Filter pills added above the data table in the By Franchise tab (`id="data"`). Pills are generated dynamically from the MENU object keys. Clicking a pill filters the table to show only that chain's items; "All" pill shows everything and is active by default.
+
+**Specs:** 44px min touch targets, horizontal scroll with scroll-snap on mobile, `overflow-x: auto`, no wrapping. Active state: `#16141f` fill, white text. Inactive: `var(--paper-card)` bg, 1px `var(--border)`. Font: DM Mono `var(--text-micro)`, uppercase, 0.08em tracked.
+
+**CSS prefix:** `.sodium-pill`, `.sodium-filter-pills`
+
+**Status:** Complete. Executed May 21, 2026.
+
+---
+
+### D-51. Sodium: Systemic Issues Cost + Wages accordion sections permanently removed (LOCKED)
+
+**Decision:** The "The Cost" (accordion 03) and "The Wages" (accordion 04) sections were deleted from the Systemic Issues tab. The tab now has exactly 2 accordion sections: The Formula and The Advertising.
+
+**Do not:** Re-add these sections without AMA approval. The Cost content was redistributed to The System tab (Healthcare Bill accordion). The Wages content was removed entirely.
+
+**Open flag:** The Systemic Issues tab intro still reads "Four mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents." — this is now inaccurate (2 mechanisms remain). AMA must update this in a subsequent Type 2 Batch C session. See D-56.
+
+**Status:** Deletion complete May 21. Intro text update: OPEN.
+
+---
+
+### D-52. Sodium: sources discoverability — jump link + anchor (LOCKED)
+
+**Decision:** A "Jump to sources" link was added to the Overview tab, just before the section-floor nav. The footer `<details>` methodology element received `id="sources-anchor"`. A JS handler auto-opens the accordion when the hash `#sources-anchor` is navigated to, and also on any click of the link.
+
+**Status:** Complete. Executed May 21, 2026.
+
+---
+
+### D-53. Hub: active card content locked for 3 active pieces (LOCKED)
+
+**Decision:** The three active hub cards have these locked values:
+
+| Card | Stat | Stat label | Lede | Stakes |
+|---|---|---|---|---|
+| That Name Is So Ghetto (Part 0) | 60+ | years of naming data | "What 60 years of baby name data reveals about who gets to be 'normal.'" | What the record can't take back |
+| Female Musicians Earn Less But Share More | $10M | headliner fee · minimal staging · full forgiveness | "Men set the ceiling. Women deliver more to justify their place beneath it." | Who absorbs the cost |
+| The Fame Effect (Part 1) | #1 | name spike · 72,000 babies · one album cycle | "Fame doesn't just make stars. It makes names safe to give to your child." | What the record shows |
+
+**Status:** Locked and built. Executed May 21, 2026.
+
+---
+
+### D-54. Hub: Sodium demoted to Coming Soon; Naming Part 2 added (LOCKED)
+
+**Decision:** Sodium ("Fast Food's Hidden Sodium Tax") was moved from active to Coming Soon on the hub. Naming Part 2 ("What's in a Name: The Name Was Always Yours") was added to the hub as Coming Soon with stat "1863" / label "the year the last name was taken · the first name was all that remained." Hub is now 3 active, 4 coming-soon.
+
+**Sodium TBD:** Sodium hub card stat and stakes label are marked `[STAT TBD]` / `[STAKES TBD]`. AMA to fill before Sodium goes back to active.
+
+**Naming Part 2 hub card:** Lede and stakes are locked in hub card. Piece itself remains Coming Soon per D-46.
+
+**Status:** Complete. Executed May 21, 2026.
+
+---
+
+### D-55. Status updates for D-43, D-44, D-45 (executed)
+
+**D-44 (Naming Part 0 copy):** AMA-approved copy applied. Part 0 is live with updated copy as of May 21, 2026. No further action on copy — voice pass still needed before next editorial update.
+
+**D-45 (Naming Part 1 copy):** AMA-approved copy applied. Part 1 is live with updated copy as of May 21, 2026.
+
+**D-43 (Sodium copy):** Copy applied to Overview, The System, Systemic Issues tabs. Data tab renamed and restructured. Compare background fixed. Changes 1–8 of the approved spec are complete. Sodium remains Coming Soon on hub. AMA voice pass still required before Sodium goes back to active. Hub flip is now unblocked (hub revert complete per D-41).
+
+---
+
+### D-56. OPEN: Systemic Issues intro text inaccurate after D-51 (OPEN)
+
+**Problem:** The Systemic Issues tab intro reads "Four mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents." There are now 2 accordion sections (The Formula, The Advertising). The "four mechanisms" reference is factually wrong.
+
+**Action required:** AMA to provide replacement intro text. Type 2 Batch C str_replace to apply it. **Do not auto-generate replacement text.** This is AMA voice.
+
+**Status:** OPEN. Blocks full completion of D-51.
+
+---
+
+### D-57. OPEN: T-5 share block placement — ruling needed (OPEN)
+
+**Problem:** T-5 says "Share block: always Tab 1 (Overview)." Concert Tax places its full share experience in the dedicated Spread the Word tab (Tab 6), not Tab 1. Sodium places its share block in Best Options (Tab 6). Naming pieces place it in content tabs. Only Concert Tax achieves the intended full 6-destination share experience.
+
+**The conflict:** T-5 was written with Concert Tax as the reference build, yet Concert Tax itself puts the share experience on Tab 6. This suggests T-5 was meant to apply to an inline share trigger on Tab 1, not to replace the dedicated Spread the Word tab.
+
+**AMA decision needed:** Is the rule "an inline share trigger must appear on Tab 1" (in addition to the Spread the Word tab), or "the share block belongs on Tab 1 instead of Tab 6"? Until resolved, pieces may have either structure without being in violation.
+
+**Status:** OPEN. AMA ruling needed to clarify T-5.
+
+---
+
+### SESSION PRIORITY ORDER (updated May 22, 2026)
+
+Previous items 1-3 from May 21 are now complete. Updated order:
+
+1. **Type 1:** HBS editorial — close the four open decisions (URGENT, June deadline)
+2. **Type 1:** Naming series title mockups (Option A, D-42) — AMA approval needed before any code
+3. **Type 2 Batch C:** Fix Naming P0/P1/P2 structural violations: nav/breadcrumb order flip, remove 4th "All Pieces" journey item, update OG tags to Alterrell Interactive branding
+4. **Type 2 Batch C:** Concert Tax footer — remove tagline (T-9 violation)
+5. **Type 2 Batch C:** Sodium share block — add missing 4 destinations; resolve T-5 ruling first (D-57)
+6. **Type 3 Batch A:** Fix global CSS active tab style (teal underline → navy fill per decision log)
+7. **Type 2 Batch C:** Concert Tax `.ct-journey` → `.ai-journey-compact` migration (D-20)
+8. **AMA ruling needed:** D-56 (Systemic Issues intro text), D-57 (T-5 share placement)
+9. **Type 2 Batch B:** Sodium hub flip back to active (after voice pass + stat/stakes TBD filled)
+
+---
+
+*End of May 22, 2026 update.*
+
 *End of log. Update this file after every session that makes a design decision.*
