@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alterrell Interactive — Visual Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-display: 'Spectral', serif;
+  --font-editorial: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --teal: #0a7c72;
+  --paper: #f8f6f1;
+  --paper-warm: #f5f3ee;
+  --ink: #0F172A;
+  --ink-secondary: #64748B;
+  --ink-muted: #94a3b8;
+  --border: #E2E0DC;
+  --dark: #16141f;
+  --dark-coming: #2a2a2a;
+  --radius: 8px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: #fff; color: var(--ink); padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+/* Reference doc chrome */
+.ref-header { border-bottom: 3px solid var(--teal); padding-bottom: 1rem; margin-bottom: 2rem; }
+.ref-header h1 { font-family: var(--font-display); font-size: 28px; font-weight: 700; }
+.ref-header p { font-family: var(--font-mono); font-size: 11px; color: var(--ink-secondary); margin-top: 4px; letter-spacing: 0.04em; }
+.ref-section { margin-bottom: 3rem; }
+.ref-section-title { font-family: var(--font-editorial); font-size: 22px; margin-bottom: 4px; }
+.ref-section-sub { font-family: var(--font-body); font-size: 13px; color: var(--ink-secondary); margin-bottom: 16px; line-height: 1.6; }
+.ref-rule { font-family: var(--font-mono); font-size: 10px; color: var(--ink-secondary); letter-spacing: 0.04em; background: var(--paper); padding: 8px 12px; border-radius: 4px; margin-bottom: 12px; line-height: 1.7; }
+.ref-rule strong { color: var(--ink); }
+.ref-divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* Card display */
+.card-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.gallery-card { width: 300px; height: 280px; border: 7px solid var(--teal); border-radius: var(--radius); background: #fff; overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0; }
+.gc-title-zone { font-family: var(--font-mono); font-size: 9px; color: var(--teal); letter-spacing: 0.06em; padding: 8px 12px 4px; text-transform: uppercase; }
+.gc-chart-area { flex: 1; padding: 4px 12px; overflow: hidden; }
+.gc-stat-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; }
+.gc-quote-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 20px; }
+.gc-editorial { font-family: var(--font-body); font-size: 12px; color: var(--ink); text-align: center; padding: 8px 12px; line-height: 1.5; }
+.gc-source { font-family: var(--font-mono); font-size: 8px; color: var(--ink-muted); letter-spacing: 0.04em; padding: 4px 12px 8px; text-align: right; margin-top: auto; }
+.gc-compare { display: flex; gap: 0; flex: 1; }
+.gc-compare-side { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; }
+.gc-compare-side + .gc-compare-side { border-left: 1px solid var(--border); }
+.gc-bar-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.gc-bar-label { font-family: var(--font-body); font-size: 9px; color: var(--ink-secondary); width: 60px; text-align: right; flex-shrink: 0; }
+.gc-bar { height: 14px; background: var(--teal); border-radius: 2px; }
+.gc-bar-val { font-family: var(--font-mono); font-size: 9px; color: var(--ink); flex-shrink: 0; }
+.gc-stat-num { font-family: var(--font-editorial); font-size: 36px; color: var(--ink); }
+.gc-stat-label { font-family: var(--font-body); font-size: 11px; color: var(--ink-secondary); margin-top: 4px; }
+.gc-quote-text { font-family: var(--font-editorial); font-size: 15px; font-style: italic; color: var(--ink); line-height: 1.5; text-align: center; }
+.gc-attribution { font-family: var(--font-mono); font-size: 8px; color: var(--ink-muted); letter-spacing: 0.06em; margin-top: auto; padding: 4px 12px 8px; text-align: center; }
+.gc-connector-beat { font-family: var(--font-body); font-size: 13px; color: var(--ink); line-height: 1.5; text-align: center; margin-bottom: 10px; }
+.gc-connector-beat:last-child { margin-bottom: 0; }
+.gc-seq { font-family: var(--font-mono); font-size: 8px; color: var(--ink-muted); letter-spacing: 0.06em; padding: 4px 12px; }
+
+/* Hub card display */
+.hub-card-ref { width: 300px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0; }
+.hub-card-ref .hcr-bar { background: var(--dark); padding: 14px 16px 12px; }
+.hub-card-ref .hcr-bar h3 { font-family: var(--font-editorial); font-size: 20px; font-weight: 500; color: rgba(248,246,241,0.95); line-height: 1.35; margin: 0; }
+.hub-card-ref .hcr-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.hub-card-ref .hcr-series { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; color: var(--ink-muted); text-transform: uppercase; }
+.hub-card-ref .hcr-lede { font-family: var(--font-body); font-size: 12px; color: var(--ink-secondary); line-height: 1.55; }
+.hub-card-ref .hcr-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--border); }
+.hub-card-ref .hcr-tags { display: flex; gap: 4px; }
+.hub-card-ref .hcr-tag { font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--paper); padding: 2px 6px; border-radius: 3px; color: var(--ink-secondary); }
+.hub-card-ref .hcr-pill { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--dark); color: var(--paper); padding: 3px 10px; border-radius: 20px; }
+.hub-card-ref--soon { opacity: 0.5; }
+.hub-card-ref--soon .hcr-bar { background: var(--dark-coming); }
+.hub-card-ref--soon .hcr-bar h3 { color: rgba(248,246,241,0.7); }
+.hub-card-ref--soon .hcr-pill { background: transparent; color: var(--ink-muted); border: 1px solid var(--border); }
+
+/* Spec table */
+.spec-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 12px; }
+.spec-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; padding: 8px 10px; background: var(--paper); border-bottom: 1px solid var(--border); color: var(--ink-secondary); }
+.spec-table td { padding: 8px 10px; border-bottom: 1px solid var(--paper); vertical-align: top; }
+.spec-table td:first-child { font-weight: 500; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<div class="ref-header">
+  <h1>Alterrell Interactive — Visual Reference</h1>
+  <p>Last updated: May 22, 2026 · Source of truth for all builds · Append new cards below their shell</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 1: CARD SHELL SPECIFICATIONS   -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Card shells</div>
+  <div class="ref-section-sub">All gallery cards are 300×280px. No exceptions. Four shells. Every component type maps to one shell.</div>
+
+  <div class="ref-rule">
+    <strong>Universal rules:</strong> 300px width · 280px height · 7px solid teal border all sides · white interior · source stamp bottom-right · all cards in one carousel same height
+  </div>
+
+  <table class="spec-table">
+    <tr><th>Shell</th><th>Use</th><th>Max content</th><th>Components</th></tr>
+    <tr><td>A — Stat</td><td>Big number + editorial line</td><td>1–2 numbers + 1 editorial line</td><td>D1 stat callout, D1/D2 hybrid</td></tr>
+    <tr><td>B — Chart</td><td>Data visualization</td><td>4 items max. 5+ splits to 2 cards with sequence indicator.</td><td>A1 horizontal bar, B2 ranked list, B3 progress</td></tr>
+    <tr><td>C — Quote</td><td>Pull quote or connector</td><td>1 quote or 2 beats max</td><td>D2 pull quote, D4 connector</td></tr>
+    <tr><td>D — Comparison</td><td>Side-by-side</td><td>2 columns, same constraints as Shell A per side</td><td>A4 side-by-side, C1 timeline (split across cards)</td></tr>
+  </table>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 2: SHELL A — STAT CARDS        -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Shell A — Stat cards</div>
+  <div class="ref-section-sub">Big number, editorial line, source. Text-only. Components: D1, D1/D2 hybrid.</div>
+
+  <div class="card-row">
+
+    <!-- Concert Tax: Cardi B -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · The Data · Card 5</div>
+        <div class="gc-stat-area">
+          <div style="display: flex; gap: 24px; margin-bottom: 12px;">
+            <div style="text-align: center;">
+              <div class="gc-stat-num" style="font-size: 30px;">$70K</div>
+              <div class="gc-stat-label">fee</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="gc-stat-num" style="font-size: 30px;">$300K</div>
+              <div class="gc-stat-label">spent</div>
+            </div>
+          </div>
+          <div class="gc-editorial">"She didn't break even. She subsidized the standard."</div>
+          <div style="font-family: var(--font-body); font-size: 10px; color: var(--ink-secondary); margin-top: 4px;">7 months pregnant. 35-minute set. −$230K net.</div>
+        </div>
+        <div class="gc-source">Cardi B · SiriusXM 2018</div>
+      </div>
+      <div class="gc-seq">Shell A · D1/D2 hybrid · approved May 8</div>
+    </div>
+
+  </div>
+  <div class="ref-rule"><strong>Add new Shell A cards here.</strong> Copy the structure above. Update title zone, stat, editorial line, and source.</div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 3: SHELL B — CHART CARDS       -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Shell B — Chart cards</div>
+  <div class="ref-section-sub">Data visualization. Max 4 items per card. 5+ items split across cards with sequence indicator. Components: A1, B2, B3.</div>
+
+  <div class="card-row">
+
+    <!-- Example: Sodium bars (4 items) -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Sodium · The System · Example</div>
+        <div class="gc-chart-area" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Whopper</span>
+            <div class="gc-bar" style="width: 80%;"></div>
+            <span class="gc-bar-val">1,020</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Big Mac</span>
+            <div class="gc-bar" style="width: 65%;"></div>
+            <span class="gc-bar-val">940</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">McNuggets</span>
+            <div class="gc-bar" style="width: 40%;"></div>
+            <span class="gc-bar-val">540</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Lg Fries</span>
+            <div class="gc-bar" style="width: 30%;"></div>
+            <span class="gc-bar-val">400</span>
+          </div>
+        </div>
+        <div class="gc-source">Source: USDA FoodData Central</div>
+      </div>
+      <div class="gc-seq">Shell B · A1 horizontal bar · 4 items</div>
+    </div>
+
+    <!-- Example: Split card 1 of 2 -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · The Data · Gross revenue</div>
+        <div class="gc-chart-area" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Swift</span>
+            <div class="gc-bar" style="width: 90%;"></div>
+            <span class="gc-bar-val">$2.07B</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Sheeran</span>
+            <div class="gc-bar" style="width: 42%;"></div>
+            <span class="gc-bar-val">$876M</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Beyoncé</span>
+            <div class="gc-bar" style="width: 28%;"></div>
+            <span class="gc-bar-val">$580M</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Bunny</span>
+            <div class="gc-bar" style="width: 21%;"></div>
+            <span class="gc-bar-val">$435M</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0 12px;">
+          <div class="gc-source" style="padding: 4px 0 8px;">Source: Pollstar</div>
+          <div class="gc-seq" style="padding: 4px 0 8px;">1 of 2</div>
+        </div>
+      </div>
+      <div class="gc-seq">Shell B · B2 ranked list · split card 1 of 2</div>
+    </div>
+
+    <!-- Example: Split card 2 of 2 -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · The Data · Gross revenue</div>
+        <div class="gc-chart-area" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Styles</span>
+            <div class="gc-bar" style="width: 38%;"></div>
+            <span class="gc-bar-val">$400M</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Weeknd</span>
+            <div class="gc-bar" style="width: 30%;"></div>
+            <span class="gc-bar-val">$300M</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">Karol G</span>
+            <div class="gc-bar" style="width: 26%;"></div>
+            <span class="gc-bar-val">$280M</span>
+          </div>
+          <div class="gc-bar-row">
+            <span class="gc-bar-label">P!nk</span>
+            <div class="gc-bar" style="width: 24%;"></div>
+            <span class="gc-bar-val">$249M</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0 12px;">
+          <div class="gc-source" style="padding: 4px 0 8px;">Source: Pollstar</div>
+          <div class="gc-seq" style="padding: 4px 0 8px;">2 of 2</div>
+        </div>
+      </div>
+      <div class="gc-seq">Shell B · B2 ranked list · split card 2 of 2</div>
+    </div>
+
+  </div>
+  <div class="ref-rule"><strong>Add new Shell B cards here.</strong> Max 4 data items. If 5+, split into multiple cards with "N of N" indicator. Shared title across split cards.</div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 4: SHELL C — QUOTE CARDS       -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Shell C — Quote cards</div>
+  <div class="ref-section-sub">Pull quote or connector. Components: D2, D4.</div>
+
+  <div class="card-row">
+
+    <!-- D2: Pull quote -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · Overview · Card 4</div>
+        <div class="gc-quote-area">
+          <div class="gc-quote-text">"Men set the ceiling. Women are required to exceed it just to belong."</div>
+        </div>
+        <div class="gc-attribution">Concert Tax · Alterrell Interactive</div>
+      </div>
+      <div class="gc-seq">Shell C · D2 pull quote · approved</div>
+    </div>
+
+    <!-- D4: Connector -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · History · Card 12</div>
+        <div class="gc-quote-area">
+          <div class="gc-connector-beat">Beyoncé sets the standard through extraordinary labor.</div>
+          <div style="width: 30px; height: 1px; background: var(--border); margin: 4px 0;"></div>
+          <div class="gc-connector-beat">Every woman after her inherits it. None of them inherit the fee.</div>
+        </div>
+        <div class="gc-attribution">Concert Tax · Alterrell Interactive</div>
+      </div>
+      <div class="gc-seq">Shell C · D4 connector · 2 beats</div>
+    </div>
+
+    <!-- D2: another -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · History · Card 14</div>
+        <div class="gc-quote-area">
+          <div class="gc-quote-text">"Men performed. Women entertained."</div>
+        </div>
+        <div class="gc-attribution">Concert Tax · Alterrell Interactive</div>
+      </div>
+      <div class="gc-seq">Shell C · D2 pull quote</div>
+    </div>
+
+  </div>
+  <div class="ref-rule"><strong>Add new Shell C cards here.</strong> D2 = centered quote, attribution below. D4 = two beats separated by divider line. Never more than 2 beats.</div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 5: SHELL D — COMPARISON CARDS  -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Shell D — Comparison cards</div>
+  <div class="ref-section-sub">Side-by-side. Two columns. Same content constraints as Shell A per side. Components: A4, C1 (split).</div>
+
+  <div class="card-row">
+
+    <!-- A4: Bieber vs Carpenter -->
+    <div>
+      <div class="gallery-card">
+        <div class="gc-title-zone">Concert Tax · The Data · Card 1</div>
+        <div class="gc-compare">
+          <div class="gc-compare-side">
+            <div class="gc-stat-num" style="font-size: 26px;">$90M</div>
+            <div class="gc-stat-label" style="text-align: center; font-size: 10px; margin-top: 6px;">Bieber</div>
+            <div style="font-family: var(--font-body); font-size: 9px; color: var(--ink-muted); text-align: center; margin-top: 4px; line-height: 1.4;">Solo + backing track<br>Minimal production</div>
+          </div>
+          <div class="gc-compare-side">
+            <div class="gc-stat-num" style="font-size: 26px;">$40M</div>
+            <div class="gc-stat-label" style="text-align: center; font-size: 10px; margin-top: 6px;">Carpenter</div>
+            <div style="font-family: var(--font-body); font-size: 9px; color: var(--ink-muted); text-align: center; margin-top: 4px; line-height: 1.4;">Full band + dancers<br>Costume changes</div>
+          </div>
+        </div>
+        <div class="gc-editorial" style="font-size: 10px; border-top: 1px solid var(--border); margin: 0 12px; padding-top: 6px;">He earned more doing less.</div>
+        <div class="gc-source">Source: Pollstar</div>
+      </div>
+      <div class="gc-seq">Shell D · A4 side-by-side · approved structure</div>
+    </div>
+
+  </div>
+  <div class="ref-rule"><strong>Add new Shell D cards here.</strong> Two columns only. Each side gets one stat + 2–3 lines context max. Editorial line below the split. Timelines split across multiple cards (3 moments per card).</div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 6: HUB CARD REFERENCE          -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Hub cards</div>
+  <div class="ref-section-sub">Title-only dark bar. No stat block. 2–3 category tags from master index. Character limits enforced editorially.</div>
+
+  <table class="spec-table" style="margin-bottom: 16px;">
+    <tr><th>Zone</th><th>Max</th><th>Font</th></tr>
+    <tr><td>Title (dark bar)</td><td>40 chars / 2 lines</td><td>DM Serif Display 20px</td></tr>
+    <tr><td>Series tag</td><td>Naming only</td><td>DM Mono 8px uppercase</td></tr>
+    <tr><td>Lede</td><td>80 chars / ~18 words / 2 lines</td><td>DM Sans 12px</td></tr>
+    <tr><td>Tags</td><td>2–3 from master index</td><td>DM Mono pill</td></tr>
+    <tr><td>CTA</td><td>"Explore" or "Coming soon"</td><td>DM Mono pill</td></tr>
+  </table>
+
+  <div class="ref-rule">
+    <strong>Master tag index:</strong> Health · Economics · Identity · Culture · Civics · Education · Policy · Media · Infrastructure · Gender
+  </div>
+
+  <div class="card-row">
+
+    <!-- Active: Sodium -->
+    <div>
+      <div class="hub-card-ref">
+        <div class="hcr-bar"><h3>Fast Food's Hidden Sodium Tax</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-lede">How the cheapest meals carry the heaviest health cost.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Health</span><span class="hcr-tag">Policy</span></div>
+            <span class="hcr-pill">Explore</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Active · /fast-food-sodium/</div>
+    </div>
+
+    <!-- Active: Naming P0 -->
+    <div>
+      <div class="hub-card-ref">
+        <div class="hcr-bar"><h3>That Name Is So Ghetto</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-series">Naming series · Part 0</div>
+          <div class="hcr-lede">What 60 years of baby name data reveals about who gets to be "normal."</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Identity</span><span class="hcr-tag">Culture</span></div>
+            <span class="hcr-pill">Explore</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Active · /naming/part-0/</div>
+    </div>
+
+    <!-- Active: Concert Tax -->
+    <div>
+      <div class="hub-card-ref">
+        <div class="hcr-bar"><h3>Female Musicians Earn Less But Share More</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-lede">Men set the ceiling. Women deliver more to justify their place beneath it.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Economics</span><span class="hcr-tag">Gender</span></div>
+            <span class="hcr-pill">Explore</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Active · /concert-tax/</div>
+    </div>
+
+    <!-- Active: Naming P1 -->
+    <div>
+      <div class="hub-card-ref">
+        <div class="hcr-bar"><h3>The Fame Effect</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-series">Naming series · Part 1</div>
+          <div class="hcr-lede">Fame doesn't just make stars. It makes names safe to give to your child.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Culture</span><span class="hcr-tag">Media</span></div>
+            <span class="hcr-pill">Explore</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Active · /naming/part-1/</div>
+    </div>
+
+  </div>
+
+  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); margin: 8px 0 12px; letter-spacing: 0.06em;">COMING SOON</div>
+
+  <div class="card-row">
+
+    <!-- Soon: Naming P2 -->
+    <div>
+      <div class="hub-card-ref hub-card-ref--soon">
+        <div class="hcr-bar"><h3>The Living Room</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-series">Naming series · Part 2</div>
+          <div class="hcr-lede">The sitcom names that became real names in real households.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Culture</span><span class="hcr-tag">Media</span></div>
+            <span class="hcr-pill">Coming soon</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Coming Soon · Naming Part 2</div>
+    </div>
+
+    <!-- Soon: Beyoncé -->
+    <div>
+      <div class="hub-card-ref hub-card-ref--soon">
+        <div class="hcr-bar"><h3>Where's Beyoncé?</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-lede">Black wealth gets asked to save the world. White wealth gets to choose.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Economics</span><span class="hcr-tag">Policy</span></div>
+            <span class="hcr-pill">Coming soon</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Coming Soon</div>
+    </div>
+
+    <!-- Soon: Copaganda -->
+    <div>
+      <div class="hub-card-ref hub-card-ref--soon">
+        <div class="hcr-bar"><h3>Benson &amp; Stabler Aren't Coming</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-lede">The most-watched police show in America never showed you the real numbers.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Media</span><span class="hcr-tag">Civics</span></div>
+            <span class="hcr-pill">Coming soon</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Coming Soon</div>
+    </div>
+
+    <!-- Soon: Gay Uncles -->
+    <div>
+      <div class="hub-card-ref hub-card-ref--soon">
+        <div class="hcr-bar"><h3>Advice From Your Thick Gay Uncles</h3></div>
+        <div class="hcr-body">
+          <div class="hcr-lede">Where to land, how to live, what nobody told you.</div>
+          <div class="hcr-footer">
+            <div class="hcr-tags"><span class="hcr-tag">Identity</span><span class="hcr-tag">Culture</span></div>
+            <span class="hcr-pill">Coming soon</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-seq">Coming Soon</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 7: INTERACTIVE ELEMENT SLOTS   -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Interactive element placement</div>
+  <div class="ref-section-sub">Three valid slots for interactive tools (sliders, calculators, compare tools, dropdowns). Piece brief specifies which slot.</div>
+
+  <table class="spec-table">
+    <tr><th>Slot</th><th>Description</th><th>Example</th></tr>
+    <tr><td>Slot 1 — Tab primary</td><td>Interactive tool IS the tab content. No card gallery on this tab.</td><td>Sodium "Compare Your Order" tab</td></tr>
+    <tr><td>Slot 2 — Below gallery</td><td>Card gallery first, then interactive tool below it on same tab.</td><td>Concert Tax "The Receipt" on Data tab</td></tr>
+    <tr><td>Slot 3 — Above gallery</td><td>Interactive tool as lead-in, card gallery below on same tab.</td><td>Not yet used — available for future pieces</td></tr>
+  </table>
+
+  <div class="ref-rule">
+    <strong>Rules:</strong> Interactive tools use white/paper backgrounds (never dark). 44px min touch targets. Piece-local CSS with prefix. Tool must have a visible source citation. One interactive per tab max.
+  </div>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 8: CAROUSEL RULES              -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Carousel rules</div>
+
+  <table class="spec-table">
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Container max-width</td><td>Matches prose container (860px)</td></tr>
+    <tr><td>Card width</td><td>300px fixed desktop · calc(100vw - 3rem) mobile</td></tr>
+    <tr><td>Card height</td><td>280px — all cards, all shells, no exceptions</td></tr>
+    <tr><td>Visible cards (desktop)</td><td>~2.5 + peek of next card</td></tr>
+    <tr><td>Gap</td><td>16px</td></tr>
+    <tr><td>Navigation</td><td>Arrow buttons desktop (hidden ≤640px) · dot indicators always</td></tr>
+    <tr><td>Mobile</td><td>Touch swipe · scroll-snap · dots visible · arrows hidden</td></tr>
+    <tr><td>Height mixing</td><td>Never. All cards in one carousel are 280px.</td></tr>
+  </table>
+</div>
+
+<div class="ref-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 9: DECISION LOG ENTRIES        -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="ref-section">
+  <div class="ref-section-title">Decisions captured in this file</div>
+  <div class="ref-section-sub">These entries should also be in DESIGN-DECISION-LOG.md.</div>
+
+  <div class="ref-rule">
+    <strong>D-63 (2026-05-22) | LOCKED</strong> — Naming series: 3 parts, A3 card format, "That Name Is So Ghetto" title convention.<br>
+    <strong>D-64 (2026-05-22) | LOCKED</strong> — Hub card content constraints: 40 char title, 80 char lede, 2–3 tags from master index.<br>
+    <strong>D-65 (2026-05-22) | LOCKED</strong> — Hub card category tags: 10-item master index. Claude proposes, AMA confirms. .hub-card-stat-num retired.<br>
+    <strong>D-66 (2026-05-22) | LOCKED</strong> — Single card height: 280px, no tall tier. Shell B caps at 4 items, 5+ splits across cards.<br>
+    <strong>D-67 (2026-05-22) | LOCKED</strong> — Four card shells: A (stat), B (chart ≤4), C (quote), D (comparison). Every component maps to one shell.
+  </div>
+</div>
+
+</body>
+</html>
