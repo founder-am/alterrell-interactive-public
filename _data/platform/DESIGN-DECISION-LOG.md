@@ -340,6 +340,12 @@ Platform CSS updated. `.ai-tab.active`: dark fill (var(--dark-section)), white t
 ### D-62 (2026-05-22) | COMPLETE | Audit violations: all 6 fixed
 Nav/breadcrumb DOM order (Naming P0/P1/P2), OG tag cleanup, 4th journey item removed, Concert Tax footer tagline removed, share blocks enforced on Tab 1, active tab CSS.
 
+D-63 (2026-05-22) | LOCKED — Naming series: 3 parts, A3 card format, "That Name Is So Ghetto" title convention.
+D-64 (2026-05-22) | LOCKED — Hub card content constraints: 40 char title, 80 char lede, 2–3 tags from master index.
+D-65 (2026-05-22) | LOCKED — Hub card category tags: 10-item master index. Claude proposes, AMA confirms. .hub-card-stat-num retired.
+D-66 (2026-05-22) | LOCKED — Single card height: 280px, no tall tier. Shell B caps at 4 items, 5+ splits across cards.
+D-67 (2026-05-22) | LOCKED — Four card shells: A (stat), B (chart ≤4), C (quote), D (comparison). Every component maps to one shell.
+
 ---
 
 # SECTION 8 — OPEN DECISIONS REQUIRING AMA
