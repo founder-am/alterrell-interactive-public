@@ -42,8 +42,34 @@ Type 2 session.
 Piece: [NAME]
 Task: [ONE SENTENCE]
 
-Input: approved structure spec
+Read these files in this exact order and confirm each aloud:
+1. `_data/platform/PLATFORM-BRIEF.md`
+2. `_data/platform/DEPLOY-CHECKLIST.md`
+3. `_data/templates/VISUAL-REFERENCE.html`
+4. `_data/templates/piece-template.html`
+5. The relevant piece brief from `_data/pieces/`
+6. The piece's existing `index.html` (if editing, not creating)
 
+After reading, state:
+- The top 7 deploy checklist items you will enforce
+- Which tab structure the piece uses
+- Which interactive tool pattern is used on which tab
+
+---
+PRE-BUILD MOCKUP GATE (mandatory):
+Before writing ANY HTML, present a section-by-section mockup showing:
+- Which zones are structural (unchanged from template)
+- Which zones are piece-specific (what content goes where)
+- Which card shells are used and where
+- Which interactive tool pattern is used on which tab
+- How prose width is maintained (single .ai-inner container)
+- Tab names for tabs 2–4
+
+AMA confirms the mockup. Only then does the build proceed.
+If you skip the mockup and go straight to code, the session has failed.
+---
+
+Do not copy any files to output directories. Write directly to the repo path.
 
 Rules:
 - no new narrative decisions
