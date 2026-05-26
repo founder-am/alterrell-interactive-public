@@ -29,6 +29,7 @@
 
     /* Tokens used in workbench cards that are absent from the master CSS */
     :root {
+      --piece-accent: #E8B923;
       --surface:      #f0ede8;
       --white:        #ffffff;
       --orange-light: #fdf0eb;
@@ -107,9 +108,8 @@
 
     /* ── HERO ── */
     .ct-hero {
-      background: var(--paper);
+      background: var(--dark-section);
       padding: 1.5rem 1.25rem 1rem;
-      border-bottom: 1px solid var(--border);
     }
     .ct-hero-inner {
       max-width: var(--max-editorial);
@@ -124,9 +124,7 @@
     .ct-hero-hed {
       flex: none;
       max-width: none;
-    }
-    .ai-hero-hed.ct-hero-hed {
-      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--paper);
     }
     .ct-hero-sub {
       flex: none;
@@ -134,7 +132,7 @@
       font-size: 1rem;
       font-weight: 400;
       line-height: var(--leading-body);
-      color: var(--ink-secondary);
+      color: rgba(248,246,241,0.85);
       padding-top: 0;
     }
     @media (max-width: 640px) {
@@ -154,8 +152,8 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: var(--ink);
-      color: var(--paper);
+      background: var(--piece-accent);
+      color: var(--ink);
       padding: 0.2rem 0.65rem;
       border-radius: 2px;
     }
@@ -329,54 +327,6 @@
       padding-top: 0.4rem;
     }
 
-    /* ── TASK 2: COMPACT JOURNEY BAR ── */
-    .ct-journey {
-      background: var(--paper-card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .ct-journey-inner {
-      max-width: var(--max-editorial);
-      margin: 0 auto;
-      padding: 0 1.25rem;
-      display: flex;
-      align-items: center;
-      min-height: 44px;
-    }
-    .ct-journey-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      text-decoration: none;
-      padding: 12px 1.25rem;
-      min-height: var(--touch);
-      transition: opacity 0.15s;
-      flex-shrink: 0;
-    }
-    .ct-journey-item:first-child { padding-left: 0; }
-    .ct-journey-item:hover { opacity: 0.7; text-decoration: none; }
-    .ct-journey-action {
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .ct-journey-dest {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .ct-journey-primary .ct-journey-dest { color: var(--teal); }
-    .ct-journey-secondary .ct-journey-dest { color: var(--orange); }
-    .ct-journey-tertiary .ct-journey-dest { color: var(--ink-muted); }
-    .ct-journey-divider {
-      width: 1px;
-      height: 36px;
-      background: var(--border);
-      flex-shrink: 0;
-    }
 
     /* ── TASK 4: SWIPEABLE GALLERY ── */
     .ct-swipeable-outer {
@@ -478,7 +428,7 @@
       font-size: var(--text-micro);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #E8B923;
+      color: var(--piece-accent);
       margin-bottom: 0.25rem;
       display: block;
     }
@@ -539,7 +489,7 @@
       background: #fffdf5;
     }
     .cb-option.selected {
-      border-color: #E8B923;
+      border-color: var(--piece-accent);
       background: #fffceb;
     }
     .cb-option-num {
@@ -552,7 +502,7 @@
       font-family: var(--font-body);
       font-size: var(--text-small);
       font-weight: 400;
-      color: #666666;
+      color: var(--ink-secondary);
       line-height: 1.3;
     }
     .cb-results-area {
@@ -616,7 +566,7 @@
     .cb-card-desc {
       font-family: var(--font-body);
       font-size: var(--text-small);
-      color: #555;
+      color: var(--ink-secondary);
       line-height: 1.55;
     }
     .cb-card-stats {
@@ -636,7 +586,7 @@
       font-size: 0.58rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #999999;
+      color: var(--ink-muted);
     }
     .cb-card-stat-val {
       font-family: var(--font-mono);
@@ -660,7 +610,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       background: #f0ede8;
-      color: #555555;
+      color: var(--ink-secondary);
       padding: 0.15rem 0.4rem;
       border-radius: 2px;
     }
@@ -690,7 +640,7 @@
       font-size: var(--text-micro);
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #E8B923;
+      color: var(--piece-accent);
       background: none;
       border: 1px solid rgba(232,185,35,0.25);
       border-radius: var(--radius-sm);
@@ -1014,42 +964,45 @@
 </header>
 
 <!-- ── 5. JOURNEY BLOCK ── -->
-<div class="ct-journey" aria-label="Follow this piece">
-  <div class="ct-journey-inner">
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
-       target="_blank" rel="noopener"
-       class="ct-journey-item ct-journey-primary"
-       aria-label="Watch Concert Tax on YouTube">
-      <span class="ct-journey-action">Watch</span>
-      <span class="ct-journey-dest">YouTube →</span>
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-items" style="display: flex; border-top: 3px solid var(--teal);">
+
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+      <span class="ai-journey-icon">▶</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">WATCH</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The video companion to this piece</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--teal); font-size: 0.85rem;">WATCH NOW →</span>
     </a>
-    <div class="ct-journey-divider" aria-hidden="true"></div>
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
-       target="_blank" rel="noopener"
-       class="ct-journey-item ct-journey-secondary"
-       aria-label="Read the full argument on Substack">
-      <span class="ct-journey-action">Read</span>
-      <span class="ct-journey-dest">Substack →</span>
+
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+      <span class="ai-journey-icon" style="color: var(--teal);">✦</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">READ</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">The full argument on Substack</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The policy accountability case, documented</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--orange); font-size: 0.85rem;">READ NOW →</span>
     </a>
-    <div class="ct-journey-divider" aria-hidden="true"></div>
-    <a href="https://ko-fi.com/alterrell"
-       target="_blank" rel="noopener"
-       class="ct-journey-item ct-journey-tertiary"
-       aria-label="Support on Ko-fi">
-      <span class="ct-journey-action">Support</span>
-      <span class="ct-journey-dest">Ko-fi →</span>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none;">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">SUPPORT</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Ko-fi — keep this work free</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">Independent civic journalism</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--ink); font-size: 0.85rem;">SUPPORT →</span>
     </a>
+
   </div>
-</div>
+</section>
 
 <!-- ── 6. TABS ── -->
-<div class="ai-tabs" id="ct-tabs" role="tablist" aria-label="Concert Tax sections">
-  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"        data-target="tab-overview">Overview</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-the-data"        data-target="tab-the-data">The Data</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-double-standard" data-target="tab-double-standard">The Double Standard</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-history"         data-target="tab-history">History</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action"     data-target="tab-take-action">Take Action</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"          data-target="tab-spread">Spread the Word</button>
+<div class="ai-tabs" id="ct-tabs" role="tablist" aria-label="Concert Tax sections" style="display: flex;">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"        data-target="tab-overview"        style="flex:1;">Overview</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-the-data"        data-target="tab-the-data"        style="flex:1;">The Data</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-double-standard" data-target="tab-double-standard" style="flex:1;">The Double Standard</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-history"         data-target="tab-history"         style="flex:1;">History</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action"     data-target="tab-take-action"     style="flex:1;">Take Action</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"          data-target="tab-spread"          style="flex:1;">Spread the Word</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-sources"         data-target="tab-sources"         style="flex:1;">Sources</button>
 </div>
 
 <!-- ── 7. TAB SECTIONS ── -->
@@ -1396,7 +1349,7 @@
 
       <!-- Receipt card -->
       <div class="ct-receipt-card">
-        <div class="ct-receipt-card-header">Concert Ticket &mdash; Revenue Split</div>
+        <div class="ct-receipt-card-header">Concert Ticket: Revenue Split</div>
 
         <div class="ct-receipt-line">
           <span class="ct-receipt-line-label">Ticketing &amp; service fees <span class="ct-receipt-line-pct">(27%)</span></span>
@@ -1426,10 +1379,9 @@
         </div>
       </div>
 
-      <!-- Gender context note — AMA to verify and insert specific citation -->
+      <!-- UNVERIFIED: USC Annenberg 19 cents claim — verify before publish -->
       <p class="ct-receipt-gender-note">
         Industry research documents that female artists invest significantly more in production relative to gross earnings than male peers at comparable popularity levels. That same 8% artist take-home funds a more expensive show for the artists most likely to be required to deliver spectacle.
-        <!-- BUILD NOTE: USC Annenberg "19 cents per dollar" stat could not be verified against 2024 Annenberg Inclusion Initiative reports during this session. AMA to insert specific citation before publish. -->
       </p>
 
       <!-- Production profiles header -->
@@ -2256,11 +2208,70 @@
       <div class="ct-swipeable-dots" id="ct-swipeable-dots"></div>
     </div><!-- /.ct-swipeable-outer -->
 
-    <!-- Section floor nav (last tab — no next) -->
+    <!-- Section floor nav -->
     <nav class="ct-section-nav" aria-label="Section navigation">
       <button class="ct-snav-btn" data-goto="tab-take-action" aria-label="Go to Take Action">
         <span class="ct-snav-dir">← Prev</span>
         <span class="ct-snav-label">Take Action</span>
+      </button>
+      <button class="ct-snav-btn next" data-goto="tab-sources" aria-label="Go to Sources">
+        <span class="ct-snav-dir">Next &#x2192;</span>
+        <span class="ct-snav-label">Sources</span>
+      </button>
+    </nav>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     TAB 7 — SOURCES
+     ════════════════════════════════════ -->
+<section id="tab-sources" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SOURCES ——</span>
+    <h2 class="ai-h2">Methodology &amp; Sources</h2>
+
+    <div class="ai-body">
+      <p>Production intensity scored on a four-tier proxy scale: 1 = solo/minimal instrument, 2 = small band/limited staging, 3 = dancers + full band/multiple costume changes, 4 = full theatrical with architectural set, aerial, or 10+ dancers and narrative structure. Revenue per show = reported tour gross divided by reported shows. Career touring scale (bubble size) = total reported lifetime gross from Billboard Boxscore. Genre classification uses primary Grammy category at time of most recent major tour.</p>
+    </div>
+
+    <ol class="ai-source-list" style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.8; padding-left: 1.25rem;">
+      <li>NITO (National Independent Talent Organization) "What Artists Earn" survey · Dec 2024 · via Pollstar News and Hypebot · ~8% artist take-home from $100 ticket face value</li>
+      <li>IQ Magazine — Ed Sheeran Mathematics Tour analysis · Jan 2026 · $25M production investment confirmed, $875.7M gross, 188 shows</li>
+      <li>Guinness World Records — Taylor Swift Eras Tour $2.07B gross confirmed · 15 dancers · ~90 trucks</li>
+      <li>Complex / Variety — Beyonce Renaissance World Tour · $579M gross · 56 shows · 23 dancers · 89 trucks (Bank of America Stadium setup figure)</li>
+      <li>Pollstar 2024 Year-End — Zach Bryan $199M gross, 49 shows</li>
+      <li>Rolling Stone — Bieber Coachella fee "north of $10M"</li>
+      <li>Grey Journal / Billboard — Standard Coachella headliner $5M per weekend benchmark</li>
+      <li>Stufish Entertainment Architects — Sabrina Carpenter Short n' Sweet set design documentation</li>
+      <li>Wikipedia / Short n' Sweet Tour — 12 dancers, tour production details</li>
+      <li>Hollywood Reporter — Bieber/Carpenter double standard debate, April 2026</li>
+      <li>Rolling Stone — Katy Perry, Lizzo, Zara Larsson reactions to Bieber set</li>
+      <li>Billboard Boxscore — All tour gross figures cited</li>
+      <li>Pollstar Year-End 2024, 2025 — Industry-wide touring data</li>
+      <li>Billboard Top Rap Tours 2024 — Nicki Minaj $99.8M, Megan $40.2M, Doja $46M</li>
+      <li>Billboard Top R&amp;B Tours 2025 — The Weeknd, Usher, Chris Brown figures</li>
+      <li>Industry standard: 30–50% production/operating burn rate (Billboard, multiple sources)</li>
+      <li>Jalopnik — Taylor Swift Eras Tour ~50 trucks confirmed</li>
+      <li>WSJ / Morson — "Most technically ambitious production of the 21st century"</li>
+      <li>Variety — Drake It's All a Blur production breakdown</li>
+      <li>Break Every Rule World Tour Wikipedia / Grokipedia — Tina Turner 1987, $60M gross</li>
+      <li>Adele Live Wikipedia — 2011 sparse staging, production designer intent documented</li>
+      <li>Rolling Stone — Adele Live 2016, $278M gross</li>
+      <li>Rolling Stone, The Guardian, Bustle — "Go girl give us nothing" meme, two-year impact</li>
+      <li>Know Your Meme — Origin documentation, 2018 BRIT Awards</li>
+      <li>Radical Optimism Tour Wikipedia — $141M gross, production upgrade</li>
+      <li>Massachusetts Daily Collegian — "Who gets to be Pop?"</li>
+      <li>This piece uses "female artist" and "male artist" following the nomenclature of the Recording Academy, Billboard, Pollstar, and Billboard Boxscore. These are the terms used in the data sources cited throughout.</li>
+    </ol>
+
+    <!-- Section floor nav -->
+    <nav class="ct-section-nav" aria-label="Section navigation">
+      <button class="ct-snav-btn" data-goto="tab-spread" aria-label="Go to Spread the Word">
+        <span class="ct-snav-dir">← Prev</span>
+        <span class="ct-snav-label">Spread the Word</span>
       </button>
       <span></span>
     </nav>
@@ -2277,78 +2288,9 @@
       <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
     </div>
 
-    <div class="ai-footer-journey">
-      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
-         target="_blank" rel="noopener"
-         class="ai-footer-journey-item"
-         aria-label="Watch on YouTube">
-        <span class="ai-footer-journey-icon">▶</span>
-        <div class="ai-footer-journey-text">
-          <span class="ai-footer-journey-label">Watch</span>
-          <span class="ai-footer-journey-name">YouTube</span>
-        </div>
-      </a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
-         target="_blank" rel="noopener"
-         class="ai-footer-journey-item"
-         aria-label="Read on Substack">
-        <span class="ai-footer-journey-icon">✦</span>
-        <div class="ai-footer-journey-text">
-          <span class="ai-footer-journey-label">Read</span>
-          <span class="ai-footer-journey-name">Substack</span>
-        </div>
-      </a>
-    </div>
-
     <div class="ai-footer-series">
       <a href="/" class="ai-footer-series-hub">← All pieces</a>
     </div>
-
-    <details class="ai-footer-methodology">
-      <summary>Methodology &amp; Sources</summary>
-      <div class="ai-footer-methodology-body">
-        <p class="ai-footer-methodology-note">Production intensity scored on a four-tier proxy scale: 1 = solo/minimal instrument, 2 = small band/limited staging, 3 = dancers + full band/multiple costume changes, 4 = full theatrical with architectural set, aerial, or 10+ dancers and narrative structure. Revenue per show = reported tour gross divided by reported shows. Career touring scale (bubble size) = total reported lifetime gross from Billboard Boxscore. Genre classification uses primary Grammy category at time of most recent major tour.</p>
-        <ul class="ai-footer-sources">
-          <li class="ct-sources-group">The Receipt — revenue split data</li>
-          <li>NITO (National Independent Talent Organization) "What Artists Earn" survey · Dec 2024 · via Pollstar News and Hypebot · ~8% artist take-home from $100 ticket face value</li>
-          <li>IQ Magazine — Ed Sheeran Mathematics Tour analysis · Jan 2026 · $25M production investment confirmed, $875.7M gross, 188 shows</li>
-          <li>Guinness World Records — Taylor Swift Eras Tour $2.07B gross confirmed · 15 dancers · ~90 trucks</li>
-          <li>Complex / Variety — Beyonce Renaissance World Tour · $579M gross · 56 shows · 23 dancers · 89 trucks (Bank of America Stadium setup figure)</li>
-          <li>Pollstar 2024 Year-End — Zach Bryan $199M gross, 49 shows</li>
-          <!-- AMA: Gender pay gap citation for The Receipt tool — USC Annenberg 2024 "19 cents per dollar" figure could not be verified against published Annenberg Inclusion Initiative 2024 reports during build session. Those reports cover representation metrics, not pay gaps in touring. Insert verified citation before publish. -->
-          <li class="ct-sources-group">Coachella fees &amp; production</li>
-          <li>Rolling Stone — Bieber Coachella fee "north of $10M"</li>
-          <li>Grey Journal / Billboard — Standard Coachella headliner $5M per weekend benchmark</li>
-          <li>Stufish Entertainment Architects — Sabrina Carpenter Short n' Sweet set design documentation</li>
-          <li>Wikipedia / Short n' Sweet Tour — 12 dancers, tour production details</li>
-          <li>Hollywood Reporter — Bieber/Carpenter double standard debate, April 2026</li>
-          <li>Rolling Stone — Katy Perry, Lizzo, Zara Larsson reactions to Bieber set</li>
-          <li class="ct-sources-group">Tour grosses</li>
-          <li>Billboard Boxscore — All tour gross figures cited</li>
-          <li>Pollstar Year-End 2024, 2025 — Industry-wide touring data</li>
-          <li>Guinness World Records — Taylor Swift Eras Tour $2.07B confirmed</li>
-          <li>Billboard Top Rap Tours 2024 — Nicki Minaj $99.8M, Megan $40.2M, Doja $46M</li>
-          <li>Billboard Top R&amp;B Tours 2025 — The Weeknd, Usher, Chris Brown figures</li>
-          <li class="ct-sources-group">Production costs</li>
-          <li>Industry standard: 30–50% production/operating burn rate (Billboard, multiple sources)</li>
-          <li>Jalopnik — Taylor Swift Eras Tour ~50 trucks confirmed</li>
-          <li>WSJ / Morson — "Most technically ambitious production of the 21st century"</li>
-          <li>Variety — Drake It's All a Blur production breakdown</li>
-          <li class="ct-sources-group">Historical touring</li>
-          <li>Break Every Rule World Tour Wikipedia / Grokipedia — Tina Turner 1987, $60M gross</li>
-          <li>Adele Live Wikipedia — 2011 sparse staging, production designer intent documented</li>
-          <li>Rolling Stone — Adele Live 2016, $278M gross</li>
-          <li class="ct-sources-group">Dua Lipa / the punishment cycle</li>
-          <li>Rolling Stone, The Guardian, Bustle — "Go girl give us nothing" meme, two-year impact</li>
-          <li>Know Your Meme — Origin documentation, 2018 BRIT Awards</li>
-          <li>Radical Optimism Tour Wikipedia — $141M gross, production upgrade</li>
-          <li class="ct-sources-group">Radio &amp; MTV history</li>
-          <li>Massachusetts Daily Collegian — "Who gets to be Pop?"</li>
-          <li class="ct-sources-group">Industry terms note</li>
-          <li>This piece uses "female artist" and "male artist" following the nomenclature of the Recording Academy, Billboard, Pollstar, and Billboard Boxscore. These are the terms used in the data sources cited throughout.</li>
-        </ul>
-      </div>
-    </details>
 
     <div class="ai-footer-bottom">
       <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
