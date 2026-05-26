@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[PIECE TITLE] — Alterrell Interactive</title>
+  <meta name="description" content="[ONE-SENTENCE DESCRIPTION OF THIS PIECE]">
+
+  <!-- OG Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="[PIECE TITLE]">
+  <meta property="og:description" content="[ONE-SENTENCE DESCRIPTION]">
+  <meta property="og:image" content="https://interactive.alterrell.com/[PIECE-SLUG]/og-image.png">
+  <meta property="og:url" content="https://interactive.alterrell.com/[PIECE-SLUG]/">
+
+  <!-- Twitter/X Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="[PIECE TITLE]">
+  <meta name="twitter:description" content="[ONE-SENTENCE DESCRIPTION]">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/[PIECE-SLUG]/og-image.png">
+
+  <!-- Platform CSS — canonical, never rebuild -->
+  <link rel="stylesheet" href="/alterrell-interactive.css">
+
+  <!-- Piece-local styles — ONLY for cards, tools, and piece accent -->
+  <style>
+    /* ── PIECE ACCENT COLOR ── */
+    :root {
+      --piece-accent: var(--teal); /* Override per piece: #E8B923 for Concert Tax, etc. */
+    }
+
+    /*
+      ── DROP-IN STYLES ──
+      Claude Code writes card gallery CSS, interactive tool CSS,
+      and any piece-specific layout adjustments below this line.
+      Do NOT override platform tokens or .ai-* class styles.
+    */
+
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 1 · BREADCRUMB — structural, never changes
+     ══════════════════════════════════════════════════ -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">[PIECE TITLE]</span>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 2 · NAV — structural, never changes
+     ══════════════════════════════════════════════════ -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/" class="ai-nav-link">← All pieces</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 3 · HERO — structural, always dark
+     Background: var(--dark-section). Headline: Spectral 800, white, ONE line.
+     ══════════════════════════════════════════════════ -->
+<header class="ai-hero" style="background: var(--dark-section); padding: 4rem 2rem 3rem;">
+  <div class="ai-inner">
+    <span class="ai-eyebrow" style="color: var(--teal);">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed" style="color: var(--paper); white-space: nowrap;">[PIECE TITLE]</h1>
+    <p class="ai-hero-dek" style="color: var(--paper); opacity: 0.85; max-width: 100%;">[SUBHEAD — full width, never clipped. Two sentences max. First sentence is the hook. Second is the argument.]</p>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 4 · JOURNEY BLOCK — structural, ONE per page
+     3 items: Watch / Read / Support. Default URLs below.
+     Swap to piece-specific URLs when available.
+     ══════════════════════════════════════════════════ -->
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-items" style="display: flex; border-top: 3px solid var(--teal);">
+
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+      <span class="ai-journey-icon">▶</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">WATCH</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The video companion to this piece</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--teal); font-size: 0.85rem;">WATCH NOW →</span>
+    </a>
+
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+      <span class="ai-journey-icon" style="color: var(--teal);">✦</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">READ</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">The full argument on Substack</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The policy accountability case, documented</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--orange); font-size: 0.85rem;">READ NOW →</span>
+    </a>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none;">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">SUPPORT</span>
+      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Ko-fi — keep this work free</span>
+      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">Independent civic journalism</span>
+      <span class="ai-journey-cta" style="font-weight: 600; color: var(--ink); font-size: 0.85rem;">SUPPORT →</span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 5 · TAB BAR — structural
+     Tab 1: Overview (locked). Tabs 2-4: piece-specific.
+     Tab 5: Spread the Word (locked). Tab 6: Sources (locked).
+     Full-span, equal width. Delete one tab for 5-tab pieces.
+     ══════════════════════════════════════════════════ -->
+<div class="ai-tabs" role="tablist" aria-label="Piece sections" style="display: flex;">
+  <button class="ai-tab active" role="tab" aria-selected="true" data-target="overview" style="flex:1;">Overview</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab2" style="flex:1;">[TAB 2 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab3" style="flex:1;">[TAB 3 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab4" style="flex:1;">[TAB 4 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="spread" style="flex:1;">Spread the Word</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="sources" style="flex:1;">Sources</button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB SECTIONS — all content inside .ai-inner (860px max)
+     ══════════════════════════════════════════════════════════ -->
+
+
+<!-- ── TAB 1 · OVERVIEW ── (structural — share block always here) -->
+<section class="ai-section active" id="overview" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">OVERVIEW ——</span>
+    <h2 class="ai-h2">[OVERVIEW HEADLINE]</h2>
+
+    <div class="ai-body">
+      <p>[OVERVIEW PROSE — first paragraph. This is the hook. What does the reader need to feel before they see any data?]</p>
+      <p>[OVERVIEW PROSE — second paragraph. The structural reframe. What system is this piece revealing?]</p>
+    </div>
+
+    <!-- CARD GALLERY DROP-IN
+         Claude Code builds carousel markup here.
+         Cards: 300×280px, 7px teal border, white interior.
+         Shells: A (stat), B (chart ≤4 items), C (quote), D (compare).
+         Carousel: 16px gap, ~2.5 visible desktop, scroll-snap mobile.
+    -->
+    <!-- [CARD GALLERY DROP-IN] -->
+
+    <div class="ai-body">
+      <p>[PROSE BELOW GALLERY — continues the argument after the visual evidence.]</p>
+    </div>
+
+    <!-- SHARE BLOCK — always on Overview -->
+    <!-- [SHARE BLOCK DROP-IN] -->
+
+  </div>
+</section>
+
+
+<!-- ── TAB 2 · [PIECE-SPECIFIC] ── -->
+<section class="ai-section" id="tab2" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">[TAB 2 EYEBROW] ——</span>
+    <h2 class="ai-h2">[TAB 2 HEADLINE]</h2>
+
+    <div class="ai-body">
+      <p>[TAB 2 PROSE]</p>
+    </div>
+
+    <!-- CARD GALLERY or INTERACTIVE TOOL DROP-IN
+         Pattern A: Card gallery + prose (default)
+         Pattern B: Interactive tool (picker, calculator, dropdown)
+         Pattern C: Tool + card gallery on same tab
+         One interactive per tab max. White/paper backgrounds only.
+    -->
+    <!-- [TAB 2 DROP-IN] -->
+
+    <div class="ai-body">
+      <p>[TAB 2 PROSE BELOW DROP-IN]</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── TAB 3 · [PIECE-SPECIFIC] ── -->
+<section class="ai-section" id="tab3" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">[TAB 3 EYEBROW] ——</span>
+    <h2 class="ai-h2">[TAB 3 HEADLINE]</h2>
+
+    <div class="ai-body">
+      <p>[TAB 3 PROSE]</p>
+    </div>
+
+    <!-- [TAB 3 DROP-IN] -->
+
+    <div class="ai-body">
+      <p>[TAB 3 PROSE BELOW DROP-IN]</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── TAB 4 · [PIECE-SPECIFIC] ── -->
+<section class="ai-section" id="tab4" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">[TAB 4 EYEBROW] ——</span>
+    <h2 class="ai-h2">[TAB 4 HEADLINE]</h2>
+
+    <div class="ai-body">
+      <p>[TAB 4 PROSE]</p>
+    </div>
+
+    <!-- [TAB 4 DROP-IN] -->
+
+    <div class="ai-body">
+      <p>[TAB 4 PROSE BELOW DROP-IN]</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── TAB 5 · SPREAD THE WORD ── (structural — share cards, no journey block) -->
+<section class="ai-section" id="spread" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SPREAD THE WORD ——</span>
+    <h2 class="ai-h2">Take This Further</h2>
+
+    <div class="ai-body">
+      <p>The architecture is visible. Now make it impossible to ignore.</p>
+    </div>
+
+    <!-- SHAREABLE CARDS DROP-IN
+         Social cards / downloadable graphics the reader can save and share.
+         NO journey block here — it lives above the tabs (Zone 4).
+    -->
+    <!-- [SHAREABLE CARDS DROP-IN] -->
+
+  </div>
+</section>
+
+
+<!-- ── TAB 6 · SOURCES ── (structural — visible tab, not footer accordion) -->
+<section class="ai-section" id="sources" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SOURCES ——</span>
+    <h2 class="ai-h2">Methodology & Sources</h2>
+
+    <div class="ai-body">
+      <p>[METHODOLOGY — 2-4 sentences explaining the data approach in plain language. What sources were used, how they were verified, what the scope covers and doesn't cover.]</p>
+    </div>
+
+    <ol class="ai-source-list" style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.8; padding-left: 1.25rem;">
+      <li>[SOURCE 1 — e.g. Forbes Billionaires List 2025 — net worth figures]</li>
+      <li>[SOURCE 2]</li>
+      <li>[SOURCE 3]</li>
+      <li>[SOURCE 4]</li>
+      <li>[SOURCE 5]</li>
+      <!-- Add as many sources as needed -->
+    </ol>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     ZONE 7 · FOOTER — structural, clean
+     No tagline. No journey block. No methodology accordion.
+     ══════════════════════════════════════════════════ -->
+<footer class="ai-footer">
+  <div class="ai-inner">
+    <div class="ai-footer-brand">
+      <span class="ai-footer-wordmark">Alterrell <span>Interactive</span></span>
+    </div>
+    <div class="ai-footer-nav">
+      <a href="/">← All pieces</a>
+    </div>
+    <div class="ai-footer-bottom">
+      <span>© 2026 Alterrell</span>
+      <span>interactive.alterrell.com/[PIECE-SLUG]/</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPTS — tab switching
+     ══════════════════════════════════════════════════ -->
+<script>
+  // Tab switching — structural, same for every piece
+  document.querySelectorAll('.ai-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs and sections
+      document.querySelectorAll('.ai-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.ai-section').forEach(s => {
+        s.classList.remove('active');
+      });
+
+      // Activate clicked tab and matching section
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const target = document.getElementById(tab.dataset.target);
+      if (target) target.classList.add('active');
+
+      // Scroll to top of content
+      window.scrollTo({ top: document.querySelector('.ai-tabs').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  /*
+    ── DROP-IN SCRIPTS ──
+    Claude Code writes card carousel JS, interactive tool JS,
+    and share block mechanics below this line.
+  */
+
+</script>
+
+</body>
+</html>
