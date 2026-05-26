@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where's Beyoncé? — Alterrell Interactive</title>
+  <meta name="description" content="White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible.">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Where's Beyoncé?">
+  <meta property="og:description" content="White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://interactive.alterrell.com/where-are-they/">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Where's Beyoncé?">
+  <meta name="twitter:description" content="White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Platform CSS -->
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+
+  <style>
+    /* ── Piece-local: Where's Beyoncé? ── */
+
+    /* Hero */
+    .wb-hero {
+      background: var(--dark-section);
+      padding: var(--space-2xl) 1.25rem var(--space-xl);
+    }
+    .wb-hero-inner {
+      max-width: var(--max-editorial);
+      margin: 0 auto;
+    }
+    /* Lock headline to one line */
+    .wb-hero .ai-hero-hed {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wb-subhead {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      font-weight: 400;
+      line-height: 1.65;
+      color: rgba(248,246,241,0.72);
+      max-width: 100%;
+      margin-top: 1.25rem;
+    }
+
+    /* Tab sections — paper background */
+    .ai-section { background: var(--paper); }
+
+    /* ── Overview tab ── */
+    .wb-stat-callout {
+      background: var(--dark-section);
+      border: 1px solid #2a2838;
+      border-left: 4px solid var(--teal);
+      padding: 2rem 1.75rem;
+      margin: 2rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .wb-stat-big {
+      font-family: var(--font-editorial);
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1;
+      color: var(--teal-light);
+      margin-bottom: 0.4rem;
+    }
+    .wb-stat-context {
+      font-size: var(--text-small);
+      color: #9896b0;
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .wb-keypoints {
+      list-style: none;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .wb-keypoints li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: var(--text-body);
+      font-weight: 500;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+    .wb-keypoints li::before {
+      content: '';
+      width: 3px;
+      min-width: 3px;
+      height: 1.1em;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: 0.22em;
+      border-radius: 2px;
+    }
+    .wb-keypoints strong { color: var(--ink); }
+
+    .wb-closing-callout {
+      background: var(--paper-card);
+      border: 2px solid var(--teal);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+      text-align: center;
+      border-radius: var(--radius);
+    }
+    .wb-closing-callout p {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    /* ── Data & Headlines tab ── */
+    .wb-contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 640px) {
+      .wb-contrast-grid { grid-template-columns: 1fr; }
+    }
+    .wb-contrast-card {
+      background: var(--paper-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .wb-contrast-card-head {
+      padding: 1rem 1.25rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .wb-contrast-card-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+    }
+    .wb-contrast-card-name {
+      font-family: var(--font-editorial);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .wb-contrast-card-event {
+      font-size: var(--text-small);
+      color: var(--ink-muted);
+    }
+    .wb-contrast-card-body { padding: 1rem 1.25rem 1.25rem; }
+    .wb-contrast-card-quote {
+      font-size: var(--text-small);
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      margin-bottom: 0.85rem;
+    }
+    .wb-framing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+    }
+    .wb-framing-badge--positive {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+    .wb-framing-badge--negative {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    /* ── The Wealthy carousel ── */
+    .wb-carousel-wrap { margin: 1.5rem 0; }
+    .wb-carousel {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.5rem;
+    }
+    .wb-carousel::-webkit-scrollbar { display: none; }
+
+    .wb-state-card {
+      flex-shrink: 0;
+      width: 276px;
+      background: var(--paper-card);
+      border: 2px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .wb-state-card:hover,
+    .wb-state-card.active-card {
+      background: var(--teal-bg);
+      box-shadow: var(--shadow);
+    }
+    .wb-state-card-name {
+      font-family: var(--font-editorial);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+    .wb-state-card-anchor {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+      margin-bottom: 0.85rem;
+    }
+    .wb-state-card-richest {
+      font-size: var(--text-small);
+      color: var(--ink-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .wb-state-card-richest strong { color: var(--ink); font-weight: 600; }
+    .wb-state-card-counts { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .wb-count-badge {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+    .wb-count-badge--asked {
+      background: var(--teal-bg);
+      color: var(--teal);
+      border: 1px solid var(--teal);
+    }
+    .wb-count-badge--not {
+      background: var(--paper-warm);
+      color: var(--ink-muted);
+      border: 1px solid var(--border);
+    }
+    .wb-state-card-note {
+      font-size: var(--text-stamp);
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .wb-expand-hint {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: var(--teal);
+      margin-top: 0.85rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Expanded panel below carousel */
+    .wb-expanded-panel {
+      display: none;
+      margin-top: 1.5rem;
+      background: var(--paper-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .wb-expanded-panel.visible { display: block; }
+    .wb-expanded-panel-head {
+      padding: 0.85rem 1.25rem;
+      background: var(--paper-warm);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wb-expanded-panel-title {
+      font-family: var(--font-editorial);
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .wb-expanded-close {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      color: var(--ink-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      min-height: var(--touch);
+      padding: 0 0.5rem;
+    }
+    .wb-expanded-close:hover { color: var(--ink); }
+
+    /* Status badges */
+    .wb-status-asked,
+    .wb-status-not {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+    .wb-status-asked {
+      background: var(--teal-bg);
+      color: var(--teal);
+      border: 1px solid var(--teal);
+    }
+    .wb-status-not {
+      background: var(--paper-warm);
+      color: var(--ink-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* Editorial note strip */
+    .wb-editorial-note {
+      padding: 0.75rem 1rem;
+      background: var(--warning-bg);
+      border-left: 3px solid var(--warning);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--warning);
+      letter-spacing: 0.04em;
+      line-height: 1.55;
+    }
+
+    /* ── The Tool tab ── */
+    .wb-tool-result { margin-top: 2rem; }
+
+    /* ── Journey links — high contrast ── */
+    .ai-journey-title { font-weight: 600; color: var(--ink); }
+
+    /* Footer details open state fix */
+    details[open].ai-footer-methodology > summary::before { content: '\2212'; }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- ── BREADCRUMB ─────────────────────────────────────── -->
+<div class="ai-breadcrumb">
+  <a href="../">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Where's Beyoncé?</span>
+</div>
+
+<!-- ── NAV ───────────────────────────────────────────── -->
+<nav class="ai-nav" role="navigation" aria-label="Site navigation">
+  <a href="../" class="ai-nav-brand">Alterrell <span>Interactive</span></a>
+  <div class="ai-nav-meta"><a href="../">← All pieces</a></div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<header class="wb-hero">
+  <div class="wb-hero-inner">
+    <div class="ai-eyebrow">Alterrell Interactive · Civic</div>
+    <h1 class="ai-hero-hed">Where's Beyoncé?</h1>
+    <p class="wb-subhead">White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible.</p>
+  </div>
+</header>
+
+<!-- ── JOURNEY BLOCK ──────────────────────────────────── -->
+<div class="ai-journey">
+  <div class="ai-journey-inner">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+       class="ai-journey-path primary" target="_blank" rel="noopener">
+      <div class="ai-journey-icon">▶</div>
+      <div class="ai-journey-label">Watch</div>
+      <div class="ai-journey-title">Alterrell Interactive on YouTube</div>
+      <div class="ai-journey-cta">Watch now →</div>
+    </a>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+       class="ai-journey-path secondary" target="_blank" rel="noopener">
+      <div class="ai-journey-icon">✦</div>
+      <div class="ai-journey-label">Read</div>
+      <div class="ai-journey-title">The full argument on Substack</div>
+      <div class="ai-journey-cta">Read now →</div>
+    </a>
+    <a href="https://ko-fi.com/alterrell"
+       class="ai-journey-path tertiary" target="_blank" rel="noopener">
+      <div class="ai-journey-icon">◆</div>
+      <div class="ai-journey-label">Support</div>
+      <div class="ai-journey-title">Ko-fi — keep this work free</div>
+      <div class="ai-journey-cta">Support →</div>
+    </a>
+  </div>
+</div>
+
+<!-- ── TAB BAR ────────────────────────────────────────── -->
+<div class="ai-tabs" role="tablist">
+  <button class="ai-tab active"   role="tab" data-target="tab-overview" aria-selected="true">Overview</button>
+  <button class="ai-tab"          role="tab" data-target="tab-data"     aria-selected="false">Data &amp; Headlines</button>
+  <button class="ai-tab"          role="tab" data-target="tab-wealthy"  aria-selected="false">The Wealthy</button>
+  <button class="ai-tab"          role="tab" data-target="tab-tool"     aria-selected="false">The Tool</button>
+  <button class="ai-tab"          role="tab" data-target="tab-spread"   aria-selected="false">Spread the Word</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     TAB 1 — OVERVIEW
+══════════════════════════════════════════════════════ -->
+<section id="tab-overview" class="ai-section active" role="tabpanel">
+  <div class="ai-inner">
+
+    <div class="ai-eyebrow">The Argument</div>
+    <h2 class="ai-h2">The Black Tax at Scale</h2>
+
+    <!-- Stat callout -->
+    <div class="wb-stat-callout">
+      <div class="wb-stat-big">75%</div>
+      <div class="wb-stat-context">of celebrities Kevin Hart publicly challenged during Hurricane Harvey 2017 were Black — while Houston billionaires worth 11× more were never named. Zero Houston billionaires were asked.</div>
+    </div>
+
+    <!-- Key points -->
+    <ul class="wb-keypoints">
+      <li><span><strong>Government abdication.</strong> Celebrity giving fills gaps that policy was never supposed to create. The headline obscures the accountability gap.</span></li>
+      <li><span><strong>Same mechanism, different reaction.</strong> When Dolly Parton gives after Gatlinburg, she is a hero. When Oprah gives after Maui, she is a target. The act is identical. Only the race changes.</span></li>
+      <li><span><strong>The Black Tax at scale.</strong> Black wealth is treated as communal obligation. White wealth is treated as personal virtue. This pattern is structural, not individual.</span></li>
+      <li><span><strong>Domicile as obligation.</strong> When Beyoncé was born in Houston, she inherited a debt. When Elon Musk moved to Texas, he inherited no such expectation.</span></li>
+      <li><span><strong>Owners vs. players.</strong> The people who own the teams, the buildings, the land — are never asked. The people who perform are asked first, loudest, and most publicly.</span></li>
+    </ul>
+
+    <hr class="ai-rule">
+
+    <!-- Kevin Hart challenge table -->
+    <h3 class="ai-h3">The Kevin Hart Hurricane Harvey Challenge — August 2017</h3>
+    <p class="ai-body" style="margin-bottom:1.25rem;">Kevin Hart publicly challenged eight celebrities to donate to Harvey relief. Here is who he named — and who he did not.</p>
+
+    <div class="ai-table-wrap">
+      <table class="ai-table">
+        <thead>
+          <tr>
+            <th>Celebrity</th>
+            <th>Race</th>
+            <th>Reported Donation</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Beyoncé</td><td>Black</td><td>$7M+ (BeyGOOD)</td><td class="val-good">Called out</td></tr>
+          <tr><td>Jay-Z</td><td>Black</td><td>Documented response</td><td class="val-good">Called out</td></tr>
+          <tr><td>Chris Rock</td><td>Black</td><td>—</td><td class="val-good">Called out</td></tr>
+          <tr><td>Dave Chappelle</td><td>Black</td><td>—</td><td class="val-good">Called out</td></tr>
+          <tr><td>Steve Harvey</td><td>Black</td><td>—</td><td class="val-good">Called out</td></tr>
+          <tr><td>Dwayne Johnson</td><td>Black / Pacific Islander</td><td>Donated</td><td class="val-good">Called out</td></tr>
+          <tr><td>Justin Timberlake</td><td>White</td><td>—</td><td class="val-good">Called out</td></tr>
+          <tr><td>Jerry Seinfeld</td><td>White</td><td>—</td><td class="val-good">Called out</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Closing callout -->
+    <div class="wb-closing-callout">
+      <p>6 Black celebrities. 2 white celebrities. 0 Houston billionaires.</p>
+    </div>
+
+    <p class="ai-stamp" style="margin-bottom:2rem;">Source: Billboard — Kevin Hart Hurricane Harvey Challenge documentation, August 2017</p>
+
+    <hr class="ai-rule">
+
+    <!-- What this tool does -->
+    <h3 class="ai-h3">What This Tool Does</h3>
+    <div class="ai-body">
+      <p>This tool documents every major wealth holder across nine disaster-prone states — by domicile and birth state — and whether they were publicly asked to contribute to disaster relief.</p>
+      <p>It does not criticize any individual's choice to give or not give. It maps the structural pattern: who gets asked, who gets praised, who gets ignored, and who gets attacked.</p>
+      <p>The same act — a wealthy person donating money after a natural disaster — produces radically different cultural responses depending on the race of the giver. This tool makes that architecture visible.</p>
+    </div>
+
+    <!-- Share block -->
+    <button class="ai-share-trigger" onclick="aiOpenShare({
+      num: '75%',
+      eyebrow: 'Alterrell Interactive · Where\'s Beyoncé?',
+      context: '75% of celebrities Kevin Hart called out during Harvey 2017 were Black. Houston billionaires worth 11× more were never named.',
+      copy: '75% of celebrities Kevin Hart publicly challenged during Hurricane Harvey 2017 were Black.\n\nZero Houston billionaires were named.\n\nSame disaster. Different rules.\n\ninteractive.alterrell.com/where-are-they'
+    })">
+      <span class="ai-share-trigger-icon">↗</span>
+      <span class="ai-share-trigger-text">
+        <span class="ai-share-trigger-label">Share this finding</span>
+        <span class="ai-share-trigger-sub">75% of Hart's challenge targets were Black. 0 billionaires were named.</span>
+      </span>
+      <span class="ai-share-trigger-arrow">→</span>
+    </button>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TAB 2 — DATA & HEADLINES
+══════════════════════════════════════════════════════ -->
+<section id="tab-data" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <div class="ai-eyebrow">The Evidence</div>
+    <h2 class="ai-h2">Same Act. Different Story.</h2>
+    <p class="ai-body" style="margin-bottom:2rem;">Two women. Two disasters. Two donations. The same structural act produced two entirely different media narratives. The only variable: race.</p>
+
+    <!-- Contrast cards -->
+    <div class="wb-contrast-grid">
+      <div class="wb-contrast-card">
+        <div class="wb-contrast-card-head">
+          <div class="wb-contrast-card-label">Case A</div>
+          <div class="wb-contrast-card-name">Dolly Parton</div>
+          <div class="wb-contrast-card-event">Gatlinburg Wildfires · Tennessee · 2016</div>
+        </div>
+        <div class="wb-contrast-card-body">
+          <p class="wb-contrast-card-quote">Donated $1M through the My People Fund. Distributed directly to wildfire victims. Praised uniformly across conservative and mainstream media as selfless, community-driven generosity.</p>
+          <span class="wb-framing-badge wb-framing-badge--positive">Positive framing</span>
+        </div>
+      </div>
+      <div class="wb-contrast-card">
+        <div class="wb-contrast-card-head">
+          <div class="wb-contrast-card-label">Case B</div>
+          <div class="wb-contrast-card-name">Oprah Winfrey</div>
+          <div class="wb-contrast-card-event">Maui Wildfires · Hawaii · 2023</div>
+        </div>
+        <div class="wb-contrast-card-body">
+          <p class="wb-contrast-card-quote">Donated $25M+ to the People's Fund of Maui — the largest single private donation to Maui relief. Faced immediate viral criticism, conspiracy theories, and demands for more. Coverage framed around not giving enough.</p>
+          <span class="wb-framing-badge wb-framing-badge--negative">Negative framing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headline sentiment table -->
+    <h3 class="ai-h3" style="margin-top:2.5rem;">Headline Sentiment by Race — Disaster Philanthropy Coverage</h3>
+
+    <div class="ai-table-wrap">
+      <table class="ai-table">
+        <thead>
+          <tr>
+            <th>Person</th>
+            <th>Race</th>
+            <th>Disaster</th>
+            <th>Amount</th>
+            <th>Publication</th>
+            <th>Reach</th>
+            <th>Framing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dolly Parton</td>
+            <td>White</td>
+            <td>Gatlinburg 2016</td>
+            <td>$1M</td>
+            <td>NPR / ABC News</td>
+            <td>National</td>
+            <td class="val-good">Hero / Generous</td>
+          </tr>
+          <tr>
+            <td>Oprah Winfrey</td>
+            <td>Black</td>
+            <td>Maui 2023</td>
+            <td>$25M+</td>
+            <td>Newsweek</td>
+            <td>95M+ monthly</td>
+            <td class="val-bad">Insufficient / Criticized</td>
+          </tr>
+          <tr>
+            <td>Oprah Winfrey</td>
+            <td>Black</td>
+            <td>Maui 2023</td>
+            <td>$25M+</td>
+            <td>Atlanta Black Star</td>
+            <td>14M monthly</td>
+            <td class="val-bad">Conspiracy theories</td>
+          </tr>
+          <tr>
+            <td>Taylor Swift</td>
+            <td>White</td>
+            <td>Various</td>
+            <td>Multiple</td>
+            <td>Mainstream</td>
+            <td>National</td>
+            <td class="val-good">Celebrated / Generous</td>
+          </tr>
+          <tr>
+            <td>Beyoncé</td>
+            <td>Black</td>
+            <td>Harvey 2017</td>
+            <td>$7M+</td>
+            <td>Multiple outlets</td>
+            <td>National</td>
+            <td class="val-warn">Scrutinized / More demanded</td>
+          </tr>
+          <tr>
+            <td>Beyoncé</td>
+            <td>Black</td>
+            <td>LA Fires 2025</td>
+            <td>$2.5M</td>
+            <td>Multiple outlets</td>
+            <td>National</td>
+            <td class="val-warn">Scrutinized / Why not more</td>
+          </tr>
+          <tr>
+            <td>Blake Shelton</td>
+            <td>White</td>
+            <td>Oklahoma 2013</td>
+            <td>Donated</td>
+            <td>Entertainment press</td>
+            <td>National</td>
+            <td class="val-good">Hero / Community champion</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ai-callout" style="margin-top:2rem;">
+      <p><strong>Same act. Same structure. The only variable: race.</strong> Dolly Parton gives $1M — hero. Oprah gives $25M — not enough. The gap between the dollar amounts is 25×. The gap between the cultural responses is the architecture this tool documents.</p>
+    </div>
+
+    <p class="ai-stamp" style="margin-top:1.25rem;">Sources: Newsweek (95M+ monthly visitors, Similarweb 2024) · Atlanta Black Star (14M monthly) · NPR · ABC News · Spectrum News Hawaii — People's Fund of Maui ($60M raised, 8,100 recipients)</p>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TAB 3 — THE WEALTHY
+══════════════════════════════════════════════════════ -->
+<section id="tab-wealthy" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <div class="ai-eyebrow">The Wealth Database</div>
+    <h2 class="ai-h2">Who Was Here. Who Was Asked.</h2>
+    <p class="ai-body" style="margin-bottom:1.5rem;">Nine states and regions. Every major wealth holder — by domicile. Whether they were publicly asked to contribute. Select a card to expand the full data.</p>
+
+    <!-- Carousel -->
+    <div class="wb-carousel-wrap">
+      <div class="wb-carousel" id="stateCarousel" role="list" aria-label="State wealth cards"></div>
+    </div>
+
+    <!-- Expanded panel -->
+    <div class="wb-expanded-panel" id="expandedPanel">
+      <div class="wb-expanded-panel-head">
+        <span class="wb-expanded-panel-title" id="expandedPanelTitle"></span>
+        <button class="wb-expanded-close" onclick="closeExpanded()">close ×</button>
+      </div>
+      <div id="expandedPanelContent"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TAB 4 — THE TOOL
+══════════════════════════════════════════════════════ -->
+<section id="tab-tool" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <div class="ai-eyebrow">The Tool</div>
+    <h2 class="ai-h2">Equal Asks. Equal Visibility.</h2>
+    <p class="ai-body" style="margin-bottom:2rem;">Select a disaster state to see every major wealth holder — by domicile and birth state — and whether they were publicly asked to contribute.</p>
+
+    <label class="ai-label" for="stateSelect">Select a state or region</label>
+    <select class="ai-select" id="stateSelect" onchange="renderToolTable()">
+      <option value="">— Choose a state —</option>
+    </select>
+
+    <div class="wb-tool-result" id="toolResult"></div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TAB 5 — SPREAD THE WORD
+══════════════════════════════════════════════════════ -->
+<section id="tab-spread" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <div class="ai-eyebrow">Spread the Word</div>
+    <h2 class="ai-h2">Take This Further</h2>
+    <p class="ai-body" style="margin-bottom:2.5rem;">The architecture is visible. Now make it impossible to ignore.</p>
+
+    <div class="ai-journey">
+      <div class="ai-journey-inner">
+        <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+           class="ai-journey-path primary" target="_blank" rel="noopener">
+          <div class="ai-journey-icon">▶</div>
+          <div class="ai-journey-label">Watch</div>
+          <div class="ai-journey-title">Alterrell Interactive on YouTube</div>
+          <div class="ai-journey-meta">The video companion to this piece</div>
+          <div class="ai-journey-cta">Watch now →</div>
+        </a>
+        <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
+           class="ai-journey-path secondary" target="_blank" rel="noopener">
+          <div class="ai-journey-icon">✦</div>
+          <div class="ai-journey-label">Read</div>
+          <div class="ai-journey-title">The full argument on Substack</div>
+          <div class="ai-journey-meta">The policy accountability case, documented</div>
+          <div class="ai-journey-cta">Read now →</div>
+        </a>
+        <a href="https://ko-fi.com/alterrell"
+           class="ai-journey-path tertiary" target="_blank" rel="noopener">
+          <div class="ai-journey-icon">◆</div>
+          <div class="ai-journey-label">Support</div>
+          <div class="ai-journey-title">Ko-fi — keep this work free</div>
+          <div class="ai-journey-meta">Independent civic journalism</div>
+          <div class="ai-journey-cta">Support →</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer class="ai-footer">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark">Alterrell <span>Interactive</span></div>
+      <div class="ai-footer-tagline">See the architecture. The data was always there — now it's yours.</div>
+    </div>
+
+    <!-- Sources accordion -->
+    <details class="ai-footer-methodology">
+      <summary>Sources &amp; Methodology</summary>
+      <div class="ai-footer-methodology-body">
+        <p class="ai-footer-methodology-note">"Asked" status indicates documented public calls for donation from media, other celebrities, or social media campaigns directed at named individuals. "Not asked" indicates no documented public call despite comparable or greater wealth and proximity to the disaster. This tool documents pattern, not intent. All net worth figures from Forbes Billionaires List 2025.</p>
+        <ul class="ai-footer-sources">
+          <li>Forbes Billionaires List 2025 — net worth figures for all named individuals</li>
+          <li>University of Minnesota Gender Policy Report — "The Black Tax" (peer-reviewed)</li>
+          <li>Billboard — Kevin Hart Hurricane Harvey Challenge documentation, August 2017</li>
+          <li>Newsweek — Oprah Maui backlash coverage, August–September 2023</li>
+          <li>Atlanta Black Star — Oprah Maui criticism, September 2023</li>
+          <li>Spectrum News Hawaii — People's Fund of Maui ($60M raised, 8,100 recipients)</li>
+          <li>NPR, ABC News — Dolly Parton My People Fund documentation</li>
+          <li>Wired / Hawaii Public Radio — Zuckerberg Kauai compound reporting</li>
+          <li>Group Processes &amp; Intergroup Relations — White vs. Black athlete racial activism (Howell, Ratliff, Smith, 2026)</li>
+          <li>Publication reach: Newsweek 95M+ monthly visitors · Atlanta Black Star 14M monthly · CNN 297M+ monthly (Similarweb 2024)</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
+      <a href="https://interactive.alterrell.com/where-are-they/" class="ai-footer-url">interactive.alterrell.com/where-are-they/</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ── SHARE MODAL ────────────────────────────────────── -->
+<div class="ai-share-overlay" id="ai-share-overlay" onclick="if(event.target===this)aiCloseShare()">
+  <div class="ai-share-modal">
+    <div class="ai-share-modal-head">
+      <span class="ai-share-modal-title">Share this finding</span>
+      <button class="ai-share-modal-close" onclick="aiCloseShare()">CLOSE ×</button>
+    </div>
+    <div class="ai-share-modal-body">
+      <div class="ai-share-card">
+        <div class="ai-share-card-eyebrow" id="ai-share-card-eyebrow">Alterrell Interactive</div>
+        <div class="ai-share-card-num" id="ai-share-card-num"></div>
+        <div class="ai-share-card-context" id="ai-share-card-context"></div>
+        <div class="ai-share-card-footer">
+          <span>Alterrell Interactive</span>
+          <span>interactive.alterrell.com</span>
+        </div>
+      </div>
+      <div class="ai-share-textbox" id="ai-share-textbox"></div>
+      <div class="ai-share-actions">
+        <button class="ai-share-btn ai-share-btn--copy" id="ai-share-copy-btn" onclick="aiCopyShare()">Copy text</button>
+        <button class="ai-share-btn ai-share-btn--download" onclick="aiCloseShare()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════════════ -->
+<script>
+// ─────────────────────────────────────────────────────────
+// MASTER DATA — single source for Tab 3 carousel + Tab 4 tool
+// ─────────────────────────────────────────────────────────
+var STATES = [
+  {
+    id: 'texas',
+    name: 'Texas',
+    anchor: 'Harvey 2017 · Ike 2008 · Winter Storm 2021',
+    richest: 'Elon Musk',
+    netWorth: '$428B',
+    askedCount: 3,
+    notAskedCount: 5,
+    note: '',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Elon Musk', netWorth: '$428B', status: 'not-asked', note: '' },
+        { name: 'Michael Dell', netWorth: '$55B', status: 'not-asked', note: '' },
+        { name: 'Tilman Fertitta', netWorth: '$8B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Team Owners', entries: [
+        { name: 'Jerry Jones (Cowboys)', netWorth: '$14B', status: 'not-asked', note: '' },
+        { name: 'Jim Crane (Astros)', netWorth: '$3B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Musicians', entries: [
+        { name: 'Beyoncé', netWorth: '$500M', status: 'asked', note: '' },
+        { name: 'Travis Scott', netWorth: '$80M', status: 'asked', note: '' }
+      ]},
+      { subcategory: 'Athletes', entries: [
+        { name: 'JJ Watt', netWorth: '$100M', status: 'asked', note: 'self-initiated' }
+      ]}
+    ]
+  },
+  {
+    id: 'florida',
+    name: 'Florida',
+    anchor: 'Ian 2022 · Milton 2024',
+    richest: 'Jeff Bezos',
+    netWorth: '$214B',
+    askedCount: 0,
+    notAskedCount: 6,
+    note: 'Transplants who moved for tax purposes',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Jeff Bezos', netWorth: '$214B', status: 'not-asked', note: 'moved 2023' },
+        { name: 'Thomas Peterffy', netWorth: '$28B', status: 'not-asked', note: '' },
+        { name: 'Ken Griffin (Citadel)', netWorth: '$35B', status: 'not-asked', note: 'moved HQ 2022' }
+      ]},
+      { subcategory: 'Team Owners', entries: [
+        { name: 'Jorge Mas (Inter Miami)', netWorth: '$5B', status: 'not-asked', note: '' },
+        { name: 'Steve Cohen (Mets — FL home)', netWorth: '$18B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Athletes', entries: [
+        { name: 'Michael Jordan', netWorth: '$3B', status: 'not-asked', note: '' }
+      ]}
+    ]
+  },
+  {
+    id: 'california',
+    name: 'California',
+    anchor: 'LA Fires 2025 · Wildfires',
+    richest: 'Mark Zuckerberg',
+    netWorth: '$220B',
+    askedCount: 2,
+    notAskedCount: 5,
+    note: '',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Mark Zuckerberg', netWorth: '$220B', status: 'not-asked', note: '' },
+        { name: 'Larry Ellison', netWorth: '$206B', status: 'not-asked', note: '' },
+        { name: 'Sergey Brin', netWorth: '$140B', status: 'not-asked', note: '' },
+        { name: 'Larry Page', netWorth: '$138B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Musicians', entries: [
+        { name: 'Beyoncé', netWorth: '$500M', status: 'asked', note: 'Malibu' },
+        { name: 'Jay-Z', netWorth: '$2.5B', status: 'asked', note: '' }
+      ]},
+      { subcategory: 'Athletes', entries: [
+        { name: 'LeBron James', netWorth: '$1.2B', status: 'not-asked', note: '' }
+      ]}
+    ]
+  },
+  {
+    id: 'hawaii',
+    name: 'Hawaii',
+    anchor: 'Maui 2023',
+    richest: 'Larry Ellison',
+    netWorth: '$206B',
+    askedCount: 1,
+    notAskedCount: 3,
+    note: 'Ellison owns 98% of Lanai',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Larry Ellison', netWorth: '$206B', status: 'not-asked', note: 'owns 98% of Lanai' },
+        { name: 'Mark Zuckerberg', netWorth: '$220B', status: 'not-asked', note: '1,400-acre Kauai compound' },
+        { name: 'Jeff Bezos', netWorth: '$214B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Musicians', entries: [
+        { name: 'Oprah Winfrey', netWorth: '$2.8B', status: 'asked', note: 'gave $25M+, faced conspiracy theories' }
+      ]}
+    ]
+  },
+  {
+    id: 'louisiana',
+    name: 'Louisiana',
+    anchor: 'Ida 2021 · Katrina 2005',
+    richest: 'Todd Graves',
+    netWorth: '$22B',
+    askedCount: 1,
+    notAskedCount: 4,
+    note: 'During Katrina, people asked Beyonce (TX-born) — not Louisiana billionaires',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Todd Graves (Raising Canes)', netWorth: '$22B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Team Owners', entries: [
+        { name: 'Gayle Benson (Saints / Pelicans)', netWorth: '$7.9B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Musicians', entries: [
+        { name: 'Lil Wayne', netWorth: '$170M', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Athletes', entries: [
+        { name: 'Peyton Manning', netWorth: '$350M', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Editorial', entries: [
+        { name: 'Beyoncé (born Houston, TX)', netWorth: '$500M', status: 'asked', note: 'asked despite being from Texas, not Louisiana' }
+      ]}
+    ]
+  },
+  {
+    id: 'north-carolina',
+    name: 'North Carolina',
+    anchor: 'Helene 2024 · Florence 2018',
+    richest: 'James Goodnight',
+    netWorth: '$12B',
+    askedCount: 0,
+    notAskedCount: 4,
+    note: '',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'James Goodnight (SAS)', netWorth: '$12B', status: 'not-asked', note: '' },
+        { name: 'Jim Holding', netWorth: '$3.5B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Team Owners', entries: [
+        { name: 'David Tepper (Panthers)', netWorth: '$20B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Athletes', entries: [
+        { name: 'Michael Jordan (born Wilmington)', netWorth: '$3B', status: 'not-asked', note: '' }
+      ]}
+    ]
+  },
+  {
+    id: 'georgia',
+    name: 'Georgia',
+    anchor: 'Hurricanes · Severe Storms',
+    richest: 'Jim Kennedy',
+    netWorth: '$10B',
+    askedCount: 0,
+    notAskedCount: 4,
+    note: '',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Jim Kennedy (Cox Enterprises)', netWorth: '$10B', status: 'not-asked', note: '' },
+        { name: 'Arthur Blank (Home Depot / Falcons)', netWorth: '$9B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Team Owners', entries: [
+        { name: 'Steve Ballmer (Hawks minority stake)', netWorth: '$118B', status: 'not-asked', note: '' }
+      ]},
+      { subcategory: 'Musicians', entries: [
+        { name: 'Usher', netWorth: '$180M', status: 'not-asked', note: '' }
+      ]}
+    ]
+  },
+  {
+    id: 'pacific-northwest',
+    name: 'Pacific Northwest',
+    anchor: 'WA / OR Wildfires · Atmospheric Rivers',
+    richest: 'Steve Ballmer',
+    netWorth: '$118B',
+    askedCount: 0,
+    notAskedCount: 4,
+    note: 'Washington + Oregon',
+    rows: [
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Steve Ballmer', netWorth: '$118B', status: 'not-asked', note: '' },
+        { name: 'Jeff Bezos', netWorth: '$214B', status: 'not-asked', note: 'Seattle origin' },
+        { name: 'Bill Gates', netWorth: '$107B', status: 'not-asked', note: '' },
+        { name: 'MacKenzie Scott', netWorth: '$37B', status: 'not-asked', note: '' }
+      ]}
+    ]
+  },
+  {
+    id: 'tornado-alley',
+    name: 'Tornado / Dixie Alley',
+    anchor: 'Oklahoma · Kansas · Alabama · Tennessee',
+    richest: 'Carrie Underwood',
+    netWorth: '$200M',
+    askedCount: 2,
+    notAskedCount: 2,
+    note: 'Same act as Beyonce / Oprah — different cultural script',
+    rows: [
+      { subcategory: 'Musicians', entries: [
+        { name: 'Blake Shelton', netWorth: '$100M', status: 'asked', note: 'framed as hero' },
+        { name: 'Carrie Underwood', netWorth: '$200M', status: 'asked', note: 'framed as hero' }
+      ]},
+      { subcategory: 'Billionaires / Business', entries: [
+        { name: 'Harold Hamm (Oklahoma)', netWorth: '$20B', status: 'not-asked', note: '' },
+        { name: 'Shahid Khan (FL/TN)', netWorth: '$11B', status: 'not-asked', note: '' }
+      ]}
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────────────────
+// TABLE BUILDER — shared by Tab 3 + Tab 4
+// ─────────────────────────────────────────────────────────
+function buildStateTable(state) {
+  var html = '<div class="ai-table-wrap" style="margin:0;border:none;border-radius:0;">';
+  html += '<table class="ai-table">';
+  html += '<thead><tr><th>Name</th><th>Category</th><th>Net Worth</th><th>Status</th></tr></thead>';
+  html += '<tbody>';
+  state.rows.forEach(function(group) {
+    html += '<tr><td colspan="4" class="ai-table-section">' + group.subcategory + '</td></tr>';
+    group.entries.forEach(function(e) {
+      var badge = e.status === 'asked'
+        ? '<span class="wb-status-asked">Asked</span>'
+        : '<span class="wb-status-not">Not asked</span>';
+      var noteLine = e.note
+        ? '<span style="display:block;font-family:var(--font-mono);font-size:0.58rem;color:var(--ink-muted);margin-top:3px;letter-spacing:0.04em;">' + e.note + '</span>'
+        : '';
+      html += '<tr><td><strong>' + e.name + '</strong>' + noteLine + '</td><td>' + group.subcategory + '</td><td>' + e.netWorth + '</td><td>' + badge + '</td></tr>';
+    });
+  });
+  html += '</tbody></table></div>';
+  if (state.note) {
+    html += '<div class="wb-editorial-note">Editorial note: ' + state.note + '</div>';
+  }
+  return html;
+}
+
+// ─────────────────────────────────────────────────────────
+// CAROUSEL — Tab 3
+// ─────────────────────────────────────────────────────────
+function renderCarousel() {
+  var container = document.getElementById('stateCarousel');
+  container.innerHTML = STATES.map(function(s) {
+    return '<div class="wb-state-card" data-state-id="' + s.id + '" onclick="expandState(\'' + s.id + '\', this)" tabindex="0" role="listitem" aria-label="' + s.name + ' — tap to expand">'
+      + '<div class="wb-state-card-name">' + s.name + '</div>'
+      + '<div class="wb-state-card-anchor">' + s.anchor + '</div>'
+      + '<div class="wb-state-card-richest">Richest: <strong>' + s.richest + ' · ' + s.netWorth + '</strong></div>'
+      + '<div class="wb-state-card-counts">'
+      +   '<span class="wb-count-badge wb-count-badge--asked">' + s.askedCount + ' asked</span>'
+      +   '<span class="wb-count-badge wb-count-badge--not">' + s.notAskedCount + ' not asked</span>'
+      + '</div>'
+      + (s.note ? '<div class="wb-state-card-note">' + s.note + '</div>' : '')
+      + '<div class="wb-expand-hint">Tap to expand →</div>'
+      + '</div>';
+  }).join('');
+}
+
+function expandState(stateId, cardEl) {
+  var panel = document.getElementById('expandedPanel');
+  var wasActive = cardEl.classList.contains('active-card');
+  document.querySelectorAll('.wb-state-card').forEach(function(c) { c.classList.remove('active-card'); });
+  if (wasActive) { panel.classList.remove('visible'); return; }
+  cardEl.classList.add('active-card');
+  var state = STATES.find(function(s) { return s.id === stateId; });
+  document.getElementById('expandedPanelTitle').textContent = state.name + ' — Wealth Database';
+  document.getElementById('expandedPanelContent').innerHTML = buildStateTable(state);
+  panel.classList.add('visible');
+  setTimeout(function() { panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+}
+
+function closeExpanded() {
+  document.querySelectorAll('.wb-state-card').forEach(function(c) { c.classList.remove('active-card'); });
+  document.getElementById('expandedPanel').classList.remove('visible');
+}
+
+// ─────────────────────────────────────────────────────────
+// TOOL — Tab 4
+// ─────────────────────────────────────────────────────────
+function populateDropdown() {
+  var sel = document.getElementById('stateSelect');
+  STATES.forEach(function(s) {
+    var opt = document.createElement('option');
+    opt.value = s.id;
+    opt.textContent = s.name + ' — ' + s.anchor;
+    sel.appendChild(opt);
+  });
+}
+
+function renderToolTable() {
+  var stateId = document.getElementById('stateSelect').value;
+  var result = document.getElementById('toolResult');
+  if (!stateId) { result.innerHTML = ''; return; }
+  var state = STATES.find(function(s) { return s.id === stateId; });
+  result.innerHTML = '<div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;margin-bottom:1.25rem;">'
+    + '<span class="wb-count-badge wb-count-badge--asked" style="font-size:var(--text-small);padding:0.3rem 0.85rem;">' + state.askedCount + ' asked</span>'
+    + '<span class="wb-count-badge wb-count-badge--not" style="font-size:var(--text-small);padding:0.3rem 0.85rem;">' + state.notAskedCount + ' not asked</span>'
+    + '<span class="ai-stamp">Richest: ' + state.richest + ' · ' + state.netWorth + '</span>'
+    + '</div>'
+    + buildStateTable(state);
+}
+
+// ─────────────────────────────────────────────────────────
+// TABS — show/hide
+// ─────────────────────────────────────────────────────────
+(function() {
+  var tabs = document.querySelectorAll('.ai-tab');
+  var sections = document.querySelectorAll('.ai-section');
+  var tabBar = document.querySelector('.ai-tabs');
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var targetId = tab.dataset.target;
+      tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      sections.forEach(function(s) { s.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var target = document.getElementById(targetId);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  function checkTabOverflow() {
+    if (!tabBar) return;
+    if (tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    } else {
+      tabBar.classList.remove('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+})();
+
+// ─────────────────────────────────────────────────────────
+// SHARE MODAL
+// ─────────────────────────────────────────────────────────
+function aiOpenShare(config) {
+  var overlay   = document.getElementById('ai-share-overlay');
+  var textbox   = document.getElementById('ai-share-textbox');
+  var cardNum   = document.getElementById('ai-share-card-num');
+  var cardCtx   = document.getElementById('ai-share-card-context');
+  var cardEye   = document.getElementById('ai-share-card-eyebrow');
+  var copyBtn   = document.getElementById('ai-share-copy-btn');
+  if (cardNum) cardNum.textContent = config.num || '';
+  if (cardCtx) cardCtx.textContent = config.context || '';
+  if (cardEye) cardEye.textContent = config.eyebrow || 'Alterrell Interactive';
+  if (textbox) textbox.textContent = config.copy || '';
+  if (overlay) overlay.classList.add('visible');
+  if (copyBtn) { copyBtn.className = 'ai-share-btn ai-share-btn--copy'; copyBtn.textContent = 'Copy text'; }
+}
+function aiCloseShare() {
+  document.getElementById('ai-share-overlay').classList.remove('visible');
+}
+function aiCopyShare() {
+  var text = document.getElementById('ai-share-textbox').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('ai-share-copy-btn');
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+  });
+}
+
+// ─────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────
+renderCarousel();
+populateDropdown();
+</script>
+
+</body>
+</html>
