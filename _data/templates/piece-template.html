@@ -21,8 +21,13 @@
   <meta name="twitter:description" content="[ONE-SENTENCE DESCRIPTION]">
   <meta name="twitter:image" content="https://interactive.alterrell.com/[PIECE-SLUG]/og-image.png">
 
+  <!-- Google Fonts — required by platform CSS (alterrell-interactive.css §1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <!-- Platform CSS — canonical, never rebuild -->
-  <link rel="stylesheet" href="/alterrell-interactive.css">
+  <link rel="stylesheet" href="../../alterrell-interactive.css">
 
   <!-- Piece-local styles — ONLY for cards, tools, and piece accent -->
   <style>
@@ -59,20 +64,29 @@
 <nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
   <div class="ai-nav-meta">
-    <a href="/" class="ai-nav-link">← All pieces</a>
+    <a href="/">← All pieces</a>
   </div>
 </nav>
 
 
 <!-- ══════════════════════════════════════════════════
      ZONE 3 · HERO — structural, always dark
-     Background: var(--dark-section). Headline: Spectral 800, white, ONE line.
+     Background: var(--dark-section). Headline: Spectral 700, white, ONE line.
+     NO PLATFORM CLASS: .ai-hero shell class does not exist in CSS.
+     Needs: background var(--dark-section), hero padding proportions, display:block
+     (must never hide — cannot use .ai-section which hides when not .active).
+     Also needs dark context so .ai-hero-hed and subhead render in var(--paper).
+     Add .ai-hero to alterrell-interactive.css before deploying any piece.
      ══════════════════════════════════════════════════ -->
-<header class="ai-hero" style="background: var(--dark-section); padding: 4rem 2rem 3rem;">
+<header>
   <div class="ai-inner">
-    <span class="ai-eyebrow" style="color: var(--teal);">ALTERRELL INTERACTIVE ——</span>
-    <h1 class="ai-hero-hed" style="color: var(--paper); white-space: nowrap;">[PIECE TITLE]</h1>
-    <p class="ai-hero-dek" style="color: var(--paper); opacity: 0.85; max-width: 100%;">[SUBHEAD — full width, never clipped. Two sentences max. First sentence is the hook. Second is the argument.]</p>
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <!-- .ai-hero-hed defaults to var(--ink); needs .ai-hero shell with dark bg
+         OR .ai-section--dark context to render white. Fix via .ai-hero in CSS. -->
+    <h1 class="ai-hero-hed">[PIECE TITLE]</h1>
+    <!-- NO PLATFORM CLASS: .ai-hero-dek does not exist in CSS.
+         Needs: font-size, line-height, color var(--paper) at reduced opacity on dark bg. -->
+    <p>[SUBHEAD — full width, never clipped. Two sentences max. First sentence is the hook. Second is the argument.]</p>
   </div>
 </header>
 
@@ -83,49 +97,51 @@
      Swap to piece-specific URLs when available.
      ══════════════════════════════════════════════════ -->
 <section class="ai-journey" aria-label="Ways to engage">
-  <div class="ai-journey-items" style="display: flex; border-top: 3px solid var(--teal);">
+  <div class="ai-journey-inner">
 
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-path primary">
       <span class="ai-journey-icon">▶</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">WATCH</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Alterrell Interactive on YouTube</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The video companion to this piece</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--teal); font-size: 0.85rem;">WATCH NOW →</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">The video companion to this piece</span>
+      <span class="ai-journey-cta">Watch now →</span>
     </a>
 
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
-      <span class="ai-journey-icon" style="color: var(--teal);">✦</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">READ</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">The full argument on Substack</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The policy accountability case, documented</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--orange); font-size: 0.85rem;">READ NOW →</span>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">The policy accountability case, documented</span>
+      <span class="ai-journey-cta">Read now →</span>
     </a>
 
-    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none;">
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
       <span class="ai-journey-icon">◆</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">SUPPORT</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Ko-fi — keep this work free</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">Independent civic journalism</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--ink); font-size: 0.85rem;">SUPPORT →</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
     </a>
 
   </div>
 </section>
-
 
 <!-- ══════════════════════════════════════════════════
      ZONE 5 · TAB BAR — structural
      Tab 1: Overview (locked). Tabs 2-4: piece-specific.
      Tab 5: Spread the Word (locked). Tab 6: Sources (locked).
      Full-span, equal width. Delete one tab for 5-tab pieces.
+     NO PLATFORM CLASS: no class exists for equal-width tab distribution.
+     CSS .ai-tab uses flex-shrink:0 (content width), not flex:1 (equal fill).
+     Add .ai-tabs--fill or a flex:1 modifier to CSS if equal-width tabs are needed.
      ══════════════════════════════════════════════════ -->
-<div class="ai-tabs" role="tablist" aria-label="Piece sections" style="display: flex;">
-  <button class="ai-tab active" role="tab" aria-selected="true" data-target="overview" style="flex:1;">Overview</button>
-  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab2" style="flex:1;">[TAB 2 NAME]</button>
-  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab3" style="flex:1;">[TAB 3 NAME]</button>
-  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab4" style="flex:1;">[TAB 4 NAME]</button>
-  <button class="ai-tab" role="tab" aria-selected="false" data-target="spread" style="flex:1;">Spread the Word</button>
-  <button class="ai-tab" role="tab" aria-selected="false" data-target="sources" style="flex:1;">Sources</button>
+<div class="ai-tabs" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" role="tab" aria-selected="true" data-target="overview">Overview</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab2">[TAB 2 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab3">[TAB 3 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="tab4">[TAB 4 NAME]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="spread">Spread the Word</button>
+  <button class="ai-tab" role="tab" aria-selected="false" data-target="sources">Sources</button>
 </div>
 
 
@@ -260,13 +276,16 @@
   <div class="ai-inner">
 
     <span class="ai-eyebrow">SOURCES ——</span>
-    <h2 class="ai-h2">Methodology & Sources</h2>
+    <h2 class="ai-h2">Methodology &amp; Sources</h2>
 
     <div class="ai-body">
       <p>[METHODOLOGY — 2-4 sentences explaining the data approach in plain language. What sources were used, how they were verified, what the scope covers and doesn't cover.]</p>
     </div>
 
-    <ol class="ai-source-list" style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.8; padding-left: 1.25rem;">
+    <!-- NO PLATFORM CLASS: no .ai-source-list or platform list class exists in CSS.
+         Using plain <ol>. Add .ai-source-list to CSS or piece-local styles for
+         font, size, line-height, and padding treatment. -->
+    <ol>
       <li>[SOURCE 1 — e.g. Forbes Billionaires List 2025 — net worth figures]</li>
       <li>[SOURCE 2]</li>
       <li>[SOURCE 3]</li>
@@ -284,16 +303,18 @@
      No tagline. No journey block. No methodology accordion.
      ══════════════════════════════════════════════════ -->
 <footer class="ai-footer">
-  <div class="ai-inner">
+  <div class="ai-footer-inner">
     <div class="ai-footer-brand">
       <span class="ai-footer-wordmark">Alterrell <span>Interactive</span></span>
     </div>
-    <div class="ai-footer-nav">
+    <!-- NO PLATFORM CLASS: no .ai-footer-nav class exists in CSS.
+         Using plain <div>. Add .ai-footer-nav to CSS if this link needs specific styling. -->
+    <div>
       <a href="/">← All pieces</a>
     </div>
     <div class="ai-footer-bottom">
-      <span>© 2026 Alterrell</span>
-      <span>interactive.alterrell.com/[PIECE-SLUG]/</span>
+      <span class="ai-footer-copy">© 2026 Alterrell</span>
+      <a href="https://interactive.alterrell.com/[PIECE-SLUG]/" class="ai-footer-url">interactive.alterrell.com/[PIECE-SLUG]/</a>
     </div>
   </div>
 </footer>
