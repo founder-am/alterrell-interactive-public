@@ -91,7 +91,7 @@
   --space-2xl:      7rem;
 
   /* Layout */
-  --max-editorial:  1080px;
+  --max-editorial:  1600px;
   --max-tool:       680px;
   --nav-height:     52px;
   --tab-height:     44px;
@@ -203,6 +203,18 @@ button { cursor: pointer; font-family: var(--font-body); }
 .has-breadcrumb { padding-top: calc(var(--nav-height) + 32px); }
 
 
+/* ── 3b. HERO SHELL ─────────────────────────────────────────── */
+/* Always-visible dark container — not a tabbed section, never hidden */
+.ai-hero {
+  background: var(--dark-section);
+  padding: var(--space-2xl) 1.25rem var(--space-xl);
+  display: block;
+}
+.ai-hero .ai-eyebrow        { color: var(--teal-light); }
+.ai-hero .ai-eyebrow::after { background: #333; }
+.ai-hero .ai-hero-hed       { color: var(--paper); }
+
+
 /* ── 4. TAB BAR ─────────────────────────────────────────────── */
 .ai-tabs {
   position: sticky;
@@ -215,8 +227,8 @@ button { cursor: pointer; font-family: var(--font-body); }
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   /* Align tab bar to editorial content container on wide viewports */
-  padding-left: max(1.25rem, calc((100% - var(--max-editorial)) / 2));
-  padding-right: max(1.25rem, calc((100% - var(--max-editorial)) / 2));
+  padding-left: 2rem;
+  padding-right: 2rem;
   /* Fade right edge to signal more tabs */
   -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
   mask-image: linear-gradient(to right, black 85%, transparent 100%);
@@ -256,6 +268,9 @@ button { cursor: pointer; font-family: var(--font-body); }
   border-bottom-color: transparent;
 }
 
+/* Equal-width tabs — add .ai-tabs--fill to the tab bar element */
+.ai-tabs--fill .ai-tab { flex: 1; justify-content: center; }
+
 /* Tab JS — smooth scroll + active tracking */
 
 
@@ -285,7 +300,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 
 .ai-inner {
-  max-width: var(--max-editorial);
+  padding: 0 2rem;
   margin: 0 auto;
   width: 100%;
   flex: 1;
@@ -340,6 +355,16 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 .ai-section--dark .ai-hero-hed { color: var(--paper); }
 
+/* Hero subhead */
+.ai-hero-dek {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.75vw, 1.25rem);
+  font-weight: 400;
+  line-height: var(--leading-loose);
+  color: rgba(248,246,241,0.85);
+  max-width: 100%;
+}
+
 /* Section h2 */
 .ai-h2 {
   font-family: var(--font-editorial);
@@ -369,7 +394,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   font-weight: 500;
   line-height: var(--leading-body);
   color: var(--ink-secondary);
-  max-width: 640px;
+  max-width: 100%;
 }
 .ai-body p + p { margin-top: 1rem; }
 .ai-body strong { color: var(--ink); font-weight: 500; }
@@ -393,6 +418,21 @@ button { cursor: pointer; font-family: var(--font-body); }
   color: #9896b0;
   border-left-color: var(--teal-light);
 }
+
+/* Source list — numbered, body font, used in Sources tab */
+.ai-source-list {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-loose);
+  color: var(--ink-secondary);
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+.ai-source-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.ai-source-list li:last-child { border-bottom: none; }
 
 /* Data label — beneath a stat number */
 .ai-datalabel {
@@ -982,6 +1022,19 @@ button { cursor: pointer; font-family: var(--font-body); }
   color: #6e6a88;
   line-height: 1.5;
 }
+
+/* Footer back-nav link */
+.ai-footer-nav {
+  margin: var(--space-sm) 0;
+}
+.ai-footer-nav a {
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  color: #504d68;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+}
+.ai-footer-nav a:hover { color: var(--teal-light); }
 
 /* Journey in footer — YouTube + Substack */
 .ai-footer-journey {
