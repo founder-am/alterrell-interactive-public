@@ -72,21 +72,12 @@
 <!-- ══════════════════════════════════════════════════
      ZONE 3 · HERO — structural, always dark
      Background: var(--dark-section). Headline: Spectral 700, white, ONE line.
-     NO PLATFORM CLASS: .ai-hero shell class does not exist in CSS.
-     Needs: background var(--dark-section), hero padding proportions, display:block
-     (must never hide — cannot use .ai-section which hides when not .active).
-     Also needs dark context so .ai-hero-hed and subhead render in var(--paper).
-     Add .ai-hero to alterrell-interactive.css before deploying any piece.
      ══════════════════════════════════════════════════ -->
-<header>
+<header class="ai-hero">
   <div class="ai-inner">
     <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
-    <!-- .ai-hero-hed defaults to var(--ink); needs .ai-hero shell with dark bg
-         OR .ai-section--dark context to render white. Fix via .ai-hero in CSS. -->
     <h1 class="ai-hero-hed">[PIECE TITLE]</h1>
-    <!-- NO PLATFORM CLASS: .ai-hero-dek does not exist in CSS.
-         Needs: font-size, line-height, color var(--paper) at reduced opacity on dark bg. -->
-    <p>[SUBHEAD — full width, never clipped. Two sentences max. First sentence is the hook. Second is the argument.]</p>
+    <p class="ai-hero-dek">[SUBHEAD — full width, never clipped. Two sentences max. First sentence is the hook. Second is the argument.]</p>
   </div>
 </header>
 
@@ -131,11 +122,8 @@
      Tab 1: Overview (locked). Tabs 2-4: piece-specific.
      Tab 5: Spread the Word (locked). Tab 6: Sources (locked).
      Full-span, equal width. Delete one tab for 5-tab pieces.
-     NO PLATFORM CLASS: no class exists for equal-width tab distribution.
-     CSS .ai-tab uses flex-shrink:0 (content width), not flex:1 (equal fill).
-     Add .ai-tabs--fill or a flex:1 modifier to CSS if equal-width tabs are needed.
      ══════════════════════════════════════════════════ -->
-<div class="ai-tabs" role="tablist" aria-label="Piece sections">
+<div class="ai-tabs ai-tabs--fill" role="tablist" aria-label="Piece sections">
   <button class="ai-tab active" role="tab" aria-selected="true" data-target="overview">Overview</button>
   <button class="ai-tab" role="tab" aria-selected="false" data-target="tab2">[TAB 2 NAME]</button>
   <button class="ai-tab" role="tab" aria-selected="false" data-target="tab3">[TAB 3 NAME]</button>
@@ -282,10 +270,7 @@
       <p>[METHODOLOGY — 2-4 sentences explaining the data approach in plain language. What sources were used, how they were verified, what the scope covers and doesn't cover.]</p>
     </div>
 
-    <!-- NO PLATFORM CLASS: no .ai-source-list or platform list class exists in CSS.
-         Using plain <ol>. Add .ai-source-list to CSS or piece-local styles for
-         font, size, line-height, and padding treatment. -->
-    <ol>
+    <ol class="ai-source-list">
       <li>[SOURCE 1 — e.g. Forbes Billionaires List 2025 — net worth figures]</li>
       <li>[SOURCE 2]</li>
       <li>[SOURCE 3]</li>
@@ -307,9 +292,7 @@
     <div class="ai-footer-brand">
       <span class="ai-footer-wordmark">Alterrell <span>Interactive</span></span>
     </div>
-    <!-- NO PLATFORM CLASS: no .ai-footer-nav class exists in CSS.
-         Using plain <div>. Add .ai-footer-nav to CSS if this link needs specific styling. -->
-    <div>
+    <div class="ai-footer-nav">
       <a href="/">← All pieces</a>
     </div>
     <div class="ai-footer-bottom">
