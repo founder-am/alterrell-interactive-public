@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fast Food's Hidden Sodium Tax — Alterrell Interactive</title>
   <meta name="description" content="The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Alterrell Interactive">
   <meta property="og:title" content="Fast Food's Hidden Sodium Tax — Alterrell Interactive">
   <meta property="og:description" content="The advertisements targeting your zip code and the sodium in your meal aren't accidents. They're architecture — and they're driving a $219B healthcare crisis.">
@@ -23,43 +23,13 @@
   <script src="/_data/config.js"></script>
 
   <style>
+    /* ── PIECE ACCENT COLOR ── */
+    :root {
+      --piece-accent: var(--teal);
+    }
+
     /* ── PIECE-LOCAL STYLES ── */
 
-    /* Hero */
-    .sodium-hero {
-      padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem;
-      background: var(--dark-section);
-    }
-    .sodium-hero-inner {
-      max-width: var(--max-editorial);
-      margin: 0 auto;
-    }
-    .sodium-hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--teal-light);
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-    .sodium-hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.6rem, 7vw, 5.5rem);
-      font-weight: 700;
-      font-style: italic;
-      line-height: 1.0;
-      color: var(--paper);
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-    .sodium-hero-sub {
-      font-family: var(--font-body);
-      font-size: clamp(1rem, 1.5vw, 1.1rem);
-      color: rgba(248,246,241,0.65);
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
     .sodium-hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -196,21 +166,6 @@
       gap: 1rem;
     }
 
-    /* ── CRITICAL LAYOUT — section ends at viewport bottom ── */
-    #overview, #the-system, #systemic, #compare, #data, #franchise {
-      display: none;
-      flex-direction: column;
-      min-height: calc(100vh - 128px); /* nav(52) + breadcrumb(32) + tabs(44) */
-    }
-    #overview.active, #the-system.active, #systemic.active, #compare.active, #data.active, #franchise.active {
-      display: flex;
-    }
-    #overview .ai-inner, #the-system .ai-inner, #systemic .ai-inner,
-    #compare .ai-inner, #data .ai-inner, #franchise .ai-inner {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
     .section-nav-btn {
       display: flex;
       flex-direction: column;
@@ -263,11 +218,11 @@
 
     /* Stat callout */
     .stat-callout {
-      background: var(--dark-section);
-      color: var(--paper);
+      background: var(--paper-card);
+      border-left: 4px solid var(--teal);
       padding: var(--space-lg) 1.25rem;
       margin: var(--space-md) 0;
-      border-radius: var(--radius);
+      border-radius: 0 var(--radius) var(--radius) 0;
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -280,8 +235,8 @@
       flex-shrink: 0;
     }
     .stat-callout-text { font-family: var(--font-body); line-height: var(--leading-body); }
-    .stat-callout-text p { color: rgba(248,246,241,0.75); font-size: var(--text-body); }
-    .stat-callout-text strong { color: var(--paper); font-weight: 600; }
+    .stat-callout-text p { color: var(--ink-secondary); font-size: var(--text-body); }
+    .stat-callout-text strong { color: var(--ink); font-weight: 600; }
 
     /* CEO bar chart */
     .ceo-bars { margin: var(--space-md) 0; }
@@ -481,7 +436,7 @@
     .meter-fill.zone-low { background: var(--success); }
     .meter-fill.zone-med { background: var(--warning); }
     .meter-fill.zone-high { background: var(--danger); }
-    .meter-fill.zone-over { background: var(--danger); width: 100% !important; }
+    .meter-fill.zone-over { background: var(--danger); width: 100%; }
     .meter-threshold { position: absolute; top: -4px; right: 0; width: 2px; height: 18px; background: var(--ink); border-radius: 1px; }
     .meter-threshold-label { position: absolute; top: 16px; right: 0; font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-muted); white-space: nowrap; transform: translateX(50%); }
     .meter-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-muted); margin-top: 1.25rem; }
@@ -686,20 +641,6 @@
       line-height: var(--leading-body);
     }
 
-    /* V2 callout */
-    .v2-callout {
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-top: var(--space-md);
-    }
-    .v2-callout p {
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      color: var(--ink-muted);
-      line-height: var(--leading-body);
-    }
-
     /* ── SHARE BLOCK ── */
     .share-block { background: var(--paper-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
     .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.4rem; }
@@ -713,10 +654,6 @@
     .share-block-substack a { color: var(--teal); }
     /* ── CHART SCREENSHOT NUDGE ── */
     .chart-screenshot-nudge { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.08em; color: rgba(10,124,114,0.6); margin-top: 0.5rem; text-align: right; }
-    /* ── GLOBAL TIGHTENING ── */
-    .ai-section { padding: var(--space-lg) 1.25rem; }
-    .ai-section--tight { padding: var(--space-md) 1.25rem; }
-    .ai-section--dark { padding: var(--space-xl) 1.25rem; }
 
     /* ── FRANCHISE FILTER PILLS ── */
     .sodium-filter-pills{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:2px;margin-bottom:var(--space-md);}
@@ -742,30 +679,26 @@
 <body class="has-breadcrumb">
 
 <!-- BREADCRUMB -->
-<div class="ai-breadcrumb">
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
   <a href="/">Alterrell Interactive</a>
   <span class="ai-breadcrumb-sep">›</span>
-  <a href="/">Fast Food</a>
-  <span class="ai-breadcrumb-sep">›</span>
   <span class="ai-breadcrumb-current">Fast Food's Hidden Sodium Tax</span>
-</div>
+</nav>
 
 <!-- NAV -->
-<nav class="ai-nav" role="navigation">
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
   <div class="ai-nav-meta">
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">Substack</a>
-    &nbsp;·&nbsp;
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" data-config-url="youtube">YouTube</a>
+    <a href="/">← All pieces</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="sodium-hero" role="banner">
-  <div class="sodium-hero-inner">
-    <span class="sodium-hero-eyebrow">Alterrell Interactive · Fast Food Series</span>
-    <h1 class="sodium-hero-headline">Fast Food's Hidden Sodium Tax</h1>
-    <p class="sodium-hero-sub">The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed">Fast Food's Hidden Sodium Tax</h1>
+    <p class="ai-hero-dek">The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us.</p>
     <div class="sodium-hero-stats">
       <div class="sodium-stat-card">
         <div class="sodium-stat-num danger">2.4×</div>
@@ -784,41 +717,54 @@
 </header>
 
 <!-- JOURNEY BLOCK -->
-<nav class="ai-journey-compact" aria-label="Follow this piece">
-  <div class="ai-journey-compact-inner">
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-compact-item primary" aria-label="Watch on YouTube" data-config-url="youtube">
-      <span class="ai-journey-compact-action">Watch</span>
-      <span class="ai-journey-compact-dest">YouTube →</span>
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-inner">
+
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-path primary">
+      <span class="ai-journey-icon">▶</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">The video companion to this piece</span>
+      <span class="ai-journey-cta">Watch now →</span>
     </a>
-    <div class="ai-journey-compact-divider" aria-hidden="true"></div>
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-compact-item secondary" aria-label="Read on Substack" data-config-url="substack">
-      <span class="ai-journey-compact-action">Read</span>
-      <span class="ai-journey-compact-dest">Substack →</span>
+
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">The policy accountability case, documented</span>
+      <span class="ai-journey-cta">Read now →</span>
     </a>
-    <div class="ai-journey-compact-divider" aria-hidden="true"></div>
-    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-compact-item tertiary" aria-label="Support on Ko-fi">
-      <span class="ai-journey-compact-action">Support</span>
-      <span class="ai-journey-compact-dest">Ko-fi →</span>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
     </a>
+
   </div>
-</nav>
+</section>
 
 <!-- TAB BAR -->
-<nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
-  <button class="ai-tab active" data-target="#overview" role="tab">Overview</button>
-  <button class="ai-tab" data-target="#the-system" role="tab">The System</button>
-  <button class="ai-tab" data-target="#systemic" role="tab">Systemic Issues</button>
-  <button class="ai-tab" data-target="#compare" role="tab">Compare Your Order</button>
-  <button class="ai-tab" data-target="#data" role="tab">By Franchise</button>
-  <button class="ai-tab" data-target="#franchise" role="tab">Best Options</button>
-</nav>
+<div class="ai-tabs ai-tabs--fill" id="tabBar" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" data-target="#overview" role="tab" aria-selected="true">Overview</button>
+  <button class="ai-tab" data-target="#the-system" role="tab" aria-selected="false">The System</button>
+  <button class="ai-tab" data-target="#systemic" role="tab" aria-selected="false">Systemic Issues</button>
+  <button class="ai-tab" data-target="#compare" role="tab" aria-selected="false">Compare Your Order</button>
+  <button class="ai-tab" data-target="#data" role="tab" aria-selected="false">By Franchise</button>
+  <button class="ai-tab" data-target="#franchise" role="tab" aria-selected="false">Best Options</button>
+  <button class="ai-tab" data-target="#spread" role="tab" aria-selected="false">Spread the Word</button>
+  <button class="ai-tab" data-target="#sources" role="tab" aria-selected="false">Sources</button>
+</div>
 
 <!-- ══════════════════════════════════════
      TAB 1 — OVERVIEW
 ══════════════════════════════════════ -->
-<section id="overview" class="ai-section ai-section--white active">
+<section id="overview" class="ai-section ai-section--white active" role="tabpanel">
   <div class="ai-inner">
-    <p class="ai-eyebrow">Overview</p>
+    <span class="ai-eyebrow">Overview</span>
     <h2 class="ai-h2">This is a structural argument, not a moral one.</h2>
 
     <p class="section-intro">The FDA recommends no more than 2,300mg of sodium per day. The American Heart Association recommends even less: 1,500mg for most adults. A single fast food meal can exceed either limit with any one item on the menu.</p>
@@ -850,7 +796,7 @@
 
     <p class="ai-body" style="margin-top: var(--space-md);">One more thing the data reveals: fast food protein comes almost entirely without fiber. Protein without fiber means your body absorbs it differently — less satiety, faster blood sugar spikes, and none of the cholesterol and gut health benefits that come with fiber-rich protein sources. The system optimized for palatability and shelf life. Fiber wasn't part of the equation.</p>
 
-    <p class="ai-source" style="margin-top: var(--space-md);">All sources and methodology are documented at the bottom of this page. <a href="#sources-anchor" style="color:var(--teal);text-decoration:underline;">Jump to sources</a></p>
+    <p class="ai-source" style="margin-top: var(--space-md);">All sources and methodology are in the <a href="#sources" onclick="event.preventDefault();document.querySelector('[data-target=\'#sources\']').click()" style="color:var(--teal);text-decoration:underline;">Sources tab</a>.</p>
 
     <!-- SHARE BLOCK (T-5: Tab 1) -->
     <div class="share-block">
@@ -881,9 +827,9 @@
 <!-- ══════════════════════════════════════
      TAB 2 — THE SYSTEM
 ══════════════════════════════════════ -->
-<section id="the-system" class="ai-section">
+<section id="the-system" class="ai-section" role="tabpanel">
   <div class="ai-inner">
-    <p class="ai-eyebrow">The System</p>
+    <span class="ai-eyebrow">The System</span>
     <h2 class="ai-h2">What the infrastructure produces at scale.</h2>
     <p class="section-intro">The item-level data shows what's in the food. This tab shows what the system produces when you aggregate that across millions of people, decades of targeted marketing, and deliberate decisions about where to locate stores and where not to.</p>
 
@@ -1043,9 +989,9 @@
 <!-- ══════════════════════════════════════
      TAB 3 — SYSTEMIC ISSUES
 ══════════════════════════════════════ -->
-<section id="systemic" class="ai-section ai-section--white">
+<section id="systemic" class="ai-section ai-section--white" role="tabpanel">
   <div class="ai-inner">
-    <p class="ai-eyebrow">Systemic Issues</p>
+    <span class="ai-eyebrow">Systemic Issues</span>
     <h2 class="ai-h2">How the system was built.</h2>
     <p class="section-intro">Two mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents.</p>
 
@@ -1123,9 +1069,9 @@
 <!-- ══════════════════════════════════════
      TAB 4 — COMPARE YOUR ORDER
 ══════════════════════════════════════ -->
-<section id="compare" class="ai-section ai-section--white">
+<section id="compare" class="ai-section ai-section--white" role="tabpanel">
   <div class="ai-inner--tool">
-    <p class="ai-eyebrow">Compare Your Order</p>
+    <span class="ai-eyebrow">Compare Your Order</span>
     <h2 class="ai-h2">Same budget. Less sodium.</h2>
     <p class="section-intro" style="max-width: 100%;">Pick what you usually order. We'll show you a lower-sodium option at the same chain and the best swap across all chains — same protein category, no cooking required.</p>
 
@@ -1204,9 +1150,9 @@
 <!-- ══════════════════════════════════════
      TAB 5 — DATA (visible as "By Franchise")
 ══════════════════════════════════════ -->
-<section id="data" class="ai-section ai-section--white">
+<section id="data" class="ai-section ai-section--white" role="tabpanel">
   <div class="ai-inner">
-    <p class="ai-eyebrow">By Franchise</p>
+    <span class="ai-eyebrow">By Franchise</span>
     <h2 class="ai-h2">Protein efficiency vs. sodium load.</h2>
     <p class="section-intro">Ordered by protein per item, descending. Sodium is color-coded: red is above 65% of the daily limit, amber is 40–65%, green is below 40%. Fiber column reveals which high-protein items deliver zero fiber.</p>
 
@@ -1251,9 +1197,9 @@
 <!-- ══════════════════════════════════════
      TAB 6 — BY FRANCHISE
 ══════════════════════════════════════ -->
-<section id="franchise" class="ai-section">
+<section id="franchise" class="ai-section" role="tabpanel">
   <div class="ai-inner">
-    <p class="ai-eyebrow">Best Options</p>
+    <span class="ai-eyebrow">Best Options</span>
     <h2 class="ai-h2">What better looks like inside each chain.</h2>
     <p class="section-intro">You don't always get to choose the chain. Here's what a lower-sodium order looks like at the places you're most likely to find yourself.</p>
 
@@ -1428,60 +1374,101 @@
         <span class="section-nav-label">Compare Your Order</span>
       </a>
       <span class="section-nav-spacer"></span>
-      <a href="/" class="section-nav-btn next">
-        <span class="section-nav-direction">↑</span>
-        <span class="section-nav-label">All Projects</span>
+      <a href="#spread" class="section-nav-btn next">
+        <span class="section-nav-direction">Next &#8594;</span>
+        <span class="section-nav-label">Spread the Word</span>
       </a>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER — dark, platform standard -->
-<footer class="ai-footer" role="contentinfo">
-  <div class="ai-footer-inner">
 
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:var(--space-md);">
-      <div style="display:flex;flex-direction:column;gap:0.25rem;">
-        <div style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;"><span style="color:var(--teal);">Alterrell</span> Interactive · Fast Food Series</div>
-        <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;">&copy; 2026 · interactive.alterrell.com/fast-food-sodium · Data as Dignity</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
-        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;min-height:var(--touch);display:flex;align-items:center;gap:0.4rem;border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;transition:background 0.15s;" onmouseover="this.style.background='rgba(10,124,114,0.1)'" onmouseout="this.style.background='transparent'">$ Support the work</a>
-        <a href="/" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'">&#8592; All Projects</a>
-        <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="substack">Substack</a>
-        <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='#555'" data-config-url="youtube">YouTube</a>
-      </div>
+<!-- ── TAB 7 · SPREAD THE WORD ── -->
+<section class="ai-section" id="spread" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SPREAD THE WORD ——</span>
+    <h2 class="ai-h2">Take This Further</h2>
+
+    <div class="ai-body">
+      <p>The architecture is visible. Now make it impossible to ignore.</p>
     </div>
 
-    <!-- Methodology & Sources accordion -->
-    <details class="ai-footer-methodology" id="sources-anchor">
-      <summary>Methodology &amp; Sources</summary>
-      <div class="ai-footer-methodology-body">
+    <!-- SHAREABLE CARDS DROP-IN -->
 
-        <p class="ai-footer-methodology-note">Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024&ndash;2025. Sodium values for US items were taken directly from each chain&rsquo;s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald&rsquo;s UK, McDonald&rsquo;s Germany, KFC Japan, and McDonald&rsquo;s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g &times; 0.95g serving weight = ~228mg). CEO compensation data is from McDonald&rsquo;s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#franchise" class="section-nav-btn">
+        <span class="section-nav-direction">&#8592; Previous</span>
+        <span class="section-nav-label">Best Options</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+      <a href="#sources" class="section-nav-btn next">
+        <span class="section-nav-direction">Next &#8594;</span>
+        <span class="section-nav-label">Sources</span>
+      </a>
+    </div>
 
-        <ul class="ai-footer-sources">
-          <li>McDonald&rsquo;s, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) &middot; 2024 &middot; <em>mcdonalds.com, bk.com, kfc.com and international equivalents</em></li>
-          <li>Rudd Center for Food Policy &amp; Health &middot; Fast Food FACTS 2021 &middot; Nielsen data &middot; University of Connecticut &middot; <em>uconnruddcenter.org</em></li>
-          <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. <em>Am J Prev Med.</em> 2024;67(6):820&ndash;831</li>
-          <li>CDC / NCCDPHP. Health and Economic Benefits of High Blood Pressure Interventions &middot; 2024 &middot; <em>cdc.gov/nccdphp</em></li>
-          <li>Martin SS et al.; American Heart Association. 2024 Heart Disease and Stroke Statistics. <em>Circulation.</em> 2024;149(8):e347&ndash;e913</li>
-          <li>Joynt Maddox KE et al.; American Heart Association. Forecasting the Economic Burden of Cardiovascular Disease and Stroke Through 2050. <em>Circulation.</em> 2024</li>
-          <li>USDA Economic Research Service &middot; Food Access Research Atlas &middot; 2019 data &middot; <em>ers.usda.gov</em></li>
-          <li>Block JP, Scribner RA, DeSalvo KB. Fast food, race/ethnicity, and income: a geographic analysis. <em>Am J Prev Med.</em> 2004;27(3):211&ndash;217</li>
-          <li>Hilmers A, Hilmers DC, Dave J. Neighborhood disparities in access to healthy foods and their effects on environmental justice. <em>Am J Public Health.</em> 2012;102(9):1644&ndash;1654</li>
-          <li>Neckerman KM et al. Disparities in food access around homes and schools for New York City children. <em>PLOS One.</em> 2019</li>
-          <li>Arcaya MC et al. Do minority and poor neighborhoods have higher access to fast-food restaurants in the United States? <em>Health &amp; Place.</em> 2016;29:10&ndash;17</li>
-          <li>McDonald&rsquo;s 2024 Proxy Statement &middot; SEC filing, 2023 compensation data &middot; <em>sec.gov</em></li>
-          <li>AFL-CIO Executive PayWatch &middot; 2023 &middot; <em>aflcio.org/paywatch</em></li>
-          <li>Gordon M. Houston food deserts hinder healthy eating &middot; Houston Landing &middot; 2023</li>
-          <li>Moore M et al. Food access and shopping behavior in Houston&rsquo;s Third Ward &middot; 2019</li>
-        </ul>
+  </div>
+</section>
 
-      </div>
-    </details>
 
+<!-- ── TAB 8 · SOURCES ── -->
+<section class="ai-section" id="sources" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SOURCES ——</span>
+    <h2 class="ai-h2">Methodology &amp; Sources</h2>
+
+    <div class="ai-body">
+      <p>Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024&ndash;2025. Sodium values for US items were taken directly from each chain&rsquo;s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald&rsquo;s UK, McDonald&rsquo;s Germany, KFC Japan, and McDonald&rsquo;s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g &times; 0.95g serving weight = ~228mg). CEO compensation data is from McDonald&rsquo;s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
+    </div>
+
+    <ol class="ai-source-list">
+      <li>McDonald&rsquo;s, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) &middot; 2024 &middot; <em>mcdonalds.com, bk.com, kfc.com and international equivalents</em></li>
+      <li>Rudd Center for Food Policy &amp; Health &middot; Fast Food FACTS 2021 &middot; Nielsen data &middot; University of Connecticut &middot; <em>uconnruddcenter.org</em></li>
+      <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. <em>Am J Prev Med.</em> 2024;67(6):820&ndash;831</li>
+      <li>CDC / NCCDPHP. Health and Economic Benefits of High Blood Pressure Interventions &middot; 2024 &middot; <em>cdc.gov/nccdphp</em></li>
+      <li>Martin SS et al.; American Heart Association. 2024 Heart Disease and Stroke Statistics. <em>Circulation.</em> 2024;149(8):e347&ndash;e913</li>
+      <li>Joynt Maddox KE et al.; American Heart Association. Forecasting the Economic Burden of Cardiovascular Disease and Stroke Through 2050. <em>Circulation.</em> 2024</li>
+      <li>USDA Economic Research Service &middot; Food Access Research Atlas &middot; 2019 data &middot; <em>ers.usda.gov</em></li>
+      <li>Block JP, Scribner RA, DeSalvo KB. Fast food, race/ethnicity, and income: a geographic analysis. <em>Am J Prev Med.</em> 2004;27(3):211&ndash;217</li>
+      <li>Hilmers A, Hilmers DC, Dave J. Neighborhood disparities in access to healthy foods and their effects on environmental justice. <em>Am J Public Health.</em> 2012;102(9):1644&ndash;1654</li>
+      <li>Neckerman KM et al. Disparities in food access around homes and schools for New York City children. <em>PLOS One.</em> 2019</li>
+      <li>Arcaya MC et al. Do minority and poor neighborhoods have higher access to fast-food restaurants in the United States? <em>Health &amp; Place.</em> 2016;29:10&ndash;17</li>
+      <li>McDonald&rsquo;s 2024 Proxy Statement &middot; SEC filing, 2023 compensation data &middot; <em>sec.gov</em></li>
+      <li>AFL-CIO Executive PayWatch &middot; 2023 &middot; <em>aflcio.org/paywatch</em></li>
+      <li>Gordon M. Houston food deserts hinder healthy eating &middot; Houston Landing &middot; 2023</li>
+      <li>Moore M et al. Food access and shopping behavior in Houston&rsquo;s Third Ward &middot; 2019</li>
+    </ol>
+
+    <!-- SECTION-FLOOR NAV -->
+    <div class="section-nav">
+      <a href="#spread" class="section-nav-btn">
+        <span class="section-nav-direction">&#8592; Previous</span>
+        <span class="section-nav-label">Spread the Word</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER — dark, platform standard -->
+<footer class="ai-footer">
+  <div class="ai-footer-inner">
+    <div class="ai-footer-brand">
+      <span class="ai-footer-wordmark">Alterrell <span>Interactive</span></span>
+    </div>
+    <div class="ai-footer-nav">
+      <a href="/">← All pieces</a>
+    </div>
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">© 2026 Alterrell</span>
+      <a href="https://interactive.alterrell.com/fast-food-sodium/" class="ai-footer-url">interactive.alterrell.com/fast-food-sodium/</a>
+    </div>
   </div>
 </footer>
 
@@ -1674,13 +1661,14 @@ const MENU = {
   const tabBar = document.querySelector('.ai-tabs');
 
   function switchTab(targetSelector) {
-    document.querySelectorAll('#overview, #the-system, #systemic, #compare, #data, #franchise').forEach(s => s.classList.remove('active'));
-    tabs.forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.ai-section').forEach(s => s.classList.remove('active'));
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     const section = document.querySelector(targetSelector);
     const tab = document.querySelector(`.ai-tab[data-target="${targetSelector}"]`);
     if (section) section.classList.add('active');
     if (tab) {
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
     const navTop = document.querySelector('.ai-tabs') ? document.querySelector('.ai-tabs').getBoundingClientRect().bottom + window.scrollY : 0;
@@ -1964,18 +1952,6 @@ function scrollToTabs() {
   window.scrollTo({ top, behavior: 'smooth' });
 }
 
-// ── SOURCES ANCHOR ──
-if (location.hash === '#sources-anchor') {
-  const d = document.getElementById('sources-anchor');
-  if (d) d.open = true;
-}
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[href="#sources-anchor"]');
-  if (a) {
-    const d = document.getElementById('sources-anchor');
-    if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth' }); e.preventDefault(); }
-  }
-});
 </script>
 
 </body>
