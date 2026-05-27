@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Female Musicians Earn Less But Share More — Alterrell Interactive</title>
   <meta name="description" content="Men set the ceiling. Women are required to exceed it just to belong. The numbers behind who performs more and earns less.">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Alterrell Interactive">
   <meta property="og:title" content="Female Musicians Earn Less But Share More — Alterrell Interactive">
   <meta property="og:description" content="Men set the ceiling. Women are required to exceed it just to belong.">
@@ -46,7 +46,14 @@
     }
 
     /* Workbench card base classes — no aspect-ratio for in-piece rendering */
-    .card-square,
+    .card-square {
+      width: 100%;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 7px solid var(--teal);
+    }
     .card-tall {
       width: 100%;
       display: flex;
@@ -96,25 +103,7 @@
       padding-top: 8px;
     }
 
-    /* ── SECTION OVERRIDES ── */
-    .ai-section {
-      padding: 2.5rem 1.25rem;
-    }
-    @media (max-width: 640px) {
-      .ai-section {
-        padding: 2rem 1.25rem;
-      }
-    }
-
     /* ── HERO ── */
-    .ct-hero {
-      background: var(--dark-section);
-      padding: 1.5rem 1.25rem 1rem;
-    }
-    .ct-hero-inner {
-      max-width: var(--max-editorial);
-      margin: 0 auto;
-    }
     .ct-hero-row {
       display: flex;
       flex-direction: column;
@@ -125,15 +114,6 @@
       flex: none;
       max-width: none;
       color: var(--paper);
-    }
-    .ct-hero-sub {
-      flex: none;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: var(--leading-body);
-      color: rgba(248,246,241,0.85);
-      padding-top: 0;
     }
     @media (max-width: 640px) {
       .ct-hero-row  { gap: 0.5rem; }
@@ -399,21 +379,21 @@
     }
     .ct-swipeable-dot.active { background: var(--teal); }
 
-    /* ── TASK 5: SOURCES GROUP HEADERS ── */
-    .ct-sources-group {
-      counter-increment: none !important;
-      padding-top: 0.75rem !important;
-      font-size: 0.58rem !important;
+    /* ── SOURCES GROUP HEADERS ── */
+    .ai-source-list .ct-sources-group {
+      counter-increment: none;
+      padding-top: 0.75rem;
+      font-size: 0.58rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #7a7890 !important;
+      color: var(--ink-muted);
       font-weight: 600;
-      border-bottom: none !important;
+      border-bottom: none;
       list-style: none;
     }
-    .ct-sources-group::before {
-      content: '' !important;
-      display: none !important;
+    .ai-source-list .ct-sources-group::before {
+      content: '';
+      display: none;
     }
 
     /* ── CONCERT BUILDER ── */
@@ -934,26 +914,25 @@
 <!-- ── 2. BREADCRUMB ── -->
 <nav class="ai-breadcrumb" aria-label="Breadcrumb">
   <a href="/">Alterrell Interactive</a>
-  <span class="ai-breadcrumb-sep">/</span>
-  <span class="ai-breadcrumb-current">Concert Tax</span>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Female Musicians Earn Less But Share More</span>
 </nav>
 
 <!-- ── 3. NAV ── -->
 <nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
   <div class="ai-nav-meta">
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Substack</a>
-    &nbsp;·&nbsp;
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+    <a href="/">← All pieces</a>
   </div>
 </nav>
 
 <!-- ── 4. HERO ── -->
-<header class="ct-hero" role="banner">
-  <div class="ct-hero-inner">
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
     <div class="ct-hero-row">
-      <h1 class="ai-hero-hed ct-hero-hed">Female Musicians Earn Less But Share More</h1>
-      <p class="ct-hero-sub">Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.</p>
+      <h1 class="ai-hero-hed">Female Musicians Earn Less But Share More</h1>
+      <p class="ai-hero-dek">Men set the ceiling. Women are bounded by it and required to deliver more to justify their place beneath it.</p>
     </div>
     <div class="ct-tags" aria-label="Tags">
       <span class="ct-tag">Concert Tax</span>
@@ -965,44 +944,44 @@
 
 <!-- ── 5. JOURNEY BLOCK ── -->
 <section class="ai-journey" aria-label="Ways to engage">
-  <div class="ai-journey-items" style="display: flex; border-top: 3px solid var(--teal);">
+  <div class="ai-journey-inner">
 
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-path primary">
       <span class="ai-journey-icon">▶</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">WATCH</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Alterrell Interactive on YouTube</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The video companion to this piece</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--teal); font-size: 0.85rem;">WATCH NOW →</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">The video companion to this piece</span>
+      <span class="ai-journey-cta">Watch now →</span>
     </a>
 
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none; border-right: 1px solid rgba(0,0,0,0.06);">
-      <span class="ai-journey-icon" style="color: var(--teal);">✦</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">READ</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">The full argument on Substack</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">The policy accountability case, documented</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--orange); font-size: 0.85rem;">READ NOW →</span>
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">The policy accountability case, documented</span>
+      <span class="ai-journey-cta">Read now →</span>
     </a>
 
-    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-item" style="flex:1; padding: 1.25rem 1rem; text-decoration: none;">
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
       <span class="ai-journey-icon">◆</span>
-      <span class="ai-journey-label" style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary);">SUPPORT</span>
-      <span class="ai-journey-title" style="font-family: var(--font-body); font-weight: 500; color: var(--ink);">Ko-fi — keep this work free</span>
-      <span class="ai-journey-desc" style="font-size: 0.85rem; color: var(--ink-secondary);">Independent civic journalism</span>
-      <span class="ai-journey-cta" style="font-weight: 600; color: var(--ink); font-size: 0.85rem;">SUPPORT →</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
     </a>
 
   </div>
 </section>
 
 <!-- ── 6. TABS ── -->
-<div class="ai-tabs" id="ct-tabs" role="tablist" aria-label="Concert Tax sections" style="display: flex;">
-  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"        data-target="tab-overview"        style="flex:1;">Overview</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-the-data"        data-target="tab-the-data"        style="flex:1;">The Data</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-double-standard" data-target="tab-double-standard" style="flex:1;">The Double Standard</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-history"         data-target="tab-history"         style="flex:1;">History</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action"     data-target="tab-take-action"     style="flex:1;">Take Action</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"          data-target="tab-spread"          style="flex:1;">Spread the Word</button>
-  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-sources"         data-target="tab-sources"         style="flex:1;">Sources</button>
+<div class="ai-tabs ai-tabs--fill" id="ct-tabs" role="tablist" aria-label="Concert Tax sections">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview"        data-target="tab-overview">Overview</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-the-data"        data-target="tab-the-data">The Data</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-double-standard" data-target="tab-double-standard">The Double Standard</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-history"         data-target="tab-history">History</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-take-action"     data-target="tab-take-action">Take Action</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-spread"          data-target="tab-spread">Spread the Word</button>
+  <button class="ai-tab"        role="tab" aria-selected="false" aria-controls="tab-sources"         data-target="tab-sources">Sources</button>
 </div>
 
 <!-- ── 7. TAB SECTIONS ── -->
@@ -1014,6 +993,7 @@
   <div class="ai-inner">
 
     <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">The Numbers Behind Who Performs More and Earns Less</h2>
 
     <!-- Card gallery -->
     <div class="ct-swipeable-outer">
@@ -1242,6 +1222,7 @@
     </div>
 
     <!-- ── CONCERT BUILDER ── -->
+    <!-- DOCUMENTED EXCEPTION: Concert Builder uses dark workbench (#0a0a12) inside paper tab. Approved as interactive tool exception per platform rules. -->
     <div class="cb-wrap" id="concert-builder" aria-label="Concert Builder">
 
       <span class="cb-intro-label">Concert Builder</span>
@@ -2237,7 +2218,7 @@
       <p>Production intensity scored on a four-tier proxy scale: 1 = solo/minimal instrument, 2 = small band/limited staging, 3 = dancers + full band/multiple costume changes, 4 = full theatrical with architectural set, aerial, or 10+ dancers and narrative structure. Revenue per show = reported tour gross divided by reported shows. Career touring scale (bubble size) = total reported lifetime gross from Billboard Boxscore. Genre classification uses primary Grammy category at time of most recent major tour.</p>
     </div>
 
-    <ol class="ai-source-list" style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.8; padding-left: 1.25rem;">
+    <ol class="ai-source-list">
       <li>NITO (National Independent Talent Organization) "What Artists Earn" survey · Dec 2024 · via Pollstar News and Hypebot · ~8% artist take-home from $100 ticket face value</li>
       <li>IQ Magazine — Ed Sheeran Mathematics Tour analysis · Jan 2026 · $25M production investment confirmed, $875.7M gross, 188 shows</li>
       <li>Guinness World Records — Taylor Swift Eras Tour $2.07B gross confirmed · 15 dancers · ~90 trucks</li>

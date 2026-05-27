@@ -51,7 +51,7 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 
 ### Zone 5: Tab Bar
 - [ ] Full-span across container width — `display: flex` on bar, `flex: 1` on each tab
-- [ ] Tab labels: DM Sans 500, all same font-size (~13-14px)
+- [ ] Tab labels: DM Sans 800, all same font-size (~13-14px) — matches platform CSS `.ai-tab { font-weight: 800; }`
 - [ ] Active state: dark background + paper text — NO font-size change
 - [ ] Tab 1: "Overview" (locked)
 - [ ] Second-to-last tab: "Spread the Word" (locked)
@@ -87,7 +87,7 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 - [ ] 44px minimum touch targets on all interactive elements
 
 ### Tab 1: Overview — Structural Requirements
-- [ ] Section eyebrow: DM Mono, teal
+- [ ] Section eyebrow: DM Sans 800, teal — matches platform CSS `.ai-eyebrow { font-family: var(--font-body); font-weight: 800; }`
 - [ ] Section headline: DM Serif Display
 - [ ] Share block present on this tab (most emotionally compelling)
 - [ ] Prose and cards both inside `.ai-inner` at same width
@@ -118,8 +118,9 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 - [ ] Spectral 800: hero headline ONLY — nowhere else
 - [ ] DM Serif Display: h2, stat numbers, pull quotes ONLY — not body copy
 - [ ] DM Sans 400: all body prose
-- [ ] DM Sans 500: interface labels, tab labels
-- [ ] DM Mono: nav labels, source stamps, methodology labels, section eyebrows, journey block action labels ONLY
+- [ ] DM Sans 500: interface labels
+- [ ] DM Sans 800: tab labels, section eyebrows
+- [ ] DM Mono: nav labels, source stamps, methodology labels, journey block action labels ONLY
 - [ ] **DM Mono NOT used on:** body copy, card content, tab labels, headlines
 - [ ] No gray (#666, #999, #aaa) on primary content text — gray only on source stamps
 - [ ] No opacity on primary content text — weight does the work
