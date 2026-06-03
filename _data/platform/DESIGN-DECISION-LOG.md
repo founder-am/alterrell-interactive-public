@@ -373,6 +373,9 @@ D-67 (2026-05-22) | LOCKED — Four card shells: A (stat), B (chart ≤4), C (qu
 4. **Type 2 Batch C: Concert Tax** `.ct-journey` → `.ai-journey-compact`
 5. **AMA voice: Sodium** — voice pass before flipping back to active (already live but may want refinement)
 
+### D-68 (2026-06-03) | LOCKED | Carousel component added to platform CSS
+Classes `.carousel--teal` and `.carousel--dark` added to `alterrell-interactive.css` as platform standard. Cards locked at 300×280px with 7px solid border (teal or gold). Four card types: `.card--a` (stat), `.card--b` (chart ≤4 bars), `.card--c` (quote), `.card--d` (comparison). Vanilla JS only, no dependencies. Mobile: single card, swipe gesture. Desktop: 3 cards visible, arrows step one at a time, dots always visible. Demo block added to `index.html` (hidden, `#carousel-demo`, AMA test only). Batch A — platform CSS only, no piece folders touched.
+
 ---
 
 *End of log. Append new entries in D-## (YYYY-MM-DD) format. Do not create new "Part" sections.*

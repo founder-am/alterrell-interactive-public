@@ -292,5 +292,372 @@
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════
+     CAROUSEL DEMO — AMA LOCAL TEST ONLY
+     Not wired to any nav, piece card, or visible page section.
+     To preview: in DevTools console run:
+       document.getElementById('carousel-demo').style.display='block'
+     or toggle the CSS rule  #carousel-demo { display: none }
+     ═══════════════════════════════════════════════════════════ -->
+<div id="carousel-demo">
+
+  <!-- Teal lane -->
+  <div class="carousel-demo-section">
+    <span class="carousel-demo-label">Carousel component — .carousel--teal lane</span>
+    <div class="carousel carousel--teal"
+         role="region"
+         aria-label="Teal lane carousel demo"
+         aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+
+            <!-- Card A: stat callout -->
+            <article class="carousel__card card--a"
+                     role="group" aria-label="Slide 1 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Public health</span>
+                <span class="carousel__card-stat">42%</span>
+                <h3 class="carousel__card-title">Exceed daily sodium</h3>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">Nearly half of fast food meals exceed the FDA's daily recommended sodium limit in a single serving.</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">FDA &middot; 2024</span>
+              </div>
+            </article>
+
+            <!-- Card B: chart (≤4 bars) -->
+            <article class="carousel__card card--b"
+                     role="group" aria-label="Slide 2 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">By chain</span>
+                <h3 class="carousel__card-title">Sodium per meal (% of daily limit)</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Wendy's</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="88"></div>
+                  </div>
+                  <span class="carousel__bar-val">88%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">McDonald's</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="75"></div>
+                  </div>
+                  <span class="carousel__bar-val">75%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Burger King</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="70"></div>
+                  </div>
+                  <span class="carousel__bar-val">70%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Subway</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="52"></div>
+                  </div>
+                  <span class="carousel__bar-val">52%</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">CDC &middot; 2023</span>
+              </div>
+            </article>
+
+            <!-- Card C: pull quote -->
+            <article class="carousel__card card--c"
+                     role="group" aria-label="Slide 3 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The argument</span>
+              </div>
+              <div class="carousel__card-body">
+                <blockquote class="carousel__card-quote">&#8220;The cheapest meals carry the heaviest health cost.&#8221;</blockquote>
+                <p class="carousel__card-attribution">Alterrell Interactive</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Editorial &middot; 2024</span>
+              </div>
+            </article>
+
+            <!-- Card D: comparison -->
+            <article class="carousel__card card--d"
+                     role="group" aria-label="Slide 4 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The gap</span>
+                <h3 class="carousel__card-title">Daily sodium — limit vs. reality</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__compare-grid">
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">2,300mg</span>
+                    <span class="carousel__compare-desc">FDA recommended daily limit</span>
+                  </div>
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">3,400mg</span>
+                    <span class="carousel__compare-desc">Average fast food daily intake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">FDA / USDA &middot; 2024</span>
+              </div>
+            </article>
+
+            <!-- Card A: second stat (for scroll demonstration) -->
+            <article class="carousel__card card--a"
+                     role="group" aria-label="Slide 5 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Pay equity</span>
+                <span class="carousel__card-stat">3&times;</span>
+                <h3 class="carousel__card-title">The headliner gap</h3>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">Male headliners earn three times more than female headliners at equivalent venues and tour scales.</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Pollstar &middot; 2023</span>
+              </div>
+            </article>
+
+            <!-- Card C: second quote -->
+            <article class="carousel__card card--c"
+                     role="group" aria-label="Slide 6 of 6">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Platform</span>
+              </div>
+              <div class="carousel__card-body">
+                <blockquote class="carousel__card-quote">&#8220;Data is not neutral. It reflects what we decided to count.&#8221;</blockquote>
+                <p class="carousel__card-attribution">Alterrell Interactive</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Editorial &middot; 2026</span>
+              </div>
+            </article>
+
+          </div><!-- /.carousel__track -->
+        </div><!-- /.carousel__viewport -->
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
+        </div>
+      </div><!-- /.carousel__outer -->
+    </div><!-- /.carousel.carousel--teal -->
+  </div><!-- /.carousel-demo-section -->
+
+  <!-- Dark lane (Obsidian Futures: #0a0a12 bg, #E8B923 gold) -->
+  <div class="carousel-demo-section carousel-demo-section--dark">
+    <span class="carousel-demo-label">Carousel component — .carousel--dark lane</span>
+    <div class="carousel carousel--dark"
+         role="region"
+         aria-label="Dark lane carousel demo"
+         aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+
+            <!-- Card A: stat -->
+            <article class="carousel__card card--a"
+                     role="group" aria-label="Slide 1 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Income</span>
+                <span class="carousel__card-stat">68%</span>
+                <h3 class="carousel__card-title">Female share of revenue</h3>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">Women artists deliver 68% of male earnings per show while generating comparable demand at the gate.</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Pollstar &middot; 2023</span>
+              </div>
+            </article>
+
+            <!-- Card B: chart -->
+            <article class="carousel__card card--b"
+                     role="group" aria-label="Slide 2 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Genre share</span>
+                <h3 class="carousel__card-title">Female headliners by genre</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Pop</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="61"></div>
+                  </div>
+                  <span class="carousel__bar-val">61%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">R&amp;B</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="44"></div>
+                  </div>
+                  <span class="carousel__bar-val">44%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Country</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="28"></div>
+                  </div>
+                  <span class="carousel__bar-val">28%</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Hip-Hop</span>
+                  <div class="carousel__bar-track">
+                    <div class="carousel__bar-fill" data-fill="19"></div>
+                  </div>
+                  <span class="carousel__bar-val">19%</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Billboard &middot; 2023</span>
+              </div>
+            </article>
+
+            <!-- Card C: quote -->
+            <article class="carousel__card card--c"
+                     role="group" aria-label="Slide 3 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The standard</span>
+              </div>
+              <div class="carousel__card-body">
+                <blockquote class="carousel__card-quote">&#8220;Men set the ceiling. Women deliver more to justify their place beneath it.&#8221;</blockquote>
+                <p class="carousel__card-attribution">Female Musicians Earn Less But Share More</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Alterrell Interactive &middot; 2026</span>
+              </div>
+            </article>
+
+            <!-- Card D: comparison -->
+            <article class="carousel__card card--d"
+                     role="group" aria-label="Slide 4 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Gross comparison</span>
+                <h3 class="carousel__card-title">Same venue, different deal</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__compare-grid">
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">$4.2M</span>
+                    <span class="carousel__compare-desc">Male headliner avg. per show</span>
+                  </div>
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">$2.8M</span>
+                    <span class="carousel__compare-desc">Female headliner avg. per show</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Pollstar &middot; 2023</span>
+              </div>
+            </article>
+
+          </div><!-- /.carousel__track -->
+        </div><!-- /.carousel__viewport -->
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
+        </div>
+      </div><!-- /.carousel__outer -->
+    </div><!-- /.carousel.carousel--dark -->
+  </div><!-- /.carousel-demo-section.carousel-demo-section--dark -->
+
+  <script>
+  (function () {
+    var GAP = 16;
+
+    function initCarousel(el) {
+      var track  = el.querySelector('.carousel__track');
+      var cards  = Array.from(el.querySelectorAll('.carousel__card'));
+      var prev   = el.querySelector('.carousel__arrow--prev');
+      var next   = el.querySelector('.carousel__arrow--next');
+      var dotsEl = el.querySelector('.carousel__dots');
+      var vp     = el.querySelector('.carousel__viewport');
+      if (!track || !cards.length) return;
+
+      var idx = 0, startX = 0;
+
+      el.querySelectorAll('.carousel__bar-fill[data-fill]').forEach(function (b) {
+        b.style.setProperty('--c-bar-fill', b.dataset.fill + '%');
+      });
+
+      function cardW()   { return cards[0].getBoundingClientRect().width || 300; }
+      function vpW()     { return vp ? vp.getBoundingClientRect().width : el.getBoundingClientRect().width; }
+      function visible() { var cw = cardW(); return Math.max(1, Math.floor((vpW() + GAP) / (cw + GAP))); }
+      function maxIdx()  { return Math.max(0, cards.length - visible()); }
+
+      function buildDots() {
+        if (!dotsEl) return;
+        dotsEl.innerHTML = '';
+        cards.forEach(function (_, i) {
+          var d = document.createElement('button');
+          d.className = 'carousel__dot';
+          d.setAttribute('role', 'tab');
+          d.setAttribute('aria-label', 'Slide ' + (i + 1));
+          d.addEventListener('click', function () { idx = i; update(); });
+          dotsEl.appendChild(d);
+        });
+      }
+
+      function update() {
+        var cw = cardW();
+        idx = Math.min(idx, maxIdx());
+        track.style.transform = 'translateX(-' + (idx * (cw + GAP)) + 'px)';
+        if (prev) prev.disabled = idx === 0;
+        if (next) next.disabled = idx >= maxIdx();
+        if (dotsEl) {
+          dotsEl.querySelectorAll('.carousel__dot').forEach(function (d, i) {
+            d.classList.toggle('active', i === idx);
+            d.setAttribute('aria-selected', String(i === idx));
+          });
+        }
+      }
+
+      if (prev) prev.addEventListener('click', function () { if (idx > 0) { idx--; update(); } });
+      if (next) next.addEventListener('click', function () { if (idx < maxIdx()) { idx++; update(); } });
+
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft'  && idx > 0)       { idx--; update(); e.preventDefault(); }
+        if (e.key === 'ArrowRight' && idx < maxIdx()) { idx++; update(); e.preventDefault(); }
+      });
+
+      if (vp) {
+        vp.addEventListener('touchstart', function (e) {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+        vp.addEventListener('touchend', function (e) {
+          var dx = startX - e.changedTouches[0].clientX;
+          if (Math.abs(dx) > 40) {
+            if (dx > 0 && idx < maxIdx()) idx++;
+            else if (dx < 0 && idx > 0)  idx--;
+            update();
+          }
+        }, { passive: true });
+      }
+
+      window.addEventListener('resize', update);
+      buildDots();
+      update();
+    }
+
+    document.querySelectorAll('.carousel').forEach(initCarousel);
+  })();
+  </script>
+
+</div><!-- /#carousel-demo -->
+
 </body>
 </html>
