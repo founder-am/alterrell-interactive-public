@@ -1493,3 +1493,471 @@ details[open] .ai-footer-methodology summary::before {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ── 18. CAROUSEL COMPONENT ─────────────────────────────────── */
+/*
+ * Platform-standard reusable carousel. Vanilla JS, no dependencies.
+ * Lane variants:
+ *   .carousel--teal  teal #0a7c72 / paper #f8f6f1
+ *   .carousel--dark  bg #0a0a12 / gold #E8B923 (Obsidian Futures)
+ *
+ * Card types — add modifier to .carousel__card:
+ *   .card--a  stat callout
+ *   .card--b  chart (≤4 bars)
+ *   .card--c  pull quote
+ *   .card--d  side-by-side comparison
+ *
+ * Desktop: 3 cards visible, arrows step 1 at a time.
+ * Mobile:  1 card visible, swipe gesture, dots only.
+ * Transition: slide, 300ms ease.
+ *
+ * MARKUP SKELETON:
+ *   <div class="carousel carousel--teal" role="region"
+ *        aria-label="..." aria-roledescription="carousel">
+ *     <div class="carousel__outer">
+ *       <div class="carousel__viewport">
+ *         <div class="carousel__track">
+ *           <article class="carousel__card card--a"
+ *                    role="group" aria-label="Slide 1 of N">
+ *             <div class="carousel__card-head">
+ *               <span class="carousel__card-label">Label</span>
+ *               <span class="carousel__card-stat">42%</span>
+ *               <h3 class="carousel__card-title">Title</h3>
+ *             </div>
+ *             <div class="carousel__card-body">
+ *               <p class="carousel__card-text">Body copy.</p>
+ *             </div>
+ *             <div class="carousel__card-foot">
+ *               <span class="carousel__card-source">Source · Year</span>
+ *             </div>
+ *           </article>
+ *         </div>
+ *       </div>
+ *       <div class="carousel__controls">
+ *         <div class="carousel__arrows">
+ *           <button class="carousel__arrow carousel__arrow--prev"
+ *                   aria-label="Previous slide">&#8592;</button>
+ *           <button class="carousel__arrow carousel__arrow--next"
+ *                   aria-label="Next slide">&#8594;</button>
+ *         </div>
+ *         <div class="carousel__dots" role="tablist"
+ *              aria-label="Slide indicators"></div>
+ *       </div>
+ *     </div>
+ *   </div>
+ *
+ * JS PATTERN (paste in <script> at bottom of page):
+ *
+ * (function () {
+ *   var GAP = 16;
+ *   function initCarousel(el) {
+ *     var track  = el.querySelector('.carousel__track');
+ *     var cards  = Array.from(el.querySelectorAll('.carousel__card'));
+ *     var prev   = el.querySelector('.carousel__arrow--prev');
+ *     var next   = el.querySelector('.carousel__arrow--next');
+ *     var dotsEl = el.querySelector('.carousel__dots');
+ *     var vp     = el.querySelector('.carousel__viewport');
+ *     if (!track || !cards.length) return;
+ *     var idx = 0, startX = 0;
+ *
+ *     el.querySelectorAll('.carousel__bar-fill[data-fill]').forEach(function(b) {
+ *       b.style.setProperty('--c-bar-fill', b.dataset.fill + '%');
+ *     });
+ *
+ *     function cardW()  { return cards[0].getBoundingClientRect().width; }
+ *     function vpW()    { return vp.getBoundingClientRect().width; }
+ *     function visible(){ var cw = cardW(); return cw > 0 ? Math.max(1, Math.floor((vpW() + GAP) / (cw + GAP))) : 1; }
+ *     function maxIdx() { return Math.max(0, cards.length - visible()); }
+ *
+ *     function buildDots() {
+ *       if (!dotsEl) return;
+ *       dotsEl.innerHTML = '';
+ *       cards.forEach(function(_, i) {
+ *         var d = document.createElement('button');
+ *         d.className = 'carousel__dot';
+ *         d.setAttribute('role', 'tab');
+ *         d.setAttribute('aria-label', 'Slide ' + (i + 1));
+ *         d.addEventListener('click', function() { idx = i; update(); });
+ *         dotsEl.appendChild(d);
+ *       });
+ *     }
+ *
+ *     function update() {
+ *       var cw = cardW();
+ *       idx = Math.min(idx, maxIdx());
+ *       track.style.transform = 'translateX(-' + (idx * (cw + GAP)) + 'px)';
+ *       if (prev) prev.disabled = idx === 0;
+ *       if (next) next.disabled = idx >= maxIdx();
+ *       if (dotsEl) dotsEl.querySelectorAll('.carousel__dot').forEach(function(d, i) {
+ *         d.classList.toggle('active', i === idx);
+ *         d.setAttribute('aria-selected', String(i === idx));
+ *       });
+ *     }
+ *
+ *     if (prev) prev.addEventListener('click', function() { if (idx > 0) { idx--; update(); } });
+ *     if (next) next.addEventListener('click', function() { if (idx < maxIdx()) { idx++; update(); } });
+ *
+ *     el.setAttribute('tabindex', '0');
+ *     el.addEventListener('keydown', function(e) {
+ *       if (e.key === 'ArrowLeft'  && idx > 0)       { idx--; update(); e.preventDefault(); }
+ *       if (e.key === 'ArrowRight' && idx < maxIdx()) { idx++; update(); e.preventDefault(); }
+ *     });
+ *
+ *     if (vp) {
+ *       vp.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+ *       vp.addEventListener('touchend', function(e) {
+ *         var dx = startX - e.changedTouches[0].clientX;
+ *         if (Math.abs(dx) > 40) {
+ *           if (dx > 0 && idx < maxIdx()) idx++;
+ *           else if (dx < 0 && idx > 0)  idx--;
+ *           update();
+ *         }
+ *       }, { passive: true });
+ *     }
+ *
+ *     window.addEventListener('resize', update);
+ *     buildDots();
+ *     update();
+ *   }
+ *   document.querySelectorAll('.carousel').forEach(initCarousel);
+ * })();
+ */
+
+/* ── Lane tokens ── */
+.carousel {
+  position: relative;
+  --carousel-gap:    16px;
+  --carousel-card-w: 300px;
+  --carousel-card-h: 280px;
+}
+
+.carousel--teal {
+  --c-bg:          var(--paper);
+  --c-card-border: 7px solid var(--teal);
+  --c-card-bg:     var(--paper-card);
+  --c-ink:         var(--ink);
+  --c-ink-sub:     var(--ink-secondary);
+  --c-ink-label:   var(--ink-muted);
+  --c-accent:      var(--teal);
+  --c-arrow-bg:    var(--paper-card);
+  --c-arrow-bd:    var(--border);
+  --c-arrow-fg:    var(--ink);
+  --c-dot:         var(--border);
+  --c-dot-active:  var(--teal);
+  --c-divider:     var(--border);
+}
+
+.carousel--dark {
+  --c-bg:          #0a0a12;
+  --c-card-border: 7px solid #E8B923;
+  --c-card-bg:     #0f0f1e;
+  --c-ink:         #f8f6f1;
+  --c-ink-sub:     rgba(248,246,241,0.72);
+  --c-ink-label:   #E8B923;
+  --c-accent:      #E8B923;
+  --c-arrow-bg:    #1a1a2e;
+  --c-arrow-bd:    #2a2840;
+  --c-arrow-fg:    #f8f6f1;
+  --c-dot:         #2a2840;
+  --c-dot-active:  #E8B923;
+  --c-divider:     #2a2840;
+}
+
+/* ── Structure ── */
+.carousel__outer {
+  background: var(--c-bg);
+  padding: var(--space-sm) 0;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel__track {
+  display: flex;
+  gap: var(--carousel-gap);
+  transition: transform 300ms ease;
+  will-change: transform;
+}
+
+/* ── Card shell: 300×280px — locked ── */
+.carousel__card {
+  flex-shrink: 0;
+  width: var(--carousel-card-w);
+  height: var(--carousel-card-h);
+  background: var(--c-card-bg);
+  border: var(--c-card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Card regions ── */
+.carousel__card-head {
+  padding: 0.875rem 1rem 0.625rem;
+  flex-shrink: 0;
+}
+
+.carousel__card-body {
+  padding: 0 1rem;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel__card-foot {
+  padding: 0.5rem 1rem 0.625rem;
+  flex-shrink: 0;
+  border-top: 1px solid var(--c-divider);
+  margin-top: auto;
+}
+
+/* ── Card typography — DM Serif Display / DM Sans / DM Mono only ── */
+.carousel__card-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-ink-label);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.carousel__card-title {
+  font-family: var(--font-editorial);
+  font-size: 1rem;
+  line-height: var(--leading-snug);
+  color: var(--c-ink);
+  margin-bottom: 0.2rem;
+}
+
+.carousel__card-stat {
+  font-family: var(--font-editorial);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--c-accent);
+  display: block;
+  margin: 0.2rem 0;
+}
+
+.carousel__card-text {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  color: var(--c-ink-sub);
+}
+
+.carousel__card-source {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.08em;
+  color: var(--c-ink-label);
+}
+
+/* ── Card type A: stat — head carries divider ── */
+.card--a .carousel__card-head {
+  border-bottom: 1px solid var(--c-divider);
+  padding-bottom: 0.625rem;
+}
+
+/* ── Card type B: chart bars (≤4 items) ── */
+.card--b .carousel__card-body {
+  padding-top: 0.625rem;
+}
+
+.carousel__bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel__bar-label {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--c-ink-sub);
+  flex: 0 0 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel__bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--c-dot);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.carousel__bar-fill {
+  height: 100%;
+  background: var(--c-accent);
+  border-radius: 3px;
+  width: var(--c-bar-fill, 0%);
+  transition: width 0.4s ease;
+}
+
+.carousel__bar-val {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--c-ink-label);
+  flex-shrink: 0;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* ── Card type C: pull quote ── */
+.card--c .carousel__card-body {
+  justify-content: center;
+  padding: 0.75rem 1rem;
+}
+
+.carousel__card-quote {
+  font-family: var(--font-editorial);
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: var(--leading-snug);
+  color: var(--c-ink);
+  border-left: 3px solid var(--c-accent);
+  padding-left: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel__card-attribution {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--c-ink-sub);
+  padding-left: 0.75rem;
+}
+
+/* ── Card type D: side-by-side comparison ── */
+.card--d .carousel__card-body {
+  padding: 0;
+  flex: 1;
+}
+
+.carousel__compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--c-divider);
+  height: 100%;
+}
+
+.carousel__compare-cell {
+  background: var(--c-card-bg);
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.carousel__compare-val {
+  font-family: var(--font-editorial);
+  font-size: 1.375rem;
+  line-height: 1;
+  color: var(--c-accent);
+}
+
+.carousel__compare-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--c-ink-sub);
+}
+
+/* ── Controls row ── */
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.875rem;
+}
+
+/* ── Arrows: desktop only ── */
+.carousel__arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel__arrow {
+  width: var(--touch);
+  height: var(--touch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-arrow-bg);
+  border: 1px solid var(--c-arrow-bd);
+  border-radius: var(--radius-sm);
+  color: var(--c-arrow-fg);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.carousel__arrow:hover   { opacity: 0.75; }
+.carousel__arrow:disabled { opacity: 0.3; cursor: default; }
+
+@media (max-width: 640px) { .carousel__arrows { display: none; } }
+
+/* ── Dots: always visible ── */
+.carousel__dots {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-dot);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.carousel__dot.active {
+  background: var(--c-dot-active);
+  transform: scale(1.5);
+}
+
+/* ── Mobile: 1 card fills container ── */
+@media (max-width: 640px) {
+  .carousel__card {
+    width: calc(100vw - 3rem);
+    max-width: var(--carousel-card-w);
+  }
+}
+
+
+/* ── 18b. CAROUSEL DEMO WRAPPERS ────────────────────────────── */
+/* Hidden by default — AMA toggles display in DevTools to preview */
+#carousel-demo { display: none; }
+
+.carousel-demo-section { padding: 2rem 1.25rem; }
+.carousel-demo-section--dark { background: #0a0a12; }
+
+.carousel-demo-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+  margin-bottom: 1rem;
+}
+.carousel-demo-section--dark .carousel-demo-label { color: rgba(248,246,241,0.35); }
