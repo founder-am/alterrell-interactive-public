@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Card Studio — Alterrell Interactive</title>
+
+  <!-- Platform fonts (same stack as alterrell-interactive.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- html2canvas for in-browser PNG export -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    /* ── DESIGN TOKENS — exact match to alterrell-interactive.css ── */
+    :root {
+      /* Platform tokens */
+      --teal:           #0a7c72;
+      --teal-light:     #0d9488;
+      --teal-bg:        #f0faf9;
+      --paper:          #f8f6f1;
+      --paper-card:     #ffffff;
+      --border:         #e0dcd4;
+      --ink:            #111111;
+      --ink-secondary:  #444444;
+      --ink-muted:      #888888;
+      --radius:         6px;
+      --radius-sm:      3px;
+      --font-editorial: 'DM Serif Display', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, sans-serif;
+      --font-mono:      'DM Mono', 'Fira Code', monospace;
+
+      /* OF lane */
+      --of-bg:    #0a0a12;
+      --of-gold:  #E8B923;
+      --of-card:  #0f0f1e;
+
+      /* Tool UI */
+      --ui-bg:        #13131a;
+      --ui-panel:     #1a1a24;
+      --ui-border:    #2a2a38;
+      --ui-text:      #c8c6d0;
+      --ui-muted:     #5a5870;
+      --ui-accent:    #0a7c72;
+      --ui-label:     #7a7890;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: var(--font-mono); font-size: 12px; background: var(--ui-bg); color: var(--ui-text); }
+
+    /* ── THREE-PANEL LAYOUT ── */
+    .studio {
+      display: grid;
+      grid-template-columns: 300px 1fr 322px;
+      height: 100vh;
+    }
+
+    /* ── PANELS ── */
+    .panel {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-right: 1px solid var(--ui-border);
+      scrollbar-width: thin;
+      scrollbar-color: var(--ui-border) transparent;
+    }
+    .panel:last-child { border-right: none; }
+    .panel::-webkit-scrollbar { width: 4px; }
+    .panel::-webkit-scrollbar-track { background: transparent; }
+    .panel::-webkit-scrollbar-thumb { background: var(--ui-border); border-radius: 2px; }
+
+    /* ── PANEL SECTIONS ── */
+    .panel-header {
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid var(--ui-border);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ui-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .panel-header-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ui-accent);
+      flex-shrink: 0;
+    }
+    .panel-section {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--ui-border);
+    }
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ui-label);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* ── LEFT PANEL ── */
+    .panel-left { background: var(--ui-panel); }
+
+    #json-input {
+      width: 100%;
+      height: 140px;
+      background: var(--ui-bg);
+      border: 1px solid var(--ui-border);
+      border-radius: var(--radius-sm);
+      color: var(--ui-text);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      line-height: 1.5;
+      padding: 8px;
+      resize: none;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #json-input:focus { border-color: var(--ui-accent); }
+    #json-input.error { border-color: #b91c1c; }
+
+    .json-status {
+      font-size: 9px;
+      margin-top: 5px;
+      color: var(--ui-muted);
+      min-height: 14px;
+    }
+    .json-status.ok { color: #15803d; }
+    .json-status.err { color: #b91c1c; }
+
+    /* ── SHELL TABS ── */
+    .shell-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+    .shell-tab {
+      background: var(--ui-bg);
+      border: 1px solid var(--ui-border);
+      border-radius: var(--radius-sm);
+      color: var(--ui-muted);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      padding: 6px 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.12s;
+    }
+    .shell-tab:hover { color: var(--ui-text); border-color: var(--ui-text); }
+    .shell-tab.active {
+      background: var(--ui-accent);
+      border-color: var(--ui-accent);
+      color: #fff;
+    }
+
+    /* ── LANE TOGGLE ── */
+    .lane-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .lane-btn {
+      background: var(--ui-bg);
+      border: 1px solid var(--ui-border);
+      border-radius: var(--radius-sm);
+      color: var(--ui-muted);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      padding: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.12s;
+    }
+    .lane-btn[data-lane="AI"].active { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .lane-btn[data-lane="OF"].active { background: var(--of-gold); border-color: var(--of-gold); color: #111; }
+
+    /* ── SLIDERS ── */
+    .slider-group { display: none; }
+    .slider-group.active { display: block; }
+
+    .slider-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 40px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+    .slider-row:last-child { margin-bottom: 0; }
+    .slider-label {
+      font-size: 9px;
+      color: var(--ui-label);
+      letter-spacing: 0.04em;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 3px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--ui-border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--ui-accent);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--ui-accent);
+      cursor: pointer;
+      border: none;
+    }
+    .slider-val {
+      font-size: 9px;
+      color: var(--ui-text);
+      text-align: right;
+    }
+
+    /* VA toggle (Shell A) */
+    .va-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 4px;
+    }
+    .va-btn {
+      background: var(--ui-bg);
+      border: 1px solid var(--ui-border);
+      border-radius: var(--radius-sm);
+      color: var(--ui-muted);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .va-btn.active { background: var(--ui-accent); border-color: var(--ui-accent); color: #fff; }
+
+    /* ── CENTER PANEL ── */
+    .panel-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #0c0c12;
+      border-right: 1px solid var(--ui-border);
+      padding: 24px;
+    }
+
+    .card-counter {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--ui-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .card-stage {
+      position: relative;
+      /* exact card size — no scaling */
+    }
+
+    .card-nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--ui-panel);
+      border: 1px solid var(--ui-border);
+      border-radius: var(--radius-sm);
+      color: var(--ui-text);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.12s;
+    }
+    .nav-btn:hover:not(:disabled) { border-color: var(--ui-accent); color: var(--ui-accent); }
+    .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* ── RIGHT PANEL ── */
+    .panel-right { background: var(--ui-panel); }
+
+    .contact-group { border-bottom: 1px solid var(--ui-border); }
+    .contact-group-header {
+      padding: 8px 12px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ui-label);
+      border-bottom: 1px solid var(--ui-border);
+      background: rgba(0,0,0,0.2);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 10px 12px;
+    }
+    .contact-item {
+      position: relative;
+      cursor: pointer;
+    }
+    .contact-item:hover .contact-hover { opacity: 1; }
+    .contact-thumb-wrap {
+      width: 150px;
+      height: 140px;
+      overflow: hidden;
+      border: 1px solid var(--ui-border);
+      border-radius: 3px;
+      position: relative;
+    }
+    .contact-thumb-inner {
+      width: 300px;
+      height: 280px;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      pointer-events: none;
+    }
+    .contact-hover {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,124,114,0.12);
+      opacity: 0;
+      transition: opacity 0.15s;
+      border-radius: 3px;
+    }
+    .contact-exported {
+      position: absolute;
+      inset: 0;
+      background: rgba(21,128,61,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #fff;
+      border-radius: 3px;
+      display: none;
+    }
+    .contact-label {
+      font-size: 8px;
+      color: var(--ui-muted);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .contact-empty {
+      padding: 16px 12px;
+      font-size: 10px;
+      color: var(--ui-muted);
+      text-align: center;
+    }
+
+    /* Export All button */
+    .export-bar {
+      padding: 12px;
+      border-top: 1px solid var(--ui-border);
+      position: sticky;
+      bottom: 0;
+      background: var(--ui-panel);
+    }
+    #export-all {
+      width: 100%;
+      background: var(--ui-accent);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    #export-all:hover { opacity: 0.85; }
+    #export-all:disabled { opacity: 0.4; cursor: default; }
+
+    /* ══════════════════════════════════════════
+       CARD STYLES — locked values match platform
+       alterrell-interactive.css tokens exactly
+    ══════════════════════════════════════════ */
+
+    #card-preview, .contact-thumb-inner .mini-card {
+      width: 300px;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius);
+      overflow: hidden;
+      /* LOCKED: border 7px, applied per lane below */
+    }
+
+    /* AI lane */
+    #card-preview.lane-ai, .contact-thumb-inner .mini-card.lane-ai {
+      border: 7px solid var(--teal);           /* LOCKED: #0a7c72 */
+      background: var(--paper-card);            /* LOCKED: #ffffff */
+    }
+
+    /* OF lane */
+    #card-preview.lane-of, .contact-thumb-inner .mini-card.lane-of {
+      border: 7px solid var(--of-gold);         /* LOCKED: #E8B923 */
+      background: var(--of-card);               /* LOCKED: #0f0f1e */
+    }
+
+    /* Card head — LOCKED padding */
+    .card-head {
+      padding: 0.75rem 0.875rem;               /* LOCKED */
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lane-of .card-head { border-bottom-color: rgba(232,185,35,0.15); }
+
+    /* Card eyebrow — LOCKED: DM Mono 9px */
+    .card-eyebrow {
+      font-family: var(--font-mono);           /* LOCKED */
+      font-size: 9px;                          /* LOCKED */
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .lane-ai .card-eyebrow { color: var(--teal); }  /* LOCKED: teal */
+    .lane-of .card-eyebrow { color: var(--of-gold); } /* LOCKED: gold */
+
+    /* Card title — LOCKED: DM Sans 500 12px */
+    .card-title {
+      font-family: var(--font-body);           /* LOCKED */
+      font-size: 12px;                         /* LOCKED */
+      font-weight: 500;                        /* LOCKED */
+      line-height: 1.3;
+    }
+    .lane-ai .card-title { color: var(--ink); }
+    .lane-of .card-title { color: rgba(248,246,241,0.88); }
+
+    /* Card body — fills remaining space */
+    .card-body {
+      flex: 1;
+      padding: 0.5rem 0.875rem 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Card foot — LOCKED padding */
+    .card-foot {
+      padding: 0.5rem 0.875rem;               /* LOCKED */
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+    .lane-of .card-foot { border-top: 1px solid rgba(232,185,35,0.1); }
+
+    /* Source stamp — LOCKED: DM Mono 8px #999 */
+    .card-source {
+      font-family: var(--font-mono);           /* LOCKED */
+      font-size: 8px;                          /* LOCKED */
+      color: #999;                             /* LOCKED */
+      letter-spacing: 0.05em;
+    }
+    .lane-of .card-source { color: rgba(232,185,35,0.45); }
+
+    /* ── SHELL A — STAT (adjustable) ── */
+    .card-stat {
+      font-family: var(--font-editorial);
+      font-size: var(--sl-stat-size, 2.5rem);  /* adjustable */
+      line-height: 1;
+      margin-bottom: var(--sl-stat-gap, 0.5rem); /* adjustable */
+    }
+    .lane-ai .card-stat { color: var(--teal); }
+    .lane-of .card-stat { color: var(--of-gold); }
+
+    .card-body-text {
+      font-family: var(--font-body);
+      font-size: var(--sl-body-size, 0.75rem); /* adjustable */
+      line-height: 1.5;
+    }
+    .lane-ai .card-body-text { color: var(--ink-secondary); }
+    .lane-of .card-body-text { color: rgba(248,246,241,0.65); }
+
+    /* Vertical align toggle */
+    .card-body.va-center { justify-content: center; }
+
+    /* ── SHELL B — CHART (adjustable) ── */
+    .card-bars { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+    .card-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--sl-row-gap, 6px);  /* adjustable */
+    }
+    .card-bar-row:last-child { margin-bottom: 0; }
+    .card-bar-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      width: var(--sl-lbl-w, 60px);           /* adjustable */
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .lane-ai .card-bar-label { color: var(--ink-secondary); }
+    .lane-of .card-bar-label { color: rgba(248,246,241,0.5); }
+    .card-bar-track {
+      flex: 1;
+      height: var(--sl-bar-h, 8px);           /* adjustable */
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .lane-ai .card-bar-track { background: var(--border); }
+    .lane-of .card-bar-track { background: rgba(232,185,35,0.1); }
+    .card-bar-fill { height: 100%; border-radius: 2px; }
+    .lane-ai .card-bar-fill { background: var(--teal); }
+    .lane-of .card-bar-fill { background: var(--of-gold); }
+    .card-bar-val {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      flex-shrink: 0;
+      min-width: 32px;
+      text-align: right;
+    }
+    .lane-ai .card-bar-val { color: var(--ink); }
+    .lane-of .card-bar-val { color: rgba(248,246,241,0.6); }
+
+    /* ── SHELL C — QUOTE (adjustable) ── */
+    .card-body.shell-c { justify-content: center; padding: 0.5rem 0.875rem; }
+    .card-quote-mark {
+      font-family: var(--font-editorial);
+      font-size: var(--sl-qm-size, 2rem);     /* adjustable — 0 = hidden */
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .lane-ai .card-quote-mark { color: var(--teal); }
+    .lane-of .card-quote-mark { color: var(--of-gold); }
+    .card-quote {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: var(--sl-qt-size, 0.875rem);  /* adjustable */
+      line-height: 1.45;
+      margin-bottom: var(--sl-attr-gap, 0.75rem); /* adjustable */
+    }
+    .lane-ai .card-quote { color: var(--ink); }
+    .lane-of .card-quote { color: rgba(248,246,241,0.88); }
+    .card-attribution {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lane-ai .card-attribution { color: var(--ink-muted); }
+    .lane-of .card-attribution { color: rgba(232,185,35,0.6); }
+
+    /* ── SHELL D — COMPARISON (adjustable) ── */
+    .card-compare {
+      display: flex;
+      flex: 1;
+      gap: 0;
+    }
+    .card-compare-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--sl-cell-pad, 0.5rem);    /* adjustable */
+      text-align: center;
+    }
+    .card-compare-cell + .card-compare-cell {
+      border-left: 1px solid var(--border);
+    }
+    .lane-of .card-compare-cell + .card-compare-cell { border-left-color: rgba(232,185,35,0.18); }
+    .card-compare-value {
+      font-family: var(--font-editorial);
+      font-size: var(--sl-val-size, 1.75rem); /* adjustable */
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .lane-ai .card-compare-value { color: var(--teal); }
+    .lane-of .card-compare-value { color: var(--of-gold); }
+    .card-compare-desc {
+      font-family: var(--font-body);
+      font-size: var(--sl-desc-size, 0.75rem); /* adjustable */
+      line-height: 1.4;
+    }
+    .lane-ai .card-compare-desc { color: var(--ink-secondary); }
+    .lane-of .card-compare-desc { color: rgba(248,246,241,0.55); }
+
+    /* Empty state */
+    .card-empty {
+      width: 300px;
+      height: 280px;
+      border: 2px dashed var(--ui-border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--ui-muted);
+      font-size: 10px;
+    }
+    .card-empty-icon { font-size: 28px; opacity: 0.3; }
+  </style>
+</head>
+<body>
+
+<div class="studio">
+
+  <!-- ══════════════════════
+       LEFT PANEL — CONTROLS
+  ══════════════════════ -->
+  <div class="panel panel-left">
+
+    <div class="panel-header">
+      <div class="panel-header-dot"></div>
+      AI Card Studio
+    </div>
+
+    <!-- JSON input -->
+    <div class="panel-section">
+      <span class="section-label">Card Data (JSON)</span>
+      <textarea id="json-input" spellcheck="false" placeholder='[{"shell":"A","lane":"AI","piece":"...","label":"...","title":"...","value":"...","body":"...","source":"..."}]'></textarea>
+      <div class="json-status" id="json-status">Paste JSON above to load cards</div>
+    </div>
+
+    <!-- Shell tabs -->
+    <div class="panel-section">
+      <span class="section-label">Shell</span>
+      <div class="shell-tabs">
+        <button class="shell-tab active" data-shell="A">A Stat</button>
+        <button class="shell-tab" data-shell="B">B Chart</button>
+        <button class="shell-tab" data-shell="C">C Quote</button>
+        <button class="shell-tab" data-shell="D">D Compare</button>
+      </div>
+    </div>
+
+    <!-- Lane toggle -->
+    <div class="panel-section">
+      <span class="section-label">Lane</span>
+      <div class="lane-toggle">
+        <button class="lane-btn active" data-lane="AI">AI · Teal</button>
+        <button class="lane-btn" data-lane="OF">OF · Gold</button>
+      </div>
+    </div>
+
+    <!-- Shell A sliders -->
+    <div class="panel-section">
+      <div id="sliders-A" class="slider-group active" data-shell="A">
+        <span class="section-label">Shell A — Stat</span>
+        <div class="slider-row">
+          <span class="slider-label">Stat size</span>
+          <input type="range" id="A-stat-size" min="1.4" max="4.0" step="0.1" value="2.5">
+          <span class="slider-val" id="A-stat-size-val">2.5rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Stat–body gap</span>
+          <input type="range" id="A-stat-gap" min="0.1" max="1.5" step="0.05" value="0.5">
+          <span class="slider-val" id="A-stat-gap-val">0.5rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Body size</span>
+          <input type="range" id="A-body-size" min="0.6" max="1.0" step="0.025" value="0.75">
+          <span class="slider-val" id="A-body-size-val">0.75rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Vertical align</span>
+          <div class="va-toggle">
+            <button class="va-btn active" data-va="top">Top</button>
+            <button class="va-btn" data-va="center">Center</button>
+          </div>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Shell B sliders -->
+      <div id="sliders-B" class="slider-group" data-shell="B">
+        <span class="section-label">Shell B — Chart</span>
+        <div class="slider-row">
+          <span class="slider-label">Bar height</span>
+          <input type="range" id="B-bar-h" min="4" max="20" step="1" value="8">
+          <span class="slider-val" id="B-bar-h-val">8px</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Row gap</span>
+          <input type="range" id="B-row-gap" min="2" max="12" step="1" value="6">
+          <span class="slider-val" id="B-row-gap-val">6px</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Label width</span>
+          <input type="range" id="B-lbl-w" min="30" max="100" step="2" value="60">
+          <span class="slider-val" id="B-lbl-w-val">60px</span>
+        </div>
+      </div>
+
+      <!-- Shell C sliders -->
+      <div id="sliders-C" class="slider-group" data-shell="C">
+        <span class="section-label">Shell C — Quote</span>
+        <div class="slider-row">
+          <span class="slider-label">Quote mark</span>
+          <input type="range" id="C-qm-size" min="0" max="3.5" step="0.25" value="1.5">
+          <span class="slider-val" id="C-qm-size-val">1.5rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Quote size</span>
+          <input type="range" id="C-qt-size" min="0.7" max="1.25" step="0.025" value="0.875">
+          <span class="slider-val" id="C-qt-size-val">0.875rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Attribution gap</span>
+          <input type="range" id="C-attr-gap" min="0.2" max="1.5" step="0.05" value="0.75">
+          <span class="slider-val" id="C-attr-gap-val">0.75rem</span>
+        </div>
+      </div>
+
+      <!-- Shell D sliders -->
+      <div id="sliders-D" class="slider-group" data-shell="D">
+        <span class="section-label">Shell D — Compare</span>
+        <div class="slider-row">
+          <span class="slider-label">Value size</span>
+          <input type="range" id="D-val-size" min="1.0" max="2.5" step="0.1" value="1.75">
+          <span class="slider-val" id="D-val-size-val">1.75rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Cell padding</span>
+          <input type="range" id="D-cell-pad" min="0.25" max="1.0" step="0.05" value="0.5">
+          <span class="slider-val" id="D-cell-pad-val">0.5rem</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Desc size</span>
+          <input type="range" id="D-desc-size" min="0.6" max="0.9" step="0.025" value="0.75">
+          <span class="slider-val" id="D-desc-size-val">0.75rem</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.panel-left -->
+
+  <!-- ══════════════════════
+       CENTER PANEL — PREVIEW
+  ══════════════════════ -->
+  <div class="panel panel-center">
+
+    <div class="card-counter" id="card-counter">No cards loaded</div>
+
+    <div class="card-stage">
+      <div id="card-preview" class="lane-ai">
+        <div class="card-empty">
+          <div class="card-empty-icon">◻</div>
+          <span>Paste JSON to preview</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-nav">
+      <button class="nav-btn" id="prev-card" disabled title="Previous card">&#8592;</button>
+      <button class="nav-btn" id="next-card" disabled title="Next card">&#8594;</button>
+    </div>
+
+  </div><!-- /.panel-center -->
+
+  <!-- ══════════════════════
+       RIGHT PANEL — CONTACT SHEET
+  ══════════════════════ -->
+  <div class="panel panel-right">
+
+    <div class="panel-header">
+      <div class="panel-header-dot"></div>
+      Contact Sheet
+    </div>
+
+    <div id="contact-sheet">
+      <div class="contact-empty">Load cards to see contact sheet</div>
+    </div>
+
+    <div class="export-bar">
+      <button id="export-all" disabled>Export All PNG</button>
+    </div>
+
+  </div><!-- /.panel-right -->
+
+</div><!-- /.studio -->
+
+<script>
+'use strict';
+
+// ── GLOBALS for Puppeteer API ──
+window.cardStudio = {
+  loadJSON:     loadJSON,
+  showCard:     showCard,
+  getCards:     function(piece) {
+    return state.cards.filter(function(c) { return c.piece === piece; });
+  },
+  getCardElement: function() { return document.getElementById('card-preview'); },
+};
+
+// ── STATE ──
+var state = {
+  cards: [],
+  activeShell: 'A',
+  activeLane: 'AI',
+  shellIndex: { A: 0, B: 0, C: 0, D: 0 },
+  exported: new Set(),
+  sliders: {
+    A: { statSize: 2.5, statGap: 0.5, bodySize: 0.75, va: 'top' },
+    B: { barH: 8, rowGap: 6, lblW: 60 },
+    C: { qmSize: 1.5, qtSize: 0.875, attrGap: 0.75 },
+    D: { valSize: 1.75, cellPad: 0.5, descSize: 0.75 },
+  },
+};
+
+// ── UTILITIES ──
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function r(n, places) {
+  return parseFloat(n).toFixed(places !== undefined ? places : 3).replace(/\.?0+$/, '');
+}
+
+// ── CARD RENDERING ──
+function buildCardHTML(card, shell, lane) {
+  var headHTML = '<div class="card-head">' +
+    '<div class="card-eyebrow">' + esc(card.label) + '</div>' +
+    '<div class="card-title">' + esc(card.title) + '</div>' +
+    '</div>';
+
+  var bodyHTML = '';
+  var footHTML = '<div class="card-foot"><div class="card-source">' + esc(card.source) + '</div></div>';
+
+  if (shell === 'A') {
+    bodyHTML = '<div class="card-body' + (state.sliders.A.va === 'center' ? ' va-center' : '') + '">' +
+      '<div class="card-stat">' + esc(card.value) + '</div>' +
+      '<div class="card-body-text">' + esc(card.body) + '</div>' +
+      '</div>';
+  } else if (shell === 'B') {
+    var bars = card.bars || [];
+    var barRows = bars.map(function(b) {
+      return '<div class="card-bar-row">' +
+        '<span class="card-bar-label">' + esc(b.label) + '</span>' +
+        '<div class="card-bar-track"><div class="card-bar-fill" style="width:' + Math.min(100, Math.max(0, b.pct || 0)) + '%"></div></div>' +
+        '<span class="card-bar-val">' + esc(b.value) + '</span>' +
+        '</div>';
+    }).join('');
+    bodyHTML = '<div class="card-body"><div class="card-bars">' + barRows + '</div></div>';
+  } else if (shell === 'C') {
+    var qm = state.sliders.C.qmSize;
+    bodyHTML = '<div class="card-body shell-c">' +
+      (qm > 0 ? '<div class="card-quote-mark">“</div>' : '') +
+      '<div class="card-quote">' + esc(card.quote) + '</div>' +
+      '<div class="card-attribution">' + esc(card.attribution) + '</div>' +
+      '</div>';
+  } else if (shell === 'D') {
+    bodyHTML = '<div class="card-body">' +
+      '<div class="card-compare">' +
+        '<div class="card-compare-cell">' +
+          '<div class="card-compare-value">' + esc(card.left_value) + '</div>' +
+          '<div class="card-compare-desc">' + esc(card.left_desc) + '</div>' +
+        '</div>' +
+        '<div class="card-compare-cell">' +
+          '<div class="card-compare-value">' + esc(card.right_value) + '</div>' +
+          '<div class="card-compare-desc">' + esc(card.right_desc) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
+  return headHTML + bodyHTML + footHTML;
+}
+
+function applySliderVars(el) {
+  var sh = state.activeShell;
+  var sl = state.sliders[sh];
+
+  // Clear previous shell vars
+  ['--sl-stat-size','--sl-stat-gap','--sl-body-size',
+   '--sl-bar-h','--sl-row-gap','--sl-lbl-w',
+   '--sl-qm-size','--sl-qt-size','--sl-attr-gap',
+   '--sl-val-size','--sl-cell-pad','--sl-desc-size'].forEach(function(v) {
+    el.style.removeProperty(v);
+  });
+
+  if (sh === 'A') {
+    el.style.setProperty('--sl-stat-size', sl.statSize + 'rem');
+    el.style.setProperty('--sl-stat-gap',  sl.statGap + 'rem');
+    el.style.setProperty('--sl-body-size', sl.bodySize + 'rem');
+  } else if (sh === 'B') {
+    el.style.setProperty('--sl-bar-h',    sl.barH + 'px');
+    el.style.setProperty('--sl-row-gap',  sl.rowGap + 'px');
+    el.style.setProperty('--sl-lbl-w',    sl.lblW + 'px');
+  } else if (sh === 'C') {
+    el.style.setProperty('--sl-qm-size',  sl.qmSize + 'rem');
+    el.style.setProperty('--sl-qt-size',  sl.qtSize + 'rem');
+    el.style.setProperty('--sl-attr-gap', sl.attrGap + 'rem');
+  } else if (sh === 'D') {
+    el.style.setProperty('--sl-val-size',  sl.valSize + 'rem');
+    el.style.setProperty('--sl-cell-pad',  sl.cellPad + 'rem');
+    el.style.setProperty('--sl-desc-size', sl.descSize + 'rem');
+  }
+}
+
+function renderPreview() {
+  var el = document.getElementById('card-preview');
+  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
+
+  if (!shCards.length) {
+    el.className = 'lane-' + state.activeLane.toLowerCase();
+    el.innerHTML = '<div class="card-empty"><div class="card-empty-icon">&#9633;</div><span>No ' + state.activeShell + ' cards loaded</span></div>';
+    applySliderVars(el);
+    return;
+  }
+
+  var idx = Math.min(state.shellIndex[state.activeShell], shCards.length - 1);
+  state.shellIndex[state.activeShell] = idx;
+  var card = shCards[idx];
+  var lane = card.lane || state.activeLane;
+
+  el.className = 'lane-' + lane.toLowerCase();
+  el.innerHTML = buildCardHTML(card, state.activeShell, lane);
+  applySliderVars(el);
+
+  // Update VA if Shell A
+  if (state.activeShell === 'A') {
+    var body = el.querySelector('.card-body');
+    if (body) {
+      body.classList.toggle('va-center', state.sliders.A.va === 'center');
+    }
+  }
+}
+
+function updateCounter() {
+  var el = document.getElementById('card-counter');
+  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
+
+  if (!shCards.length) {
+    el.textContent = 'Shell ' + state.activeShell + ' · 0 cards';
+  } else {
+    var idx = Math.min(state.shellIndex[state.activeShell], shCards.length - 1);
+    el.textContent = 'Shell ' + state.activeShell + ' · ' + (idx + 1) + ' of ' + shCards.length;
+  }
+}
+
+function updateNavButtons() {
+  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
+  var idx = state.shellIndex[state.activeShell];
+  document.getElementById('prev-card').disabled = idx <= 0;
+  document.getElementById('next-card').disabled = idx >= shCards.length - 1;
+}
+
+// ── CONTACT SHEET ──
+function renderContactSheet() {
+  var container = document.getElementById('contact-sheet');
+  var shells = ['A', 'B', 'C', 'D'];
+  var shellNames = { A: 'Stat', B: 'Chart', C: 'Quote', D: 'Compare' };
+  container.innerHTML = '';
+
+  var anyCards = false;
+
+  shells.forEach(function(sh) {
+    var shCards = state.cards.filter(function(c) { return c.shell === sh; });
+    if (!shCards.length) return;
+    anyCards = true;
+
+    var group = document.createElement('div');
+    group.className = 'contact-group';
+
+    var header = document.createElement('div');
+    header.className = 'contact-group-header';
+    header.textContent = 'Shell ' + sh + ' — ' + shellNames[sh] + ' (' + shCards.length + ')';
+    group.appendChild(header);
+
+    var grid = document.createElement('div');
+    grid.className = 'contact-grid';
+
+    shCards.forEach(function(card, localIdx) {
+      var globalIdx = state.cards.indexOf(card);
+      var item = document.createElement('div');
+      item.className = 'contact-item';
+      item.dataset.globalIdx = globalIdx;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'contact-thumb-wrap';
+
+      var inner = document.createElement('div');
+      inner.className = 'contact-thumb-inner';
+
+      var miniCard = document.createElement('div');
+      miniCard.className = 'mini-card lane-' + (card.lane || 'ai').toLowerCase();
+      miniCard.innerHTML = buildCardHtmlForThumb(card, sh, card.lane || 'AI');
+
+      // Apply default slider vars to thumb (visual only)
+      miniCard.style.setProperty('--sl-stat-size', '2.5rem');
+      miniCard.style.setProperty('--sl-stat-gap', '0.5rem');
+      miniCard.style.setProperty('--sl-body-size', '0.75rem');
+      miniCard.style.setProperty('--sl-bar-h', '8px');
+      miniCard.style.setProperty('--sl-row-gap', '6px');
+      miniCard.style.setProperty('--sl-lbl-w', '60px');
+      miniCard.style.setProperty('--sl-qm-size', '1.5rem');
+      miniCard.style.setProperty('--sl-qt-size', '0.875rem');
+      miniCard.style.setProperty('--sl-attr-gap', '0.75rem');
+      miniCard.style.setProperty('--sl-val-size', '1.75rem');
+      miniCard.style.setProperty('--sl-cell-pad', '0.5rem');
+      miniCard.style.setProperty('--sl-desc-size', '0.75rem');
+
+      inner.appendChild(miniCard);
+      wrap.appendChild(inner);
+
+      // Hover overlay
+      var hover = document.createElement('div');
+      hover.className = 'contact-hover';
+      wrap.appendChild(hover);
+
+      // Exported overlay
+      var expOverlay = document.createElement('div');
+      expOverlay.className = 'contact-exported';
+      expOverlay.id = 'exported-' + globalIdx;
+      expOverlay.textContent = '✓';
+      if (state.exported.has(globalIdx)) expOverlay.style.display = 'flex';
+      wrap.appendChild(expOverlay);
+
+      item.appendChild(wrap);
+
+      var label = document.createElement('div');
+      label.className = 'contact-label';
+      var piece = card.piece || '';
+      label.textContent = piece + '-' + sh.toLowerCase() + '-' + String(localIdx + 1).padStart(2, '0');
+      item.appendChild(label);
+
+      // Click: load into preview
+      item.addEventListener('click', function() {
+        state.activeShell = sh;
+        state.shellIndex[sh] = localIdx;
+        updateShellTabs();
+        updateSliderVisibility();
+        renderPreview();
+        updateCounter();
+        updateNavButtons();
+      });
+
+      grid.appendChild(item);
+    });
+
+    group.appendChild(grid);
+    container.appendChild(group);
+  });
+
+  if (!anyCards) {
+    container.innerHTML = '<div class="contact-empty">Load cards to see contact sheet</div>';
+  }
+
+  document.getElementById('export-all').disabled = !anyCards;
+}
+
+// Builds card HTML for thumbnails (uses fixed default vars, not slider state)
+function buildCardHtmlForThumb(card, shell, lane) {
+  var headHTML = '<div class="card-head">' +
+    '<div class="card-eyebrow">' + esc(card.label) + '</div>' +
+    '<div class="card-title">' + esc(card.title) + '</div>' +
+    '</div>';
+  var footHTML = '<div class="card-foot"><div class="card-source">' + esc(card.source) + '</div></div>';
+  var bodyHTML = '';
+
+  if (shell === 'A') {
+    bodyHTML = '<div class="card-body"><div class="card-stat">' + esc(card.value) + '</div><div class="card-body-text">' + esc(card.body) + '</div></div>';
+  } else if (shell === 'B') {
+    var bars = card.bars || [];
+    bodyHTML = '<div class="card-body"><div class="card-bars">' +
+      bars.map(function(b) {
+        return '<div class="card-bar-row"><span class="card-bar-label">' + esc(b.label) + '</span><div class="card-bar-track"><div class="card-bar-fill" style="width:' + (b.pct||0) + '%"></div></div><span class="card-bar-val">' + esc(b.value) + '</span></div>';
+      }).join('') + '</div></div>';
+  } else if (shell === 'C') {
+    bodyHTML = '<div class="card-body shell-c"><div class="card-quote-mark">“</div><div class="card-quote">' + esc(card.quote) + '</div><div class="card-attribution">' + esc(card.attribution) + '</div></div>';
+  } else if (shell === 'D') {
+    bodyHTML = '<div class="card-body"><div class="card-compare"><div class="card-compare-cell"><div class="card-compare-value">' + esc(card.left_value) + '</div><div class="card-compare-desc">' + esc(card.left_desc) + '</div></div><div class="card-compare-cell"><div class="card-compare-value">' + esc(card.right_value) + '</div><div class="card-compare-desc">' + esc(card.right_desc) + '</div></div></div></div>';
+  }
+  return headHTML + bodyHTML + footHTML;
+}
+
+// ── JSON LOADING ──
+var parseTimer;
+function onJSONInput() {
+  clearTimeout(parseTimer);
+  parseTimer = setTimeout(function() {
+    var raw = document.getElementById('json-input').value.trim();
+    if (!raw) {
+      setStatus('', '');
+      return;
+    }
+    try {
+      var parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) throw new Error('Expected a JSON array');
+      loadJSON(parsed);
+    } catch(e) {
+      setStatus('err', 'Parse error: ' + e.message);
+      document.getElementById('json-input').classList.add('error');
+    }
+  }, 400);
+}
+
+function loadJSON(arr) {
+  document.getElementById('json-input').classList.remove('error');
+  state.cards = arr;
+  // Reset shell indices
+  state.shellIndex = { A: 0, B: 0, C: 0, D: 0 };
+  state.exported.clear();
+
+  var count = arr.length;
+  setStatus('ok', count + ' card' + (count === 1 ? '' : 's') + ' loaded');
+
+  renderContactSheet();
+  renderPreview();
+  updateCounter();
+  updateNavButtons();
+}
+
+function setStatus(type, msg) {
+  var el = document.getElementById('json-status');
+  el.textContent = msg;
+  el.className = 'json-status' + (type ? ' ' + type : '');
+}
+
+// ── PUBLIC API: show card by global index ──
+function showCard(globalIdx) {
+  var card = state.cards[globalIdx];
+  if (!card) return;
+
+  state.activeShell = card.shell;
+  var shCards = state.cards.filter(function(c) { return c.shell === card.shell; });
+  state.shellIndex[card.shell] = shCards.indexOf(card);
+
+  updateShellTabs();
+  updateSliderVisibility();
+  renderPreview();
+  updateCounter();
+  updateNavButtons();
+}
+
+// ── SHELL TABS ──
+function updateShellTabs() {
+  document.querySelectorAll('.shell-tab').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.shell === state.activeShell);
+  });
+}
+
+function updateSliderVisibility() {
+  document.querySelectorAll('.slider-group').forEach(function(g) {
+    g.classList.toggle('active', g.dataset.shell === state.activeShell);
+  });
+}
+
+// ── EXPORT ALL ──
+document.getElementById('export-all').addEventListener('click', function() {
+  var btn = document.getElementById('export-all');
+  btn.disabled = true;
+  btn.textContent = 'Exporting...';
+
+  var cards = state.cards;
+  var shellCounts = {};
+  var promise = Promise.resolve();
+
+  cards.forEach(function(card, i) {
+    var sh = card.shell.toLowerCase();
+    if (!shellCounts[sh]) shellCounts[sh] = 0;
+    shellCounts[sh]++;
+    var shIdx = shellCounts[sh];
+
+    promise = promise.then(function() {
+      return new Promise(function(resolve) {
+        // Render into offscreen container at true size
+        var offscreen = document.createElement('div');
+        offscreen.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:9999;';
+        var miniCard = document.createElement('div');
+        miniCard.className = 'lane-' + (card.lane || 'ai').toLowerCase();
+        miniCard.innerHTML = buildCardHtmlForThumb(card, card.shell, card.lane || 'AI');
+        miniCard.style.setProperty('--sl-stat-size', state.sliders.A.statSize + 'rem');
+        miniCard.style.setProperty('--sl-stat-gap',  state.sliders.A.statGap + 'rem');
+        miniCard.style.setProperty('--sl-body-size', state.sliders.A.bodySize + 'rem');
+        miniCard.style.setProperty('--sl-bar-h',     state.sliders.B.barH + 'px');
+        miniCard.style.setProperty('--sl-row-gap',   state.sliders.B.rowGap + 'px');
+        miniCard.style.setProperty('--sl-lbl-w',     state.sliders.B.lblW + 'px');
+        miniCard.style.setProperty('--sl-qm-size',   state.sliders.C.qmSize + 'rem');
+        miniCard.style.setProperty('--sl-qt-size',   state.sliders.C.qtSize + 'rem');
+        miniCard.style.setProperty('--sl-attr-gap',  state.sliders.C.attrGap + 'rem');
+        miniCard.style.setProperty('--sl-val-size',  state.sliders.D.valSize + 'rem');
+        miniCard.style.setProperty('--sl-cell-pad',  state.sliders.D.cellPad + 'rem');
+        miniCard.style.setProperty('--sl-desc-size', state.sliders.D.descSize + 'rem');
+        offscreen.appendChild(miniCard);
+        document.body.appendChild(offscreen);
+
+        var filename = (card.piece || 'card') + '-shell-' + sh + '-' + String(shIdx).padStart(2, '0') + '.png';
+
+        html2canvas(miniCard, { width: 300, height: 280, scale: 1, useCORS: true, logging: false })
+          .then(function(canvas) {
+            var link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            document.body.removeChild(offscreen);
+
+            // Mark exported
+            state.exported.add(i);
+            var overlay = document.getElementById('exported-' + i);
+            if (overlay) overlay.style.display = 'flex';
+
+            setTimeout(resolve, 100);
+          })
+          .catch(function() { document.body.removeChild(offscreen); resolve(); });
+      });
+    });
+  });
+
+  promise.then(function() {
+    btn.disabled = false;
+    btn.textContent = 'Export All PNG';
+  });
+});
+
+// ── EVENT LISTENERS ──
+
+document.getElementById('json-input').addEventListener('input', onJSONInput);
+
+document.querySelectorAll('.shell-tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    state.activeShell = btn.dataset.shell;
+    updateShellTabs();
+    updateSliderVisibility();
+    renderPreview();
+    updateCounter();
+    updateNavButtons();
+  });
+});
+
+document.querySelectorAll('.lane-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    state.activeLane = btn.dataset.lane;
+    document.querySelectorAll('.lane-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderPreview();
+  });
+});
+
+document.getElementById('prev-card').addEventListener('click', function() {
+  var idx = state.shellIndex[state.activeShell];
+  if (idx > 0) {
+    state.shellIndex[state.activeShell] = idx - 1;
+    renderPreview();
+    updateCounter();
+    updateNavButtons();
+  }
+});
+
+document.getElementById('next-card').addEventListener('click', function() {
+  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
+  var idx = state.shellIndex[state.activeShell];
+  if (idx < shCards.length - 1) {
+    state.shellIndex[state.activeShell] = idx + 1;
+    renderPreview();
+    updateCounter();
+    updateNavButtons();
+  }
+});
+
+// ── SLIDER WIRING ──
+function wireSlider(id, valId, unit, decimals, stateKey, subKey) {
+  var input = document.getElementById(id);
+  var valEl = document.getElementById(valId);
+  if (!input || !valEl) return;
+  input.addEventListener('input', function() {
+    var v = parseFloat(input.value);
+    state.sliders[stateKey][subKey] = v;
+    valEl.textContent = r(v, decimals) + unit;
+    renderPreview();
+  });
+}
+
+wireSlider('A-stat-size', 'A-stat-size-val', 'rem', 2, 'A', 'statSize');
+wireSlider('A-stat-gap',  'A-stat-gap-val',  'rem', 2, 'A', 'statGap');
+wireSlider('A-body-size', 'A-body-size-val', 'rem', 3, 'A', 'bodySize');
+wireSlider('B-bar-h',     'B-bar-h-val',     'px',  0, 'B', 'barH');
+wireSlider('B-row-gap',   'B-row-gap-val',   'px',  0, 'B', 'rowGap');
+wireSlider('B-lbl-w',     'B-lbl-w-val',     'px',  0, 'B', 'lblW');
+wireSlider('C-qm-size',   'C-qm-size-val',   'rem', 2, 'C', 'qmSize');
+wireSlider('C-qt-size',   'C-qt-size-val',   'rem', 3, 'C', 'qtSize');
+wireSlider('C-attr-gap',  'C-attr-gap-val',  'rem', 2, 'C', 'attrGap');
+wireSlider('D-val-size',  'D-val-size-val',  'rem', 2, 'D', 'valSize');
+wireSlider('D-cell-pad',  'D-cell-pad-val',  'rem', 2, 'D', 'cellPad');
+wireSlider('D-desc-size', 'D-desc-size-val', 'rem', 3, 'D', 'descSize');
+
+// VA toggle (Shell A)
+document.querySelectorAll('.va-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    state.sliders.A.va = btn.dataset.va;
+    document.querySelectorAll('.va-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderPreview();
+  });
+});
+
+// ── KEYBOARD NAVIGATION ──
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowLeft') document.getElementById('prev-card').click();
+  if (e.key === 'ArrowRight') document.getElementById('next-card').click();
+  if (e.key === 'a' || e.key === 'A') document.querySelector('[data-shell="A"]').click();
+  if (e.key === 'b' || e.key === 'B') document.querySelector('[data-shell="B"]').click();
+  if (e.key === 'c' || e.key === 'C') document.querySelector('[data-shell="C"]').click();
+  if (e.key === 'd' || e.key === 'D') document.querySelector('[data-shell="D"]').click();
+});
+</script>
+</body>
+</html>
