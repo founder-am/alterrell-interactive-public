@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crowning Achievements: Week 1 — Diana Ross + Donna Summer</title>
+  <meta name="description" content="Diana Ross and Donna Summer. Four cards each. The chart data, the reign, the infrastructure, the legacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="Crowning Achievements: Week 1 — Diana Ross + Donna Summer">
+  <meta property="og:description" content="Diana Ross and Donna Summer. Four cards each. The chart data, the reign, the infrastructure, the legacy.">
+  <meta property="og:url" content="https://interactive.alterrell.com/crowning-achievements/week-1/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/crowning-achievements-week1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="Crowning Achievements: Week 1 — Diana Ross + Donna Summer">
+  <meta name="twitter:description" content="Diana Ross and Donna Summer. Four cards each. The chart data, the reign, the infrastructure, the legacy.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/crowning-achievements-week1.png">
+
+  <!-- Google Fonts: Spectral 700+800 (italic+normal), DM Serif Display, DM Sans, DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;0,800;1,700;1,800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Platform CSS: base tokens, nav, breadcrumb, journey elements only -->
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+  <script src="/_data/config.js"></script>
+
+  <style>
+    /* ── OBSIDIAN FUTURES TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #0f0f1e;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.18);
+      --of-gold-pill: rgba(232,185,35,0.3);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.06);
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    /* ── NAV / BREADCRUMB ── */
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb a { color: rgba(248,246,241,0.55); }
+    .ai-breadcrumb a:hover { color: var(--of-gold); text-decoration: none; }
+
+    /* ── HERO ── */
+    .ca-hero {
+      padding: calc(var(--nav-height) + 32px + 3rem) 24px 3rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .ca-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .ca-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1;
+      color: rgba(248,246,241,0.96);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .ca-hero-sub {
+      font-family: var(--font-mono);
+      font-size: var(--text-small);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(232,185,35,0.6);
+    }
+
+    /* ── ARTIST NAV PILLS ── */
+    .ca-artist-nav {
+      display: flex;
+      gap: 8px;
+      padding: 14px 24px;
+      background: rgba(232,185,35,0.03);
+      border-bottom: 1px solid rgba(232,185,35,0.08);
+    }
+    .ca-artist-pill {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      border: 1px solid var(--of-gold-pill);
+      border-radius: 2px;
+      padding: 5px 12px;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: var(--touch);
+      display: flex;
+      align-items: center;
+    }
+    .ca-artist-pill:hover { background: rgba(232,185,35,0.08); text-decoration: none; }
+
+    /* ── JOURNEY BLOCK ── */
+    .ca-journey {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-sm) 24px;
+    }
+    .ca-journey-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .ca-journey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .ca-journey-item {
+      background: var(--paper-card);
+      display: grid;
+      grid-template-columns: 38% 62%;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: 72px;
+    }
+    .ca-journey-item:hover { background: rgba(154,107,0,0.06); text-decoration: none; }
+    .ca-journey-icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      padding: 1rem 0.5rem;
+      font-size: 1.5rem;
+      color: #9a6b00;
+    }
+    .ca-journey-text-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.15rem;
+      padding: 0.75rem 1rem;
+    }
+    .ca-journey-action {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .ca-journey-dest {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9a6b00;
+    }
+
+    /* ── ARTIST SECTION ── */
+    .ca-section {
+      padding: var(--space-xl) 0 var(--space-xl);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .ca-section:last-of-type { border-bottom: none; }
+    .ca-section-header {
+      padding: 0 24px;
+      margin-bottom: var(--space-md);
+    }
+    .ca-section-name {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: rgba(248,246,241,0.96);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .ca-section-honorific {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: 0.9375rem;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--of-gold);
+    }
+
+    /* ── CAROUSEL ── */
+    .ca-carousel-wrap { position: relative; }
+    .ca-carousel {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 24px 20px;
+    }
+    .ca-carousel::-webkit-scrollbar { display: none; }
+
+    /* ── DOTS ── */
+    .ca-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      padding: 0 24px 4px;
+    }
+    .ca-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(232,185,35,0.2);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .ca-dot.active {
+      background: var(--of-gold);
+      transform: scale(1.4);
+    }
+
+    /* ══════════════════════════════════
+       CARD BASE — 380×660px · D-72
+       Obsidian Futures exception
+    ══════════════════════════════════ */
+    .ca-card {
+      width: 380px;
+      height: 660px;
+      background: #0a0a12;
+      border-radius: 4px;
+      padding: 22px 20px 18px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      /* subtle inner shadow for depth */
+      box-shadow: inset 0 0 0 1px rgba(232,185,35,0.07), 0 2px 16px rgba(0,0,0,0.5);
+    }
+
+    /* ── Card eyebrow (top row) ── */
+    .ca-card-eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+    .ca-card-eyebrow-series,
+    .ca-card-eyebrow-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      color: rgba(232,185,35,0.75);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Divider ── */
+    .ca-divider {
+      height: 1px;
+      background: rgba(232,185,35,0.18);
+      border: none;
+      margin: 8px 0;
+      flex-shrink: 0;
+    }
+    .ca-divider--faint {
+      background: rgba(232,185,35,0.07);
+    }
+
+    /* ── Artist identity block (shared across all 4 cards) ── */
+    .ca-card-identity { flex-shrink: 0; margin-bottom: 2px; }
+    .ca-card-name {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #f8f6f1;
+      line-height: 1.05;
+      margin-bottom: 4px;
+    }
+    .ca-card-honorific {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: 13px;
+      font-weight: 800;
+      font-style: italic;
+      color: var(--of-gold);
+    }
+
+    /* ── Card content area ── */
+    .ca-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* ── Card footer (pinned to bottom) ── */
+    .ca-card-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid rgba(232,185,35,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .ca-footer-series {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.18);
+      letter-spacing: 0.04em;
+    }
+    .ca-footer-cardnum {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(232,185,35,0.35);
+      letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════
+       CARD 1 — STATS
+    ══════════════════════ */
+    .ca-stat-primary-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(248,246,241,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .ca-stat-primary-num {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 64px;
+      color: var(--of-gold);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .ca-stat-primary-ctx {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10.5px;
+      color: rgba(248,246,241,0.5);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    /* Secondary stat row: 3 equal cells */
+    .ca-secondary-stats {
+      display: flex;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .ca-secondary-stat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .ca-secondary-stat + .ca-secondary-stat {
+      border-left: 1px solid rgba(232,185,35,0.18);
+      padding-left: 10px;
+      margin-left: 10px;
+    }
+    .ca-secondary-num {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 24px;
+      color: #f8f6f1;
+      line-height: 1;
+    }
+    .ca-secondary-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.3);
+      letter-spacing: 0.04em;
+    }
+    /* Decade bar chart */
+    .ca-decade-chart { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ca-decade-chart-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.3);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .ca-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .ca-bar-decade {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.3);
+      flex: 0 0 34px;
+    }
+    .ca-bar-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(232,185,35,0.07);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ca-bar-fill { height: 100%; border-radius: 2px; }
+    .ca-bar-fill--peak { background: var(--of-gold); }
+    .ca-bar-fill--mid  { background: rgba(232,185,35,0.55); }
+    .ca-bar-fill--low  { background: rgba(232,185,35,0.25); }
+    .ca-bar-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.3);
+      flex: 0 0 20px;
+      text-align: right;
+    }
+
+    /* ══════════════════════
+       CARD 2 — THE REIGN
+    ══════════════════════ */
+    .ca-era-pill {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--of-gold);
+      border: 1px solid rgba(232,185,35,0.3);
+      border-radius: 2px;
+      padding: 3px 9px;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    /* Timeline */
+    .ca-timeline {
+      position: relative;
+      padding-left: 16px;
+      flex: 1;
+      overflow: hidden;
+    }
+    .ca-timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 7px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--of-gold), rgba(232,185,35,0.04));
+    }
+    .ca-timeline-entry {
+      position: relative;
+      padding-bottom: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ca-timeline-entry:last-child { padding-bottom: 0; }
+    .ca-timeline-dot {
+      position: absolute;
+      left: -13px;
+      top: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--of-gold);
+      flex-shrink: 0;
+    }
+    .ca-timeline-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      color: var(--of-gold);
+      line-height: 1;
+    }
+    .ca-timeline-text {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10.5px;
+      color: rgba(248,246,241,0.65);
+      line-height: 1.4;
+    }
+
+    /* ══════════════════════════
+       CARD 3 — INFRASTRUCTURE
+    ══════════════════════════ */
+    .ca-infra-quote {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: 18px;
+      font-weight: 800;
+      font-style: italic;
+      color: #f8f6f1;
+      line-height: 1.35;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .ca-infra-accent {
+      /* Gold non-italic accent word — AMA specifies which words during voice pass */
+      font-style: normal;
+      color: var(--of-gold);
+    }
+    .ca-infra-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .ca-infra-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: var(--of-gold);
+      border: 1px solid rgba(232,185,35,0.3);
+      border-radius: 2px;
+      padding: 3px 8px;
+      letter-spacing: 0.03em;
+    }
+    .ca-infra-support {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10.5px;
+      color: rgba(248,246,241,0.45);
+      line-height: 1.5;
+      flex-shrink: 0;
+    }
+    .ca-placeholder-flag {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(232,185,35,0.4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* ══════════════════════
+       CARD 4 — BIO
+    ══════════════════════ */
+    .ca-bio-honorific-full {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: 14px;
+      font-weight: 800;
+      font-style: italic;
+      color: var(--of-gold);
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+    .ca-bio-block { margin-bottom: 8px; flex-shrink: 0; }
+    .ca-bio-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ca-bio-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.28);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+    .ca-bio-value {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10.5px;
+      color: rgba(248,246,241,0.7);
+      text-align: right;
+      line-height: 1.3;
+    }
+    /* Award rows */
+    .ca-award-block { flex: 1; overflow: hidden; }
+    .ca-award-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ca-award-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(248,246,241,0.28);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+    /* Numbers (≤4 chars): DM Serif Display 16px gold */
+    .ca-award-num {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 16px;
+      color: var(--of-gold);
+      line-height: 1;
+    }
+    /* Strings (>4 chars): DM Sans 12px gold dimmed */
+    .ca-award-str {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 12px;
+      color: rgba(232,185,35,0.8);
+      text-align: right;
+      line-height: 1.3;
+    }
+    /* Legacy line */
+    .ca-legacy-line {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10px;
+      font-style: italic;
+      color: rgba(248,246,241,0.38);
+      line-height: 1.5;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .ca-footer {
+      background: #060609;
+      padding: var(--space-xl) 24px var(--space-md);
+      border-top: 1px solid var(--of-border);
+    }
+    .ca-footer-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .ca-footer-brand { margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .ca-footer-wordmark { font-family: var(--font-mono); font-size: var(--text-small); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3d3a55; margin-bottom: 0.25rem; }
+    .ca-footer-wordmark span { color: var(--of-gold); }
+    .ca-footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: var(--space-md); }
+    .ca-footer-link { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; min-height: var(--touch); display: flex; align-items: center; transition: color 0.15s; }
+    .ca-footer-link:hover { color: #888; text-decoration: none; }
+    .ca-footer-link--kofi { color: var(--of-gold); border: 1px solid rgba(232,185,35,0.3); padding: 0.4rem 0.75rem; border-radius: 100px; }
+    .ca-footer-link--kofi:hover { border-color: var(--of-gold); }
+    .ca-footer-methodology { margin-bottom: var(--space-md); }
+    .ca-footer-methodology summary { font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; color: #4a465e; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.5rem; min-height: var(--touch); user-select: none; }
+    .ca-footer-methodology summary::-webkit-details-marker { display: none; }
+    .ca-footer-methodology summary::before { content: '+'; font-family: var(--font-mono); color: var(--of-gold); font-size: 0.9rem; }
+    details[open] .ca-footer-methodology summary::before { content: '−'; }
+    .ca-footer-methodology-body { padding: 1rem 0 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 0.5rem; }
+    .ca-footer-methodology-note { font-family: var(--font-mono); font-size: 0.68rem; color: #4a465e; line-height: 1.75; max-width: 640px; }
+    .ca-footer-bottom { padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.04); }
+    .ca-footer-copy { font-family: var(--font-mono); font-size: 0.58rem; color: #222; letter-spacing: 0.08em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .ca-journey-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <a href="/crowning-achievements/">Crowning Achievements</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Week 1 — Diana Ross + Donna Summer</span>
+</div>
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" data-config-url="youtube">YouTube</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="ca-hero" role="banner">
+  <span class="ca-hero-eyebrow">✦ Crowning Achievements: Black Music Royalty</span>
+  <h1 class="ca-hero-headline">Week 1 Drop</h1>
+  <p class="ca-hero-sub">Diana Ross &nbsp;·&nbsp; Donna Summer</p>
+</header>
+
+<!-- ARTIST NAV PILLS -->
+<nav class="ca-artist-nav" aria-label="Artist navigation">
+  <a href="#diana-ross" class="ca-artist-pill">Diana Ross</a>
+  <a href="#donna-summer" class="ca-artist-pill">Donna Summer</a>
+</nav>
+
+<!-- JOURNEY BLOCK -->
+<section class="ca-journey" aria-label="Follow the platform">
+  <div class="ca-journey-inner">
+    <div class="ca-journey-grid">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ca-journey-item" aria-label="Watch on YouTube" data-config-url="youtube">
+        <div class="ca-journey-icon-cell">&#9654;</div>
+        <div class="ca-journey-text-cell">
+          <span class="ca-journey-action">Watch</span>
+          <span class="ca-journey-dest">YouTube &rarr;</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ca-journey-item" aria-label="Read on Substack" data-config-url="substack">
+        <div class="ca-journey-icon-cell">&#10022;</div>
+        <div class="ca-journey-text-cell">
+          <span class="ca-journey-action">Read</span>
+          <span class="ca-journey-dest">Substack &rarr;</span>
+        </div>
+      </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ca-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="ca-journey-icon-cell">$</div>
+        <div class="ca-journey-text-cell">
+          <span class="ca-journey-action">Back this work</span>
+          <span class="ca-journey-dest">Ko-fi &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ARTIST 1 — DIANA ROSS
+     Queen of Motown · 4 Cards
+══════════════════════════════════════════════ -->
+<section id="diana-ross" class="ca-section" aria-label="Diana Ross — 4 cards">
+  <div class="ca-section-header">
+    <div class="ca-section-name">Diana Ross</div>
+    <div class="ca-section-honorific">Queen of Motown</div>
+  </div>
+
+  <div class="ca-carousel-wrap">
+    <div class="ca-carousel" id="carousel-diana" role="region" aria-label="Diana Ross cards">
+
+      <!-- ── DIANA CARD 1: STATS ── -->
+      <article class="ca-card" aria-label="Diana Ross — Card 1 of 4: Stats">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 1 · Stats</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Diana<br>Ross</div>
+          <div class="ca-card-honorific">Queen of Motown</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <div class="ca-stat-primary-label">Solo US Hot 100 Entries</div>
+          <div class="ca-stat-primary-num">40</div>
+          <div class="ca-stat-primary-ctx">Solo chart span 1970–1986 · 12 additional #1s with The Supremes</div>
+
+          <div class="ca-secondary-stats">
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">6</div>
+              <div class="ca-secondary-label">Solo #1s</div>
+            </div>
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">12</div>
+              <div class="ca-secondary-label">Supremes #1s</div>
+            </div>
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">2</div>
+              <div class="ca-secondary-label">Grammy wins</div>
+            </div>
+          </div>
+
+          <div class="ca-decade-chart">
+            <div class="ca-decade-chart-label">Hot 100 entries by decade</div>
+            <div class="ca-bar-row">
+              <span class="ca-bar-decade">1960s</span>
+              <div class="ca-bar-track"><div class="ca-bar-fill ca-bar-fill--peak" style="width:100%;"></div></div>
+              <span class="ca-bar-val">33</span>
+            </div>
+            <div class="ca-bar-row">
+              <span class="ca-bar-decade">1970s</span>
+              <div class="ca-bar-track"><div class="ca-bar-fill ca-bar-fill--mid" style="width:85%;"></div></div>
+              <span class="ca-bar-val">28</span>
+            </div>
+            <div class="ca-bar-row">
+              <span class="ca-bar-decade">1980s</span>
+              <div class="ca-bar-track"><div class="ca-bar-fill ca-bar-fill--low" style="width:36%;"></div></div>
+              <span class="ca-bar-val">12</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">01 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DIANA CARD 2: THE REIGN ── -->
+      <article class="ca-card" aria-label="Diana Ross — Card 2 of 4: The Reign">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 2 · The Reign</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Diana<br>Ross</div>
+          <div class="ca-card-honorific">Queen of Motown</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <div class="ca-era-pill">1964 &mdash; 2016</div>
+
+          <div class="ca-timeline">
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1964</div>
+              <div class="ca-timeline-text">The Supremes debut &mdash; first of 12 consecutive #1 singles begins</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1970</div>
+              <div class="ca-timeline-text">Solo debut &mdash; "Ain't No Mountain High Enough" goes #1</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1973</div>
+              <div class="ca-timeline-text">Oscar nomination &mdash; Best Actress, <em>Lady Sings the Blues</em></div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1988</div>
+              <div class="ca-timeline-text">Rock &amp; Roll Hall of Fame &mdash; inducted with The Supremes</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">2012</div>
+              <div class="ca-timeline-text">Grammy Lifetime Achievement Award</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">2016</div>
+              <div class="ca-timeline-text">Presidential Medal of Freedom</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">02 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DIANA CARD 3: INFRASTRUCTURE ── -->
+      <!-- AMA VOICE PASS REQUIRED — Do not deploy with placeholder copy -->
+      <article class="ca-card" aria-label="Diana Ross — Card 3 of 4: Infrastructure">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 3 · Infrastructure</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Diana<br>Ross</div>
+          <div class="ca-card-honorific">Queen of Motown</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <!-- AMA VOICE PASS NEEDED — pull quote below is placeholder -->
+          <span class="ca-placeholder-flag">&#x25CF; Placeholder — AMA voice pass required</span>
+          <div class="ca-infra-quote">
+            She built the <span class="ca-infra-accent">floor</span> everyone else danced on.
+          </div>
+          <hr class="ca-divider ca-divider--faint">
+          <div class="ca-infra-pills">
+            <span class="ca-infra-pill">crossover architecture</span>
+            <span class="ca-infra-pill">label power</span>
+            <span class="ca-infra-pill">image control</span>
+            <span class="ca-infra-pill">pop mainstream</span>
+          </div>
+          <!-- AMA VOICE PASS NEEDED — support line below is placeholder -->
+          <div class="ca-infra-support">Infrastructure copy &mdash; AMA voice pass required before deploy.</div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">03 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DIANA CARD 4: BIO ── -->
+      <article class="ca-card" aria-label="Diana Ross — Card 4 of 4: Bio">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 4 · Bio</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Diana<br>Ross</div>
+          <div class="ca-card-honorific">Queen of Motown</div>
+        </div>
+
+        <div class="ca-card-content">
+          <div class="ca-bio-honorific-full">Queen of Motown</div>
+
+          <div class="ca-bio-block">
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">Born</span>
+              <span class="ca-bio-value">Detroit, Michigan · 1944</span>
+            </div>
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">Active</span>
+              <span class="ca-bio-value">1960s – present</span>
+            </div>
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">City</span>
+              <span class="ca-bio-value">Detroit / Los Angeles</span>
+            </div>
+          </div>
+
+          <hr class="ca-divider ca-divider--faint">
+
+          <div class="ca-award-block">
+            <div class="ca-award-row">
+              <span class="ca-award-label">Grammy wins</span>
+              <span class="ca-award-num">2</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Grammy Lifetime</span>
+              <span class="ca-award-num">2012</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Rock Hall</span>
+              <span class="ca-award-str">1988 · The Supremes</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Oscar nom.</span>
+              <span class="ca-award-num">1973</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Tony</span>
+              <span class="ca-award-str">An Evening with Diana Ross</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Medal of Freedom</span>
+              <span class="ca-award-num">2016</span>
+            </div>
+          </div>
+
+          <div class="ca-legacy-line">
+            Guinness World Record (1993) — most successful female charting artist in music history. First Black woman to produce and star in her own TV special.
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">04 / 04</span>
+        </div>
+      </article>
+
+    </div><!-- /.ca-carousel #carousel-diana -->
+
+    <div class="ca-dots" id="dots-diana" role="tablist" aria-label="Diana Ross card indicators">
+      <button class="ca-dot active" aria-label="Card 1 — Stats" aria-selected="true"></button>
+      <button class="ca-dot" aria-label="Card 2 — The Reign" aria-selected="false"></button>
+      <button class="ca-dot" aria-label="Card 3 — Infrastructure" aria-selected="false"></button>
+      <button class="ca-dot" aria-label="Card 4 — Bio" aria-selected="false"></button>
+    </div>
+  </div><!-- /.ca-carousel-wrap -->
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ARTIST 2 — DONNA SUMMER
+     Queen of Disco · 4 Cards
+══════════════════════════════════════════════ -->
+<section id="donna-summer" class="ca-section" aria-label="Donna Summer — 4 cards">
+  <div class="ca-section-header">
+    <div class="ca-section-name">Donna Summer</div>
+    <div class="ca-section-honorific">Queen of Disco</div>
+  </div>
+
+  <div class="ca-carousel-wrap">
+    <div class="ca-carousel" id="carousel-donna" role="region" aria-label="Donna Summer cards">
+
+      <!-- ── DONNA CARD 1: STATS ── -->
+      <article class="ca-card" aria-label="Donna Summer — Card 1 of 4: Stats">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 1 · Stats</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Donna<br>Summer</div>
+          <div class="ca-card-honorific">Queen of Disco</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <div class="ca-stat-primary-label">Total Hot 100 Entries</div>
+          <div class="ca-stat-primary-num">32</div>
+          <div class="ca-stat-primary-ctx">More top 10s than any other act, 1976–1982 · 14 Dance/Club chart #1s</div>
+
+          <div class="ca-secondary-stats">
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">4</div>
+              <div class="ca-secondary-label">Hot 100 #1s</div>
+            </div>
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">14</div>
+              <div class="ca-secondary-label">Top 10 hits</div>
+            </div>
+            <div class="ca-secondary-stat">
+              <div class="ca-secondary-num">5</div>
+              <div class="ca-secondary-label">Grammy wins</div>
+            </div>
+          </div>
+
+          <div class="ca-decade-chart">
+            <div class="ca-decade-chart-label">Hot 100 entries by decade</div>
+            <div class="ca-bar-row">
+              <span class="ca-bar-decade">1970s</span>
+              <div class="ca-bar-track"><div class="ca-bar-fill ca-bar-fill--peak" style="width:100%;"></div></div>
+              <span class="ca-bar-val">24</span>
+            </div>
+            <div class="ca-bar-row">
+              <span class="ca-bar-decade">1980s</span>
+              <div class="ca-bar-track"><div class="ca-bar-fill ca-bar-fill--mid" style="width:33%;"></div></div>
+              <span class="ca-bar-val">8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">01 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DONNA CARD 2: THE REIGN ── -->
+      <article class="ca-card" aria-label="Donna Summer — Card 2 of 4: The Reign">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 2 · The Reign</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Donna<br>Summer</div>
+          <div class="ca-card-honorific">Queen of Disco</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <div class="ca-era-pill">1975 &mdash; 2012</div>
+
+          <div class="ca-timeline">
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1976</div>
+              <div class="ca-timeline-text">"Love to Love You Baby" debuts &mdash; peaks #2 on Hot 100</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1979</div>
+              <div class="ca-timeline-text">First woman with two singles simultaneously in Hot 100 top 3</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1979</div>
+              <div class="ca-timeline-text">First artist with 3 consecutive double albums debuting at #1 on Billboard 200</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">1983</div>
+              <div class="ca-timeline-text">5 Grammy wins across career confirmed</div>
+            </div>
+            <div class="ca-timeline-entry">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-year">2013</div>
+              <div class="ca-timeline-text">Rock &amp; Roll Hall of Fame &mdash; inducted posthumously</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">02 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DONNA CARD 3: INFRASTRUCTURE ── -->
+      <!-- AMA VOICE PASS REQUIRED — Do not deploy with placeholder copy -->
+      <article class="ca-card" aria-label="Donna Summer — Card 3 of 4: Infrastructure">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 3 · Infrastructure</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Donna<br>Summer</div>
+          <div class="ca-card-honorific">Queen of Disco</div>
+        </div>
+        <hr class="ca-divider">
+
+        <div class="ca-card-content">
+          <!-- AMA VOICE PASS NEEDED — pull quote below is placeholder -->
+          <span class="ca-placeholder-flag">&#x25CF; Placeholder — AMA voice pass required</span>
+          <div class="ca-infra-quote">
+            She built the <span class="ca-infra-accent">floor</span> everyone else danced on.
+          </div>
+          <hr class="ca-divider ca-divider--faint">
+          <div class="ca-infra-pills">
+            <span class="ca-infra-pill">disco architecture</span>
+            <span class="ca-infra-pill">dance-pop blueprint</span>
+            <span class="ca-infra-pill">crossover production</span>
+            <span class="ca-infra-pill">electronic soul</span>
+          </div>
+          <!-- AMA VOICE PASS NEEDED — support line below is placeholder -->
+          <div class="ca-infra-support">Infrastructure copy &mdash; AMA voice pass required before deploy.</div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">03 / 04</span>
+        </div>
+      </article>
+
+      <!-- ── DONNA CARD 4: BIO ── -->
+      <article class="ca-card" aria-label="Donna Summer — Card 4 of 4: Bio">
+        <div class="ca-card-eyebrow">
+          <span class="ca-card-eyebrow-series">Crowning Achievements</span>
+          <span class="ca-card-eyebrow-type">Card 4 · Bio</span>
+        </div>
+        <hr class="ca-divider">
+        <div class="ca-card-identity">
+          <div class="ca-card-name">Donna<br>Summer</div>
+          <div class="ca-card-honorific">Queen of Disco</div>
+        </div>
+
+        <div class="ca-card-content">
+          <div class="ca-bio-honorific-full">Queen of Disco</div>
+
+          <div class="ca-bio-block">
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">Born</span>
+              <span class="ca-bio-value">Boston, Massachusetts · 1948</span>
+            </div>
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">Died</span>
+              <span class="ca-bio-value">May 17, 2012</span>
+            </div>
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">Active</span>
+              <span class="ca-bio-value">1970s – 1980s</span>
+            </div>
+            <div class="ca-bio-row">
+              <span class="ca-bio-label">City</span>
+              <span class="ca-bio-value">Boston / Los Angeles / Munich</span>
+            </div>
+          </div>
+
+          <hr class="ca-divider ca-divider--faint">
+
+          <div class="ca-award-block">
+            <div class="ca-award-row">
+              <span class="ca-award-label">Grammy wins</span>
+              <span class="ca-award-num">5</span>
+            </div>
+            <div class="ca-award-row">
+              <span class="ca-award-label">Rock Hall</span>
+              <span class="ca-award-str">2013 · Posthumous</span>
+            </div>
+          </div>
+
+          <div class="ca-legacy-line">
+            First artist in history with three consecutive double albums debuting at #1 on the Billboard 200.
+          </div>
+        </div>
+
+        <div class="ca-card-footer">
+          <span class="ca-footer-series">Black Music Royalty</span>
+          <span class="ca-footer-cardnum">04 / 04</span>
+        </div>
+      </article>
+
+    </div><!-- /.ca-carousel #carousel-donna -->
+
+    <div class="ca-dots" id="dots-donna" role="tablist" aria-label="Donna Summer card indicators">
+      <button class="ca-dot active" aria-label="Card 1 — Stats" aria-selected="true"></button>
+      <button class="ca-dot" aria-label="Card 2 — The Reign" aria-selected="false"></button>
+      <button class="ca-dot" aria-label="Card 3 — Infrastructure" aria-selected="false"></button>
+      <button class="ca-dot" aria-label="Card 4 — Bio" aria-selected="false"></button>
+    </div>
+  </div><!-- /.ca-carousel-wrap -->
+</section>
+
+<!-- FOOTER -->
+<footer class="ca-footer" role="contentinfo">
+  <div class="ca-footer-inner">
+    <div class="ca-footer-brand">
+      <div class="ca-footer-wordmark"><span>Crowning Achievements</span> · Alterrell Interactive</div>
+    </div>
+
+    <div class="ca-footer-links">
+      <a href="/" class="ca-footer-link">&larr; All Projects</a>
+      <a href="/crowning-achievements/" class="ca-footer-link">&larr; Series Index</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ca-footer-link ca-footer-link--kofi">$ Back this work</a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ca-footer-link" data-config-url="substack">Substack</a>
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ca-footer-link" data-config-url="youtube">YouTube</a>
+    </div>
+
+    <details class="ca-footer-methodology">
+      <summary>Methodology &amp; Data Notes</summary>
+      <div class="ca-footer-methodology-body">
+        <p class="ca-footer-methodology-note">
+          All chart performance data sourced from Billboard research archives and the Crowning Achievements verified research document (June 3, 2026). Hot 100 entry counts are verified against Billboard archives. Grammy data reflects competitive wins only unless otherwise noted. Rock &amp; Roll Hall of Fame category designations (Performer / Musical Excellence / Musical Influence) are listed where available — these are not equivalent and are not conflated.
+          <br><br>
+          &#x26A0; Card 3 (Infrastructure) for both artists contains placeholder copy pending AMA voice pass. Do not deploy until finalized copy replaces all marked placeholders.
+        </p>
+      </div>
+    </details>
+
+    <div class="ca-footer-bottom">
+      <span class="ca-footer-copy">&copy; 2026 &middot; interactive.alterrell.com &middot; Data as Dignity</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Carousel dot indicators ──
+// Uses IntersectionObserver to activate dot when card is ≥50% visible in carousel
+(function () {
+  var pairs = [
+    { carousel: document.getElementById('carousel-diana'), dots: document.querySelectorAll('#dots-diana .ca-dot') },
+    { carousel: document.getElementById('carousel-donna'), dots: document.querySelectorAll('#dots-donna .ca-dot') },
+  ];
+
+  pairs.forEach(function (pair) {
+    var carousel = pair.carousel;
+    var dots = pair.dots;
+    if (!carousel || !dots.length) return;
+
+    var cards = carousel.querySelectorAll('.ca-card');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.from(cards).indexOf(entry.target);
+          dots.forEach(function (d, i) {
+            d.classList.toggle('active', i === idx);
+            d.setAttribute('aria-selected', String(i === idx));
+          });
+        }
+      });
+    }, { root: carousel, threshold: 0.5 });
+
+    cards.forEach(function (card) { observer.observe(card); });
+
+    // Dot click: scroll card into view
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        if (cards[i]) {
+          cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
