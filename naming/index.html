@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's in a Name — Alterrell Interactive</title>
+  <meta name="description" content="Sixty years of Social Security baby name data, mapped against Black celebrity. A data journalism series in 8 parts.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="What's in a Name — Alterrell Interactive">
+  <meta property="og:description" content="Sixty years of SSA baby name data mapped against Black celebrity. It's only ghetto until you're famous.">
+  <meta property="og:url" content="https://interactive.alterrell.com/naming/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/naming.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="What's in a Name — Alterrell Interactive">
+  <meta name="twitter:description" content="Sixty years of SSA baby name data mapped against Black celebrity. It's only ghetto until you're famous.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/naming.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../alterrell-interactive.css">
+  <script src="/_data/config.js"></script>
+
+  <style>
+    :root {
+      --of-bg:     #0a0a12;
+      --of-card:   #111118;
+      --of-gold:   #E8B923;
+      --of-body:   rgba(248,246,241,0.88);
+      --of-muted:  rgba(248,246,241,0.45);
+      --of-border: rgba(255,255,255,0.08);
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb a { color: rgba(248,246,241,0.55); }
+    .ai-breadcrumb a:hover { color: var(--of-gold); text-decoration: none; }
+
+    /* ── HERO ── */
+    .naming-hero {
+      padding: calc(var(--nav-height) + 32px + 3rem) 1.25rem 3rem;
+      background: var(--of-bg);
+      border-bottom: 1px solid var(--of-border);
+    }
+    .naming-hero-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .naming-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-stamp);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+    .naming-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.0;
+      color: rgba(248,246,241,0.96);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .naming-hero-dek {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--of-muted);
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── SERIES GRID ── */
+    .naming-main {
+      padding: var(--space-lg) 1.25rem var(--space-xl);
+    }
+    .naming-main-inner { max-width: var(--max-editorial); margin: 0 auto; }
+
+    .naming-grid-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(232,185,35,0.5);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .naming-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--of-border);
+      border: 1px solid var(--of-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: var(--space-lg);
+    }
+
+    .naming-part {
+      background: var(--of-card);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: background 0.15s;
+      min-height: 110px;
+    }
+    a.naming-part:hover { background: rgba(232,185,35,0.06); text-decoration: none; }
+
+    .naming-part--live   { cursor: pointer; }
+    .naming-part--new    { border-top: 2px solid var(--of-gold); cursor: pointer; }
+    .naming-part--soon   { opacity: 0.38; cursor: default; }
+
+    .naming-part-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+    .naming-part-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      color: rgba(232,185,35,0.6);
+    }
+    .naming-part-badge {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      background: rgba(232,185,35,0.12);
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+    }
+    .naming-part-title {
+      font-family: var(--font-editorial);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(248,246,241,0.96);
+      line-height: 1.25;
+    }
+    .naming-part--soon .naming-part-title { color: var(--of-muted); }
+    .naming-part-theme {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      color: var(--of-muted);
+      line-height: 1.5;
+    }
+    .naming-part-cta {
+      font-family: var(--font-mono);
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--of-gold);
+      margin-top: auto;
+    }
+    .naming-part--soon .naming-part-cta { color: rgba(248,246,241,0.2); }
+
+    /* ── FOOTER ── */
+    .naming-footer { background: #0a0a0a; padding: var(--space-xl) 1.25rem var(--space-md); border-top: 1px solid var(--of-border); }
+    .naming-footer-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .naming-footer-wordmark { font-family: var(--font-mono); font-size: var(--text-small); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3d3a55; margin-bottom: 0.35rem; }
+    .naming-footer-wordmark span { color: var(--of-gold); }
+    .naming-footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin: var(--space-md) 0; }
+    .naming-footer-link { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; min-height: var(--touch); display: flex; align-items: center; transition: color 0.15s; }
+    .naming-footer-link:hover { color: #888; text-decoration: none; }
+    .naming-footer-link--kofi { color: var(--of-gold); border: 1px solid rgba(232,185,35,0.3); padding: 0.4rem 0.75rem; border-radius: 100px; }
+    .naming-footer-copy { font-family: var(--font-mono); font-size: 0.58rem; color: #222; letter-spacing: 0.08em; }
+
+    @media (max-width: 640px) {
+      .naming-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">What's in a Name</span>
+</div>
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" data-config-url="youtube">YouTube</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="naming-hero" role="banner">
+  <div class="naming-hero-inner">
+    <span class="naming-hero-eyebrow">✦ Obsidian Futures · Data Series · 8 Parts</span>
+    <h1 class="naming-hero-headline">What's in a Name</h1>
+    <!-- AMA VOICE PASS NEEDED — series dek -->
+    <p class="naming-hero-dek">Sixty years of Social Security baby name data, mapped against Black celebrity. It&#8217;s only ghetto until you&#8217;re famous.</p>
+  </div>
+</header>
+
+<!-- SERIES GRID -->
+<main class="naming-main" role="main">
+  <div class="naming-main-inner">
+
+    <span class="naming-grid-label">All Parts</span>
+
+    <div class="naming-grid">
+
+      <!-- Part 0 — Live -->
+      <a href="/naming/part-0/" class="naming-part naming-part--live">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 0</span>
+        </div>
+        <div class="naming-part-title">The Name Was Always Yours</div>
+        <div class="naming-part-theme">Historical foundation — slavery, naming infrastructure, reclamation</div>
+        <span class="naming-part-cta">Read &rarr;</span>
+      </a>
+
+      <!-- Part 1 — Live -->
+      <a href="/naming/part-1/" class="naming-part naming-part--live">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 1</span>
+        </div>
+        <div class="naming-part-title">The Fame Effect</div>
+        <div class="naming-part-theme">Mainstream Takeover — Musicians (Whitney, Mariah, Latifah)</div>
+        <span class="naming-part-cta">Read &rarr;</span>
+      </a>
+
+      <!-- Part 2 — Live -->
+      <a href="/naming/part-2/" class="naming-part naming-part--live">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 2</span>
+        </div>
+        <div class="naming-part-title">The Living Room</div>
+        <div class="naming-part-theme">Black Authority — Sitcoms (Living Single, A Different World, Fresh Prince)</div>
+        <span class="naming-part-cta">Read &rarr;</span>
+      </a>
+
+      <!-- Part 3 — New -->
+      <a href="/naming/part-3/" class="naming-part naming-part--new">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 3</span>
+          <span class="naming-part-badge">New</span>
+        </div>
+        <div class="naming-part-title">The Academy Effect</div>
+        <div class="naming-part-theme">Oscars — institutional validation vs. cultural impact (Halle, Denzel, Viola)</div>
+        <span class="naming-part-cta">Read &rarr;</span>
+      </a>
+
+      <!-- Part 4 — Coming Soon -->
+      <div class="naming-part naming-part--soon" aria-hidden="true">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 4</span>
+        </div>
+        <div class="naming-part-title">The Page &amp; the Stage</div>
+        <div class="naming-part-theme">Authors &amp; Models — legitimacy through intellect and image</div>
+        <span class="naming-part-cta">Coming Soon</span>
+      </div>
+
+      <!-- Part 5 — Coming Soon -->
+      <div class="naming-part naming-part--soon" aria-hidden="true">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 5</span>
+        </div>
+        <div class="naming-part-title">The Court</div>
+        <div class="naming-part-theme">Sports — extreme spike factors, crossover vs. community</div>
+        <span class="naming-part-cta">Coming Soon</span>
+      </div>
+
+      <!-- Part 6 — Coming Soon -->
+      <div class="naming-part naming-part--soon" aria-hidden="true">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 6</span>
+        </div>
+        <div class="naming-part-title">The Crescent</div>
+        <div class="naming-part-theme">Arabic/Muslim names as Black political identity — Aaliyah opens</div>
+        <span class="naming-part-cta">Coming Soon</span>
+      </div>
+
+      <!-- Part 7 — Coming Soon -->
+      <div class="naming-part naming-part--soon" aria-hidden="true">
+        <div class="naming-part-meta">
+          <span class="naming-part-num">Part 7</span>
+        </div>
+        <div class="naming-part-title">Series Closer</div>
+        <div class="naming-part-theme">Decline, aspiration, gender divide — what the data shows when fame isn&#8217;t the story</div>
+        <span class="naming-part-cta">Coming Soon</span>
+      </div>
+
+    </div><!-- /.naming-grid -->
+
+  </div><!-- /.naming-main-inner -->
+</main>
+
+<!-- FOOTER -->
+<footer class="naming-footer" role="contentinfo">
+  <div class="naming-footer-inner">
+    <div class="naming-footer-wordmark"><span>Obsidian Futures</span> · Alterrell Interactive</div>
+    <div class="naming-footer-links">
+      <a href="/" class="naming-footer-link">&larr; All Projects</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="naming-footer-link naming-footer-link--kofi">$ Back this work</a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="naming-footer-link" data-config-url="substack">Substack</a>
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="naming-footer-link" data-config-url="youtube">YouTube</a>
+    </div>
+    <div class="naming-footer-copy">&copy; 2026 &middot; interactive.alterrell.com &middot; Data as Dignity</div>
+  </div>
+</footer>
+
+</body>
+</html>
