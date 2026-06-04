@@ -11,7 +11,7 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 - Which zones are piece-specific (what content goes where)
 - Which card shells are used and where
 - Which interactive tool pattern is used on which tab
-- How prose width is maintained (single .ai-inner container)
+- How prose width is maintained (padding-only containers, no max-width)
 - Tab names for tabs 2–4
 
 **AMA confirms the mockup. Only then does the build proceed.**
@@ -61,24 +61,24 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 - [ ] ARIA: `role="tablist"` on bar, `role="tab"` on each button, `aria-selected` toggled, `role="tabpanel"` on each section
 
 ### Zone 6: Tab Content — The Editorial Container
-- [ ] **EVERY tab section wraps content in `.ai-inner`** (max-width: 860px, margin: 0 auto)
-- [ ] **All elements** sit inside `.ai-inner`: eyebrows, headlines, prose, card galleries, tools, tables, share blocks
-- [ ] **Nothing sits outside `.ai-inner`** — if any element is wider or narrower than the rest, the container is broken
+- [ ] **EVERY tab section wraps content in a padding-only container — no max-width, full editorial width identical to hero** (D-73)
+- [ ] **All elements** sit inside this container: eyebrows, headlines, prose, card galleries, tools, tables, share blocks
+- [ ] **Nothing sits outside the padding container** — if any element is wider or narrower than the rest, the container is broken
 - [ ] **Prose width is consistent across all tabs** — visually verify by switching tabs and checking alignment
 - [ ] All tab section backgrounds: `var(--paper)` — no dark sections, no alternating backgrounds
 - [ ] Tables and dense copy: white or paper background ONLY, never dark
 
 ### Zone 6a: Cards (inside tab content)
-- [ ] **Size: 300px × 280px — no exceptions**
-- [ ] No card taller than 280px — if content doesn't fit, split across cards with "N of N" indicator
-- [ ] **Border: 7px solid `var(--teal)` on all four sides**
-- [ ] Interior: white (`var(--paper-card)`)
+- [ ] **Size: 300px × 280px** (teal-lane pieces) — OR **380px × 660px** for Obsidian Futures card-native series (Crowning Achievements, BTU) per D-72
+- [ ] No card taller than its locked height — if content doesn't fit, split across cards with "N of N" indicator
+- [ ] **Border: 7px solid `var(--teal)` on all four sides** (teal-lane pieces) — OR accent color border, no teal, for Obsidian Futures card-native pieces (D-72)
+- [ ] Interior: white (`var(--paper-card)`) for teal-lane; `#0a0a12` for Obsidian Futures card-native
 - [ ] Source stamp: bottom-right, DM Mono
 - [ ] Shell types used correctly: A (stat), B (chart ≤4 items), C (quote), D (compare)
 - [ ] Carousel: 16px gap between cards
 - [ ] Carousel: ~2.5 cards visible on desktop
 - [ ] Carousel: arrows on desktop only, dots always, scroll-snap on mobile
-- [ ] Cards scroll horizontally within `.ai-inner` — never exceed container width
+- [ ] Cards scroll horizontally within their padding container — never exceed container width
 
 ### Zone 6b: Interactive Tools (inside tab content)
 - [ ] White/paper background ONLY (dark workbench is a flagged exception requiring documentation)
@@ -87,10 +87,10 @@ Before writing ANY HTML, Claude must present a section-by-section mockup showing
 - [ ] 44px minimum touch targets on all interactive elements
 
 ### Tab 1: Overview — Structural Requirements
-- [ ] Section eyebrow: DM Sans 800, teal — matches platform CSS `.ai-eyebrow { font-family: var(--font-body); font-weight: 800; }`
+- [ ] Section eyebrow: DM Sans 800, piece accent color — `var(--teal)` for teal-lane pieces, piece-specific accent for Obsidian Futures pieces
 - [ ] Section headline: DM Serif Display
 - [ ] Share block present on this tab (most emotionally compelling)
-- [ ] Prose and cards both inside `.ai-inner` at same width
+- [ ] Prose and cards both at full editorial width, same padding container
 
 ### Tab 5: Spread the Word — Structural Requirements
 - [ ] Section eyebrow + headline present
@@ -202,7 +202,7 @@ Before confirming the commit, visually verify in browser at 1280px:
 - [ ] Hero headline visible and readable (white on dark)
 - [ ] Journey block: all 3 items visible, not clipped on any edge
 - [ ] Switch through ALL tabs — prose width is identical on every tab
-- [ ] Cards are uniform height (280px), uniform border (7px teal), horizontal scroll
+- [ ] Cards are uniform height (280px teal-lane / 660px Obsidian Futures card-native), uniform border per lane, horizontal scroll
 - [ ] No element is wider than the editorial container
 - [ ] Sources tab is visible and contains methodology + source list
 - [ ] Footer is clean — no orphaned components

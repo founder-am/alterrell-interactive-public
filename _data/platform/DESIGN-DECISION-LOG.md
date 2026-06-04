@@ -289,8 +289,8 @@ AMA-approved copy applied. Part 0 live with updated copy.
 ### D-45 (2026-05-21) | COMPLETE | Naming Part 1 copy update
 AMA-approved copy applied. Part 1 live with updated copy.
 
-### D-46 (2026-05-21) | LOCKED | Naming Part 2 remains Coming Soon
-Not live. Stays Coming Soon until further notice.
+### D-46 (2026-05-21) | SUPERSEDED by D-69 | Naming Part 2 remains Coming Soon
+~~Not live. Stays Coming Soon until further notice.~~ See D-69.
 
 ### D-47 (2026-05-21) | COMPLETE | Concert Tax carousel + journey bar confirmed done
 Carousel conversion and journey bar fix verified as already complete from May 20 session.
@@ -372,6 +372,33 @@ D-67 (2026-05-22) | LOCKED — Four card shells: A (stat), B (chart ≤4), C (qu
 3. **Type 1: Naming series title mockups** — Option A, needs visuals before code
 4. **Type 2 Batch C: Concert Tax** `.ct-journey` → `.ai-journey-compact`
 5. **AMA voice: Sodium** — voice pass before flipping back to active (already live but may want refinement)
+
+### D-72 (2026-06-03) | LOCKED | Obsidian Futures card-native exception: 380×660px tarot dimensions
+Crowning Achievements and BTU card series use 380px × 660px (tarot proportions). Background #0a0a12. Accent tier-based per piece brief (gold #E8B923 for Crowning Achievements Tiers 1–3; purple #8B5CF6 for Main Drops + Foundation + BTU). No teal border. No photos. Typographic format only. Teal border and 300×280px spec do not apply to these series.
+
+### D-73 (2026-06-03) | LOCKED | .ai-inner class retired — prose width uses padding only
+AMA rejected the 860px max-width editorial container (May 27, 2026). Prose width = padding only, no max-width, full editorial width identical to hero. All new builds use padding-only containers. Live pieces (Concert Tax, Sodium, Naming Parts 0–2) are grandfathered — do not touch.
+
+### D-74 (2026-06-03) | LOCKED | Naming series Sources tab exemption — footer methodology is the standard
+Footer `<details>` methodology accordion is the series standard for Parts 0–7. Sources tab platform standard does not apply to any Naming series file. Do not flag missing Sources tab as a violation in any Naming piece audit. This is a series-level exemption, not a platform-wide change.
+
+### D-75 (2026-06-03) | LOCKED | Copaganda visual suite: full-width components, not gallery cards
+"Benson & Stabler Aren't Coming" uses five full-width chart visuals (V1–V5), not 300×280px gallery cards. These are standalone chart components with their own color palette. Build order: V3→V5→V4→V2→V1. Do not enforce 300×280px card spec against Copaganda visuals.
+
+### D-76 (2026-06-03) | LOCKED | Share cards on Spread the Word tab: pre-rendered PNGs only
+Share cards are served as pre-rendered PNG image files (img tags), not HTML divs. Generated at publish time via card translator tool, uploaded to repo. This ensures native long-press save behavior on mobile without custom JS. Do not build Spread the Word share cards as HTML divs.
+
+### D-77 (2026-06-03) | PENDING | American diet evolution piece (working title)
+Four mockups exist. Research complete. No brief, no tab structure, no title locked. Not on editorial calendar. Pre-Type 1 status. Do not build until Type 1 session resolves brief, title, and tab structure.
+
+### D-69 (2026-06-03) | COMPLETE | Naming Part 2 now live — supersedes D-46
+Part 2 (The Living Room) is live at `/naming/part-2/`. D-46 build block removed. No action needed.
+
+### D-70 (2026-06-03) | LOCKED | Naming series index page builds before Part 3 ships
+`/naming/index.html` must exist before Part 3 deploys. Hub currently links direct to individual parts. Resolved: AMA confirmed "before." Series Brief Open Decision 2 closed.
+
+### D-71 (2026-06-03) | LOCKED | No Sources tab for Naming Parts 3–7
+Methodology stays in footer `<details>` block and in Part 0's foundational copy. No dedicated Sources tab added to any Naming part. Keeps series consistent with Parts 0–2. Series Brief Open Decision 3 closed.
 
 ### D-68 (2026-06-03) | LOCKED | Carousel component added to platform CSS
 Classes `.carousel--teal` and `.carousel--dark` added to `alterrell-interactive.css` as platform standard. Cards locked at 300×280px with 7px solid border (teal or gold). Four card types: `.card--a` (stat), `.card--b` (chart ≤4 bars), `.card--c` (quote), `.card--d` (comparison). Vanilla JS only, no dependencies. Mobile: single card, swipe gesture. Desktop: 3 cards visible, arrows step one at a time, dots always visible. Demo block added to `index.html` (hidden, `#carousel-demo`, AMA test only). Batch A — platform CSS only, no piece folders touched.
