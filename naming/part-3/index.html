@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Academy Effect — Alterrell Interactive</title>
+  <meta name="description" content="Halle Berry's Oscar made her name spike 55 times. Denzel Washington's name peaked in 1992 — the year of Malcolm X, not the year he won. The Academy validates. But the data shows what Black families were already watching.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="The Academy Effect — Alterrell Interactive">
+  <meta property="og:description" content="Halle Berry's Oscar made her name spike 55 times. Denzel's name peaked in 1992 — the year of Malcolm X, not the year he won.">
+  <meta property="og:url" content="https://interactive.alterrell.com/naming/part-3/">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/part3.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="The Academy Effect — Alterrell Interactive">
+  <meta name="twitter:description" content="Halle Berry's Oscar made her name spike 55 times. Denzel's name peaked in 1992 — the year of Malcolm X, not the year he won.">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/part3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../alterrell-interactive.css">
+  <script src="/_data/config.js"></script>
+
+  <style>
+    /* ── OBSIDIAN FUTURES COLOR TOKENS ── */
+    :root {
+      --of-bg:        #0a0a12;
+      --of-card:      #111118;
+      --of-gold:      #E8B923;
+      --of-gold-dim:  rgba(232,185,35,0.18);
+      --of-body:      rgba(248,246,241,0.88);
+      --of-muted:     rgba(248,246,241,0.45);
+      --of-border:    rgba(255,255,255,0.08);
+    }
+
+    body { background: var(--of-bg); color: var(--of-body); }
+
+    /* ── NAV / BREADCRUMB ── */
+    .ai-nav { background: #06060d; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.06); }
+    .ai-breadcrumb a { color: rgba(248,246,241,0.55); }
+    .ai-breadcrumb a:hover { color: var(--of-gold); text-decoration: none; }
+
+    /* ── TAB BAR ── */
+    .ai-tabs { background: #0d0d18; border-bottom-color: rgba(255,255,255,0.08); }
+    .ai-tab { color: var(--of-muted); }
+    .ai-tab:hover { color: var(--of-body); }
+    .ai-tab.active { color: var(--of-gold); border-bottom-color: var(--of-gold); background: transparent; }
+
+    /* ── HERO ── */
+    .win-hero { padding: calc(var(--nav-height) + 32px + 2.5rem) 1.25rem 2.5rem; background: var(--of-bg); border-bottom: 1px solid var(--of-border); }
+    .win-hero-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-hero-eyebrow { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 1.25rem; display: block; }
+    .win-hero-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 700; font-style: italic; line-height: 1.0; color: rgba(248,246,241,0.96); letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .win-hero-dek { font-family: var(--font-body); font-size: clamp(1rem, 1.5vw, 1.1rem); color: var(--of-muted); line-height: 1.7; margin-bottom: 2.5rem; }
+    .win-hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--of-border); border: 1px solid var(--of-border); border-radius: var(--radius); overflow: hidden; }
+    .win-stat-card { background: rgba(255,255,255,0.03); padding: 1.5rem 1.25rem; }
+    .win-stat-num { font-family: var(--font-editorial); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1; margin-bottom: 0.5rem; color: var(--of-gold); }
+    .win-stat-label { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); line-height: 1.5; }
+
+    /* ── JOURNEY BLOCK ── */
+    .win-journey { background: #ffffff; border-bottom: 1px solid var(--border); padding: var(--space-sm) 1.25rem; }
+    .win-journey-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-journey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .win-journey-item { background: var(--paper-card); display: grid; grid-template-columns: 38% 62%; text-decoration: none; transition: background 0.15s; min-height: 80px; }
+    .win-journey-item:hover { background: rgba(154,107,0,0.08); text-decoration: none; }
+    .win-journey-icon-cell { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); padding: 1rem 0.5rem; }
+    .win-journey-item:hover .win-journey-icon-cell { border-right-color: rgba(154,107,0,0.2); }
+    .win-journey-icon { font-size: 1.75rem; line-height: 1; color: #9a6b00; }
+    .win-journey-text-cell { display: flex; flex-direction: column; justify-content: center; gap: 0.2rem; padding: 0.875rem 1rem; }
+    .win-journey-action { font-family: var(--font-body); font-size: var(--text-body); font-weight: 600; color: var(--ink); line-height: 1.2; }
+    .win-journey-dest { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: #9a6b00; }
+
+    /* ── TAB SECTIONS — critical layout ── */
+    .win-section { padding: var(--space-lg) 1.25rem var(--space-xl); background: var(--of-bg); border-bottom: 1px solid var(--of-border); display: none; flex-direction: column; min-height: calc(100vh - 128px); }
+    .win-section.active { display: flex; }
+    .win-inner { max-width: 860px; margin: 0 auto; width: 100%; flex: 1; display: flex; flex-direction: column; }
+
+    /* ── SECTION-FLOOR NAV ── */
+    .section-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0 0; margin-top: auto; border-top: 1px solid var(--of-border); gap: 1rem; }
+    .section-nav-btn { display: flex; flex-direction: column; gap: 0.2rem; text-decoration: none; min-height: var(--touch); justify-content: center; transition: opacity 0.15s; }
+    .section-nav-btn:hover { opacity: 0.7; text-decoration: none; }
+    .section-nav-btn.next { text-align: right; }
+    .section-nav-direction { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.12em; text-transform: uppercase; color: var(--of-muted); }
+    .section-nav-label { font-family: var(--font-body); font-size: var(--text-small); font-weight: 600; color: var(--of-gold); }
+    .section-nav-spacer { flex: 1; }
+
+    /* ── TYPOGRAPHY ── */
+    .win-eyebrow { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); display: block; margin-bottom: 1rem; }
+    .win-h2 { font-family: var(--font-editorial); font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.1; letter-spacing: -0.02em; color: rgba(248,246,241,0.96); margin-bottom: 1rem; }
+    .win-body { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); color: var(--of-body); max-width: 720px; }
+    .win-body + .win-body { margin-top: 1.25rem; }
+    .win-body strong { color: rgba(248,246,241,0.96); font-weight: 600; }
+
+    /* ── ARTIST NAME DISPLAY (card visual spec) ── */
+    .win-name { font-family: var(--font-editorial); font-size: clamp(18px, 5vw, 22px); color: var(--of-gold); line-height: 1; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+    .win-sub { font-family: var(--font-body); font-size: var(--text-small); color: rgba(248,246,241,0.65); line-height: 1.5; max-width: 680px; margin-bottom: var(--space-md); }
+
+    /* ── STAT ROW (overview) ── */
+    .win-stat-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: var(--space-sm) 0 var(--space-md); }
+    .win-stat-item { background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1rem 1.25rem; flex: 1 1 160px; }
+    .win-stat-item-num { font-family: var(--font-editorial); font-size: clamp(1.6rem, 3.5vw, 2.2rem); color: var(--of-gold); line-height: 1; margin-bottom: 0.35rem; }
+    .win-stat-item-label { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); line-height: 1.5; }
+
+    /* ── CHART ── */
+    .win-chart-wrap { position: relative; background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1.25rem 1rem 0.75rem; margin: var(--space-md) 0; overflow: hidden; }
+    .win-chart-title { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--of-muted); margin-bottom: 0.75rem; }
+    .win-chart-canvas-wrap { position: relative; height: 160px; }
+    .chart-screenshot-nudge { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.08em; color: rgba(232,185,35,0.5); margin-top: 0.5rem; text-align: right; }
+
+    /* ── CHART STAT CALLOUTS (card visual spec) ── */
+    .win-chart-stats { display: flex; flex-wrap: wrap; gap: 1px; background: var(--of-border); border: 1px solid var(--of-border); border-radius: var(--radius); overflow: hidden; margin-bottom: var(--space-md); }
+    .win-chart-stat { background: var(--of-card); padding: 0.875rem 1.25rem; flex: 1 1 120px; }
+    .win-chart-stat-num { font-family: var(--font-editorial); font-size: clamp(16px, 4.5vw, 22px); color: var(--of-gold); line-height: 1; margin-bottom: 0.2rem; }
+    .win-chart-stat-label { font-family: var(--font-mono); font-size: clamp(8px, 2vw, 10px); letter-spacing: 0.08em; color: rgba(248,246,241,0.70); line-height: 1.4; }
+
+    /* ── CHART EDITORIAL PROSE ── */
+    .win-chart-editorial { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-body); line-height: var(--leading-body); max-width: 680px; margin: 0.75rem 0 var(--space-md); padding: 1rem 1.25rem; background: var(--of-card); border: 1px solid var(--of-border); border-left: 2px solid rgba(232,185,35,0.3); border-radius: 0 var(--radius) var(--radius) 0; }
+
+    /* ── BOTTOM BLOCK: 1-in-X (Halle, Denzel) ── */
+    .win-bottom-block { border-left: 3px solid #E8B923; padding: 1rem 1.5rem; margin: var(--space-md) 0; background: rgba(232,185,35,0.06); border-radius: 0 var(--radius) var(--radius) 0; max-width: 480px; }
+    .win-bottom-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,185,35,0.6); margin-bottom: 0.3rem; }
+    .win-bottom-stat { font-family: var(--font-editorial); font-size: 1.75rem; color: var(--of-gold); line-height: 1; margin-bottom: 0.25rem; }
+    .win-bottom-ctx { font-family: var(--font-body); font-size: var(--text-small); color: rgba(248,246,241,0.65); line-height: 1.4; }
+
+    /* ── REVIVAL BLOCK: Viola (no 1-in-X) ── */
+    .win-revival-block { border-left: 3px solid #E8B923; padding: 1rem 1.5rem; margin: var(--space-md) 0; background: rgba(232,185,35,0.06); border-radius: 0 var(--radius) var(--radius) 0; max-width: 520px; }
+    .win-revival-text { font-family: var(--font-editorial); font-style: italic; font-size: clamp(1.05rem, 2vw, 1.25rem); color: rgba(248,246,241,0.9); line-height: var(--leading-snug); }
+
+    /* ── CHART LEGEND ── */
+    .win-chart-legend { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .win-legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: var(--text-small); color: var(--of-muted); }
+    .win-legend-swatch { width: 20px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+    .win-legend-swatch--dashed { background: repeating-linear-gradient(90deg, rgba(248,246,241,0.35) 0, rgba(248,246,241,0.35) 4px, transparent 4px, transparent 8px); }
+
+    /* ── TEASER BLOCK ── */
+    .win-teaser { background: var(--of-card); border: 1px solid var(--of-border); border-left: 3px solid var(--of-gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.5rem; margin: var(--space-md) 0; max-width: 680px; }
+    .win-teaser-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 0.5rem; }
+    .win-teaser-title { font-family: var(--font-editorial); font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: rgba(248,246,241,0.96); line-height: var(--leading-snug); }
+
+    /* ── SHARE BLOCK ── */
+    .share-block { background: var(--of-card); border: 1px solid var(--of-border); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
+    .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: var(--of-gold); margin-bottom: 0.4rem; }
+    .share-block-nudge { font-family: var(--font-body); font-style: italic; font-size: var(--text-small); color: var(--of-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .share-block-btns { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 0.875rem; }
+    .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); min-height: var(--touch); text-decoration: none; cursor: pointer; transition: opacity 0.15s; border: none; }
+    .share-btn:hover { opacity: 0.82; text-decoration: none; }
+    .share-btn--outline { background: transparent; border: 1.5px solid var(--of-gold); color: var(--of-gold); }
+    .share-btn--filled { background: var(--of-gold); color: #111118; font-weight: 600; }
+    .share-block-substack { font-family: var(--font-body); font-size: var(--text-small); color: var(--of-muted); }
+    .share-block-substack a { color: var(--of-gold); }
+
+    /* ── FOOTER ── */
+    .win-footer { background: #0a0a0a; padding: var(--space-xl) 1.25rem var(--space-md); border-top: 1px solid var(--of-border); }
+    .win-footer-inner { max-width: var(--max-editorial); margin: 0 auto; }
+    .win-footer-brand { margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .win-footer-wordmark { font-family: var(--font-mono); font-size: var(--text-small); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3d3a55; margin-bottom: 0.35rem; }
+    .win-footer-wordmark span { color: var(--of-gold); }
+    .win-footer-tagline { font-family: var(--font-editorial); font-size: 1rem; font-style: italic; color: #4a465e; line-height: 1.5; }
+    .win-footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .win-footer-link { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; min-height: var(--touch); display: flex; align-items: center; transition: color 0.15s; }
+    .win-footer-link:hover { color: #888; text-decoration: none; }
+    .win-footer-link--kofi { color: var(--of-gold); border: 1px solid rgba(232,185,35,0.3); padding: 0.4rem 0.75rem; border-radius: 100px; }
+    .win-footer-link--kofi:hover { color: var(--of-gold); border-color: var(--of-gold); }
+    .win-footer-methodology { margin-bottom: var(--space-md); }
+    .win-footer-methodology summary { font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; color: #4a465e; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.5rem; min-height: var(--touch); user-select: none; }
+    .win-footer-methodology summary::-webkit-details-marker { display: none; }
+    .win-footer-methodology summary::before { content: '+'; font-family: var(--font-mono); color: var(--of-gold); font-size: 0.9rem; }
+    details[open] .win-footer-methodology summary::before { content: '−'; }
+    .win-footer-methodology-body { padding: 1rem 0 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0.5rem; }
+    .win-footer-methodology-note { font-size: var(--text-small); color: #4a465e; line-height: 1.7; max-width: 600px; }
+    .win-footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.04); }
+    .win-footer-copy { font-family: var(--font-mono); font-size: 0.58rem; color: #222; letter-spacing: 0.08em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .win-hero-stats { grid-template-columns: 1fr; }
+      .win-journey-grid { grid-template-columns: 1fr; }
+      .win-stat-row { flex-direction: column; }
+      .section-nav { flex-wrap: wrap; gap: 0.5rem; }
+      .win-chart-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body class="has-breadcrumb">
+
+<!-- BREADCRUMB -->
+<div class="ai-breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <a href="/naming/">What's in a Name</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Part 3: The Academy Effect</span>
+</div>
+
+<!-- NAV -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">Substack</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" data-config-url="youtube">YouTube</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="win-hero" role="banner">
+  <div class="win-hero-inner">
+    <span class="win-hero-eyebrow">✦ Obsidian Futures · What's in a Name · Part 3</span>
+    <h1 class="win-hero-headline">The Academy Effect</h1>
+    <!-- AMA VOICE PASS NEEDED — hero dek -->
+    <p class="win-hero-dek">Halle Berry's Oscar made her name spike 55 times. Denzel's name peaked in 1992. That's the Malcolm X year — not the year he won.</p>
+    <div class="win-hero-stats">
+      <div class="win-stat-card">
+        <div class="win-stat-num">55&times;</div>
+        <div class="win-stat-label">Halle Berry name growth after her Oscar</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">1992</div>
+        <div class="win-stat-label">Denzel's name peak — the Malcolm X year, not the Oscar year</div>
+      </div>
+      <div class="win-stat-card">
+        <div class="win-stat-num">2019</div>
+        <div class="win-stat-label">Viola Davis: a name your grandmother had, now your daughter has it</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- JOURNEY BLOCK -->
+<section class="win-journey" aria-label="Follow the platform">
+  <div class="win-journey-inner">
+    <div class="win-journey-grid">
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="win-journey-item" aria-label="Watch on YouTube" data-config-url="youtube">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">&#9654;</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Watch</span>
+          <span class="win-journey-dest">YouTube &rarr;</span>
+        </div>
+      </a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="win-journey-item" aria-label="Read on Substack" data-config-url="substack">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">&#10022;</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Read</span>
+          <span class="win-journey-dest">Substack &rarr;</span>
+        </div>
+      </a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-journey-item" aria-label="Back this work on Ko-fi">
+        <div class="win-journey-icon-cell"><span class="win-journey-icon">$</span></div>
+        <div class="win-journey-text-cell">
+          <span class="win-journey-action">Back this work</span>
+          <span class="win-journey-dest">Ko-fi &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAB BAR -->
+<nav class="ai-tabs" id="tabBar" role="tablist" aria-label="Piece sections">
+  <button class="ai-tab active" data-tab="1" data-target="#tab-overview" role="tab" aria-selected="true">Overview</button>
+  <button class="ai-tab" data-tab="2" data-target="#tab-halle" role="tab" aria-selected="false">Halle Berry</button>
+  <button class="ai-tab" data-tab="3" data-target="#tab-denzel" role="tab" aria-selected="false">Denzel Washington</button>
+  <button class="ai-tab" data-tab="4" data-target="#tab-viola" role="tab" aria-selected="false">Viola Davis</button>
+  <button class="ai-tab" data-tab="5" data-target="#tab-data" role="tab" aria-selected="false">What the Data Shows</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     TAB 1 — OVERVIEW
+══════════════════════════════════════ -->
+<section id="tab-overview" class="win-section active" role="tabpanel">
+  <div class="win-inner">
+    <span class="win-eyebrow">Overview · Part 1</span>
+    <!-- AMA VOICE PASS NEEDED — h2 -->
+    <h2 class="win-h2">The Oscar validates. But Black families were already watching.</h2>
+
+    <!-- AMA VOICE PASS NEEDED — body prose (3–4 paragraphs) -->
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+
+    <div class="win-stat-row">
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">55&times;</div>
+        <div class="win-stat-item-label">Halle Berry name growth after her Oscar</div>
+      </div>
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">1992</div>
+        <div class="win-stat-item-label">Denzel's peak — Malcolm X, not the Oscar</div>
+      </div>
+      <div class="win-stat-item">
+        <div class="win-stat-item-num">2019</div>
+        <div class="win-stat-item-label">Viola: a name coming back</div>
+      </div>
+    </div>
+
+    <!-- SHARE BLOCK — Tab 1, locked -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <!-- AMA VOICE PASS NEEDED — share nudge -->
+      <p class="share-block-nudge">The charts are screenshot-friendly. Share what surprises you.</p>
+      <div class="share-block-btns">
+        <!-- AMA VOICE PASS NEEDED — update tweet text before deploy -->
+        <a href="https://twitter.com/intent/tweet?text=The+Academy+Effect+%E2%80%94+Denzel%27s+name+peaked+in+1992.+Malcolm+X%2C+not+the+Oscar.&url=https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X"><span>&#x58;</span> Share on X</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on Facebook">Facebook</a>
+        <a href="https://api.whatsapp.com/send?text=The+Academy+Effect+https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on WhatsApp">WhatsApp</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on LinkedIn">LinkedIn</a>
+        <a href="mailto:?subject=The+Academy+Effect&body=https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F" class="share-btn share-btn--outline" aria-label="Share via Email">Email</a>
+        <button class="share-btn share-btn--outline" onclick="(function(btn){navigator.clipboard.writeText('https://interactive.alterrell.com/naming/part-3/').then(function(){btn.textContent='Copied ✓';setTimeout(function(){btn.innerHTML='<span>◎</span> Copy link';},2000)});})(this)" aria-label="Copy link"><span>&#x25CE;</span> Copy link</button>
+      </div>
+      <p class="share-block-substack">Get the story behind the story &rarr; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">alterrell.substack.com</a></p>
+    </div>
+
+    <div class="section-nav">
+      <span class="section-nav-spacer"></span>
+      <a href="#tab-halle" class="section-nav-btn next" data-nav-to="2">
+        <span class="section-nav-direction">Next &rarr;</span>
+        <span class="section-nav-label">Halle Berry</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 2 — HALLE BERRY
+     Type A · Direction 1 Cropped (~1985–2010)
+══════════════════════════════════════ -->
+<section id="tab-halle" class="win-section" role="tabpanel">
+  <div class="win-inner">
+    <span class="win-eyebrow">Halle Berry · Part 2</span>
+    <!-- AMA VOICE PASS NEEDED — h2 -->
+    <h2 class="win-h2">The first Black woman to win Best Actress. Her name recorded everything.</h2>
+
+    <div class="win-name">Halle Berry</div>
+    <!-- AMA VOICE PASS NEEDED — win-sub -->
+    <p class="win-sub"><!-- AMA VOICE PASS NEEDED --></p>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">971</div>
+        <div class="win-chart-stat-label">Peak babies named Halle (2002)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">55&times;</div>
+        <div class="win-chart-stat-label">Growth from pre-fame baseline</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">2002</div>
+        <div class="win-chart-stat-label">Peak year — one year after the Oscar</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Halle — US baby name frequency, 1985–2010 (cropped)</div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartHalle" aria-label="Halle baby name frequency chart" role="img"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
+    </div>
+
+    <!-- AMA VOICE PASS NEEDED — editorial prose -->
+    <div class="win-chart-editorial"><!-- AMA VOICE PASS NEEDED --></div>
+
+    <div class="win-bottom-block">
+      <div class="win-bottom-label">Halle · 2002 Peak</div>
+      <div class="win-bottom-stat">1 in 1,854</div>
+      <div class="win-bottom-ctx">One per elementary school</div>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-overview" class="section-nav-btn" data-nav-to="1">
+        <span class="section-nav-direction">&larr; Previous</span>
+        <span class="section-nav-label">Overview</span>
+      </a>
+      <a href="#tab-denzel" class="section-nav-btn next" data-nav-to="3">
+        <span class="section-nav-direction">Next &rarr;</span>
+        <span class="section-nav-label">Denzel Washington</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 3 — DENZEL WASHINGTON
+     Type A · Direction 1 Cropped (~1988–2006)
+══════════════════════════════════════ -->
+<section id="tab-denzel" class="win-section" role="tabpanel">
+  <div class="win-inner">
+    <span class="win-eyebrow">Denzel Washington · Part 3</span>
+    <!-- AMA VOICE PASS NEEDED — h2 -->
+    <h2 class="win-h2">He peaked in 1992. That&#8217;s Malcolm X. Not the Oscar.</h2>
+
+    <div class="win-name">Denzel Washington</div>
+    <!-- AMA VOICE PASS NEEDED — win-sub -->
+    <p class="win-sub"><!-- AMA VOICE PASS NEEDED --></p>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">767</div>
+        <div class="win-chart-stat-label">Peak babies named Denzel (1992)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">196</div>
+        <div class="win-chart-stat-label">Babies named Denzel in 2001 — the Oscar year</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">1992</div>
+        <div class="win-chart-stat-label">Malcolm X premiered — the real cultural peak</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Denzel — US baby name frequency, 1988–2006 (cropped)</div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartDenzel" aria-label="Denzel baby name frequency chart" role="img"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
+    </div>
+
+    <!-- AMA VOICE PASS NEEDED — editorial prose -->
+    <div class="win-chart-editorial"><!-- AMA VOICE PASS NEEDED --></div>
+
+    <div class="win-bottom-block">
+      <div class="win-bottom-label">Denzel · 1992 Peak</div>
+      <div class="win-bottom-stat">1 in 2,347</div>
+      <div class="win-bottom-ctx">One per middle school</div>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-halle" class="section-nav-btn" data-nav-to="2">
+        <span class="section-nav-direction">&larr; Previous</span>
+        <span class="section-nav-label">Halle Berry</span>
+      </a>
+      <a href="#tab-viola" class="section-nav-btn next" data-nav-to="4">
+        <span class="section-nav-direction">Next &rarr;</span>
+        <span class="section-nav-label">Viola Davis</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 4 — VIOLA DAVIS
+     Type C · Direction 2 Dual Panel (full range)
+     No 1-in-X — revival framing
+══════════════════════════════════════ -->
+<section id="tab-viola" class="win-section" role="tabpanel">
+  <div class="win-inner">
+    <span class="win-eyebrow">Viola Davis · Part 4</span>
+    <!-- AMA VOICE PASS NEEDED — h2 -->
+    <h2 class="win-h2">The name fell for forty years. Then it came back.</h2>
+
+    <div class="win-name">Viola Davis</div>
+    <!-- AMA VOICE PASS NEEDED — win-sub -->
+    <p class="win-sub"><!-- AMA VOICE PASS NEEDED --></p>
+
+    <div class="win-chart-stats">
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">429</div>
+        <div class="win-chart-stat-label">Peak babies named Viola (1960)</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">41</div>
+        <div class="win-chart-stat-label">Trough — 1995, the low point</div>
+      </div>
+      <div class="win-chart-stat">
+        <div class="win-chart-stat-num">5.7&times;</div>
+        <div class="win-chart-stat-label">Growth from trough to 2019</div>
+      </div>
+    </div>
+
+    <div class="win-chart-wrap">
+      <div class="win-chart-title">Viola — US baby name frequency, 1960–2019</div>
+      <div class="win-chart-legend">
+        <div class="win-legend-item">
+          <div class="win-legend-swatch win-legend-swatch--dashed"></div>
+          <span>Decline era (1960–1995)</span>
+        </div>
+        <div class="win-legend-item">
+          <div class="win-legend-swatch" style="background:#E8B923;"></div>
+          <span>Revival (1995–2019)</span>
+        </div>
+      </div>
+      <div class="win-chart-canvas-wrap">
+        <canvas id="chartViola" aria-label="Viola baby name frequency chart" role="img"></canvas>
+      </div>
+      <p class="chart-screenshot-nudge">Screenshot this chart to share</p>
+    </div>
+
+    <!-- AMA VOICE PASS NEEDED — editorial prose -->
+    <div class="win-chart-editorial"><!-- AMA VOICE PASS NEEDED --></div>
+
+    <!-- REVIVAL FRAMING — no 1-in-X for Viola -->
+    <div class="win-revival-block">
+      <p class="win-revival-text">A name your grandmother had. Now your daughter has it.</p>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-denzel" class="section-nav-btn" data-nav-to="3">
+        <span class="section-nav-direction">&larr; Previous</span>
+        <span class="section-nav-label">Denzel Washington</span>
+      </a>
+      <a href="#tab-data" class="section-nav-btn next" data-nav-to="5">
+        <span class="section-nav-direction">Next &rarr;</span>
+        <span class="section-nav-label">What the Data Shows</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 5 — WHAT THE DATA SHOWS
+══════════════════════════════════════ -->
+<section id="tab-data" class="win-section" role="tabpanel">
+  <div class="win-inner">
+    <span class="win-eyebrow">What the Data Shows · Part 5</span>
+    <!-- AMA VOICE PASS NEEDED — h2 -->
+    <h2 class="win-h2">Institutional validation and cultural impact are not the same thing.</h2>
+
+    <!-- AMA VOICE PASS NEEDED — body prose -->
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+    <p class="win-body"><!-- AMA VOICE PASS NEEDED --></p>
+
+    <div class="win-teaser">
+      <div class="win-teaser-label"><a href="/naming/part-4/" style="color:var(--of-gold);text-decoration:none;">Coming Next: Part 4 &rarr;</a></div>
+      <div class="win-teaser-title">The Page &amp; the Stage: Authors &amp; Models — Maya Angelou, Zora Neale Hurston, Colson Whitehead, Tyra Banks. Legitimacy through intellect and image, mapped in SSA data.</div>
+    </div>
+
+    <!-- SHARE BLOCK — Tab 5 -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">Share what surprises you — copy the link or post directly.</p>
+      <div class="share-block-btns">
+        <button class="share-btn share-btn--outline" id="part3-copy-btn" onclick="(function(btn){navigator.clipboard.writeText(window.location.href).then(function(){btn.textContent='Copied ✓';setTimeout(function(){btn.innerHTML='<span>◎</span> Copy link';},2000)});})(this)">
+          <span>&#x25CE;</span> Copy link
+        </button>
+        <!-- AMA VOICE PASS NEEDED — update tweet text before deploy -->
+        <a href="https://twitter.com/intent/tweet?text=The+Academy+Effect+%E2%80%94+Denzel%27s+name+peaked+in+1992.+Malcolm+X%2C+not+the+Oscar.&url=https%3A%2F%2Finteractive.alterrell.com%2Fnaming%2Fpart-3%2F&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline">
+          <span>&#x58;</span> Share on X
+        </a>
+        <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="share-btn share-btn--filled">
+          <span>$</span> Back this work
+        </a>
+      </div>
+      <p class="share-block-substack">Get the story behind the story &rarr; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" data-config-url="substack">alterrell.substack.com</a></p>
+    </div>
+
+    <div class="section-nav">
+      <a href="#tab-viola" class="section-nav-btn" data-nav-to="4">
+        <span class="section-nav-direction">&larr; Previous</span>
+        <span class="section-nav-label">Viola Davis</span>
+      </a>
+      <span class="section-nav-spacer"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="win-footer" role="contentinfo">
+  <div class="win-footer-inner">
+    <div class="win-footer-brand">
+      <div class="win-footer-wordmark"><span>Obsidian Futures</span> · Alterrell Interactive</div>
+      <div class="win-footer-tagline">The data was always there — now it&#8217;s yours.</div>
+    </div>
+
+    <div class="win-footer-links">
+      <a href="/" class="win-footer-link">&larr; All Projects</a>
+      <a href="/naming/" class="win-footer-link">&larr; Series Index</a>
+      <a href="/naming/part-2/" class="win-footer-link">&larr; Part 2: The Living Room</a>
+      <a href="/naming/part-4/" class="win-footer-link" style="color:var(--of-muted);">Part 4: The Page &amp; the Stage &rarr;</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="win-footer-link win-footer-link--kofi">$ Back this work</a>
+      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="win-footer-link" data-config-url="substack">Substack</a>
+      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="win-footer-link" data-config-url="youtube">YouTube</a>
+    </div>
+
+    <details class="win-footer-methodology">
+      <summary>Methodology &amp; Data Notes</summary>
+      <div class="win-footer-methodology-body">
+        <p class="win-footer-methodology-note">All name frequency data is from the Social Security Administration's publicly available baby name dataset, which records names given to at least 5 babies per year in the United States. Data covers 1960–2019. Charts display raw counts per year. Annotation dates are derived from publicly available release, broadcast, and awards records.</p>
+      </div>
+    </details>
+
+    <div class="win-footer-bottom">
+      <span class="win-footer-copy">&copy; 2026 &middot; interactive.alterrell.com &middot; Data as Dignity</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+<script>
+Chart.register(window['chartjs-plugin-annotation']);
+
+// ── DATA (ported exactly from source files) ──
+const halleData  = [5,5,8,6,6,8,18,12,19,14,22,20,13,19,10,19,10,15,9,13,16,16,13,17,18,26,31,24,16,27,21,26,87,286,298,306,378,372,430,585,639,638,971,919,801,735,626,617,619,549,529,467,449,407,363,301,278,276,300,329];
+const denzelData = [7,9,7,8,10,12,8,5,7,0,6,7,6,7,0,0,0,0,0,0,5,0,7,15,28,16,28,41,53,56,6,720,767,5,736,548,464,382,295,182,214,196,253,209,249,201,196,187,212,202,180,155,200,203,183,187,175,194,181,164];
+const violaData  = [429,419,319,307,294,250,206,205,163,139,151,130,128,113,117,87,99,84,62,86,106,84,87,75,84,64,59,71,71,63,57,60,48,50,44,41,47,44,42,52,45,43,57,59,52,61,99,100,96,116,117,135,167,180,194,190,223,212,214,233];
+
+const YEARS = [1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019];
+function yearLabels() { return YEARS.map(String); }
+
+// ── CONSTANTS ──
+const GOLD  = '#E8B923';
+const MUTED = 'rgba(248,246,241,0.65)';
+const GRID  = 'rgba(255,255,255,0.05)';
+
+// ── ANNOTATION HELPER (spec: dark pill labels) ──
+function annotLine(xVal, color, label, dashed) {
+  return {
+    type: 'line',
+    xMin: String(xVal), xMax: String(xVal),
+    borderColor: color,
+    borderWidth: 1.5,
+    borderDash: dashed ? [4, 4] : [],
+    label: {
+      display: true,
+      content: label,
+      position: 'start',
+      font: { family: "'DM Mono', monospace", size: 9, weight: 700 },
+      color: color,
+      backgroundColor: 'rgba(13,13,24,0.75)',
+      padding: { x: 4, y: 2 },
+      borderRadius: 3,
+    }
+  };
+}
+
+// ── SHARED SCALES ──
+const commonScales = {
+  x: {
+    grid: { color: GRID },
+    ticks: { color: MUTED, font: { family: "'DM Mono', monospace", size: 9 }, maxTicksLimit: 8, maxRotation: 0 },
+    border: { color: GRID }
+  },
+  y: {
+    beginAtZero: true,
+    grid: { color: GRID },
+    ticks: { color: MUTED, font: { family: "'DM Mono', monospace", size: 9 }, callback: function(v) { return v.toLocaleString(); } },
+    border: { color: GRID }
+  }
+};
+
+const commonTooltip = {
+  backgroundColor: '#1a1a26',
+  titleColor: MUTED,
+  bodyColor: GOLD,
+  borderColor: 'rgba(255,255,255,0.1)',
+  borderWidth: 1,
+};
+
+// ── HALLE — Direction 1, Cropped 1985–2010 ──
+new Chart(document.getElementById('chartHalle'), {
+  type: 'line',
+  data: {
+    labels: yearLabels(),
+    datasets: [{
+      data: halleData,
+      borderColor: GOLD,
+      backgroundColor: 'rgba(232,185,35,0.12)',
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...commonTooltip, callbacks: { label: function(ctx) { return ctx.parsed.y + ' babies named Halle'; } } },
+      annotation: { annotations: {
+        boomerang: annotLine(1992, MUTED, 'Boomerang', true),
+        oscar:     annotLine(2001, MUTED, 'Oscar', true),
+        peak:      annotLine(2002, GOLD,  'Peak 971', false),
+      }}
+    },
+    scales: {
+      x: { ...commonScales.x, min: '1985', max: '2010' },
+      y: commonScales.y
+    }
+  }
+});
+
+// ── DENZEL — Direction 1, Cropped 1988–2006 ──
+new Chart(document.getElementById('chartDenzel'), {
+  type: 'line',
+  data: {
+    labels: yearLabels(),
+    datasets: [{
+      data: denzelData,
+      borderColor: GOLD,
+      backgroundColor: 'rgba(232,185,35,0.12)',
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...commonTooltip, callbacks: { label: function(ctx) { return ctx.parsed.y + ' babies named Denzel'; } } },
+      annotation: { annotations: {
+        malcolm: annotLine(1992, GOLD,  'Malcolm X · Peak 767', false),
+        oscar:   annotLine(2001, MUTED, 'Oscar · 196', true),
+      }}
+    },
+    scales: {
+      x: { ...commonScales.x, min: '1988', max: '2006' },
+      y: commonScales.y
+    }
+  }
+});
+
+// ── VIOLA — Direction 2, Dual Panel, full 1960–2019 ──
+// Split at trough year 1995 (index 35): pre = muted/dashed, post = gold/solid
+var violaPre  = violaData.map(function(v, i) { return i <= 35 ? v : null; });
+var violaPost = violaData.map(function(v, i) { return i >= 35 ? v : null; });
+
+new Chart(document.getElementById('chartViola'), {
+  type: 'line',
+  data: {
+    labels: yearLabels(),
+    datasets: [
+      {
+        label: 'Decline era',
+        data: violaPre,
+        borderColor: 'rgba(248,246,241,0.35)',
+        backgroundColor: 'rgba(248,246,241,0.04)',
+        borderWidth: 1.5,
+        borderDash: [4, 4],
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,
+        spanGaps: false
+      },
+      {
+        label: 'Revival',
+        data: violaPost,
+        borderColor: GOLD,
+        backgroundColor: 'rgba(232,185,35,0.12)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,
+        spanGaps: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...commonTooltip, mode: 'index', intersect: false, callbacks: { label: function(ctx) { return ctx.parsed.y !== null ? ctx.parsed.y + ' babies named Viola' : ''; } } },
+      annotation: { annotations: {
+        htgawm: annotLine(2014, MUTED, 'HTGAWM', true),
+        oscar:  annotLine(2016, GOLD,  'Oscar', false),
+      }}
+    },
+    scales: commonScales
+  }
+});
+
+// ── TAB SWITCHING ──
+(function() {
+  var tabs   = document.querySelectorAll('.ai-tab');
+  var tabBar = document.querySelector('.ai-tabs');
+
+  function switchTab(targetSelector) {
+    document.querySelectorAll('.win-section').forEach(function(s) { s.classList.remove('active'); });
+    tabs.forEach(function(t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    var section = document.querySelector(targetSelector);
+    var tab     = document.querySelector('.ai-tab[data-target="' + targetSelector + '"]');
+    if (section) section.classList.add('active');
+    if (tab) {
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    var tabsEl = document.querySelector('.ai-tabs');
+    var navTop = tabsEl ? tabsEl.getBoundingClientRect().bottom + window.scrollY : 0;
+    window.scrollTo({ top: navTop, behavior: 'smooth' });
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() { switchTab(tab.dataset.target); });
+  });
+
+  document.querySelectorAll('[data-nav-to]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetTab = document.querySelector('.ai-tab[data-tab="' + btn.dataset.navTo + '"]');
+      if (targetTab) switchTab(targetTab.dataset.target);
+    });
+  });
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) tabBar.classList.add('no-fade');
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+})();
+</script>
+
+</body>
+</html>
