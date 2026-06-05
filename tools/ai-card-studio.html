@@ -5,1222 +5,1196 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Card Studio — Alterrell Interactive</title>
 
-  <!-- Platform fonts (same stack as alterrell-interactive.css) -->
+  <!--
+    Standalone dev tool. Does NOT load alterrell-interactive.css to avoid
+    layout conflicts with tool UI. Card CSS uses the same class names
+    (carousel__card, carousel__card-head, etc.) so Puppeteer selectors work.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&family=Spectral:ital,wght@1,700&display=swap" rel="stylesheet">
 
-  <!-- html2canvas for in-browser PNG export -->
+  <!-- html2canvas for browser-side PNG export -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
-    /* ── DESIGN TOKENS — exact match to alterrell-interactive.css ── */
+    /* ─────────────────────────────────────────
+       TOOL UI — dark IDE aesthetic
+       Prefixed .s- to avoid any class collision
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      /* Platform tokens */
-      --teal:           #0a7c72;
-      --teal-light:     #0d9488;
-      --teal-bg:        #f0faf9;
-      --paper:          #f8f6f1;
-      --paper-card:     #ffffff;
-      --border:         #e0dcd4;
-      --ink:            #111111;
-      --ink-secondary:  #444444;
-      --ink-muted:      #888888;
-      --radius:         6px;
-      --radius-sm:      3px;
-      --font-editorial: 'DM Serif Display', Georgia, serif;
-      --font-body:      'DM Sans', system-ui, sans-serif;
-      --font-mono:      'DM Mono', 'Fira Code', monospace;
+      /* Tool shell */
+      --s-bg:       #111117;
+      --s-panel:    #181820;
+      --s-border:   #26263a;
+      --s-text:     #c8c6d4;
+      --s-muted:    #55536a;
+      --s-label:    #7a7890;
+      --s-accent:   #0a7c72;
 
-      /* OF lane */
-      --of-bg:    #0a0a12;
-      --of-gold:  #E8B923;
-      --of-card:  #0f0f1e;
-
-      /* Tool UI */
-      --ui-bg:        #13131a;
-      --ui-panel:     #1a1a24;
-      --ui-border:    #2a2a38;
-      --ui-text:      #c8c6d0;
-      --ui-muted:     #5a5870;
-      --ui-accent:    #0a7c72;
-      --ui-label:     #7a7890;
+      /* Platform tokens — exact values from alterrell-interactive.css */
+      --teal:       #0a7c72;
+      --gold:       #E8B923;
+      --font-mono:  'DM Mono', 'Fira Code', monospace;
+      --font-body:  'DM Sans', system-ui, sans-serif;
+      --font-ed:    'DM Serif Display', Georgia, serif;
     }
 
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow: hidden; font-family: var(--font-mono); font-size: 12px; background: var(--ui-bg); color: var(--ui-text); }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--s-bg);
+      color: var(--s-text);
+    }
 
-    /* ── THREE-PANEL LAYOUT ── */
+    /* ── THREE-PANEL GRID ── */
     .studio {
       display: grid;
-      grid-template-columns: 300px 1fr 322px;
+      grid-template-columns: 288px 1fr 320px;
       height: 100vh;
     }
 
-    /* ── PANELS ── */
-    .panel {
+    /* ── PANEL BASE ── */
+    .s-panel {
       height: 100vh;
       overflow-y: auto;
       overflow-x: hidden;
-      border-right: 1px solid var(--ui-border);
+      border-right: 1px solid var(--s-border);
       scrollbar-width: thin;
-      scrollbar-color: var(--ui-border) transparent;
+      scrollbar-color: var(--s-border) transparent;
     }
-    .panel:last-child { border-right: none; }
-    .panel::-webkit-scrollbar { width: 4px; }
-    .panel::-webkit-scrollbar-track { background: transparent; }
-    .panel::-webkit-scrollbar-thumb { background: var(--ui-border); border-radius: 2px; }
+    .s-panel:last-child { border-right: none; }
+    .s-panel::-webkit-scrollbar { width: 4px; }
+    .s-panel::-webkit-scrollbar-thumb { background: var(--s-border); border-radius: 2px; }
 
-    /* ── PANEL SECTIONS ── */
-    .panel-header {
-      padding: 12px 14px 10px;
-      border-bottom: 1px solid var(--ui-border);
-      font-size: 10px;
-      letter-spacing: 0.12em;
+    /* ── PANEL HEADER ── */
+    .s-panel-head {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--s-border);
+      font-size: 9px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ui-muted);
+      color: var(--s-muted);
       display: flex;
       align-items: center;
       gap: 6px;
+      background: var(--s-panel);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    .panel-header-dot {
-      width: 6px; height: 6px;
+    .s-panel-head::before {
+      content: '';
+      width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--ui-accent);
+      background: var(--s-accent);
       flex-shrink: 0;
     }
-    .panel-section {
+
+    /* ── SECTION ROW ── */
+    .s-section {
       padding: 12px 14px;
-      border-bottom: 1px solid var(--ui-border);
+      border-bottom: 1px solid var(--s-border);
     }
-    .section-label {
+    .s-section-label {
+      display: block;
       font-size: 9px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ui-label);
+      color: var(--s-label);
       margin-bottom: 8px;
-      display: block;
     }
 
-    /* ── LEFT PANEL ── */
-    .panel-left { background: var(--ui-panel); }
-
+    /* ── JSON TEXTAREA ── */
     #json-input {
       width: 100%;
-      height: 140px;
-      background: var(--ui-bg);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--radius-sm);
-      color: var(--ui-text);
+      height: 130px;
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-text);
       font-family: var(--font-mono);
       font-size: 10px;
-      line-height: 1.5;
+      line-height: 1.55;
       padding: 8px;
       resize: none;
       outline: none;
       transition: border-color 0.15s;
     }
-    #json-input:focus { border-color: var(--ui-accent); }
-    #json-input.error { border-color: #b91c1c; }
+    #json-input:focus { border-color: var(--s-accent); }
+    #json-input.s-error { border-color: #b91c1c; }
 
-    .json-status {
+    .s-load-btn {
+      margin-top: 6px;
+      width: 100%;
+      padding: 7px;
+      background: var(--s-accent);
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      font-family: var(--font-mono);
       font-size: 9px;
-      margin-top: 5px;
-      color: var(--ui-muted);
-      min-height: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.15s;
     }
-    .json-status.ok { color: #15803d; }
-    .json-status.err { color: #b91c1c; }
+    .s-load-btn:hover { opacity: 0.85; }
+
+    .s-status {
+      margin-top: 5px;
+      font-size: 9px;
+      color: var(--s-muted);
+      min-height: 13px;
+    }
+    .s-status.ok  { color: #22c55e; }
+    .s-status.err { color: #ef4444; }
 
     /* ── SHELL TABS ── */
-    .shell-tabs {
+    .s-tabs {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 3px;
     }
-    .shell-tab {
-      background: var(--ui-bg);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--radius-sm);
-      color: var(--ui-muted);
+    .s-tab {
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-muted);
       font-family: var(--font-mono);
       font-size: 9.5px;
       letter-spacing: 0.06em;
-      padding: 6px 4px;
+      padding: 6px 2px;
       cursor: pointer;
       text-align: center;
       transition: all 0.12s;
     }
-    .shell-tab:hover { color: var(--ui-text); border-color: var(--ui-text); }
-    .shell-tab.active {
-      background: var(--ui-accent);
-      border-color: var(--ui-accent);
+    .s-tab:hover { color: var(--s-text); border-color: var(--s-text); }
+    .s-tab.active {
+      background: var(--s-accent);
+      border-color: var(--s-accent);
       color: #fff;
     }
 
     /* ── LANE TOGGLE ── */
-    .lane-toggle {
+    .s-lane-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3px;
     }
-    .lane-btn {
-      background: var(--ui-bg);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--radius-sm);
-      color: var(--ui-muted);
+    .s-lane-btn {
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-muted);
       font-family: var(--font-mono);
       font-size: 9.5px;
       letter-spacing: 0.08em;
-      padding: 6px;
+      padding: 7px;
       cursor: pointer;
       text-align: center;
       transition: all 0.12s;
     }
-    .lane-btn[data-lane="AI"].active { background: var(--teal); border-color: var(--teal); color: #fff; }
-    .lane-btn[data-lane="OF"].active { background: var(--of-gold); border-color: var(--of-gold); color: #111; }
+    .s-lane-btn[data-lane="AI"].active {
+      background: var(--teal); border-color: var(--teal); color: #fff;
+    }
+    .s-lane-btn[data-lane="OF"].active {
+      background: var(--gold); border-color: var(--gold); color: #111;
+    }
 
-    /* ── SLIDERS ── */
-    .slider-group { display: none; }
-    .slider-group.active { display: block; }
+    /* ── SLIDER GROUPS ── */
+    .s-slider-group { display: none; }
+    .s-slider-group.active { display: block; }
 
-    .slider-row {
+    .s-slider-row {
       display: grid;
-      grid-template-columns: 90px 1fr 40px;
+      grid-template-columns: 96px 1fr 38px;
       align-items: center;
       gap: 8px;
-      margin-bottom: 9px;
+      margin-bottom: 10px;
     }
-    .slider-row:last-child { margin-bottom: 0; }
-    .slider-label {
-      font-size: 9px;
-      color: var(--ui-label);
-      letter-spacing: 0.04em;
-    }
+    .s-slider-row:last-child { margin-bottom: 0; }
+    .s-slider-lbl { font-size: 9px; color: var(--s-label); letter-spacing: 0.04em; }
+
     input[type="range"] {
       width: 100%;
       height: 3px;
       -webkit-appearance: none;
       appearance: none;
-      background: var(--ui-border);
+      background: var(--s-border);
       border-radius: 2px;
       outline: none;
       cursor: pointer;
     }
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
+      width: 12px; height: 12px;
       border-radius: 50%;
-      background: var(--ui-accent);
-      cursor: pointer;
+      background: var(--s-accent);
     }
     input[type="range"]::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
+      width: 12px; height: 12px;
       border-radius: 50%;
-      background: var(--ui-accent);
-      cursor: pointer;
+      background: var(--s-accent);
       border: none;
     }
-    .slider-val {
-      font-size: 9px;
-      color: var(--ui-text);
-      text-align: right;
-    }
+    .s-slider-val { font-size: 9px; color: var(--s-text); text-align: right; }
 
     /* VA toggle (Shell A) */
-    .va-toggle {
+    .s-va-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px;
-      margin-top: 4px;
+      grid-template-columns: 96px 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0;
     }
-    .va-btn {
-      background: var(--ui-bg);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--radius-sm);
-      color: var(--ui-muted);
+    .s-va-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .s-va-btn {
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-muted);
       font-family: var(--font-mono);
       font-size: 9px;
       padding: 5px;
       cursor: pointer;
+      text-align: center;
       transition: all 0.12s;
     }
-    .va-btn.active { background: var(--ui-accent); border-color: var(--ui-accent); color: #fff; }
+    .s-va-btn.active { background: var(--s-accent); border-color: var(--s-accent); color: #fff; }
 
     /* ── CENTER PANEL ── */
-    .panel-center {
+    .s-center {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 14px;
-      background: #0c0c12;
-      border-right: 1px solid var(--ui-border);
+      background: #0a0a10;
       padding: 24px;
+      overflow: hidden;
     }
 
-    .card-counter {
+    .s-counter {
       font-family: var(--font-mono);
       font-size: 9.5px;
-      color: var(--ui-muted);
+      color: var(--s-muted);
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .card-stage {
-      position: relative;
-      /* exact card size — no scaling */
+    .s-card-stage {
+      /* matches card exactly so no extra space */
+      width: 300px;
+      height: 280px;
+      flex-shrink: 0;
     }
 
-    .card-nav {
+    .s-nav {
       display: flex;
       gap: 8px;
-      align-items: center;
     }
-    .nav-btn {
-      width: 32px;
-      height: 32px;
-      background: var(--ui-panel);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--radius-sm);
-      color: var(--ui-text);
+    .s-nav-btn {
+      width: 32px; height: 32px;
+      background: var(--s-panel);
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-text);
       font-size: 14px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.12s;
+      transition: border-color 0.12s;
     }
-    .nav-btn:hover:not(:disabled) { border-color: var(--ui-accent); color: var(--ui-accent); }
-    .nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .s-nav-btn:hover:not(:disabled) { border-color: var(--s-accent); color: var(--s-accent); }
+    .s-nav-btn:disabled { opacity: 0.3; cursor: default; }
 
     /* ── RIGHT PANEL ── */
-    .panel-right { background: var(--ui-panel); }
+    .s-right { background: var(--s-panel); display: flex; flex-direction: column; }
+    .s-contact-sheet { flex: 1; overflow-y: auto; }
 
-    .contact-group { border-bottom: 1px solid var(--ui-border); }
-    .contact-group-header {
-      padding: 8px 12px;
-      font-size: 9px;
+    .s-shell-label {
+      padding: 7px 12px;
+      font-size: 8.5px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ui-label);
-      border-bottom: 1px solid var(--ui-border);
-      background: rgba(0,0,0,0.2);
+      color: var(--s-label);
+      background: rgba(0,0,0,0.25);
+      border-bottom: 1px solid var(--s-border);
+      border-top: 1px solid var(--s-border);
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
-    .contact-grid {
+    .s-shell-label:first-child { border-top: none; }
+
+    .s-thumb-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
       padding: 10px 12px;
     }
-    .contact-item {
+
+    .s-thumb-item {
       position: relative;
       cursor: pointer;
     }
-    .contact-item:hover .contact-hover { opacity: 1; }
-    .contact-thumb-wrap {
-      width: 150px;
-      height: 140px;
+    .s-thumb-wrap {
+      width: 148px;
+      height: 138px;
       overflow: hidden;
-      border: 1px solid var(--ui-border);
-      border-radius: 3px;
+      border: 1px solid var(--s-border);
+      border-radius: 2px;
       position: relative;
+      transition: border-color 0.12s;
     }
-    .contact-thumb-inner {
+    .s-thumb-item:hover .s-thumb-wrap { border-color: var(--s-accent); }
+    .s-thumb-inner {
       width: 300px;
       height: 280px;
-      transform: scale(0.5);
+      transform: scale(0.4933);
       transform-origin: 0 0;
       pointer-events: none;
     }
-    .contact-hover {
+    .s-thumb-exported {
       position: absolute;
       inset: 0;
-      background: rgba(10,124,114,0.12);
-      opacity: 0;
-      transition: opacity 0.15s;
-      border-radius: 3px;
-    }
-    .contact-exported {
-      position: absolute;
-      inset: 0;
-      background: rgba(21,128,61,0.75);
-      display: flex;
+      background: rgba(10, 124, 114, 0.82);
+      display: none;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 26px;
       color: #fff;
-      border-radius: 3px;
-      display: none;
+      border-radius: 2px;
     }
-    .contact-label {
+    .s-thumb-name {
       font-size: 8px;
-      color: var(--ui-muted);
+      color: var(--s-muted);
       margin-top: 3px;
-      letter-spacing: 0.04em;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      letter-spacing: 0.03em;
     }
-    .contact-empty {
-      padding: 16px 12px;
+
+    .s-contact-empty {
+      padding: 20px 14px;
       font-size: 10px;
-      color: var(--ui-muted);
+      color: var(--s-muted);
       text-align: center;
     }
 
-    /* Export All button */
-    .export-bar {
-      padding: 12px;
-      border-top: 1px solid var(--ui-border);
-      position: sticky;
-      bottom: 0;
-      background: var(--ui-panel);
+    /* Export bar */
+    .s-export-bar {
+      padding: 10px 12px;
+      border-top: 1px solid var(--s-border);
+      background: var(--s-panel);
+      display: flex;
+      justify-content: flex-end;
     }
-    #export-all {
-      width: 100%;
-      background: var(--ui-accent);
+    #export-all-btn {
+      background: var(--s-accent);
       border: none;
-      border-radius: var(--radius-sm);
+      border-radius: 3px;
       color: #fff;
       font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
+      font-size: 9px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 9px;
+      padding: 8px 16px;
       cursor: pointer;
       transition: opacity 0.15s;
     }
-    #export-all:hover { opacity: 0.85; }
-    #export-all:disabled { opacity: 0.4; cursor: default; }
+    #export-all-btn:hover { opacity: 0.85; }
+    #export-all-btn:disabled { opacity: 0.38; cursor: default; }
 
-    /* ══════════════════════════════════════════
-       CARD STYLES — locked values match platform
-       alterrell-interactive.css tokens exactly
-    ══════════════════════════════════════════ */
+    /* ══════════════════════════════════════════════════
+       CARD CSS — uses carousel__card* class names from
+       alterrell-interactive.css exactly. No imports —
+       CSS is defined here so the tool is fully standalone.
+    ══════════════════════════════════════════════════ */
 
-    #card-preview, .contact-thumb-inner .mini-card {
+    /* Card container — LOCKED 300×280px */
+    .carousel__card {
       width: 300px;
       height: 280px;
       display: flex;
       flex-direction: column;
-      border-radius: var(--radius);
       overflow: hidden;
-      /* LOCKED: border 7px, applied per lane below */
+      /* lane-specific tokens applied via .lane-ai / .lane-of */
+      background: var(--c-bg, #f8f6f1);
+      border: 7px solid var(--c-border, #0a7c72); /* LOCKED: 7px */
+      border-radius: 6px;
     }
 
-    /* AI lane */
-    #card-preview.lane-ai, .contact-thumb-inner .mini-card.lane-ai {
-      border: 7px solid var(--teal);           /* LOCKED: #0a7c72 */
-      background: var(--paper-card);            /* LOCKED: #ffffff */
+    /* ── Lane tokens: AI ── */
+    .carousel__card.lane-ai {
+      --c-bg:       #f8f6f1;          /* LOCKED */
+      --c-border:   #0a7c72;          /* LOCKED */
+      --c-eyebrow:  #0a7c72;          /* LOCKED */
+      --c-ink:      #111111;
+      --c-ink-sub:  #444444;
+      --c-accent:   #0a7c72;
+      --c-divider:  #e0dcd4;
+      --c-bar-bg:   #e0dcd4;
     }
 
-    /* OF lane */
-    #card-preview.lane-of, .contact-thumb-inner .mini-card.lane-of {
-      border: 7px solid var(--of-gold);         /* LOCKED: #E8B923 */
-      background: var(--of-card);               /* LOCKED: #0f0f1e */
+    /* ── Lane tokens: OF ── */
+    .carousel__card.lane-of {
+      --c-bg:       #111118;          /* LOCKED */
+      --c-border:   #E8B923;          /* LOCKED */
+      --c-eyebrow:  #E8B923;          /* LOCKED */
+      --c-ink:      rgba(248,246,241,0.96);
+      --c-ink-sub:  rgba(248,246,241,0.62);
+      --c-accent:   #E8B923;
+      --c-divider:  rgba(232,185,35,0.2);
+      --c-bar-bg:   rgba(232,185,35,0.12);
     }
 
-    /* Card head — LOCKED padding */
-    .card-head {
-      padding: 0.75rem 0.875rem;               /* LOCKED */
+    /* ── Head — LOCKED padding ── */
+    .carousel__card-head {
+      padding: 0.75rem 0.875rem;      /* LOCKED */
       flex-shrink: 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--c-divider);
     }
-    .lane-of .card-head { border-bottom-color: rgba(232,185,35,0.15); }
 
-    /* Card eyebrow — LOCKED: DM Mono 9px */
-    .card-eyebrow {
-      font-family: var(--font-mono);           /* LOCKED */
-      font-size: 9px;                          /* LOCKED */
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-    .lane-ai .card-eyebrow { color: var(--teal); }  /* LOCKED: teal */
-    .lane-of .card-eyebrow { color: var(--of-gold); } /* LOCKED: gold */
-
-    /* Card title — LOCKED: DM Sans 500 12px */
-    .card-title {
-      font-family: var(--font-body);           /* LOCKED */
-      font-size: 12px;                         /* LOCKED */
-      font-weight: 500;                        /* LOCKED */
-      line-height: 1.3;
-    }
-    .lane-ai .card-title { color: var(--ink); }
-    .lane-of .card-title { color: rgba(248,246,241,0.88); }
-
-    /* Card body — fills remaining space */
-    .card-body {
+    /* ── Body ── */
+    .carousel__card-body {
+      padding: 0 0.875rem;
       flex: 1;
-      padding: 0.5rem 0.875rem 0;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
+      min-height: 0;
     }
 
-    /* Card foot — LOCKED padding */
-    .card-foot {
-      padding: 0.5rem 0.875rem;               /* LOCKED */
-      margin-top: auto;
+    /* ── Foot — LOCKED padding ── */
+    .carousel__card-foot {
+      padding: 0.5rem 0.875rem;       /* LOCKED */
       flex-shrink: 0;
+      margin-top: auto;
+      border-top: 1px solid var(--c-divider);
     }
-    .lane-of .card-foot { border-top: 1px solid rgba(232,185,35,0.1); }
+
+    /* Eyebrow — LOCKED: DM Mono 9px, lane color */
+    .carousel__card-label {
+      font-family: 'DM Mono', monospace;  /* LOCKED */
+      font-size: 9px;                     /* LOCKED */
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-eyebrow);            /* LOCKED: teal/gold per lane */
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* Title — LOCKED: DM Sans 500 12px */
+    .carousel__card-title {
+      font-family: 'DM Sans', system-ui, sans-serif;  /* LOCKED */
+      font-size: 12px;                                 /* LOCKED */
+      font-weight: 500;                                /* LOCKED */
+      line-height: 1.35;
+      color: var(--c-ink);
+    }
 
     /* Source stamp — LOCKED: DM Mono 8px #999 */
-    .card-source {
-      font-family: var(--font-mono);           /* LOCKED */
-      font-size: 8px;                          /* LOCKED */
-      color: #999;                             /* LOCKED */
-      letter-spacing: 0.05em;
+    .carousel__card-source {
+      font-family: 'DM Mono', monospace;  /* LOCKED */
+      font-size: 8px;                     /* LOCKED */
+      font-weight: 400;
+      color: #999;                         /* LOCKED */
+      letter-spacing: 0.06em;
     }
-    .lane-of .card-source { color: rgba(232,185,35,0.45); }
 
-    /* ── SHELL A — STAT (adjustable) ── */
-    .card-stat {
-      font-family: var(--font-editorial);
-      font-size: var(--sl-stat-size, 2.5rem);  /* adjustable */
+    /* ── Shell A: Stat ── */
+    .carousel__card-stat {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: var(--sl-stat-size, 36px);     /* adjustable */
       line-height: 1;
-      margin-bottom: var(--sl-stat-gap, 0.5rem); /* adjustable */
+      color: var(--c-accent);
+      display: block;
+      margin-top: 0.5rem;
+      margin-bottom: var(--sl-stat-gap, 12px);  /* adjustable */
     }
-    .lane-ai .card-stat { color: var(--teal); }
-    .lane-of .card-stat { color: var(--of-gold); }
-
-    .card-body-text {
-      font-family: var(--font-body);
-      font-size: var(--sl-body-size, 0.75rem); /* adjustable */
+    .carousel__card-text {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: var(--sl-body-size, 13px);     /* adjustable */
+      font-weight: 400;
       line-height: 1.5;
+      color: var(--c-ink-sub);
     }
-    .lane-ai .card-body-text { color: var(--ink-secondary); }
-    .lane-of .card-body-text { color: rgba(248,246,241,0.65); }
+    .carousel__card-body.va-center {
+      justify-content: center;
+    }
+    /* Shell A: head divider already in .card--a via platform — replicate */
+    .card--a .carousel__card-head { border-bottom: 1px solid var(--c-divider); }
 
-    /* Vertical align toggle */
-    .card-body.va-center { justify-content: center; }
-
-    /* ── SHELL B — CHART (adjustable) ── */
-    .card-bars { display: flex; flex-direction: column; justify-content: center; flex: 1; }
-    .card-bar-row {
+    /* ── Shell B: Chart bars ── */
+    .card--b .carousel__card-body { padding-top: 0.5rem; }
+    .s-bars { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+    .carousel__bar-row {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: var(--sl-row-gap, 6px);  /* adjustable */
+      margin-bottom: var(--sl-row-gap, 8px);  /* adjustable */
     }
-    .card-bar-row:last-child { margin-bottom: 0; }
-    .card-bar-label {
-      font-family: var(--font-body);
+    .carousel__bar-row:last-child { margin-bottom: 0; }
+    .carousel__bar-label {
+      font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 9px;
-      width: var(--sl-lbl-w, 60px);           /* adjustable */
-      flex-shrink: 0;
-      text-align: right;
+      font-weight: 500;
+      color: var(--c-ink-sub);
+      flex: 0 0 var(--sl-lbl-w, 72px);        /* adjustable */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .lane-ai .card-bar-label { color: var(--ink-secondary); }
-    .lane-of .card-bar-label { color: rgba(248,246,241,0.5); }
-    .card-bar-track {
+    .carousel__bar-track {
       flex: 1;
-      height: var(--sl-bar-h, 8px);           /* adjustable */
+      height: var(--sl-bar-h, 14px);          /* adjustable */
+      background: var(--c-bar-bg);
       border-radius: 2px;
       overflow: hidden;
     }
-    .lane-ai .card-bar-track { background: var(--border); }
-    .lane-of .card-bar-track { background: rgba(232,185,35,0.1); }
-    .card-bar-fill { height: 100%; border-radius: 2px; }
-    .lane-ai .card-bar-fill { background: var(--teal); }
-    .lane-of .card-bar-fill { background: var(--of-gold); }
-    .card-bar-val {
-      font-family: var(--font-mono);
+    .carousel__bar-fill {
+      height: 100%;
+      background: var(--c-accent);
+      border-radius: 2px;
+    }
+    .carousel__bar-val {
+      font-family: 'DM Mono', monospace;
       font-size: 9px;
+      color: var(--c-ink);
       flex-shrink: 0;
-      min-width: 32px;
+      min-width: 28px;
       text-align: right;
     }
-    .lane-ai .card-bar-val { color: var(--ink); }
-    .lane-of .card-bar-val { color: rgba(248,246,241,0.6); }
 
-    /* ── SHELL C — QUOTE (adjustable) ── */
-    .card-body.shell-c { justify-content: center; padding: 0.5rem 0.875rem; }
-    .card-quote-mark {
-      font-family: var(--font-editorial);
-      font-size: var(--sl-qm-size, 2rem);     /* adjustable — 0 = hidden */
+    /* ── Shell C: Quote ── */
+    .card--c .carousel__card-body {
+      justify-content: center;
+      padding: 0.75rem 0.875rem;
+    }
+    .s-quote-mark {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: var(--sl-qm-size, 32px);     /* adjustable; 0 = hidden */
       line-height: 1;
+      color: var(--c-accent);
+      display: block;
       margin-bottom: 4px;
     }
-    .lane-ai .card-quote-mark { color: var(--teal); }
-    .lane-of .card-quote-mark { color: var(--of-gold); }
-    .card-quote {
-      font-family: var(--font-editorial);
+    .carousel__card-quote {
+      font-family: 'DM Serif Display', Georgia, serif;
       font-style: italic;
-      font-size: var(--sl-qt-size, 0.875rem);  /* adjustable */
+      font-size: var(--sl-qt-size, 15px);     /* adjustable */
       line-height: 1.45;
-      margin-bottom: var(--sl-attr-gap, 0.75rem); /* adjustable */
+      color: var(--c-ink);
+      border-left: 3px solid var(--c-accent);
+      padding-left: 0.625rem;
+      margin-bottom: var(--sl-attr-gap, 12px); /* adjustable */
     }
-    .lane-ai .card-quote { color: var(--ink); }
-    .lane-of .card-quote { color: rgba(248,246,241,0.88); }
-    .card-attribution {
-      font-family: var(--font-mono);
-      font-size: 8px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    .carousel__card-attribution {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 500;
+      color: var(--c-ink-sub);
+      padding-left: 0.625rem;
     }
-    .lane-ai .card-attribution { color: var(--ink-muted); }
-    .lane-of .card-attribution { color: rgba(232,185,35,0.6); }
 
-    /* ── SHELL D — COMPARISON (adjustable) ── */
-    .card-compare {
-      display: flex;
-      flex: 1;
-      gap: 0;
+    /* ── Shell D: Comparison ── */
+    .card--d .carousel__card-body { padding: 0; }
+    .carousel__compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--c-divider);
+      height: 100%;
     }
-    .card-compare-cell {
-      flex: 1;
+    .carousel__compare-cell {
+      background: var(--c-bg);
+      padding: var(--sl-cell-pad, 12px);      /* adjustable */
       display: flex;
       flex-direction: column;
-      align-items: center;
+      gap: 5px;
       justify-content: center;
-      padding: var(--sl-cell-pad, 0.5rem);    /* adjustable */
-      text-align: center;
     }
-    .card-compare-cell + .card-compare-cell {
-      border-left: 1px solid var(--border);
-    }
-    .lane-of .card-compare-cell + .card-compare-cell { border-left-color: rgba(232,185,35,0.18); }
-    .card-compare-value {
-      font-family: var(--font-editorial);
-      font-size: var(--sl-val-size, 1.75rem); /* adjustable */
+    .carousel__compare-val {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: var(--sl-val-size, 24px);    /* adjustable */
       line-height: 1;
-      margin-bottom: 6px;
+      color: var(--c-accent);
     }
-    .lane-ai .card-compare-value { color: var(--teal); }
-    .lane-of .card-compare-value { color: var(--of-gold); }
-    .card-compare-desc {
-      font-family: var(--font-body);
-      font-size: var(--sl-desc-size, 0.75rem); /* adjustable */
+    .carousel__compare-desc {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: var(--sl-desc-size, 11px);   /* adjustable */
+      font-weight: 400;
       line-height: 1.4;
+      color: var(--c-ink-sub);
     }
-    .lane-ai .card-compare-desc { color: var(--ink-secondary); }
-    .lane-of .card-compare-desc { color: rgba(248,246,241,0.55); }
 
     /* Empty state */
-    .card-empty {
+    .s-card-empty {
       width: 300px;
       height: 280px;
-      border: 2px dashed var(--ui-border);
-      border-radius: var(--radius);
+      border: 2px dashed var(--s-border);
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: var(--ui-muted);
+      color: var(--s-muted);
       font-size: 10px;
     }
-    .card-empty-icon { font-size: 28px; opacity: 0.3; }
   </style>
 </head>
 <body>
 
 <div class="studio">
 
-  <!-- ══════════════════════
-       LEFT PANEL — CONTROLS
-  ══════════════════════ -->
-  <div class="panel panel-left">
+  <!-- ════════════════════════════
+       LEFT — Controls
+  ════════════════════════════ -->
+  <aside class="s-panel" id="panel-left" style="background: var(--s-panel);">
 
-    <div class="panel-header">
-      <div class="panel-header-dot"></div>
-      AI Card Studio
-    </div>
+    <div class="s-panel-head">AI Card Studio</div>
 
     <!-- JSON input -->
-    <div class="panel-section">
-      <span class="section-label">Card Data (JSON)</span>
-      <textarea id="json-input" spellcheck="false" placeholder='[{"shell":"A","lane":"AI","piece":"...","label":"...","title":"...","value":"...","body":"...","source":"..."}]'></textarea>
-      <div class="json-status" id="json-status">Paste JSON above to load cards</div>
+    <div class="s-section">
+      <span class="s-section-label">Card Data — JSON Array</span>
+      <textarea id="json-input" spellcheck="false"
+        placeholder='[{"shell":"A","lane":"AI","piece":"copaganda","label":"Copaganda · The Machine","title":"NBC cop primetime","value":"~$220M","body":"NBC earns this annually from cop primetime alone. Conservatively.","source":"S&amp;P Global / Kagan 2023"}]'></textarea>
+      <button class="s-load-btn" id="load-btn">Load Cards</button>
+      <div class="s-status" id="status-line">Paste JSON array above and click Load</div>
     </div>
 
     <!-- Shell tabs -->
-    <div class="panel-section">
-      <span class="section-label">Shell</span>
-      <div class="shell-tabs">
-        <button class="shell-tab active" data-shell="A">A Stat</button>
-        <button class="shell-tab" data-shell="B">B Chart</button>
-        <button class="shell-tab" data-shell="C">C Quote</button>
-        <button class="shell-tab" data-shell="D">D Compare</button>
+    <div class="s-section">
+      <span class="s-section-label">Shell</span>
+      <div class="s-tabs">
+        <button class="s-tab active" data-shell="A">A &nbsp;Stat</button>
+        <button class="s-tab" data-shell="B">B &nbsp;Chart</button>
+        <button class="s-tab" data-shell="C">C &nbsp;Quote</button>
+        <button class="s-tab" data-shell="D">D &nbsp;Compare</button>
       </div>
     </div>
 
     <!-- Lane toggle -->
-    <div class="panel-section">
-      <span class="section-label">Lane</span>
-      <div class="lane-toggle">
-        <button class="lane-btn active" data-lane="AI">AI · Teal</button>
-        <button class="lane-btn" data-lane="OF">OF · Gold</button>
+    <div class="s-section">
+      <span class="s-section-label">Lane</span>
+      <div class="s-lane-toggle">
+        <button class="s-lane-btn active" data-lane="AI">AI · Teal</button>
+        <button class="s-lane-btn" data-lane="OF">OF · Gold</button>
       </div>
     </div>
 
-    <!-- Shell A sliders -->
-    <div class="panel-section">
-      <div id="sliders-A" class="slider-group active" data-shell="A">
-        <span class="section-label">Shell A — Stat</span>
-        <div class="slider-row">
-          <span class="slider-label">Stat size</span>
-          <input type="range" id="A-stat-size" min="1.4" max="4.0" step="0.1" value="2.5">
-          <span class="slider-val" id="A-stat-size-val">2.5rem</span>
+    <!-- Sliders: Shell A -->
+    <div class="s-section">
+
+      <div id="sliders-A" class="s-slider-group active">
+        <span class="s-section-label">Shell A — Adjustable</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Stat size</span>
+          <input type="range" id="A-stat-size" min="28" max="72" step="1" value="36">
+          <span class="s-slider-val" id="A-stat-size-v">36px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Stat–body gap</span>
-          <input type="range" id="A-stat-gap" min="0.1" max="1.5" step="0.05" value="0.5">
-          <span class="slider-val" id="A-stat-gap-val">0.5rem</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Stat–body gap</span>
+          <input type="range" id="A-stat-gap" min="4" max="32" step="1" value="12">
+          <span class="s-slider-val" id="A-stat-gap-v">12px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Body size</span>
-          <input type="range" id="A-body-size" min="0.6" max="1.0" step="0.025" value="0.75">
-          <span class="slider-val" id="A-body-size-val">0.75rem</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Body size</span>
+          <input type="range" id="A-body-size" min="11" max="16" step="1" value="13">
+          <span class="s-slider-val" id="A-body-size-v">13px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Vertical align</span>
-          <div class="va-toggle">
-            <button class="va-btn active" data-va="top">Top</button>
-            <button class="va-btn" data-va="center">Center</button>
+        <div class="s-va-row">
+          <span class="s-slider-lbl">Vertical align</span>
+          <div class="s-va-btns">
+            <button class="s-va-btn active" data-va="top">Top</button>
+            <button class="s-va-btn" data-va="center">Center</button>
           </div>
-          <span></span>
         </div>
       </div>
 
-      <!-- Shell B sliders -->
-      <div id="sliders-B" class="slider-group" data-shell="B">
-        <span class="section-label">Shell B — Chart</span>
-        <div class="slider-row">
-          <span class="slider-label">Bar height</span>
-          <input type="range" id="B-bar-h" min="4" max="20" step="1" value="8">
-          <span class="slider-val" id="B-bar-h-val">8px</span>
+      <!-- Sliders: Shell B -->
+      <div id="sliders-B" class="s-slider-group">
+        <span class="s-section-label">Shell B — Adjustable</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Bar height</span>
+          <input type="range" id="B-bar-h" min="10" max="24" step="1" value="14">
+          <span class="s-slider-val" id="B-bar-h-v">14px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Row gap</span>
-          <input type="range" id="B-row-gap" min="2" max="12" step="1" value="6">
-          <span class="slider-val" id="B-row-gap-val">6px</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Row gap</span>
+          <input type="range" id="B-row-gap" min="4" max="16" step="1" value="8">
+          <span class="s-slider-val" id="B-row-gap-v">8px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Label width</span>
-          <input type="range" id="B-lbl-w" min="30" max="100" step="2" value="60">
-          <span class="slider-val" id="B-lbl-w-val">60px</span>
-        </div>
-      </div>
-
-      <!-- Shell C sliders -->
-      <div id="sliders-C" class="slider-group" data-shell="C">
-        <span class="section-label">Shell C — Quote</span>
-        <div class="slider-row">
-          <span class="slider-label">Quote mark</span>
-          <input type="range" id="C-qm-size" min="0" max="3.5" step="0.25" value="1.5">
-          <span class="slider-val" id="C-qm-size-val">1.5rem</span>
-        </div>
-        <div class="slider-row">
-          <span class="slider-label">Quote size</span>
-          <input type="range" id="C-qt-size" min="0.7" max="1.25" step="0.025" value="0.875">
-          <span class="slider-val" id="C-qt-size-val">0.875rem</span>
-        </div>
-        <div class="slider-row">
-          <span class="slider-label">Attribution gap</span>
-          <input type="range" id="C-attr-gap" min="0.2" max="1.5" step="0.05" value="0.75">
-          <span class="slider-val" id="C-attr-gap-val">0.75rem</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Label width</span>
+          <input type="range" id="B-lbl-w" min="56" max="120" step="2" value="72">
+          <span class="s-slider-val" id="B-lbl-w-v">72px</span>
         </div>
       </div>
 
-      <!-- Shell D sliders -->
-      <div id="sliders-D" class="slider-group" data-shell="D">
-        <span class="section-label">Shell D — Compare</span>
-        <div class="slider-row">
-          <span class="slider-label">Value size</span>
-          <input type="range" id="D-val-size" min="1.0" max="2.5" step="0.1" value="1.75">
-          <span class="slider-val" id="D-val-size-val">1.75rem</span>
+      <!-- Sliders: Shell C -->
+      <div id="sliders-C" class="s-slider-group">
+        <span class="s-section-label">Shell C — Adjustable</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Quote mark</span>
+          <input type="range" id="C-qm" min="0" max="64" step="2" value="32">
+          <span class="s-slider-val" id="C-qm-v">32px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Cell padding</span>
-          <input type="range" id="D-cell-pad" min="0.25" max="1.0" step="0.05" value="0.5">
-          <span class="slider-val" id="D-cell-pad-val">0.5rem</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Quote size</span>
+          <input type="range" id="C-qt" min="12" max="20" step="1" value="15">
+          <span class="s-slider-val" id="C-qt-v">15px</span>
         </div>
-        <div class="slider-row">
-          <span class="slider-label">Desc size</span>
-          <input type="range" id="D-desc-size" min="0.6" max="0.9" step="0.025" value="0.75">
-          <span class="slider-val" id="D-desc-size-val">0.75rem</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Attr gap</span>
+          <input type="range" id="C-attr" min="4" max="24" step="1" value="12">
+          <span class="s-slider-val" id="C-attr-v">12px</span>
+        </div>
+      </div>
+
+      <!-- Sliders: Shell D -->
+      <div id="sliders-D" class="s-slider-group">
+        <span class="s-section-label">Shell D — Adjustable</span>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Value size</span>
+          <input type="range" id="D-val" min="16" max="32" step="1" value="24">
+          <span class="s-slider-val" id="D-val-v">24px</span>
+        </div>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Cell padding</span>
+          <input type="range" id="D-pad" min="8" max="20" step="1" value="12">
+          <span class="s-slider-val" id="D-pad-v">12px</span>
+        </div>
+        <div class="s-slider-row">
+          <span class="s-slider-lbl">Desc size</span>
+          <input type="range" id="D-desc" min="9" max="14" step="1" value="11">
+          <span class="s-slider-val" id="D-desc-v">11px</span>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- ════════════════════════════
+       CENTER — Preview
+  ════════════════════════════ -->
+  <main class="s-center" id="panel-center">
+
+    <div class="s-counter" id="card-counter">No cards loaded</div>
+
+    <div class="s-card-stage">
+      <div id="card-preview">
+        <!-- empty state -->
+        <div class="s-card-empty">
+          <span style="font-size:32px;opacity:0.25;">◻</span>
+          <span>Load cards to preview</span>
         </div>
       </div>
     </div>
 
-  </div><!-- /.panel-left -->
-
-  <!-- ══════════════════════
-       CENTER PANEL — PREVIEW
-  ══════════════════════ -->
-  <div class="panel panel-center">
-
-    <div class="card-counter" id="card-counter">No cards loaded</div>
-
-    <div class="card-stage">
-      <div id="card-preview" class="lane-ai">
-        <div class="card-empty">
-          <div class="card-empty-icon">◻</div>
-          <span>Paste JSON to preview</span>
-        </div>
-      </div>
+    <div class="s-nav">
+      <button class="s-nav-btn" id="prev-btn" disabled>&#8592;</button>
+      <button class="s-nav-btn" id="next-btn" disabled>&#8594;</button>
     </div>
 
-    <div class="card-nav">
-      <button class="nav-btn" id="prev-card" disabled title="Previous card">&#8592;</button>
-      <button class="nav-btn" id="next-card" disabled title="Next card">&#8594;</button>
+  </main>
+
+  <!-- ════════════════════════════
+       RIGHT — Contact Sheet
+  ════════════════════════════ -->
+  <aside class="s-panel s-right" id="panel-right">
+
+    <div class="s-panel-head">Contact Sheet</div>
+
+    <div class="s-contact-sheet" id="contact-sheet">
+      <div class="s-contact-empty">Load cards to populate contact sheet</div>
     </div>
 
-  </div><!-- /.panel-center -->
-
-  <!-- ══════════════════════
-       RIGHT PANEL — CONTACT SHEET
-  ══════════════════════ -->
-  <div class="panel panel-right">
-
-    <div class="panel-header">
-      <div class="panel-header-dot"></div>
-      Contact Sheet
+    <div class="s-export-bar">
+      <button id="export-all-btn" disabled>Export All PNG</button>
     </div>
 
-    <div id="contact-sheet">
-      <div class="contact-empty">Load cards to see contact sheet</div>
-    </div>
-
-    <div class="export-bar">
-      <button id="export-all" disabled>Export All PNG</button>
-    </div>
-
-  </div><!-- /.panel-right -->
+  </aside>
 
 </div><!-- /.studio -->
 
 <script>
 'use strict';
 
-// ── GLOBALS for Puppeteer API ──
-window.cardStudio = {
-  loadJSON:     loadJSON,
-  showCard:     showCard,
-  getCards:     function(piece) {
-    return state.cards.filter(function(c) { return c.piece === piece; });
+// ── STATE ──
+var S = {
+  cards:      [],                          // all loaded card objects
+  shell:      'A',                         // active shell tab
+  lane:       'AI',                        // active lane
+  idx:        { A:0, B:0, C:0, D:0 },    // current index per shell
+  va:         'top',                       // Shell A vertical align
+  sliders: {
+    A: { statSize:36, statGap:12, bodySize:13 },
+    B: { barH:14, rowGap:8, lblW:72 },
+    C: { qm:32, qt:15, attr:12 },
+    D: { val:24, pad:12, desc:11 },
   },
-  getCardElement: function() { return document.getElementById('card-preview'); },
+  exported:   new Set(),                  // global card indices exported
 };
 
-// ── STATE ──
-var state = {
-  cards: [],
-  activeShell: 'A',
-  activeLane: 'AI',
-  shellIndex: { A: 0, B: 0, C: 0, D: 0 },
-  exported: new Set(),
-  sliders: {
-    A: { statSize: 2.5, statGap: 0.5, bodySize: 0.75, va: 'top' },
-    B: { barH: 8, rowGap: 6, lblW: 60 },
-    C: { qmSize: 1.5, qtSize: 0.875, attrGap: 0.75 },
-    D: { valSize: 1.75, cellPad: 0.5, descSize: 0.75 },
+// ── PUBLIC API for Puppeteer ──
+window.studio = {
+  loadCards:    loadCards,
+  showByIndex:  showByIndex,   // show card by global index
+  getCardEl:    function() { return document.getElementById('card-preview'); },
+  getAllForPiece: function(piece) {
+    return S.cards
+      .map(function(c,i){ return { card:c, idx:i }; })
+      .filter(function(o){ return o.card.piece === piece; });
   },
 };
 
 // ── UTILITIES ──
-function esc(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function esc(s) {
+  return String(s||'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function r(n, places) {
-  return parseFloat(n).toFixed(places !== undefined ? places : 3).replace(/\.?0+$/, '');
+
+function shCards() {
+  return S.cards.filter(function(c){ return c.shell === S.shell; });
 }
 
-// ── CARD RENDERING ──
-function buildCardHTML(card, shell, lane) {
-  var headHTML = '<div class="card-head">' +
-    '<div class="card-eyebrow">' + esc(card.label) + '</div>' +
-    '<div class="card-title">' + esc(card.title) + '</div>' +
-    '</div>';
+// ── BUILD CARD HTML (using carousel__card* markup pattern) ──
+function buildCardHTML(card) {
+  var shell = card.shell;
+  var lane  = (card.lane || S.lane).toUpperCase();
+  var lc    = lane === 'OF' ? 'lane-of' : 'lane-ai';
 
-  var bodyHTML = '';
-  var footHTML = '<div class="card-foot"><div class="card-source">' + esc(card.source) + '</div></div>';
+  var head = '<div class="carousel__card-head">'
+    + '<span class="carousel__card-label">' + esc(card.label) + '</span>'
+    + '<div class="carousel__card-title">' + esc(card.title) + '</div>'
+    + '</div>';
 
+  var body = '';
   if (shell === 'A') {
-    bodyHTML = '<div class="card-body' + (state.sliders.A.va === 'center' ? ' va-center' : '') + '">' +
-      '<div class="card-stat">' + esc(card.value) + '</div>' +
-      '<div class="card-body-text">' + esc(card.body) + '</div>' +
-      '</div>';
+    var vaClass = S.va === 'center' ? ' va-center' : '';
+    body = '<div class="carousel__card-body' + vaClass + '">'
+      + '<span class="carousel__card-stat">' + esc(card.value) + '</span>'
+      + '<p class="carousel__card-text">' + esc(card.body) + '</p>'
+      + '</div>';
   } else if (shell === 'B') {
-    var bars = card.bars || [];
-    var barRows = bars.map(function(b) {
-      return '<div class="card-bar-row">' +
-        '<span class="card-bar-label">' + esc(b.label) + '</span>' +
-        '<div class="card-bar-track"><div class="card-bar-fill" style="width:' + Math.min(100, Math.max(0, b.pct || 0)) + '%"></div></div>' +
-        '<span class="card-bar-val">' + esc(b.value) + '</span>' +
-        '</div>';
+    var bars = (card.bars || []).map(function(b) {
+      var w = Math.min(100, Math.max(0, b.pct || 0));
+      return '<div class="carousel__bar-row">'
+        + '<span class="carousel__bar-label">' + esc(b.label) + '</span>'
+        + '<div class="carousel__bar-track"><div class="carousel__bar-fill" style="width:' + w + '%"></div></div>'
+        + '<span class="carousel__bar-val">' + esc(b.value) + '</span>'
+        + '</div>';
     }).join('');
-    bodyHTML = '<div class="card-body"><div class="card-bars">' + barRows + '</div></div>';
+    body = '<div class="carousel__card-body"><div class="s-bars">' + bars + '</div></div>';
   } else if (shell === 'C') {
-    var qm = state.sliders.C.qmSize;
-    bodyHTML = '<div class="card-body shell-c">' +
-      (qm > 0 ? '<div class="card-quote-mark">“</div>' : '') +
-      '<div class="card-quote">' + esc(card.quote) + '</div>' +
-      '<div class="card-attribution">' + esc(card.attribution) + '</div>' +
-      '</div>';
+    var qmSize = S.sliders.C.qm;
+    var qmEl = qmSize > 0
+      ? '<span class="s-quote-mark">&#8220;</span>'
+      : '';
+    body = '<div class="carousel__card-body">'
+      + qmEl
+      + '<p class="carousel__card-quote">' + esc(card.quote) + '</p>'
+      + '<span class="carousel__card-attribution">' + esc(card.attribution) + '</span>'
+      + '</div>';
   } else if (shell === 'D') {
-    bodyHTML = '<div class="card-body">' +
-      '<div class="card-compare">' +
-        '<div class="card-compare-cell">' +
-          '<div class="card-compare-value">' + esc(card.left_value) + '</div>' +
-          '<div class="card-compare-desc">' + esc(card.left_desc) + '</div>' +
-        '</div>' +
-        '<div class="card-compare-cell">' +
-          '<div class="card-compare-value">' + esc(card.right_value) + '</div>' +
-          '<div class="card-compare-desc">' + esc(card.right_desc) + '</div>' +
-        '</div>' +
-      '</div>' +
-      '</div>';
+    body = '<div class="carousel__card-body">'
+      + '<div class="carousel__compare-grid">'
+        + '<div class="carousel__compare-cell">'
+          + '<span class="carousel__compare-val">' + esc(card.left_value) + '</span>'
+          + '<p class="carousel__compare-desc">' + esc(card.left_desc) + '</p>'
+        + '</div>'
+        + '<div class="carousel__compare-cell">'
+          + '<span class="carousel__compare-val">' + esc(card.right_value) + '</span>'
+          + '<p class="carousel__compare-desc">' + esc(card.right_desc) + '</p>'
+        + '</div>'
+      + '</div></div>';
   }
 
-  return headHTML + bodyHTML + footHTML;
+  var foot = '<div class="carousel__card-foot">'
+    + '<span class="carousel__card-source">' + esc(card.source) + '</span>'
+    + '</div>';
+
+  return '<div class="carousel__card card--' + shell.toLowerCase() + ' ' + lc + '">'
+    + head + body + foot + '</div>';
 }
 
-function applySliderVars(el) {
-  var sh = state.activeShell;
-  var sl = state.sliders[sh];
-
-  // Clear previous shell vars
-  ['--sl-stat-size','--sl-stat-gap','--sl-body-size',
-   '--sl-bar-h','--sl-row-gap','--sl-lbl-w',
-   '--sl-qm-size','--sl-qt-size','--sl-attr-gap',
-   '--sl-val-size','--sl-cell-pad','--sl-desc-size'].forEach(function(v) {
-    el.style.removeProperty(v);
-  });
-
-  if (sh === 'A') {
-    el.style.setProperty('--sl-stat-size', sl.statSize + 'rem');
-    el.style.setProperty('--sl-stat-gap',  sl.statGap + 'rem');
-    el.style.setProperty('--sl-body-size', sl.bodySize + 'rem');
-  } else if (sh === 'B') {
-    el.style.setProperty('--sl-bar-h',    sl.barH + 'px');
-    el.style.setProperty('--sl-row-gap',  sl.rowGap + 'px');
-    el.style.setProperty('--sl-lbl-w',    sl.lblW + 'px');
-  } else if (sh === 'C') {
-    el.style.setProperty('--sl-qm-size',  sl.qmSize + 'rem');
-    el.style.setProperty('--sl-qt-size',  sl.qtSize + 'rem');
-    el.style.setProperty('--sl-attr-gap', sl.attrGap + 'rem');
-  } else if (sh === 'D') {
-    el.style.setProperty('--sl-val-size',  sl.valSize + 'rem');
-    el.style.setProperty('--sl-cell-pad',  sl.cellPad + 'rem');
-    el.style.setProperty('--sl-desc-size', sl.descSize + 'rem');
-  }
+// ── APPLY SLIDER CSS VARS to preview element ──
+function applySliders(el) {
+  var sl = S.sliders;
+  // Shell A
+  el.style.setProperty('--sl-stat-size', sl.A.statSize + 'px');
+  el.style.setProperty('--sl-stat-gap',  sl.A.statGap  + 'px');
+  el.style.setProperty('--sl-body-size', sl.A.bodySize + 'px');
+  // Shell B
+  el.style.setProperty('--sl-bar-h',    sl.B.barH   + 'px');
+  el.style.setProperty('--sl-row-gap',  sl.B.rowGap + 'px');
+  el.style.setProperty('--sl-lbl-w',    sl.B.lblW   + 'px');
+  // Shell C
+  el.style.setProperty('--sl-qm-size',  sl.C.qm   + 'px');
+  el.style.setProperty('--sl-qt-size',  sl.C.qt   + 'px');
+  el.style.setProperty('--sl-attr-gap', sl.C.attr + 'px');
+  // Shell D
+  el.style.setProperty('--sl-val-size',  sl.D.val  + 'px');
+  el.style.setProperty('--sl-cell-pad',  sl.D.pad  + 'px');
+  el.style.setProperty('--sl-desc-size', sl.D.desc + 'px');
 }
 
+// ── RENDER CENTER PREVIEW ──
 function renderPreview() {
   var el = document.getElementById('card-preview');
-  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
+  var sCards = shCards();
 
-  if (!shCards.length) {
-    el.className = 'lane-' + state.activeLane.toLowerCase();
-    el.innerHTML = '<div class="card-empty"><div class="card-empty-icon">&#9633;</div><span>No ' + state.activeShell + ' cards loaded</span></div>';
-    applySliderVars(el);
+  if (!sCards.length) {
+    el.innerHTML = '<div class="s-card-empty"><span style="font-size:28px;opacity:0.22;">◻</span>'
+      + '<span>No Shell ' + S.shell + ' cards loaded</span></div>';
+    el.style.cssText = 'width:300px;height:280px;';
+    applySliders(el);
     return;
   }
 
-  var idx = Math.min(state.shellIndex[state.activeShell], shCards.length - 1);
-  state.shellIndex[state.activeShell] = idx;
-  var card = shCards[idx];
-  var lane = card.lane || state.activeLane;
+  var i = Math.min(S.idx[S.shell], sCards.length - 1);
+  S.idx[S.shell] = i;
+  var card = sCards[i];
 
-  el.className = 'lane-' + lane.toLowerCase();
-  el.innerHTML = buildCardHTML(card, state.activeShell, lane);
-  applySliderVars(el);
+  el.innerHTML = buildCardHTML(card);
+  el.style.cssText = 'width:300px;height:280px;'; // reset any inline
+  applySliders(el);
 
-  // Update VA if Shell A
-  if (state.activeShell === 'A') {
-    var body = el.querySelector('.card-body');
-    if (body) {
-      body.classList.toggle('va-center', state.sliders.A.va === 'center');
-    }
+  // Fix VA on Shell A
+  if (S.shell === 'A') {
+    var body = el.querySelector('.carousel__card-body');
+    if (body) body.classList.toggle('va-center', S.va === 'center');
   }
 }
 
 function updateCounter() {
+  var sCards = shCards();
   var el = document.getElementById('card-counter');
-  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
-
-  if (!shCards.length) {
-    el.textContent = 'Shell ' + state.activeShell + ' · 0 cards';
+  if (!sCards.length) {
+    el.textContent = 'Shell ' + S.shell + ' · 0 cards';
   } else {
-    var idx = Math.min(state.shellIndex[state.activeShell], shCards.length - 1);
-    el.textContent = 'Shell ' + state.activeShell + ' · ' + (idx + 1) + ' of ' + shCards.length;
+    var i = Math.min(S.idx[S.shell], sCards.length - 1);
+    el.textContent = 'Shell ' + S.shell + ' · ' + (i + 1) + ' of ' + sCards.length;
   }
 }
 
-function updateNavButtons() {
-  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
-  var idx = state.shellIndex[state.activeShell];
-  document.getElementById('prev-card').disabled = idx <= 0;
-  document.getElementById('next-card').disabled = idx >= shCards.length - 1;
+function updateNav() {
+  var sCards = shCards();
+  var i = S.idx[S.shell];
+  document.getElementById('prev-btn').disabled = i <= 0;
+  document.getElementById('next-btn').disabled = i >= sCards.length - 1;
+}
+
+// ── LOAD CARDS ──
+function loadCards(arr) {
+  if (!Array.isArray(arr) || !arr.length) {
+    setStatus('err', 'Array is empty');
+    return;
+  }
+  S.cards = arr;
+  S.idx = { A:0, B:0, C:0, D:0 };
+  S.exported.clear();
+
+  var n = arr.length;
+  setStatus('ok', n + ' card' + (n===1?'':'s') + ' loaded');
+  document.getElementById('json-input').classList.remove('s-error');
+
+  buildContactSheet();
+  renderPreview();
+  updateCounter();
+  updateNav();
+  document.getElementById('export-all-btn').disabled = false;
+}
+
+function setStatus(type, msg) {
+  var el = document.getElementById('status-line');
+  el.textContent = msg;
+  el.className = 's-status' + (type ? ' ' + type : '');
+}
+
+// ── PUBLIC: show card by global index ──
+function showByIndex(globalIdx) {
+  var card = S.cards[globalIdx];
+  if (!card) return;
+  var shell = card.shell;
+  S.shell = shell;
+  var sCards = S.cards.filter(function(c){ return c.shell === shell; });
+  S.idx[shell] = sCards.indexOf(card);
+  updateShellUI();
+  renderPreview();
+  updateCounter();
+  updateNav();
 }
 
 // ── CONTACT SHEET ──
-function renderContactSheet() {
-  var container = document.getElementById('contact-sheet');
-  var shells = ['A', 'B', 'C', 'D'];
-  var shellNames = { A: 'Stat', B: 'Chart', C: 'Quote', D: 'Compare' };
-  container.innerHTML = '';
+function buildContactSheet() {
+  var cs = document.getElementById('contact-sheet');
+  cs.innerHTML = '';
 
-  var anyCards = false;
+  var shells = ['A','B','C','D'];
+  var shellNames = { A:'Stat', B:'Chart', C:'Quote', D:'Compare' };
+  var any = false;
 
   shells.forEach(function(sh) {
-    var shCards = state.cards.filter(function(c) { return c.shell === sh; });
-    if (!shCards.length) return;
-    anyCards = true;
+    var sCards = S.cards.filter(function(c){ return c.shell === sh; });
+    if (!sCards.length) return;
+    any = true;
 
-    var group = document.createElement('div');
-    group.className = 'contact-group';
-
-    var header = document.createElement('div');
-    header.className = 'contact-group-header';
-    header.textContent = 'Shell ' + sh + ' — ' + shellNames[sh] + ' (' + shCards.length + ')';
-    group.appendChild(header);
+    // Shell label row
+    var lbl = document.createElement('div');
+    lbl.className = 's-shell-label';
+    lbl.textContent = 'Shell ' + sh + ' — ' + shellNames[sh] + ' (' + sCards.length + ')';
+    cs.appendChild(lbl);
 
     var grid = document.createElement('div');
-    grid.className = 'contact-grid';
+    grid.className = 's-thumb-grid';
 
-    shCards.forEach(function(card, localIdx) {
-      var globalIdx = state.cards.indexOf(card);
+    sCards.forEach(function(card, localIdx) {
+      var globalIdx = S.cards.indexOf(card);
+
       var item = document.createElement('div');
-      item.className = 'contact-item';
-      item.dataset.globalIdx = globalIdx;
+      item.className = 's-thumb-item';
+      item.dataset.piece = card.piece || '';
+      item.dataset.shell = sh;
+      item.dataset.shIdx = localIdx;
+      item.dataset.gIdx  = globalIdx;
 
       var wrap = document.createElement('div');
-      wrap.className = 'contact-thumb-wrap';
+      wrap.className = 's-thumb-wrap';
 
       var inner = document.createElement('div');
-      inner.className = 'contact-thumb-inner';
-
-      var miniCard = document.createElement('div');
-      miniCard.className = 'mini-card lane-' + (card.lane || 'ai').toLowerCase();
-      miniCard.innerHTML = buildCardHtmlForThumb(card, sh, card.lane || 'AI');
-
-      // Apply default slider vars to thumb (visual only)
-      miniCard.style.setProperty('--sl-stat-size', '2.5rem');
-      miniCard.style.setProperty('--sl-stat-gap', '0.5rem');
-      miniCard.style.setProperty('--sl-body-size', '0.75rem');
-      miniCard.style.setProperty('--sl-bar-h', '8px');
-      miniCard.style.setProperty('--sl-row-gap', '6px');
-      miniCard.style.setProperty('--sl-lbl-w', '60px');
-      miniCard.style.setProperty('--sl-qm-size', '1.5rem');
-      miniCard.style.setProperty('--sl-qt-size', '0.875rem');
-      miniCard.style.setProperty('--sl-attr-gap', '0.75rem');
-      miniCard.style.setProperty('--sl-val-size', '1.75rem');
-      miniCard.style.setProperty('--sl-cell-pad', '0.5rem');
-      miniCard.style.setProperty('--sl-desc-size', '0.75rem');
-
-      inner.appendChild(miniCard);
+      inner.className = 's-thumb-inner';
+      inner.innerHTML = buildThumbHTML(card, sh);
       wrap.appendChild(inner);
 
-      // Hover overlay
-      var hover = document.createElement('div');
-      hover.className = 'contact-hover';
-      wrap.appendChild(hover);
-
       // Exported overlay
-      var expOverlay = document.createElement('div');
-      expOverlay.className = 'contact-exported';
-      expOverlay.id = 'exported-' + globalIdx;
-      expOverlay.textContent = '✓';
-      if (state.exported.has(globalIdx)) expOverlay.style.display = 'flex';
-      wrap.appendChild(expOverlay);
+      var exp = document.createElement('div');
+      exp.className = 's-thumb-exported';
+      exp.id = 'exp-' + globalIdx;
+      exp.textContent = '✓';
+      if (S.exported.has(globalIdx)) exp.style.display = 'flex';
+      wrap.appendChild(exp);
 
       item.appendChild(wrap);
 
-      var label = document.createElement('div');
-      label.className = 'contact-label';
-      var piece = card.piece || '';
-      label.textContent = piece + '-' + sh.toLowerCase() + '-' + String(localIdx + 1).padStart(2, '0');
-      item.appendChild(label);
+      var name = document.createElement('div');
+      name.className = 's-thumb-name';
+      name.textContent = (card.piece || 'card') + '-' + sh.toLowerCase() + '-' + String(localIdx+1).padStart(2,'0');
+      item.appendChild(name);
 
       // Click: load into preview
-      item.addEventListener('click', function() {
-        state.activeShell = sh;
-        state.shellIndex[sh] = localIdx;
-        updateShellTabs();
-        updateSliderVisibility();
-        renderPreview();
-        updateCounter();
-        updateNavButtons();
-      });
+      item.addEventListener('click', function() { showByIndex(globalIdx); });
 
       grid.appendChild(item);
     });
 
-    group.appendChild(grid);
-    container.appendChild(group);
+    cs.appendChild(grid);
   });
 
-  if (!anyCards) {
-    container.innerHTML = '<div class="contact-empty">Load cards to see contact sheet</div>';
-  }
-
-  document.getElementById('export-all').disabled = !anyCards;
+  if (!any) cs.innerHTML = '<div class="s-contact-empty">No cards loaded</div>';
 }
 
-// Builds card HTML for thumbnails (uses fixed default vars, not slider state)
-function buildCardHtmlForThumb(card, shell, lane) {
-  var headHTML = '<div class="card-head">' +
-    '<div class="card-eyebrow">' + esc(card.label) + '</div>' +
-    '<div class="card-title">' + esc(card.title) + '</div>' +
-    '</div>';
-  var footHTML = '<div class="card-foot"><div class="card-source">' + esc(card.source) + '</div></div>';
-  var bodyHTML = '';
+// Build minimal card HTML for thumbnails (uses fixed defaults for sliders)
+function buildThumbHTML(card, shell) {
+  var lc = (card.lane||'AI').toUpperCase() === 'OF' ? 'lane-of' : 'lane-ai';
+  var head = '<div class="carousel__card-head">'
+    + '<span class="carousel__card-label">' + esc(card.label) + '</span>'
+    + '<div class="carousel__card-title">' + esc(card.title) + '</div>'
+    + '</div>';
+  var foot = '<div class="carousel__card-foot">'
+    + '<span class="carousel__card-source">' + esc(card.source) + '</span>'
+    + '</div>';
+  var body = '';
 
   if (shell === 'A') {
-    bodyHTML = '<div class="card-body"><div class="card-stat">' + esc(card.value) + '</div><div class="card-body-text">' + esc(card.body) + '</div></div>';
+    body = '<div class="carousel__card-body">'
+      + '<span class="carousel__card-stat">' + esc(card.value) + '</span>'
+      + '<p class="carousel__card-text">' + esc(card.body) + '</p>'
+      + '</div>';
   } else if (shell === 'B') {
-    var bars = card.bars || [];
-    bodyHTML = '<div class="card-body"><div class="card-bars">' +
-      bars.map(function(b) {
-        return '<div class="card-bar-row"><span class="card-bar-label">' + esc(b.label) + '</span><div class="card-bar-track"><div class="card-bar-fill" style="width:' + (b.pct||0) + '%"></div></div><span class="card-bar-val">' + esc(b.value) + '</span></div>';
-      }).join('') + '</div></div>';
+    var bRows = (card.bars||[]).map(function(b){
+      return '<div class="carousel__bar-row">'
+        + '<span class="carousel__bar-label">' + esc(b.label) + '</span>'
+        + '<div class="carousel__bar-track"><div class="carousel__bar-fill" style="width:' + (b.pct||0) + '%"></div></div>'
+        + '<span class="carousel__bar-val">' + esc(b.value) + '</span>'
+        + '</div>';
+    }).join('');
+    body = '<div class="carousel__card-body"><div class="s-bars">' + bRows + '</div></div>';
   } else if (shell === 'C') {
-    bodyHTML = '<div class="card-body shell-c"><div class="card-quote-mark">“</div><div class="card-quote">' + esc(card.quote) + '</div><div class="card-attribution">' + esc(card.attribution) + '</div></div>';
+    body = '<div class="carousel__card-body">'
+      + '<span class="s-quote-mark">&#8220;</span>'
+      + '<p class="carousel__card-quote">' + esc(card.quote) + '</p>'
+      + '<span class="carousel__card-attribution">' + esc(card.attribution) + '</span>'
+      + '</div>';
   } else if (shell === 'D') {
-    bodyHTML = '<div class="card-body"><div class="card-compare"><div class="card-compare-cell"><div class="card-compare-value">' + esc(card.left_value) + '</div><div class="card-compare-desc">' + esc(card.left_desc) + '</div></div><div class="card-compare-cell"><div class="card-compare-value">' + esc(card.right_value) + '</div><div class="card-compare-desc">' + esc(card.right_desc) + '</div></div></div></div>';
+    body = '<div class="carousel__card-body">'
+      + '<div class="carousel__compare-grid">'
+        + '<div class="carousel__compare-cell"><span class="carousel__compare-val">' + esc(card.left_value) + '</span><p class="carousel__compare-desc">' + esc(card.left_desc) + '</p></div>'
+        + '<div class="carousel__compare-cell"><span class="carousel__compare-val">' + esc(card.right_value) + '</span><p class="carousel__compare-desc">' + esc(card.right_desc) + '</p></div>'
+      + '</div></div>';
   }
-  return headHTML + bodyHTML + footHTML;
+
+  return '<div class="carousel__card card--' + shell.toLowerCase() + ' ' + lc + '">' + head + body + foot + '</div>';
 }
 
-// ── JSON LOADING ──
-var parseTimer;
-function onJSONInput() {
-  clearTimeout(parseTimer);
-  parseTimer = setTimeout(function() {
-    var raw = document.getElementById('json-input').value.trim();
-    if (!raw) {
-      setStatus('', '');
-      return;
-    }
-    try {
-      var parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) throw new Error('Expected a JSON array');
-      loadJSON(parsed);
-    } catch(e) {
-      setStatus('err', 'Parse error: ' + e.message);
-      document.getElementById('json-input').classList.add('error');
-    }
-  }, 400);
+// ── MARK EXPORTED ──
+function markExported(globalIdx) {
+  S.exported.add(globalIdx);
+  var el = document.getElementById('exp-' + globalIdx);
+  if (el) el.style.display = 'flex';
 }
 
-function loadJSON(arr) {
-  document.getElementById('json-input').classList.remove('error');
-  state.cards = arr;
-  // Reset shell indices
-  state.shellIndex = { A: 0, B: 0, C: 0, D: 0 };
-  state.exported.clear();
-
-  var count = arr.length;
-  setStatus('ok', count + ' card' + (count === 1 ? '' : 's') + ' loaded');
-
-  renderContactSheet();
-  renderPreview();
-  updateCounter();
-  updateNavButtons();
-}
-
-function setStatus(type, msg) {
-  var el = document.getElementById('json-status');
-  el.textContent = msg;
-  el.className = 'json-status' + (type ? ' ' + type : '');
-}
-
-// ── PUBLIC API: show card by global index ──
-function showCard(globalIdx) {
-  var card = state.cards[globalIdx];
-  if (!card) return;
-
-  state.activeShell = card.shell;
-  var shCards = state.cards.filter(function(c) { return c.shell === card.shell; });
-  state.shellIndex[card.shell] = shCards.indexOf(card);
-
-  updateShellTabs();
-  updateSliderVisibility();
-  renderPreview();
-  updateCounter();
-  updateNavButtons();
-}
-
-// ── SHELL TABS ──
-function updateShellTabs() {
-  document.querySelectorAll('.shell-tab').forEach(function(btn) {
-    btn.classList.toggle('active', btn.dataset.shell === state.activeShell);
-  });
-}
-
-function updateSliderVisibility() {
-  document.querySelectorAll('.slider-group').forEach(function(g) {
-    g.classList.toggle('active', g.dataset.shell === state.activeShell);
-  });
-}
-
-// ── EXPORT ALL ──
-document.getElementById('export-all').addEventListener('click', function() {
-  var btn = document.getElementById('export-all');
+// ── EXPORT ALL (browser — html2canvas) ──
+document.getElementById('export-all-btn').addEventListener('click', function() {
+  var btn = this;
   btn.disabled = true;
-  btn.textContent = 'Exporting...';
+  btn.textContent = 'Exporting…';
 
-  var cards = state.cards;
-  var shellCounts = {};
+  var shells = ['A','B','C','D'];
   var promise = Promise.resolve();
 
-  cards.forEach(function(card, i) {
-    var sh = card.shell.toLowerCase();
-    if (!shellCounts[sh]) shellCounts[sh] = 0;
-    shellCounts[sh]++;
-    var shIdx = shellCounts[sh];
+  shells.forEach(function(sh) {
+    var sCards = S.cards.filter(function(c){ return c.shell === sh; });
+    sCards.forEach(function(card, localIdx) {
+      var globalIdx = S.cards.indexOf(card);
+      promise = promise.then(function() {
+        return new Promise(function(resolve) {
+          // Render card offscreen at true size
+          var wrap = document.createElement('div');
+          wrap.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:9999;width:300px;height:280px;';
+          wrap.innerHTML = buildThumbHTML(card, sh);
+          // Apply current slider values to the card element
+          var cardEl = wrap.firstChild;
+          applySliders(cardEl);
+          document.body.appendChild(wrap);
 
-    promise = promise.then(function() {
-      return new Promise(function(resolve) {
-        // Render into offscreen container at true size
-        var offscreen = document.createElement('div');
-        offscreen.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:9999;';
-        var miniCard = document.createElement('div');
-        miniCard.className = 'lane-' + (card.lane || 'ai').toLowerCase();
-        miniCard.innerHTML = buildCardHtmlForThumb(card, card.shell, card.lane || 'AI');
-        miniCard.style.setProperty('--sl-stat-size', state.sliders.A.statSize + 'rem');
-        miniCard.style.setProperty('--sl-stat-gap',  state.sliders.A.statGap + 'rem');
-        miniCard.style.setProperty('--sl-body-size', state.sliders.A.bodySize + 'rem');
-        miniCard.style.setProperty('--sl-bar-h',     state.sliders.B.barH + 'px');
-        miniCard.style.setProperty('--sl-row-gap',   state.sliders.B.rowGap + 'px');
-        miniCard.style.setProperty('--sl-lbl-w',     state.sliders.B.lblW + 'px');
-        miniCard.style.setProperty('--sl-qm-size',   state.sliders.C.qmSize + 'rem');
-        miniCard.style.setProperty('--sl-qt-size',   state.sliders.C.qtSize + 'rem');
-        miniCard.style.setProperty('--sl-attr-gap',  state.sliders.C.attrGap + 'rem');
-        miniCard.style.setProperty('--sl-val-size',  state.sliders.D.valSize + 'rem');
-        miniCard.style.setProperty('--sl-cell-pad',  state.sliders.D.cellPad + 'rem');
-        miniCard.style.setProperty('--sl-desc-size', state.sliders.D.descSize + 'rem');
-        offscreen.appendChild(miniCard);
-        document.body.appendChild(offscreen);
+          var fname = (card.piece||'card') + '-shell-' + sh.toLowerCase() + '-' + String(localIdx+1).padStart(2,'0') + '.png';
 
-        var filename = (card.piece || 'card') + '-shell-' + sh + '-' + String(shIdx).padStart(2, '0') + '.png';
-
-        html2canvas(miniCard, { width: 300, height: 280, scale: 1, useCORS: true, logging: false })
-          .then(function(canvas) {
-            var link = document.createElement('a');
-            link.download = filename;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-            document.body.removeChild(offscreen);
-
-            // Mark exported
-            state.exported.add(i);
-            var overlay = document.getElementById('exported-' + i);
-            if (overlay) overlay.style.display = 'flex';
-
-            setTimeout(resolve, 100);
-          })
-          .catch(function() { document.body.removeChild(offscreen); resolve(); });
+          html2canvas(cardEl, { width:300, height:280, scale:1, useCORS:true, logging:false })
+            .then(function(canvas) {
+              var a = document.createElement('a');
+              a.download = fname;
+              a.href = canvas.toDataURL('image/png');
+              a.click();
+              document.body.removeChild(wrap);
+              markExported(globalIdx);
+              setTimeout(resolve, 80);
+            })
+            .catch(function(){ document.body.removeChild(wrap); resolve(); });
+        });
       });
     });
   });
@@ -1231,96 +1205,108 @@ document.getElementById('export-all').addEventListener('click', function() {
   });
 });
 
-// ── EVENT LISTENERS ──
+// ── SHELL TABS ──
+function updateShellUI() {
+  document.querySelectorAll('.s-tab').forEach(function(t) {
+    t.classList.toggle('active', t.dataset.shell === S.shell);
+  });
+  document.querySelectorAll('.s-slider-group').forEach(function(g) {
+    g.classList.toggle('active', g.id === 'sliders-' + S.shell);
+  });
+}
 
-document.getElementById('json-input').addEventListener('input', onJSONInput);
-
-document.querySelectorAll('.shell-tab').forEach(function(btn) {
+document.querySelectorAll('.s-tab').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    state.activeShell = btn.dataset.shell;
-    updateShellTabs();
-    updateSliderVisibility();
+    S.shell = btn.dataset.shell;
+    updateShellUI();
     renderPreview();
     updateCounter();
-    updateNavButtons();
+    updateNav();
   });
 });
 
-document.querySelectorAll('.lane-btn').forEach(function(btn) {
+// ── LANE TOGGLE ──
+document.querySelectorAll('.s-lane-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    state.activeLane = btn.dataset.lane;
-    document.querySelectorAll('.lane-btn').forEach(function(b) { b.classList.remove('active'); });
+    S.lane = btn.dataset.lane;
+    document.querySelectorAll('.s-lane-btn').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     renderPreview();
   });
 });
 
-document.getElementById('prev-card').addEventListener('click', function() {
-  var idx = state.shellIndex[state.activeShell];
-  if (idx > 0) {
-    state.shellIndex[state.activeShell] = idx - 1;
-    renderPreview();
-    updateCounter();
-    updateNavButtons();
+// ── ARROW NAV ──
+document.getElementById('prev-btn').addEventListener('click', function() {
+  if (S.idx[S.shell] > 0) {
+    S.idx[S.shell]--;
+    renderPreview(); updateCounter(); updateNav();
+  }
+});
+document.getElementById('next-btn').addEventListener('click', function() {
+  var max = shCards().length - 1;
+  if (S.idx[S.shell] < max) {
+    S.idx[S.shell]++;
+    renderPreview(); updateCounter(); updateNav();
   }
 });
 
-document.getElementById('next-card').addEventListener('click', function() {
-  var shCards = state.cards.filter(function(c) { return c.shell === state.activeShell; });
-  var idx = state.shellIndex[state.activeShell];
-  if (idx < shCards.length - 1) {
-    state.shellIndex[state.activeShell] = idx + 1;
-    renderPreview();
-    updateCounter();
-    updateNavButtons();
+// ── LOAD BUTTON ──
+document.getElementById('load-btn').addEventListener('click', function() {
+  var raw = document.getElementById('json-input').value.trim();
+  if (!raw) { setStatus('err', 'Nothing to load'); return; }
+  try {
+    var parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) throw new Error('Expected a JSON array [ … ]');
+    loadCards(parsed);
+  } catch(e) {
+    document.getElementById('json-input').classList.add('s-error');
+    setStatus('err', 'Parse error: ' + e.message.slice(0,60));
   }
 });
 
 // ── SLIDER WIRING ──
-function wireSlider(id, valId, unit, decimals, stateKey, subKey) {
-  var input = document.getElementById(id);
-  var valEl = document.getElementById(valId);
-  if (!input || !valEl) return;
-  input.addEventListener('input', function() {
-    var v = parseFloat(input.value);
-    state.sliders[stateKey][subKey] = v;
-    valEl.textContent = r(v, decimals) + unit;
+function wire(id, valId, stateKey, subKey, unit, decimals) {
+  var inp = document.getElementById(id);
+  var lbl = document.getElementById(valId);
+  if (!inp || !lbl) return;
+  inp.addEventListener('input', function() {
+    var v = decimals ? parseFloat(inp.value) : parseInt(inp.value, 10);
+    S.sliders[stateKey][subKey] = v;
+    lbl.textContent = v + unit;
     renderPreview();
   });
 }
+wire('A-stat-size', 'A-stat-size-v', 'A', 'statSize', 'px', 0);
+wire('A-stat-gap',  'A-stat-gap-v',  'A', 'statGap',  'px', 0);
+wire('A-body-size', 'A-body-size-v', 'A', 'bodySize', 'px', 0);
+wire('B-bar-h',  'B-bar-h-v',  'B', 'barH',  'px', 0);
+wire('B-row-gap','B-row-gap-v','B', 'rowGap','px', 0);
+wire('B-lbl-w',  'B-lbl-w-v',  'B', 'lblW',  'px', 0);
+wire('C-qm',  'C-qm-v',  'C', 'qm',   'px', 0);
+wire('C-qt',  'C-qt-v',  'C', 'qt',   'px', 0);
+wire('C-attr','C-attr-v','C', 'attr', 'px', 0);
+wire('D-val', 'D-val-v', 'D', 'val',  'px', 0);
+wire('D-pad', 'D-pad-v', 'D', 'pad',  'px', 0);
+wire('D-desc','D-desc-v','D', 'desc', 'px', 0);
 
-wireSlider('A-stat-size', 'A-stat-size-val', 'rem', 2, 'A', 'statSize');
-wireSlider('A-stat-gap',  'A-stat-gap-val',  'rem', 2, 'A', 'statGap');
-wireSlider('A-body-size', 'A-body-size-val', 'rem', 3, 'A', 'bodySize');
-wireSlider('B-bar-h',     'B-bar-h-val',     'px',  0, 'B', 'barH');
-wireSlider('B-row-gap',   'B-row-gap-val',   'px',  0, 'B', 'rowGap');
-wireSlider('B-lbl-w',     'B-lbl-w-val',     'px',  0, 'B', 'lblW');
-wireSlider('C-qm-size',   'C-qm-size-val',   'rem', 2, 'C', 'qmSize');
-wireSlider('C-qt-size',   'C-qt-size-val',   'rem', 3, 'C', 'qtSize');
-wireSlider('C-attr-gap',  'C-attr-gap-val',  'rem', 2, 'C', 'attrGap');
-wireSlider('D-val-size',  'D-val-size-val',  'rem', 2, 'D', 'valSize');
-wireSlider('D-cell-pad',  'D-cell-pad-val',  'rem', 2, 'D', 'cellPad');
-wireSlider('D-desc-size', 'D-desc-size-val', 'rem', 3, 'D', 'descSize');
-
-// VA toggle (Shell A)
-document.querySelectorAll('.va-btn').forEach(function(btn) {
+// ── VA TOGGLE ──
+document.querySelectorAll('.s-va-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    state.sliders.A.va = btn.dataset.va;
-    document.querySelectorAll('.va-btn').forEach(function(b) { b.classList.remove('active'); });
+    S.va = btn.dataset.va;
+    document.querySelectorAll('.s-va-btn').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     renderPreview();
   });
 });
 
-// ── KEYBOARD NAVIGATION ──
+// ── KEYBOARD ──
 document.addEventListener('keydown', function(e) {
-  if (e.target.tagName === 'TEXTAREA') return;
-  if (e.key === 'ArrowLeft') document.getElementById('prev-card').click();
-  if (e.key === 'ArrowRight') document.getElementById('next-card').click();
-  if (e.key === 'a' || e.key === 'A') document.querySelector('[data-shell="A"]').click();
-  if (e.key === 'b' || e.key === 'B') document.querySelector('[data-shell="B"]').click();
-  if (e.key === 'c' || e.key === 'C') document.querySelector('[data-shell="C"]').click();
-  if (e.key === 'd' || e.key === 'D') document.querySelector('[data-shell="D"]').click();
+  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowLeft')  document.getElementById('prev-btn').click();
+  if (e.key === 'ArrowRight') document.getElementById('next-btn').click();
+  ['A','B','C','D'].forEach(function(sh) {
+    if (e.key.toUpperCase() === sh) document.querySelector('[data-shell="' + sh + '"]').click();
+  });
 });
 </script>
 </body>

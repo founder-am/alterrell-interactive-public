@@ -2,170 +2,193 @@
 'use strict';
 
 /**
- * export-cards.js — Alterrell Interactive card export tool
- * Uses Puppeteer to screenshot cards from ai-card-studio.html at true 300×280px.
+ * export-cards.js — Alterrell Interactive
+ * Puppeteer export script for AI Card Studio.
  *
  * Usage:
- *   node export-cards.js <piece-name> [cards.json]
+ *   node export-cards.js <piece-name> [path/to/cards.json]
  *
- * Arguments:
- *   piece-name   Required. Filters cards where card.piece === piece-name.
- *   cards.json   Optional. Path to JSON file. If omitted, looks for
- *                <piece-name>.json or <piece-name>-cards.json in cwd.
+ * Examples:
+ *   node export-cards.js copaganda
+ *   node export-cards.js copaganda ./copaganda-cards.json
  *
- * Output:
- *   <piece-name>-cards/<piece>-shell-<a|b|c|d>-<01|02|03>.png
+ * Behavior:
+ *   1. Reads card JSON from [piece].json, [piece]-cards.json, or cards.json in cwd
+ *      (or from the explicit path given as second arg)
+ *   2. Opens tools/ai-card-studio.html in headless Chromium
+ *   3. Injects the card data via window.studio.loadCards()
+ *   4. Finds all contact-sheet thumbnails for the given piece
+ *   5. For each card (ordered A→B→C→D, then by index within shell):
+ *      clicks the thumbnail, waits 150ms, screenshots #card-preview at 300×280px
+ *   6. Saves to ./<piece>-cards/<piece>-shell-<a|b|c|d>-<01|02>.png
  *
- * Note: Run from a local HTTP server for best font rendering:
- *   npx serve . -p 3333
- *   node export-cards.js copaganda --serve http://localhost:3333
+ * Output naming:
+ *   copaganda-shell-a-01.png
+ *   copaganda-shell-a-02.png
+ *   copaganda-shell-b-01.png
+ *   ...
  *
- * Dependencies (install once):
+ * Install dependency once:
  *   npm install puppeteer
+ *
+ * Tip: serve the repo locally for best font rendering:
+ *   npx serve . -p 4000
+ *   STUDIO_URL=http://localhost:4000/tools/ai-card-studio.html node export-cards.js copaganda
  */
 
 const puppeteer = require('puppeteer');
 const path      = require('path');
 const fs        = require('fs');
 
-// ── CLI ARGS ──────────────────────────────────────────────────────────
-const args      = process.argv.slice(2);
-const pieceName = args[0];
-const serveFlag = args.indexOf('--serve');
-const serveBase = serveFlag !== -1 ? args[serveFlag + 1] : null;
-const jsonArg   = args.find(a => a.endsWith('.json') || (a !== args[0] && !a.startsWith('--')));
+// ── ARGS ──────────────────────────────────────────────────────────────
+const pieceName = process.argv[2];
+const jsonArg   = process.argv[3];       // optional explicit JSON path
 
 if (!pieceName) {
   console.error('\n  Usage: node export-cards.js <piece-name> [cards.json]\n');
-  console.error('  Example: node export-cards.js copaganda copaganda-cards.json\n');
   process.exit(1);
 }
 
-// ── LOAD JSON ─────────────────────────────────────────────────────────
-function loadCardsJSON() {
-  const candidates = jsonArg
-    ? [path.resolve(jsonArg)]
-    : [
-        path.join(process.cwd(), `${pieceName}.json`),
-        path.join(process.cwd(), `${pieceName}-cards.json`),
-        path.join(process.cwd(), 'cards.json'),
-      ];
-
-  for (const c of candidates) {
-    if (fs.existsSync(c)) {
-      console.log(`  Loading: ${c}`);
-      return JSON.parse(fs.readFileSync(c, 'utf8'));
+// ── FIND JSON ─────────────────────────────────────────────────────────
+function resolveJSON() {
+  if (jsonArg) {
+    const p = path.resolve(jsonArg);
+    if (!fs.existsSync(p)) {
+      console.error('  Error: file not found: ' + p);
+      process.exit(1);
     }
+    return p;
   }
-
-  console.error(`\n  Error: No JSON file found for piece "${pieceName}".`);
-  console.error(`  Searched: ${candidates.join(', ')}`);
-  console.error(`  Pass a JSON file path as the second argument.\n`);
+  const candidates = [
+    path.join(process.cwd(), pieceName + '.json'),
+    path.join(process.cwd(), pieceName + '-cards.json'),
+    path.join(process.cwd(), 'cards.json'),
+  ];
+  for (const c of candidates) {
+    if (fs.existsSync(c)) return c;
+  }
+  console.error('\n  Error: no JSON file found for piece "' + pieceName + '".');
+  console.error('  Checked:\n' + candidates.map(c => '    ' + c).join('\n'));
+  console.error('\n  Pass a JSON file as the second argument, or create ' + pieceName + '.json in cwd.\n');
   process.exit(1);
 }
 
 // ── MAIN ──────────────────────────────────────────────────────────────
 async function main() {
-  const allCards   = loadCardsJSON();
-  const pieceCards = allCards.filter(c => c.piece === pieceName);
+  const jsonPath = resolveJSON();
+  const allCards = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 
-  if (!pieceCards.length) {
-    console.error(`\n  Error: No cards found with piece === "${pieceName}" in JSON.\n`);
+  if (!Array.isArray(allCards)) {
+    console.error('  Error: JSON must be an array of card objects.');
     process.exit(1);
   }
 
-  // Output directory: ./<piece-name>-cards/
-  const outDir = path.join(process.cwd(), `${pieceName}-cards`);
+  // Filter to this piece
+  const pieceCards = allCards.filter(c => c.piece === pieceName);
+  if (!pieceCards.length) {
+    console.error('\n  Error: no cards found with piece === "' + pieceName + '" in ' + jsonPath + '\n');
+    process.exit(1);
+  }
+
+  // Create output directory
+  const outDir = path.join(process.cwd(), pieceName + '-cards');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 
-  const toolPath = path.resolve(__dirname, 'ai-card-studio.html');
-  const toolURL  = serveBase
-    ? `${serveBase.replace(/\/$/, '')}/tools/ai-card-studio.html`
-    : `file://${toolPath}`;
+  // Tool URL — use STUDIO_URL env var for local-server mode, else file://
+  const toolFile = path.resolve(__dirname, 'ai-card-studio.html');
+  const toolURL  = process.env.STUDIO_URL || ('file://' + toolFile);
 
-  console.log(`\n  Exporting ${pieceCards.length} card${pieceCards.length === 1 ? '' : 's'} for piece: "${pieceName}"`);
-  console.log(`  Tool URL:  ${toolURL}`);
-  console.log(`  Output:    ${outDir}\n`);
+  console.log('\n  Piece:   ' + pieceName);
+  console.log('  Cards:   ' + pieceCards.length + ' (from ' + path.basename(jsonPath) + ')');
+  console.log('  Output:  ' + outDir);
+  console.log('  Tool:    ' + toolURL);
+  console.log('');
 
-  // ── LAUNCH BROWSER ──────────────────────────────────────────────────
+  // ── LAUNCH ──────────────────────────────────────────────────────────
   const browser = await puppeteer.launch({
     headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
   });
-
   const page = await browser.newPage();
-  await page.setViewport({ width: 1280, height: 800, deviceScaleFactor: 1 });
+  await page.setViewport({ width: 1400, height: 900, deviceScaleFactor: 1 });
 
-  // Navigate and wait for fonts
   await page.goto(toolURL, { waitUntil: 'networkidle0', timeout: 30000 });
-  await page.waitForTimeout(1500); // font render buffer
+  await page.waitForTimeout(1500);   // Google Fonts render buffer
 
-  // Verify the tool loaded
-  const toolReady = await page.evaluate(() => typeof window.cardStudio === 'object');
-  if (!toolReady) {
-    console.error('  Error: ai-card-studio.html did not expose window.cardStudio API.');
+  // Verify tool loaded
+  const ok = await page.evaluate(() => typeof window.studio === 'object');
+  if (!ok) {
+    console.error('  Error: window.studio API not found. Is ai-card-studio.html up to date?');
     await browser.close();
     process.exit(1);
   }
 
-  // Inject card data for this piece
-  await page.evaluate((cards) => {
-    window.cardStudio.loadJSON(cards);
-  }, pieceCards);
+  // Inject card data
+  await page.evaluate((cards) => { window.studio.loadCards(cards); }, pieceCards);
+  await page.waitForTimeout(300);
 
-  await page.waitForTimeout(300); // allow re-render
+  // ── COLLECT THUMBNAILS ordered A→B→C→D, then by shell index ──────
+  // Puppeteer reads the DOM thumbnails that match the piece
+  const thumbData = await page.evaluate((piece) => {
+    const items = Array.from(document.querySelectorAll('.s-thumb-item[data-piece="' + piece + '"]'));
+    // Sort: shell A < B < C < D, then by shIdx within shell
+    items.sort((a, b) => {
+      const shA = a.dataset.shell, shB = b.dataset.shell;
+      if (shA !== shB) return shA < shB ? -1 : 1;
+      return parseInt(a.dataset.shIdx, 10) - parseInt(b.dataset.shIdx, 10);
+    });
+    return items.map(el => ({
+      gIdx:   parseInt(el.dataset.gIdx,  10),
+      shell:  el.dataset.shell.toLowerCase(),
+      shIdx:  parseInt(el.dataset.shIdx, 10) + 1,  // 1-based
+    }));
+  }, pieceName);
 
-  // ── ITERATE AND SCREENSHOT ───────────────────────────────────────────
-  const shellCounts = {};
-  let successCount  = 0;
+  if (!thumbData.length) {
+    console.error('  Error: no thumbnails found for piece "' + pieceName + '" in the contact sheet.');
+    console.error('  Make sure the JSON contains cards with piece === "' + pieceName + '".\n');
+    await browser.close();
+    process.exit(1);
+  }
 
-  for (let i = 0; i < pieceCards.length; i++) {
-    const card = pieceCards[i];
-    const sh   = (card.shell || 'A').toLowerCase();
+  // ── SCREENSHOT EACH CARD ─────────────────────────────────────────
+  let saved = 0;
 
-    if (!shellCounts[sh]) shellCounts[sh] = 0;
-    shellCounts[sh]++;
-    const shIdx    = String(shellCounts[sh]).padStart(2, '0');
-    const filename = `${pieceName}-shell-${sh}-${shIdx}.png`;
+  for (let i = 0; i < thumbData.length; i++) {
+    const { gIdx, shell, shIdx } = thumbData[i];
+    const filename = pieceName + '-shell-' + shell + '-' + String(shIdx).padStart(2, '0') + '.png';
     const filepath = path.join(outDir, filename);
 
-    // Navigate to this card in the tool
+    // Click the thumbnail to load it into the center preview
     await page.evaluate((idx) => {
-      window.cardStudio.showCard(idx);
-    }, i);
+      const el = document.querySelector('.s-thumb-item[data-g-idx="' + idx + '"]');
+      if (el) el.click();
+    }, gIdx);
 
-    await page.waitForTimeout(120); // render settle
+    await page.waitForTimeout(150);  // per-spec render settle
 
-    // Screenshot the card preview element at true 300×280
-    const cardEl = await page.$('#card-preview');
+    // Screenshot the center preview panel card element (exactly 300×280)
+    const cardEl = await page.$('#card-preview .carousel__card');
     if (!cardEl) {
-      console.error(`  ✗ Slide ${i + 1} of ${pieceCards.length} — could not find #card-preview`);
-      continue;
-    }
-
-    const box = await cardEl.boundingBox();
-    if (!box) {
-      console.error(`  ✗ Slide ${i + 1} of ${pieceCards.length} — #card-preview has no bounding box`);
+      console.error('  ✗ Card ' + (i+1) + ' of ' + thumbData.length + ' — #card-preview .carousel__card not found');
       continue;
     }
 
     await cardEl.screenshot({ path: filepath });
-    successCount++;
+    saved++;
 
-    console.log(`  Slide ${i + 1} of ${pieceCards.length} → ${filename}`);
+    console.log('  Card ' + (i+1) + ' of ' + thumbData.length + ' → ' + filename);
   }
 
   await browser.close();
 
-  // ── SUMMARY ─────────────────────────────────────────────────────────
-  console.log(`\n  ✓ ${successCount} of ${pieceCards.length} cards exported → ./${pieceName}-cards/\n`);
+  // ── SUMMARY ─────────────────────────────────────────────────────
+  console.log('\n  Done. ' + saved + ' cards saved to: ' + outDir + '\n');
 
-  if (successCount < pieceCards.length) {
-    process.exit(1);
-  }
+  if (saved < thumbData.length) process.exit(1);
 }
 
 main().catch(err => {
-  console.error('\n  Export failed:', err.message || err);
+  console.error('\n  Fatal: ' + (err.message || err) + '\n');
   process.exit(1);
 });
