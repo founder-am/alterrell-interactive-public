@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTU Network Map — Spider Web</title>
+<style>
+body {
+  background: #0a0a12;
+  margin: 0;
+  padding: 20px;
+  font-family: sans-serif;
+}
+h1 {
+  color: #E8B923;
+  font-size: 1.2rem;
+  margin: 0 0 4px;
+}
+p.sub {
+  color: #666;
+  font-size: 0.65rem;
+  margin: 0 0 16px;
+}
+svg {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: block;
+}
+</style>
+</head>
+<body>
+<h1>The Black Television Universe</h1>
+<p class="sub">First-pass web &middot; ~20 actors &middot; lines = shared show</p>
+
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- EDGES (show connections) -->
+  <!-- Color key: 70s=#e8944a 80s=#6aafe8 90s=#b88ae8 00s=#6ae8a0 10s=#e8d86a 20s=#e86a9a -->
+
+  <!-- Sanford and Son -->
+  <line x1="80" y1="120" x2="200" y2="200" stroke="#e8944a" stroke-width="1.5" opacity="0.5"/>
+  <text x="130" y="152" fill="#e8944a" font-size="7" opacity="0.7">Sanford &amp; Son</text>
+
+  <!-- The Jeffersons -->
+  <line x1="120" y1="280" x2="200" y2="200" stroke="#e8944a" stroke-width="1.5" opacity="0.5"/>
+  <text x="145" y="248" fill="#e8944a" font-size="7" opacity="0.7">Jeffersons</text>
+
+  <!-- 227: Marla—Hal Williams -->
+  <line x1="200" y1="200" x2="200" y2="200" stroke="#6aafe8" stroke-width="0" opacity="0"/>
+  <!-- 227: Marla—Jackée -->
+  <line x1="200" y1="200" x2="370" y2="180" stroke="#6aafe8" stroke-width="1.5" opacity="0.5"/>
+  <text x="275" y="183" fill="#6aafe8" font-size="7" opacity="0.7">227</text>
+  <!-- 227: Marla—Regina King -->
+  <line x1="200" y1="200" x2="140" y2="380" stroke="#6aafe8" stroke-width="1.5" opacity="0.5"/>
+  <text x="155" y="295" fill="#6aafe8" font-size="7" opacity="0.7">227</text>
+  <!-- 227: Jackée—Regina King -->
+  <line x1="370" y1="180" x2="140" y2="380" stroke="#6aafe8" stroke-width="1.5" opacity="0.5"/>
+  <!-- 227: Hal—Jackée -->
+  <line x1="80" y1="120" x2="370" y2="180" stroke="#6aafe8" stroke-width="1" opacity="0.3"/>
+  <!-- 227: Hal—Marla -->
+  <line x1="80" y1="120" x2="200" y2="200" stroke="#6aafe8" stroke-width="1" opacity="0.3"/>
+
+  <!-- Hughleys: Marla—DL Hughley -->
+  <line x1="200" y1="200" x2="100" y2="460" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="135" y="335" fill="#b88ae8" font-size="7" opacity="0.7">Hughleys</text>
+
+  <!-- Sister Sister: Jackée—Tia Mowry -->
+  <line x1="370" y1="180" x2="480" y2="100" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="418" y="132" fill="#b88ae8" font-size="7" opacity="0.7">Sister Sister</text>
+
+  <!-- EHC: Jackée—Tichina -->
+  <line x1="370" y1="180" x2="540" y2="300" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <text x="448" y="232" fill="#6ae8a0" font-size="7" opacity="0.7">EHC</text>
+  <!-- EHC: Jackée—Tyler James Williams -->
+  <line x1="370" y1="180" x2="680" y2="400" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <!-- EHC: Jackée—Terry Crews -->
+  <line x1="370" y1="180" x2="560" y2="460" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <!-- EHC: Tichina—Tyler James Williams -->
+  <line x1="540" y1="300" x2="680" y2="400" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <!-- EHC: Tichina—Terry Crews -->
+  <line x1="540" y1="300" x2="560" y2="460" stroke="#6ae8a0" stroke-width="1" opacity="0.3"/>
+  <!-- EHC: Terry—Tyler -->
+  <line x1="560" y1="460" x2="680" y2="400" stroke="#6ae8a0" stroke-width="1" opacity="0.3"/>
+
+  <!-- Martin: Tichina—Tisha -->
+  <line x1="540" y1="300" x2="620" y2="200" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="572" y="244" fill="#b88ae8" font-size="7" opacity="0.7">Martin</text>
+
+  <!-- Neighborhood: Tichina—Cedric -->
+  <line x1="540" y1="300" x2="700" y2="260" stroke="#e8d86a" stroke-width="1.5" opacity="0.5"/>
+  <text x="615" y="273" fill="#e8d86a" font-size="7" opacity="0.7">Neighborhood</text>
+
+  <!-- My Wife and Kids: Tisha—Damon Wayans -->
+  <line x1="620" y1="200" x2="760" y2="140" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <text x="685" y="162" fill="#6ae8a0" font-size="7" opacity="0.7">My Wife &amp; Kids</text>
+
+  <!-- Ms. Pat Show: Jackée -->
+  <line x1="370" y1="180" x2="310" y2="80" stroke="#e86a9a" stroke-width="1.5" opacity="0.5"/>
+  <text x="330" y="122" fill="#e86a9a" font-size="7" opacity="0.7">Ms. Pat Show</text>
+
+  <!-- Abbott: Tyler James Williams—Quinta -->
+  <line x1="680" y1="400" x2="820" y2="460" stroke="#e86a9a" stroke-width="1.5" opacity="0.5"/>
+  <text x="742" y="423" fill="#e86a9a" font-size="7" opacity="0.7">Abbott</text>
+  <!-- Abbott: Sheryl Lee Ralph—Quinta -->
+  <line x1="680" y1="560" x2="820" y2="460" stroke="#e86a9a" stroke-width="1.5" opacity="0.5"/>
+  <!-- Abbott: Sheryl Lee Ralph—Tyler -->
+  <line x1="680" y1="560" x2="680" y2="400" stroke="#e86a9a" stroke-width="1" opacity="0.3"/>
+
+  <!-- Moesha: Sheryl Lee Ralph—Brandy -->
+  <line x1="680" y1="560" x2="540" y2="600" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="600" y="586" fill="#b88ae8" font-size="7" opacity="0.7">Moesha</text>
+  <!-- Moesha: Brandy—Countess Vaughn -->
+  <line x1="540" y1="600" x2="420" y2="560" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Parkers: Countess Vaughn—Mo'Nique -->
+  <line x1="420" y1="560" x2="340" y2="480" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="368" y="526" fill="#b88ae8" font-size="7" opacity="0.7">Parkers</text>
+
+  <!-- Cosby: Erika Alexander—Lisa Bonet -->
+  <line x1="280" y1="380" x2="280" y2="290" stroke="#6aafe8" stroke-width="1.5" opacity="0.5"/>
+  <text x="284" y="338" fill="#6aafe8" font-size="7" opacity="0.7">Cosby</text>
+  <!-- Cosby: Malcolm-Jamal Warner -->
+  <line x1="280" y1="290" x2="420" y2="380" stroke="#6aafe8" stroke-width="1" opacity="0.3"/>
+
+  <!-- A Different World: Lisa Bonet -->
+  <!-- (Lisa Bonet is the bridge from Cosby to ADW) -->
+  <line x1="280" y1="290" x2="220" y2="500" stroke="#6aafe8" stroke-width="1.5" opacity="0.5"/>
+  <text x="236" y="400" fill="#6aafe8" font-size="7" opacity="0.7">A Different World</text>
+
+  <!-- Living Single: Erika Alexander—Kim Fields -->
+  <line x1="280" y1="380" x2="160" y2="540" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="206" y="466" fill="#b88ae8" font-size="7" opacity="0.7">Living Single</text>
+
+  <!-- Upshaws: Kim Fields -->
+  <line x1="160" y1="540" x2="80" y2="600" stroke="#e86a9a" stroke-width="1.5" opacity="0.5"/>
+  <text x="105" y="576" fill="#e86a9a" font-size="7" opacity="0.7">Upshaws</text>
+
+  <!-- Family Matters: Telma Hopkins -->
+  <line x1="460" y1="480" x2="460" y2="480" stroke="#6aafe8" stroke-width="0"/>
+  <!-- Half & Half: Telma—Essence -->
+  <line x1="460" y1="480" x2="600" y2="540" stroke="#6ae8a0" stroke-width="1.5" opacity="0.5"/>
+  <text x="522" y="516" fill="#6ae8a0" font-size="7" opacity="0.7">Half &amp; Half</text>
+
+  <!-- Are We There Yet: Telma—Essence -->
+  <line x1="460" y1="480" x2="600" y2="540" stroke="#e8d86a" stroke-width="1" opacity="0.3"/>
+  <!-- Are We There Yet: Terry Crews—Essence -->
+  <line x1="560" y1="460" x2="600" y2="540" stroke="#e8d86a" stroke-width="1.5" opacity="0.5"/>
+  <text x="574" y="506" fill="#e8d86a" font-size="7" opacity="0.7">Are We There Yet?</text>
+  <!-- Are We There Yet: Terry—Telma -->
+  <line x1="560" y1="460" x2="460" y2="480" stroke="#e8d86a" stroke-width="1" opacity="0.3"/>
+
+  <!-- Marlon: Essence—Marlon Wayans -->
+  <line x1="600" y1="540" x2="820" y2="140" stroke="#e8d86a" stroke-width="1.5" opacity="0.5"/>
+  <text x="718" y="340" fill="#e8d86a" font-size="7" opacity="0.7">Marlon</text>
+
+  <!-- Wayans Bros: Marlon Wayans -->
+  <line x1="820" y1="140" x2="900" y2="80" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="854" y="104" fill="#b88ae8" font-size="7" opacity="0.7">Wayans Bros</text>
+
+  <!-- Malcolm & Eddie: MJW—Eddie Griffin -->
+  <line x1="420" y1="380" x2="480" y2="420" stroke="#b88ae8" stroke-width="1.5" opacity="0.5"/>
+  <text x="440" y="406" fill="#b88ae8" font-size="7" opacity="0.7">Malcolm &amp; Eddie</text>
+
+  <!-- Girlfriends—Black-ish: Tracee Ellis Ross -->
+  <line x1="860" y1="320" x2="860" y2="320" stroke="#e8d86a" stroke-width="0"/>
+
+  <!-- ISOLATED NODES (no cast connections in current map) -->
+  <!-- Will Smith, Issa Rae, Donald Glover float alone -->
+
+
+  <!-- ===================== -->
+  <!-- NODES (actors)        -->
+  <!-- ===================== -->
+
+  <!-- Hal Williams -->
+  <circle cx="80" cy="120" r="6" fill="#e8944a"/>
+  <text x="80" y="108" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Hal Williams</text>
+
+  <!-- Redd Foxx -->
+  <circle cx="80" cy="55" r="5" fill="#e8944a"/>
+  <text x="80" y="45" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Redd Foxx</text>
+  <line x1="80" y1="60" x2="80" y2="114" stroke="#e8944a" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Sherman Hemsley -->
+  <circle cx="55" cy="280" r="5" fill="#e8944a"/>
+  <text x="55" y="270" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Sherman Hemsley</text>
+  <line x1="55" y1="280" x2="120" y2="280" stroke="#e8944a" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Isabel Sanford -->
+  <circle cx="120" cy="280" r="4" fill="#e8944a" opacity="0.6"/>
+  <text x="120" y="300" text-anchor="middle" fill="#888" font-size="7">Isabel Sanford</text>
+
+  <!-- MARLA GIBBS — big hub -->
+  <circle cx="200" cy="200" r="10" fill="#E8B923"/>
+  <text x="200" y="220" text-anchor="middle" fill="#E8B923" font-size="9" font-weight="700">Marla Gibbs</text>
+
+  <!-- Regina King -->
+  <circle cx="140" cy="380" r="5" fill="#6aafe8"/>
+  <text x="140" y="396" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Regina King</text>
+
+  <!-- D.L. Hughley -->
+  <circle cx="100" cy="460" r="4" fill="#b88ae8"/>
+  <text x="100" y="478" text-anchor="middle" fill="#bbb" font-size="7">D.L. Hughley</text>
+
+  <!-- JACKÉE HARRY — biggest hub -->
+  <circle cx="370" cy="180" r="12" fill="#E8B923"/>
+  <text x="370" y="165" text-anchor="middle" fill="#E8B923" font-size="9" font-weight="700">Jackée Harry</text>
+
+  <!-- Ms. Pat -->
+  <circle cx="310" cy="80" r="4" fill="#e86a9a"/>
+  <text x="310" y="70" text-anchor="middle" fill="#bbb" font-size="7">Ms. Pat</text>
+
+  <!-- Tia Mowry -->
+  <circle cx="480" cy="100" r="5" fill="#b88ae8"/>
+  <text x="480" y="90" text-anchor="middle" fill="#fff" font-size="8">Tia Mowry</text>
+
+  <!-- TICHINA ARNOLD — big hub -->
+  <circle cx="540" cy="300" r="10" fill="#E8B923"/>
+  <text x="540" y="320" text-anchor="middle" fill="#E8B923" font-size="9" font-weight="700">Tichina Arnold</text>
+
+  <!-- Tisha Campbell -->
+  <circle cx="620" cy="200" r="7" fill="#b88ae8"/>
+  <text x="620" y="190" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Tisha Campbell</text>
+
+  <!-- Cedric the Entertainer -->
+  <circle cx="700" cy="260" r="5" fill="#e8d86a"/>
+  <text x="700" y="250" text-anchor="middle" fill="#fff" font-size="8">Cedric the Entertainer</text>
+
+  <!-- Damon Wayans -->
+  <circle cx="760" cy="140" r="5" fill="#6ae8a0"/>
+  <text x="760" y="130" text-anchor="middle" fill="#fff" font-size="8">Damon Wayans</text>
+
+  <!-- Tyler James Williams -->
+  <circle cx="680" cy="400" r="7" fill="#6ae8a0"/>
+  <text x="680" y="390" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Tyler James Williams</text>
+
+  <!-- Terry Crews -->
+  <circle cx="560" cy="460" r="6" fill="#6ae8a0"/>
+  <text x="560" y="450" text-anchor="middle" fill="#fff" font-size="8">Terry Crews</text>
+
+  <!-- Quinta Brunson -->
+  <circle cx="820" cy="460" r="6" fill="#e86a9a"/>
+  <text x="820" y="480" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Quinta Brunson</text>
+
+  <!-- Sheryl Lee Ralph -->
+  <circle cx="680" cy="560" r="6" fill="#b88ae8"/>
+  <text x="680" y="580" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Sheryl Lee Ralph</text>
+
+  <!-- Brandy -->
+  <circle cx="540" cy="600" r="5" fill="#b88ae8"/>
+  <text x="540" y="618" text-anchor="middle" fill="#fff" font-size="8">Brandy</text>
+
+  <!-- Countess Vaughn -->
+  <circle cx="420" cy="560" r="5" fill="#b88ae8"/>
+  <text x="420" y="578" text-anchor="middle" fill="#fff" font-size="8">Countess Vaughn</text>
+
+  <!-- Mo'Nique -->
+  <circle cx="340" cy="480" r="4" fill="#b88ae8"/>
+  <text x="340" y="498" text-anchor="middle" fill="#bbb" font-size="7">Mo'Nique</text>
+
+  <!-- Lisa Bonet -->
+  <circle cx="280" cy="290" r="5" fill="#6aafe8"/>
+  <text x="295" y="283" fill="#fff" font-size="8">Lisa Bonet</text>
+
+  <!-- Erika Alexander -->
+  <circle cx="280" cy="380" r="6" fill="#b88ae8"/>
+  <text x="295" y="376" fill="#fff" font-size="8">Erika Alexander</text>
+
+  <!-- Jasmine Guy (ADW only) -->
+  <circle cx="220" cy="500" r="4" fill="#6aafe8"/>
+  <text x="220" y="516" text-anchor="middle" fill="#bbb" font-size="7">Jasmine Guy</text>
+
+  <!-- Kim Fields -->
+  <circle cx="160" cy="540" r="6" fill="#b88ae8"/>
+  <text x="160" y="558" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Kim Fields</text>
+
+  <!-- Wanda Sykes -->
+  <circle cx="80" cy="600" r="4" fill="#e86a9a"/>
+  <text x="80" y="618" text-anchor="middle" fill="#bbb" font-size="7">Wanda Sykes</text>
+
+  <!-- Malcolm-Jamal Warner -->
+  <circle cx="420" cy="380" r="5" fill="#6aafe8"/>
+  <text x="435" y="376" fill="#fff" font-size="8">MJ Warner</text>
+
+  <!-- Eddie Griffin -->
+  <circle cx="480" cy="420" r="4" fill="#b88ae8"/>
+  <text x="495" y="416" fill="#bbb" font-size="7">Eddie Griffin</text>
+
+  <!-- Telma Hopkins -->
+  <circle cx="460" cy="480" r="7" fill="#6aafe8"/>
+  <text x="460" y="498" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Telma Hopkins</text>
+
+  <!-- ESSENCE ATKINS — big hub -->
+  <circle cx="600" cy="540" r="9" fill="#E8B923"/>
+  <text x="600" y="558" text-anchor="middle" fill="#E8B923" font-size="9" font-weight="700">Essence Atkins</text>
+
+  <!-- Marlon Wayans -->
+  <circle cx="820" cy="140" r="5" fill="#b88ae8"/>
+  <text x="820" y="130" text-anchor="middle" fill="#fff" font-size="8">Marlon Wayans</text>
+
+  <!-- Shawn Wayans -->
+  <circle cx="900" cy="80" r="4" fill="#b88ae8"/>
+  <text x="900" y="70" text-anchor="middle" fill="#bbb" font-size="7">Shawn Wayans</text>
+
+  <!-- Tracee Ellis Ross — connected to Girlfriends + Black-ish -->
+  <circle cx="860" cy="320" r="6" fill="#e8d86a"/>
+  <text x="860" y="340" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Tracee Ellis Ross</text>
+
+  <!-- ISOLATED: Will Smith -->
+  <circle cx="920" cy="560" r="5" fill="#b88ae8" opacity="0.5"/>
+  <text x="920" y="578" text-anchor="middle" fill="#666" font-size="7">Will Smith</text>
+  <text x="920" y="588" text-anchor="middle" fill="#444" font-size="6">(Fresh Prince — isolated)</text>
+
+  <!-- ISOLATED: Issa Rae -->
+  <circle cx="920" cy="620" r="4" fill="#e8d86a" opacity="0.5"/>
+  <text x="920" y="638" text-anchor="middle" fill="#666" font-size="7">Issa Rae</text>
+  <text x="920" y="648" text-anchor="middle" fill="#444" font-size="6">(Insecure — isolated)</text>
+
+  <!-- ISOLATED: Donald Glover -->
+  <circle cx="920" cy="670" r="4" fill="#e8d86a" opacity="0.5"/>
+  <text x="920" y="688" text-anchor="middle" fill="#666" font-size="7">Donald Glover</text>
+  <text x="920" y="698" text-anchor="middle" fill="#444" font-size="6">(Atlanta — isolated)</text>
+
+</svg>
+
+</body>
+</html>
