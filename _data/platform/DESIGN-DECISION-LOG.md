@@ -45,11 +45,11 @@ These apply to every piece, every session, every build.
 | Muted | #64748B | Italic aside text beside CTA buttons ONLY |
 | Border | #E2E0DC | Section dividers, card borders |
 
-### OPEN: Paper color reconciliation
-#f8f6f1 (spec), #e8e5e0 (reference track bg), #e8e4de (reference body bg). AMA decision needed.
+### RESOLVED: Paper color reconciliation (June 9, 2026)
+#f8f6f1 is canonical paper. #e8e5e0 and #e8e4de are retired exploration artifacts. CSS defines three values: --paper (#f8f6f1), --paper-warm (#f0ede6), --paper-card (#ffffff).
 
-### OPEN: Teal scope clarification
-Teal retired as background/fill per BRAND-BRIEF. Still used as piece-level accent (tab indicators, card borders, bar fills). AMA to clarify: retired as bg only, or also as accent?
+### RESOLVED: Teal scope clarification (June 9, 2026)
+Teal is retired as page-section background only. Active everywhere else: link color, nav accent, borders, callouts, stat numbers, share buttons, CTA buttons, progress bars, card borders, bar fills.
 
 ### Highlight accent color — VOIDED
 Crimson/Forest/Burgundy candidates voided. No longer tracked.
@@ -352,8 +352,6 @@ D-67 (2026-05-22) | LOCKED — Four card shells: A (stat), B (chart ≤4), C (qu
 
 | # | Topic | What's needed |
 |---|---|---|
-| Paper colors | #f8f6f1 vs #e8e5e0 vs #e8e4de — which is canonical for charts? | AMA pick one |
-| Teal scope | Retired as bg only, or also as accent? | AMA clarify |
 | Card 3 roster | Four-tier artist list from May 5 — still valid? | AMA reconfirm |
 | Card 11 quotes | Language comparison quotes need source verification | Research task |
 | Card 15 | Genre shift — A4 or A1? | AMA decide |
@@ -402,6 +400,14 @@ Methodology stays in footer `<details>` block and in Part 0's foundational copy.
 
 ### D-68 (2026-06-03) | LOCKED | Carousel component added to platform CSS
 Classes `.carousel--teal` and `.carousel--dark` added to `alterrell-interactive.css` as platform standard. Cards locked at 300×280px with 7px solid border (teal or gold). Four card types: `.card--a` (stat), `.card--b` (chart ≤4 bars), `.card--c` (quote), `.card--d` (comparison). Vanilla JS only, no dependencies. Mobile: single card, swipe gesture. Desktop: 3 cards visible, arrows step one at a time, dots always visible. Demo block added to `index.html` (hidden, `#carousel-demo`, AMA test only). Batch A — platform CSS only, no piece folders touched.
+
+---
+
+### D-78 (2026-06-09) | LOCKED | 9 deferred chart library components approved and moved to active
+Components: A4 Stacked Comparison (.ac-compare), A5 Named Quadrants (.ac-quadrant), B4 Pictograph (.ac-pictograph), D1 Stat Anchoring Option B (centered, background tint), D3 Annotation Block (.ac-annotation), D4a Split Card (.ac-connector-split), D4b Heavy Rule Divider (.ac-connector-rule), E1 Sorted Bar List (.ac-sorttable), E2 Expandable Card List (.ac-cardlist). D4 original connector CUT June 9, 2026.
+
+### D-79 (2026-06-09) | LOCKED | Display type texture locked as Option C — stroke outline
+CSS: -webkit-text-stroke: 1px rgba(248,246,241,0.6); paint-order: stroke fill; text-shadow: 0 2px 6px rgba(0,0,0,0.5). Applies to OF card-native hero names only (BTU, Crowning Achievements). Teal-lane uses flat rendering — no texture effects.
 
 ---
 

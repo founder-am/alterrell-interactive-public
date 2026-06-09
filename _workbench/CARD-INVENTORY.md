@@ -9,7 +9,7 @@ When AMA copy is complete, the file goes to a Type 2 build session.
 | Concert Tax (The Male Concert Laziness Surcharge) | `_workbench/concert-tax-cards.html` | 14 |
 | Crowning Achievements | `_workbench/crowning-achievements-cards.html` | 0 |
 | Gay Uncles | `_workbench/gay-uncles-cards.html` | 0 |
-| Where's Beyoncé | `_workbench/beyonce-cards.html` | 0 |
+| Where's Beyoncé | `_workbench/beyonce-cards.html` | 10 (approved June 9, 2026) |
 | Black Television Universe (BTU) | `_workbench/btu-cards.html` | 0 |
 | Copaganda | `_workbench/copaganda-cards.html` | 0 |
 | The Naming Series | `_workbench/naming-cards.html` | 0 |
