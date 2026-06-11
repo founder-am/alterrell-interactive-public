@@ -1,5 +1,5 @@
 # _workbench/ — Card Inventory
-Alterrell Interactive · Updated June 2026
+Alterrell Interactive · Updated June 9 2026
 
 Each workbench file is the editorial working copy for a piece's shareable cards.
 When AMA copy is complete, the file goes to a Type 2 build session.
