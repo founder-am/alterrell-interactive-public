@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
+**/.DS_Store
 .AppleDouble
 .LSOverride
 Icon
@@ -20,6 +21,9 @@ Icon
 # Node (if ever used)
 node_modules/
 npm-debug.log*
+
+# Local-only scratch projects (not part of this site)
+foreverloved/
 
 # Large data files (raw SSA data, CSVs)
 _data/**/*.txt
