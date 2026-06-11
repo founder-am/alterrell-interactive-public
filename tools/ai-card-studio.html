@@ -51,16 +51,43 @@
       color: var(--s-text);
     }
 
+    /* ── MODE TOGGLE BAR ── */
+    .s-mode-bar {
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      background: var(--s-panel);
+      border-bottom: 1px solid var(--s-border);
+    }
+    .s-mode-btn {
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      color: var(--s-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .s-mode-btn:hover { color: var(--s-text); border-color: var(--s-text); }
+    .s-mode-btn.active { background: var(--s-accent); border-color: var(--s-accent); color: #fff; }
+
     /* ── THREE-PANEL GRID ── */
     .studio {
       display: grid;
       grid-template-columns: 288px 1fr 320px;
-      height: 100vh;
+      height: calc(100vh - 40px);
     }
 
     /* ── PANEL BASE ── */
     .s-panel {
-      height: 100vh;
+      height: calc(100vh - 40px);
       overflow-y: auto;
       overflow-x: hidden;
       border-right: 1px solid var(--s-border);
@@ -651,11 +678,122 @@
       color: var(--s-muted);
       font-size: 10px;
     }
+
+    /* ══════════════════════════════════════════════════
+       BROWSE MODE — all new rules scoped under .browse-mode
+    ══════════════════════════════════════════════════ */
+    .browse-mode {
+      display: none;
+      flex-direction: column;
+      height: calc(100vh - 40px);
+      background: #0a0a10;
+    }
+    .browse-mode.active { display: flex; }
+
+    .browse-mode__grid {
+      flex: 1;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      padding: 24px;
+      align-content: start;
+      justify-items: center;
+    }
+
+    .browse-mode__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .browse-mode__frame { flex-shrink: 0; }
+    .browse-mode__frame--ai { width: 300px; height: 280px; }
+    .browse-mode__frame--of { width: 380px; height: 660px; }
+    .browse-mode__frame--of .carousel__card { width: 380px; height: 660px; }
+
+    .browse-mode__item--selected .carousel__card {
+      outline: 3px solid #E8B923;
+      outline-offset: 4px;
+    }
+
+    .browse-mode__label {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      color: var(--s-muted);
+      text-align: center;
+    }
+    .browse-mode__item--selected .browse-mode__label { color: #E8B923; }
+
+    .browse-mode__empty {
+      grid-column: 1 / -1;
+      padding: 40px;
+      text-align: center;
+      color: var(--s-muted);
+      font-size: 11px;
+    }
+
+    .browse-mode__output {
+      flex-shrink: 0;
+      border-top: 1px solid var(--s-border);
+      background: var(--s-panel);
+      padding: 12px 16px;
+      display: none;
+    }
+    .browse-mode__output.active { display: block; }
+    .browse-mode__output-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .browse-mode__output-label {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--s-label);
+    }
+    .browse-mode__copy-btn {
+      background: var(--s-accent);
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .browse-mode__copy-btn:hover { opacity: 0.85; }
+    .browse-mode__json {
+      max-height: 160px;
+      overflow: auto;
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      line-height: 1.5;
+      color: var(--s-text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
   </style>
 </head>
 <body>
 
-<div class="studio">
+<div class="s-mode-bar">
+  <button class="s-mode-btn active" data-mode="build">Build</button>
+  <button class="s-mode-btn" data-mode="browse">Browse</button>
+</div>
+
+<div class="studio" id="studio-panel">
 
   <!-- ════════════════════════════
        LEFT — Controls
@@ -828,6 +966,25 @@
   </aside>
 
 </div><!-- /.studio -->
+
+<!-- ════════════════════════════
+     BROWSE MODE
+════════════════════════════ -->
+<div class="browse-mode" id="browse-mode">
+
+  <div class="browse-mode__grid" id="browse-grid">
+    <div class="browse-mode__empty">Load cards in Build Mode to populate Browse Mode</div>
+  </div>
+
+  <div class="browse-mode__output" id="browse-output">
+    <div class="browse-mode__output-head">
+      <span class="browse-mode__output-label">Selected Variant — JSON</span>
+      <button class="browse-mode__copy-btn" id="browse-copy-btn">Copy JSON</button>
+    </div>
+    <pre class="browse-mode__json" id="browse-json"></pre>
+  </div>
+
+</div><!-- /.browse-mode -->
 
 <script>
 'use strict';
@@ -1017,6 +1174,12 @@ function loadCards(arr) {
   updateCounter();
   updateNav();
   document.getElementById('export-all-btn').disabled = false;
+
+  if (document.getElementById('browse-mode').classList.contains('active')) {
+    S.browseSelected = null;
+    updateBrowseOutput();
+    renderBrowse();
+  }
 }
 
 function setStatus(type, msg) {
@@ -1306,6 +1469,124 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight') document.getElementById('next-btn').click();
   ['A','B','C','D'].forEach(function(sh) {
     if (e.key.toUpperCase() === sh) document.querySelector('[data-shell="' + sh + '"]').click();
+  });
+});
+
+// ══════════════════════════════════════════════════
+// BROWSE MODE
+// ══════════════════════════════════════════════════
+
+// Sub-variants per shell, scoped to layouts that already exist in Build Mode
+var BROWSE_VARIANTS = {
+  A: [
+    { type: 'stat-top',    label: 'Stat — Top' },
+    { type: 'stat-center', label: 'Stat — Center' }
+  ],
+  B: [ { type: 'standard',    label: 'Chart — Standard' } ],
+  C: [ { type: 'pull-quote',  label: 'Quote — Pull Quote' } ],
+  D: [ { type: 'side-by-side', label: 'Compare — Side by Side' } ]
+};
+
+S.browseSelected = null; // { card, variant, gIdx }
+
+// Reuse the existing thumbnail markup; for Shell A apply the va-center
+// class to reflect the stat-center variant.
+function buildVariantCardHTML(card, variantType) {
+  var html = buildThumbHTML(card, card.shell);
+  if (card.shell === 'A' && variantType === 'stat-center') {
+    html = html.replace('carousel__card-body', 'carousel__card-body va-center');
+  }
+  return html;
+}
+
+function renderBrowse() {
+  var grid = document.getElementById('browse-grid');
+  grid.innerHTML = '';
+
+  if (!S.cards.length) {
+    grid.innerHTML = '<div class="browse-mode__empty">Load cards in Build Mode to populate Browse Mode</div>';
+    return;
+  }
+
+  S.cards.forEach(function(card, gIdx) {
+    var variants = BROWSE_VARIANTS[card.shell] || [];
+    var lane = (card.lane || 'AI').toUpperCase();
+    var frameClass = lane === 'OF' ? 'browse-mode__frame--of' : 'browse-mode__frame--ai';
+
+    variants.forEach(function(v) {
+      var item = document.createElement('div');
+      item.className = 'browse-mode__item';
+      item.dataset.gIdx = gIdx;
+      item.dataset.variant = v.type;
+
+      var frame = document.createElement('div');
+      frame.className = 'browse-mode__frame ' + frameClass;
+      frame.innerHTML = buildVariantCardHTML(card, v.type);
+      item.appendChild(frame);
+
+      var label = document.createElement('div');
+      label.className = 'browse-mode__label';
+      label.textContent = (card.piece || 'card') + ' — ' + v.label;
+      item.appendChild(label);
+
+      if (S.browseSelected && S.browseSelected.gIdx === gIdx && S.browseSelected.variant === v.type) {
+        item.classList.add('browse-mode__item--selected');
+      }
+
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.browse-mode__item--selected').forEach(function(el) {
+          el.classList.remove('browse-mode__item--selected');
+        });
+        item.classList.add('browse-mode__item--selected');
+        S.browseSelected = { card: card, variant: v.type, gIdx: gIdx };
+        updateBrowseOutput();
+      });
+
+      grid.appendChild(item);
+    });
+  });
+}
+
+function updateBrowseOutput() {
+  var out  = document.getElementById('browse-output');
+  var json = document.getElementById('browse-json');
+
+  if (!S.browseSelected) {
+    out.classList.remove('active');
+    json.textContent = '';
+    return;
+  }
+
+  var snippet = Object.assign({}, S.browseSelected.card, { variant_type: S.browseSelected.variant });
+  json.textContent = JSON.stringify(snippet, null, 2);
+  out.classList.add('active');
+}
+
+document.getElementById('browse-copy-btn').addEventListener('click', function() {
+  var btn = this;
+  var text = document.getElementById('browse-json').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 1200);
+  });
+});
+
+// ── MODE TOGGLE ──
+document.querySelectorAll('.s-mode-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var mode = btn.dataset.mode;
+    document.querySelectorAll('.s-mode-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+
+    document.getElementById('studio-panel').style.display = mode === 'build' ? 'grid' : 'none';
+    document.getElementById('browse-mode').classList.toggle('active', mode === 'browse');
+
+    // Selection persists until another card is clicked or mode is toggled
+    S.browseSelected = null;
+    updateBrowseOutput();
+    if (mode === 'browse') renderBrowse();
   });
 });
 </script>
