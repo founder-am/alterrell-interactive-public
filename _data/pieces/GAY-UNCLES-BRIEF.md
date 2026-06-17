@@ -137,7 +137,7 @@ NYC/ATL ratio: 3.6×. NYC got fewer poll responses.
 
 | State (poll cities) | Black rate | White rate | Gap |
 |---------------------|-----------|------------|-----|
-| DC | 37% | 15% | +23 pts |
+| DC | 37% | 15% | +22 pts |
 | California (LA, Oakland) | 38% | 26% | +12 pts |
 | Georgia (Atlanta) | 44% | 33% | +11 pts |
 | Texas (Houston) | 44% | 34% | +10 pts |
