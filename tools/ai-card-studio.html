@@ -49,13 +49,44 @@
       font-size: 12px;
       background: var(--s-bg);
       color: var(--s-text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── MODE TOGGLE BAR ── */
+    .s-mode-bar {
+      flex-shrink: 0;
+      height: 40px;
+      display: flex;
+      border-bottom: 1px solid var(--s-border);
+      background: var(--s-panel);
+    }
+    .s-mode-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--s-border);
+      color: var(--s-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+    }
+    .s-mode-btn:last-child { border-right: none; }
+    .s-mode-btn:hover { color: var(--s-text); }
+    .s-mode-btn--active {
+      background: var(--s-accent);
+      color: #fff;
     }
 
     /* ── THREE-PANEL GRID ── */
     .studio {
       display: grid;
       grid-template-columns: 288px 1fr 320px;
-      height: 100vh;
+      flex: 1;
+      min-height: 0;
     }
 
     /* ── PANEL BASE ── */
@@ -651,9 +682,168 @@
       color: var(--s-muted);
       font-size: 10px;
     }
+
+    /* ══════════════════════════════════════════════════
+       BROWSE MODE — variant comparison grid
+    ══════════════════════════════════════════════════ */
+    .browse-mode {
+      display: none;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      background: #0a0a10;
+      padding: 24px;
+    }
+    .browse-mode__empty {
+      color: var(--s-muted);
+      font-size: 11px;
+      text-align: center;
+      padding: 60px 0;
+    }
+    .browse-mode__section { margin-bottom: 32px; }
+    .browse-mode__section:last-of-type { margin-bottom: 0; }
+    .browse-mode__heading {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--s-label);
+      margin-bottom: 14px;
+    }
+    .browse-mode__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .browse-mode__item { cursor: pointer; }
+    .browse-mode__frame {
+      width: 300px;
+      height: 280px;
+      border-radius: 6px;
+    }
+    .browse-mode__item--selected .browse-mode__frame {
+      outline: 3px solid #E8B923;
+      outline-offset: 4px;
+    }
+    .browse-mode__label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--s-text);
+      text-align: center;
+      letter-spacing: 0.06em;
+      margin-top: 10px;
+    }
+
+    /* Shell A — dual-stat */
+    .browse-mode .browse-dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .browse-mode .browse-dual__col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .browse-mode .browse-dual .carousel__card-stat { margin: 0; }
+
+    /* Shell C — teal-field / two-column */
+    .browse-mode .browse-teal-field { background: var(--teal); }
+    .browse-mode .browse-teal-field .carousel__card-quote {
+      color: #fff;
+      border-left-color: #fff;
+    }
+    .browse-mode .browse-teal-field .carousel__card-attribution { color: rgba(255,255,255,0.75); }
+    .browse-mode .browse-teal-field .s-quote-mark { color: #fff; }
+
+    .browse-mode .browse-two-col {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .browse-mode .browse-two-col__quote .carousel__card-quote { margin-bottom: 0; }
+    .browse-mode .browse-two-col__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 0.625rem;
+    }
+
+    /* Shell D — stacked-contrast */
+    .browse-mode .browse-stacked {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 1px;
+      background: var(--c-divider);
+      height: 100%;
+    }
+    .browse-mode .browse-stacked__cell {
+      background: var(--c-bg);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+    }
+    .browse-mode .browse-stacked__cell--accent { background: var(--teal); }
+    .browse-mode .browse-stacked__cell--accent .carousel__compare-val,
+    .browse-mode .browse-stacked__cell--accent .carousel__compare-desc { color: #fff; }
+
+    /* JSON output panel */
+    .browse-mode__output {
+      margin-top: 28px;
+      max-width: 640px;
+      background: var(--s-panel);
+      border: 1px solid var(--s-border);
+      border-radius: 4px;
+      padding: 16px;
+    }
+    .browse-mode__output-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--s-accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .browse-mode__output-json {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      line-height: 1.6;
+      color: var(--s-text);
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 260px;
+      overflow-y: auto;
+      background: #0d0d13;
+      border: 1px solid var(--s-border);
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .browse-mode__copy-btn {
+      background: var(--s-accent);
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .browse-mode__copy-btn:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
+
+<div class="s-mode-bar">
+  <button class="s-mode-btn s-mode-btn--active" data-mode="build">Build</button>
+  <button class="s-mode-btn" data-mode="browse">Browse</button>
+</div>
 
 <div class="studio">
 
@@ -829,6 +1019,8 @@
 
 </div><!-- /.studio -->
 
+<div class="browse-mode" id="browse-mode"></div>
+
 <script>
 'use strict';
 
@@ -846,6 +1038,8 @@ var S = {
     D: { val:24, pad:12, desc:11 },
   },
   exported:   new Set(),                  // global card indices exported
+  mode:       'build',                    // 'build' | 'browse'
+  browseSelected: null,                   // { card, shell, variant } in Browse mode
 };
 
 // ── PUBLIC API for Puppeteer ──
@@ -1017,6 +1211,8 @@ function loadCards(arr) {
   updateCounter();
   updateNav();
   document.getElementById('export-all-btn').disabled = false;
+
+  if (S.mode === 'browse') renderBrowse();
 }
 
 function setStatus(type, msg) {
@@ -1296,6 +1492,254 @@ document.querySelectorAll('.s-va-btn').forEach(function(btn) {
     document.querySelectorAll('.s-va-btn').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     renderPreview();
+  });
+});
+
+// ══════════════════════════════════════════════════
+// BROWSE MODE
+// ══════════════════════════════════════════════════
+
+// Sub-variants offered per shell
+var BROWSE_VARIANTS = {
+  A: ['stat-top', 'stat-center', 'dual-stat'],
+  B: ['standard', 'tiered-bar'],
+  C: ['teal-field', 'white-field', 'two-column'],
+  D: ['side-by-side', 'stacked-contrast'],
+};
+
+function browseHead(card) {
+  return '<div class="carousel__card-head">'
+    + '<span class="carousel__card-label">' + esc(card.label) + '</span>'
+    + '<div class="carousel__card-title">' + esc(card.title) + '</div>'
+    + '</div>';
+}
+function browseFoot(card) {
+  return '<div class="carousel__card-foot">'
+    + '<span class="carousel__card-source">' + esc(card.source) + '</span>'
+    + '</div>';
+}
+function browseCompareCell(val, desc) {
+  return '<div class="carousel__compare-cell">'
+    + '<span class="carousel__compare-val">' + esc(val) + '</span>'
+    + '<p class="carousel__compare-desc">' + esc(desc) + '</p>'
+    + '</div>';
+}
+
+// Build one shell+variant card, always lane-ai (teal) at 300×280
+function buildBrowseVariantHTML(card, shell, variant) {
+  var head = browseHead(card);
+  var foot = browseFoot(card);
+  var body = '';
+
+  if (shell === 'A') {
+    if (variant === 'stat-top' || variant === 'stat-center') {
+      var vaClass = variant === 'stat-center' ? ' va-center' : '';
+      body = '<div class="carousel__card-body' + vaClass + '">'
+        + '<span class="carousel__card-stat">' + esc(card.value) + '</span>'
+        + '<p class="carousel__card-text">' + esc(card.body) + '</p>'
+        + '</div>';
+    } else if (variant === 'dual-stat') {
+      body = '<div class="carousel__card-body browse-dual">'
+        + '<div class="browse-dual__col"><span class="carousel__card-stat">' + esc(card.value) + '</span></div>'
+        + '<div class="browse-dual__col"><p class="carousel__card-text">' + esc(card.body) + '</p></div>'
+        + '</div>';
+    }
+  } else if (shell === 'B') {
+    var bars = (card.bars || []).map(function(b, i) {
+      var w = Math.min(100, Math.max(0, b.pct || 0));
+      var trackStyle = '';
+      if (variant === 'tiered-bar') {
+        var h = Math.max(6, 22 - i * 4);
+        trackStyle = ' style="height:' + h + 'px"';
+      }
+      return '<div class="carousel__bar-row">'
+        + '<span class="carousel__bar-label">' + esc(b.label) + '</span>'
+        + '<div class="carousel__bar-track"' + trackStyle + '><div class="carousel__bar-fill" style="width:' + w + '%"></div></div>'
+        + '<span class="carousel__bar-val">' + esc(b.value) + '</span>'
+        + '</div>';
+    }).join('');
+    body = '<div class="carousel__card-body"><div class="s-bars">' + bars + '</div></div>';
+  } else if (shell === 'C') {
+    if (variant === 'white-field' || variant === 'teal-field') {
+      var fieldClass = variant === 'teal-field' ? ' browse-teal-field' : '';
+      body = '<div class="carousel__card-body' + fieldClass + '">'
+        + '<span class="s-quote-mark">&#8220;</span>'
+        + '<p class="carousel__card-quote">' + esc(card.quote) + '</p>'
+        + '<span class="carousel__card-attribution">' + esc(card.attribution) + '</span>'
+        + '</div>';
+    } else if (variant === 'two-column') {
+      body = '<div class="carousel__card-body browse-two-col">'
+        + '<div class="browse-two-col__quote"><p class="carousel__card-quote">' + esc(card.quote) + '</p></div>'
+        + '<div class="browse-two-col__meta"><span class="s-quote-mark">&#8220;</span><span class="carousel__card-attribution">' + esc(card.attribution) + '</span></div>'
+        + '</div>';
+    }
+  } else if (shell === 'D') {
+    if (variant === 'side-by-side') {
+      body = '<div class="carousel__card-body"><div class="carousel__compare-grid">'
+        + browseCompareCell(card.left_value, card.left_desc)
+        + browseCompareCell(card.right_value, card.right_desc)
+        + '</div></div>';
+    } else if (variant === 'stacked-contrast') {
+      body = '<div class="carousel__card-body"><div class="browse-stacked">'
+        + '<div class="browse-stacked__cell browse-stacked__cell--accent">'
+          + '<span class="carousel__compare-val">' + esc(card.left_value) + '</span>'
+          + '<p class="carousel__compare-desc">' + esc(card.left_desc) + '</p>'
+        + '</div>'
+        + '<div class="browse-stacked__cell">'
+          + '<span class="carousel__compare-val">' + esc(card.right_value) + '</span>'
+          + '<p class="carousel__compare-desc">' + esc(card.right_desc) + '</p>'
+        + '</div>'
+      + '</div></div>';
+    }
+  }
+
+  return '<div class="carousel__card card--' + shell.toLowerCase() + ' lane-ai">' + head + body + foot + '</div>';
+}
+
+// ── COPY TO CLIPBOARD (with fallback for file:// contexts) ──
+function browseCopy(text, done) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, function() { browseFallbackCopy(text, done); });
+  } else {
+    browseFallbackCopy(text, done);
+  }
+}
+function browseFallbackCopy(text, done) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  done();
+}
+
+// ── JSON OUTPUT PANEL ──
+function renderBrowseOutput(card, shell, variant) {
+  var variantType = 'shell-' + shell.toLowerCase() + '-' + variant;
+  var out = Object.assign({}, card, { variant_type: variantType });
+  var json = JSON.stringify(out, null, 2);
+
+  var el = document.getElementById('browse-output');
+  el.style.display = 'block';
+  el.innerHTML = '';
+
+  var label = document.createElement('div');
+  label.className = 'browse-mode__output-label';
+  label.textContent = 'variant_type: ' + variantType;
+
+  var pre = document.createElement('pre');
+  pre.className = 'browse-mode__output-json';
+  pre.textContent = json;
+
+  var btn = document.createElement('button');
+  btn.className = 'browse-mode__copy-btn';
+  btn.textContent = 'Copy JSON';
+  btn.addEventListener('click', function() {
+    browseCopy(json, function() {
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = 'Copy JSON'; }, 1200);
+    });
+  });
+
+  el.appendChild(label);
+  el.appendChild(pre);
+  el.appendChild(btn);
+}
+
+function clearBrowseSelection() {
+  document.querySelectorAll('.browse-mode__item--selected').forEach(function(el) {
+    el.classList.remove('browse-mode__item--selected');
+  });
+  S.browseSelected = null;
+  var out = document.getElementById('browse-output');
+  if (out) out.style.display = 'none';
+}
+
+function selectBrowseItem(item, card, shell, variant) {
+  document.querySelectorAll('.browse-mode__item--selected').forEach(function(el) {
+    el.classList.remove('browse-mode__item--selected');
+  });
+  item.classList.add('browse-mode__item--selected');
+  S.browseSelected = { card: card, shell: shell, variant: variant };
+  renderBrowseOutput(card, shell, variant);
+}
+
+// ── RENDER BROWSE PANEL — one row of variant frames per loaded card ──
+function renderBrowse() {
+  var container = document.getElementById('browse-mode');
+  container.innerHTML = '';
+  S.browseSelected = null;
+
+  if (!S.cards.length) {
+    container.innerHTML = '<div class="browse-mode__empty">Load cards to browse variants</div>';
+    return;
+  }
+
+  S.cards.forEach(function(card) {
+    var shell = card.shell;
+    var variants = BROWSE_VARIANTS[shell];
+    if (!variants) return;
+
+    var section = document.createElement('div');
+    section.className = 'browse-mode__section';
+
+    var heading = document.createElement('div');
+    heading.className = 'browse-mode__heading';
+    heading.textContent = (card.piece || 'card') + ' — Shell ' + shell + ' · ' + (card.title || card.label || '');
+    section.appendChild(heading);
+
+    var grid = document.createElement('div');
+    grid.className = 'browse-mode__grid';
+
+    variants.forEach(function(variant) {
+      var item = document.createElement('div');
+      item.className = 'browse-mode__item';
+
+      var frame = document.createElement('div');
+      frame.className = 'browse-mode__frame';
+      frame.innerHTML = buildBrowseVariantHTML(card, shell, variant);
+
+      var label = document.createElement('div');
+      label.className = 'browse-mode__label';
+      label.textContent = variant;
+
+      item.appendChild(frame);
+      item.appendChild(label);
+      item.addEventListener('click', function() {
+        selectBrowseItem(item, card, shell, variant);
+      });
+
+      grid.appendChild(item);
+    });
+
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+
+  var output = document.createElement('div');
+  output.className = 'browse-mode__output';
+  output.id = 'browse-output';
+  output.style.display = 'none';
+  container.appendChild(output);
+}
+
+// ── MODE TOGGLE ──
+document.querySelectorAll('.s-mode-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (btn.dataset.mode === S.mode) return;
+    S.mode = btn.dataset.mode;
+
+    document.querySelectorAll('.s-mode-btn').forEach(function(b) {
+      b.classList.toggle('s-mode-btn--active', b === btn);
+    });
+    document.querySelector('.studio').style.display = S.mode === 'build' ? 'grid' : 'none';
+    document.getElementById('browse-mode').style.display = S.mode === 'browse' ? 'block' : 'none';
+
+    clearBrowseSelection();
+    if (S.mode === 'browse') renderBrowse();
   });
 });
 
