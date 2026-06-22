@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American Diet Evolution: 1960–2020</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#faf9f6;--card:#fff;--card2:#f5f3ef;--tx:#1a1917;--tx2:#6b6860;--tx3:#9e9a90;--brd:#e5e2da;--red:#d94a3a;--blue:#2d7bc4;--green:#1a8f5f;--amber:#c67a12;--pill-w-bg:#e8f3de;--pill-w-tx:#2a5a0e;--pill-p-bg:#faecd8;--pill-p-tx:#6e3d08;--pill-s-bg:#fce8e7;--pill-s-tx:#8a2320;--accent:#2d7bc4}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1917;--card:#242320;--card2:#2c2b27;--tx:#e8e5dd;--tx2:#9e9a90;--tx3:#6b6860;--brd:#3a3830;--red:#f07060;--blue:#6aabea;--green:#4cc48f;--amber:#f0a840;--pill-w-bg:#1e3a10;--pill-w-tx:#b0d890;--pill-p-bg:#3a2a0a;--pill-p-tx:#f0c870;--pill-s-bg:#3a1514;--pill-s-tx:#f0a0a0;--accent:#6aabea}}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;padding:2rem 1rem}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,42px);line-height:1.15;margin-bottom:0.25rem;letter-spacing:-0.5px}
+.subtitle{font-size:15px;color:var(--tx2);margin-bottom:2rem;max-width:600px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:2rem}
+.stat{background:var(--card2);border-radius:10px;padding:14px 18px}
+.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--tx3);margin-bottom:2px}
+.stat-val{font-size:24px;font-weight:600;color:var(--tx)}
+.stat-sub{font-size:11px;color:var(--tx3)}
+.chart-wrap{position:relative;height:280px;background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px;margin-bottom:2rem}
+.chart-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--tx2);margin-bottom:1.5rem}
+.chart-legend span{display:flex;align-items:center;gap:5px}
+.chart-legend i{width:12px;height:3px;border-radius:2px;display:inline-block}
+.section-title{font-family:'DM Serif Display',serif;font-size:22px;margin:2.5rem 0 0.75rem;display:flex;align-items:center;gap:8px}
+.section-title .icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem;position:sticky;top:0;z-index:10;background:var(--bg);padding:8px 0}
+.tab{padding:8px 16px;font-size:13px;font-weight:500;border-radius:100px;border:1px solid var(--brd);background:var(--card);color:var(--tx2);cursor:pointer;transition:all 0.2s}
+.tab:hover{border-color:var(--accent);color:var(--tx)}
+.tab.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.context{background:var(--card2);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--tx2);margin-bottom:1.5rem;line-height:1.7;border-left:3px solid var(--accent)}
+.foods{display:grid;gap:10px;margin-bottom:2rem}
+.food{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px 20px;transition:border-color 0.2s}
+.food:hover{border-color:var(--accent)}
+.food-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.food-name{font-size:15px;font-weight:600}
+.food-count{font-size:12px;color:var(--tx3);background:var(--card2);padding:2px 10px;border-radius:100px}
+.food-sub{font-size:12px;color:var(--tx3);margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{font-size:11px;padding:3px 10px;border-radius:100px}
+.pw{background:var(--pill-w-bg);color:var(--pill-w-tx)}
+.pp{background:var(--pill-p-bg);color:var(--pill-p-tx)}
+.ps{background:var(--pill-s-bg);color:var(--pill-s-tx)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--tx2);margin-bottom:1rem;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:5px}
+.ldot{width:10px;height:10px;border-radius:3px}
+.studies{display:grid;gap:10px;margin-bottom:2rem}
+.study{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px 20px}
+.study-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.study-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.study-tag{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:500}
+.st-trial{background:var(--pill-s-bg);color:var(--pill-s-tx)}
+.st-data{background:var(--pill-w-bg);color:var(--pill-w-tx)}
+.st-reg{background:#e6f0fb;color:#174a80}
+@media(prefers-color-scheme:dark){.st-reg{background:#0e2e52;color:#8ec0f0}}
+.study-desc{font-size:13px;color:var(--tx2);line-height:1.6}
+.study-desc strong{color:var(--red);font-weight:600}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:2rem}
+.cmp{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px 20px}
+.cmp-name{font-size:15px;font-weight:600;margin-bottom:8px}
+.cmp-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.cmp-yr{color:var(--tx2)}
+.cmp-val{font-weight:600}
+.cmp-bar{height:6px;border-radius:3px;background:var(--card2);margin-top:4px;overflow:hidden}
+.cmp-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
+.cmp-old .cmp-fill{background:var(--green);width:25%}
+.cmp-new .cmp-fill{background:var(--red)}
+.footer{text-align:center;font-size:11px;color:var(--tx3);padding:2rem 0 1rem;border-top:1px solid var(--brd);margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>The same food, different product</h1>
+<p class="subtitle">How the ingredients in everyday American foods transformed from 1960 to 2020 — and what the research says about the consequences.</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-label">Obesity rate</div><div class="stat-val" style="color:var(--red)">13% → 40%</div><div class="stat-sub">1960 → 2020</div></div>
+<div class="stat"><div class="stat-label">Approved additives</div><div class="stat-val" style="color:var(--blue)">~800 → 10k</div><div class="stat-sub">US (vs 411 in EU)</div></div>
+<div class="stat"><div class="stat-label">Calories / day</div><div class="stat-val" style="color:var(--green)">+424</div><div class="stat-sub">2,057 → 2,481</div></div>
+<div class="stat"><div class="stat-label">UPF share of diet</div><div class="stat-val" style="color:var(--amber)">~12% → 60%</div><div class="stat-sub">Of total calories</div></div>
+</div>
+
+<div class="chart-legend">
+<span><i style="background:var(--red)"></i> Obesity rate (%)</span>
+<span><i style="background:var(--blue)"></i> Approved food additives</span>
+<span><i style="background:var(--green);height:2px;border-top:1px dashed var(--green)"></i> Avg daily calories</span>
+</div>
+<div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+
+<!-- RESEARCH SECTION -->
+<div class="section-title"><span class="icon" style="background:var(--pill-s-bg);color:var(--pill-s-tx)">⚗</span> Key research</div>
+<p style="font-size:13px;color:var(--tx2);margin-bottom:1rem">Published studies that support the hypothesis: eating "the same food" today produces different health outcomes than it did decades ago.</p>
+
+<div class="studies">
+<div class="study">
+<div class="study-name">NIH inpatient trial — Hall et al. (2019)</div>
+<div class="study-meta"><span class="study-tag st-trial">Randomized controlled trial</span><span class="study-tag st-data">n=20, inpatient 4 weeks</span></div>
+<div class="study-desc">Participants ate <strong>508 extra calories/day</strong> on ultra-processed vs whole-food diets — even though both were matched for calories, macros, sugar, sodium, and fiber. They gained 0.9 kg in 2 weeks on UPF and lost 0.9 kg on whole food. This was the first causal proof that processing itself — not just nutrients — drives overeating. Published in <em>Cell Metabolism</em>.</div>
+</div>
+<div class="study">
+<div class="study-name">NHANES 18-year trend — Juul et al. (2021)</div>
+<div class="study-meta"><span class="study-tag st-data">n=40,937 adults</span><span class="study-tag st-data">2001–2018 longitudinal</span></div>
+<div class="study-desc">UPF consumption rose from <strong>53.5% to 57% of calories</strong> across all demographics. Minimally processed food dropped from 32.7% to 27.4%. The trend held regardless of income, education, or race. Published in <em>American Journal of Clinical Nutrition</em>.</div>
+</div>
+<div class="study">
+<div class="study-name">Clinical Nutrition umbrella review (2024)</div>
+<div class="study-meta"><span class="study-tag st-data">39 meta-analyses reviewed</span></div>
+<div class="study-desc">Found <strong>"highly suggestive evidence"</strong> linking UPF consumption to overweight/obesity, plus associations with cardiovascular disease, type 2 diabetes, metabolic syndrome, depression, and cancer.</div>
+</div>
+<div class="study">
+<div class="study-name">GRAS loophole — Env. Working Group (2021)</div>
+<div class="study-meta"><span class="study-tag st-reg">Regulatory analysis</span></div>
+<div class="study-desc"><strong>99% of 766 food chemicals</strong> introduced between 2000–2021 bypassed FDA review via GRAS self-affirmation. About 3,000 chemicals in the food supply have never been reviewed by the FDA. Companies can self-declare substances safe without even notifying the agency.</div>
+</div>
+<div class="study">
+<div class="study-name">Pew Research / USDA dietary data</div>
+<div class="study-meta"><span class="study-tag st-data">Population-level, 1970–2010</span></div>
+<div class="study-desc">Average American consumed <strong>2,481 calories/day in 2010 vs 2,057 in 1970</strong> — a 23% increase. Nearly half of all calories come from just two groups: flour/grains and fats/oils. Fruit and vegetable share of calories dropped from 9.2% to 7.9%.</div>
+</div>
+<div class="study">
+<div class="study-name">CDC NHANES — obesity timeline</div>
+<div class="study-meta"><span class="study-tag st-trial">National survey, 1960–2023</span></div>
+<div class="study-desc">Adult obesity: 13% (1960) → 15% (1980) → 23% (1994) → 31% (2000) → 36% (2010) → <strong>40% (2020)</strong>. Severe obesity rose from under 1% to nearly 10%. Childhood obesity tripled since the 1970s. The acceleration aligns with the introduction of HFCS, trans fats, and the GRAS loophole.</div>
+</div>
+</div>
+
+<!-- INGREDIENT COMPARISON SECTION -->
+<div class="section-title"><span class="icon" style="background:var(--pill-p-bg);color:var(--pill-p-tx)">↕</span> Ingredient count: then vs now</div>
+<p style="font-size:13px;color:var(--tx2);margin-bottom:1rem">How many ingredients are in the typical version of these common American foods? The bars show the relative increase.</p>
+
+<div class="compare" id="compare"></div>
+
+<!-- DECADE EXPLORER -->
+<div class="section-title"><span class="icon" style="background:var(--pill-w-bg);color:var(--pill-w-tx)">◷</span> Explore by decade</div>
+<p style="font-size:13px;color:var(--tx2);margin-bottom:0.5rem">Click a decade to see detailed ingredient lists for 8 common American foods.</p>
+
+<div class="legend">
+<span><span class="ldot" style="background:var(--pill-w-bg);border:1px solid var(--pill-w-tx)"></span> Whole / natural</span>
+<span><span class="ldot" style="background:var(--pill-p-bg);border:1px solid var(--pill-p-tx)"></span> Processed</span>
+<span><span class="ldot" style="background:var(--pill-s-bg);border:1px solid var(--pill-s-tx)"></span> Synthetic additive</span>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div id="context"></div>
+<div class="foods" id="foods"></div>
+
+<div class="footer">
+Sources: CDC NHANES, NIH/NIDDK (Hall et al. 2019), NYU (Juul et al. 2021), Pew Research Center, USDA ERS, FDA, Environmental Working Group.<br>
+Ingredient lists are representative composites based on published formulations and regulatory filings. Individual products vary.
+</div>
+
+</div>
+
+<script>
+const cmpData=[
+{n:"Pizza",old:9,now:28,pct:75},
+{n:"Hamburger",old:10,now:30,pct:80},
+{n:"White bread",old:6,now:20,pct:70},
+{n:"Ice cream",old:5,now:17,pct:65},
+{n:"Breakfast cereal",old:5,now:15,pct:60},
+{n:"Hot dog",old:5,now:16,pct:62},
+{n:"Soft drink",old:4,now:6,pct:30},
+{n:"Peanut butter",old:4,now:7,pct:40}
+];
+const cmpEl=document.getElementById('compare');
+cmpData.forEach(c=>{
+cmpEl.innerHTML+=`<div class="cmp">
+<div class="cmp-name">${c.n}</div>
+<div class="cmp-row cmp-old"><span class="cmp-yr">1960s</span><span class="cmp-val" style="color:var(--green)">~${c.old} ingredients</span></div>
+<div class="cmp-bar cmp-old"><div class="cmp-fill" style="width:${Math.round(c.old/35*100)}%"></div></div>
+<div class="cmp-row cmp-new" style="margin-top:6px"><span class="cmp-yr">2020s</span><span class="cmp-val" style="color:var(--red)">~${c.now} ingredients</span></div>
+<div class="cmp-bar cmp-new"><div class="cmp-fill" style="width:${Math.round(c.now/35*100)}%;background:var(--red)"></div></div>
+</div>`});
+
+const D={
+1960:{ctx:"Home cooking dominates. A boomer eating pizza in college gets it from a local pizzeria — flour, water, yeast, tomatoes, real cheese. Frozen dinners exist but are a novelty. Fast food is regional. The FDA has just passed the 1958 Food Additives Amendment.",
+foods:[
+{n:"Pizza (local)",w:["Flour","Water","Yeast","Salt","Olive oil","Crushed tomatoes","Garlic","Mozzarella","Basil"],p:[],s:[]},
+{n:"Hamburger (diner)",w:["Ground beef","Salt","Pepper","Lettuce","Tomato","Onion","Pickle"],p:["White flour bun","Mustard","Ketchup"],s:[]},
+{n:"White bread",w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar","Shortening"],s:["Polyoxyethylene monostearate"]},
+{n:"Breakfast cereal",w:["Corn","Oats","Wheat"],p:["Sugar","Salt","Malt extract"],s:["BHT"]},
+{n:"Ice cream",w:["Cream","Milk","Sugar","Eggs","Vanilla extract"],p:[],s:[]},
+{n:"Hot dog",w:["Beef","Pork","Salt","Garlic"],p:["Curing salt"],s:["Sodium nitrite","Sodium nitrate"]},
+{n:"Soft drink",w:["Carbonated water"],p:["Cane sugar","Caramel color"],s:["Phosphoric acid","Natural flavors"]},
+{n:"Peanut butter",w:["Peanuts","Salt"],p:["Sugar","Hydrogenated vegetable oil"],s:[]}
+]},
+1970:{ctx:"Fast-food chains explode nationally. McDonald's goes public; Pizza Hut and Domino's standardize for shelf life and consistency. HFCS production begins. A college student now has chain pizza and fast-food burgers with visibly longer ingredient lists.",
+foods:[
+{n:"Pizza (chain)",w:["Flour","Water","Salt","Yeast","Tomato paste"],p:["Sugar","Soybean oil","Processed mozzarella"],s:["BHT","Sodium phosphate","Artificial color"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Lettuce","Onion","Pickle"],p:["Enriched flour bun","Sugar","Processed cheese","Mustard","Ketchup"],s:["Calcium sulfate","Mono- & diglycerides"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar","Soybean oil","Whey"],s:["Calcium propionate","DATEM","Mono- & diglycerides","Calcium sulfate"]},
+{n:"Breakfast cereal",w:["Corn flour"],p:["Sugar","Corn syrup","Salt","Malt flavoring"],s:["BHT","BHA","Artificial color","Trisodium phosphate"]},
+{n:"Ice cream",w:["Milk","Cream","Sugar"],p:["Corn syrup","Whey"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Artificial flavor","Artificial color"]},
+{n:"Hot dog",w:["Beef","Pork","Salt"],p:["Corn syrup"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Artificial color"]},
+{n:"Soft drink",w:["Carbonated water"],p:["Sugar or early HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"]},
+{n:"Peanut butter",w:["Peanuts","Salt"],p:["Sugar","Hydrogenated rapeseed oil"],s:["Mono- & diglycerides"]}
+]},
+1980:{ctx:"HFCS replaces cane sugar across the board. Trans fats (partially hydrogenated oils) are in everything. Microwave meals boom. The same pizza a boomer ate in college now has partially hydrogenated oils, modified starches, and artificial flavors. This is the decade ingredient lists really diverge from the 1960s.",
+foods:[
+{n:"Frozen/chain pizza",w:["Flour","Water","Salt"],p:["Partially hydrogenated soybean oil","Modified corn starch","Tomato paste","Imitation mozzarella"],s:["Sodium phosphate","BHT","BHA","TBHQ","Artificial flavor","FD&C Yellow 5","Sodium nitrite"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Lettuce","Pickle"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese"],s:["DATEM","Azodicarbonamide","Sodium stearoyl lactylate","Calcium propionate","Xanthan gum","Polysorbate 80","Calcium sulfate"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil","Whey"],s:["Calcium propionate","DATEM","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ethoxylated mono-diglycerides","Calcium peroxide"]},
+{n:"Breakfast cereal",w:["Corn flour"],p:["Sugar","HFCS","Salt","Corn syrup solids"],s:["BHT","Trisodium phosphate","FD&C Red 40","Yellow 6","Blue 1","Artificial flavor","TBHQ"]},
+{n:"Ice cream",w:["Milk","Cream"],p:["HFCS","Corn syrup","Whey protein"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Artificial flavor","Artificial color","Cellulose gum","Sodium CMC"]},
+{n:"Hot dog",w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Artificial color","Oleoresin of paprika"]},
+{n:"Soft drink",w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"]},
+{n:"Peanut butter",w:["Peanuts"],p:["Sugar","Partially hydrogenated oils"],s:["Mono- & diglycerides","Maltodextrin"]}
+]},
+1990:{ctx:"Low-fat craze means fat is replaced with sugar and additives. Dollar menus drive cost-cutting. Nutrition labels become mandatory (1990) but most people don't read them. A Gen-X college student eating 'the same pizza' consumes a product with 2–3× the ingredient count of 1960.",
+foods:[
+{n:"Delivery/frozen pizza",w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste"],s:["Sodium phosphate","L-cysteine","Sodium stearoyl lactylate","TBHQ","Artificial flavor","Cellulose","Sodium citrate"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Lettuce"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese","Dehydrated onion"],s:["DATEM","Azodicarbonamide","Calcium peroxide","Calcium propionate","Natural flavor","Sodium acid pyrophosphate","Dimethylpolysiloxane","Sodium stearoyl lactylate"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil"],s:["DATEM","Calcium sulfate","Calcium propionate","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ammonium sulfate","Calcium peroxide","Added vitamins"]},
+{n:"Breakfast cereal",w:["Corn flour"],p:["Sugar","HFCS","Salt","Corn syrup"],s:["BHT","Trisodium phosphate","Red 40","Yellow 6","Blue 1","Natural & artificial flavor","TBHQ","Sodium ascorbate","Zinc oxide"]},
+{n:"Ice cream",w:["Milk","Cream"],p:["HFCS","Corn syrup","Whey","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Cellulose gum","Artificial flavor","Artificial color","Locust bean gum","Annatto"]},
+{n:"Hot dog",w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Autolyzed yeast extract","Oleoresin of paprika","Sodium lactate"]},
+{n:"Soft drink",w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Citric acid"]},
+{n:"Peanut butter",w:["Peanuts"],p:["Sugar","Partially hydrogenated oils","Molasses"],s:["Mono- & diglycerides","Maltodextrin","Fully hydrogenated oils"]}
+]},
+2000:{ctx:"GRAS self-affirmation (1997) means companies can add chemicals without telling the FDA. Trans fat labeling mandated. 'Natural flavors' becomes a catch-all for proprietary blends. A millennial eating pizza in college is eating a fundamentally different product than what a boomer ate.",
+foods:[
+{n:"Frozen/chain pizza",w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste","Whey protein"],s:["Sodium phosphate","TBHQ","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Methylcellulose","BHT","Artificial color","Sodium stearoyl lactylate"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Lettuce","Tomato"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese","Dehydrated onion"],s:["DATEM","Azodicarbonamide","Calcium peroxide","Calcium propionate","Natural flavor","Dimethylpolysiloxane","Sodium acid pyrophosphate","Maltodextrin","Sodium benzoate","Sodium stearoyl lactylate"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil","Wheat gluten"],s:["DATEM","Calcium sulfate","Calcium propionate","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ammonium sulfate","Calcium peroxide","Ethoxylated mono-diglycerides","Added vitamins"]},
+{n:"Breakfast cereal",w:["Whole grain corn"],p:["Sugar","Corn syrup","Salt","Dextrose"],s:["Red 40","Yellow 6","Blue 1","BHT","Trisodium phosphate","Natural & artificial flavor","Tocopherols","Sodium ascorbate"]},
+{n:"Ice cream",w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil","Whey"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Cellulose gum","Natural & artificial flavor","Annatto","Locust bean gum","Tara gum"]},
+{n:"Hot dog",w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Autolyzed yeast extract","Oleoresin of paprika","Natural flavor"]},
+{n:"Soft drink",w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Citric acid"]},
+{n:"Peanut butter",w:["Peanuts"],p:["Sugar","Palm oil","Molasses"],s:["Mono- & diglycerides","Fully hydrogenated oils","Maltodextrin"]}
+]},
+2010:{ctx:"'Clean label' push begins — some chains remove azodicarbonamide ('the yoga mat chemical'). But the GRAS loophole keeps the total additive count climbing. Craft and premium tiers emerge (Five Guys, Chipotle). A Gen-Z student can choose between a 30-ingredient frozen pizza or a 10-ingredient artisan one — but the cheap option remains the default.",
+foods:[
+{n:"Frozen/chain pizza",w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean/palm oil","Mozzarella (mixed real/processed)","Tomato paste","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","TBHQ (some removing)","Caramel color"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Leaf lettuce","Tomato","Onion"],p:["Enriched flour bun","Sugar (replacing HFCS)","Soybean oil","Processed cheese"],s:["DATEM","Calcium propionate","Natural flavor","Dimethylpolysiloxane","Maltodextrin","Calcium sulfate","Enzymes","Sodium acid pyrophosphate"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar or honey","Canola oil","Wheat gluten"],s:["DATEM","Calcium propionate","Mono- & diglycerides","Sodium stearoyl lactylate","Enzymes","Ascorbic acid","Added vitamins"]},
+{n:"Breakfast cereal",w:["Whole grain oat flour"],p:["Sugar","Corn starch","Salt"],s:["Natural flavor","Trisodium phosphate","BHT","Tocopherols","Red 40","Yellow 6","Blue 1 (some removing)"]},
+{n:"Ice cream",w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Cellulose gum","Natural flavor","Tara gum","Locust bean gum","Annatto"]},
+{n:"Hot dog",w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Natural flavor","Cherry powder"]},
+{n:"Soft drink",w:["Carbonated water"],p:["HFCS or sugar","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"]},
+{n:"Peanut butter",w:["Peanuts"],p:["Sugar","Palm oil"],s:["Fully hydrogenated oils","Mono- & diglycerides","Molasses"]}
+]},
+2020:{ctx:"10,000 additives approved in the US vs 411 in the EU. 99% of new food chemicals (2000–2021) bypassed FDA review. 73% of grocery store food is ultra-processed. The NIH Hall study (2019) proved ultra-processed diets cause 508 extra calories/day. The 'same pizza' a boomer ate with 9 ingredients now has 25–35 in frozen/chain form.",
+foods:[
+{n:"Frozen/chain pizza",w:["Flour","Water","Salt","Yeast"],p:["Sugar","Palm/soybean oil","Mozzarella","Tomato sauce","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Caramel color","Sodium stearoyl lactylate"]},
+{n:"Fast food burger",w:["Beef patty","Salt","Pepper","Leaf lettuce","Tomato","Onion","Pickle"],p:["Enriched flour bun","Sugar","Soybean/canola oil","American cheese"],s:["Natural flavor","Enzymes","Ascorbic acid","Maltodextrin","DATEM","Vegetable proteins (pea, potato)","Dough conditioners"]},
+{n:"White bread",w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar or honey","Canola/sunflower oil","Wheat gluten","Vegetable proteins"],s:["Enzymes","Ascorbic acid","Mono- & diglycerides","Natural flavor","Modified food starch","Maltodextrin","Dough conditioners","Added vitamins"]},
+{n:"Breakfast cereal",w:["Whole grain oat flour"],p:["Sugar","Corn starch","Salt","Canola oil"],s:["Natural flavor","Trisodium phosphate","Tocopherols","Mixed tocopherols","Annatto"]},
+{n:"Ice cream",w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Cellulose gum","Natural flavor","Tara gum","Locust bean gum","Carrageenan"]},
+{n:"Hot dog",w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Dextrose","Cherry powder"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Natural flavor","Cultured celery extract"]},
+{n:"Soft drink",w:["Carbonated water"],p:["HFCS or sugar","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Potassium benzoate"]},
+{n:"Peanut butter",w:["Peanuts"],p:["Sugar","Palm oil"],s:["Fully hydrogenated oils","Mono- & diglycerides"]}
+]}
+};
+
+const yrs=Object.keys(D);
+const tabsEl=document.getElementById('tabs');
+const ctxEl=document.getElementById('context');
+const foodsEl=document.getElementById('foods');
+
+function render(yr){
+document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.y==yr));
+const d=D[yr];
+ctxEl.innerHTML=`<div class="context">${d.ctx}</div>`;
+foodsEl.innerHTML=d.foods.map(f=>{
+const c=f.w.length+f.p.length+f.s.length;
+const pills=(arr,cls)=>arr.map(a=>`<span class="pill ${cls}">${a}</span>`).join('');
+return`<div class="food">
+<div class="food-head"><span class="food-name">${f.n}</span><span class="food-count">${c} ingredients</span></div>
+<div class="food-sub">${f.w.length} whole · ${f.p.length} processed · ${f.s.length} synthetic</div>
+<div class="pills">${pills(f.w,'pw')}${pills(f.p,'pp')}${pills(f.s,'ps')}</div>
+</div>`}).join('');
+}
+
+yrs.forEach(y=>{
+const b=document.createElement('button');
+b.className='tab';b.dataset.y=y;b.textContent=y+'s';
+b.onclick=()=>render(y);tabsEl.appendChild(b);
+});
+render(1960);
+
+const isDark=matchMedia('(prefers-color-scheme:dark)').matches;
+const gCol=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+const tCol=isDark?'#9e9a90':'#6b6860';
+
+new Chart(document.getElementById('mainChart'),{
+type:'line',
+data:{
+labels:['1960','1970','1980','1990','2000','2010','2020'],
+datasets:[
+{label:'Obesity %',data:[13,15,15,23,31,36,40],borderColor:isDark?'#f07060':'#d94a3a',backgroundColor:isDark?'rgba(240,112,96,0.08)':'rgba(217,74,58,0.08)',fill:true,yAxisID:'y',tension:0.35,pointRadius:5,pointHoverRadius:7,borderWidth:2.5},
+{label:'Additives',data:[800,1500,3000,5000,7000,9000,10000],borderColor:isDark?'#6aabea':'#2d7bc4',backgroundColor:isDark?'rgba(106,171,234,0.08)':'rgba(45,123,196,0.08)',fill:true,yAxisID:'y1',tension:0.35,pointRadius:5,pointHoverRadius:7,borderWidth:2.5},
+{label:'Calories/day',data:[2057,2168,2262,2332,2403,2459,2481],borderColor:isDark?'#4cc48f':'#1a8f5f',backgroundColor:'transparent',yAxisID:'y2',tension:0.35,pointRadius:4,borderWidth:2,borderDash:[6,4]}
+]},
+options:{
+responsive:true,maintainAspectRatio:false,
+interaction:{mode:'index',intersect:false},
+plugins:{legend:{display:false},tooltip:{backgroundColor:isDark?'#2c2b27':'#fff',titleColor:isDark?'#e8e5dd':'#1a1917',bodyColor:isDark?'#9e9a90':'#6b6860',borderColor:isDark?'#3a3830':'#e5e2da',borderWidth:1,padding:12,cornerRadius:8,
+callbacks:{label:function(c){
+if(c.datasetIndex===0)return '  Obesity: '+c.parsed.y+'%';
+if(c.datasetIndex===1)return '  Additives: ~'+c.parsed.y.toLocaleString();
+return '  Calories: '+c.parsed.y.toLocaleString()+'/day'}}}},
+scales:{
+x:{grid:{color:gCol},ticks:{color:tCol,font:{size:12,family:'DM Sans'}}},
+y:{position:'left',title:{display:true,text:'Obesity %',color:isDark?'#f07060':'#d94a3a',font:{size:11,family:'DM Sans'}},grid:{color:gCol},ticks:{color:isDark?'#f07060':'#d94a3a',font:{size:11},callback:v=>v+'%'},min:0,max:50},
+y1:{position:'right',title:{display:true,text:'Additives',color:isDark?'#6aabea':'#2d7bc4',font:{size:11,family:'DM Sans'}},grid:{drawOnChartArea:false},ticks:{color:isDark?'#6aabea':'#2d7bc4',font:{size:11},callback:v=>v>=1000?Math.round(v/1000)+'k':v},min:0,max:12000},
+y2:{display:false,min:1800,max:2700}
+}}
+});
+</script>
+</body>
+</html>

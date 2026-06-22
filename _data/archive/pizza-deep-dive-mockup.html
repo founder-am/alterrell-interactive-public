@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza: 1960–2020 — A Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0c0b09;--card:#171613;--card2:#1e1d19;--card3:#252420;
+  --tx:#e8e4d8;--tx2:#a09c8e;--tx3:#6a675d;
+  --brd:#2e2d28;--brd2:#3a3832;
+  --green:#7cb342;--green2:#9ccc65;--greenbg:rgba(124,179,66,0.12);
+  --amber:#ffa726;--amber2:#ffb74d;--amberbg:rgba(255,167,38,0.12);
+  --red:#ef5350;--red2:#e57373;--redbg:rgba(239,83,80,0.12);
+  --blue:#42a5f5;--blue2:#64b5f6;--bluebg:rgba(66,165,245,0.1);
+  --purple:#ab47bc;--purplebg:rgba(171,71,188,0.1);
+  --cyan:#26c6da;
+}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+.wrap{max-width:920px;margin:0 auto;padding:3rem 1.5rem}
+
+/* HERO */
+.hero{margin-bottom:3rem;position:relative}
+.hero::after{content:'';position:absolute;top:-60px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,167,38,0.06) 0%,transparent 70%);pointer-events:none}
+.kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:8px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,56px);line-height:1.05;font-weight:900;margin-bottom:12px;letter-spacing:-1px}
+h1 span{color:var(--amber)}
+.hero-sub{font-size:17px;color:var(--tx2);max-width:600px;line-height:1.7;font-weight:300}
+
+/* STAT STRIP */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--brd);border-radius:14px;overflow:hidden;margin-bottom:3rem}
+.stat{background:var(--card);padding:20px 22px}
+.stat-n{font-size:28px;font-weight:700;line-height:1}
+.stat-l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--tx3);margin-top:6px}
+.stat-d{font-size:12px;color:var(--tx2);margin-top:2px}
+
+/* SECTION */
+.section{margin-bottom:3rem}
+.sec-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px;font-weight:600}
+.sec-title{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:6px;font-weight:700}
+.sec-desc{font-size:14px;color:var(--tx2);margin-bottom:20px;max-width:680px;font-weight:300}
+
+/* CHART CONTAINERS */
+.chart-card{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:24px;margin-bottom:16px;position:relative}
+.chart-h{position:relative;height:300px}
+.chart-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--tx2);margin-top:14px}
+.chart-legend span{display:flex;align-items:center;gap:6px}
+.chart-legend i{width:14px;height:4px;border-radius:2px;display:inline-block}
+
+/* POLICY TIMELINE */
+.timeline{position:relative;padding-left:28px;border-left:2px solid var(--brd)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-34px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--brd2);background:var(--bg)}
+.tl-dot.major{background:var(--amber);border-color:var(--amber)}
+.tl-dot.danger{background:var(--red);border-color:var(--red)}
+.tl-dot.good{background:var(--green);border-color:var(--green)}
+.tl-yr{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:2px}
+.tl-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.tl-desc{font-size:13px;color:var(--tx2);line-height:1.55;font-weight:300}
+
+/* INGREDIENT TIMELINE CARDS */
+.ing-grid{display:grid;gap:12px}
+.ing-card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:80px 1fr;gap:18px;transition:border-color .2s}
+.ing-card:hover{border-color:var(--brd2)}
+.ing-yr{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--amber);line-height:1}
+.ing-yr span{display:block;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--tx3);font-weight:500;margin-top:4px}
+.ing-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.pill{font-size:11px;padding:3px 10px;border-radius:100px;font-weight:500}
+.pw{background:rgba(124,179,66,0.2);color:var(--green2)}
+.pp{background:rgba(255,167,38,0.2);color:var(--amber2)}
+.ps{background:rgba(239,83,80,0.2);color:var(--red2)}
+.ing-note{font-size:12px;color:var(--tx2);line-height:1.55;font-weight:300}
+.ing-note strong{color:var(--red2);font-weight:600}
+
+/* CONSOLIDATION */
+.consol-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.consol-grid{grid-template-columns:1fr}}
+.consol-card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:18px 22px}
+.consol-title{font-size:14px;font-weight:600;margin-bottom:8px}
+.consol-bar{height:8px;background:var(--card3);border-radius:4px;margin-bottom:6px;overflow:hidden}
+.consol-fill{height:100%;border-radius:4px;transition:width 1s ease}
+.consol-stat{font-size:12px;color:var(--tx2)}
+
+/* EU COMPARISON */
+.eu-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.eu-cell{background:var(--card);padding:18px 22px}
+.eu-flag{font-size:20px;margin-bottom:6px}
+.eu-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--tx3);margin-bottom:4px}
+.eu-val{font-size:20px;font-weight:700}
+.eu-list{font-size:12px;color:var(--tx2);margin-top:8px;line-height:1.6}
+
+/* FOOTER */
+.footer{font-size:11px;color:var(--tx3);text-align:center;padding:2rem 0;border-top:1px solid var(--brd);margin-top:2rem;line-height:1.6}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.section{animation:fadeUp .6s ease both}
+.section:nth-child(2){animation-delay:.1s}
+.section:nth-child(3){animation-delay:.15s}
+.section:nth-child(4){animation-delay:.2s}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="kicker">Case study — single food deep dive</div>
+  <h1>What happened<br>to <span>pizza</span></h1>
+  <p class="hero-sub">From a 9-ingredient local pizzeria pie to a 28-ingredient industrial product — tracked alongside the policy decisions, industry consolidation, and health outcomes that made it happen.</p>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stats">
+  <div class="stat"><div class="stat-n" style="color:var(--amber)">9 → 28</div><div class="stat-l">Ingredients</div><div class="stat-d">1960 vs 2020</div></div>
+  <div class="stat"><div class="stat-n" style="color:var(--red)">220 → 295</div><div class="stat-l">Cal / slice</div><div class="stat-d">+34% per serving</div></div>
+  <div class="stat"><div class="stat-n" style="color:var(--red)">1 → 3+</div><div class="stat-l">Slices / serving</div><div class="stat-d">Portion grew too</div></div>
+  <div class="stat"><div class="stat-n" style="color:var(--purple)">3 → 1</div><div class="stat-l">Major chains</div><div class="stat-d">Control 40%+ of market</div></div>
+</div>
+
+<!-- CHART 1: STACKED AREA — INGREDIENT COMPOSITION -->
+<div class="section">
+  <div class="sec-label">Chart 1</div>
+  <div class="sec-title">Ingredient composition over time</div>
+  <div class="sec-desc">The green area (whole/natural ingredients) stays flat while processed and synthetic layers stack on top. The food got more complex, not more nutritious.</div>
+  <div class="chart-card">
+    <div class="chart-h"><canvas id="areaChart"></canvas></div>
+    <div class="chart-legend">
+      <span><i style="background:var(--green)"></i> Whole / natural</span>
+      <span><i style="background:var(--amber)"></i> Processed</span>
+      <span><i style="background:var(--red)"></i> Synthetic additive</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHART 2: CALORIES × PORTION SIZE -->
+<div class="section">
+  <div class="sec-label">Chart 2</div>
+  <div class="sec-title">Calories per slice × typical portion</div>
+  <div class="sec-desc">Calories per slice rose 34%. But typical portion also grew — from 1–2 slices of a 14" pie to 2–3 slices of an 18" pie. The real caloric hit is the product of both.</div>
+  <div class="chart-card">
+    <div class="chart-h"><canvas id="calChart"></canvas></div>
+    <div class="chart-legend">
+      <span><i style="background:var(--amber)"></i> Cal per slice</span>
+      <span><i style="background:var(--cyan);height:2px;border-top:2px dashed var(--cyan)"></i> Typical portion (slices)</span>
+      <span><i style="background:var(--red)"></i> Effective cal per sitting</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHART 3: HEALTH OVERLAY -->
+<div class="section">
+  <div class="sec-label">Chart 3</div>
+  <div class="sec-title">Health outcomes running in parallel</div>
+  <div class="sec-desc">Obesity and diabetes rates tracked against the growth in food additives. Correlation isn't causation — but the NIH Hall study (2019) proved the causal link for ultra-processed food and overeating.</div>
+  <div class="chart-card">
+    <div class="chart-h"><canvas id="healthChart"></canvas></div>
+    <div class="chart-legend">
+      <span><i style="background:var(--red)"></i> Adult obesity %</span>
+      <span><i style="background:var(--purple)"></i> Diagnosed diabetes %</span>
+      <span><i style="background:var(--blue)"></i> Food additives (thousands)</span>
+    </div>
+  </div>
+</div>
+
+<!-- POLICY TIMELINE -->
+<div class="section">
+  <div class="sec-label">The policy trail</div>
+  <div class="sec-title">How legislation shaped your pizza</div>
+  <div class="sec-desc">Each policy decision nudged the food industry toward cheaper ingredients, longer shelf life, and less oversight.</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1958</div><div class="tl-title">Food Additives Amendment</div><div class="tl-desc">Creates the GRAS (Generally Recognized As Safe) framework. At first, a panel of experts reviews substances. This becomes the loophole that swallows the rule.</div></div>
+    <div class="tl-item"><div class="tl-dot major"></div><div class="tl-yr">1970–73</div><div class="tl-title">Farm Bills end production controls</div><div class="tl-desc">USDA shifts from "grow what we need" to "grow as much as possible." Corn subsidies explode. This creates the glut of cheap corn that becomes HFCS, corn syrup solids, modified corn starch, maltodextrin — ingredients that will fill pizza dough, sauce, and cheese for decades.</div></div>
+    <div class="tl-item"><div class="tl-dot major"></div><div class="tl-yr">1977</div><div class="tl-title">Sugar tariffs rise</div><div class="tl-desc">Import quotas and tariffs make cane sugar expensive. Beverage and food manufacturers rush to HFCS as a cheaper alternative. By 1984, both Coca-Cola and Pepsi switch entirely.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1980s</div><div class="tl-title">Trans fat era / frozen food boom</div><div class="tl-desc">Partially hydrogenated oils (trans fats) are cheap, shelf-stable, and give frozen pizza that "fresh" texture. They'll be in virtually every processed food until the 2010s.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1990</div><div class="tl-title">Nutrition Labeling Act</div><div class="tl-desc">Mandatory nutrition labels. But ingredient lists are in tiny print, and "natural flavors" can mask dozens of chemical compounds without disclosure.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1996</div><div class="tl-title">"Freedom to Farm" Act</div><div class="tl-desc">Removes remaining crop limits. Deepens corn/soy subsidies. Corn-derived ingredients become even cheaper.</div></div>
+    <div class="tl-item"><div class="tl-dot danger"></div><div class="tl-yr">1997</div><div class="tl-title">FDA loosens GRAS rules</div><div class="tl-desc">Companies can now self-affirm new chemicals as "safe" without even notifying the FDA. 99% of 766 chemicals introduced 2000–2021 will bypass FDA review via this loophole.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2006</div><div class="tl-title">Trans fat labeling required</div><div class="tl-desc">But the rule allows "0g trans fat" if under 0.5g per serving. Companies shrink serving sizes to hit the threshold.</div></div>
+    <div class="tl-item"><div class="tl-dot good"></div><div class="tl-yr">2015–18</div><div class="tl-title">FDA bans partially hydrogenated oils</div><div class="tl-desc">Trans fats finally removed — but replaced with palm oil and interesterified fats. Different chemistry, similar function.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2020s</div><div class="tl-title">MAHA / state-level bans begin</div><div class="tl-desc">California bans Red No. 3, brominated vegetable oil, potassium bromate, propylparaben. Federal reform remains uncertain.</div></div>
+  </div>
+</div>
+
+<!-- INDUSTRY CONSOLIDATION -->
+<div class="section">
+  <div class="sec-label">Follow the money</div>
+  <div class="sec-title">Industry consolidation</div>
+  <div class="sec-desc">Fewer companies controlling more market share means more pressure to cut ingredient costs, standardize for scale, and optimize shelf life over nutrition.</div>
+  <div class="consol-grid">
+    <div class="consol-card">
+      <div class="consol-title">Pizza market (US)</div>
+      <div class="consol-bar"><div class="consol-fill" style="width:42%;background:var(--amber)"></div></div>
+      <div class="consol-stat">Top 4 chains: ~42% of all pizza sales ($48B industry)</div>
+      <div style="font-size:12px;color:var(--tx3);margin-top:8px">Domino's, Pizza Hut, Little Caesars, Papa Johns</div>
+    </div>
+    <div class="consol-card">
+      <div class="consol-title">Frozen pizza market</div>
+      <div class="consol-bar"><div class="consol-fill" style="width:75%;background:var(--red)"></div></div>
+      <div class="consol-stat">Top 3 companies: ~75% market share</div>
+      <div style="font-size:12px;color:var(--tx3);margin-top:8px">Nestlé (DiGiorno), General Mills (Totino's), Schwan's (Red Baron)</div>
+    </div>
+    <div class="consol-card">
+      <div class="consol-title">Food industry lobbying</div>
+      <div class="consol-bar"><div class="consol-fill" style="width:85%;background:var(--purple)"></div></div>
+      <div class="consol-stat">$29M (1992) → $175M (2020) — 6× increase</div>
+      <div style="font-size:12px;color:var(--tx3);margin-top:8px">Tracks directly with consolidation wave</div>
+    </div>
+    <div class="consol-card">
+      <div class="consol-title">Corn subsidies</div>
+      <div class="consol-bar"><div class="consol-fill" style="width:90%;background:var(--amber)"></div></div>
+      <div class="consol-stat">$73.8B since 1995 · $19B/year currently</div>
+      <div style="font-size:12px;color:var(--tx3);margin-top:8px">$0 to fruit/vegetable farmers</div>
+    </div>
+  </div>
+</div>
+
+<!-- EU COMPARISON -->
+<div class="section">
+  <div class="sec-label">Same brand, different rules</div>
+  <div class="sec-title">US vs EU: same pizza, different product</div>
+  <div class="sec-desc">American and European versions of the same branded products have different ingredient lists because the EU bans or restricts additives the US allows.</div>
+  <div class="eu-row">
+    <div class="eu-cell">
+      <div class="eu-flag">🇺🇸</div>
+      <div class="eu-label">United States</div>
+      <div class="eu-val" style="color:var(--red)">~10,000</div>
+      <div style="font-size:13px;color:var(--tx2)">approved food additives</div>
+      <div class="eu-list">GRAS self-affirmation: companies declare own chemicals safe. 99% of new chemicals bypass FDA review. Precautionary principle NOT used.</div>
+    </div>
+    <div class="eu-cell">
+      <div class="eu-flag">🇪🇺</div>
+      <div class="eu-label">European Union</div>
+      <div class="eu-val" style="color:var(--green)">411</div>
+      <div style="font-size:13px;color:var(--tx2)">approved food additives</div>
+      <div class="eu-list">Precautionary principle: uncertain safety = banned until proven safe. No self-affirmation. Every additive must be on the Union positive list.</div>
+    </div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px 22px;font-size:13px;color:var(--tx2);line-height:1.65">
+    <span style="font-weight:600;color:var(--tx)">Banned in EU, found in US pizza:</span> Azodicarbonamide (dough conditioner), BHA/BHT (preservatives), TBHQ (petroleum-derived preservative), potassium bromate (flour treatment), several FD&C synthetic dyes. The same brands (e.g. Dr. Oetker) reformulate with simpler ingredients for EU markets.
+  </div>
+</div>
+
+<!-- DECADE-BY-DECADE INGREDIENTS -->
+<div class="section">
+  <div class="sec-label">The full ingredient record</div>
+  <div class="sec-title">Every ingredient, every decade</div>
+  <div class="sec-desc">Watch the pills accumulate. Green is whole food. Amber is processed. Red is synthetic.</div>
+  <div class="ing-grid" id="ingGrid"></div>
+</div>
+
+<div class="footer">
+  Sources: CDC NHANES, NIH/NIDDK (Hall et al. 2019, Cell Metabolism), NYU (Juul et al. 2021, AJCN),<br>
+  Pew Research / USDA ERS, FDA, Environmental Working Group, AJPH (Young & Nestle 2002), Columbia Political Review.<br>
+  Ingredient lists are representative composites. Calorie and portion estimates based on USDA standard servings and published research.
+</div>
+
+</div>
+
+<script>
+// CHART 1: STACKED AREA
+const yrs=['1960','1970','1980','1990','2000','2010','2020'];
+const wD=[9,5,3,4,4,4,4];
+const pD=[0,3,4,5,6,5,5];
+const sD=[0,3,7,7,10,7,7];
+
+new Chart(document.getElementById('areaChart'),{
+  type:'line',
+  data:{labels:yrs,datasets:[
+    {label:'Synthetic',data:sD.map((v,i)=>v+pD[i]+wD[i]),borderColor:'var(--red)',backgroundColor:'rgba(239,83,80,0.25)',fill:true,tension:.4,pointRadius:5,borderWidth:2,pointBackgroundColor:'#ef5350'},
+    {label:'Processed',data:pD.map((v,i)=>v+wD[i]),borderColor:'var(--amber)',backgroundColor:'rgba(255,167,38,0.25)',fill:true,tension:.4,pointRadius:5,borderWidth:2,pointBackgroundColor:'#ffa726'},
+    {label:'Whole',data:wD,borderColor:'var(--green)',backgroundColor:'rgba(124,179,66,0.3)',fill:true,tension:.4,pointRadius:5,borderWidth:2,pointBackgroundColor:'#7cb342'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'#1e1d19',titleColor:'#e8e4d8',bodyColor:'#a09c8e',borderColor:'#2e2d28',borderWidth:1,padding:14,cornerRadius:8,
+        callbacks:{label:function(c){const i=c.dataIndex;if(c.datasetIndex===0)return'  Synthetic: '+sD[i];if(c.datasetIndex===1)return'  Processed: '+pD[i];return'  Whole: '+wD[i]}}}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:12,family:'Source Sans 3'}}},
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:11},stepSize:5},title:{display:true,text:'# ingredients',color:'#6a675d',font:{size:11}},min:0,max:25}
+    }
+  }
+});
+
+// CHART 2: CALORIES × PORTION
+const calSlice=[220,240,270,285,300,290,295];
+const portion=[1.5,2,2.5,2.5,3,3,3];
+const effective=calSlice.map((c,i)=>Math.round(c*portion[i]));
+
+new Chart(document.getElementById('calChart'),{
+  type:'bar',
+  data:{labels:yrs,datasets:[
+    {type:'bar',label:'Effective cal/sitting',data:effective,backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:6,yAxisID:'y'},
+    {type:'line',label:'Cal per slice',data:calSlice,borderColor:'#ffa726',backgroundColor:'transparent',tension:.3,pointRadius:5,borderWidth:2.5,pointBackgroundColor:'#ffa726',yAxisID:'y'},
+    {type:'line',label:'Typical portion (slices)',data:portion,borderColor:'#26c6da',backgroundColor:'transparent',tension:.3,pointRadius:5,borderWidth:2,borderDash:[6,4],pointBackgroundColor:'#26c6da',yAxisID:'y1'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'#1e1d19',titleColor:'#e8e4d8',bodyColor:'#a09c8e',borderColor:'#2e2d28',borderWidth:1,padding:14,cornerRadius:8,
+        callbacks:{label:function(c){
+          if(c.datasetIndex===0)return'  Total per sitting: '+c.parsed.y+' cal';
+          if(c.datasetIndex===1)return'  Per slice: '+c.parsed.y+' cal';
+          return'  Portion: '+c.parsed.y+' slices'}}}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:12}}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:11},callback:v=>v+' cal'},min:0,max:1000,title:{display:true,text:'Calories',color:'#6a675d',font:{size:11}}},
+      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:'#26c6da',font:{size:11},callback:v=>v+' slices'},min:0,max:5,title:{display:true,text:'Portion size',color:'#26c6da',font:{size:11}}}
+    }
+  }
+});
+
+// CHART 3: HEALTH OVERLAY
+const obesity=[13,15,15,23,31,36,40];
+const diabetes=[1.5,2,2.5,4,6,7.5,8.5];
+const additives=[0.8,1.5,3,5,7,9,10];
+
+new Chart(document.getElementById('healthChart'),{
+  type:'line',
+  data:{labels:yrs,datasets:[
+    {label:'Obesity %',data:obesity,borderColor:'#ef5350',backgroundColor:'rgba(239,83,80,0.1)',fill:true,tension:.35,pointRadius:5,borderWidth:2.5,yAxisID:'y'},
+    {label:'Diabetes %',data:diabetes,borderColor:'#ab47bc',backgroundColor:'rgba(171,71,188,0.08)',fill:true,tension:.35,pointRadius:5,borderWidth:2,yAxisID:'y'},
+    {label:'Additives (k)',data:additives,borderColor:'#42a5f5',backgroundColor:'transparent',tension:.35,pointRadius:4,borderWidth:2,borderDash:[6,4],yAxisID:'y1'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        hfcs:{type:'line',xMin:2,xMax:2,borderColor:'rgba(255,167,38,0.4)',borderWidth:1.5,borderDash:[4,4],label:{display:true,content:'HFCS switch',position:'start',backgroundColor:'rgba(255,167,38,0.15)',color:'#ffa726',font:{size:10},padding:4}},
+        gras:{type:'line',xMin:4.5,xMax:4.5,borderColor:'rgba(239,83,80,0.4)',borderWidth:1.5,borderDash:[4,4],label:{display:true,content:'GRAS loophole',position:'start',backgroundColor:'rgba(239,83,80,0.15)',color:'#ef5350',font:{size:10},padding:4}}
+      }},
+      tooltip:{backgroundColor:'#1e1d19',titleColor:'#e8e4d8',bodyColor:'#a09c8e',borderColor:'#2e2d28',borderWidth:1,padding:14,cornerRadius:8,
+        callbacks:{label:function(c){
+          if(c.datasetIndex===0)return'  Obesity: '+c.parsed.y+'%';
+          if(c.datasetIndex===1)return'  Diabetes: '+c.parsed.y+'%';
+          return'  Additives: ~'+Math.round(c.parsed.y*1000).toLocaleString()}}}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:12}}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6a675d',font:{size:11},callback:v=>v+'%'},min:0,max:50,title:{display:true,text:'Prevalence %',color:'#6a675d',font:{size:11}}},
+      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:'#42a5f5',font:{size:11},callback:v=>v+'k'},min:0,max:12,title:{display:true,text:'Approved additives',color:'#42a5f5',font:{size:11}}}
+    }
+  }
+});
+
+// INGREDIENT CARDS
+const decades=[
+{yr:1960,w:["Flour","Water","Yeast","Salt","Olive oil","Crushed tomatoes","Garlic","Mozzarella (whole milk)","Fresh basil"],p:[],s:[],note:"Made fresh daily at a local pizzeria. No preservatives needed — eaten the same day it's made."},
+{yr:1970,w:["Flour","Water","Salt","Yeast","Tomato paste"],p:["Sugar","Soybean oil","Processed mozzarella"],s:["BHT","Sodium phosphate","Artificial color"],note:"Pizza Hut and Domino's standardize for national scale. <strong>Processed mozzarella</strong> replaces fresh. First preservatives appear."},
+{yr:1980,w:["Flour","Water","Salt"],p:["Partially hydrogenated soybean oil","Modified corn starch","Tomato paste","Imitation mozzarella"],s:["Sodium phosphate","BHT","BHA","TBHQ","Artificial flavor","FD&C Yellow 5","Sodium nitrite"],note:"Trans fats arrive. <strong>Imitation mozzarella</strong> replaces real cheese in budget lines. Ingredient count has doubled from 1960."},
+{yr:1990,w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste"],s:["Sodium phosphate","L-cysteine","Sodium stearoyl lactylate","TBHQ","Artificial flavor","Cellulose","Sodium citrate"],note:"<strong>L-cysteine</strong> (dough conditioner, sometimes from human hair) and <strong>cellulose</strong> (wood pulp, anti-caking in cheese) enter the recipe."},
+{yr:2000,w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste","Whey protein"],s:["Sodium phosphate","TBHQ","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Methylcellulose","BHT","Artificial color","Sodium stearoyl lactylate"],note:"<strong>\"Natural flavor\"</strong> appears — can contain dozens of proprietary compounds. <strong>Methylcellulose</strong> (a laxative ingredient) used as a thickener. Peak complexity: 20 ingredients."},
+{yr:2010,w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean/palm oil","Mozzarella (mixed)","Tomato paste","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","TBHQ (some removing)","Caramel color"],note:"Clean-label push begins. Some brands drop TBHQ and artificial colors — but replace them with alternatives under friendlier names."},
+{yr:2020,w:["Flour","Water","Salt","Yeast"],p:["Sugar","Palm/soybean oil","Mozzarella","Tomato sauce","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Caramel color","Sodium stearoyl lactylate"],note:"Ingredient count plateaus but doesn't return to simplicity. Budget frozen pizza still has <strong>3× the ingredients of 1960</strong>. The NIH Hall study shows this kind of product causes 500+ extra cal/day of overeating."}
+];
+
+const grid=document.getElementById('ingGrid');
+const pills=(arr,cls)=>arr.map(a=>`<span class="pill ${cls}">${a}</span>`).join('');
+decades.forEach(d=>{
+  const total=d.w.length+d.p.length+d.s.length;
+  grid.innerHTML+=`<div class="ing-card">
+    <div class="ing-yr">${d.yr}<span>${total} ingredients</span></div>
+    <div>
+      <div class="ing-pills">${pills(d.w,'pw')}${pills(d.p,'pp')}${pills(d.s,'ps')}</div>
+      <div class="ing-note">${d.note}</div>
+    </div>
+  </div>`;
+});
+</script>
+</body>
+</html>

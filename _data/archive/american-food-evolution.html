@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The American Diet: Then vs Now</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F5F0;
+  --card: #FFFFFF;
+  --text: #1A1A1A;
+  --muted: #6B6560;
+  --accent: #C2410C;
+  --accent-light: #FFF3ED;
+  --blue: #1E40AF;
+  --blue-light: #EFF6FF;
+  --green: #166534;
+  --green-light: #F0FDF4;
+  --amber: #92400E;
+  --amber-light: #FFFBEB;
+  --border: rgba(0,0,0,0.08);
+  --danger: #B91C1C;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+
+h1 { font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
+h1 span { color: var(--accent); }
+.subtitle { font-size: 16px; color: var(--muted); margin-bottom: 40px; max-width: 600px; }
+
+.hypothesis {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 100%);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.hypothesis strong { color: var(--accent); }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.metric-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+}
+.metric-card .label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.metric-card .value { font-size: 26px; font-weight: 600; color: var(--danger); }
+.metric-card .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.food-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s;
+}
+.food-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.food-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+.food-header .icon { font-size: 20px; }
+.food-header .arrow {
+  margin-left: auto;
+  transition: transform 0.2s;
+  font-size: 12px;
+  color: var(--muted);
+}
+.food-header .arrow.open { transform: rotate(180deg); }
+.food-body { display: none; padding: 0 20px 16px; }
+.food-body.open { display: block; }
+.food-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.col-era { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+.col-count { font-size: 28px; font-weight: 600; margin-bottom: 4px; }
+.col-count.now { color: var(--danger); }
+.col-list { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.change-bar {
+  margin-top: 12px;
+  background: #FEE2E2;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--danger);
+  text-align: center;
+}
+
+.study-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.study-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+.tag-rct { background: #FEE2E2; color: #991B1B; }
+.tag-meta { background: #DBEAFE; color: #1E40AF; }
+.tag-cdc { background: #FEF3C7; color: #92400E; }
+.tag-reg { background: #DCFCE7; color: #166534; }
+.study-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.study-source { font-size: 13px; color: var(--blue); margin-bottom: 8px; }
+.study-finding { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.trend-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 60px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+.trend-year { color: var(--muted); font-weight: 500; }
+.trend-bar-track { height: 10px; background: #F1EFE8; border-radius: 5px; overflow: hidden; }
+.trend-bar-fill { height: 100%; border-radius: 5px; transition: width 0.6s ease; }
+.trend-val { font-weight: 600; text-align: right; }
+.trend-section { margin-bottom: 24px; }
+.trend-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.trend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>The same food <span>isn't the same</span></h1>
+<p class="subtitle">How the ingredients in common American foods quietly transformed from 1960 to 2020 — and what the research says it's doing to us.</p>
+
+<div class="hypothesis">
+  <strong>The hypothesis:</strong> Saying "I ate pizza every day in college and I turned out fine" means something fundamentally different depending on <em>when</em> you went to college. A boomer's college pizza (~1965) had ~8 whole ingredients. A Gen Z student's frozen pizza (~2020) has 25–35 ingredients, many synthetic. The NIH proved this distinction matters: ultra-processed diets cause ~500 extra calories/day and weight gain, even when matched for nutrition.
+</div>
+
+<div class="section-label">The numbers at a glance</div>
+<div class="metrics">
+  <div class="metric-card"><div class="label">US adult obesity</div><div class="value">13% → 42%</div><div class="sub">1960 → 2023 (CDC)</div></div>
+  <div class="metric-card"><div class="label">Approved additives</div><div class="value">~800 → 10k</div><div class="sub">12.5x increase</div></div>
+  <div class="metric-card"><div class="label">Calories from UPF</div><div class="value">~10% → 55%</div><div class="sub">CDC NHANES 2021–23</div></div>
+  <div class="metric-card"><div class="label">EU comparison</div><div class="value" style="color:var(--green)">411</div><div class="sub">vs 10,000 in US</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('foods')">🍕 8 foods: then vs now</button>
+  <button class="tab-btn" onclick="showTab('trends')">📈 Parallel trends</button>
+  <button class="tab-btn" onclick="showTab('research')">📄 Key research</button>
+</div>
+
+<div class="tab-panel active" id="tab-foods"></div>
+<div class="tab-panel" id="tab-trends"></div>
+<div class="tab-panel" id="tab-research"></div>
+
+<div class="footer-note">
+  <strong>Sources:</strong> CDC NHANES (1960–2023), Hall et al. Cell Metabolism 2019 (NIH RCT), Lane et al. The BMJ 2024 (umbrella review, 9.9M participants), Environmental Working Group GRAS analysis, FDA Color Additive and Food Additive records, USDA food composition data, published ingredient lists from major food manufacturers. Ingredient counts are approximate and represent typical mass-market versions; premium or organic alternatives may differ significantly.
+</div>
+
+</div>
+
+<script>
+const foods = [
+  { name: "Pizza (frozen/chain)", icon: "🍕",
+    then: { count: "8", list: "Flour, water, yeast, salt, olive oil, crushed tomatoes, mozzarella, oregano" },
+    now: { count: "25–35", list: "+ modified starch, sodium phosphate, TBHQ, cellulose, carrageenan, natural flavor, soybean oil, caramel color, sodium citrate, methylcellulose…" },
+    change: "3–4x more ingredients" },
+  { name: "Hamburger (fast food)", icon: "🍔",
+    then: { count: "10", list: "Beef, salt, pepper, flour bun, lettuce, tomato, onion, pickle, mustard, ketchup" },
+    now: { count: "30–45", list: "Bun alone: enriched flour, HFCS, DATEM, azodicarbonamide, calcium sulfate, sodium stearoyl lactylate, mono- & diglycerides, calcium propionate…" },
+    change: "3–4.5x more ingredients" },
+  { name: "White bread (store-bought)", icon: "🍞",
+    then: { count: "5–7", list: "Wheat flour, water, yeast, salt, sugar, shortening, nonfat dry milk" },
+    now: { count: "15–25", list: "+ DATEM, calcium propionate, azodicarbonamide, maltodextrin, natural flavor, enzymes, vegetable proteins, modified food starch…" },
+    change: "3–4x more ingredients" },
+  { name: "Ice cream", icon: "🍦",
+    then: { count: "5", list: "Cream, milk, sugar, egg yolk, vanilla extract" },
+    now: { count: "15–25", list: "+ corn syrup, mono- & diglycerides, guar gum, carrageenan, polysorbate 80, cellulose gum, annatto, artificial flavor…" },
+    change: "3–5x more ingredients" },
+  { name: "Soda", icon: "🥤",
+    then: { count: "6", list: "Carbonated water, cane sugar, phosphoric acid, caramel color, natural flavor, caffeine" },
+    now: { count: "8–12", list: "Cane sugar → HFCS; + potassium benzoate, sodium benzoate, glycerol ester of rosin, calcium disodium EDTA…" },
+    change: "1.5–2x more + HFCS swap" },
+  { name: "Flavored yogurt", icon: "🥛",
+    then: { count: "3–4", list: "Milk, live cultures, sugar, fruit" },
+    now: { count: "12–20", list: "+ modified corn starch, gelatin, pectin, potassium sorbate, sucralose, acesulfame potassium, carrageenan, artificial color…" },
+    change: "4–5x more ingredients" },
+  { name: "Breakfast cereal", icon: "🥣",
+    then: { count: "4–6", list: "Corn/oat/wheat, sugar, salt, malt flavoring" },
+    now: { count: "15–30", list: "+ HFCS, BHT, trisodium phosphate, Red 40, Yellow 5, Blue 1, modified starch, soy lecithin, natural & artificial flavor…" },
+    change: "35% more ingredients (USDA), many banned elsewhere" },
+  { name: "Chicken nuggets", icon: "🍗",
+    then: { count: "—", list: "Didn't exist as a mass product. Homemade: chicken, flour, egg, salt, oil." },
+    now: { count: "30–40", list: "Mechanically separated chicken, sodium phosphates, modified starch, dextrose, autolyzed yeast extract, dimethylpolysiloxane, TBHQ…" },
+    change: "A product that couldn't exist without industrial chemistry" }
+];
+
+const foodsHTML = foods.map((f, i) => `
+  <div class="food-card">
+    <div class="food-header" onclick="toggleFood(${i})">
+      <span class="icon">${f.icon}</span>
+      ${f.name}
+      <span class="arrow" id="arrow-${i}">▼</span>
+    </div>
+    <div class="food-body" id="body-${i}">
+      <div class="food-cols">
+        <div>
+          <div class="col-era">circa 1965</div>
+          <div class="col-count">${f.then.count}</div>
+          <div class="col-list">${f.then.list}</div>
+        </div>
+        <div>
+          <div class="col-era">circa 2020</div>
+          <div class="col-count now">${f.now.count}</div>
+          <div class="col-list">${f.now.list}</div>
+        </div>
+      </div>
+      <div class="change-bar">↑ ${f.change}</div>
+    </div>
+  </div>
+`).join('');
+document.getElementById('tab-foods').innerHTML = `<p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.7">Approximate ingredient counts for the typical mass-market version. Click each to expand. Premium or organic versions may differ.</p>` + foodsHTML;
+
+// Expand first card by default
+setTimeout(() => toggleFood(0), 100);
+
+function toggleFood(i) {
+  const body = document.getElementById('body-' + i);
+  const arrow = document.getElementById('arrow-' + i);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// Trends tab
+const trends = [
+  { year: "1960", add: 800, upf: 10, ob: 13 },
+  { year: "1970", add: 1500, upf: 20, ob: 15 },
+  { year: "1980", add: 3000, upf: 30, ob: 15 },
+  { year: "1990", add: 5000, upf: 42, ob: 23 },
+  { year: "2000", add: 7000, upf: 53, ob: 31 },
+  { year: "2010", add: 9000, upf: 57, ob: 36 },
+  { year: "2020", add: 10000, upf: 60, ob: 42 }
+];
+
+function barRows(key, max, color, fmt) {
+  return trends.map(t => {
+    const pct = Math.round((t[key] / max) * 100);
+    return `<div class="trend-row">
+      <span class="trend-year">${t.year}</span>
+      <div class="trend-bar-track"><div class="trend-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+      <span class="trend-val">${fmt(t[key])}</span>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('tab-trends').innerHTML = `
+  <p style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.7">Three curves that move in lockstep. While correlation isn't causation, the NIH's 2019 RCT confirmed a causal mechanism: ultra-processed foods drive overeating independent of nutritional content.</p>
+  <div class="trend-section">
+    <div class="trend-label"><span class="trend-dot" style="background:#7C3AED"></span>Approved food additives in the US</div>
+    ${barRows('add', 10000, '#7C3AED', v => '~' + (v/1000).toFixed(0) + 'k')}
+  </div>
+  <div class="trend-section">
+    <div class="trend-label"><span class="trend-dot" style="background:#C2410C"></span>% of calories from ultra-processed food</div>
+    ${barRows('upf', 65, '#C2410C', v => '~' + v + '%')}
+  </div>
+  <div class="trend-section">
+    <div class="trend-label"><span class="trend-dot" style="background:#B91C1C"></span>Adult obesity rate</div>
+    ${barRows('ob', 50, '#B91C1C', v => v + '%')}
+  </div>
+`;
+
+// Research tab
+document.getElementById('tab-research').innerHTML = `
+<p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.7">Peer-reviewed studies and federal data supporting the argument that "the same foods" aren't the same — and the shift has measurable health consequences.</p>
+
+<div class="study-card">
+  <span class="study-tag tag-rct">Causal / RCT</span>
+  <div class="study-title">Ultra-processed diets cause excess calorie intake and weight gain</div>
+  <div class="study-source">Hall et al., Cell Metabolism, 2019 — NIH/NIDDK</div>
+  <div class="study-finding">The first randomized controlled trial on ultra-processed food. 20 adults lived at the NIH Clinical Center for 4 continuous weeks. Diets were matched for calories, macronutrients, sugar, sodium, and fiber. On the ultra-processed diet, participants spontaneously ate <strong>~500 extra calories per day</strong> and gained weight. On the whole-food diet, they lost weight. Lead author Kevin Hall: "This is the first study to demonstrate causality — that ultra-processed foods cause people to eat too many calories and gain weight."</div>
+</div>
+
+<div class="study-card">
+  <span class="study-tag tag-meta">Umbrella review — 9.9 million people</span>
+  <div class="study-title">Ultra-processed food linked to 32 adverse health outcomes</div>
+  <div class="study-source">Lane et al., The BMJ, 2024 — 45 pooled meta-analyses</div>
+  <div class="study-finding">The largest review to date found convincing evidence that higher UPF exposure is associated with: <strong>50% increased risk of cardiovascular death</strong>, 48–53% higher risk of anxiety and common mental disorders, 12% greater risk of type 2 diabetes. Highly suggestive evidence for 21% greater risk of all-cause death, 40–66% increased risk of heart disease death, obesity, and sleep problems, and 22% increased risk of depression.</div>
+</div>
+
+<div class="study-card">
+  <span class="study-tag tag-cdc">CDC federal survey</span>
+  <div class="study-title">55% of American calories come from ultra-processed foods</div>
+  <div class="study-source">CDC NHANES, Aug 2021–Aug 2023 (published Aug 2025)</div>
+  <div class="study-finding">Among all Americans age 1+, <strong>55% of total calories</strong> came from UPFs. Children consumed even more at 62%. Separately, an NYU/AJCN study found whole food consumption dropped from 33% to 27% of calories between 2001–2018. A Cleveland Clinic dietitian called the figures "excessive" and suggested ~10% would be a reasonable UPF share.</div>
+</div>
+
+<div class="study-card">
+  <span class="study-tag tag-cdc">Population trend — CDC</span>
+  <div class="study-title">Obesity tripled alongside the additive explosion</div>
+  <div class="study-source">CDC NCHS / NHANES, 1960–2023</div>
+  <div class="study-finding">Adult obesity rose from <strong>13% (1960) to 42% (2020)</strong>. Severe obesity went from under 1% to nearly 10%. Childhood obesity tripled from 5% (1971) to 19% (2018). These curves track almost perfectly with the rise in approved food additives and ultra-processed food consumption.</div>
+</div>
+
+<div class="study-card">
+  <span class="study-tag tag-reg">Regulatory analysis</span>
+  <div class="study-title">99% of new food chemicals bypassed FDA review (2000–2021)</div>
+  <div class="study-source">Environmental Working Group / Harvard Food Law &amp; Policy Clinic</div>
+  <div class="study-finding">The GRAS self-affirmation loophole, loosened in 1997, allows companies to declare ingredients safe without notifying the FDA. <strong>99% of 766 chemicals introduced between 2000–2021 avoided FDA scrutiny.</strong> About 3,000 chemicals in the US food supply have never been reviewed by the FDA at all. The US now has ~10,000 approved additives vs 411 in the EU.</div>
+</div>
+
+<div class="study-card">
+  <span class="study-tag tag-meta">Ingredient analysis</span>
+  <div class="study-title">Modern staple foods have dramatically more ingredients</div>
+  <div class="study-source">Food Processing Technology Journal / USDA reports</div>
+  <div class="study-finding">Modern bread can contain <strong>up to 12 additional components</strong> beyond its 1960s formulation. Breakfast cereals now have 35% more ingredients, with artificial colors and preservatives common. Frozen dinners have up to 40% more ingredients than their 1970s equivalents. 50% of ingredients in modern cereals are banned or restricted in other countries.</div>
+</div>
+`;
+
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

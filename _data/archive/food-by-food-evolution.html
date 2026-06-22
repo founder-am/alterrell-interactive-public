@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food-by-Food: How Each Changed 1960–2020</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#f7f5f0;--card:#fff;--card2:#efece5;--tx:#19180f;--tx2:#68655a;--tx3:#9e9a8c;
+--brd:#dddace;--green:#3a7d44;--amber:#b8860b;--red:#c0392b;--accent:#2e5c8a;
+--g1:#6dae5a;--g2:#a8d070;--p1:#e8b84a;--p2:#d49a30;--s1:#d95050;--s2:#b03a3a;
+}
+@media(prefers-color-scheme:dark){:root{
+--bg:#16150f;--card:#1e1d17;--card2:#272620;--tx:#e5e2d6;--tx2:#9e9a8c;--tx3:#68655a;
+--brd:#38362c;--green:#6dae5a;--amber:#e8b84a;--red:#e86050;--accent:#6aabea;
+--g1:#4a8a3a;--g2:#6dae5a;--p1:#c09030;--p2:#e8b84a;--s1:#c04040;--s2:#e86050;
+}}
+body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--tx);padding:2.5rem 1rem}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-family:'Instrument Serif',serif;font-size:clamp(30px,5vw,46px);line-height:1.1;margin-bottom:0.35rem;letter-spacing:-0.5px}
+.sub{font-size:15px;color:var(--tx2);margin-bottom:2rem;max-width:620px;line-height:1.6}
+.food-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;position:sticky;top:0;z-index:20;background:var(--bg);padding:10px 0}
+.food-btn{padding:9px 18px;font-size:13px;font-weight:600;border-radius:100px;border:1.5px solid var(--brd);background:var(--card);color:var(--tx2);cursor:pointer;transition:all .2s;font-family:inherit}
+.food-btn:hover{border-color:var(--accent);color:var(--tx)}
+.food-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.food-section{display:none}
+.food-section.visible{display:block}
+.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+@media(max-width:600px){.hero-row{grid-template-columns:1fr}}
+.hero-stat{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:18px 22px}
+.hero-label{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--tx3);margin-bottom:4px}
+.hero-val{font-size:28px;font-weight:700}
+.hero-detail{font-size:12px;color:var(--tx2);margin-top:2px}
+.chart-box{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:20px;margin-bottom:1.5rem}
+.chart-title{font-family:'Instrument Serif',serif;font-size:18px;margin-bottom:4px}
+.chart-sub{font-size:12px;color:var(--tx3);margin-bottom:14px}
+.chart-h{position:relative;height:260px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--tx2);margin-top:12px}
+.legend-row span{display:flex;align-items:center;gap:5px}
+.legend-row i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.timeline{display:grid;gap:8px;margin-bottom:2rem}
+.tl-card{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+.tl-yr{font-family:'Instrument Serif',serif;font-size:28px;color:var(--accent);line-height:1}
+.tl-yr span{display:block;font-family:'Figtree',sans-serif;font-size:11px;color:var(--tx3);font-weight:500;margin-top:2px}
+.tl-body{}
+.tl-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.pill{font-size:10.5px;padding:3px 9px;border-radius:100px;font-weight:500}
+.pw{background:var(--g1);color:#fff}
+.pp{background:var(--p2);color:#fff}
+.ps{background:var(--s1);color:#fff}
+@media(prefers-color-scheme:dark){.pw{background:var(--g1);color:#e5ffd8}.pp{background:var(--p2);color:#fff8e0}.ps{background:var(--s1);color:#ffe0e0}}
+.tl-note{font-size:12px;color:var(--tx2);line-height:1.55;margin-top:6px}
+.tl-note strong{color:var(--red);font-weight:600}
+.tl-count{font-size:12px;color:var(--tx3);margin-bottom:4px}
+.divider{height:1px;background:var(--brd);margin:2.5rem 0}
+.added-section{margin-top:1rem}
+.added-title{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:6px}
+.added-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:1rem}
+.added-item{background:var(--card2);border-radius:8px;padding:8px 12px;font-size:12px}
+.added-item .yr{font-weight:600;color:var(--accent);margin-right:4px}
+.added-item .what{color:var(--tx2)}
+.footnote{font-size:11px;color:var(--tx3);text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--brd)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>What happened to your food</h1>
+<p class="sub">Pick a food. See how its ingredient composition, calorie density, and chemical additives changed from 1960 to 2020 — not decade by decade, but as a continuous trend.</p>
+
+<div class="food-nav" id="nav"></div>
+<div id="sections"></div>
+
+<p class="footnote">
+Sources: CDC NHANES, NIH/NIDDK (Hall et al. 2019), USDA ERS, FDA GRAS database, Environmental Working Group, Pew Research.<br>
+Ingredient lists are representative composites. Calorie estimates based on USDA standard servings. Individual products vary.
+</p>
+</div>
+
+<script>
+const FOODS = [
+{
+  id:'pizza', label:'Pizza', emoji:'🍕',
+  desc:'From a local pizzeria with 9 ingredients to a frozen/chain product with 25–35.',
+  decades:{
+    1960:{w:["Flour","Water","Yeast","Salt","Olive oil","Crushed tomatoes","Garlic","Mozzarella (whole milk)","Fresh basil"],p:[],s:[],cal:220,calNote:'per slice, local pizzeria',note:'Made fresh daily from whole ingredients. No preservatives needed because it was eaten the same day.'},
+    1970:{w:["Flour","Water","Salt","Yeast","Tomato paste"],p:["Sugar","Soybean oil","Processed mozzarella"],s:["BHT","Sodium phosphate","Artificial color"],cal:240,calNote:'per slice, early chain',note:'Pizza Hut and Domino\'s standardize recipes for national scale. Processed cheese replaces fresh. First preservatives appear.'},
+    1980:{w:["Flour","Water","Salt"],p:["Partially hydrogenated soybean oil","Modified corn starch","Tomato paste","Imitation mozzarella"],s:["Sodium phosphate","BHT","BHA","TBHQ","Artificial flavor","FD&C Yellow 5","Sodium nitrite"],cal:270,calNote:'per slice, frozen/chain',note:'Trans fats arrive. <strong>Imitation mozzarella</strong> replaces real cheese in budget lines. Frozen pizza becomes a staple. The ingredient list has doubled.'},
+    1990:{w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste"],s:["Sodium phosphate","L-cysteine","Sodium stearoyl lactylate","TBHQ","Artificial flavor","Cellulose","Sodium citrate"],cal:285,calNote:'per slice, delivery/frozen',note:'Peak complexity. <strong>L-cysteine</strong> (a dough conditioner sometimes derived from human hair or duck feathers) appears. Cellulose (wood pulp) is added as an anti-caking agent in shredded cheese.'},
+    2000:{w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean oil","Modified food starch","Processed mozzarella","Tomato paste","Whey protein concentrate"],s:["Sodium phosphate","TBHQ","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Methylcellulose","BHT","Artificial color","Sodium stearoyl lactylate"],cal:300,calNote:'per slice, chain/frozen',note:'<strong>\"Natural flavor\"</strong> appears — a catch-all term that can contain dozens of proprietary chemical compounds. Methylcellulose (a laxative ingredient) used as a thickener.'},
+    2010:{w:["Flour","Water","Salt","Yeast"],p:["Sugar","Soybean/palm oil","Mozzarella (mixed)","Tomato paste","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","TBHQ (some removing)","Caramel color"],cal:290,calNote:'per slice, slight clean-label reformulation',note:'Clean-label movement starts. Some brands remove TBHQ and artificial colors, but replace them with other additives under friendlier names. Premium vs budget split widens.'},
+    2020:{w:["Flour","Water","Salt","Yeast"],p:["Sugar","Palm/soybean oil","Mozzarella","Tomato sauce","Modified food starch"],s:["Sodium phosphate","Cellulose","Natural flavor","Carrageenan","Sodium citrate","Caramel color","Sodium stearoyl lactylate"],cal:295,calNote:'per slice, mainstream frozen',note:'Ingredient count plateaus but doesn\'t return to simplicity. Budget frozen pizza still has 3× the ingredients of 1960. The NIH Hall study shows this kind of product causes 500+ extra cal/day of overeating.'}
+  }
+},
+{
+  id:'burger', label:'Hamburger', emoji:'🍔',
+  desc:'From a diner with 10 ingredients to a fast-food product with 30+.',
+  decades:{
+    1960:{w:["Ground beef","Salt","Pepper","Lettuce","Tomato","Onion","Pickle"],p:["White flour bun","Mustard","Ketchup"],s:[],cal:350,calNote:'single patty, local diner',note:'Fresh ground beef on a bakery bun. The simplest version of this food. No dough conditioners, no preservatives in the bun.'},
+    1970:{w:["Beef patty","Salt","Pepper","Lettuce","Onion","Pickle"],p:["Enriched flour bun","Sugar","Processed American cheese","Mustard","Ketchup"],s:["Calcium sulfate","Mono- & diglycerides"],cal:380,calNote:'single, early fast food',note:'Fast food goes national. <strong>Processed American cheese</strong> (a \"cheese product\" with emulsifiers and milk protein concentrates) replaces real cheese. Enriched flour = stripped then synthetically re-fortified.'},
+    1980:{w:["Beef patty","Salt","Pepper","Lettuce","Pickle"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese"],s:["DATEM","Azodicarbonamide","Sodium stearoyl lactylate","Calcium propionate","Xanthan gum","Polysorbate 80","Calcium sulfate"],cal:420,calNote:'single, fast food chain',note:'<strong>Azodicarbonamide</strong> (a foaming agent used in yoga mats and shoe soles) enters the bun as a dough conditioner. HFCS replaces sugar. The bun alone now has more additives than the entire 1960s burger.'},
+    1990:{w:["Beef patty","Salt","Pepper","Lettuce"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese","Dehydrated onion"],s:["DATEM","Azodicarbonamide","Calcium peroxide","Calcium propionate","Natural flavor","Sodium acid pyrophosphate","Dimethylpolysiloxane","Sodium stearoyl lactylate"],cal:450,calNote:'single, value menu era',note:'<strong>Dimethylpolysiloxane</strong> — the main ingredient in Silly Putty — enters the fryer oil as an anti-foaming agent. Dollar menus incentivize maximum cost-cutting on ingredients.'},
+    2000:{w:["Beef patty","Salt","Pepper","Lettuce","Tomato"],p:["Enriched flour bun","HFCS","Soybean oil","Processed cheese","Dehydrated onion"],s:["DATEM","Azodicarbonamide","Calcium peroxide","Calcium propionate","Natural flavor","Dimethylpolysiloxane","Sodium acid pyrophosphate","Maltodextrin","Sodium benzoate","Sodium stearoyl lactylate"],cal:470,calNote:'single, major chain',note:'Peak ingredient count. A McDonald\'s bun alone can contain 20+ ingredients. \"Natural flavor\" masks proprietary chemical blends. The same-named food is unrecognizable from 1960.'},
+    2010:{w:["Beef patty","Salt","Pepper","Leaf lettuce","Tomato","Onion"],p:["Enriched flour bun","Sugar (replacing HFCS)","Soybean oil","Processed cheese"],s:["DATEM","Calcium propionate","Natural flavor","Dimethylpolysiloxane","Maltodextrin","Calcium sulfate","Enzymes","Sodium acid pyrophosphate"],cal:460,calNote:'single, some reformulation',note:'PR pressure forces some changes: HFCS → sugar in buns. Subway removes azodicarbonamide. But core industrial formulations persist. Premium burger chains (Five Guys, Shake Shack) emerge as \"cleaner\" alternatives.'},
+    2020:{w:["Beef patty","Salt","Pepper","Leaf lettuce","Tomato","Onion","Pickle"],p:["Enriched flour bun","Sugar","Soybean/canola oil","American cheese"],s:["Natural flavor","Enzymes","Ascorbic acid","Maltodextrin","DATEM","Vegetable proteins (pea, potato)","Dough conditioners"],cal:450,calNote:'single, major chain',note:'Some synthetic dyes removed but replaced with \"natural\" alternatives that are still industrially processed. <strong>Vegetable proteins</strong> appear in buns — cost-cutting disguised as health.'}
+  }
+},
+{
+  id:'bread', label:'White bread', emoji:'🍞',
+  desc:'From 6 ingredients at a bakery to 20+ in a plastic bag.',
+  decades:{
+    1960:{w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar","Shortening"],s:["Polyoxyethylene monostearate"],cal:66,calNote:'per slice',note:'Simple bread. One emulsifier. Would go stale in 2–3 days — which is what real bread does.'},
+    1970:{w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar","Soybean oil","Whey"],s:["Calcium propionate","DATEM","Mono- & diglycerides","Calcium sulfate"],cal:70,calNote:'per slice',note:'Preservatives extend shelf life. <strong>DATEM</strong> (diacetyl tartaric acid esters) makes industrial bread soft like bakery bread. This bread can now last a week.'},
+    1980:{w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil","Whey"],s:["Calcium propionate","DATEM","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ethoxylated mono-diglycerides","Calcium peroxide"],cal:75,calNote:'per slice',note:'HFCS replaces sugar. <strong>Azodicarbonamide</strong> makes dough more elastic at industrial scale. Banned in EU and Australia, still legal in US. Shelf life extends to 2+ weeks.'},
+    1990:{w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil"],s:["DATEM","Calcium sulfate","Calcium propionate","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ammonium sulfate","Calcium peroxide","Added vitamins"],cal:75,calNote:'per slice',note:'<strong>Ammonium sulfate</strong> (also used in fertilizer) added as a yeast nutrient. Nine synthetic additives in what used to be a 6-ingredient food.'},
+    2000:{w:["Wheat flour","Water","Yeast"],p:["HFCS","Soybean oil","Wheat gluten"],s:["DATEM","Calcium sulfate","Calcium propionate","Sodium stearoyl lactylate","Azodicarbonamide","Mono- & diglycerides","Ammonium sulfate","Calcium peroxide","Ethoxylated mono-diglycerides","Added vitamins"],cal:75,calNote:'per slice',note:'Peak complexity. <strong>Vital wheat gluten</strong> added back to flour that was stripped of it — bread is now deconstructed and reassembled from industrial components. 10 synthetic additives.'},
+    2010:{w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar or honey","Canola oil","Wheat gluten"],s:["DATEM","Calcium propionate","Mono- & diglycerides","Sodium stearoyl lactylate","Enzymes","Ascorbic acid","Added vitamins"],cal:70,calNote:'per slice',note:'Azodicarbonamide removed from some brands after public pressure. Replaced with <strong>enzymes</strong> — less scary-sounding but still industrially produced. \"Honey wheat\" marketing masks similar formulations.'},
+    2020:{w:["Wheat flour","Water","Yeast","Salt"],p:["Sugar or honey","Canola/sunflower oil","Wheat gluten","Vegetable proteins"],s:["Enzymes","Ascorbic acid","Mono- & diglycerides","Natural flavor","Modified food starch","Maltodextrin","Dough conditioners","Added vitamins"],cal:70,calNote:'per slice',note:'Clean-label reformulation replaces scary names with vaguer terms like \"dough conditioners\" and \"enzymes\" — same function, better PR. A loaf can still last 3+ weeks. Real bread goes stale in 3 days.'}
+  }
+},
+{
+  id:'cereal', label:'Breakfast cereal', emoji:'🥣',
+  desc:'From 5 simple ingredients to a chemistry experiment in a box.',
+  decades:{
+    1960:{w:["Corn","Oats","Wheat"],p:["Sugar","Salt","Malt extract"],s:["BHT"],cal:110,calNote:'per cup, with milk',note:'Simple grains with sugar. One preservative (BHT). The cereal aisle is small. Most people eat oatmeal or eggs.'},
+    1970:{w:["Corn flour"],p:["Sugar","Corn syrup","Salt","Malt flavoring"],s:["BHT","BHA","Artificial color","Trisodium phosphate"],cal:120,calNote:'per cup',note:'<strong>Artificial colors</strong> arrive to make cereal appeal to children on TV. Trisodium phosphate (also a heavy-duty cleaner) used as a color/texture modifier.'},
+    1980:{w:["Corn flour"],p:["Sugar","HFCS","Salt","Corn syrup solids"],s:["BHT","Trisodium phosphate","FD&C Red 40","Yellow 6","Blue 1","Artificial flavor","TBHQ"],cal:130,calNote:'per cup',note:'HFCS joins regular sugar — now two sweeteners. <strong>FD&C synthetic dyes</strong> in full force. TBHQ (a petroleum derivative) added as a preservative. The EU requires warning labels on these dyes; the US does not.'},
+    1990:{w:["Corn flour"],p:["Sugar","HFCS","Salt","Corn syrup"],s:["BHT","Trisodium phosphate","Red 40","Yellow 6","Blue 1","Natural & artificial flavor","TBHQ","Sodium ascorbate","Zinc oxide"],cal:130,calNote:'per cup',note:'\"Natural & artificial flavor\" — the most opaque term on a label. Can represent dozens of chemical compounds. Added vitamins marketed as a health benefit, masking the sugar and dye content.'},
+    2000:{w:["Whole grain corn"],p:["Sugar","Corn syrup","Salt","Dextrose"],s:["Red 40","Yellow 6","Blue 1","BHT","Trisodium phosphate","Natural & artificial flavor","Tocopherols","Sodium ascorbate"],cal:130,calNote:'per cup',note:'\"Whole grain\" added to front of box as health marketing. Same dyes, same preservatives. Dextrose is another name for sugar — there are now <strong>3 different sweeteners</strong>.'},
+    2010:{w:["Whole grain oat flour"],p:["Sugar","Corn starch","Salt"],s:["Natural flavor","Trisodium phosphate","BHT","Tocopherols","Red 40","Yellow 6","Blue 1"],cal:120,calNote:'per cup',note:'Some brands begin removing synthetic dyes (Trix goes \"natural\" in 2015, then reverses after backlash). HFCS quietly replaced with sugar. But trisodium phosphate persists.'},
+    2020:{w:["Whole grain oat flour"],p:["Sugar","Corn starch","Salt","Canola oil"],s:["Natural flavor","Trisodium phosphate","Tocopherols","Mixed tocopherols","Annatto"],cal:120,calNote:'per cup',note:'Some synthetic dyes replaced with annatto and other plant-based colorings. Sounds better — but the formulation philosophy remains industrial. The EU version of the same cereal often has fewer ingredients.'}
+  }
+},
+{
+  id:'icecream', label:'Ice cream', emoji:'🍦',
+  desc:'From 5 ingredients at a shop to 15+ from the freezer aisle.',
+  decades:{
+    1960:{w:["Cream","Milk","Sugar","Eggs","Vanilla extract"],p:[],s:[],cal:140,calNote:'per ½ cup scoop',note:'The real thing. Cream, milk, sugar, eggs, vanilla. Would crystallize in a few days without stabilizers — but nobody stored it that long.'},
+    1970:{w:["Milk","Cream","Sugar"],p:["Corn syrup","Whey"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Artificial flavor","Artificial color"],cal:150,calNote:'per ½ cup',note:'<strong>Carrageenan</strong> (a seaweed extract linked to gut inflammation) and <strong>polysorbate 80</strong> (an emulsifier) appear. Whey replaces some cream — cheaper protein. Artificial vanilla replaces real vanilla.'},
+    1980:{w:["Milk","Cream"],p:["HFCS","Corn syrup","Whey protein"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Artificial flavor","Artificial color","Cellulose gum","Sodium CMC"],cal:160,calNote:'per ½ cup',note:'HFCS enters ice cream. <strong>Cellulose gum</strong> (from wood pulp) added for texture. More air is pumped in (\"overrun\") — you\'re literally paying for air. Premium brands (Häagen-Dazs) differentiate on simplicity.'},
+    1990:{w:["Milk","Cream"],p:["HFCS","Corn syrup","Whey","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Cellulose gum","Artificial flavor","Artificial color","Locust bean gum","Annatto"],cal:160,calNote:'per ½ cup',note:'<strong>Coconut oil</strong> starts replacing butterfat — cheaper, and creates a \"smoother\" mouthfeel that masks the reduced cream content. Low-fat versions add even more stabilizers and sweeteners.'},
+    2000:{w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil","Whey"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Polysorbate 80","Cellulose gum","Natural & artificial flavor","Annatto","Locust bean gum","Tara gum"],cal:160,calNote:'per ½ cup',note:'<strong>Tara gum</strong> (from tara tree seeds) joins the gum lineup — now three different gums in one product. Budget brands can be up to 50% air.'},
+    2010:{w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Carrageenan","Cellulose gum","Natural flavor","Tara gum","Locust bean gum","Annatto"],cal:150,calNote:'per ½ cup',note:'Artificial flavors and colors start being replaced — but by \"natural\" alternatives that are still industrially processed. Carrageenan controversy grows but most brands keep it.'},
+    2020:{w:["Milk","Cream"],p:["Sugar","Corn syrup","Coconut oil"],s:["Mono- & diglycerides","Guar gum","Cellulose gum","Natural flavor","Tara gum","Locust bean gum","Carrageenan"],cal:150,calNote:'per ½ cup',note:'Some brands drop carrageenan. But a basic pint still has 13+ ingredients vs the original 5. Only premium brands (4–5 ingredients) resemble the 1960s version — and cost 2–3× more.'}
+  }
+},
+{
+  id:'hotdog', label:'Hot dog', emoji:'🌭',
+  desc:'From a butcher\'s 5-ingredient sausage to a 16-ingredient industrial tube.',
+  decades:{
+    1960:{w:["Beef","Pork","Salt","Garlic"],p:["Curing salt"],s:["Sodium nitrite","Sodium nitrate"],cal:150,calNote:'per frank',note:'Real meat from a butcher. Sodium nitrite for curing is the main additive — it\'s been used since the early 1900s. You know what\'s in it.'},
+    1970:{w:["Beef","Pork","Salt"],p:["Corn syrup"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Artificial color"],cal:155,calNote:'per frank',note:'<strong>Sodium phosphate</strong> added to retain water (adds weight you pay for). Corn syrup for sweetness. Artificial color to standardize appearance across batches.'},
+    1980:{w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Artificial color","Oleoresin of paprika"],cal:160,calNote:'per frank',note:'<strong>Mechanically separated meat</strong> replaces whole cuts — a paste made by forcing bones with attached meat through a sieve at high pressure. Modified food starch used as a filler to cut costs.'},
+    1990:{w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Autolyzed yeast extract","Oleoresin of paprika","Sodium lactate"],cal:165,calNote:'per frank',note:'<strong>Autolyzed yeast extract</strong> — essentially MSG by another name — added for flavor. Sodium lactate extends shelf life. Three separate sweeteners (corn syrup, dextrose, plus sweetness from the yeast extract).'},
+    2000:{w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Modified food starch","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Autolyzed yeast extract","Oleoresin of paprika","Natural flavor"],cal:170,calNote:'per frank',note:'\"Natural flavor\" joins the list. A hot dog now contains more sodium-based chemicals than actual seasoning. Hebrew National markets \"no artificial flavors\" as a premium differentiator.'},
+    2010:{w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Dextrose"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Natural flavor","Cherry powder"],cal:165,calNote:'per frank',note:'<strong>Cherry powder</strong> appears as a \"natural\" curing agent. Modified food starch removed from some brands. \"Uncured\" marketing emerges — misleading because celery-based nitrites still do the curing.'},
+    2020:{w:["Mech. separated chicken","Pork","Salt"],p:["Corn syrup","Dextrose","Cherry powder"],s:["Sodium nitrite","Sodium phosphate","Sodium erythorbate","Sodium diacetate","Sodium lactate","Natural flavor","Cultured celery extract"],cal:160,calNote:'per frank',note:'\"Uncured\" hot dogs with <strong>cultured celery extract</strong> — which is just nitrite from celery instead of a lab. Same chemical, different source, better marketing. The premium \"all-beef, no-fillers\" tier costs 3× more.'}
+  }
+},
+{
+  id:'soda', label:'Soft drink', emoji:'🥤',
+  desc:'The ingredient list is short — but the sugar swap changed everything.',
+  decades:{
+    1960:{w:["Carbonated water"],p:["Cane sugar","Caramel color"],s:["Phosphoric acid","Natural flavors"],cal:140,calNote:'per 12 oz can',note:'Cane sugar. Simple formula. A 12 oz can was the standard — and it was a treat, not a daily drink. Per capita soda consumption: ~20 gallons/year.'},
+    1970:{w:["Carbonated water"],p:["Sugar or early HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"],cal:140,calNote:'per 12 oz',note:'HFCS production begins (1967) and starts replacing cane sugar. Caffeine added to cola formulas. Soda vending machines appear in schools.'},
+    1980:{w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"],cal:140,calNote:'per 12 oz',note:'<strong>Complete HFCS switch</strong> (1984 for Coca-Cola). HFCS is ~20% cheaper than sugar. Some research suggests HFCS is metabolized differently than sucrose — more fructose goes directly to liver fat. Per capita: ~35 gallons/year.'},
+    1990:{w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Citric acid"],cal:140,calNote:'per 12 oz — but 20 oz bottles now standard',note:'<strong>The 20 oz bottle becomes standard</strong> — 67% more soda sold as a \"single serving.\" This one change adds ~100 calories per serving occasion. Per capita: ~45 gallons/year (peak). The portion size is the hidden ingredient.'},
+    2000:{w:["Carbonated water"],p:["HFCS","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Citric acid"],cal:140,calNote:'per 12 oz',note:'Per capita peaks near 50 gallons/year. 64 oz \"Double Gulp\" available at 7-Eleven — that\'s 780 calories of sugar water. Soda is the #1 source of added sugar in the American diet.'},
+    2010:{w:["Carbonated water"],p:["HFCS or sugar","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine"],cal:140,calNote:'per 12 oz',note:'Some brands return to \"real sugar\" for marketing (Mexican Coke, Pepsi Throwback). Bloomberg attempts NYC soda size limit (struck down). Consumption starts declining as water and energy drinks rise.'},
+    2020:{w:["Carbonated water"],p:["HFCS or sugar","Caramel color"],s:["Phosphoric acid","Natural flavors","Caffeine","Potassium benzoate"],cal:140,calNote:'per 12 oz',note:'Per capita down to ~36 gallons/year — but replaced partly by energy drinks, sweet coffee, and flavored water with their own additive profiles. <strong>Potassium benzoate</strong> (preservative) appears in some formulas. The damage was the HFCS switch + portion size inflation.'}
+  }
+},
+{
+  id:'pb', label:'Peanut butter', emoji:'🥜',
+  desc:'From 2 ingredients to a palm-oil-and-sugar product.',
+  decades:{
+    1960:{w:["Peanuts","Salt"],p:["Sugar","Hydrogenated vegetable oil"],s:[],cal:190,calNote:'per 2 tbsp',note:'Mostly peanuts. Hydrogenated oil added to prevent separation (so the oil doesn\'t pool on top). A simple, nutritious food.'},
+    1970:{w:["Peanuts","Salt"],p:["Sugar","Hydrogenated rapeseed oil"],s:["Mono- & diglycerides"],cal:190,calNote:'per 2 tbsp',note:'Emulsifier added for smoother texture. Rapeseed oil (later rebranded as canola) enters. Still mostly peanuts — but the ratio starts shifting.'},
+    1980:{w:["Peanuts"],p:["Sugar","Partially hydrogenated oils"],s:["Mono- & diglycerides","Maltodextrin"],cal:190,calNote:'per 2 tbsp',note:'<strong>Partially hydrogenated oils</strong> = trans fats. Maltodextrin (a filler/sweetener from corn) appears. Salt dropped from the \"whole\" category as it\'s now a processed additive in the formulation.'},
+    1990:{w:["Peanuts"],p:["Sugar","Partially hydrogenated oils","Molasses"],s:["Mono- & diglycerides","Maltodextrin","Fully hydrogenated oils"],cal:190,calNote:'per 2 tbsp',note:'<strong>Fully hydrogenated vegetable oils</strong> join partially hydrogenated ones. Molasses added for color/flavor. The peanut content can be as low as 90% (FDA minimum). Some brands push it lower with fillers.'},
+    2000:{w:["Peanuts"],p:["Sugar","Palm oil","Molasses"],s:["Mono- & diglycerides","Fully hydrogenated oils","Maltodextrin"],cal:190,calNote:'per 2 tbsp',note:'<strong>Palm oil</strong> replaces hydrogenated oils as trans fat awareness grows. Environmentally destructive (rainforest deforestation) but technically \"trans-fat free.\" Same texture-modifying function.'},
+    2010:{w:["Peanuts"],p:["Sugar","Palm oil"],s:["Fully hydrogenated oils","Mono- & diglycerides","Molasses"],cal:190,calNote:'per 2 tbsp',note:'\"Natural\" peanut butter (just peanuts + salt) gains market share but remains a minority of sales. Mainstream Jif/Skippy still use palm oil and stabilizers. Price gap: $2 vs $4.'},
+    2020:{w:["Peanuts"],p:["Sugar","Palm oil"],s:["Fully hydrogenated oils","Mono- & diglycerides"],cal:190,calNote:'per 2 tbsp',note:'Same formula persists in mainstream brands. <strong>The \"natural\" version is what peanut butter always was in 1960</strong> — now sold at a premium. You\'re paying extra to remove the things they added.'}
+  }
+}
+];
+
+const nav=document.getElementById('nav');
+const sections=document.getElementById('sections');
+const isDark=matchMedia('(prefers-color-scheme:dark)').matches;
+
+const gC=isDark?'#6dae5a':'#3a7d44';
+const pC=isDark?'#e8b84a':'#b8860b';
+const sC=isDark?'#e86050':'#c0392b';
+const gridC=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+const tickC=isDark?'#9e9a8c':'#68655a';
+
+FOODS.forEach((food,fi)=>{
+  const btn=document.createElement('button');
+  btn.className='food-btn'+(fi===0?' on':'');
+  btn.textContent=food.emoji+' '+food.label;
+  btn.dataset.id=food.id;
+  btn.onclick=()=>{
+    document.querySelectorAll('.food-btn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.food-section').forEach(s=>s.classList.remove('visible'));
+    document.getElementById('sec-'+food.id).classList.add('visible');
+  };
+  nav.appendChild(btn);
+
+  const yrs=Object.keys(food.decades);
+  const wData=yrs.map(y=>food.decades[y].w.length);
+  const pData=yrs.map(y=>food.decades[y].p.length);
+  const sData=yrs.map(y=>food.decades[y].s.length);
+  const calData=yrs.map(y=>food.decades[y].cal);
+  const totalFirst=wData[0]+pData[0]+sData[0];
+  const totalLast=wData[6]+pData[6]+sData[6];
+  const calFirst=calData[0];
+  const calLast=calData[6];
+  const maxSynth=Math.max(...sData);
+  const peakSynthYr=yrs[sData.indexOf(maxSynth)];
+
+  const sec=document.createElement('div');
+  sec.className='food-section'+(fi===0?' visible':'');
+  sec.id='sec-'+food.id;
+
+  sec.innerHTML=`
+    <h2 style="font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:4px">${food.emoji} ${food.label}</h2>
+    <p style="font-size:14px;color:var(--tx2);margin-bottom:1.5rem">${food.desc}</p>
+
+    <div class="hero-row">
+      <div class="hero-stat">
+        <div class="hero-label">Total ingredients</div>
+        <div class="hero-val"><span style="color:var(--green)">${totalFirst}</span> <span style="color:var(--tx3);font-weight:400;font-size:18px">→</span> <span style="color:var(--red)">${totalLast}</span></div>
+        <div class="hero-detail">1960 → 2020 (${Math.round((totalLast/totalFirst)*100 - 100)}% increase)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-label">Calories per serving</div>
+        <div class="hero-val">${calFirst} <span style="color:var(--tx3);font-weight:400;font-size:18px">→</span> ${calLast}</div>
+        <div class="hero-detail">${calFirst===calLast?'Unchanged — but portion sizes grew':'+'+(calLast-calFirst)+' cal per serving'}</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-label">Peak synthetic additives</div>
+        <div class="hero-val" style="color:var(--red)">${maxSynth}</div>
+        <div class="hero-detail">Reached in the ${peakSynthYr}s</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-label">Synthetic share</div>
+        <div class="hero-val">${Math.round(sData[0]/totalFirst*100)}% <span style="color:var(--tx3);font-weight:400;font-size:18px">→</span> ${Math.round(sData[6]/totalLast*100)}%</div>
+        <div class="hero-detail">Of total ingredient count</div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-title">Ingredient composition over time</div>
+      <div class="chart-sub">Stacked area: how the ratio of whole, processed, and synthetic ingredients shifted</div>
+      <div class="chart-h"><canvas id="area-${food.id}"></canvas></div>
+      <div class="legend-row">
+        <span><i style="background:${gC}"></i> Whole / natural</span>
+        <span><i style="background:${pC}"></i> Processed</span>
+        <span><i style="background:${sC}"></i> Synthetic additive</span>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-title">Calories per serving</div>
+      <div class="chart-sub">Note: portion sizes also grew — a 1990s \"single serving\" soda is 67% larger than 1960s</div>
+      <div class="chart-h"><canvas id="cal-${food.id}"></canvas></div>
+    </div>
+
+    <div style="margin-top:0.5rem">
+      <div style="font-family:'Instrument Serif',serif;font-size:20px;margin-bottom:12px">Decade by decade</div>
+      <div class="timeline" id="tl-${food.id}"></div>
+    </div>
+
+    <div class="added-section">
+      <div class="added-title">Key additives introduced over time</div>
+      <div class="added-grid" id="added-${food.id}"></div>
+    </div>
+    <div class="divider"></div>
+  `;
+  sections.appendChild(sec);
+
+  // Stacked area chart
+  setTimeout(()=>{
+    const ctx1=document.getElementById('area-'+food.id);
+    if(!ctx1)return;
+    new Chart(ctx1,{type:'line',data:{
+      labels:yrs.map(y=>y+'s'),
+      datasets:[
+        {label:'Synthetic',data:sData.map((v,i)=>v+pData[i]+wData[i]),borderColor:sC,backgroundColor:isDark?'rgba(200,60,50,0.35)':'rgba(192,57,43,0.25)',fill:true,tension:0.35,pointRadius:4,borderWidth:2},
+        {label:'Processed',data:pData.map((v,i)=>v+wData[i]),borderColor:pC,backgroundColor:isDark?'rgba(200,160,50,0.35)':'rgba(184,134,11,0.25)',fill:true,tension:0.35,pointRadius:4,borderWidth:2},
+        {label:'Whole',data:wData,borderColor:gC,backgroundColor:isDark?'rgba(80,160,60,0.4)':'rgba(58,125,68,0.3)',fill:true,tension:0.35,pointRadius:4,borderWidth:2}
+      ]
+    },options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
+        const i=c.dataIndex;
+        if(c.datasetIndex===0)return '  Synthetic: '+sData[i];
+        if(c.datasetIndex===1)return '  Processed: '+pData[i];
+        return '  Whole: '+wData[i]}}}},
+      scales:{x:{grid:{color:gridC},ticks:{color:tickC,font:{size:12,family:'Figtree'}}},
+        y:{grid:{color:gridC},ticks:{color:tickC,font:{size:11},stepSize:5},title:{display:true,text:'# ingredients',color:tickC,font:{size:11,family:'Figtree'}},min:0}}
+    }});
+
+    const ctx2=document.getElementById('cal-'+food.id);
+    if(!ctx2)return;
+    new Chart(ctx2,{type:'line',data:{
+      labels:yrs.map(y=>y+'s'),
+      datasets:[{
+        label:'Calories',data:calData,
+        borderColor:isDark?'#e8b84a':'#b8860b',
+        backgroundColor:isDark?'rgba(232,184,74,0.15)':'rgba(184,134,11,0.1)',
+        fill:true,tension:0.35,pointRadius:5,borderWidth:2.5,
+        pointBackgroundColor:isDark?'#e8b84a':'#b8860b'
+      }]
+    },options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' cal / serving'}}},
+      scales:{x:{grid:{color:gridC},ticks:{color:tickC,font:{size:12,family:'Figtree'}}},
+        y:{grid:{color:gridC},ticks:{color:tickC,font:{size:11},callback:v=>v+' cal'},
+          min:Math.max(0,Math.min(...calData)-40),max:Math.max(...calData)+40}}
+    }});
+  },50);
+
+  // Timeline cards
+  const tl=document.getElementById('tl-'+food.id);
+  const added=document.getElementById('added-'+food.id);
+  let prevS=new Set();
+  yrs.forEach(y=>{
+    const d=food.decades[y];
+    const total=d.w.length+d.p.length+d.s.length;
+    const pills=(arr,cls)=>arr.map(a=>`<span class="pill ${cls}">${a}</span>`).join('');
+    tl.innerHTML+=`<div class="tl-card">
+      <div class="tl-yr">${y}<span>${total} ingredients</span></div>
+      <div class="tl-body">
+        <div class="tl-pills">${pills(d.w,'pw')}${pills(d.p,'pp')}${pills(d.s,'ps')}</div>
+        <div class="tl-note">${d.note}</div>
+      </div>
+    </div>`;
+    const curS=new Set([...d.p,...d.s]);
+    curS.forEach(item=>{
+      if(!prevS.has(item)){
+        added.innerHTML+=`<div class="added-item"><span class="yr">${y}s</span><span class="what">${item}</span></div>`;
+      }
+    });
+    prevS=curS;
+  });
+});
+</script>
+</body>
+</html>
