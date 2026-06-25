@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 2B-1 &mdash; Decade Growth &middot; Total Seasons &middot; Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v2b1 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v2b1-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0F172A;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v2b1-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .v2b1-subhead {
+      font-size: 0.78rem;
+      color: #0F172A;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .v2b1-chart-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .v2b1-chart-wrap canvas {
+      width: 100% !important;
+    }
+
+    /* Annotation callout */
+    .v2b1-callout {
+      border-left: 3px solid #0a7c72;
+      padding: 14px 16px;
+      background: #f8f6f1;
+      border-radius: 0 4px 4px 0;
+      margin: 14px 0 24px;
+    }
+
+    .v2b1-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0a7c72;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .v2b1-callout p {
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: #0F172A;
+    }
+
+    .v2b1-callout strong {
+      font-weight: 700;
+    }
+
+    /* Screenshot nudge — EXEMPT */
+    .v2b1-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin: 4px 0 28px;
+    }
+
+    /* Footnote — EXEMPT */
+    .v2b1-footnote {
+      font-size: 0.64rem;
+      color: #bbb;
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v2b1 { padding: 32px 20px 48px; }
+      .v2b1-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v2b1">
+    <p class="v2b1-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 2B-1</p>
+    <h2 class="v2b1-title">It Never Stopped</h2>
+    <p class="v2b1-subhead">Total cop show seasons per decade &middot; Major broadcast networks &middot; 1950s&ndash;2020s</p>
+
+    <div class="v2b1-chart-wrap">
+      <canvas id="v2b1-chart"></canvas>
+    </div>
+
+    <p class="v2b1-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="v2b1-callout">
+      <p class="v2b1-callout-label">The pattern</p>
+      <!-- AMA VOICE PASS -->
+      <p>Every decade since the 1960s has produced more cop show seasons than the one before it. The 2010s alone generated more seasons than the 1960s through 1980s combined.</p>
+    </div>
+
+    <p class="v2b1-footnote">
+      Seasons mapped to the decade in which each season premiered. Shows spanning multiple decades are counted in each decade they aired. Includes scripted broadcast cop/crime procedurals and PAW Patrol (passive cop content). Source data verified against IMDb and Wikipedia.
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      /*
+       * DECADE SEASON MAPPING
+       *
+       * Each show's seasons are allocated to the decade in which that season premiered.
+       * A show running 1999–2010 puts its 1999 season in the 1990s and 2000–2010 seasons
+       * in the 2000s.
+       *
+       * Verified show data (same source as V2A):
+       *
+       * WOLF (125 total):
+       *   L&O (1990-2010, 2022-): 90s=10, 00s=10, 20s=3 = 23
+       *   SVU (1999-): 90s=1, 00s=10, 10s=10, 20s=6 = 27
+       *   CI (2001-11): 00s=9, 10s=1 = 10
+       *   OC (2021-24): 20s=5 (brief count)
+       *   ChiPD (2014-): 10s=6, 20s=7 = 13
+       *   ChiFire (2012-): 10s=8, 20s=6 = 14
+       *   ChiMed (2015-): 10s=5, 20s=6 = 11
+       *   ChiJustice (2017): 10s=1
+       *   FBI (2018-): 10s=2, 20s=6 = 8
+       *   FBI:MW (2020-): 20s=6
+       *   FBI:Intl (2021-): 20s=4
+       *   TBJ (2005): 00s=1
+       *   LA (2010): 10s=1
+       *   TrueCrime (2017): 10s=1
+       *
+       * BRUCKHEIMER (51 total):
+       *   CSI (2000-15): 00s=10, 10s=5 = 15
+       *   CSI:Miami (2002-12): 00s=8, 10s=2 = 10
+       *   CSI:NY (2004-13): 00s=6, 10s=3 = 9
+       *   Cold Case (2003-10): 00s=7 = 7
+       *   W/o Trace (2002-09): 00s=7 = 7
+       *   CSI:Vegas (2021-24): 20s=3
+       *
+       * BELLISARIO (33 total):
+       *   NCIS (2003-): 00s=7, 10s=10, 20s=6 = 23
+       *   JAG (1995-2005): 90s=5, 00s=5 = 10
+       *
+       * SPELLING (29 total):
+       *   Mod Squad (1968-73): 60s=2, 70s=3 = 5
+       *   Rookies (1972-76): 70s=4
+       *   SWAT (1975-76): 70s=1
+       *   Starsky (1975-79): 70s=4
+       *   Angels (1976-81): 70s=4, 80s=1 = 5
+       *   Hart to Hart (1979-84): 70s=1, 80s=4 = 5
+       *   TJ Hooker (1982-86): 80s=5
+       *
+       * GORDON (23 total):
+       *   Criminal Minds (2005-20): 00s=5, 10s=10 = 15
+       *   The Rookie (2018-): 10s=2, 20s=6 = 8
+       *
+       * BOCHCO (19 total):
+       *   Hill Street Blues (1981-87): 80s=7
+       *   NYPD Blue (1993-2005): 90s=7, 00s=5 = 12
+       *
+       * PAW PATROL (13 total):
+       *   PAW Patrol (2013-): 10s=7, 20s=6 = 13
+       */
+
+      var decades = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+
+      var decadeTotals = [
+        2,    // 1960s: Spelling Mod Squad 2
+        17,   // 1970s: Spelling (Mod Squad 3 + Rookies 4 + SWAT 1 + Starsky 4 + Angels 4 + H2H 1) = 17
+        17,   // 1980s: Spelling (Angels 1 + H2H 4 + Hooker 5) + Bochco (HSB 7) = 17
+        23,   // 1990s: Wolf (L&O 10 + SVU 1) + Bellisario (JAG 5) + Bochco (NYPD Blue 7) = 23
+        90,   // 2000s: Wolf (L&O 10 + SVU 10 + CI 9 + TBJ 1) + Bruckheimer (CSI 10 + Miami 8 + NY 6 + CC 7 + WoT 7) + Bellisario (NCIS 7 + JAG 5) + Bochco (NYPD Blue 5) + Gordon (CM 5) = 90
+        74,   // 2010s: Wolf (SVU 10 + CI 1 + ChiPD 6 + ChiFire 8 + ChiMed 5 + ChiJustice 1 + FBI 2 + LA 1 + TC 1) + Bruckheimer (CSI 5 + Miami 2 + NY 3) + Bellisario (NCIS 10) + Gordon (CM 10 + Rookie 2) + PAW (7) = 74
+        72    // 2020s: Wolf (L&O 3 + SVU 6 + OC 5 + ChiPD 7 + ChiFire 6 + ChiMed 6 + FBI 6 + FBI:MW 6 + FBI:Intl 4) + Bruckheimer (CSI:Vegas 3) + Bellisario (NCIS 6) + Gordon (Rookie 6) + PAW (6) + {partial decade} = 72
+      ];
+
+      var INK = '#0F172A';
+      var TEAL = '#0a7c72';
+
+      var ctx = document.getElementById('v2b1-chart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: decades,
+          datasets: [{
+            data: decadeTotals,
+            backgroundColor: TEAL,
+            borderRadius: 3,
+            maxBarThickness: 64
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: INK,
+              titleFont: { family: "'DM Sans', sans-serif", size: 12, weight: '600' },
+              bodyFont: { family: "'DM Mono', monospace", size: 11 },
+              padding: 10,
+              cornerRadius: 4,
+              callbacks: {
+                label: function (ctx) {
+                  return ctx.parsed.y + ' seasons';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              border: { color: '#e8e5e0' },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 11, weight: '500' }
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: { color: '#f0ede6' },
+              border: { display: false },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 10 },
+                stepSize: 20
+              },
+              title: {
+                display: true,
+                text: 'SEASONS',
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 9, weight: '500' },
+                padding: { bottom: 6 }
+              }
+            }
+          }
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

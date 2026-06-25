@@ -248,3 +248,21 @@ Awards: Daytime Emmy 1983 (Outstanding Supporting Actor — first Black actor to
 **Historical anchor:** Generations (NBC, 1989–1991). First soap with a Black family from inception. Not a network node per OD-12 ruling — documented here as historical record. Already connected to the cluster through St. John, Morgan, Fox, and Williams.
 
 **Suggested visual treatment:** Cluster D rendered as a distinct horizontal band or separate constellation. Y&R nodes form the dense center mass. AMC nodes form a secondary cluster connected to Y&R via the Morgan/Williams/St. John shared-actor edges. Crossover nodes (Rowell → Diagnosis Murder, James → Family Matters) carry edges to Clusters A and B.
+
+RENÉE ELISE GOLDSBERRY — FULL PASS ✅
+One Life to Live (Cluster D — Soaps): 2003 to 2007, played attorney Evangeline Williamson. Received two Daytime Emmy Award nominations and an NAACP Image Award nomination. TV Insider
+She was also nominated for two NAACP Image Awards for her work on One Life to Live. The Hamilcast
+BTU node status: CONFIRMED SECONDARY via NAACP validation (2 nominations). One Life to Live qualifies as a BTU Soaps show (majority Black storyline centering, long-running). Her 4-year run (2003–2007) is substantive.
+What makes her a special node: She's one of the most extraordinary crossover stories in the entire BTU. One Life to Live → Hamilton (Tony + Grammy win) → Girls5Eva (2 Critics' Choice nominations). She bridges daytime television and stage in a way almost no one else does. The path card writes itself: "Daytime's defense attorney became Broadway's founding mother."
+Other TV credits: Recurring on The Good Wife (Cluster B eligible? — majority-white show), guest on SVU. No other BTU-eligible shows at Primary threshold. Her BTU node is anchored in Soaps.
+
+BEYOND THE GATES — 2026 NAACP STATUS (NEW, MAJOR) ✅
+This is the biggest new finding of this pass.
+Beyond the Gates received two nominations at the 57th NAACP Image Awards: Outstanding Drama Series, and Outstanding Hair Styling. It is the first daytime drama series ever nominated in the Outstanding Drama Series category at the NAACP Image Awards. Yahoo!
+Beyond the Gates did not win — Outstanding Drama Series went to Hulu's Reasonable Doubt — but the cast attended and celebrated the nomination. Soap Hub
+Why this matters for the Soaps piece: The editorial spine is Generations (1989) → 34-year gap → Beyond the Gates (2025). The show now has a confirmed NAACP nomination in its first year — the first daytime drama to ever receive that recognition. The piece argument just got stronger: Black talent built the form, got locked out for 34 years, and returned with a show that immediately earned recognition the entire genre had never received. That's not a comeback — that's a verdict.
+Update BTU-SOAPS-BRIEF.md with this.
+
+VIVICA A. FOX — CONFIRMED BTU SECONDARY NODE ✅ 
+Vivica A. Fox received NAACP Image Award nominations for Outstanding Actress in a Drama Series for her role as Maxine Chadway in Soul Food in 2003, 2004, and 2005. Soul Food ran for 5 seasons and 74 episodes from 2000-2004 on Showtime.
+Confirmed ruling: Vivica A. Fox is a Secondary BTU node — NAACP validated via her Soul Food nominations (Drama Cluster B), clearing the 3-season + NAACP threshold. Her Generations credit is connective tissue, but Soul Food is her qualifying credit.

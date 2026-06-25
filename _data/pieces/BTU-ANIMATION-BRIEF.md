@@ -103,3 +103,69 @@ This cluster is low priority. When the research pass does happen:
 2. Research pass fills cast data
 3. Animation nodes added to `BTU-NETWORK-DATA.md` with Cluster E tag and secondary marker
 4. Cluster E rendered as visually distinct — suggested treatment: smaller nodes, distinct shape (star vs. circle), connected to main clusters via crossover nodes only
+
+Fat Albert and the Cosby Kids (CBS, 1972–1985)
+8 seasons, 110 episodes, plus 3 specials. Created, produced, and hosted by Bill Cosby. Fat Albert Wiki
+Voice cast (Black voice actors):
+
+Bill Cosby — Fat Albert, Brown Hornet, Bill, Mushmouth, Mudfoot (37 episodes, 1972–1985). Gerald Edwards — Weird Harold (31 episodes, 1972–1985). IMDb
+Jan Crawford — Bucky, Russell. L. Michael Gray — Fat Albert (alternate). Eric Suter — Rudy. TV Guide
+
+BTU eligibility assessment:
+
+The cast is majority Black by subject (all characters are Black kids in a Philadelphia neighborhood). Cosby is creator, voice lead, and host — clear CREATOR NODE. Gerald Edwards is the only confirmed recurring Black voice actor beyond Cosby. The remaining gang (Dumb Donald, Stinger, Legal Eagle) was voiced primarily by Lou Scheimer — a white voice actor at Filmation doing multiple characters for budget reasons. This is the Bill Cosby complication OD-04 flagged: included as historical anchor with editorial note on complexity. No NAACP Image Award nominations confirmed for this show.
+Ruling implication: Show included as historical anchor per OD-04. Cosby is a CREATOR NODE. No secondary BTU nodes emerge from the supporting cast.
+
+The PJs (Fox/WB, 1999–2001)
+3 seasons, 43 episodes total. Fox (seasons 1–2), The WB (season 3). Created by Eddie Murphy, Larry Wilmore, Steve Tompkins. Wikipedia
+Voice cast (Black):
+
+Eddie Murphy — Thurgood Orenthal Stubbs (seasons 1–2). Loretta Devine — Muriel Stubbs. Ja'net DuBois — Mrs. Avery. Jenifer Lewis. Michele Morgan. Crystal Scales. Cheryl Francis Harrington. FOX Wiki
+Phil Morris replaced Murphy as Thurgood in season 3. Kevin Michael Richardson. Cassi Davis. Shawn Michael Howard. Wordpress
+Show won 3 Emmy Awards and 1 Annie Award during its run. FOX Wiki
+
+BTU nodes confirmed: Eddie Murphy (CREATOR NODE, voice lead), Loretta Devine, Ja'net DuBois, Jenifer Lewis, Cassi Davis. Snoop Dogg also listed in some sources as a voice.
+
+Cast is majority Black.
+
+Crossover alert: Loretta Devine also appears in A Different World (Cluster A, Season 1) — confirmed crossover node.
+
+The Boondocks (Adult Swim, 2005–2014)
+4 seasons, 55 episodes. Created by Aaron McGruder. Wikipedia
+Voice cast (Black):
+
+Regina King — Huey Freeman AND Riley Freeman (both leads). John Witherspoon — Robert "Granddad" Freeman. Gary Anthony Williams — Uncle Ruckus. Cedric Yarbrough — Tom DuBois. Gabby Soleil — Jazmine DuBois (seasons 1–3). tvmaze
+Kiarah Pollas replaced Gabby Soleil as Jazmine in season 4. Yahoo!
+
+Awards: 3 NAACP Image Award nominations total: 2011 WIN for Outstanding Writing in a Comedy Series (Aaron McGruder, "The Fund-Raiser"); 2009 nominee for Outstanding Writing; 2006 nominee for Outstanding Comedy Series. Also 2 Peabody Awards. IMDb
+BTU nodes confirmed: Regina King (PRIMARY — voices both leads, 4 seasons; major crossover node: 227 in Cluster A, Watchmen/Seven Seconds in Cluster C), Aaron McGruder (CREATOR NODE), John Witherspoon, Gary Anthony Williams, Cedric Yarbrough.
+
+The Proud Family (Disney Channel, 2001–2005 + Louder and Prouder 2022–present)
+Original: 2 seasons, 52 episodes, Disney Channel. Created by Bruce W. Smith. Louder and Prouder: Disney+, 2022–present, 3 seasons confirmed. Wikipedia
+Voice cast (Black):
+
+Kyla Pratt — Penny Proud. Tommy Davidson — Oscar Proud. Paula Jai Parker — Trudy Proud. Jo Marie Payton — Suga Mama. Orlando Brown — Sticky Webb. Karen Malina White — Dijonay Jones. Fandom
+Anthony Anderson — Ray Ray Proud Sr. Cicely Tyson — Mrs. Maureen Parker. Robert Guillaume — Dr. Vincent Parker. Jamal Mixon — Ray Ray Proud Jr. Behind The Voice Actors
+Vivica A. Fox, Samuel L. Jackson appear in recurring/guest roles.
+
+NAACP: Jo Marie Payton, Kyla Pratt, and Tommy Davidson were all nominated for their voice work in The Proud Family Movie at the 37th NAACP Image Awards (Youth/Children's Series/Special category). Animation World Network
+BTU nodes confirmed: Kyla Pratt (PRIMARY — 52 episodes original + Louder and Prouder), Tommy Davidson, Jo Marie Payton, Paula Jai Parker, Karen Malina White, Cedric the Entertainer (Bobby Proud), Cicely Tyson, Keke Palmer (Louder and Prouder). Bruce W. Smith = CREATOR NODE.
+
+Crossover alert: Cree Summer — confirmed in earlier research as crossover between A Different World (Cluster A) and The Proud Family (Cluster E).
+
+Static Shock (Kids' WB, 2000–2004)
+4 seasons, 52 episodes. Warner Bros. Animation. First animated series where an African-American superhero was the titular character of their own broadcast animation series. Created by Dwayne McDuffie, Denys Cowan, Michael Davis, Derek Dingle (Milestone Media). Static Shock Wiki
+Voice cast (Black):
+
+Phil LaMarr — Static (Virgil Hawkins). Kadeem Hardison — Rubberband Man (Adam Evans). Gary Sturgis — Ebon. Kevin Michael Richardson — Robert Hawkins. Fandom
+Bumper Robinson — D-Struct/Derek Barnett. Lorraine Toussaint — Dr. Franklin. Telma Hopkins — Mrs. Barnett. Vernee Watson Johnson — Mrs. Watkins. Roscoe Lee Browne — Dr. Anokye. Behind The Voice Actors
+
+Awards: Emmy and Annie nominations confirmed. No NAACP Image Award nominations found for the show or voice cast specifically.
+BTU nodes confirmed: Phil LaMarr (PRIMARY, 52 episodes, 4 seasons), Kadeem Hardison (crossover: A Different World Cluster A), Dwayne McDuffie (CREATOR NODE, deceased 2011), Denys Cowan (CREATOR NODE). Kevin Michael Richardson also appears in The Proud Family.
+
+Key crossover: Kadeem Hardison — Dwayne Wayne on A Different World (Cluster A) + Rubberband Man on Static Shock (Cluster E). This is a strong path card.
+
+Cluster E eligibility rulings for remaining shows
+Everybody Still Hates Chris (Comedy Central, 2024–present): Too new, season count unconfirmed for BTU qualification threshold. Flag for future pass.
+Black Dynamite (Adult Swim, 2012–2015): 2 seasons — below 3-season threshold. Apply NAACP tiebreaker check. Michael Jai White is voice lead. No confirmed NAACP nominations found. Likely excluded unless nominations surface.
+Big Mouth: Does not qualify. White creator (Nick Kroll), majority-white cast.

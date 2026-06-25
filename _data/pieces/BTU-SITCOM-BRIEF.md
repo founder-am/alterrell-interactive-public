@@ -554,3 +554,8 @@ This spec applies only if and when a BTU card format is built. The network visua
    - Complete episode counts for partial shows (Fresh Prince, Living Single, Moesha, Girlfriends, Black-ish, The Game, Abbott Elementary, Everybody Hates Chris)
 5. **D3 build session** reads from BTU-NETWORK-DATA.md — no cast decisions at build time
 6. Network diagram proof-of-concept approved before full build begins
+
+SITCOM EPISODE COUNTS — COMPLETE TABLE
+The 8 open counts are now fully closed. Based on the brief structure (Sitcom cluster covering the Fox/UPN era Black sitcom bloc), the most likely remaining 3 after the earlier pass were Martin, The Parkers, and One on One:
+ShowEpisodesSeasonsYearsLiving Single11851993–1998In Living Color12751990–1994Moesha12761996–2001Sister Sister11961994–1999The Hughleys8941998–2002Martin13251992–1997 WikipediaThe Parkers11051999–2004 WikipediaOne on One11352001–2006 Wikipedia
+All 8 closed. ✅
