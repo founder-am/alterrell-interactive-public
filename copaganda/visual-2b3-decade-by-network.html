@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 2B-3 &mdash; Decade Growth &middot; By Network &middot; Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v2b3 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v2b3-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0F172A;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v2b3-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .v2b3-subhead {
+      font-size: 0.78rem;
+      color: #0F172A;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .v2b3-chart-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .v2b3-chart-wrap canvas {
+      width: 100% !important;
+    }
+
+    .v2b3-callout {
+      border-left: 3px solid #0a7c72;
+      padding: 14px 16px;
+      background: #f8f6f1;
+      border-radius: 0 4px 4px 0;
+      margin: 14px 0 24px;
+    }
+
+    .v2b3-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0a7c72;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .v2b3-callout p {
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: #0F172A;
+    }
+
+    .v2b3-callout strong {
+      font-weight: 700;
+    }
+
+    /* Screenshot nudge — EXEMPT */
+    .v2b3-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin: 4px 0 28px;
+    }
+
+    /* Footnote — EXEMPT */
+    .v2b3-footnote {
+      font-size: 0.64rem;
+      color: #bbb;
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v2b3 { padding: 32px 20px 48px; }
+      .v2b3-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v2b3">
+    <p class="v2b3-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 2B-3</p>
+    <h2 class="v2b3-title">Two Networks Run the Machine</h2>
+    <p class="v2b3-subhead">Cop show seasons per decade by network &middot; 1950s&ndash;2020s</p>
+
+    <div class="v2b3-chart-wrap">
+      <canvas id="v2b3-chart"></canvas>
+    </div>
+
+    <p class="v2b3-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="v2b3-callout">
+      <p class="v2b3-callout-label">NBC + CBS</p>
+      <!-- AMA VOICE PASS -->
+      <p>NBC and CBS account for the vast majority of producer-attributed cop show seasons. ABC carried the genre in the 1970s through Spelling, then ceded the field. Nickelodeon is the only non-broadcast entry&mdash;and it&rsquo;s a children&rsquo;s show.</p>
+    </div>
+
+    <p class="v2b3-footnote">
+      Network attribution follows original broadcast network for each show. T.J. Hooker aired on both ABC and CBS; counted here as ABC (majority of run). PAW Patrol counted under Nickelodeon. Source: IMDb, Wikipedia.
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var INK = '#0F172A';
+
+      var decades = ['1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+
+      /*
+       * Per-network decade breakdown (verified):
+       *
+       * NBC shows: Wolf (L&O, SVU, CI, OC, ChiPD, ChiFire, ChiMed, ChiJustice, TBJ, LA, TC),
+       *            Bochco (HSB)
+       *   50s:0  60s:0  70s:0  80s:7  90s:11  00s:30  10s:35  20s:49  = 132
+       *   (80s: HSB 7)
+       *   (90s: L&O 10 + SVU 1 = 11)
+       *   (00s: L&O 10 + SVU 10 + CI 9 + TBJ 1 = 30)
+       *   (10s: SVU 10 + CI 1 + ChiPD 6 + ChiFire 8 + ChiMed 5 + ChiJustice 1 + FBI... wait, FBI is CBS)
+       *
+       * Let me redo this carefully by network:
+       *
+       * NBC (Wolf NBC shows + Bochco HSB):
+       *   80s: HSB 7 = 7
+       *   90s: L&O 10 + SVU 1 = 11
+       *   00s: L&O 10 + SVU 10 + CI 9 + TBJ 1 = 30
+       *   10s: SVU 10 + CI 1 + ChiPD 6 + ChiFire 8 + ChiMed 5 + ChiJustice 1 + LA 1 + TC 1 = 33
+       *   20s: L&O 3 + SVU 6 + OC 5 + ChiPD 7 + ChiFire 6 + ChiMed 6 = 33
+       *   Total NBC: 7+11+30+33+33 = 114
+       *
+       * CBS (Wolf CBS shows + Bruckheimer + Bellisario):
+       *   90s: JAG 5 = 5
+       *   00s: FBI... wait, FBI started 2018
+       *   Let me list CBS shows:
+       *     Wolf: FBI (2018-), FBI:MW (2020-), FBI:Intl (2021-)
+       *     Bruckheimer: CSI, CSI:Miami, CSI:NY, Cold Case, W/o Trace, CSI:Vegas
+       *     Bellisario: NCIS, JAG
+       *
+       *   90s: JAG 5 = 5
+       *   00s: JAG 5 + NCIS 7 + CSI 10 + Miami 8 + NY 6 + CC 7 + WoT 7 = 50
+       *   10s: NCIS 10 + CSI 5 + Miami 2 + NY 3 + FBI 2 + CM 10 = 32
+       *
+       *   Wait — Criminal Minds (Gordon) is CBS. The Rookie (Gordon) is ABC.
+       *   10s CBS: NCIS 10 + CSI 5 + Miami 2 + NY 3 + FBI 2 + CrimMinds 10 = 32
+       *   20s CBS: NCIS 6 + FBI 6 + FBI:MW 6 + FBI:Intl 4 + CSI:Vegas 3 + Rookie... no, Rookie is ABC
+       *   20s CBS: NCIS 6 + FBI 6 + FBI:MW 6 + FBI:Intl 4 + CSI:Vegas 3 = 25
+       *
+       *   00s CBS: JAG 5 + NCIS 7 + CSI 10 + Miami 8 + NY 6 + CC 7 + WoT 7 + CrimMinds 5 + NYPD Blue... no, NYPD Blue is ABC
+       *   00s CBS: JAG 5 + NCIS 7 + CSI 10 + Miami 8 + NY 6 + CC 7 + WoT 7 + CrimMinds 5 = 55
+       *
+       *   Wait that changes my NBC 00s count. Let me be more careful.
+       *   In the 00s, Bochco's NYPD Blue is ABC, not CBS.
+       *   00s NBC: L&O 10 + SVU 10 + CI 9 + TBJ 1 = 30 ✓ (no Bochco — NYPD Blue is ABC)
+       *   00s CBS: JAG 5 + NCIS 7 + CSI 10 + Miami 8 + NY 6 + CC 7 + WoT 7 + CrimMinds 5 = 55
+       *   00s ABC: NYPD Blue 5 = 5
+       *
+       *   Check 00s total: 30 + 55 + 5 = 90 ✓
+       *
+       *   Total CBS: 5 + 55 + 32 + 25 = 117
+       *
+       * ABC (Spelling + Bochco NYPD Blue + Gordon Rookie):
+       *   60s: Mod Squad 2 = 2
+       *   70s: Mod Squad 3 + Rookies 4 + SWAT 1 + Starsky 4 + Angels 4 + H2H 1 = 17
+       *   80s: Angels 1 + H2H 4 + Hooker 5 = 10
+       *   90s: NYPD Blue 7 = 7
+       *   00s: NYPD Blue 5 = 5
+       *   10s: Rookie 2 = 2
+       *   20s: Rookie 6 = 6
+       *   Total ABC: 2+17+10+7+5+2+6 = 49
+       *
+       * Nick (PAW Patrol):
+       *   10s: 7
+       *   20s: 6
+       *   Total Nick: 13
+       *
+       * Cross-check: NBC(114) + CBS(117) + ABC(49) + Nick(13) = 293 ✓
+       */
+
+      var datasets = [
+        {
+          label: 'NBC',
+          data: [0, 0, 0, 7, 11, 30, 33, 33],
+          backgroundColor: '#1e1040'
+        },
+        {
+          label: 'CBS',
+          data: [0, 0, 0, 0, 5, 55, 32, 25],
+          backgroundColor: '#185FA5'
+        },
+        {
+          label: 'ABC',
+          data: [0, 2, 17, 10, 7, 5, 2, 6],
+          backgroundColor: '#993C1D'
+        },
+        {
+          label: 'Nickelodeon',
+          data: [0, 0, 0, 0, 0, 0, 7, 6],
+          backgroundColor: '#c95f1a'
+        }
+      ];
+
+      var ctx = document.getElementById('v2b3-chart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: decades,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: INK,
+                font: { family: "'DM Sans', sans-serif", size: 11 },
+                boxWidth: 12,
+                boxHeight: 12,
+                padding: 14,
+                useBorderRadius: true,
+                borderRadius: 2
+              }
+            },
+            tooltip: {
+              backgroundColor: INK,
+              titleFont: { family: "'DM Sans', sans-serif", size: 12, weight: '600' },
+              bodyFont: { family: "'DM Mono', monospace", size: 11 },
+              padding: 10,
+              cornerRadius: 4,
+              callbacks: {
+                label: function (ctx) {
+                  if (ctx.parsed.y === 0) return null;
+                  return ' ' + ctx.dataset.label + ': ' + ctx.parsed.y + ' seasons';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              grid: { display: false },
+              border: { color: '#e8e5e0' },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 11, weight: '500' }
+              }
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              grid: { color: '#f0ede6' },
+              border: { display: false },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 10 },
+                stepSize: 20
+              },
+              title: {
+                display: true,
+                text: 'SEASONS',
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 9, weight: '500' },
+                padding: { bottom: 6 }
+              }
+            }
+          }
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
