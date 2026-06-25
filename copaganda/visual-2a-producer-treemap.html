@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 2A &mdash; The Machine &middot; Producer Treemap &middot; Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v2a {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v2a-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0F172A;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v2a-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .v2a-subhead {
+      font-size: 0.78rem;
+      color: #0F172A;
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+
+    /* Legend */
+    .v2a-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      margin-bottom: 16px;
+    }
+
+    .v2a-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      color: #0F172A;
+    }
+
+    .v2a-legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .v2a-legend-seasons {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+    }
+
+    /* Treemap container */
+    .v2a-treemap-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: 6px;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid #e8e5e0;
+    }
+
+    .v2a-producer-bg {
+      position: absolute;
+      border-radius: 2px;
+    }
+
+    .v2a-producer-label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      padding: 0 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .v2a-tile {
+      position: absolute;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: opacity 0.12s;
+    }
+
+    .v2a-tile:hover {
+      opacity: 0.85;
+    }
+
+    .v2a-tile-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      line-height: 1.15;
+      padding: 0 3px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .v2a-tile-seasons {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.5rem;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      margin-top: 1px;
+    }
+
+    /* Annotation callout */
+    .v2a-callout {
+      border-left: 3px solid #0a7c72;
+      padding: 14px 16px;
+      background: #f8f6f1;
+      border-radius: 0 4px 4px 0;
+      margin: 14px 0;
+    }
+
+    .v2a-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0a7c72;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .v2a-callout p {
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: #0F172A;
+    }
+
+    .v2a-callout strong {
+      font-weight: 700;
+    }
+
+    /* PAW Patrol callout — orange accent */
+    .v2a-callout--paw {
+      border-left-color: #c95f1a;
+    }
+
+    .v2a-callout--paw .v2a-callout-label {
+      color: #c95f1a;
+    }
+
+    /* Screenshot nudge — EXEMPT from gray rule */
+    .v2a-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin: 4px 0 28px;
+    }
+
+    /* Footnote — EXEMPT from gray rule */
+    .v2a-footnote {
+      font-size: 0.64rem;
+      color: #bbb;
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    /* Tooltip */
+    .v2a-tooltip {
+      position: fixed;
+      padding: 8px 12px;
+      background: #0F172A;
+      color: #f8f6f1;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.15s;
+      max-width: 240px;
+    }
+
+    .v2a-tooltip-show {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .v2a-tooltip-detail {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 540px) {
+      #v2a { padding: 32px 20px 48px; }
+      .v2a-title { font-size: 1.5rem; }
+      .v2a-legend { gap: 4px 12px; }
+      .v2a-legend-item { font-size: 0.6rem; }
+      .v2a-producer-label { font-size: 0.48rem; letter-spacing: 0.04em; }
+      .v2a-tile-name { font-size: 0.52rem; }
+      .v2a-tile-seasons { font-size: 0.44rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v2a">
+    <p class="v2a-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 2A</p>
+    <h2 class="v2a-title">The Machine</h2>
+    <p class="v2a-subhead">Total verified seasons by producer &middot; Major broadcast networks &middot; 1968&ndash;present</p>
+
+    <div class="v2a-legend" id="v2a-legend"></div>
+    <div class="v2a-treemap-wrap" id="v2a-treemap"></div>
+
+    <p class="v2a-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="v2a-callout">
+      <p class="v2a-callout-label">The aggregate</p>
+      <!-- AMA VOICE PASS -->
+      <p><strong>~293 verified seasons.</strong> Six producers and a children&rsquo;s show. 1968 to today. Three deceased. The playbook never changed.</p>
+    </div>
+
+    <div class="v2a-callout v2a-callout--paw">
+      <p class="v2a-callout-label">PAW Patrol &middot; 13 seasons &middot; 2013&ndash;present</p>
+      <!-- AMA VOICE PASS -->
+      <p>Chase the police pup. The machine starts with children.</p>
+    </div>
+
+    <p class="v2a-footnote">
+      Season counts verified against IMDb and Wikipedia. Wolf ~125 corrected from earlier ~150 estimate. Bruckheimer ~51 includes Cold Case and CSI: Vegas. Chicago Fire, Chicago Med, and Chicago Justice included as Wolf franchise extensions. PAW Patrol (Nickelodeon) included as passive cop content per piece brief. S.W.A.T. count reflects original ABC run only (1975&ndash;76); 2017 CBS reboot is a separate production.
+    </p>
+  </div>
+
+  <div class="v2a-tooltip" id="v2a-tooltip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var COLORS = {
+        'Dick Wolf':          '#854F0B',
+        'Jerry Bruckheimer':  '#185FA5',
+        'Donald Bellisario':  '#1e1040',
+        'Aaron Spelling':     '#993C1D',
+        'Mark Gordon':        '#0a7c72',
+        'Steven Bochco':      '#3C3489',
+        'PAW Patrol':         '#c95f1a'
+      };
+
+      var data = {
+        name: 'root',
+        children: [
+          {
+            name: 'Dick Wolf',
+            era: '1990–present',
+            children: [
+              { name: 'SVU',             value: 27, network: 'NBC', years: '1999–'           },
+              { name: 'Law & Order',     value: 23, network: 'NBC', years: '1990–2010, 2022–' },
+              { name: 'Chicago Fire',    value: 14, network: 'NBC', years: '2012–'           },
+              { name: 'Chicago PD',      value: 13, network: 'NBC', years: '2014–'           },
+              { name: 'Chicago Med',     value: 11, network: 'NBC', years: '2015–'           },
+              { name: 'Criminal Intent', value: 10, network: 'NBC', years: '2001–11'         },
+              { name: 'FBI',             value:  8, network: 'CBS', years: '2018–'           },
+              { name: 'FBI: MW',         value:  6, network: 'CBS', years: '2020–'           },
+              { name: 'Organized Crime', value:  5, network: 'NBC', years: '2021–24'         },
+              { name: 'FBI: Intl',       value:  4, network: 'CBS', years: '2021–'           },
+              { name: 'Trial by Jury',   value:  1, network: 'NBC', years: '2005'                 },
+              { name: 'LA',              value:  1, network: 'NBC', years: '2010'                 },
+              { name: 'True Crime',      value:  1, network: 'NBC', years: '2017'                 },
+              { name: 'Chicago Justice', value:  1, network: 'NBC', years: '2017'                 }
+            ]
+          },
+          {
+            name: 'Jerry Bruckheimer',
+            era: '2000–2024',
+            children: [
+              { name: 'CSI',             value: 15, network: 'CBS', years: '2000–15' },
+              { name: 'CSI: Miami',      value: 10, network: 'CBS', years: '2002–12' },
+              { name: 'CSI: NY',         value:  9, network: 'CBS', years: '2004–13' },
+              { name: 'Cold Case',       value:  7, network: 'CBS', years: '2003–10' },
+              { name: 'Without a Trace', value:  7, network: 'CBS', years: '2002–09' },
+              { name: 'CSI: Vegas',      value:  3, network: 'CBS', years: '2021–24' }
+            ]
+          },
+          {
+            name: 'Donald Bellisario',
+            era: '1995–present',
+            children: [
+              { name: 'NCIS',            value: 23, network: 'CBS', years: '2003–'     },
+              { name: 'JAG',             value: 10, network: 'CBS', years: '1995–2005'  }
+            ]
+          },
+          {
+            name: 'Aaron Spelling',
+            era: '1968–1987',
+            children: [
+              { name: 'Mod Squad',       value: 5, network: 'ABC', years: '1968–73' },
+              { name: "Charlie's Angels",value: 5, network: 'ABC', years: '1976–81' },
+              { name: 'T.J. Hooker',     value: 5, network: 'ABC', years: '1982–86' },
+              { name: 'Hart to Hart',    value: 5, network: 'ABC', years: '1979–84' },
+              { name: 'Starsky & Hutch', value: 4, network: 'ABC', years: '1975–79' },
+              { name: 'The Rookies',     value: 4, network: 'ABC', years: '1972–76' },
+              { name: 'S.W.A.T.',        value: 1, network: 'ABC', years: '1975–76' }
+            ]
+          },
+          {
+            name: 'Mark Gordon',
+            era: '2005–present',
+            children: [
+              { name: 'Criminal Minds',  value: 15, network: 'CBS', years: '2005–20' },
+              { name: 'The Rookie',      value:  8, network: 'ABC', years: '2018–'   }
+            ]
+          },
+          {
+            name: 'Steven Bochco',
+            era: '1981–2005',
+            children: [
+              { name: 'NYPD Blue',          value: 12, network: 'ABC', years: '1993–2005' },
+              { name: 'Hill Street Blues',  value:  7, network: 'NBC', years: '1981–87'   }
+            ]
+          },
+          {
+            name: 'PAW Patrol',
+            era: '2013–present',
+            children: [
+              { name: 'PAW Patrol',      value: 13, network: 'Nick', years: '2013–' }
+            ]
+          }
+        ]
+      };
+
+      data.children.forEach(function (p) {
+        p.total = p.children.reduce(function (s, c) { return s + c.value; }, 0);
+      });
+
+      data.children.sort(function (a, b) { return b.total - a.total; });
+
+      var tooltip = document.getElementById('v2a-tooltip');
+
+      function buildLegend() {
+        var el = document.getElementById('v2a-legend');
+        el.innerHTML = '';
+        data.children.forEach(function (p) {
+          var item = document.createElement('div');
+          item.className = 'v2a-legend-item';
+
+          var swatch = document.createElement('span');
+          swatch.className = 'v2a-legend-swatch';
+          swatch.style.background = COLORS[p.name];
+
+          var name = document.createElement('span');
+          name.textContent = p.name;
+
+          var seasons = document.createElement('span');
+          seasons.className = 'v2a-legend-seasons';
+          seasons.textContent = ' ~' + p.total;
+
+          item.appendChild(swatch);
+          item.appendChild(name);
+          item.appendChild(seasons);
+          el.appendChild(item);
+        });
+      }
+
+      function buildTreemap() {
+        var wrap = document.getElementById('v2a-treemap');
+        var W = wrap.offsetWidth;
+        var H = Math.round(W * (W < 400 ? 0.85 : 0.65));
+
+        wrap.style.height = H + 'px';
+        wrap.innerHTML = '';
+
+        var root = d3.hierarchy(data)
+          .sum(function (d) { return d.value || 0; })
+          .sort(function (a, b) { return b.value - a.value; });
+
+        d3.treemap()
+          .tile(d3.treemapSquarify.ratio(1.618))
+          .size([W, H])
+          .paddingTop(function (d) { return d.depth === 0 ? 2 : 22; })
+          .paddingRight(2)
+          .paddingBottom(2)
+          .paddingLeft(2)
+          .paddingInner(function (d) { return d.depth === 0 ? 3 : 1; })
+          (root);
+
+        root.children.forEach(function (producer) {
+          var gw = producer.x1 - producer.x0;
+          var gh = producer.y1 - producer.y0;
+          if (gw < 2 || gh < 2) return;
+
+          var bg = document.createElement('div');
+          bg.className = 'v2a-producer-bg';
+          bg.style.left   = producer.x0 + 'px';
+          bg.style.top    = producer.y0 + 'px';
+          bg.style.width  = gw + 'px';
+          bg.style.height = gh + 'px';
+          bg.style.background = COLORS[producer.data.name];
+          bg.style.opacity = '0.10';
+          wrap.appendChild(bg);
+
+          if (gw > 30) {
+            var label = document.createElement('div');
+            label.className = 'v2a-producer-label';
+            label.style.left   = producer.x0 + 'px';
+            label.style.top    = producer.y0 + 'px';
+            label.style.width  = gw + 'px';
+            label.style.height = '22px';
+            label.style.background = COLORS[producer.data.name];
+
+            var labelText = producer.data.name;
+            if (gw > 100) {
+              labelText += ' · ~' + producer.data.total;
+            }
+            label.textContent = labelText;
+            wrap.appendChild(label);
+          }
+        });
+
+        root.leaves().forEach(function (leaf) {
+          var w = leaf.x1 - leaf.x0;
+          var h = leaf.y1 - leaf.y0;
+          if (w < 2 || h < 2) return;
+
+          var tile = document.createElement('div');
+          tile.className = 'v2a-tile';
+          tile.style.left   = leaf.x0 + 'px';
+          tile.style.top    = leaf.y0 + 'px';
+          tile.style.width  = w + 'px';
+          tile.style.height = h + 'px';
+          tile.style.background = COLORS[leaf.parent.data.name];
+
+          if (w > 38 && h > 24) {
+            var nameEl = document.createElement('div');
+            nameEl.className = 'v2a-tile-name';
+            nameEl.textContent = leaf.data.name;
+            tile.appendChild(nameEl);
+
+            if (w > 48 && h > 38) {
+              var sEl = document.createElement('div');
+              sEl.className = 'v2a-tile-seasons';
+              sEl.textContent = leaf.data.value + 's';
+              tile.appendChild(sEl);
+            }
+          }
+
+          tile.addEventListener('mouseenter', function (e) {
+            var producer = leaf.parent.data.name;
+            tooltip.innerHTML =
+              '<div class="v2a-tooltip-show">' + leaf.data.name + '</div>' +
+              '<div class="v2a-tooltip-detail">' +
+                leaf.data.value + ' seasons · ' +
+                leaf.data.network + ' · ' +
+                leaf.data.years +
+              '</div>' +
+              '<div class="v2a-tooltip-detail" style="margin-top:2px">' +
+                producer + (producer !== 'PAW Patrol' ? ' · ' + leaf.parent.data.era : '') +
+              '</div>';
+            tooltip.style.opacity = '1';
+          });
+
+          tile.addEventListener('mousemove', function (e) {
+            var tx = e.clientX + 14;
+            var ty = e.clientY - 10;
+            if (tx + 240 > window.innerWidth) tx = e.clientX - 254;
+            tooltip.style.left = tx + 'px';
+            tooltip.style.top  = ty + 'px';
+          });
+
+          tile.addEventListener('mouseleave', function () {
+            tooltip.style.opacity = '0';
+          });
+
+          wrap.appendChild(tile);
+        });
+      }
+
+      buildLegend();
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildTreemap, 120);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildTreemap);
+      } else {
+        buildTreemap();
+      }
+    }());
+  </script>
+</body>
+</html>

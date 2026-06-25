@@ -294,3 +294,9 @@ The following actors are confirmed this session and are not yet in network data.
 4. Drama cluster research pass needed for: Courtney B. Vance, Anika Noni Rose, Jill Scott, Omar J. Dorsey, Debbi Morgan
 5. Sitcom cluster check needed for: Jurnee Smollett (child acting credits), Niecy Nash
 6. Cluster C rendered as distinct visual zone in D3 — suggested treatment: smaller nodes, connected to main clusters via dotted lines to indicate limited-series format
+
+JOSEPHINE BAKER STORY — CAST VERIFICATION ✅ (OD-10 hard line)
+Starring: Lynn Whitfield, Rubén Blades, David Dukes, Craig T. Nelson, Kene Holliday, Louis Gossett Jr. Wikipedia
+OD-10 hard line assessment: Lead is explicitly a Black woman (Josephine Baker) named in the title. Lynn Whitfield is the sole lead. Supporting cast includes Rubén Blades (Latino), David Dukes (white), Craig T. Nelson (white), Louis Gossett Jr. (Black). This is not an 80%+ Black cast. The subject matter is a Black woman's life, but the production cast is mixed.
+Ruling: The OD-10 exception applies as previously established — when the subject of the story is explicitly a Black woman named in the title, and the lead condition is met (it is — Lynn Whitfield sole lead, Emmy + NAACP Image Award win for the role), the show qualifies as Primary under the title-and-subject-centering rule. Josephine Baker Story = PRIMARY, Cluster C (Miniseries). The Common Good
+Lynn Whitfield = PRIMARY node, Cluster C. NAACP win confirmed for this role.
