@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual 2B-2 &mdash; Decade Growth &middot; By Producer &middot; Alterrell Interactive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #v2b2 {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    .v2b2-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0F172A;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .v2b2-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .v2b2-subhead {
+      font-size: 0.78rem;
+      color: #0F172A;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .v2b2-chart-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .v2b2-chart-wrap canvas {
+      width: 100% !important;
+    }
+
+    .v2b2-callout {
+      border-left: 3px solid #854F0B;
+      padding: 14px 16px;
+      background: #f8f6f1;
+      border-radius: 0 4px 4px 0;
+      margin: 14px 0 24px;
+    }
+
+    .v2b2-callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #854F0B;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .v2b2-callout p {
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: #0F172A;
+    }
+
+    .v2b2-callout strong {
+      font-weight: 700;
+    }
+
+    /* Screenshot nudge — EXEMPT */
+    .v2b2-screenshot-nudge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #ccc;
+      text-align: right;
+      margin: 4px 0 28px;
+    }
+
+    /* Footnote — EXEMPT */
+    .v2b2-footnote {
+      font-size: 0.64rem;
+      color: #bbb;
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+    }
+
+    @media (max-width: 540px) {
+      #v2b2 { padding: 32px 20px 48px; }
+      .v2b2-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="v2b2">
+    <p class="v2b2-eyebrow">Alterrell Interactive &nbsp;&middot;&nbsp; Copaganda &nbsp;&middot;&nbsp; Visual 2B-2</p>
+    <h2 class="v2b2-title">One Producer Took Over</h2>
+    <p class="v2b2-subhead">Cop show seasons per decade by producer &middot; 1950s&ndash;2020s</p>
+
+    <div class="v2b2-chart-wrap">
+      <canvas id="v2b2-chart"></canvas>
+    </div>
+
+    <p class="v2b2-screenshot-nudge">Screenshot to share &nbsp;&rarr;</p>
+
+    <div class="v2b2-callout">
+      <p class="v2b2-callout-label">Dick Wolf</p>
+      <!-- AMA VOICE PASS -->
+      <p>Before Wolf, the genre was distributed. After Wolf, it was industrialized. In the 2020s, <strong>49 of 70</strong> cop show seasons from these producers belong to Wolf properties. That&rsquo;s 70%.</p>
+    </div>
+
+    <p class="v2b2-footnote">
+      Seasons mapped to the decade in which each season premiered. Producer color = Option C palette. Chicago Fire, Chicago Med, and Chicago Justice counted under Wolf. PAW Patrol shown separately. Source: IMDb, Wikipedia.
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var INK = '#0F172A';
+
+      var decades = ['1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+
+      /*
+       * Per-producer decade breakdown (verified — sums match V2A totals):
+       *
+       * Wolf:    0, 0,  0,  0, 11, 30, 35, 49  = 125
+       * Bruck:   0, 0,  0,  0,  0, 38, 10,  3  =  51
+       * Bell:    0, 0,  0,  0,  5, 12, 10,  6  =  33
+       * Spell:   0, 2, 17, 10,  0,  0,  0,  0  =  29
+       * Gordon:  0, 0,  0,  0,  0,  5, 12,  6  =  23
+       * Bochco:  0, 0,  0,  7,  7,  5,  0,  0  =  19
+       * PAW:     0, 0,  0,  0,  0,  0,  7,  6  =  13
+       */
+
+      var datasets = [
+        {
+          label: 'Dick Wolf',
+          data: [0, 0, 0, 0, 11, 30, 35, 49],
+          backgroundColor: '#854F0B'
+        },
+        {
+          label: 'Jerry Bruckheimer',
+          data: [0, 0, 0, 0, 0, 38, 10, 3],
+          backgroundColor: '#185FA5'
+        },
+        {
+          label: 'Donald Bellisario',
+          data: [0, 0, 0, 0, 5, 12, 10, 6],
+          backgroundColor: '#1e1040'
+        },
+        {
+          label: 'Aaron Spelling',
+          data: [0, 2, 17, 10, 0, 0, 0, 0],
+          backgroundColor: '#993C1D'
+        },
+        {
+          label: 'Mark Gordon',
+          data: [0, 0, 0, 0, 0, 5, 12, 6],
+          backgroundColor: '#0a7c72'
+        },
+        {
+          label: 'Steven Bochco',
+          data: [0, 0, 0, 7, 7, 5, 0, 0],
+          backgroundColor: '#3C3489'
+        },
+        {
+          label: 'PAW Patrol',
+          data: [0, 0, 0, 0, 0, 0, 7, 6],
+          backgroundColor: '#c95f1a'
+        }
+      ];
+
+      var ctx = document.getElementById('v2b2-chart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: decades,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: INK,
+                font: { family: "'DM Sans', sans-serif", size: 11 },
+                boxWidth: 12,
+                boxHeight: 12,
+                padding: 14,
+                useBorderRadius: true,
+                borderRadius: 2
+              }
+            },
+            tooltip: {
+              backgroundColor: INK,
+              titleFont: { family: "'DM Sans', sans-serif", size: 12, weight: '600' },
+              bodyFont: { family: "'DM Mono', monospace", size: 11 },
+              padding: 10,
+              cornerRadius: 4,
+              callbacks: {
+                label: function (ctx) {
+                  if (ctx.parsed.y === 0) return null;
+                  return ' ' + ctx.dataset.label + ': ' + ctx.parsed.y + ' seasons';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              grid: { display: false },
+              border: { color: '#e8e5e0' },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 11, weight: '500' }
+              }
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              grid: { color: '#f0ede6' },
+              border: { display: false },
+              ticks: {
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 10 },
+                stepSize: 20
+              },
+              title: {
+                display: true,
+                text: 'SEASONS',
+                color: INK,
+                font: { family: "'DM Mono', monospace", size: 9, weight: '500' },
+                padding: { bottom: 6 }
+              }
+            }
+          }
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
