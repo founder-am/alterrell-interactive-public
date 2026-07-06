@@ -1,133 +1,166 @@
 # PROJECT STATUS
-Updated: 2026-05-22 (Batch A — Hub card roster update, stat block styling fixed, Sodium activated)
+Updated: 2026-07-05 (full rewrite from repo audit — replaces 2026-05-22 version)
+Repo path: `_data/platform/PROJECT-STATUS.md`
 
 ---
 
 ## PURPOSE
 Production tracking file. Answers: what exists, what is in progress, what blocks deploy.
+This version distinguishes REPO-VERIFIED state from SESSION-RECORD state
+(work completed in chat sessions but not yet uploaded). Until the Upload
+Queue below is cleared, treat session-record items as recoverable, not live.
+
+## STATUS KEYS
+LIVE · BUILT · IN PROGRESS · BLOCKED · PARKED · NOT STARTED · CONCEPT
+NOT COMMITTED — completed in a session; files never uploaded to repo
 
 ---
 
-## STATUS KEYS
-- LIVE — deployed and accessible
-- BUILT — file exists, not deployed or flipped to coming soon
-- IN PROGRESS — actively being worked on
-- BLOCKED — work cannot continue without a specific resolution
-- PARKED — complete or near-complete, not on active calendar
-- NOT STARTED — scoped but no build work begun
-- CONCEPT — idea stage, not yet in research
+## UPLOAD QUEUE (clear these before new build work)
+
+1. Hub Batch A re-run — series card (D-80), HBS card removal (D-81),
+   surface /naming/part-2/, /naming/part-3/, /naming/. Gay Uncles flip
+   per Decision 2 ruling (see audit chat, July 5).
+2. Platform docs — this file, CARD-INVENTORY.md, decision log append
+   (D-80/D-81), REPO-AUDIT-2026-07-05.md.
+3. Beyoncé filled workbench copy + Overview essay (recover from June chats).
+4. CROWNING-ACHIEVEMENTS-FACTS.md (recover — data-integrity priority).
+5. BTU research files (recover → `_data/pieces/BTU-*.md`).
+6. Copaganda brief + V2 spec (recover).
+7. Back in My Day full card HTML (verify vs chat 2f421f20, then commit).
 
 ---
 
 ## PLATFORM
 
 ### Hub
-LIVE — updated 2026-05-22 (Batch A). Stat block CSS fixed: height:88px (was min-height), stat text color set to #f8f6f1 at full opacity (was faint gray/rgba), Coming Soon stat text at opacity:0.7, divider at rgba(248,246,241,0.3), label has -webkit-line-clamp:2. 4 active cards: Naming Part 0, Concert Tax, Naming Part 1, Sodium (activated). 5 coming-soon cards: Naming Part 2, Where's Beyonce?, Benson & Stabler Aren't Coming, Advice From Your Thick Gay Uncles, The Living Room. Harvard Business School & Race removed from hub per AMA decision. All placeholder text ([STAT TBD] etc.) cleared. D-42 (series title architecture for Naming cards) NOT implemented — awaiting mockup approval.
+LIVE — but at 2026-05-22 state. Links 4 pieces: Concert Tax,
+Fast Food Sodium, Naming Part 0, Naming Part 1, plus coming-soon cards.
+NOT COMMITTED: June 24 Batch A (D-80 single naming series card → /naming/;
+D-81 HBS card + Coming Next divider removed; Gay Uncles Coming Soon → Explore).
+Target post-commit roster: Sodium Tax, That Name Is So Ghetto (series),
+Concert Tax, Gay Uncles. No Coming Soon cards remain.
 
 ### Platform CSS
-Container `--max-editorial` upgraded from 860px to 1080px (May 2026). Category color system added: `--category-industry`, `--category-culture`, `--category-govt`, `--category-health`.
-**2026-05-22 Batch A:** `.ai-tab.active` updated from teal underline to dark-section fill (`var(--dark-section)`) + paper text (`var(--paper)`), no underline. Matches decision log standard. Naming series pieces use piece-local gold override (unaffected). Concert Tax and Sodium now inherit dark fill correctly.
+`alterrell-interactive.css` at repo root — canonical, current. Lanes retired
+June 2026: all pieces are Alterrell Interactive; Obsidian Futures is a tag +
+card-native exception (380×660, #0a0a12) for BTU and Crowning Achievements only.
+
+### Design Decision Log
+Repo copy ends at D-79. D-80/D-81 append block generated 2026-07-05,
+pending AMA confirmation of wording + upload.
 
 ---
 
 ## PIECES
 
-### Concert Tax
-**Title:** Female Musicians Earn Less But Share More
-**Status:** LIVE — structural fixes applied May 18, 2026; tab CSS override removed 2026-05-19
-**Canonical file:** `concert-tax/index.html`
-**Brief:** `_data/CONCERT-TAX-BRIEF.md` (SUPERSEDED — refer to index file and Design Decision Log)
-**Session 3 complete (Type 2 structural):** Container alignment (1.25rem), compact journey bar, Spread the Word reorder, swipeable card gallery, 22-source footer accordion, tab bar alignment.
-**Batch B (2026-05-19):** Removed redundant `#ct-tabs` CSS padding override — now inherits global `.ai-tabs` from Batch A.
-**2026-05-20 (Type 2 — gallery + journey):**
-- All 5 tab card galleries converted from `.ct-gallery` (grid) to `.ct-swipeable-outer` carousel pattern. `.ct-gallery` CSS removed.
-- Gallery JS generalized: was ID-based single-gallery, now class-based multi-gallery (`querySelectorAll('.ct-swipeable-outer')`).
-- Journey bar items updated: `flex-direction: column`, `gap: 8px`, `padding: 12px 1.25rem`, action 15px/600, dest 9px, divider 36px. Locked as platform standard in DESIGN-DECISION-LOG.md D-20.
-- Concert Builder interactive added to Data tab (previous session).
-**2026-05-21 (Type 2 — The Receipt tool):** Added "Your Ticket, Decoded" interactive to The Data tab. Part 1: slider ($25-$500) + receipt-style revenue breakdown (NITO split: ticketing 27%, venue 17%, promoter/production 30%, management/agent 18%, artist 8%). Part 2: three production profile cards (swipeable carousel, D-21 pattern) documenting Ed Sheeran / Zach Bryan+Post Malone / Beyonce+Taylor Swift tiers. Editorial close quote. All sourced from NITO Dec 2024 survey, IQ Magazine Jan 2026, Pollstar, Guinness WR, Billboard. Note: USC Annenberg "19 cents per dollar" gender pay gap stat UNVERIFIED — AMA to insert citation before publish.
-**2026-05-22 Batch C (audit fixes):** Footer tagline removed (T-9 violation). Share block added to Overview tab (Tab 1) with 6 destinations: X, Facebook, WhatsApp, LinkedIn, Email, Copy Link. Share block CSS (`.share-block`, `.share-btn`) added to piece-local style block.
-**Remaining:** Journey HTML still uses piece-local `.ct-journey` — swap to `.ai-journey-compact` in Type 3 template extraction session. Pre-existing em dash in share block nudge text (legacy, not introduced this session).
-**Next:** Session 4 — Type 1 editorial (AI voice pass, em dashes, AI tone audit on all tabs). Also: verify and insert gender pay gap citation in Receipt tool gender note.
-
-### Naming Series
-- Part 0: LIVE at /naming/part-0/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 4 body tabs. **2026-05-22 audit fixes:** Breadcrumb now before nav in DOM. OG/twitter title tags updated to Alterrell Interactive. "All Pieces" 4th journey item removed (now 3 items: Watch/Read/Support). 6-destination share block added to Tab 1 (Roots). "Obsidian Futures" remains in hero eyebrow and footer wordmark (visual label, intentional dark treatment).
-- Part 1: LIVE at /naming/part-1/ — **Batch C copy update complete 2026-05-20.** AMA-approved copy placed in all 5 tabs. Overview reframed with personal investment framing. Tab 2 restructured (naming approval systems context added before résumé study). Tab 3 h2 updated. Tab 4 chart-editorial blocks updated for both Whitney and Mariah. Tab 5 pattern descriptions and body copy updated.
-- Part 2: LIVE at /naming/part-2/ (voice pass incomplete — em dashes, AI tone present. Not touched in Batch C.)
-**Slug rename completed May 2026:** /what-in-a-name/* → /naming/*. Redirects active in _redirects.
-**Next:** Type 1 editorial session per part — AI voice pass, then AMA rewrite.
-**Canonical file:** `_data/pieces/NAMING-SERIES-BRIEF.md`
+### Concert Tax — "Female Musicians Earn Less But Share More"
+STATUS: Piece LIVE at `concert-tax/index.html`. Card workbench committed
+(teal/paper) with 14 cards; session record says 16 — reconcile in recovery pass.
+BLOCKER: 7 `[AMA EDITORIAL LINE]` slots in workbench (spines in
+VOICE-SPINES-2026-07.md). Then Type 2 gallery assembly into the piece.
+Hub card title update rides with Batch A re-run.
 
 ### Advice From Your Thick Gay Uncles
-**Status:** IN PROGRESS — folder renamed to /gay-uncles/ (May 2026)
-**Blocker:** Essay/voice pass not complete. [AMA TO PASTE] placeholders throughout piece.
-**Canonical file:** `_data/pieces/BLACK-GAY-GEOGRAPHY-BRIEF.md`
-**Note:** Slug renamed from /big-black-love/ to /gay-uncles/. Redirect active in _redirects. OG image needs to be created at og/gay-uncles.png.
+STATUS: BUILT at `gay-uncles/index.html` (57KB, 5-tab restructure, 9 cards
+in-piece). Workbench is intentionally a stub — cards live in the piece.
+Brief: `_data/pieces/GAY-UNCLES-BRIEF.md` ✓ (old BLACK-GAY-GEOGRAPHY path is dead).
+BLOCKER: 15 AMA voice slots in the live file (spines in VOICE-SPINES-2026-07.md).
+Held: W-2 format decision, YM-1 format decision.
+Open data flag: DC BMI gap +22 (card) vs +23 (brief) — reconcile at voice-pass commit.
+Hub flip to Explore: per D-81 ruling, sequence against voice pass (Decision 2).
 
-### Sodium
-**Status:** LIVE — hub card activated 2026-05-22. Hub card stat: 2,300mg / "the daily limit one meal can exceed". Stakes: "What's in your order". AMA voice pass still recommended before next editorial push.
-**Ko-fi:** Present in journey block (Watch / Read / Support).
-**Sources:** Dark footer accordion using global `.ai-footer-methodology` + `.ai-footer-sources` CSS classes.
-**Hero title:** "Fast Food's Hidden Sodium Tax" (matched hub card 2026-05-19).
-**Subhead:** AMA-confirmed May 18 version locked: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us."
-**Note — OG/Twitter meta descriptions:** Currently retain older word order + "$219B" stat. AMA to confirm whether to update or leave as social-optimized variant.
-**Batch B (2026-05-19):** Hero title fixed, subhead confirmed, journey block migrated to `.ai-journey-compact`, footer migrated to global classes, nav/breadcrumb DOM order corrected, redundant piece-local journey CSS removed.
-**Batch C (2026-05-21):** AMA-approved copy placed across Overview, The System, Systemic Issues tabs. Overview: intro paragraph, "Fast food gets blamed" paragraph, 5-item list reduced to 4 (wages/CEO item removed), callout updated, v2-callout div deleted. The System: accordion 01 paragraphs merged/updated, accordion 02 intro and NYC post-compare paragraph updated, accordion 03 (Healthcare Bill) paragraphs updated and "1 in 8" folded into projection paragraph, accordion 04 (Fiber) intro and closing paragraph updated. Systemic Issues: accordion 01 (Formula) paragraph updated and reformulated-for-regulators callout removed; accordion 02 (Advertising) body paragraph, pull quote, and trailing paragraph updated; accordions 03 (Cost) and 04 (Wages) fully deleted. Data tab button hidden (display:none — HTML intact). Section-floor nav links updated to skip hidden Data tab: Compare Next now points to #franchise, Franchise Previous now points to #compare, Data section-floor nav hidden. Compare Your Order section class updated to ai-section--white for visual consistency.
-**FLAG:** Systemic Issues tab intro still reads "Four mechanisms" — now has only 2 accordions. AMA to confirm whether to update intro copy in a subsequent session.
-**Batch C continued (2026-05-21):** Tab rename pass: "Data" tab unhidden and renamed to "By Franchise" (section id=data unchanged); "By Franchise" tab renamed to "Best Options" (section id=franchise unchanged). All section eyebrows and section-floor nav labels updated to match. Franchise filter pills added to By Franchise tab (id=data): 19 chain pills + All generated from MENU keys, horizontal scroll on mobile with scroll-snap, 44px touch targets, dark fill active state. buildDataTable updated to store data-chain attribute on each table row for filter targeting. Sources discoverability: "Jump to sources" link added to Overview, id="sources-anchor" added to footer details element, JS auto-opens details on hash navigation and click.
-**Remaining:** Data refresh on menu items — requires AMA to provide updated nutrition values. Not a build blocker, piece data is 2024-2025 vintage.
-**Canonical file:** `_data/pieces/SODIUM-FACTPACK.md`
+### Where's Beyoncé? (disaster philanthropy)
+STATUS: Shell BUILT at `where-are-they/index.html` (50KB). 10 workbench cards
+committed June 9. Target Q3, hurricane season.
+NOT COMMITTED: all 11 editorial slots filled + 600-word Overview essay (June chats).
+Resolved holds: Kevin Hart quote (Vogue UK June 2021), 700× anchor cut,
+Card 5 bar-delta cut, "Celebrity giving (est.)" labels on Cards 3–4.
+Design lane: standard teal.
+PENDING: slug decision (/where-are-they/ vs /wheres-beyonce/) before share
+cards ship. Then Type 2 build — this is the hard-deadline piece.
 
-### Where's Beyoncé
-**Working title:** Where's Beyoncé?
-**Status:** NOT STARTED — HTML shell exists at `where-are-they/index.html`
-**Target:** Q3 2026, hurricane season (Aug–Oct)
-**Canonical file:** `_data/WHERES-BEYONCE-FACTPACK.md`
-**Next:** Type 1 editorial — subhead lock, Helene data, Lahaina/Maui decision.
+### Sodium — "Fast Food's Hidden Sodium Tax"
+STATUS: LIVE at `fast-food-sodium/index.html`. Complete; can flip Coming Soon /
+active on the hub as calendar needs.
+FLAGS: Systemic Issues intro still says "Four mechanisms" (2 accordions remain) —
+spine provided. OG/Twitter meta retains older word order + $219B stat — AMA to
+rule: update or keep as social-optimized variant.
 
-### Copaganda (Benson & Stabler Aren't Coming / Law & Order: ICE Is a Matter of Time)
-**Status:** NOT STARTED — research + visual suite locked
-**Canonical file:** `_data/COPAGANDA-PIECE-BRIEF.md`
-**Build order locked:** V3→V5→V4→V2→V1
-**Next:** Type 1 (copy drafting) or Type 2 (visual builds) — both unblocked. AMA exploring what can be built without essay finalized.
+### Naming Series — "That Name Is So Ghetto"
+STATUS: Parts 0–1 LIVE and linked. Part 2 ("The Living Room") and Part 3
+("The Academy Effect") BUILT in repo, unlinked — surface via Batch A re-run.
+Series index BUILT at `/naming/`. Part 2 voice pass incomplete (em dashes,
+AI tone). Parts 4–7 in build planning; Part 2 is the template for 3–6,
+Part 7 fresh build. Grandfathered from Sources-tab standard (footer
+methodology accordion, 5-tab).
+Canonical: `_data/pieces/NAMING-SERIES-BRIEF.md` ✓
 
-### Congress Part 1A (Senator Selfish / District-74)
-**Status:** NOT STARTED
-**Target:** Q3/Q4 2026, general election window (Sept–Oct)
-**Canonical file:** `_data/CONGRESS-1A-FACTPACK.md`
-**Next:** Type 1 editorial — argument refinement, tab architecture lock, title confirmation.
+### BTU (Black Television Universe)
+STATUS: Research complete in session records — five clusters (Sitcom 37 shows /
+27 nodes / 11 chains; Drama 14/17/10; Miniseries 6; Soaps full incl. Beyond the
+Gates; Animation 5). All 13 ODs resolved. Soaps = frontrunner for first ship.
+Editorial spine: Beyond the Gates 2026 NAACP nom (first daytime drama);
+Michele Val Jean 35-year gap (Generations 1989 → BTG 2025).
+NOT COMMITTED: none of this research is in the repo. Workbench stub only.
+BLOCKER: commit research as `_data/pieces/BTU-*.md` before any build.
+Card spec: 380×660 OF card-native, #0a0a12. Show cards are the deliverable,
+not a network map.
 
-### HBS Digital Museum
-**Status:** NOT STARTED — almost nothing locked
-**Target:** Q2 2026, June reunion (URGENT if timing holds)
-**Canonical file:** `_data/HBS-FACTPACK.md`
-**Next:** AMA gathering materials. Type 1 editorial session needed urgently for argument lock, title, format decision.
+### Copaganda
+STATUS: Five-visual suite data-locked; V2 redesign (producer typographic wall,
+font size = total seasons + producer cards). Build order V3→V5→V4→V2→V1, V1 parked.
+NOT COMMITTED: brief and V2 spec exist only in session records. Workbench stub.
+BLOCKER: recovery commit before V3 build.
 
-### Black Sitcoms
-**Status:** CONCEPT — data collected, not in research
-**Canonical file:** `_data/BLACK-SITCOMS-BRIEF.md`
-**Next:** Scope decision (broadcast only vs. cable/streaming) before research pass.
+### Crowning Achievements — Black Music Royalty
+STATUS: Architecture locked — 4 cards per artist (Stats/Reign/Infrastructure/Bio),
+380×660 OF card-native. Roster: 6 Billboard Titans + 9 Main Drops + 10 Special Edition.
+NOT COMMITTED: CROWNING-ACHIEVEMENTS-FACTS.md is 404 — retired-stats register
+(Diana Ross, Donna Summer, Tina Turner corrections; "74% crossover" retired)
+exists only in session records. HIGH-PRIORITY recovery before any card build.
+
+### Back in My Day (food ingredient evolution)
+STATUS: Phase 1 locked (Bread, Ice Cream, Pasta, Milk); 4 ingredient-category
+hex codes locked; y-axis ceiling 27. Research committed ✓
+(`BACK-IN-MY-DAY-RESEARCH.md`). Workbench in repo appears partial vs session
+record (7 macro cards + A/B/C rounds, chat 2f421f20) — verify, then commit.
+Generation cards ON HOLD pending 300×280 execution refinement.
+NEXT BUILD: Option C cascade pills (after workbench verification).
+
+### Congress Part 1A — "Senator Selfish (District-74)"
+STATUS: NOT STARTED. Target Sept–Oct general election window.
+Factpack path in old status file is 404 — locate or rebuild factpack before
+Type 1 session.
+
+### HBS
+DEFERRED (June 9, 2026). Do not surface unless AMA raises it.
 
 ---
 
 ## SEPARATE PRODUCTS
 
-### FrameShift
-**Status:** Free tier MVP built. Paid tier NOT BUILT — gated on waitlist validation.
-**Canonical file:** `_data/FRAMESHIFT-BRIEF.md` (needs BUILT/NOT BUILT markers per feature)
-**Next:** Demand validation setup (waitlist + refundable deposit).
-
 ### Forever Loved
-**Status:** Free tier MVP built. Three-tab structure implemented.
-**Canonical file:** `_data/FOREVER-LOVED-FACTPACK.md`
-**Next:** Mobile QA, accessibility audit, Ko-fi placement review.
+LIVE at forever-loved.netlify.app (separate deploy; not in this repo).
+
+### FrameShift
+Deferred to Q3/Q4. Free-tier MVP built; paid tier gated on waitlist validation.
 
 ---
 
-## DEPLOY RULE
+## EXPLORATORY (no piece attached)
+- Background session-singer research (Crow, Price, Vandross, McDonald, Carey;
+  hubs: Darlene Love, Dionne Warwick)
+- City cultural-erasure research (Boston, Newark, Memphis, Philadelphia,
+  Chicago, Houston, Detroit; Atlanta counter-case)
+- Low Battery tool · Specialist Map · Voter wait times · Reality TV labor economics
 
-Nothing moves to LIVE unless:
-- Structure approved
-- Voice pass completed (if applicable)
-- Build verified in browser
-- Ko-fi block present (deploy gate)
-- Deploy checklist passed
+---
+
+## DEPLOY RULE (unchanged)
+Nothing moves to LIVE unless: structure approved · voice pass completed
+(if applicable) · build verified in browser · Ko-fi block present ·
+deploy checklist passed.
+
+## NEXT STALENESS CHECK
+Aug 1, 2026 (proposed — this audit supersedes the July 9 check; AMA to confirm).
