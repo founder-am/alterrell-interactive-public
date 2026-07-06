@@ -1,6 +1,6 @@
 # DESIGN-DECISION-LOG.md
 # Alterrell Interactive — Platform & Visual Library
-# Compiled: May 14, 2026 | Last updated: May 22, 2026
+# Compiled: May 14, 2026 | Last updated: July 5, 2026
 # Source: Full project conversation history (Jan 2026–May 2026)
 # Purpose: Prevent drift. Every entry is what AMA decided, not what Claude interpreted.
 # Format: D-## (YYYY-MM-DD) | STATUS | Title
@@ -408,6 +408,32 @@ Components: A4 Stacked Comparison (.ac-compare), A5 Named Quadrants (.ac-quadran
 
 ### D-79 (2026-06-09) | LOCKED | Display type texture locked as Option C — stroke outline
 CSS: -webkit-text-stroke: 1px rgba(248,246,241,0.6); paint-order: stroke fill; text-shadow: 0 2px 6px rgba(0,0,0,0.5). Applies to OF card-native hero names only (BTU, Crowning Achievements). Teal-lane uses flat rendering — no texture effects.
+
+---
+
+### D-80 (2026-06-24) | LOCKED | Naming series hub architecture — single series card
+One "That Name Is So Ghetto" series card on the hub linking to /naming/ (series index), not four per-part cards. The series index is the discovery surface for Parts 0–3 and all future parts. Reason: hub roster stays scannable as the series grows; parts don't compete with standalone pieces for hub real estate. NOTE: ruled June 24; the session's edited log was never uploaded — entry reconstructed and committed July 5. Wording confirmed by AMA at upload.
+
+### D-81 (2026-06-24) | LOCKED | Hub roster cleanup — HBS removed, Gay Uncles flip
+HBS card and "Coming Next" divider removed from hub (HBS formally deferred June 9). Gay Uncles flipped Coming Soon → Explore. Resulting roster: Sodium Tax, That Name Is So Ghetto (series), Concert Tax, Gay Uncles. No Coming Soon cards remain. NOTE: reconstructed July 5, same as D-80. Gay Uncles flip sequencing amended by D-82.
+
+### D-82 (2026-07-06) | LOCKED | Gay Uncles hub flip sequencing — option (a)
+Ruled by AMA in the July 6 Type 3 hub session: hub Batch A ships with Gay Uncles held at Coming Soon; the flip to Explore ships as a one-line follow-up Batch A after the voice-pass Batch C lands. Rationale: unblocks Naming Parts 2–3 visibility without publicly surfacing the 15 open voice slots.
+
+### D-83 (2026-07-05) | PENDING AMA | Where's Beyoncé slug
+Shell lives at /where-are-they/. Options: keep, or rename to /wheres-beyonce/ with _redirects entry (pattern-consistent with /what-in-a-name/→/naming/ and /big-black-love/→/gay-uncles/). Recommended: rename now, before any share cards or OG images ship — one redirect line today, unfixable after distribution.
+
+### D-84 (2026-07-05) | PENDING AMA | Sodium OG/Twitter meta variant
+Meta descriptions retain older word order + "$219B" stat vs on-page subhead. Options: update to match, or keep as intentional social-optimized variant. Recommended: keep and log as intentional.
+
+### D-85 (2026-07-05) | LOCKED | Upload-queue protocol
+Every session that produces files ends with an explicit "files to upload" list. PROJECT-STATUS.md's Upload Queue section is the standing record of anything produced-but-not-committed. A build session may not start on a piece whose prior outputs are still in the queue. Session prompts live in-repo at _data/platform/SESSION-QUEUE-[YYYY-MM].md; Claude Code sessions kick off by reading the queue and running the next unchecked prompt, and mark it done in the same commit.
+
+### D-86 (2026-07-05) | LOCKED | Voice harvest protocol
+Every research session — including exploratory ones — ends with Claude compiling a "lines you already said" harvest: AMA's verbatim in-session reactions mapped to open copy slots, output as a paste-ready block for ChatGPT rhythm-tightening. Extraction of AMA's own words, not Claude-written copy — does not violate the copy-role boundary. Rationale: AMA's voice markers (conversational, observation → systemic reframe) appear naturally in research-session reactions; harvesting them removes the blank-page perfectionism trigger and converts research sessions (AMA's preferred mode) into the copy pipeline's front end.
+
+### D-87 (2026-07-05) | LOCKED | Essay is not a ship gate
+Pipeline inverted: platform copy ships on slots first, as v1, replaceable via Batch C. The full-form essay is a downstream companion (Substack long-read) published when ready, never a prerequisite for piece deploy. Rationale: essay-first sequencing placed an unbounded perfectionism gate in front of every ship; slot copy is structurally bounded (one sentence, one defined job). Supersedes the implicit essay-first ordering in the Step 1–4 workflow; harvest (D-86) and direct slot-writing are both valid Step 1 paths.
 
 ---
 
