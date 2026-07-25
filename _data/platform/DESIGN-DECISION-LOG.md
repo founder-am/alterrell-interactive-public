@@ -379,6 +379,7 @@ AMA rejected the 860px max-width editorial container (May 27, 2026). Prose width
 
 ### D-74 (2026-06-03) | LOCKED | Naming series Sources tab exemption — footer methodology is the standard
 Footer `<details>` methodology accordion is the series standard for Parts 0–7. Sources tab platform standard does not apply to any Naming series file. Do not flag missing Sources tab as a violation in any Naming piece audit. This is a series-level exemption, not a platform-wide change.
+Amended by D-88: exemption holds until the Naming compliance rebuild, at which point sources becomes a tab.
 
 ### D-75 (2026-06-03) | LOCKED | Copaganda visual suite: full-width components, not gallery cards
 "Benson & Stabler Aren't Coming" uses five full-width chart visuals (V1–V5), not 300×280px gallery cards. These are standalone chart components with their own color palette. Build order: V3→V5→V4→V2→V1. Do not enforce 300×280px card spec against Copaganda visuals.
@@ -420,8 +421,9 @@ HBS card and "Coming Next" divider removed from hub (HBS formally deferred June 
 ### D-82 (2026-07-06) | LOCKED | Gay Uncles hub flip sequencing — option (a)
 Ruled by AMA in the July 6 Type 3 hub session: hub Batch A ships with Gay Uncles held at Coming Soon; the flip to Explore ships as a one-line follow-up Batch A after the voice-pass Batch C lands. Rationale: unblocks Naming Parts 2–3 visibility without publicly surfacing the 15 open voice slots.
 
-### D-83 (2026-07-05) | PENDING AMA | Where's Beyoncé slug
+### D-83 (2026-07-05) | LOCKED | Where's Beyoncé slug
 Shell lives at /where-are-they/. Options: keep, or rename to /wheres-beyonce/ with _redirects entry (pattern-consistent with /what-in-a-name/→/naming/ and /big-black-love/→/gay-uncles/). Recommended: rename now, before any share cards or OG images ship — one redirect line today, unfixable after distribution.
+RULED 2026-07-25 by AMA: rename to /wheres-beyonce/. Slug matches the headline, which is the searchable and shareable phrase. No _redirects entry needed; /where-are-they/ was never live. Rename ships as its own build, not with this docs commit.
 
 ### D-84 (2026-07-05) | PENDING AMA | Sodium OG/Twitter meta variant
 Meta descriptions retain older word order + "$219B" stat vs on-page subhead. Options: update to match, or keep as intentional social-optimized variant. Recommended: keep and log as intentional.
@@ -436,5 +438,25 @@ Every research session — including exploratory ones — ends with Claude compi
 Pipeline inverted: platform copy ships on slots first, as v1, replaceable via Batch C. The full-form essay is a downstream companion (Substack long-read) published when ready, never a prerequisite for piece deploy. Rationale: essay-first sequencing placed an unbounded perfectionism gate in front of every ship; slot copy is structurally bounded (one sentence, one defined job). Supersedes the implicit essay-first ordering in the Step 1–4 workflow; harvest (D-86) and direct slot-writing are both valid Step 1 paths.
 
 ---
+
+### D-88 (2026-07-20) | LOCKED | piece-template.html is canonical
+piece-template.html is canonical for all Interactive pieces. The bespoke
+bbl- structural class system is retired. New pieces use platform ai-
+classes, the 6-tab structure, sources-as-tab, and a single 3-item
+journey block. Originally logged as AI-D-1 in alterrell-hq; folded here
+2026-07-25 so it sits where builds run.
+FORWARD-ONLY. Binds new pieces and scheduled rebuilds. Existing pieces
+are not retroactively audited. A pre-D-88 piece is not in violation.
+ACCORDIONS RETIRED for forward pieces. Supersedes platform rule T-3's
+conditional permission (accordions at 4+ discrete expandable entries)
+for anything built after this date. Existing accordions stay until that
+piece is rebuilt.
+PRE-BUILD CHECK. Template compliance is a pre-build gate, not a post-hoc
+audit. A build does not start on a non-compliant scaffold.
+REBUILDS QUEUED: Gay Uncles, and the Naming series Parts 0-7. In the
+Naming rebuild, methodology and sources become a TAB, replacing the
+footer <details> accordion. This amends D-74, which is
+now a hold-until-rebuilt exemption, not a permanent series standard.
+Until rebuilt, Naming files are not flagged.
 
 *End of log. Append new entries in D-## (YYYY-MM-DD) format. Do not create new "Part" sections.*
