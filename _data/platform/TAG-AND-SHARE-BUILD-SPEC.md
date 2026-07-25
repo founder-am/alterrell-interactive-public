@@ -42,7 +42,7 @@ These are separate builds but should be specced together because the tag system 
 - `index.html` (hub)
 - `fast-food-sodium/index.html`
 - `what-in-a-name/index.html` (all three parts)
-- `where-are-they/index.html`
+- `wheres-beyonce/index.html`
 - `concert-tax/index.html` (when built)
 
 **Checklist gate:** Tag system ships in the same commit as hub. Piece page tags ship in each piece's next scheduled build session — not in a separate standalone commit.

@@ -18,28 +18,30 @@ NOT COMMITTED — completed in a session; files never uploaded to repo
 
 ## UPLOAD QUEUE (clear these before new build work)
 
-1. Hub Batch A re-run — series card (D-80), HBS card removal (D-81),
-   surface /naming/part-2/, /naming/part-3/, /naming/. Gay Uncles flip
-   per Decision 2 ruling (see audit chat, July 5).
-2. Platform docs — this file, CARD-INVENTORY.md, decision log append
-   (D-80/D-81), REPO-AUDIT-2026-07-05.md.
-3. Beyoncé filled workbench copy + Overview essay (recover from June chats).
-4. CROWNING-ACHIEVEMENTS-FACTS.md (recover — data-integrity priority).
-5. BTU research files (recover → `_data/pieces/BTU-*.md`).
-6. Copaganda brief + V2 spec (recover).
-7. Back in My Day full card HTML (verify vs chat 2f421f20, then commit).
+Rewritten 2026-07-25 from verified repo state. Struck: Hub Batch A
+(D-80 series card and D-81 HBS removal both confirmed live on the hub;
+Gay Uncles held at Coming Soon by design per D-82, not a queue item),
+CARD-INVENTORY.md (exists at `_workbench/CARD-INVENTORY.md`),
+REPO-AUDIT-2026-07-05.md and SESSION-QUEUE-2026-07.md (both exist in
+repo; REPO-AUDIT retired to `old/` this pass). Remaining real items:
+
+1. Beyoncé filled workbench copy + Overview essay (recover from June chats).
+2. CROWNING-ACHIEVEMENTS-FACTS.md (recover — data-integrity priority).
+3. BTU research files (recover → `_data/pieces/BTU-*.md`).
+4. Copaganda brief + V2 spec (recover).
+5. Back in My Day full card HTML (verify vs chat 2f421f20, then commit).
 
 ---
 
 ## PLATFORM
 
 ### Hub
-LIVE — but at 2026-05-22 state. Links 4 pieces: Concert Tax,
-Fast Food Sodium, Naming Part 0, Naming Part 1, plus coming-soon cards.
-NOT COMMITTED: June 24 Batch A (D-80 single naming series card → /naming/;
-D-81 HBS card + Coming Next divider removed; Gay Uncles Coming Soon → Explore).
-Target post-commit roster: Sodium Tax, That Name Is So Ghetto (series),
-Concert Tax, Gay Uncles. No Coming Soon cards remain.
+LIVE and current. Batch A confirmed committed: single naming series card
+→ /naming/ (D-80), HBS card removed (D-81). Roster verified in
+`index.html`: Fast Food Sodium, That Name Is So Ghetto (series),
+Concert Tax — all `hub-card--live` — plus Gay Uncles, held at Coming
+Soon by design (D-82); the Explore flip ships as its own follow-up
+Batch A after the voice-pass Batch C lands.
 
 ### Platform CSS
 `alterrell-interactive.css` at repo root — canonical, current. Lanes retired
@@ -47,8 +49,9 @@ June 2026: all pieces are Alterrell Interactive; Obsidian Futures is a tag +
 card-native exception (380×660, #0a0a12) for BTU and Crowning Achievements only.
 
 ### Design Decision Log
-Repo copy ends at D-79. D-80/D-81 append block generated 2026-07-05,
-pending AMA confirmation of wording + upload.
+Repo copy ends at D-92 (2026-07-25). Per D-92, this log is the ruling
+record; AI-MASTER-RULES.md is the operative digest — rulings flow log
+to rules, never the reverse.
 
 ---
 
@@ -71,14 +74,15 @@ Open data flag: DC BMI gap +22 (card) vs +23 (brief) — reconcile at voice-pass
 Hub flip to Explore: per D-81 ruling, sequence against voice pass (Decision 2).
 
 ### Where's Beyoncé? (disaster philanthropy)
-STATUS: Shell BUILT at `where-are-they/index.html` (50KB). 10 workbench cards
+STATUS: Shell BUILT at `wheres-beyonce/index.html` (50KB). 10 workbench cards
 committed June 9. Target Q3, hurricane season.
 NOT COMMITTED: all 11 editorial slots filled + 600-word Overview essay (June chats).
 Resolved holds: Kevin Hart quote (Vogue UK June 2021), 700× anchor cut,
 Card 5 bar-delta cut, "Celebrity giving (est.)" labels on Cards 3–4.
 Design lane: standard teal.
-PENDING: slug decision (/where-are-they/ vs /wheres-beyonce/) before share
-cards ship. Then Type 2 build — this is the hard-deadline piece.
+Slug: RULED per D-83 — rename to /wheres-beyonce/ (2026-07-25). Path
+rename unblocked by D-89 (a rename is not a build, proceeds ahead of
+the Upload Queue). Then Type 2 build — this is the hard-deadline piece.
 
 ### Sodium — "Fast Food's Hidden Sodium Tax"
 STATUS: LIVE at `fast-food-sodium/index.html`. Complete; can flip Coming Soon /
@@ -91,9 +95,12 @@ rule: update or keep as social-optimized variant.
 STATUS: Parts 0–1 LIVE and linked. Part 2 ("The Living Room") and Part 3
 ("The Academy Effect") BUILT in repo, unlinked — surface via Batch A re-run.
 Series index BUILT at `/naming/`. Part 2 voice pass incomplete (em dashes,
-AI tone). Parts 4–7 in build planning; Part 2 is the template for 3–6,
-Part 7 fresh build. Grandfathered from Sources-tab standard (footer
-methodology accordion, 5-tab).
+AI tone). Parts 4–7 in build planning; per D-90 (2026-07-25), Parts 4–7
+are new pieces and build to the D-88 standard (piece-template.html,
+ai- classes, sources-as-tab, no accordions) — Part 2 is explicitly NOT
+the template for Parts 3–6. Parts 0–3 rebuild to match afterward, at
+which point the D-74 footer-accordion exemption expires. Not part of
+this session's build queue; noted here so it isn't missed at next pickup.
 Canonical: `_data/pieces/NAMING-SERIES-BRIEF.md` ✓
 
 ### BTU (Black Television Universe)

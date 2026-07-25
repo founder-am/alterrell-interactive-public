@@ -111,7 +111,7 @@ Production content for Naming Series — scripts, captions, tier lists, validati
 
 ### Missing from PROJECT-STATUS.md
 
-**Where's Beyoncé? / where-are-they** — Not listed as a separate entry. WHERES-BEYONCE-FACTPACK.md is fully researched and the piece is hub-ready as "Coming Soon." No `where-are-they/` folder exists in the repo. The hub has a "Coming Soon" card titled "Who Do We Call During a Disaster" which appears to represent this piece.
+**Where's Beyoncé? / wheres-beyonce** — Not listed as a separate entry. WHERES-BEYONCE-FACTPACK.md is fully researched and the piece is hub-ready as "Coming Soon." No `wheres-beyonce/` folder exists in the repo. The hub has a "Coming Soon" card titled "Who Do We Call During a Disaster" which appears to represent this piece.
 
 ---
 
@@ -381,7 +381,7 @@ Hub actual: (1) `.hub-card-stat-block` ✓, (2) `.hub-card-title` ✓, (3) `.hub
 | SESSION-PROMPTS.md | KEEP | Lightweight and functional. |
 | SODIUM-FACTPACK.md | KEEP | Status accurate. Piece complete and parked. |
 | STRUCTURAL-AUDIT-REPORT.md | KEEP | This document. |
-| TAG-AND-SHARE-BUILD-SPEC.md | KEEP | Tag system not yet built. Spec remains relevant. Note: the file list includes `where-are-they/index.html` — that folder does not yet exist. |
+| TAG-AND-SHARE-BUILD-SPEC.md | KEEP | Tag system not yet built. Spec remains relevant. Note: the file list includes `wheres-beyonce/index.html` — that folder does not yet exist. |
 | VOICE-GUIDE.md | KEEP | Accurate, correctly scoped. |
 | WHERE-ARE-THEY-BRIEF.md | RETIRE | Broken pointer to a nonexistent file. All useful content is in WHERES-BEYONCE-FACTPACK.md. Remove or replace with a one-line pointer to the factpack. |
 | WHERES-BEYONCE-FACTPACK.md | KEEP | Updated May 7. Comprehensive. Authoritative. |

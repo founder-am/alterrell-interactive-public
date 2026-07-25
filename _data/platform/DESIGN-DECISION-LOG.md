@@ -424,6 +424,7 @@ Ruled by AMA in the July 6 Type 3 hub session: hub Batch A ships with Gay Uncles
 ### D-83 (2026-07-05) | LOCKED | Where's Beyoncé slug
 Shell lives at /where-are-they/. Options: keep, or rename to /wheres-beyonce/ with _redirects entry (pattern-consistent with /what-in-a-name/→/naming/ and /big-black-love/→/gay-uncles/). Recommended: rename now, before any share cards or OG images ship — one redirect line today, unfixable after distribution.
 RULED 2026-07-25 by AMA: rename to /wheres-beyonce/. Slug matches the headline, which is the searchable and shareable phrase. No _redirects entry needed; /where-are-they/ was never live. Rename ships as its own build, not with this docs commit.
+EXECUTED 2026-07-25, unblocked by D-89: folder renamed to wheres-beyonce/index.html and every internal reference updated in this pass.
 
 ### D-84 (2026-07-05) | PENDING AMA | Sodium OG/Twitter meta variant
 Meta descriptions retain older word order + "$219B" stat vs on-page subhead. Options: update to match, or keep as intentional social-optimized variant. Recommended: keep and log as intentional.
@@ -458,5 +459,31 @@ Naming rebuild, methodology and sources become a TAB, replacing the
 footer <details> accordion. This amends D-74, which is
 now a hold-until-rebuilt exemption, not a permanent series standard.
 Until rebuilt, Naming files are not flagged.
+
+### D-89 (2026-07-25) | LOCKED | A path rename is not a build
+A slug or folder rename touches no copy, no data, and no structure, so
+D-85's queued-item build block does not apply to it. Renames may
+proceed with items still in the Upload Queue. Unblocks the D-83
+Where's Beyonce rename.
+
+### D-90 (2026-07-25) | LOCKED | Naming Parts 4-7 build compliant
+Parts 4 through 7 are new pieces and build to the D-88 standard:
+piece-template.html, ai- classes, sources-as-tab, no accordions. Part 2
+is NOT the template for Parts 3 through 6. Parts 0 through 3 rebuild to
+match afterward, at which point the D-74 exemption expires.
+
+### D-91 (2026-07-25) | LOCKED | Card-format law
+Carousel cards are 380x660 with a 5-row maximum. Promoted from AI-D-3,
+which was proposed in alterrell-hq/audits/INTERACTIVE-BUILD-PRECHECK.md
+and never logged. That doc is retired to old/ in this same pass.
+
+### D-92 (2026-07-25) | LOCKED | Doc authority and numbering
+DESIGN-DECISION-LOG.md is the ruling record. AI-MASTER-RULES.md is the
+operative digest. Rulings flow log to rules, never the reverse. The
+rules file's prior claim to supersede this log is withdrawn.
+Numbering: D- is a dated change record in this log. P- are standing
+design principles in _design/DESIGN-PRINCIPLES.md. T- are template
+rules inside AI-MASTER-RULES.md. Three systems, three domains, no
+renumbering.
 
 *End of log. Append new entries in D-## (YYYY-MM-DD) format. Do not create new "Part" sections.*

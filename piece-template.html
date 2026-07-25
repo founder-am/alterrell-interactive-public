@@ -1,0 +1,489 @@
+<!--
+  PIECE-TEMPLATE.HTML — canonical scaffold, per D-88.
+  Extracted from concert-tax/index.html (audited most D-88-compliant
+  live piece: 0 bbl- classes, single tablist, single 3-item journey
+  block, Sources as a visible tab, no footer accordion). Card gallery
+  markup below is NOT copied from concert-tax — concert-tax predates
+  the D-68 platform carousel component and reimplements its own
+  (ct-swipeable / card-square / comp-tag), which duplicates platform
+  CSS inline (AI-MASTER-RULES Section 9 forbids this). The gallery
+  here uses the actual documented .carousel component from
+  alterrell-interactive.css instead. Flagged, not silently carried
+  forward — see chat report.
+
+  BUILD PRECHECK — read before writing any code.
+  Run _data/platform/self-check.sh before build and before any
+  index.new.html -> index.html swap. See D-88 and
+  alterrell-hq/old/AI-DECISIONS.md (AI-D-1).
+
+  Every [[PLACEHOLDER: ...]] marker below must be replaced with real,
+  piece-specific content before this file leaves draft status. No
+  section should ship with a placeholder marker still in the DOM.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[[PLACEHOLDER: Piece Title]] — Alterrell Interactive</title>
+  <meta name="description" content="[[PLACEHOLDER: one-sentence description]]">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Alterrell Interactive">
+  <meta property="og:title" content="[[PLACEHOLDER: Piece Title]] — Alterrell Interactive">
+  <meta property="og:description" content="[[PLACEHOLDER: one-sentence description]]">
+  <meta property="og:image" content="https://interactive.alterrell.com/og/[[PLACEHOLDER: piece-slug]].png">
+  <meta property="og:url" content="https://interactive.alterrell.com/[[PLACEHOLDER: piece-slug]]/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@alterrell">
+  <meta name="twitter:title" content="[[PLACEHOLDER: Piece Title]] — Alterrell Interactive">
+  <meta name="twitter:description" content="[[PLACEHOLDER: one-sentence description]]">
+  <meta name="twitter:image" content="https://interactive.alterrell.com/og/[[PLACEHOLDER: piece-slug]].png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="alterrell-interactive.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       [[PLACEHOLDER: PIECE NAME]] — PIECE-LOCAL STYLES
+       Per AI-MASTER-RULES Section 9: this piece-local stylesheet
+       extends alterrell-interactive.css. It must never rebuild or
+       duplicate rules that already exist there (the carousel
+       component below is a case in point — use .carousel, not a
+       piece-local reimplementation).
+       ═══════════════════════════════════════════════════════ */
+    :root {
+      --piece-accent: [[PLACEHOLDER: #hex — omit if teal-lane default]];
+    }
+  </style>
+</head>
+<body class="has-breadcrumb">
+
+<!-- ── 1. BREADCRUMB ── -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">[[PLACEHOLDER: Piece Title]]</span>
+</nav>
+
+<!-- ── 2. NAV ── -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/">← All pieces</a>
+  </div>
+</nav>
+
+<!-- ── 3. HERO — always dark, ONE line at 1280px, no exceptions ── -->
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed">[[PLACEHOLDER: Hero Headline — one line at 1280px]]</h1>
+    <p class="ai-hero-dek">[[PLACEHOLDER: Subhead — full editorial width]]</p>
+  </div>
+</header>
+
+<!-- ── 4. JOURNEY BLOCK — exactly one instance, 3 items, above tab bar ──
+     DO NOT duplicate. DO NOT place on Spread the Word tab or in footer.
+     Ko-fi is a deploy gate — no piece ships without it. -->
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-inner">
+
+    <a href="[[PLACEHOLDER: YouTube URL — no # placeholders at deploy]]" target="_blank" rel="noopener" class="ai-journey-path primary">
+      <span class="ai-journey-icon">▶</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">[[PLACEHOLDER: one line]]</span>
+      <span class="ai-journey-cta">Watch now →</span>
+    </a>
+
+    <a href="[[PLACEHOLDER: Substack URL]]" target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">[[PLACEHOLDER: one line]]</span>
+      <span class="ai-journey-cta">Read now →</span>
+    </a>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── 5. TAB BAR ──
+     Tab 1 Overview and last-two (Spread the Word, Sources) are locked.
+     Tabs 2-4 below are placeholders per piece brief — minimum 2 of the
+     3 required (5-tab floor), all 3 allowed (6-tab ceiling). 7 tabs
+     only with a documented decision-log exception. -->
+<div class="ai-tabs ai-tabs--fill" id="pt-tabs" role="tablist" aria-label="[[PLACEHOLDER: Piece Title]] sections">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview" data-target="tab-overview">Overview</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-placeholder-2" data-target="tab-placeholder-2">[[PLACEHOLDER: Tab 2]]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-placeholder-3" data-target="tab-placeholder-3">[[PLACEHOLDER: Tab 3]]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-placeholder-4" data-target="tab-placeholder-4">[[PLACEHOLDER: Tab 4 — delete for 5-tab minimum]]</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-spread"  data-target="tab-spread">Spread the Word</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-sources" data-target="tab-sources">Sources</button>
+</div>
+
+<!-- ── 6. TAB SECTIONS ── -->
+
+<!-- ════════════════════════════════════
+     TAB 1 — OVERVIEW
+     Share block ALWAYS on this tab (locked May 22, 2026).
+     ════════════════════════════════════ -->
+<section id="tab-overview" class="ai-section active" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">[[PLACEHOLDER: Section headline]]</h2>
+
+    <!-- Card gallery — platform carousel component (D-68).
+         Teal lane: carousel--teal, .card--a/b/c/d. Obsidian Futures
+         card-native series use the 380x660 exception (D-72) instead
+         of this component — see AI-MASTER-RULES Section 8. -->
+    <div class="carousel carousel--teal" role="region" aria-label="[[PLACEHOLDER: gallery label]]" aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+
+            <article class="carousel__card card--a" role="group" aria-label="Slide 1 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">[[PLACEHOLDER: Shell A — stat label]]</span>
+                <span class="carousel__card-stat">[[PLACEHOLDER: NN%]]</span>
+                <h3 class="carousel__card-title">[[PLACEHOLDER: title]]</h3>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">[[PLACEHOLDER: one sentence of context]]</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">[[PLACEHOLDER: Source · Year]]</span>
+              </div>
+            </article>
+
+            <article class="carousel__card card--b" role="group" aria-label="Slide 2 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">[[PLACEHOLDER: Shell B — chart label, 4 bars max]]</span>
+                <h3 class="carousel__card-title">[[PLACEHOLDER: title]]</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">[[PLACEHOLDER]]</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="[[PLACEHOLDER: 0-90]]"></span></span>
+                  <span class="carousel__bar-val">[[PLACEHOLDER]]</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">[[PLACEHOLDER: Source · Year]]</span>
+              </div>
+            </article>
+
+            <article class="carousel__card card--c" role="group" aria-label="Slide 3 of 4">
+              <div class="carousel__card-body">
+                <p class="carousel__card-quote">"[[PLACEHOLDER: pull quote]]"</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">[[PLACEHOLDER: Source · Year]]</span>
+              </div>
+            </article>
+
+            <article class="carousel__card card--d" role="group" aria-label="Slide 4 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">[[PLACEHOLDER: Shell D — comparison label]]</span>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">[[PLACEHOLDER: side-by-side comparison content]]</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">[[PLACEHOLDER: Source · Year]]</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-body">
+      <p>[[PLACEHOLDER: prose paragraph. Padding-only container, no max-width — full editorial width identical to hero.]]</p>
+    </div>
+
+    <!-- Share block — required on Tab 1. .share-block/.pt-share-* are a
+         piece-local convention (seen in concert-tax as .share-block/
+         .share-btn), not a locked platform class in alterrell-interactive.css —
+         defined per-piece in the piece-local <style> block above. -->
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">[[PLACEHOLDER: share nudge line]]</p>
+      <div class="share-block-btns">
+        <a href="https://twitter.com/intent/tweet?url=[[PLACEHOLDER: encoded URL]]&text=[[PLACEHOLDER: encoded text]]&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X"><span>&#x58;</span> Share on X</a>
+        <button class="share-btn share-btn--outline" id="pt-copy-link" aria-label="Copy link"><span id="pt-copy-icon">&#x25CE;</span> <span id="pt-copy-label">Copy link</span></button>
+      </div>
+      <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TABS 2-4 — piece-specific
+     Interactive tool pattern (per piece brief) goes here. Do not
+     invent one from memory — read CHART-LIBRARY-REFERENCE.html or
+     the piece brief first if the tab involves a chart component.
+     ════════════════════════════════════ -->
+<section id="tab-placeholder-2" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">[[PLACEHOLDER: Tab 2]]</span>
+    <h2 class="ai-h2">[[PLACEHOLDER: Section headline]]</h2>
+    <div class="ai-body">
+      <p>[[PLACEHOLDER: content or interactive tool per piece brief]]</p>
+    </div>
+  </div>
+</section>
+
+<section id="tab-placeholder-3" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">[[PLACEHOLDER: Tab 3]]</span>
+    <h2 class="ai-h2">[[PLACEHOLDER: Section headline]]</h2>
+    <div class="ai-body">
+      <p>[[PLACEHOLDER: content or interactive tool per piece brief]]</p>
+    </div>
+  </div>
+</section>
+
+<section id="tab-placeholder-4" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">[[PLACEHOLDER: Tab 4 — delete section + tab button for 5-tab minimum]]</span>
+    <h2 class="ai-h2">[[PLACEHOLDER: Section headline]]</h2>
+    <div class="ai-body">
+      <p>[[PLACEHOLDER: content or interactive tool per piece brief]]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SPREAD THE WORD — locked, second-to-last tab.
+     NO journey block on this tab. Share cards are pre-rendered PNGs
+     served as img tags (D-77) — never HTML divs.
+     ════════════════════════════════════ -->
+<section id="tab-spread" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Spread the Word</span>
+    <h2 class="ai-h2">Share this piece.</h2>
+    <p class="ai-body">[[PLACEHOLDER: support/independence note]]</p>
+
+    <!-- Pre-rendered share card, generated at publish time — img tag only -->
+    <img src="/[[PLACEHOLDER: piece-slug]]/share/[[PLACEHOLDER: card-1]].png" alt="[[PLACEHOLDER: share card alt text]]" width="1080" height="1080">
+
+    <!-- .pt-share-* is a piece-local convention (concert-tax uses .ct-share-*),
+         not a locked platform class — define in the piece-local <style> block. -->
+    <div class="pt-share-grid" role="group" aria-label="Share destinations">
+      <a href="https://twitter.com/intent/tweet?url=[[PLACEHOLDER: encoded URL]]" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on X">
+        <span class="pt-share-dest-icon">𝕏</span>
+        <span class="pt-share-dest-label">X / Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=[[PLACEHOLDER: encoded URL]]" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on Facebook">
+        <span class="pt-share-dest-icon">f</span>
+        <span class="pt-share-dest-label">Facebook</span>
+      </a>
+      <a href="https://wa.me/?text=[[PLACEHOLDER: encoded text]]" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on WhatsApp">
+        <span class="pt-share-dest-icon">●</span>
+        <span class="pt-share-dest-label">WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=[[PLACEHOLDER: encoded URL]]&title=[[PLACEHOLDER: encoded title]]" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on LinkedIn">
+        <span class="pt-share-dest-icon">in</span>
+        <span class="pt-share-dest-label">LinkedIn</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SOURCES — locked, last tab. Visible tab, NOT a footer accordion.
+     ════════════════════════════════════ -->
+<section id="tab-sources" class="ai-section" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SOURCES ——</span>
+    <h2 class="ai-h2">Methodology &amp; Sources</h2>
+
+    <div class="ai-body">
+      <p>[[PLACEHOLDER: 2-4 sentence methodology note — DM Sans 400 per AI-MASTER-RULES Section 5]]</p>
+    </div>
+
+    <ol class="ai-source-list">
+      <li>[[PLACEHOLDER: Source 1 · Publication · Date · what it supports]]</li>
+      <li>[[PLACEHOLDER: Source 2]]</li>
+    </ol>
+
+  </div>
+</section>
+
+<!-- ── 7. FOOTER ── -->
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    </div>
+
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">← All pieces</a>
+    </div>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
+      <a href="https://interactive.alterrell.com/[[PLACEHOLDER: piece-slug]]/" class="ai-footer-url">interactive.alterrell.com/[[PLACEHOLDER: piece-slug]]</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ── 8. SCRIPTS ── -->
+<script>
+(function () {
+  var tabs = Array.from(document.querySelectorAll('.ai-tab'));
+  var tabBar = document.querySelector('#pt-tabs');
+  var sections = tabs.map(function (tab) {
+    return document.getElementById(tab.dataset.target);
+  });
+
+  function activateTab(targetId) {
+    tabs.forEach(function (t) {
+      var isActive = t.dataset.target === targetId;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
+    });
+    sections.forEach(function (s) {
+      if (!s) return;
+      s.classList.toggle('active', s.id === targetId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var activeTab = tabs.find(function (t) { return t.dataset.target === targetId; });
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activateTab(tab.dataset.target);
+    });
+  });
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    } else if (tabBar) {
+      tabBar.classList.remove('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+
+  // Copy link button (Tab 1 share block)
+  var copyBtn = document.getElementById('pt-copy-link');
+  var copyLabel = document.getElementById('pt-copy-label');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = 'https://interactive.alterrell.com/[[PLACEHOLDER: piece-slug]]/';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyLabel.textContent = 'Copied!';
+          setTimeout(function () { copyLabel.textContent = 'Copy link'; }, 2000);
+        });
+      }
+    });
+  }
+})();
+
+// ── CAROUSEL — platform component (D-68), pasted verbatim from the
+//    documented JS pattern in alterrell-interactive.css Section 18.
+(function () {
+  var GAP = 16;
+  function initCarousel(el) {
+    var track  = el.querySelector('.carousel__track');
+    var cards  = Array.from(el.querySelectorAll('.carousel__card'));
+    var prev   = el.querySelector('.carousel__arrow--prev');
+    var next   = el.querySelector('.carousel__arrow--next');
+    var dotsEl = el.querySelector('.carousel__dots');
+    var vp     = el.querySelector('.carousel__viewport');
+    if (!track || !cards.length) return;
+    var idx = 0, startX = 0;
+
+    el.querySelectorAll('.carousel__bar-fill[data-fill]').forEach(function(b) {
+      b.style.setProperty('--c-bar-fill', b.dataset.fill + '%');
+    });
+
+    function cardW()  { return cards[0].getBoundingClientRect().width; }
+    function vpW()    { return vp.getBoundingClientRect().width; }
+    function visible(){ var cw = cardW(); return cw > 0 ? Math.max(1, Math.floor((vpW() + GAP) / (cw + GAP))) : 1; }
+    function maxIdx() { return Math.max(0, cards.length - visible()); }
+
+    function buildDots() {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = '';
+      cards.forEach(function(_, i) {
+        var d = document.createElement('button');
+        d.className = 'carousel__dot';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', function() { idx = i; update(); });
+        dotsEl.appendChild(d);
+      });
+    }
+
+    function update() {
+      var cw = cardW();
+      idx = Math.min(idx, maxIdx());
+      track.style.transform = 'translateX(-' + (idx * (cw + GAP)) + 'px)';
+      if (prev) prev.disabled = idx === 0;
+      if (next) next.disabled = idx >= maxIdx();
+      if (dotsEl) dotsEl.querySelectorAll('.carousel__dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === idx);
+        d.setAttribute('aria-selected', String(i === idx));
+      });
+    }
+
+    if (prev) prev.addEventListener('click', function() { if (idx > 0) { idx--; update(); } });
+    if (next) next.addEventListener('click', function() { if (idx < maxIdx()) { idx++; update(); } });
+
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft'  && idx > 0)       { idx--; update(); e.preventDefault(); }
+      if (e.key === 'ArrowRight' && idx < maxIdx()) { idx++; update(); e.preventDefault(); }
+    });
+
+    if (vp) {
+      vp.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      vp.addEventListener('touchend', function(e) {
+        var dx = startX - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) {
+          if (dx > 0 && idx < maxIdx()) idx++;
+          else if (dx < 0 && idx > 0)  idx--;
+          update();
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', update);
+    buildDots();
+    update();
+  }
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+})();
+</script>
+
+</body>
+</html>

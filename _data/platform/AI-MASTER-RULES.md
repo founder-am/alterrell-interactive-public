@@ -8,9 +8,11 @@
 
 ## HOW TO USE THIS FILE
 
-This file is the single source of truth for all Alterrell Interactive platform rules. It consolidates and supersedes rules previously scattered across BRAND-BRIEF.md, DEPLOY-CHECKLIST.md, PLATFORM-BRIEF.md, SESSION-PROMPTS.md, DESIGN-DECISION-LOG.md, and ALTERRELL-CLAUDE-DESIGN-HANDOFF.md.
+This file is the single source of truth for all Alterrell Interactive platform rules. It consolidates and supersedes rules previously scattered across BRAND-BRIEF.md, DEPLOY-CHECKLIST.md, PLATFORM-BRIEF.md, SESSION-PROMPTS.md, and ALTERRELL-CLAUDE-DESIGN-HANDOFF.md.
 
 Those files remain in the repo for reference and context. If any of them conflicts with this file, **this file wins**.
+
+Per D-92: DESIGN-DECISION-LOG.md is the ruling record; this file is the operative digest. Rulings flow log to rules, never the reverse. This file's prior claim to supersede the decision log is withdrawn.
 
 DO NOT begin any build, editorial, or audit session without this file uploaded or present in context.
 

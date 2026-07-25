@@ -10,8 +10,8 @@
 **Title:** Where's Beyoncé?
 **Former working title:** Where Are They?
 **Subhead:** TBD — lock before Q3 deploy
-**URL slug:** `where-are-they`
-**Live URL:** `interactive.alterrell.com/where-are-they/`
+**URL slug:** `wheres-beyonce`
+**Live URL:** `interactive.alterrell.com/wheres-beyonce/`
 **Lane:** Alterrell Interactive (teal — NOT Obsidian Futures)
 **Accent color:** `#0a7c72` (teal)
 **Background:** `#f8f6f1` (paper)
@@ -263,7 +263,7 @@ The Substack carries the policy accountability argument: specific documentation 
 ### Locked decisions
 - Title: "Where's Beyoncé?" (formerly "Where Are They?")
 - Lane: Alterrell Interactive (teal) — not Obsidian Futures
-- URL slug: `where-are-they`
+- URL slug: `wheres-beyonce`
 - Five-tab structure with accordion wealth database
 - Share block: Overview tab only
 - Release window: Q3, timed to hurricane season (Aug–Oct)

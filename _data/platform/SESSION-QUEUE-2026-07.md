@@ -50,8 +50,9 @@ past chats and package files — NO new writing, NO new research, NO new design.
   Result (2026-07-06): Series card → /naming/, "The Fame Effect" removed, HBS card + Coming Next divider removed per D-81. Concert Tax title and Sodium card already correct. index.html updated; SESSION-QUEUE-2026-07.md created.
 
 - [ ] **P2 · Type 1 (claude.ai) — Where's Beyoncé copy recovery**
-  >> ASK AMA: D-83 ruling — keep /where-are-they/ or rename to
-  /wheres-beyonce/ + redirect? (Needed so P8 can bake it in.)
+  >> D-83 RULED 2026-07-25: rename to /wheres-beyonce/, no redirect
+  (/where-are-they/ was never live). Rename executed this session —
+  folder is now wheres-beyonce/index.html.
   Recovery only, no new writing. (1) conversation_search June Beyoncé
   sessions ("Beyoncé workbench editorial slots Overview essay", "Kevin Hart
   Vogue 700x anchor") and pull final approved copy for all 11 slots + the
@@ -124,8 +125,9 @@ past chats and package files — NO new writing, NO new research, NO new design.
   Read first: AI-MASTER-RULES.md, _design/DESIGN-PRINCIPLES.md,
   _design/CHART-LIBRARY-REFERENCE.html, _workbench/beyonce-cards.html
   (post-recovery), _data/pieces/WHERES-BEYONCE-OVERVIEW-ESSAY.md,
-  where-are-they/index.html, alterrell-interactive.css. Slug per D-83
-  ruling (rename includes _redirects entry). MANDATORY pre-build mockup
+  wheres-beyonce/index.html, alterrell-interactive.css. Slug per D-83
+  ruling — renamed 2026-07-25, no _redirects entry (path was never live).
+  MANDATORY pre-build mockup
   before any HTML: structural vs piece zones, shells + placement for the 10
   cards, tab names 2–4, prose width via padding only — wait for AMA
   approval. Locked facts, do not re-litigate: Kevin Hart quote Vogue UK
