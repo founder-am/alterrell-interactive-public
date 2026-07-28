@@ -3,1599 +3,725 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advice From Your Thick Gay Uncles &middot; Alterrell Interactive</title>
+  <title>Advice From Your Thick Gay Uncles — Alterrell Interactive</title>
   <meta name="description" content="What the data says about where bigger Black gay men are loved.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Alterrell Interactive">
-  <meta property="og:title" content="Advice From Your Thick Gay Uncles &middot; Alterrell Interactive">
+  <meta property="og:title" content="Advice From Your Thick Gay Uncles — Alterrell Interactive">
   <meta property="og:description" content="What the data says about where bigger Black gay men are loved.">
-  <meta property="og:url" content="https://interactive.alterrell.com/gay-uncles/">
   <meta property="og:image" content="https://interactive.alterrell.com/og/gay-uncles.png">
+  <meta property="og:url" content="https://interactive.alterrell.com/gay-uncles/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@alterrell">
-  <meta name="twitter:title" content="Advice From Your Thick Gay Uncles &middot; Alterrell Interactive">
+  <meta name="twitter:title" content="Advice From Your Thick Gay Uncles — Alterrell Interactive">
   <meta name="twitter:description" content="What the data says about where bigger Black gay men are loved.">
   <meta name="twitter:image" content="https://interactive.alterrell.com/og/gay-uncles.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../alterrell-interactive.css">
   <style>
-    /* ── Obsidian Futures dark theme — piece-local ── */
-    body {
-      background: #0a0a12;
-      color: rgba(248,246,241,0.88);
-    }
+    /* ══════════════════════════════════════════════════════
+       GAY UNCLES — piece-local styles. Extends, never
+       duplicates, alterrell-interactive.css (SKEL-05). These
+       are the piece-local conventions the platform template
+       explicitly leaves to each piece to define: the Tab 1
+       share block, and the Share to Social destination grid.
+       Dark-lane color values only — see CARD-03.
+       ══════════════════════════════════════════════════════ */
+    .share-block { background: #0f0f1e; border: 1px solid rgba(232,185,35,0.15); border-radius: var(--radius); padding: 1.5rem; margin: var(--space-md) 0; }
+    .share-block-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,246,241,0.4); margin-bottom: 0.4rem; }
+    .share-block-nudge { font-family: var(--font-body); font-style: italic; font-size: var(--text-small); color: rgba(248,246,241,0.55); margin-bottom: 1rem; line-height: 1.5; }
+    .share-block-btns { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 0.875rem; }
+    .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: var(--text-small); font-weight: 500; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); min-height: var(--touch); text-decoration: none; cursor: pointer; transition: opacity 0.15s; border: none; }
+    .share-btn:hover { opacity: 0.82; text-decoration: none; }
+    .share-btn--outline { background: transparent; border: 1.5px solid #E8B923; color: #E8B923; }
+    .share-block-substack { font-family: var(--font-body); font-size: var(--text-small); color: rgba(248,246,241,0.5); }
+    .share-block-substack a { color: #E8B923; }
 
-    /* Tab bar dark override */
-    .ai-tabs {
-      background: #0d0b18;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .ai-tab { color: rgba(248,246,241,0.38); }
-    .ai-tab:hover { color: rgba(248,246,241,0.7); }
-    .ai-tab.active {
-      color: #E8B923;
-      border-bottom-color: #E8B923;
-    }
-
-    /* Section shell — [hidden] attribute pattern */
-    .bbl-section {
-      display: flex;
-      flex-direction: column;
-      min-height: calc(100vh - 128px);
-      padding: var(--space-xl) 1.25rem;
-      background: #0a0a12;
-    }
-    .bbl-section[hidden] { display: none; } /* override flex */
-
-    .bbl-inner {
-      max-width: var(--max-editorial);
-      margin: 0 auto;
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Hero typography */
-    .bbl-eyebrow {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #E8B923;
-      margin-bottom: 0.875rem;
-      display: block;
-    }
-    .bbl-hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 8vw, 5.5rem);
-      font-weight: 700;
-      font-style: italic;
-      line-height: 1.0;
-      color: rgba(248,246,241,0.95);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.625rem;
-    }
-    .bbl-hero-subtitle {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(0.95rem, 2vw, 1.2rem);
-      color: rgba(248,246,241,0.38);
-      line-height: 1.4;
-      margin-bottom: 2.5rem;
-      max-width: 520px;
-    }
-
-    /* Section heading */
-    .bbl-section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #E8B923;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .bbl-section-title {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-      font-style: italic;
-      line-height: 1.15;
-      color: rgba(248,246,241,0.92);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Body copy */
-    .bbl-body { max-width: 640px; }
-    .bbl-body p {
-      font-size: var(--text-body);
-      line-height: var(--leading-body);
-      color: rgba(248,246,241,0.78);
-      margin-bottom: 1rem;
-    }
-    .bbl-body p:last-child { margin-bottom: 0; }
-    .bbl-body strong { color: rgba(248,246,241,0.95); font-weight: 500; }
-    .bbl-body em { font-style: italic; }
-
-    /* Placeholder marker */
-    .bbl-placeholder {
-      background: rgba(232,185,35,0.08);
-      border-left: 3px solid #E8B923;
-      border-radius: 0 3px 3px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      color: rgba(232,185,35,0.7);
-      letter-spacing: 0.08em;
-    }
-
-    /* Pull quote */
-    .bbl-pullquote {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.5;
-      color: rgba(248,246,241,0.65);
-      border-left: 3px solid #E8B923;
-      padding-left: 1.25rem;
-      margin: 1.5rem 0;
-      max-width: 560px;
-    }
-
-    /* Stat callout */
-    .bbl-stat-callout {
-      background: rgba(232,185,35,0.06);
-      border: 1px solid rgba(232,185,35,0.15);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-      max-width: 480px;
-    }
-    .bbl-stat-callout-number {
-      font-family: var(--font-editorial);
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1;
-      color: #E8B923;
-      margin-bottom: 0.35rem;
-    }
-    .bbl-stat-callout-text {
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      color: rgba(248,246,241,0.6);
-      line-height: 1.5;
-    }
-
-    /* Uncle disclaimer — visually distinct from generic placeholder */
-    .bbl-uncle-disclaimer {
-      border-color: rgba(232,185,35,0.4) !important;
-      background: rgba(232,185,35,0.04) !important;
-    }
-
-    /* Share block */
-    .bbl-share-section { margin-top: 2.5rem; }
-    .bbl-share-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(248,246,241,0.3);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .bbl-share-nudge {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: var(--text-small);
-      color: rgba(248,246,241,0.35);
-      margin-bottom: 0.75rem;
-    }
-    .bbl-share-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .bbl-share-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1rem;
-      border-radius: 100px;
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      min-height: var(--touch);
-      border: none;
-      transition: opacity 0.15s;
-    }
-    .bbl-share-btn:hover { opacity: 0.85; text-decoration: none; }
-    .bbl-share-btn--copy { background: #E8B923; color: #0a0a12; }
-    .bbl-share-btn--x {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(248,246,241,0.7);
-    }
-    .bbl-share-btn--kofi {
-      background: transparent;
-      border: 1px solid rgba(232,185,35,0.3);
-      color: #E8B923;
-    }
-    .bbl-substack-nudge {
-      font-family: var(--font-mono);
-      font-size: var(--text-micro);
-      letter-spacing: 0.06em;
-      color: rgba(248,246,241,0.3);
-      margin-top: 0.5rem;
-    }
-    .bbl-substack-nudge a { color: #E8B923; text-decoration: none; }
-    .bbl-substack-nudge a:hover { text-decoration: underline; }
-
-    /* Poll bar charts */
-    .bbl-chart-section { margin: 0 0 1.5rem; }
-    .bbl-chart-header {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(248,246,241,0.3);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .bbl-bar-chart { width: 100%; max-width: 540px; }
-    .bbl-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .bbl-bar-row:last-child { border-bottom: none; }
-    .bbl-bar-city {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: rgba(248,246,241,0.7);
-      flex-shrink: 0;
-      text-align: right;
-    }
-    .bbl-bar-track {
-      flex: 1;
-      height: 22px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bbl-bar-fill {
-      height: 100%;
-      background: #E8B923;
-      border-radius: 2px;
-      transition: width 0.4s ease;
-    }
-    .bbl-bar-val {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: rgba(248,246,241,0.45);
-      flex-shrink: 0;
-      min-width: 40px;
-      text-align: right;
-    }
-    .bbl-chart-subtitle {
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: var(--text-micro);
-      color: rgba(248,246,241,0.38);
-      line-height: 1.5;
-      margin-top: 0.75rem;
-      max-width: 540px;
-    }
-    .bbl-chart-note {
-      font-family: var(--font-mono);
-      font-size: var(--text-micro);
-      color: rgba(248,246,241,0.2);
-      margin-top: 0.5rem;
-      line-height: 1.55;
-    }
-    .bbl-screenshot-nudge {
-      font-family: var(--font-mono);
-      font-size: var(--text-micro);
-      color: rgba(248,246,241,0.18);
-      text-align: right;
-      margin: 0.5rem 0 1.5rem;
-      max-width: 540px;
-    }
-    .bbl-chart-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.06);
-      margin: 2rem 0;
-      max-width: 540px;
-    }
-
-    /* Scatter/bubble chart stub (Tab 4) */
-    .bbl-scatter-wrap {
-      width: 100%;
-      max-width: 680px;
-      aspect-ratio: 4/3;
-      background: #111118;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 0 0.5rem;
-    }
-    .bbl-scatter-stub { text-align: center; padding: 1rem; }
-    .bbl-scatter-stub p {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      color: rgba(248,246,241,0.2);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      line-height: 1.9;
-    }
-    .bbl-log-note {
-      font-family: var(--font-mono);
-      font-size: var(--text-micro);
-      color: rgba(248,246,241,0.2);
-      margin-top: 0.5rem;
-      line-height: 1.6;
-      max-width: 640px;
-    }
-
-    /* Hold Your Ground accordions */
-    .bbl-accordion-wrap { max-width: 640px; margin: 1.5rem 0; }
-    .bbl-accordion { border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .bbl-accordion:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-    .bbl-accordion-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.25rem 0;
-      cursor: pointer;
-      list-style: none;
-      min-height: var(--touch);
-      user-select: none;
-    }
-    .bbl-accordion-summary::-webkit-details-marker { display: none; }
-    .bbl-accordion-title {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-      font-style: italic;
-      color: rgba(248,246,241,0.88);
-      line-height: 1.3;
-    }
-    .bbl-accordion-toggle {
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
-      color: #E8B923;
-      flex-shrink: 0;
-      width: 1.25rem;
-      text-align: center;
-    }
-    details.bbl-accordion[open] .bbl-accordion-toggle::before { content: '\2212'; }
-    details.bbl-accordion:not([open]) .bbl-accordion-toggle::before { content: '+'; }
-    .bbl-accordion-body { padding: 0 0 1.75rem; }
-
-    /* Sub-tabs (Tab 6: Your Move) */
-    .bbl-subtabs {
-      background: #161620;
-      border-radius: 6px;
-      padding: 0.4rem;
-      display: flex;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    .bbl-subtab {
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      background: transparent;
-      color: rgba(248,246,241,0.4);
-      border: none;
-      min-height: var(--touch);
-      transition: background 0.15s, color 0.15s;
-    }
-    .bbl-subtab.active { background: #E8B923; color: #0a0a12; font-weight: 600; }
-    .bbl-subtab:hover:not(.active) { color: rgba(248,246,241,0.75); }
-    .bbl-subpanel[hidden] { display: none; }
-
-    /* Section floor nav */
-    .bbl-floor {
-      margin-top: auto;
-      padding-top: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      flex-wrap: wrap;
-    }
-    .bbl-floor-btn {
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: 500;
-      color: rgba(248,246,241,0.35);
-      background: none;
-      border: none;
-      cursor: pointer;
-      min-height: var(--touch);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: color 0.15s;
-      padding: 0;
-    }
-    .bbl-floor-btn:hover { color: #E8B923; }
-    .bbl-floor-spacer { flex: 1; }
-
-    /* Journey block dark override — 4-item 2×2 grid */
-    .bbl-journey {
-      background: #0d0b18;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: none;
-    }
-    .bbl-journey .ai-journey-inner {
-      background: rgba(255,255,255,0.04);
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .bbl-journey .ai-journey-path { background: #111118; }
-    .bbl-journey .ai-journey-path:hover { background: #1a1826; text-decoration: none; }
-    .bbl-journey .ai-journey-path.primary  { border-top-color: #E8B923; }
-    .bbl-journey .ai-journey-path.secondary { border-top-color: rgba(201,95,26,0.6); }
-    .bbl-journey .ai-journey-path.tertiary  { border-top-color: rgba(255,255,255,0.12); }
-    .bbl-journey .ai-journey-label  { color: #f8f6f1; }
-    .bbl-journey .ai-journey-title  { color: #f8f6f1; }
-    .bbl-journey .ai-journey-cta    { color: #E8B923; }
-    .bbl-journey .ai-journey-path.secondary .ai-journey-cta { color: var(--orange); }
-    .bbl-journey .ai-journey-path.tertiary  .ai-journey-cta { color: #f8f6f1; }
-
-    @media (max-width: 520px) {
-      .bbl-journey .ai-journey-inner { grid-template-columns: 1fr; }
-    }
-
-    /* ── Gallery card system (chart library Option 2) ─────────── */
-    .bbl-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-    @media (max-width: 560px) {
-      .bbl-gallery {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 12px;
-        padding-bottom: 4px;
-      }
-      .bbl-gallery > .bbl-card {
-        flex: 0 0 calc(100vw - 56px);
-        scroll-snap-align: start;
-      }
-    }
-    .bbl-swipe-cta {
-      display: none;
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(10,124,114,0.75);
-      text-align: center;
-      padding: 4px 0 12px;
-    }
-    @media (max-width: 560px) { .bbl-swipe-cta { display: block; } }
-
-    /* Card base — white bg, 7px teal border */
-    .bbl-card {
-      background: #fff;
-      border: 7px solid #0a7c72;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      min-height: 280px;
-    }
-    .bbl-card-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #888;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .bbl-card-foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: auto;
-      padding: 8px 18px 14px;
-      border-top: 1px solid #e0dcd4;
-    }
-    .bbl-source-stamp {
-      font-family: var(--font-mono);
-      font-size: 8px;
-      color: #888;
-      letter-spacing: .06em;
-      line-height: 1.5;
-    }
-
-    /* C2 Pull quote card — teal background */
-    .bbl-card--pullquote {
-      background: #0a7c72;
-      border-color: #0a7c72;
-      padding: 24px 22px;
-      min-height: 240px;
-    }
-    .bbl-card--pullquote .bbl-card-foot {
-      border-top: 1px solid rgba(248,246,241,.15);
-      padding: 8px 0 0;
-      background: transparent;
-    }
-    .bbl-card-quote {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-      line-height: 1.5;
-      color: rgba(248,246,241,.95);
-      flex: 1;
-      margin-bottom: 16px;
-    }
-
-    /* B1 Stacked contrast blocks (O-2) */
-    .bbl-contrast-block {
-      flex: 1;
-      padding: 20px 18px;
-      display: flex;
-      flex-direction: column;
-    }
-    .bbl-contrast-block--teal { background: #0a7c72; }
-    .bbl-contrast-block--white { background: #fff; border-top: 1px solid #e0dcd4; }
-    .bbl-contrast-city {
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: 13px;
-      margin-bottom: 3px;
-    }
-    .bbl-contrast-num {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .bbl-contrast-desc {
-      font-family: var(--font-body);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .bbl-contrast-editorial {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: 12px;
-      color: #444;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid #e0dcd4;
-      line-height: 1.4;
-    }
-
-    /* B2 Ranked bar chart (M-1) */
-    .bbl-ranked-hed {
-      font-family: var(--font-editorial);
-      font-size: clamp(.95rem, 2.5vw, 1.15rem);
-      color: #111;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .bbl-ranked-sub {
-      font-family: var(--font-body);
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 10px;
-    }
-    .bbl-ranked-tier-label {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #888;
-      padding: 5px 18px 3px;
-      background: #f8f6f1;
-      border-top: 1px solid #e0dcd4;
-      border-bottom: 1px solid #e0dcd4;
-      display: block;
-    }
-    .bbl-ranked-row {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 5px 18px;
-      border-bottom: 1px solid #f0ede6;
-    }
-    .bbl-ranked-row:last-of-type { border-bottom: none; }
-    .bbl-ranked-city {
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
-      color: #111;
-      flex: 0 0 108px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .bbl-ranked-track {
-      flex: 1;
-      height: 18px;
-      background: #f0ede6;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bbl-ranked-fill { height: 100%; background: #0a7c72; border-radius: 2px; }
-    .bbl-ranked-val {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #888;
-      flex: 0 0 22px;
-      text-align: right;
-    }
-
-    /* B1 QA card (M-2, M-3) */
-    .bbl-qa-question {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(.95rem, 2.5vw, 1.15rem);
-      color: #111;
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
-    .bbl-qa-stat-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-    .bbl-qa-num {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      line-height: 1;
-      color: #0a7c72;
-      text-align: center;
-    }
-    .bbl-qa-label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: #444;
-      line-height: 1.35;
-      padding-bottom: 2px;
-    }
-    .bbl-qa-vs {
-      font-family: var(--font-editorial);
-      font-size: 1.2rem;
-      color: #888;
-      padding-bottom: 4px;
-      flex-shrink: 0;
-    }
-    .bbl-qa-ratio {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: #c95f1a;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .bbl-qa-answer {
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: 13px;
-      color: #111;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      padding-top: 10px;
-      margin-top: auto;
-      border-top: 2px solid #0a7c72;
-    }
-    .bbl-editorial-line {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: 12px;
-      color: #555;
-      background: #f8f6f1;
-      border-left: 3px solid #c95f1a;
-      padding: 8px 12px;
-      line-height: 1.45;
-      margin: 6px 0;
-    }
-
-    /* A1 BMI point spread card (W-1) — orange bars */
-    .bbl-bmi-hed {
-      font-family: var(--font-editorial);
-      font-size: clamp(.95rem, 2.5vw, 1.15rem);
-      color: #111;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .bbl-bmi-sub {
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 10px;
-    }
-    .bbl-bmi-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 18px;
-      border-bottom: 1px solid #f0ede6;
-    }
-    .bbl-bmi-row:last-of-type { border-bottom: none; }
-    .bbl-bmi-state {
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: #111;
-      flex: 0 0 68px;
-    }
-    .bbl-bmi-track {
-      flex: 1;
-      height: 16px;
-      background: #f0ede6;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bbl-bmi-fill { height: 100%; background: #c95f1a; border-radius: 2px; }
-    .bbl-bmi-spread {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: #c95f1a;
-      font-weight: 500;
-      flex: 0 0 38px;
-      text-align: right;
-    }
-    .bbl-bmi-city {
-      font-family: var(--font-body);
-      font-size: 10px;
-      color: #888;
-      flex: 0 0 68px;
-      text-align: right;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* D1 Stat block helpers (O-1, W-2) */
-    .bbl-stat-big {
-      font-family: var(--font-editorial);
-      font-size: clamp(2.5rem, 7vw, 4rem);
-      line-height: 1;
-      color: #0a7c72;
-      text-align: center;
-      margin-bottom: 4px;
-    }
-    .bbl-stat-mid {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      line-height: 1;
-      color: #0a7c72;
-      text-align: center;
-      margin-bottom: 4px;
-    }
-    /* Long-word variant — numeral clamp overflows word-length values like "Atlanta" */
-    .bbl-stat-mid[data-len="long"] {
-      font-size: clamp(2.2rem, 7vw, 3.4rem);
-    }
-
-    /* ── Hold Your Ground — 5-card carousel, 380×660 OF card-native (D-72/D-91) ── */
-    .bbl-hg-carousel-wrap { position: relative; margin: 0 0 1.5rem; }
-    .bbl-hg-carousel {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding: 4px 0 20px;
-    }
-    .bbl-hg-carousel::-webkit-scrollbar { display: none; }
-    .bbl-hg-card {
-      width: 380px;
-      height: 660px;
-      max-width: calc(100vw - 56px);
-      background: #0f0f1e;
-      border-radius: 4px;
-      padding: 28px 26px 22px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      text-align: center;
-      box-shadow: inset 0 0 0 1px rgba(232,185,35,0.15), 0 2px 16px rgba(0,0,0,0.5);
-    }
-    .bbl-hg-card-eyebrow {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #E8B923;
-      margin-bottom: 1.25rem;
-    }
-    .bbl-hg-card-line {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      line-height: 1.4;
-      color: rgba(248,246,241,0.92);
-    }
-    .bbl-hg-dots {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      padding: 0 0 4px;
-    }
-    .bbl-hg-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(232,185,35,0.2);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .bbl-hg-dot.active { background: #E8B923; transform: scale(1.4); }
-    @media (max-width: 460px) {
-      .bbl-hg-card { width: calc(100vw - 56px); height: 620px; padding: 24px 20px 18px; }
-    }
-    .bbl-hg-body-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(248,246,241,0.3);
-      display: block;
-      margin: 1.5rem 0 0.4rem;
-    }
-    .bbl-hg-body-label:first-child { margin-top: 0; }
-
-    /* ── Spread the Word — dedicated shareable card shells (not O-1/O-2 reuse) ── */
-    .bbl-spread-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 1.5rem 0 2rem;
-    }
-    .bbl-share-card {
-      width: 280px;
-      max-width: 100%;
-      aspect-ratio: 1/1;
-      background: #0f0f1e;
-      border: 1px solid rgba(232,185,35,0.25);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1.5rem;
-      gap: 0.75rem;
-    }
-    .bbl-share-card-eyebrow {
-      font-family: var(--font-mono);
-      font-size: var(--text-stamp);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #E8B923;
-    }
-    .bbl-share-card-copy {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-      line-height: 1.4;
-      color: rgba(248,246,241,0.85);
-    }
-
-    /* ── Sources tab — numbered list, methodology note ── */
-    .bbl-sources-note {
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      color: rgba(248,246,241,0.6);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      max-width: 640px;
-    }
-    .bbl-sources-list {
-      list-style: none;
-      counter-reset: bblsources;
-      max-width: 720px;
-    }
-    .bbl-sources-list li {
-      counter-increment: bblsources;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: rgba(248,246,241,0.55);
-      line-height: 1.6;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      gap: 0.75rem;
-    }
-    .bbl-sources-list li::before {
-      content: counter(bblsources, decimal-leading-zero);
-      color: #E8B923;
-      flex-shrink: 0;
-    }
-    .bbl-stat-label-sm {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: #444;
-      line-height: 1.45;
-      margin-bottom: 14px;
-    }
+    .pt-share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); overflow: hidden; margin: 1.5rem 0; }
+    @media (max-width: 480px) { .pt-share-grid { grid-template-columns: repeat(2, 1fr); } }
+    .pt-share-dest { background: #0f0f1e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.35rem; padding: 1.25rem 1rem; text-decoration: none; cursor: pointer; border: none; width: 100%; min-height: 72px; transition: background 0.15s; font-family: var(--font-body); }
+    .pt-share-dest:hover { background: #16141f; text-decoration: none; }
+    .pt-share-dest-icon { font-size: 1.2rem; line-height: 1; color: #f8f6f1; }
+    .pt-share-dest-label { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,246,241,0.6); }
+    .pt-share-dest:hover .pt-share-dest-label { color: #E8B923; }
   </style>
 </head>
-<body class="has-breadcrumb">
+<body class="has-breadcrumb of-piece">
 
-<div class="ai-breadcrumb" role="navigation" aria-label="Breadcrumb">
+<!-- ── 1. BREADCRUMB ── -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
   <a href="/">Alterrell Interactive</a>
-  <span class="ai-breadcrumb-sep">&middot;</span>
-  <span>Obsidian Futures</span>
-  <span class="ai-breadcrumb-sep">&middot;</span>
+  <span class="ai-breadcrumb-sep">›</span>
   <span class="ai-breadcrumb-current">Advice From Your Thick Gay Uncles</span>
-</div>
+</nav>
 
+<!-- ── 2. NAV ── -->
 <nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
   <div class="ai-nav-meta">
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Substack</a>
-    &nbsp;&middot;&nbsp;
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+    <a href="/">← All pieces</a>
   </div>
 </nav>
 
+<!-- ── 3. HERO — always dark, per HERO-01 ── -->
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed">Advice From Your Thick Gay Uncles</h1>
+    <p class="ai-hero-dek">What the data says about where bigger Black gay men are loved</p>
+  </div>
+</header>
 
-<!-- ══ JOURNEY BLOCK — 4-item 2×2 ══════════════════════════════ -->
-<div class="ai-journey bbl-journey" aria-label="Continue the journey">
+<!-- ── 4. JOURNEY BLOCK — exactly one instance, 3 items, above tab bar ── -->
+<section class="ai-journey" aria-label="Ways to engage">
   <div class="ai-journey-inner">
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
-       target="_blank" rel="noopener" class="ai-journey-path primary" aria-label="Watch on YouTube">
-      <span class="ai-journey-icon">&#9654;</span>
+
+    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="ai-journey-path primary">
+      <span class="ai-journey-icon">▶</span>
       <span class="ai-journey-label">Watch</span>
-      <span class="ai-journey-title">All pieces on YouTube</span>
-      <span class="ai-journey-cta">YouTube &rarr;</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">All pieces, one playlist</span>
+      <span class="ai-journey-cta">Watch now →</span>
     </a>
-    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
-       target="_blank" rel="noopener" class="ai-journey-path secondary" aria-label="Read on Substack">
-      <span class="ai-journey-icon">&#10022;</span>
+
+    <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
       <span class="ai-journey-label">Read</span>
-      <span class="ai-journey-title">Get early access on Substack</span>
-      <span class="ai-journey-cta">Substack &rarr;</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">Early access to new pieces</span>
+      <span class="ai-journey-cta">Read now →</span>
     </a>
-    <a href="/" class="ai-journey-path tertiary" aria-label="Explore all pieces">
-      <span class="ai-journey-icon">&#9611;</span>
-      <span class="ai-journey-label">Explore</span>
-      <span class="ai-journey-title">All Alterrell Interactive pieces</span>
-      <span class="ai-journey-cta">All pieces &rarr;</span>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
     </a>
-    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary" aria-label="Support on Ko-fi">
-      <span class="ai-journey-icon">$</span>
-      <span class="ai-journey-label">Back this work</span>
-      <span class="ai-journey-title">Support on Ko-fi</span>
-      <span class="ai-journey-cta">Ko-fi &rarr;</span>
-    </a>
+
   </div>
+</section>
+
+<!-- ── 5. TAB BAR — 8 tabs, D-110 exception (see build report) ── -->
+<div class="ai-tabs ai-tabs--fill" id="pt-tabs" role="tablist" aria-label="Advice From Your Thick Gay Uncles sections">
+  <button class="ai-tab active" role="tab" aria-selected="true"  aria-controls="tab-overview" data-target="tab-overview">Overview</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-my-story" data-target="tab-my-story">My Story</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-map" data-target="tab-map">The Map</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-data" data-target="tab-data">The Data</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-hold-ground" data-target="tab-hold-ground">Hold Your Ground</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-supporting-us" data-target="tab-supporting-us">Supporting Us</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-share" data-target="tab-share">Share to Social</button>
+  <button class="ai-tab" role="tab" aria-selected="false" aria-controls="tab-sources" data-target="tab-sources">Sources</button>
 </div>
 
-<div class="ai-tabs" role="tablist" aria-label="Piece navigation">
-  <button class="ai-tab bbl-tab active" role="tab" aria-selected="true"  onclick="showTab(0)">Overview</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(1)">My Story</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(2)">The Poll</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(3)">The Data</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(4)">Hold Your Ground</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(5)">Your Move</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(6)">Spread the Word</button>
-  <button class="ai-tab bbl-tab"        role="tab" aria-selected="false" onclick="showTab(7)">Sources</button>
-</div>
+<!-- ══════════════════════════════════════
+     TAB 1 — OVERVIEW
+     ══════════════════════════════════════ -->
+<section id="tab-overview" class="ai-section ai-section--dark active" role="tabpanel">
+  <div class="ai-inner">
 
+    <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">[AMA — Section headline]</h2>
 
-<!-- ══ TAB 1: OVERVIEW ══════════════════════════════════════════ -->
-<!-- Placeholder copy — AMA rewrite pending. Em dashes present; flag for voice pass before deploy. -->
-<section class="bbl-section" id="overview">
-  <div class="bbl-inner">
+    <div class="carousel carousel--dark" role="region" aria-label="Overview data cards" aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
 
-    <span class="bbl-eyebrow">Obsidian Futures &nbsp;&middot;&nbsp; Personal Data Essay</span>
-    <h1 class="bbl-hero-title">Advice From Your<br>Thick Gay Uncles</h1>
-    <p class="bbl-hero-subtitle">What the data says about where bigger Black gay men are loved</p>
+            <!-- O-1: Shell A stat -->
+            <article class="carousel__card card--a" role="group" aria-label="Slide 1 of 2">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Overview · O-1</span>
+                <span class="carousel__card-stat">~100</span>
+                <h3 class="carousel__card-title">Where people found their person</h3>
+              </div>
+              <div class="carousel__card-body">
+                <p class="carousel__card-text">~100 people told us where they found their person, 25+ cities represented.</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">TikTok @alterrell · May 2026</span>
+              </div>
+            </article>
 
-    <div class="bbl-body">
-      <p>I know what it's like to be treated like a two in one city and a seven in another while looking exactly the same. That's why I believe dating has markets.</p>
-      <p>Whenever I start talking about market value and product-market fit as it relates to dating, people assume I'm overthinking it. Sometimes they think I'm reducing people to numbers or making some kind of eugenics argument. I'm not. I'm describing a pattern I've lived over and over again. Once you experience it yourself, it's difficult to unsee.</p>
-      <p>We make enormous life decisions based on cities. We move because of work, family, college, weather, cost of living, or simply because we've always wanted to live somewhere. We ask whether a city will make us happier professionally, financially, or culturally. We rarely ask whether it'll make us happier romantically.</p>
-      <p>People love to say that people are basically the same everywhere. I don't think that's true. Cities develop personalities. Their values become culture. Their nightlife, dating pools, social circles, and even dating apps organize around those local cultures. New York isn't New Jersey. Oakland isn't San Francisco. DC isn't Baltimore. The people who live there would be the first to tell you they're different. If cities shape so much else about our lives, why wouldn't they shape dating too?</p>
-    </div>
+            <!-- O-2: Shell D comparison, NYC vs ATL -->
+            <article class="carousel__card card--d" role="group" aria-label="Slide 2 of 2">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">Overview · O-2</span>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__compare-grid">
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">706k</span>
+                    <span class="carousel__compare-desc">NYC metro LGBT adults (4.5%) · fewer poll responses</span>
+                  </div>
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">194k</span>
+                    <span class="carousel__compare-desc">ATL metro LGBT adults (4.6%) · more poll responses</span>
+                  </div>
+                </div>
+                <p class="carousel__card-text">[AMA — O-2 EDITORIAL LINE]</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Williams Institute, UCLA · March 2021</span>
+              </div>
+            </article>
 
-    <!-- O-1 + O-2 gallery cards -->
-    <div class="bbl-gallery">
-
-      <!-- O-1: Stat block -->
-      <div class="bbl-card" style="padding:22px 20px;">
-        <span class="bbl-card-eyebrow">Overview &middot; O-1</span>
-        <div class="bbl-stat-big">~100</div>
-        <div class="bbl-stat-label-sm">people told us where they found their person</div>
-        <div class="bbl-stat-mid">25+</div>
-        <div class="bbl-stat-label-sm">cities represented</div>
-        <div class="bbl-stat-mid" data-len="long">Atlanta</div>
-        <div class="bbl-stat-label-sm">led with 16 responses</div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">Community poll &middot; TikTok @alterrell &middot; May 2026</span>
-          <span class="bbl-source-stamp">n&asymp;100 responses &middot; 25+ cities</span>
-        </div>
-      </div>
-
-      <!-- O-2: Stacked contrast block (NYC vs ATL) -->
-      <div class="bbl-card" style="flex-direction:column;">
-        <div class="bbl-contrast-block bbl-contrast-block--teal">
-          <div class="bbl-contrast-city" style="color:rgba(248,246,241,.65);">NYC metro</div>
-          <div class="bbl-contrast-num" style="color:#fff;">706,000</div>
-          <div class="bbl-contrast-desc" style="color:rgba(248,246,241,.8);">estimated LGBT adults (4.5%)</div>
-          <div class="bbl-contrast-desc" style="color:rgba(248,246,241,.5);font-size:12px;margin-top:4px;">Fewer poll responses</div>
-        </div>
-        <div class="bbl-contrast-block bbl-contrast-block--white">
-          <div class="bbl-contrast-city" style="color:#0a7c72;">ATL metro</div>
-          <div class="bbl-contrast-num" style="color:#0a7c72;">194,000</div>
-          <div class="bbl-contrast-desc" style="color:#444;">estimated LGBT adults (4.6%)</div>
-          <div class="bbl-contrast-desc" style="color:#888;font-size:12px;margin-top:4px;">More poll responses</div>
-          <div class="bbl-contrast-editorial">NYC has nearly 4&times; more LGBT residents than Atlanta. Atlanta got more poll responses.</div>
-          <div class="bbl-card-foot" style="border-top:1px solid #e0dcd4;padding:8px 0 0;margin-top:10px;">
-            <span class="bbl-source-stamp">Williams Institute, UCLA &middot; March 2021</span>
-            <span class="bbl-source-stamp">NYC/ATL = 3.6&times;</span>
           </div>
         </div>
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
+        </div>
       </div>
-
-    </div><!-- /.bbl-gallery -->
-    <div class="bbl-swipe-cta">&larr; Swipe to see both cards &rarr;</div>
-
-    <div class="bbl-body">
-      <p>I actually know what it's like to be differently desired in different places, where the product, which is me, and the market I'm in, the fit is highly variable.</p>
-      <p>My college years were like a four-part A/B test. Nine months at school, three months at an internship, looking the same all year, and treated so differently that the market clearly changed even though the product was the same.</p>
-      <p>That's why I think "there's someone out there for everybody" is well intentioned but incomplete.</p>
-      <div class="bbl-pullquote">Sometimes there is someone out there. They just might not be here.</div>
-      <p>We spend a lot of time asking people to change themselves. Sometimes the better question is whether they're trying to build a life in the wrong market.</p>
-      <p>I'm intentionally focusing on bigger Black gay men who want to date other Black men. Part of that is practical. Untangling body politics is already complicated enough without adding interracial dating dynamics and racial fetishization.</p>
-      <p>Part of it is personal. So much of our media assumes Black love always means Black plus someone else. I'm interested in the couples many of us grew up seeing and quietly hoped for ourselves. If that's not your story, I still think parts of this will resonate. The underlying question is bigger than body size. It's about whether different places value different people in different ways.</p>
-      <p>I'm approaching 40, so I'm thinking about this as someone who is an uncle. Take this the way you'd take advice from an uncle or a gay elder. Keep what makes sense, throw away what doesn't. It may not apply today, but it might apply in the future.</p>
-      <p>Before we go any further, let's assume people are content with the body they're in. This isn't an argument that losing weight is the answer, and it isn't an argument that anyone is entitled to love.</p>
-      <p>What I'm arguing is much simpler. Our dating experiences aren't evenly distributed, and sometimes the people closest to us don't realize how different those experiences can be because they haven't lived them.</p>
-      <p>I'm also relatively new to living in a larger body, so I know there are blind spots in what I'm about to say. If you've been bigger your whole life, your experience may be very different from mine. That's part of why I wanted to build this. I want the conversation just as much as I want to make the argument.</p>
     </div>
 
-    <div class="bbl-share-section">
-      <span class="bbl-share-label">Share this piece</span>
-      <p class="bbl-share-nudge">Screenshot the chart. Send someone the link. Tell your people where to go.</p>
-      <div class="bbl-share-actions">
-        <button class="bbl-share-btn bbl-share-btn--copy" onclick="copyLink(this)">&#9675; Copy link</button>
-        <a class="bbl-share-btn bbl-share-btn--x"
-           href="https://twitter.com/intent/tweet?text=Where%20bigger%20Black%20gay%20men%20are%20loved%20%E2%80%94%20the%20data.&url=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F"
-           target="_blank" rel="noopener">&#10005; Share on X</a>
-        <a class="bbl-share-btn bbl-share-btn--kofi"
-           href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
+    <div class="ai-body">
+      <p>Whenever I start talking about market value and product-market fit as it relates to dating, people think I'm being ridiculous or worse: overthinking it. I'm going to tell you why they're wrong and why this matters for larger bodied Black gay men seeking romantic partnership.</p>
+      <p>When friends share dating stories and updates, I don't hear many of them ask what could be a sensitive question nor does the topic come up unless I'm discussing it with my other larger bodied friends. And I'm almost always the one to lead that discussion because I'm appalled at how much differently I experience desire now that I'm a larger frame compared to when I was more lean and "fit."</p>
+      <p>I'd like to take these two ideas together to have a real discussion about body size and dating. Before I get there, I'll tell you that when I was "fit" and more closely matched to conventional gay body standards, I experienced different assignments of my value in different cities. Same body, but different experiences of desire.</p>
+      <p>Some friends might say "dating is hard for everyone" and "it's really a big city problem." Most of what I hear from thinner, conventionally built men assumes a greater tolerance than many larger men have experienced. And if you want to partner with another Black man, there are realities that get ignored. Just because your friends think you're beautiful and desirable, does not mean that their behavior or social norms are not still fatphobic.</p>
+      <ul>
+        <li>How many Black gay couples do we see of non-matching: body sizes or degree of "masculinity"? Black gay men might not date their appearance twins as white gay men do, but there are other aspects that seem to be very similarly matched.</li>
+        <li>Within your friend group, how many people have hooked up with, shared their excitement to go on a date with, or liked a social media post of someone that is a larger build? I do not mean the out of shape football player build or when muscle men call themselves "fat." I mean someone who actually has to shop plus sized and big & tall.</li>
+        <li>Have you ever dated a larger bodied person? Yes, we all have preferences. I am making the point that in a community with preferences, it should be no shock that larger bodied men will have a different dating experience.</li>
+      </ul>
+      <p>I published this as data for you to refer back to when people second guess what you've experienced. I also wanted to provide reassurance that there are places where larger bodied Black gay men can find love as well as tips for "chasers" and other fans of larger Black men.</p>
+      <p>We deserve to be publicly loved on and shown as partners, and not only enjoyed privately.</p>
+    </div>
+
+    <div class="share-block">
+      <div class="share-block-label">Share this piece</div>
+      <p class="share-block-nudge">Screenshot the chart. Send someone the link. Tell your people where to go.</p>
+      <div class="share-block-btns">
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F&text=Where%20bigger%20Black%20gay%20men%20are%20loved%20%E2%80%94%20the%20data.&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X"><span>&#x58;</span> Share on X</a>
+        <button class="share-btn share-btn--outline" id="pt-copy-link" aria-label="Copy link"><span id="pt-copy-icon">&#x25CE;</span> <span id="pt-copy-label">Copy link</span></button>
       </div>
-      <p class="bbl-substack-nudge">Get early access &rarr; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+      <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">alterrell.substack.com</a></p>
     </div>
 
-    <div class="bbl-floor">
-      <span class="bbl-floor-spacer"></span>
-      <button class="bbl-floor-btn" onclick="showTab(1)">My Story &rarr;</button>
-    </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     TAB 2 — MY STORY
+     No cards — COPY.md holds this section for cards, undecided (prose only).
+     ══════════════════════════════════════ -->
+<section id="tab-my-story" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
 
-<!-- ══ TAB 2: MY STORY ══════════════════════════════════════════ -->
-<!-- Placeholder copy — AMA rewrite pending. Em dashes present; flag for voice pass before deploy. -->
-<section class="bbl-section" id="tab-story" hidden>
-  <div class="bbl-inner">
+    <span class="ai-eyebrow">My Story</span>
+    <h2 class="ai-h2">[AMA — Section headline]</h2>
 
-    <span class="bbl-section-eyebrow">My Story</span>
-    <h2 class="bbl-section-title">I Wasn't Always This Size</h2>
-
-    <!-- MS-1 + MS-2 + MS-3 pull quote gallery — moved above prose per standing gallery-position rule -->
-    <div class="bbl-gallery">
-
-      <!-- AMA VOICE PASS REQUIRED — MS-1 starter copy is placeholder, not final -->
-      <!-- MS-1: The crossing-over line -->
-      <div class="bbl-card bbl-card--pullquote">
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-          <div class="bbl-card-quote">"When I moved from a leaner, natural build to a thicker and fuller frame, I noticed who desired me was different. In some ways, there's been a vocal minority of 'chasers' or admirers but also fewer of the guys I was connecting with prior."</div>
-        </div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">AMA &middot; My Story</span>
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">Thick Gay Uncles</span>
-        </div>
-      </div>
-
-      <!-- AMA VOICE PASS REQUIRED — MS-2 starter copy is placeholder, not final -->
-      <!-- MS-2: Then vs now apps -->
-      <div class="bbl-card bbl-card--pullquote">
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-          <div class="bbl-card-quote">"Back then, it was clear where the lines were drawn on the few apps we all used. Now, there's many more apps to navigate, unstated preferences to unpack, and guessing why your messages don't get a response."</div>
-        </div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">AMA &middot; My Story</span>
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">Thick Gay Uncles</span>
-        </div>
-      </div>
-
-      <!-- MS-3: empty pull-quote card scaffold — AMA to fill later -->
-      <div class="bbl-card bbl-card--pullquote">
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-          <div class="bbl-card-quote"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MS-3 PULL QUOTE]</span></div>
-        </div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">AMA &middot; My Story</span>
-          <span class="bbl-source-stamp" style="color:rgba(248,246,241,.4);">Thick Gay Uncles</span>
-        </div>
-      </div>
-
-    </div><!-- /.bbl-gallery -->
-    <div class="bbl-swipe-cta">&larr; Swipe to see all three cards &rarr;</div>
-
-    <!-- MS-A through MS-D — reslotted prose; travel paragraphs moved to Substack essay -->
-    <div class="bbl-body">
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MS-A WAS THINNER]</span></div>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MS-B RULES CHANGED]</span></div>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MS-C OLD LANGUAGE]</span></div>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MS-D ACQUIRED VS CONGENITAL]</span></div>
+    <div class="ai-body">
+      <p>I wrote this as an actual uncle of four, but also a gay elder. I think being this close to 40 makes me an "unc."</p>
+      <p>I came of age during the Craigslist, BGC Live, Adam4Adam, and Manhunt era. Grindr and hookup apps did not exist until I was about 24. I had already graduated college and learned about racial preferences from the back-and-forth over email where the same games of headless pictures, unclear racial categorization, and gauges for masculinity existed.</p>
+      <p>As apps became more prevalent, the "no fats, no fems, no blacks, no asians" era was my entire 20s. In my 30s, I noticed a shift as my frame became larger. My experience was not universally the same. I started to get more attention online and when traveling if I visited specific cities, but some cities were a complete bust. I've lived in Boston/Cambridge, New York City, Oakland/San Francisco, Chicago, and London while also traveling extensively across 35+ countries and 70+ cities within the US and abroad. I've had men want to take me home from the club abroad, and be ignored. I've had the experience of feeling like a 2 in Boston only to be told how hot I am when I spent summers in college in NYC and Chicago, returning each time to the place where I was not desired.</p>
+      <p>Before we think about age or times changing as the variable to consider, I've lived the A/B test. In college, I'd be overlooked and ignored largely on most apps and at clubs. I considered myself less attractive and felt like I was a 2 on the 10-point scale. Then my rising junior summer, I went to NYC where I was heaped with praise in person and on hookup apps. But back to Boston for junior year and ignored again. The next summer, I went to Chicago where I was told how hot I was repeatedly and sleeping with men I had thought were out of my league. And then back again for my senior year only to realize the problem was Boston.</p>
+      <p>My "market value" in the city where I went to college was lower than other places even though my (inherent) value to myself was the same. I saw the same effect for my Black gay friends when I returned to Boston and they were not being ignored. As someone who has traveled a ton and studied psychology/sociology, I know these are not dynamics that exist equally in every city.</p>
+      <p>Our value is not dictated by how attractive others find us, but there are feelings of rejection, being invisible, or loneliness that can impact us because of fatphobia and other factors.</p>
     </div>
 
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(0)">&larr; Overview</button>
-      <button class="bbl-floor-btn" onclick="showTab(2)">The Poll &rarr;</button>
-    </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     TAB 3 — THE MAP
+     ══════════════════════════════════════ -->
+<section id="tab-map" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
 
-<!-- ══ TAB 3: THE POLL (rename from The Map) ══════════════════════ -->
-<section class="bbl-section" id="tab-map" hidden>
-  <div class="bbl-inner">
+    <span class="ai-eyebrow">The Map</span>
+    <h2 class="ai-h2">[AMA — Section headline]</h2>
 
-    <span class="bbl-section-eyebrow">The Poll</span>
-    <h2 class="bbl-section-title">Where the Map Points</h2>
+    <div class="carousel carousel--dark" role="region" aria-label="The Map data cards" aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
 
-    <!-- M-1, M-2, M-3 gallery cards — moved above prose per standing gallery-position rule -->
-    <div class="bbl-gallery">
+            <!-- M-1a: Shell B, 1 of 3 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 1 of 5">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Map · M-1 · 1 of 3</span>
+                <h3 class="carousel__card-title">Poll responses by city</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Atlanta</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="90.0"></span></span>
+                  <span class="carousel__bar-val">16</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Chicago</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="84.4"></span></span>
+                  <span class="carousel__bar-val">15</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Houston</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="67.5"></span></span>
+                  <span class="carousel__bar-val">12</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">DC / DMV</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="56.3"></span></span>
+                  <span class="carousel__bar-val">10</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">TikTok @alterrell · May 2026 · Not a representative sample</span>
+              </div>
+            </article>
 
-      <!-- M-1: Ranked bar chart (all cities, tiered) -->
-      <div class="bbl-card">
-        <div style="padding:18px 18px 12px;">
-          <div class="bbl-ranked-hed">Where bigger Black gay men found their person</div>
-          <div class="bbl-ranked-sub">Partner mentions by city &middot; TikTok comments (strict count) &middot; n&asymp;100</div>
+            <!-- M-1b: Shell B, 2 of 3 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 2 of 5">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Map · M-1 · 2 of 3</span>
+                <h3 class="carousel__card-title">Poll responses by city</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">NYC / Bklyn</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="56.3"></span></span>
+                  <span class="carousel__bar-val">10</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Philadelphia</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="28.1"></span></span>
+                  <span class="carousel__bar-val">5</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Detroit</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="28.1"></span></span>
+                  <span class="carousel__bar-val">5</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Los Angeles</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="22.5"></span></span>
+                  <span class="carousel__bar-val">4</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">TikTok @alterrell · May 2026 · Not a representative sample</span>
+              </div>
+            </article>
+
+            <!-- M-1c: Shell B, 3 of 3 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 3 of 5">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Map · M-1 · 3 of 3</span>
+                <h3 class="carousel__card-title">Poll responses by city</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">New Orleans</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="11.3"></span></span>
+                  <span class="carousel__bar-val">2</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Oakland</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="11.3"></span></span>
+                  <span class="carousel__bar-val">2</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">TikTok @alterrell · May 2026 · 15+ additional cities in full tally</span>
+              </div>
+            </article>
+
+            <!-- M-2: Shell D comparison -->
+            <article class="carousel__card card--d" role="group" aria-label="Slide 4 of 5">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Map · M-2</span>
+                <h3 class="carousel__card-title">Gay population, by the numbers</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__compare-grid">
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">706k</span>
+                    <span class="carousel__compare-desc">NYC metro LGBT adults</span>
+                  </div>
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">194k</span>
+                    <span class="carousel__compare-desc">ATL metro LGBT adults</span>
+                  </div>
+                </div>
+                <p class="carousel__card-text">NYC is 3.6x larger. NYC got fewer responses.</p>
+                <p class="carousel__card-text">[AMA — M-2 EDITORIAL LINE]</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Williams Institute, UCLA · March 2021</span>
+              </div>
+            </article>
+
+            <!-- M-3: Shell D comparison -->
+            <article class="carousel__card card--d" role="group" aria-label="Slide 5 of 5">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Map · M-3</span>
+                <h3 class="carousel__card-title">Black population, by the numbers</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__compare-grid">
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">77%</span>
+                    <span class="carousel__compare-desc">Detroit Black population share</span>
+                  </div>
+                  <div class="carousel__compare-cell">
+                    <span class="carousel__compare-val">47%</span>
+                    <span class="carousel__compare-desc">Atlanta Black population share</span>
+                  </div>
+                </div>
+                <p class="carousel__card-text">Detroit is more Black. Atlanta got more responses.</p>
+                <p class="carousel__card-text">[AMA — M-3 EDITORIAL LINE]</p>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Census ACS 2019-2023 · city-level Black population share</span>
+              </div>
+            </article>
+
+          </div>
         </div>
-        <span class="bbl-ranked-tier-label">Top tier</span>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Atlanta</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:100%;"></div></div>
-          <span class="bbl-ranked-val">16</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Chicago</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:93.8%;"></div></div>
-          <span class="bbl-ranked-val">15</span>
-        </div>
-        <span class="bbl-ranked-tier-label">Mid tier</span>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Houston</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:75%;"></div></div>
-          <span class="bbl-ranked-val">12</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">DC / DMV</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:62.5%;"></div></div>
-          <span class="bbl-ranked-val">10</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">NYC / Brooklyn</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:62.5%;"></div></div>
-          <span class="bbl-ranked-val">10</span>
-        </div>
-        <span class="bbl-ranked-tier-label">Lower tier</span>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Philadelphia</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:31.25%;"></div></div>
-          <span class="bbl-ranked-val">5</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Detroit</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:31.25%;"></div></div>
-          <span class="bbl-ranked-val">5</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Los Angeles</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:25%;"></div></div>
-          <span class="bbl-ranked-val">4</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">New Orleans</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:12.5%;"></div></div>
-          <span class="bbl-ranked-val">2</span>
-        </div>
-        <div class="bbl-ranked-row">
-          <span class="bbl-ranked-city">Oakland</span>
-          <div class="bbl-ranked-track"><div class="bbl-ranked-fill" style="width:12.5%;"></div></div>
-          <span class="bbl-ranked-val">2</span>
-        </div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">Community poll &middot; TikTok @alterrell &middot; May 2026 &middot; Not a representative sample</span>
-          <span class="bbl-source-stamp">15+ additional cities in full tally</span>
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
         </div>
       </div>
-
-      <!-- M-2: QA — gay pop doesn't predict -->
-      <div class="bbl-card" style="padding:20px 18px;">
-        <span class="bbl-card-eyebrow">The Map &middot; M-2</span>
-        <div class="bbl-qa-question">Does how gay a metro is predict where bigger Black gay men find partners?</div>
-        <div class="bbl-qa-stat-row">
-          <div>
-            <div class="bbl-qa-num">706k</div>
-            <div class="bbl-qa-label">NYC metro<br>LGBT adults</div>
-          </div>
-          <div class="bbl-qa-vs">vs.</div>
-          <div>
-            <div class="bbl-qa-num">194k</div>
-            <div class="bbl-qa-label">ATL metro<br>LGBT adults</div>
-          </div>
-        </div>
-        <div class="bbl-qa-ratio">NYC is 3.6&times; larger. NYC got fewer responses.</div>
-        <div class="bbl-editorial-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — M-2 EDITORIAL LINE]</span></div>
-        <div class="bbl-qa-answer">Answer: No.</div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">Williams Institute, UCLA &middot; March 2021 &middot; MSA-level estimates</span>
-          <span class="bbl-source-stamp">The Map &middot; Thick Gay Uncles</span>
-        </div>
-      </div>
-
-      <!-- M-3: QA — Black pop doesn't predict -->
-      <div class="bbl-card" style="padding:20px 18px;">
-        <span class="bbl-card-eyebrow">The Map &middot; M-3</span>
-        <div class="bbl-qa-question">Does how Black a city is predict it?</div>
-        <div class="bbl-qa-stat-row">
-          <div>
-            <div class="bbl-qa-num">77%</div>
-            <div class="bbl-qa-label">Detroit<br>Black population</div>
-          </div>
-          <div class="bbl-qa-vs">vs.</div>
-          <div>
-            <div class="bbl-qa-num">47%</div>
-            <div class="bbl-qa-label">Atlanta<br>Black population</div>
-          </div>
-        </div>
-        <div class="bbl-qa-ratio">Detroit is more Black. Atlanta got more responses.</div>
-        <div class="bbl-editorial-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — M-3 EDITORIAL LINE]</span></div>
-        <div class="bbl-qa-answer">Answer: Not on its own.</div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">Census ACS 2019-2023 &middot; city-level Black population share</span>
-          <span class="bbl-source-stamp">The Map &middot; Thick Gay Uncles</span>
-        </div>
-      </div>
-
-    </div><!-- /.bbl-gallery -->
-    <div class="bbl-swipe-cta">&larr; Swipe to explore all cards &rarr;</div>
-
-    <div class="bbl-body">
-      <p>People love to say people are basically the same everywhere. I don't think that's true. Cities develop personalities. New York isn't New Jersey. Oakland isn't San Francisco. DC isn't Baltimore. If cities shape so much else about our lives, why wouldn't they shape dating too? I asked, and about a hundred people answered.</p>
     </div>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — MAP CONTEXT BELOW CARDS]</span></div>
 
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(1)">&larr; My Story</button>
-      <button class="bbl-floor-btn" onclick="showTab(3)">The Data &rarr;</button>
+    <div class="ai-body">
+      <p>As the social scientist that I am, I ran a poll on TikTok. I asked: if you're a bigger black man and you dated other black men, what city did you find a partner in?</p>
+      <p>I received about 100 responses that spanned 25 cities or so. Although the top cities may not shock you, there are a few important notes to consider.</p>
+      <ul>
+        <li>The largest city where numbers ought to be in a larger bodied, Black gay man's favor was not the highest count</li>
+        <li>The highest percent Black city was also not the highest count of votes</li>
+        <li>The highest percent gay city was also not the highest count of votes</li>
+      </ul>
+      <p>Instead, there's an interaction of multiple factors to consider. And before we come to simple conclusions like Atlanta is the Black gay Mecca, we should unpack what makes each city's culture and norms what they are. Oakland is not San Francisco, the same as New York is not New Jersey. The same as the suburbs of Chicago are not Chicago and Houston is not Austin.</p>
     </div>
+
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     TAB 4 — THE DATA
+     ══════════════════════════════════════ -->
+<section id="tab-data" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
 
-<!-- ══ TAB 4: THE DATA (rename from Why These Cities) ═════════════ -->
-<section class="bbl-section" id="tab-cities" hidden>
-  <div class="bbl-inner">
+    <span class="ai-eyebrow">The Data</span>
+    <h2 class="ai-h2">[AMA — Section headline]</h2>
 
-    <span class="bbl-section-eyebrow">The Data</span>
+    <div class="carousel carousel--dark" role="region" aria-label="The Data cards" aria-roledescription="carousel">
+      <div class="carousel__outer">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
 
-    <!-- W-1 + W-2 gallery cards — moved above prose per standing gallery-position rule -->
-    <div class="bbl-gallery">
+            <!-- W-1a: Shell B, 1 of 2 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 1 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Data · W-1 · 1 of 2</span>
+                <h3 class="carousel__card-title">Black-white BMI gap, by state</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">DC</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="90.0"></span></span>
+                  <span class="carousel__bar-val">+22</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">California</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="49.1"></span></span>
+                  <span class="carousel__bar-val">+12</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Georgia</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="45.0"></span></span>
+                  <span class="carousel__bar-val">+11</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Texas</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="40.9"></span></span>
+                  <span class="carousel__bar-val">+10</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">CDC BRFSS 2022-2024 · self-reported BMI ≥30, state-level</span>
+              </div>
+            </article>
 
-      <!-- W-1: BMI point spread — orange bars — state→city column -->
-      <div class="bbl-card">
-        <div style="padding:18px 18px 10px;">
-          <div class="bbl-bmi-hed">Above-average BMI gap: Black minus White adults, by state</div>
-          <div class="bbl-bmi-sub">One factor among several — not the whole story. State-level proxy for poll cities.</div>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">DC</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:100%;"></div></div>
-          <span class="bbl-bmi-spread">+22 pts</span>
-          <span class="bbl-bmi-city">DC / DMV</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">California</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:52%;"></div></div>
-          <span class="bbl-bmi-spread">+12 pts</span>
-          <span class="bbl-bmi-city">LA &middot; Oakland</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">Georgia</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:48%;"></div></div>
-          <span class="bbl-bmi-spread">+11 pts</span>
-          <span class="bbl-bmi-city">Atlanta</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">Texas</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:43%;"></div></div>
-          <span class="bbl-bmi-spread">+10 pts</span>
-          <span class="bbl-bmi-city">Houston</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">Illinois</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:43%;"></div></div>
-          <span class="bbl-bmi-spread">+10 pts</span>
-          <span class="bbl-bmi-city">Chicago</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">Michigan</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:35%;"></div></div>
-          <span class="bbl-bmi-spread">+8 pts</span>
-          <span class="bbl-bmi-city">Detroit</span>
-        </div>
-        <div class="bbl-bmi-row">
-          <span class="bbl-bmi-state">New York</span>
-          <div class="bbl-bmi-track"><div class="bbl-bmi-fill" style="width:30%;"></div></div>
-          <span class="bbl-bmi-spread">+7 pts</span>
-          <span class="bbl-bmi-city">NYC</span>
-        </div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">CDC BRFSS 2022-2024 &middot; Self-reported BMI &ge;30 &middot; State-level (not city-level)</span>
-          <span class="bbl-source-stamp">Why These Cities &middot; W-1</span>
-        </div>
-      </div>
+            <!-- W-1b: Shell B, 2 of 2 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 2 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Data · W-1 · 2 of 2</span>
+                <h3 class="carousel__card-title">Black-white BMI gap, by state</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Illinois</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="40.9"></span></span>
+                  <span class="carousel__bar-val">+10</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Michigan</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="32.7"></span></span>
+                  <span class="carousel__bar-val">+8</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">New York</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="28.6"></span></span>
+                  <span class="carousel__bar-val">+7</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">CDC BRFSS 2022-2024 · self-reported BMI ≥30, state-level</span>
+              </div>
+            </article>
 
-      <!-- W-2: Income stat block -->
-      <div class="bbl-card" style="padding:20px 20px;">
-        <span class="bbl-card-eyebrow">Why These Cities &middot; W-2</span>
-        <div class="bbl-ranked-hed" style="margin-bottom:14px;">Top poll cities rank among strongest for Black household income</div>
-        <div class="bbl-stat-big">$60k</div>
-        <div class="bbl-stat-label-sm">DC &middot; Black median household income</div>
-        <div style="height:1px;background:#e0dcd4;margin:4px 0 14px;"></div>
-        <div class="bbl-stat-mid">$48k</div>
-        <div class="bbl-stat-label-sm">Atlanta &middot; Black median household income</div>
-        <div style="height:1px;background:#e0dcd4;margin:4px 0 12px;"></div>
-        <div style="font-family:var(--font-body);font-size:13px;color:#444;line-height:1.5;margin-bottom:14px;">US national Black median: $53k. Income correlation noted — mechanism not assumed. Houston, Chicago, NYC, LA figures directional; confirm with full Census pull.</div>
-        <div class="bbl-card-foot">
-          <span class="bbl-source-stamp">Census ACS 2019-2023 5-Year Estimates &middot; 2023 inflation-adjusted</span>
-          <span class="bbl-source-stamp">DC + ATL confirmed &middot; others directional only</span>
-        </div>
-      </div>
+            <!-- W-2a: Shell B, 1 of 2 -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 3 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Data · W-2 · 1 of 2</span>
+                <h3 class="carousel__card-title">Black median household income</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">NYC</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="90.0"></span></span>
+                  <span class="carousel__bar-val">$60.7k</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">DC</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="89.1"></span></span>
+                  <span class="carousel__bar-val">$60.1k</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Los Angeles</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="78.1"></span></span>
+                  <span class="carousel__bar-val">$52.6k</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">Census ACS 2019-2023 5-Yr Estimates via Neilsberg Research</span>
+              </div>
+            </article>
 
-    </div><!-- /.bbl-gallery -->
-    <div class="bbl-swipe-cta">&larr; Swipe to see both cards &rarr;</div>
+            <!-- W-2b: Shell B, 2 of 2, national median included -->
+            <article class="carousel__card card--b" role="group" aria-label="Slide 4 of 4">
+              <div class="carousel__card-head">
+                <span class="carousel__card-label">The Data · W-2 · 2 of 2</span>
+                <h3 class="carousel__card-title">Black median household income</h3>
+              </div>
+              <div class="carousel__card-body">
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">US median</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="79.3"></span></span>
+                  <span class="carousel__bar-val">$53.4k</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Atlanta</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="71.2"></span></span>
+                  <span class="carousel__bar-val">$47.9k</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Houston</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="68.6"></span></span>
+                  <span class="carousel__bar-val">$46.2k</span>
+                </div>
+                <div class="carousel__bar-row">
+                  <span class="carousel__bar-label">Chicago</span>
+                  <span class="carousel__bar-track"><span class="carousel__bar-fill" data-fill="64.9"></span></span>
+                  <span class="carousel__bar-val">$43.7k</span>
+                </div>
+              </div>
+              <div class="carousel__card-foot">
+                <span class="carousel__card-source">[AMA — W-2 EDITORIAL LINE]</span>
+              </div>
+            </article>
 
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — WHY CITIES HEADING]</span></div>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — WHY CITIES BODY 2-3 PARAGRAPHS]</span></div>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — WHY CITIES ANALYSIS BELOW CARDS]</span></div>
-
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(2)">&larr; The Poll</button>
-      <button class="bbl-floor-btn" onclick="showTab(4)">Hold Your Ground &rarr;</button>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ══ TAB 5: HOLD YOUR GROUND (NEW) ═══════════════════════════════ -->
-<section class="bbl-section" id="tab-hold" hidden>
-  <div class="bbl-inner">
-
-    <span class="bbl-section-eyebrow">Hold Your Ground</span>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HOLD YOUR GROUND INTRO 1-2 SENTENCES]</span></div>
-
-    <!-- HG-1..HG-5 — 5-card carousel, 380×660 OF card-native (D-72/D-91), dot indicators, scroll-snap -->
-    <div class="bbl-hg-carousel-wrap">
-      <div class="bbl-hg-carousel" id="hg-carousel" role="region" aria-label="Hold Your Ground cards">
-
-        <div class="bbl-hg-card">
-          <span class="bbl-hg-card-eyebrow">Hold Your Ground &middot; HG-1</span>
-          <div class="bbl-hg-card-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-1 CARD LINE]</span></div>
-        </div>
-
-        <div class="bbl-hg-card">
-          <span class="bbl-hg-card-eyebrow">Hold Your Ground &middot; HG-2</span>
-          <div class="bbl-hg-card-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-2 CARD LINE]</span></div>
-        </div>
-
-        <div class="bbl-hg-card">
-          <span class="bbl-hg-card-eyebrow">Hold Your Ground &middot; HG-3</span>
-          <div class="bbl-hg-card-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-3 CARD LINE]</span></div>
-        </div>
-
-        <div class="bbl-hg-card">
-          <span class="bbl-hg-card-eyebrow">Hold Your Ground &middot; HG-4</span>
-          <div class="bbl-hg-card-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-4 CARD LINE]</span></div>
-        </div>
-
-        <div class="bbl-hg-card">
-          <span class="bbl-hg-card-eyebrow">Hold Your Ground &middot; HG-5</span>
-          <div class="bbl-hg-card-line"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-5 CARD LINE]</span></div>
-        </div>
-
-      </div><!-- /.bbl-hg-carousel -->
-      <div class="bbl-hg-dots" id="hg-dots" role="tablist" aria-label="Hold Your Ground card indicators">
-        <button class="bbl-hg-dot active" aria-label="Card 1" aria-selected="true"></button>
-        <button class="bbl-hg-dot" aria-label="Card 2" aria-selected="false"></button>
-        <button class="bbl-hg-dot" aria-label="Card 3" aria-selected="false"></button>
-        <button class="bbl-hg-dot" aria-label="Card 4" aria-selected="false"></button>
-        <button class="bbl-hg-dot" aria-label="Card 5" aria-selected="false"></button>
-      </div>
-    </div><!-- /.bbl-hg-carousel-wrap -->
-
-    <!-- HG-1..HG-5 prose blocks, one per card -->
-    <div class="bbl-body">
-      <span class="bbl-hg-body-label">Hold Your Ground &middot; HG-1</span>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-1 BODY]</span></div>
-      <span class="bbl-hg-body-label">Hold Your Ground &middot; HG-2</span>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-2 BODY]</span></div>
-      <span class="bbl-hg-body-label">Hold Your Ground &middot; HG-3</span>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-3 BODY]</span></div>
-      <span class="bbl-hg-body-label">Hold Your Ground &middot; HG-4</span>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-4 BODY]</span></div>
-      <span class="bbl-hg-body-label">Hold Your Ground &middot; HG-5</span>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — HG-5 BODY]</span></div>
-    </div>
-
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(3)">&larr; The Data</button>
-      <button class="bbl-floor-btn" onclick="showTab(5)">Your Move &rarr;</button>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ TAB 6: YOUR MOVE ══════════════════════════════════════════ -->
-<section class="bbl-section" id="tab-move" hidden>
-  <div class="bbl-inner">
-
-    <span class="bbl-section-eyebrow">Your Move</span>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — YOUR MOVE INTRO 1-2 SENTENCES]</span></div>
-
-    <div class="bbl-subtabs" role="tablist" aria-label="Audience navigation">
-      <button class="bbl-subtab active" role="tab" aria-selected="true"  onclick="showSubTab(0)">For the Big Men</button>
-      <button class="bbl-subtab"        role="tab" aria-selected="false" onclick="showSubTab(1)">For the Chasers</button>
-      <button class="bbl-subtab"        role="tab" aria-selected="false" onclick="showSubTab(2)">For the Friend Group</button>
-    </div>
-
-    <!-- Sub-panel 0: For the Big Men -->
-    <div class="bbl-subpanel" id="subpanel-0" role="tabpanel">
-      <!-- YM-1: HELD — AMA rethinking format -->
-      <div class="bbl-placeholder" style="border-color:rgba(255,255,255,0.2);color:rgba(248,246,241,0.35);">[YM-1 HELD — City recommendations / events card. AMA rethinking format before build. Do not build until decision made.]</div>
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — BIG MEN BODY 1-2 PARAGRAPHS]</span></div>
-      <!-- YM-2: Warm close pull quote — AMA writes -->
-      <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — YM-2 WARM CLOSE PULL QUOTE]</span></div>
-    </div>
-
-    <!-- Sub-panel 1: For the Chasers — YM-3 context card scaffold -->
-    <div class="bbl-subpanel" id="subpanel-1" role="tabpanel" hidden>
-      <div class="bbl-gallery">
-        <div class="bbl-card" style="padding:22px 20px;min-height:220px;">
-          <span class="bbl-card-eyebrow">Your Move &middot; YM-3 &middot; For the Chasers</span>
-          <div class="bbl-ranked-hed" style="margin-bottom:12px;">What showing up looks like</div>
-          <div class="bbl-placeholder" style="margin:0 0 12px;"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — YM-3 CHASERS BODY]</span></div>
-          <div class="bbl-card-foot">
-            <span class="bbl-source-stamp">Your Move &middot; For the Chasers</span>
-            <span class="bbl-source-stamp">Thick Gay Uncles</span>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Sub-panel 2: For the Friend Group — YM-4 context card scaffold -->
-    <div class="bbl-subpanel" id="subpanel-2" role="tabpanel" hidden>
-      <div class="bbl-gallery">
-        <div class="bbl-card" style="padding:22px 20px;min-height:220px;">
-          <span class="bbl-card-eyebrow">Your Move &middot; YM-4 &middot; For the Friend Group</span>
-          <div class="bbl-ranked-hed" style="margin-bottom:12px;">Your friend needs a wingman, not advice</div>
-          <div class="bbl-placeholder" style="margin:0 0 12px;"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — YM-4 FRIEND GROUP BODY]</span></div>
-          <div class="bbl-card-foot">
-            <span class="bbl-source-stamp">Your Move &middot; For the Friend Group</span>
-            <span class="bbl-source-stamp">Thick Gay Uncles</span>
+        <div class="carousel__controls">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
+          <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
         </div>
       </div>
     </div>
 
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(4)">&larr; Hold Your Ground</button>
-      <button class="bbl-floor-btn" onclick="showTab(6)">Spread the Word &rarr;</button>
+    <div class="ai-body">
+      <p>My hypothesis is that income, body norms, and class is what leads to the results shown. I am open to alternative hypotheses if you want to leave a comment on the Substack version of this piece.</p>
+      <p>In the South and Midwest, I assumed that larger body sizes were more common. [Did the data back this up?]. The data supports this with …. [insert validated claim and/or point to the gallery card]. The next layer of my theory is that white desirability often sets the trend for what is deemed acceptable. In places like NYC and LA, the white men with the most money are often built like swimmers and baseball players. In NYC, I have not met many men who could have played football that work in private equity or finance or management consulting. I have seen Big Bubbas (white, thick men) in the South and Midwest who occupy the highest earning jobs. My thinking is that those men are deemed most prized, and their build is a compass or blueprint for what is deemed high or low worth.</p>
+      <p>One might argue that higher income means greater access to gyms and more pressure to be "fit." Both NYC and DC are above the national Black median income, but we see a different spread of the data. DC seems a larger body size delta between Black and white BMI while NYC sees a smaller gap.</p>
+      <p>I've been struck by the few thick bodies I see among my Black American, Caribbean, and West African classmates and colleagues here in NYC. Until you factor in class and income. Back in each of our respective homelands, we see many more partnerships for larger and thicker bodied Black people. But you add in hyper capitalism and a desire for thinness in some cities more than others, and you see a spread that has Chicago and Houston below the national Black median for income.</p>
+      <p>I also believe we can pinpoint some of the trend we see to places where there is a Black middle class. Places where you can see a diversity of body types in professional roles, excelling and building their families. PG County, Chicago, and Atlanta are notable places with a prominent Black middle class that is quite absent in some of the cities that ranked lower on the list.</p>
+      <p>I believe where Black people (gay or straight) can imagine themselves financially thriving is where we see Black love that is not clipped by capitalism in the same way as places where there is no Black middle class. Desire is not random, but it does seem to follow the money.</p>
     </div>
+
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     TAB 5 — HOLD YOUR GROUND
+     No cards — prose only, per COPY.md.
+     ══════════════════════════════════════ -->
+<section id="tab-hold-ground" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
 
-<!-- ══ TAB 7: SPREAD THE WORD (NEW) ════════════════════════════════ -->
-<section class="bbl-section" id="spread" hidden>
-  <div class="bbl-inner">
+    <span class="ai-eyebrow">Hold Your Ground</span>
 
-    <span class="bbl-section-eyebrow">Spread the Word</span>
-    <div class="bbl-placeholder"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — SPREAD INTRO 1-2 SENTENCES]</span></div>
+    <div class="ai-body">
+      <p>A few things I hope you do and do not take from the data.</p>
 
-    <!-- SC-1, SC-2 — dedicated shareable card shells (replaces O-1/O-2 reuse) -->
-    <div class="bbl-spread-gallery">
-      <div class="bbl-share-card">
-        <span class="bbl-share-card-eyebrow">Shareable &middot; SC-1</span>
-        <div class="bbl-share-card-copy"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — SHAREABLE CARD COPY]</span></div>
-      </div>
-      <div class="bbl-share-card">
-        <span class="bbl-share-card-eyebrow">Shareable &middot; SC-2</span>
-        <div class="bbl-share-card-copy"><span class="ama-placeholder" style="background:#ffe066;padding:2px 6px;font-family:monospace;font-size:13px;">[AMA — SHAREABLE CARD COPY]</span></div>
-      </div>
+      <p><strong>I implore you not to read the rankings as the place of where you should move.</strong> Instead, view it as places to visit and try out a PRIDE event or low-key weekend.</p>
+      <ul>
+        <li>You should go test out how that city shows you love and if it's more than what you get in your home location.</li>
+        <li>Apps can be alluring to test here, but people tend to gravitate towards who is new especially on a grid where you see the same faces.</li>
+        <li>Go out in person and see how many heads turn, if people are nicer to you from the door person to the waiter to others.</li>
+      </ul>
+
+      <p><strong>Do not consider compromising your values to fit in.</strong></p>
+      <ul>
+        <li>If it makes sense for you to downsize, do it for you. Take that however you want it to mean. I say that without judgement. Your body, your decisions.</li>
+        <li>Getting more "fit" and muscular may come with its own challenges. You may even start to second guess if you're now being liked for you or for your exterior.</li>
+      </ul>
+
+      <p><strong>You're not screwed if your city was not in the top ranking.</strong></p>
+      <ul>
+        <li>The poll I conducted was open to whoever saw it. It had 100 people. In an ideal world, I could ask people to put their BMI and way they identify into a survey and read out more data to you.</li>
+        <li>I focused on Black men who want to partner with other Black men. That may not be your preference or your reality, so please interpret the results with nuance.</li>
+        <li>Moving to a city for love or partnership is not stupid. You will spend a decade or more with the love of your life and you might only spend a few years at a job. Choosing where you are loved most is really quite reasonable. It is part of why I'm leaving NYC soon.</li>
+      </ul>
+
+      <p><strong>Do not believe you have to settle.</strong></p>
+      <ul>
+        <li>There are men thin to thicker who will love you at your body size. And you don't have to settle for men who have a fetish or make you think you should be grateful that they chose you.</li>
+        <li>Being lonely in a relationship can feel even worse than being alone.</li>
+      </ul>
+
+      <p><strong>Try to develop community with other larger bodied men.</strong></p>
+      <ul>
+        <li>Big Boi events can be a great space for Black men.</li>
+        <li>Bear and leather events can be hit or miss. Some people feel welcome there and others less so.</li>
+        <li>Ask friends to come with you as a support for events you want to try out.</li>
+      </ul>
     </div>
 
-    <div class="bbl-share-section" style="margin-top:0;">
-      <span class="bbl-share-label">Share this piece</span>
-      <div class="bbl-share-actions">
-        <button class="bbl-share-btn bbl-share-btn--copy" onclick="copyLink(this)">&#9675; Copy link</button>
-        <a class="bbl-share-btn bbl-share-btn--x"
-           href="https://twitter.com/intent/tweet?text=Where%20bigger%20Black%20gay%20men%20are%20loved%20%E2%80%94%20the%20data.&url=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F"
-           target="_blank" rel="noopener">&#10005; Share on X</a>
-        <a class="bbl-share-btn bbl-share-btn--kofi"
-           href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">$ Back this work</a>
-      </div>
-    </div>
-
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(5)">&larr; Your Move</button>
-      <button class="bbl-floor-btn" onclick="showTab(7)">Sources &rarr;</button>
-    </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     TAB 6 — SUPPORTING US
+     No cards, no sub-tabs — two plain headings, per COPY.md.
+     ══════════════════════════════════════ -->
+<section id="tab-supporting-us" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
 
-<!-- ══ TAB 8: SOURCES (NEW) ═════════════════════════════════════════ -->
-<section class="bbl-section" id="sources" hidden>
-  <div class="bbl-inner">
+    <span class="ai-eyebrow">Supporting Us</span>
 
-    <span class="bbl-section-eyebrow">Sources</span>
-    <h2 class="bbl-section-title">Methodology &amp; Sources</h2>
+    <div class="ai-body">
+      <p>Here are some tips for our lovers and friends.</p>
 
-    <p class="bbl-sources-note">
-      This piece draws on community-generated poll data from a TikTok post (@alterrell) and overlays it with publicly available socioeconomic data. The poll is not a representative sample. Cities were reported voluntarily by respondents from the full comment thread. n&asymp;100 strict partner mentions from approximately 85 unique commenters across 25+ cities. Cards show top 10-11 cities; remaining cities acknowledged in copy. Atlanta and Chicago are near-tied at the top; framing as &ldquo;tied&rdquo; is defensible given the methodology. Video: 4K+ views, 562 likes, 174 comments. Previous tally (n=77, April 26) superseded by full-thread count.
-    </p>
-    <ol class="bbl-sources-list">
-      <li>Community poll data: TikTok (@alterrell), May 2026. n&asymp;100 strict city-mentions from ~85 unique commenters. Cities reported voluntarily by respondents identifying as bigger Black gay men who found a Black partner. Not statistically representative.</li>
-      <li>LGBT population by metro area: Conron, K.J., Luhur, W., &amp; Goldberg, S.K. &ldquo;Estimated number of US LGBT adults in Large Metropolitan Statistical Areas (MSA).&rdquo; Williams Institute, UCLA, March 2021. Based on Gallup Daily Tracking Survey 2012-2017 applied to 2017 Census ACS estimates. All-LGBT (not gay men specifically, not race-adjusted). Key figures: NYC-Newark-Jersey City MSA 706,000 (4.5%); ATL-Sandy Springs-Alpharetta MSA 194,000 (4.6%). NYC/ATL ratio: 3.6&times;.</li>
-      <li>Obesity prevalence by race and state: CDC BRFSS 2022-2024, &ldquo;Prevalence of Obesity Based on Self-Reported Weight and Height Among Non-Hispanic Black Adults / Non-Hispanic White Adults, by State and Territory.&rdquo; Three-year pooled data, self-reported BMI &ge;30. State-level only (not city-level) — used as a geographic proxy for poll cities. PA and LA excluded (insufficient data). Card framing: &ldquo;above-average BMI&rdquo; not &ldquo;obesity.&rdquo; Point spread format: Black adult rate minus White adult rate.</li>
-      <li>Black median household income: U.S. Census Bureau, ACS 2019-2023 5-Year Estimates via Neilsberg Research (2023 inflation-adjusted dollars). Confirmed: DC $60,089; Atlanta (city proper) $47,937. US national Black median: $53,444. Houston, Chicago, NYC, LA: directional figures only — full Census pull recommended before deploy.</li>
-      <li>Black population share by city (M-3): Census ACS 2019-2023. Detroit city ~77% Black; Atlanta city proper ~47% Black.</li>
+      <h3 class="ai-h3">For the chasers and lovers of bigger guys (who themselves are not bigger bodied)</h3>
+      <ul>
+        <li>Some of you say you like bigger men, but your profile says only into muscle and expect us not to be surprised if you like us.</li>
+        <li>Some of you say you like bigger men, but then you use objectifying language that can land differently for different people. Some bigger guys might like how you speak, but others won't. I have always hated when guys tell me they want to rub my belly.</li>
+        <li>Stop telling us to not be surprised when you express interest. We love ourselves, but the data and pattern has shown us being ignored. You might be the exception and you should be aware that not everyone we've experienced romantically is inclusive.</li>
+        <li>The best compliments I've received were "I find you so sexy" but I've hated "I love how you feel like a weighted blanket." Some of these statements may work after a dynamic has been established, but they can come across very weird when we know nothing about you.</li>
+        <li>If you don't have any larger friends, maybe you should see if they might have an issue with how you're approaching men. It might help you realize something you had not considered. And if you have more than 1 friend, see how much variation you find.</li>
+      </ul>
+
+      <h3 class="ai-h3">For the friends who love us (who themselves are not bigger bodied)</h3>
+      <ul>
+        <li>Your larger friend may not want to talk about the fatphobia they face, but I would find it hard to believe that race, gender, and sexuality are things that are forbidden in your friendship in the context of dating. Think about how you can create an open space for them to talk and share.</li>
+        <li>You do not need to solution for us. Telling us it would be easier if we lost weight, or suggesting anything when not asked for a solution is not your place. Sometimes friendship just means listening and saying "wow, that does sound hard" or "I hate that this is your experience and I want to hug you."</li>
+        <li>Ask your larger friend: what do you experience in dating that you do not think I understand because of how I look or present? Some of what you hear might be hard to hear and some of it could be frustration about the system we operate in and you might catch a stray or two.</li>
+        <li>If your friend might need someone to talk to that is not you, you should encourage them (and ask if they want help) to find a therapist or a community that supports them.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 7 — SHARE TO SOCIAL
+     Order: intro copy → shareable cards → share destination grid → platform CTAs.
+     No journey block on this tab (SHARE-03).
+     ══════════════════════════════════════ -->
+<section id="tab-share" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">Share to Social</span>
+    <h2 class="ai-h2">Share this piece.</h2>
+    <p class="ai-body">[AMA — Share to Social intro, 1-2 sentences]</p>
+
+    <!-- SC-1, SC-2 — pre-rendered share cards, img tags per D-77 -->
+    <img src="/og/gay-uncles-sc1.png" alt="Shareable card 1 — Advice From Your Thick Gay Uncles" width="1080" height="1080">
+    <img src="/og/gay-uncles-sc2.png" alt="Shareable card 2 — Advice From Your Thick Gay Uncles" width="1080" height="1080">
+
+    <div class="pt-share-grid" role="group" aria-label="Share destinations">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on X">
+        <span class="pt-share-dest-icon">𝕏</span>
+        <span class="pt-share-dest-label">X / Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on Facebook">
+        <span class="pt-share-dest-icon">f</span>
+        <span class="pt-share-dest-label">Facebook</span>
+      </a>
+      <a href="https://wa.me/?text=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on WhatsApp">
+        <span class="pt-share-dest-icon">●</span>
+        <span class="pt-share-dest-label">WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finteractive.alterrell.com%2Fgay-uncles%2F&title=Advice%20From%20Your%20Thick%20Gay%20Uncles" target="_blank" rel="noopener" class="pt-share-dest" aria-label="Share on LinkedIn">
+        <span class="pt-share-dest-icon">in</span>
+        <span class="pt-share-dest-label">LinkedIn</span>
+      </a>
+    </div>
+
+    <div class="ai-body">
+      <p>
+        <a class="ai-btn ai-btn--secondary" href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">Watch on YouTube</a>
+        <a class="ai-btn ai-btn--secondary" href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page" target="_blank" rel="noopener">Read on Substack</a>
+        <a class="ai-btn ai-btn--secondary" href="https://ko-fi.com/alterrell" target="_blank" rel="noopener">Support on Ko-fi</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TAB 8 — SOURCES
+     ══════════════════════════════════════ -->
+<section id="tab-sources" class="ai-section ai-section--dark" role="tabpanel">
+  <div class="ai-inner">
+
+    <span class="ai-eyebrow">SOURCES ——</span>
+    <h2 class="ai-h2">Methodology &amp; Sources</h2>
+
+    <div class="ai-body">
+      <p>This piece draws on community-generated poll data from a TikTok post and overlays it with publicly available socioeconomic data. The poll is not a representative sample: n≈100 strict partner mentions from approximately 85 unique commenters across 25+ cities, reported voluntarily. State-level data (BMI) is used as a geographic proxy where city-level data is not available.</p>
+    </div>
+
+    <ol class="ai-source-list">
+      <li>Community poll data: <span class="ai-stamp">TikTok, @alterrell</span>, May 2026. n≈100 strict city-mentions from ~85 unique commenters identifying as bigger Black gay men who found a Black partner. Not statistically representative.</li>
+      <li><span class="ai-stamp">Williams Institute, UCLA</span>, March 2021. Estimated LGBT adults by large metro area, based on Gallup Daily Tracking 2012-2017 applied to 2017 Census ACS estimates. All-LGBT, not race-adjusted.</li>
+      <li><span class="ai-stamp">CDC BRFSS</span> 2022-2024. Self-reported BMI ≥30 among non-Hispanic Black and non-Hispanic White adults, by state. State-level only.</li>
+      <li>Black median household income: <span class="ai-stamp">U.S. Census Bureau, ACS 2019-2023 5-Year Estimates</span> via Neilsberg Research, 2023 inflation-adjusted dollars.</li>
+      <li>Black population share by city: <span class="ai-stamp">Census ACS 2019-2023</span>.</li>
     </ol>
 
-    <div class="bbl-floor">
-      <button class="bbl-floor-btn" onclick="showTab(6)">&larr; Spread the Word</button>
-      <span class="bbl-floor-spacer"></span>
-    </div>
   </div>
 </section>
 
-
-<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<!-- ── 7. FOOTER ── -->
 <footer class="ai-footer" role="contentinfo">
   <div class="ai-footer-inner">
 
@@ -1603,151 +729,150 @@
       <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
     </div>
 
-    <div class="ai-footer-journey">
-      <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
-         target="_blank" rel="noopener" class="ai-footer-journey-item">
-        <span class="ai-footer-journey-icon">&#9654;</span>
-        <span class="ai-footer-journey-text">
-          <span class="ai-footer-journey-label">Watch</span>
-          <span class="ai-footer-journey-name">Alterrell Interactive on YouTube</span>
-        </span>
-      </a>
-      <a href="https://alterrell.substack.com/s/alterrell-interactive?utm_source=newsletter_page"
-         target="_blank" rel="noopener" class="ai-footer-journey-item">
-        <span class="ai-footer-journey-icon">&#10022;</span>
-        <span class="ai-footer-journey-text">
-          <span class="ai-footer-journey-label">Read</span>
-          <span class="ai-footer-journey-name">Alterrell Interactive on Substack</span>
-        </span>
-      </a>
-    </div>
-
     <div class="ai-footer-series">
-      <a href="/" class="ai-footer-series-hub">&larr; All Projects</a>
+      <a href="/" class="ai-footer-series-hub">← All pieces</a>
     </div>
 
     <div class="ai-footer-bottom">
-      <span class="ai-footer-copy">&copy; 2026 &middot; interactive.alterrell.com</span>
-      <a href="https://interactive.alterrell.com/gay-uncles/" class="ai-footer-url">interactive.alterrell.com/gay-uncles/</a>
+      <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
+      <a href="https://interactive.alterrell.com/gay-uncles/" class="ai-footer-url">interactive.alterrell.com/gay-uncles</a>
     </div>
 
   </div>
 </footer>
 
+<!-- ── 8. SCRIPTS ── -->
 <script>
 (function () {
-  'use strict';
+  var tabs = Array.from(document.querySelectorAll('.ai-tab'));
+  var tabBar = document.querySelector('#pt-tabs');
+  var sections = tabs.map(function (tab) {
+    return document.getElementById(tab.dataset.target);
+  });
 
-  /* ── Poll data — updated May 17 2026 · full comment thread · n≈100 strict partner mentions ── */
-  /* Data reference only — cards are static HTML. Update this object if data changes. */
-  var pollData = [
-    { city: 'Atlanta',        n: 16 },
-    { city: 'Chicago',        n: 15 },
-    { city: 'Houston',        n: 12 },
-    { city: 'DC / DMV',       n: 10 },
-    { city: 'NYC / Brooklyn', n: 10 },
-    { city: 'Philadelphia',   n:  5 },
-    { city: 'Detroit',        n:  5 },
-    { city: 'Los Angeles',    n:  4 },
-    { city: 'New Orleans',    n:  2 },
-    { city: 'Oakland',        n:  2 },
-    { city: 'Tampa',          n:  2 },
-    { city: 'Orlando',        n:  2 },
-    { city: 'Charlotte',      n:  2 },
-    { city: 'Jacksonville',   n:  2 },
-    { city: 'Miami',          n:  2 },
-    { city: 'Indianapolis',   n:  2 },
-    { city: 'Mobile AL',      n:  2 },
-    { city: 'Seattle',        n:  1 },
-    { city: 'Virginia Beach', n:  1 },
-    { city: 'Phoenix',        n:  1 }
-  ];
-
-  /* ── Tab switching (8 tabs) ── */
-  function showTab(idx) {
-    var sections = document.querySelectorAll('.bbl-section');
-    var tabs     = document.querySelectorAll('.bbl-tab');
-    sections.forEach(function (s, i) {
-      if (i === idx) { s.removeAttribute('hidden'); }
-      else           { s.setAttribute('hidden', ''); }
+  function activateTab(targetId) {
+    tabs.forEach(function (t) {
+      var isActive = t.dataset.target === targetId;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
     });
-    tabs.forEach(function (t, i) {
-      t.classList.toggle('active', i === idx);
-      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    sections.forEach(function (s) {
+      if (!s) return;
+      s.classList.toggle('active', s.id === targetId);
     });
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var activeTab = tabs.find(function (t) { return t.dataset.target === targetId; });
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
-  /* ── Sub-tab switching (Tab 5: Your Move) ── */
-  function showSubTab(idx) {
-    document.querySelectorAll('.bbl-subpanel').forEach(function (p, i) {
-      if (i === idx) { p.removeAttribute('hidden'); }
-      else           { p.setAttribute('hidden', ''); }
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activateTab(tab.dataset.target);
     });
-    document.querySelectorAll('.bbl-subtab').forEach(function (t, i) {
-      t.classList.toggle('active', i === idx);
-      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+  });
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    } else if (tabBar) {
+      tabBar.classList.remove('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+
+  // Copy link button (Tab 1 share block)
+  var copyBtn = document.getElementById('pt-copy-link');
+  var copyLabel = document.getElementById('pt-copy-label');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = 'https://interactive.alterrell.com/gay-uncles/';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyLabel.textContent = 'Copied!';
+          setTimeout(function () { copyLabel.textContent = 'Copy link'; }, 2000);
+        });
+      }
     });
   }
+})();
 
-  /* ── Share: copy link ── */
-  function copyLink(btn) {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href).then(function () {
-        btn.textContent = 'Copied!';
-        setTimeout(function () { btn.innerHTML = '&#9675; Copy link'; }, 2000);
+// ── CAROUSEL — platform component (D-68), pasted verbatim from the
+//    documented JS pattern in alterrell-interactive.css Section 18.
+(function () {
+  var GAP = 16;
+  function initCarousel(el) {
+    var track  = el.querySelector('.carousel__track');
+    var cards  = Array.from(el.querySelectorAll('.carousel__card'));
+    var prev   = el.querySelector('.carousel__arrow--prev');
+    var next   = el.querySelector('.carousel__arrow--next');
+    var dotsEl = el.querySelector('.carousel__dots');
+    var vp     = el.querySelector('.carousel__viewport');
+    if (!track || !cards.length) return;
+    var idx = 0, startX = 0;
+
+    el.querySelectorAll('.carousel__bar-fill[data-fill]').forEach(function(b) {
+      b.style.setProperty('--c-bar-fill', b.dataset.fill + '%');
+    });
+
+    function cardW()  { return cards[0].getBoundingClientRect().width; }
+    function vpW()    { return vp.getBoundingClientRect().width; }
+    function visible(){ var cw = cardW(); return cw > 0 ? Math.max(1, Math.floor((vpW() + GAP) / (cw + GAP))) : 1; }
+    function maxIdx() { return Math.max(0, cards.length - visible()); }
+
+    function buildDots() {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = '';
+      cards.forEach(function(_, i) {
+        var d = document.createElement('button');
+        d.className = 'carousel__dot';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', function() { idx = i; update(); });
+        dotsEl.appendChild(d);
       });
     }
-  }
 
-  /* ── Expose to inline onclick ── */
-  window.showTab    = showTab;
-  window.showSubTab = showSubTab;
-  window.copyLink   = copyLink;
-
-  /* ── Hold Your Ground carousel dots — scroll-position based (deterministic when 2+ cards are simultaneously visible) ── */
-  var hgCarousel = document.getElementById('hg-carousel');
-  var hgDots     = document.querySelectorAll('#hg-dots .bbl-hg-dot');
-  if (hgCarousel && hgDots.length) {
-    var hgCards = hgCarousel.querySelectorAll('.bbl-hg-card');
-    var hgTicking = false;
-
-    function hgActiveIndex() {
-      if (!hgCards.length) return 0;
-      var cardW = hgCards[0].getBoundingClientRect().width;
-      var gap = 12;
-      var idx = Math.round(hgCarousel.scrollLeft / (cardW + gap));
-      return Math.max(0, Math.min(idx, hgCards.length - 1));
-    }
-
-    function hgUpdateDots() {
-      var idx = hgActiveIndex();
-      hgDots.forEach(function (d, i) {
+    function update() {
+      var cw = cardW();
+      idx = Math.min(idx, maxIdx());
+      track.style.transform = 'translateX(-' + (idx * (cw + GAP)) + 'px)';
+      if (prev) prev.disabled = idx === 0;
+      if (next) next.disabled = idx >= maxIdx();
+      if (dotsEl) dotsEl.querySelectorAll('.carousel__dot').forEach(function(d, i) {
         d.classList.toggle('active', i === idx);
         d.setAttribute('aria-selected', String(i === idx));
       });
-      hgTicking = false;
     }
 
-    hgCarousel.addEventListener('scroll', function () {
-      if (!hgTicking) {
-        hgTicking = true;
-        window.requestAnimationFrame(hgUpdateDots);
-      }
-    }, { passive: true });
+    if (prev) prev.addEventListener('click', function() { if (idx > 0) { idx--; update(); } });
+    if (next) next.addEventListener('click', function() { if (idx < maxIdx()) { idx++; update(); } });
 
-    hgDots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        if (hgCards[i]) {
-          hgCards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        }
-      });
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft'  && idx > 0)       { idx--; update(); e.preventDefault(); }
+      if (e.key === 'ArrowRight' && idx < maxIdx()) { idx++; update(); e.preventDefault(); }
     });
 
-    hgUpdateDots();
-  }
+    if (vp) {
+      vp.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      vp.addEventListener('touchend', function(e) {
+        var dx = startX - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) {
+          if (dx > 0 && idx < maxIdx()) idx++;
+          else if (dx < 0 && idx > 0)  idx--;
+          update();
+        }
+      }, { passive: true });
+    }
 
-}());
+    window.addEventListener('resize', update);
+    buildDots();
+    update();
+  }
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+})();
 </script>
+
 </body>
 </html>
