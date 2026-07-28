@@ -9,6 +9,8 @@ in this order:
 4. _data/platform/PROJECT-STATUS.md  (current state, upload queue)
 5. _design/CHART-LIBRARY-REFERENCE.html  (chart work only)
 6. _design/VISUAL-REFERENCE.html  (visual work only)
+7. tools/ai-card-studio.html  (card export tool, use only when
+   generating share-card PNGs)
 If a file is not readable, STOP and tell AMA rather than building from
 memory.
 

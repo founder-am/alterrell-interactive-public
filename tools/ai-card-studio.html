@@ -40,6 +40,8 @@
       --font-mono:  'DM Mono', 'Fira Code', monospace;
       --font-body:  'DM Sans', system-ui, sans-serif;
       --font-ed:    'DM Serif Display', Georgia, serif;
+      --font-editorial: 'DM Serif Display', Georgia, serif;
+      --text-micro: 0.625rem;    /* 10px — absolute floor */
     }
 
     html, body {
@@ -470,6 +472,7 @@
       --c-eyebrow:  #0a7c72;          /* LOCKED */
       --c-ink:      #111111;
       --c-ink-sub:  #444444;
+      --c-ink-label: #888888;         /* matches carousel--teal's --c-ink-label = var(--ink-muted) */
       --c-accent:   #0a7c72;
       --c-divider:  #e0dcd4;
       --c-bar-bg:   #e0dcd4;
@@ -482,16 +485,16 @@
       --c-eyebrow:  #E8B923;          /* LOCKED */
       --c-ink:      rgba(248,246,241,0.96);
       --c-ink-sub:  rgba(248,246,241,0.62);
+      --c-ink-label: #E8B923;         /* matches carousel--dark's --c-ink-label */
       --c-accent:   #E8B923;
       --c-divider:  rgba(232,185,35,0.2);
       --c-bar-bg:   rgba(232,185,35,0.12);
     }
 
-    /* ── Head — LOCKED padding ── */
+    /* ── Head — matches alterrell-interactive.css .carousel__card-head ── */
     .carousel__card-head {
-      padding: 0.75rem 0.875rem;      /* LOCKED */
+      padding: 0.875rem 1rem 0.625rem;
       flex-shrink: 0;
-      border-bottom: 1px solid var(--c-divider);
     }
 
     /* ── Body ── */
@@ -504,41 +507,42 @@
       min-height: 0;
     }
 
-    /* ── Foot — LOCKED padding ── */
+    /* ── Foot — matches alterrell-interactive.css .carousel__card-foot ── */
     .carousel__card-foot {
-      padding: 0.5rem 0.875rem;       /* LOCKED */
+      padding: 0.5rem 1rem 0.625rem;
       flex-shrink: 0;
       margin-top: auto;
       border-top: 1px solid var(--c-divider);
     }
 
-    /* Eyebrow — LOCKED: DM Mono 9px, lane color */
+    /* Eyebrow — matches alterrell-interactive.css .carousel__card-label */
     .carousel__card-label {
-      font-family: 'DM Mono', monospace;  /* LOCKED */
-      font-size: 9px;                     /* LOCKED */
+      font-family: 'DM Mono', monospace;
+      font-size: var(--text-micro);
       font-weight: 400;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--c-eyebrow);            /* LOCKED: teal/gold per lane */
+      color: var(--c-eyebrow);            /* teal/gold per lane */
       display: block;
       margin-bottom: 3px;
     }
 
-    /* Title — LOCKED: DM Sans 500 12px */
+    /* Title — matches alterrell-interactive.css .carousel__card-title */
     .carousel__card-title {
-      font-family: 'DM Sans', system-ui, sans-serif;  /* LOCKED */
-      font-size: 12px;                                 /* LOCKED */
-      font-weight: 500;                                /* LOCKED */
+      font-family: var(--font-editorial);
+      font-size: 1rem;
       line-height: 1.35;
       color: var(--c-ink);
     }
 
-    /* Source stamp — LOCKED: DM Mono 8px #999 */
+    /* Source stamp — matches alterrell-interactive.css .carousel__card-source
+       Note: font-size stays 8px here, not var(--text-micro) — out of scope
+       for this repair (this bullet named color only); see repair report. */
     .carousel__card-source {
-      font-family: 'DM Mono', monospace;  /* LOCKED */
-      font-size: 8px;                     /* LOCKED */
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
       font-weight: 400;
-      color: #999;                         /* LOCKED */
+      color: var(--c-ink-label);          /* lane-dependent, see lane token blocks */
       letter-spacing: 0.06em;
     }
 
@@ -562,8 +566,13 @@
     .carousel__card-body.va-center {
       justify-content: center;
     }
-    /* Shell A: head divider already in .card--a via platform — replicate */
-    .card--a .carousel__card-head { border-bottom: 1px solid var(--c-divider); }
+    /* Shell A: head divider — matches alterrell-interactive.css lines 1763-1766.
+       Base .carousel__card-head no longer carries this border unconditionally;
+       this is now the only source of it, scoped to Shell A. */
+    .card--a .carousel__card-head {
+      border-bottom: 1px solid var(--c-divider);
+      padding-bottom: 0.625rem;
+    }
 
     /* ── Shell B: Chart bars ── */
     .card--b .carousel__card-body { padding-top: 0.5rem; }
