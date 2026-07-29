@@ -22,6 +22,12 @@ Icon
 node_modules/
 npm-debug.log*
 
+# Instrument tooling
+_tools/node_modules/
+
+# Checker screenshots live in alterrell-hq/reports/shots/, never here
+reports/shots/
+
 # Local-only scratch projects (not part of this site)
 foreverloved/
 

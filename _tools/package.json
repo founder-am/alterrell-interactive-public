@@ -1,0 +1,13 @@
+{
+  "name": "alterrell-interactive-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser-based structure, duplication, and geometry checker for alterrell-interactive-public pieces.",
+  "type": "commonjs",
+  "scripts": {
+    "check": "node check.js"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
