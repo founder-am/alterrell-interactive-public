@@ -8,8 +8,7 @@ in this order:
 3. alterrell-interactive.css
 4. _data/platform/PROJECT-STATUS.md  (current state, upload queue)
 5. _design/CHART-LIBRARY-REFERENCE.html  (chart work only)
-6. _design/VISUAL-REFERENCE.html  (visual work only)
-7. tools/ai-card-studio.html  (card export tool, use only when
+6. tools/ai-card-studio.html  (card export tool, use only when
    generating share-card PNGs)
 If a file is not readable, STOP and tell AMA rather than building from
 memory.
@@ -52,3 +51,9 @@ Propose demotions as a commented-out script for review.
 Every session appends exactly one line to alterrell-hq/LEDGER.md in the
 format: - item | status | date
 Status is never "completed" for work that was not verified done.
+
+## Filenames
+Any file whose name exists in more than one repo carries a first line
+identifying its repo, in the form: # READ FIRST — [repo name].
+Piece files are always index.html; when uploading one to chat, rename
+it to [piece]-index.html first.
