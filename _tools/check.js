@@ -46,6 +46,11 @@ function argValue(flag) {
 
 const EXCLUDED_DIRS = new Set(['node_modules', '.git', '_tools', 'old']);
 
+// Discovered, but not pieces. The site hub and the Naming series landing
+// page carry no hero/breadcrumb/tab contract, so piece rules cannot be
+// scored against them without manufacturing failures.
+const NON_PIECE = new Set(['index.html', 'naming/index.html']);
+
 function discover(dir, rel = '') {
   const out = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -210,13 +215,42 @@ function collect(TOL) {
   };
 
   const all = [...document.querySelectorAll('*')];
-  const tabs = [...document.querySelectorAll('[role=tab]')];
   const tablists = [...document.querySelectorAll('[role=tablist]')];
-  const panels = [...document.querySelectorAll('[role=tabpanel]')];
 
-  // Primary tab bar: first tablist in document order that actually holds tabs.
-  const primary = tablists.find((tl) => tl.querySelector('[role=tab]')) || null;
+  /* The primary tab bar is the piece's `.ai-tabs` container. Carousel dot
+   * strips are also role=tablist / role=tab, and correctly so per ARIA —
+   * they are slide pickers, not the piece's section navigation. Structure
+   * rules S3-S8 describe the section navigation only, so everything
+   * outside the primary bar is explicitly out of scope. */
+  const TAB_BAR = '.ai-tabs[role=tablist]';
+  const primaryBars = [...document.querySelectorAll(TAB_BAR)];
+  const primary =
+    primaryBars[0] ||
+    tablists.find((tl) => !tl.closest('.carousel') && tl.querySelector('[role=tab]')) ||
+    null;
   const primaryTabs = primary ? [...primary.querySelectorAll('[role=tab]')] : [];
+  const tabs = primaryTabs;
+
+  // Panels belonging to the section navigation, not carousel slides.
+  const panels = [...document.querySelectorAll('[role=tabpanel]')].filter(
+    (p) => !p.closest('.carousel')
+  );
+
+  const outOfScope = tablists
+    .filter((tl) => tl !== primary)
+    .map((tl) => ({
+      selector: cssPath(tl),
+      value: `${tl.querySelectorAll('[role=tab]').length} role=tab children`,
+      label: tl.getAttribute('aria-label') || '(no aria-label)',
+    }));
+  const scope = {
+    primaryBar: primary ? cssPath(primary) : null,
+    primaryBarMatchedBy: primaryBars.length ? TAB_BAR : primary ? 'fallback: non-carousel tablist' : 'none',
+    primaryTabCount: primaryTabs.length,
+    primaryTabLabels: primaryTabs.map((t) => t.textContent.trim()),
+    outOfScope,
+    totalTablists: tablists.length,
+  };
 
   /* ---------- structure ---------- */
   const linkEls = [...document.querySelectorAll('link[rel~=stylesheet]')];
@@ -250,8 +284,9 @@ function collect(TOL) {
     hasBreadcrumbEl: !!breadcrumb,
     hasNavEl: !!nav,
     breadcrumbBeforeNav: breadcrumbOrder,
-    tablistCount: tablists.length,
-    tablistSelectors: tablists.map(cssPath),
+    scope,
+    primaryBarCount: primaryBars.length || (primary ? 1 : 0),
+    primaryBarSelectors: (primaryBars.length ? primaryBars : primary ? [primary] : []).map(cssPath),
     tabCount: tabs.length,
     panelCount: panels.length,
     badDataTarget: tabs
@@ -317,28 +352,37 @@ function collect(TOL) {
     });
   }
 
-  /* ---------- G3: 44x44 minimum target ---------- */
-  const g3 = { inline: [], control: [] };
-  const targets = [...document.querySelectorAll('button, a, input')];
+  /* ---------- G3: 44x44 minimum target ----------
+   * Hard scope boundary. Only real controls are evaluated: button, input,
+   * select, textarea, and links that compute to block or inline-block. An
+   * inline link inside a p or li inherits its line box and cannot reach
+   * 44px tall without breaking the paragraph, so it is not a control and
+   * is not evaluated or counted at all. */
+  const g3 = { control: [] };
+  const targets = [...document.querySelectorAll('button, input, select, textarea, a')];
   let g3Considered = 0;
+  let g3SkippedInline = 0;
   for (const el of targets) {
     if (!rendered(el)) continue;
     const cs = getComputedStyle(el);
     if (cs.visibility === 'hidden') continue;
     if (el.tagName === 'INPUT' && el.type === 'hidden') continue;
+
+    if (el.tagName === 'A') {
+      const blockish = cs.display === 'block' || cs.display === 'inline-block';
+      const inlineInText = !blockish && !!el.closest('p, li');
+      if (inlineInText) { g3SkippedInline++; continue; }
+      if (!blockish) { g3SkippedInline++; continue; }
+    }
+
     g3Considered++;
     const r = el.getBoundingClientRect();
     if (r.width >= 44 - TOL && r.height >= 44 - TOL) continue;
-    const isInlineText =
-      el.tagName === 'A' &&
-      cs.display.startsWith('inline') &&
-      !!el.closest('p, li, td, figcaption, blockquote');
-    const rec = {
+    g3.control.push({
       selector: cssPath(el),
       value: `${r.width.toFixed(1)}x${r.height.toFixed(1)}`,
       text: el.textContent.trim().slice(0, 40),
-    };
-    (isInlineText ? g3.inline : g3.control).push(rec);
+    });
   }
 
   /* ---------- G4: tabs outside a non-scrollable tab bar ---------- */
@@ -364,17 +408,129 @@ function collect(TOL) {
     });
   }
 
-  /* ---------- G5: widest paragraph ---------- */
-  let widest = null;
+  /* ---------- G5: widest paragraph, measured per LINE ----------
+   * Total paragraph length is width-invariant and therefore useless as a
+   * measure. What matters for readability is characters per rendered line.
+   * Range.getClientRects() returns one rect per line box, so grouping
+   * rects by their top edge gives a true rendered line count. */
+  const lineMetrics = (p) => {
+    const text = p.textContent.replace(/\s+/g, ' ').trim();
+    if (!text) return null;
+    const range = document.createRange();
+    range.selectNodeContents(p);
+    const rects = [...range.getClientRects()].filter((r) => r.width > 0 && r.height > 0);
+    if (!rects.length) return null;
+    const tops = new Set(rects.map((r) => Math.round(r.top)));
+    const lines = Math.max(1, tops.size);
+    const widestLine = Math.max(...rects.map((r) => r.width));
+    return {
+      widthPx: Math.round(p.getBoundingClientRect().width),
+      widestLinePx: Math.round(widestLine),
+      chars: text.length,
+      lines,
+      charsPerLine: Math.round(text.length / lines),
+      selector: cssPath(p),
+    };
+  };
+
+  let widest = null;   // widest rendered paragraph box (the spec's target)
+  let longestLine = null; // highest chars-per-line anywhere on the page
   for (const p of document.querySelectorAll('p')) {
     if (!rendered(p)) continue;
-    const text = p.textContent.replace(/\s+/g, ' ').trim();
-    if (!text) continue;
-    const w = p.getBoundingClientRect().width;
-    if (!widest || w > widest.widthPx) {
-      widest = { widthPx: Math.round(w), chars: text.length, selector: cssPath(p) };
-    }
+    const m = lineMetrics(p);
+    if (!m) continue;
+    if (!widest || m.widthPx > widest.widthPx) widest = m;
+    if (!longestLine || m.charsPerLine > longestLine.charsPerLine) longestLine = m;
   }
+
+  /* ---------- G7: WCAG contrast on headings and paragraphs ----------
+   * Composites alpha correctly and walks ancestors for the first opaque
+   * background. Where a background-image or gradient is in play the true
+   * backdrop is not computable from styles alone, so the element is
+   * reported as UNKNOWN rather than guessed at. */
+  const parseColor = (str) => {
+    const m = String(str).match(/rgba?\(([^)]+)\)/);
+    if (!m) return null;
+    const parts = m[1].split(/[,\s/]+/).filter(Boolean).map(Number);
+    const [r, g, b] = parts;
+    const a = parts.length > 3 ? parts[3] : 1;
+    return { r, g, b, a };
+  };
+  const over = (fg, bg) => ({
+    r: fg.r * fg.a + bg.r * (1 - fg.a),
+    g: fg.g * fg.a + bg.g * (1 - fg.a),
+    b: fg.b * fg.a + bg.b * (1 - fg.a),
+    a: 1,
+  });
+  const lum = ({ r, g, b }) => {
+    const f = (v) => {
+      const c = v / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    };
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  const ratio = (a, b) => {
+    const [l1, l2] = [lum(a), lum(b)].sort((x, y) => y - x);
+    return (l1 + 0.05) / (l2 + 0.05);
+  };
+
+  const backdrop = (el) => {
+    let layers = [];
+    let node = el;
+    let image = null;
+    while (node && node.nodeType === 1) {
+      const cs = getComputedStyle(node);
+      if (cs.backgroundImage && cs.backgroundImage !== 'none' && !image) {
+        image = { selector: cssPath(node), value: cs.backgroundImage.slice(0, 60) };
+      }
+      const c = parseColor(cs.backgroundColor);
+      if (c && c.a > 0) {
+        layers.push(c);
+        if (c.a >= 1) break;
+      }
+      node = node.parentElement;
+    }
+    let base = { r: 255, g: 255, b: 255, a: 1 };
+    for (let i = layers.length - 1; i >= 0; i--) base = over(layers[i], base);
+    return { color: base, image };
+  };
+
+  const g7 = { fails: [], unknown: [], considered: 0 };
+  for (const el of document.querySelectorAll('h1, h2, h3, h4, h5, h6, p')) {
+    if (!rendered(el)) continue;
+    const cs = getComputedStyle(el);
+    if (cs.visibility === 'hidden' || cs.display === 'none') continue;
+    // Only elements holding their own visible text.
+    const own = [...el.childNodes]
+      .filter((n) => n.nodeType === 3)
+      .map((n) => n.nodeValue.trim())
+      .join('');
+    if (!own) continue;
+    const fg = parseColor(cs.color);
+    if (!fg) continue;
+    g7.considered++;
+
+    const bd = backdrop(el);
+    const fgOn = fg.a < 1 ? over(fg, bd.color) : fg;
+    const cr = ratio(fgOn, bd.color);
+    const size = parseFloat(cs.fontSize);
+    const required = size >= 24 ? 3 : 4.5;
+
+    const rec = {
+      selector: cssPath(el),
+      value: `${cr.toFixed(2)}:1 (need ${required}:1) — ${cs.color} on rgb(${Math.round(bd.color.r)}, ${Math.round(bd.color.g)}, ${Math.round(bd.color.b)}) at ${size}px`,
+      text: own.slice(0, 40),
+      ratio: Number(cr.toFixed(2)),
+      required,
+    };
+    if (bd.image) {
+      rec.value += ` [background-image on ${bd.image.selector}, backdrop not computable]`;
+      g7.unknown.push(rec);
+      continue;
+    }
+    if (cr < required) g7.fails.push(rec);
+  }
+  g7.fails.sort((a, b) => a.ratio - b.ratio);
 
   /* ---------- G6: tab bar offset from top of document ---------- */
   let tabBarOffset = null;
@@ -388,9 +544,12 @@ function collect(TOL) {
     g2,
     g3,
     g3Considered,
+    g3SkippedInline,
     g4,
     g5: widest,
+    g5LongestLine: longestLine,
     g6: tabBarOffset,
+    g7,
     docHeight: document.documentElement.scrollHeight,
   };
 }
@@ -423,10 +582,15 @@ function evalStructure(d, relPath) {
     r.S2 = s.breadcrumbBeforeNav ? P() : F('.ai-nav precedes .ai-breadcrumb');
   }
 
+  // Scoped: exactly one primary tab bar. Carousel dot strips are excluded.
+  const oos = s.scope.outOfScope.length;
   r.S3 =
-    s.tablistCount === 1
-      ? P()
-      : F(`${s.tablistCount} tablists`, s.tablistSelectors.map((sel) => ({ selector: sel, value: 'role=tablist' })));
+    s.primaryBarCount === 1
+      ? P(oos ? `${oos} carousel tablist(s) out of scope` : '')
+      : F(
+          `${s.primaryBarCount} primary tab bars${oos ? ` (+${oos} carousel tablists, out of scope)` : ''}`,
+          s.primaryBarSelectors.map((sel) => ({ selector: sel, value: 'primary tab bar' }))
+        );
 
   if (s.tabCount === 0) {
     r.S4 = NA('no tabs');
@@ -470,15 +634,14 @@ function evalGeometry(d) {
 
   r.G2 = d.g2.length === 0 ? P() : F(`${d.g2.length} clipped`, d.g2);
 
-  const g3Total = d.g3.inline.length + d.g3.control.length;
   r.G3 =
     d.g3Considered === 0
-      ? NA('no interactive elements rendered')
-      : g3Total === 0
-        ? P()
+      ? NA('no controls in scope')
+      : d.g3.control.length === 0
+        ? P(`${d.g3Considered} controls checked, ${d.g3SkippedInline} inline links out of scope`)
         : F(
-            `${g3Total}/${d.g3Considered} under 44x44 (${d.g3.control.length} controls, ${d.g3.inline.length} inline text links)`,
-            [...d.g3.control, ...d.g3.inline]
+            `${d.g3.control.length}/${d.g3Considered} controls under 44x44 (${d.g3SkippedInline} inline links out of scope)`,
+            d.g3.control
           );
 
   r.G4 =
@@ -487,6 +650,16 @@ function evalGeometry(d) {
       : d.g4.length === 0
         ? P()
         : F(`${d.g4.length} tabs out of bounds`, d.g4);
+
+  r.G7 =
+    d.g7.considered === 0
+      ? NA('no text elements')
+      : d.g7.fails.length === 0
+        ? P(d.g7.unknown.length ? `${d.g7.unknown.length} not computable (background-image)` : '')
+        : F(
+            `${d.g7.fails.length}/${d.g7.considered} below WCAG minimum${d.g7.unknown.length ? `, ${d.g7.unknown.length} not computable` : ''}`,
+            d.g7.fails
+          );
 
   return r;
 }
@@ -501,13 +674,22 @@ function evalGeometry(d) {
     process.exit(1);
   }
 
-  const pieces = discover(REPO).sort();
+  const discovered = discover(REPO).sort();
+  const excludedPieces = discovered.filter((p) => NON_PIECE.has(p));
+  const only = argValue('--only');
+  const onlyWidth = argValue('--width') ? Number(argValue('--width')) : null;
+  let pieces = discovered.filter((p) => !NON_PIECE.has(p));
+  if (only) pieces = pieces.filter((p) => p.includes(only));
   if (!pieces.length) {
     console.error('FATAL: no pieces discovered');
     process.exit(1);
   }
-  console.log(`Discovered ${pieces.length} pieces:`);
-  pieces.forEach((p) => console.log(`  ${p}`));
+  console.log(`Included (${pieces.length} pieces):`);
+  pieces.forEach((p) => console.log(`  + ${p}`));
+  console.log(`Excluded (${excludedPieces.length}, not pieces):`);
+  excludedPieces.forEach((p) =>
+    console.log(`  - ${p}  (${p === 'index.html' ? 'site hub' : 'series landing page'})`)
+  );
 
   const platformSelectors = extractSelectors(fs.readFileSync(PLATFORM_CSS, 'utf8'));
   console.log(`\nPlatform stylesheet: ${platformSelectors.size} distinct selectors\n`);
@@ -531,7 +713,7 @@ function evalGeometry(d) {
     const piece = { path: rel, slug, widths: {}, structure: null, d1: null, errors: [] };
     console.log(`\n=== ${rel} (${slug})`);
 
-    for (const { w, h } of WIDTHS) {
+    for (const { w, h } of WIDTHS.filter((v) => !onlyWidth || v.w === onlyWidth)) {
       const ctx = await browser.newContext({
         viewport: { width: w, height: h },
         deviceScaleFactor: 1,
@@ -556,6 +738,7 @@ function evalGeometry(d) {
 
         if (w === STRUCTURE_WIDTH) {
           piece.structure = evalStructure(data, rel);
+          piece.scope = data.structure.scope;
           const inline = extractSelectors(data.structure.inlineStyleText);
           const shared = [...inline].filter((sel) => platformSelectors.has(sel)).sort();
           piece.d1 = {
