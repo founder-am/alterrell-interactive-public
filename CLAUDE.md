@@ -22,3 +22,33 @@ containing writes contains no questions.
 Every session in this repo appends one line to
 ../alterrell-hq/LEDGER.md under the current week heading, then
 commits and pushes alterrell-hq.
+
+---
+
+# Working rules
+
+## Output
+Any answer longer than 5 lines is written to a file, not printed to the
+terminal. Write it to alterrell-hq/reports/YYYY-MM-DD-[slug].md and print
+only the file path plus a summary of at most 3 lines. This applies to
+findings, analyses, recommendations, error explanations, and disposition
+lists, not only to formal reports. If a session produces several such
+answers, append to one file rather than creating several.
+
+## Model
+Any task touching more than one file runs on Opus 5. Sonnet is for
+single-file mechanical passes only. Haiku is for read-and-report only.
+State which model ran the task in the summary.
+
+## Rules and exceptions
+A rule exists only if _tools/check.js evaluates it. Prose rules are not
+rules. There is no exceptions file. A failing rule stays FAIL and may
+carry a KNOWN date; the failure count is never reduced for bookkeeping.
+A rule failing on most pieces is a wrong rule, not many broken pieces.
+
+## Writes
+Never move a file to old/ or delete a file without explicit instruction.
+Propose demotions as a commented-out script for review.
+Every session appends exactly one line to alterrell-hq/LEDGER.md in the
+format: - item | status | date
+Status is never "completed" for work that was not verified done.
