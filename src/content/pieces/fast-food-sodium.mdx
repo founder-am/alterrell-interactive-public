@@ -1,0 +1,184 @@
+---
+title: "Fast Food's Hidden Sodium Tax"
+description: "How the cheapest meals carry the heaviest health cost."
+status: live
+category: industry
+format: interactive
+stakes: "Public health"
+publishDate: 2024-03-01
+hero:
+  headline: "Fast Food's Hidden Sodium Tax"
+  dek: "The meals we can afford are the meals most likely to hurt us. That's not accident — it's architecture."
+journey:
+  youtube: "https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
+  substack: "https://alterrell.substack.com/s/alterrell-interactive"
+tabs:
+  - id: tab-overview
+    label: Overview
+  - id: tab-the-data
+    label: The Data
+  - id: tab-by-chain
+    label: By Chain
+  - id: tab-share
+    label: Share to Social
+  - id: tab-sources
+    label: Sources
+---
+
+import TabSection from '../../components/TabSection.astro';
+import Carousel from '../../components/Carousel.astro';
+
+<TabSection id="tab-overview" active>
+
+<span class="ai-eyebrow">Overview</span>
+<h2 class="ai-h2">Nearly half of fast food meals exceed your daily sodium limit in a single sitting.</h2>
+
+<Carousel lane="teal" label="Key sodium findings">
+  <article class="carousel__card card--a" role="group" aria-label="Slide 1 of 4">
+    <div class="carousel__card-head">
+      <span class="carousel__card-label">Daily intake</span>
+      <span class="carousel__card-stat">42%</span>
+      <h3 class="carousel__card-title">Exceed daily sodium in one meal</h3>
+    </div>
+    <div class="carousel__card-body">
+      <p class="carousel__card-text">Nearly half of fast food meals exceed the FDA's recommended daily sodium limit in a single serving.</p>
+    </div>
+    <div class="carousel__card-foot">
+      <span class="carousel__card-source">FDA · 2024</span>
+    </div>
+  </article>
+
+  <article class="carousel__card card--d" role="group" aria-label="Slide 2 of 4">
+    <div class="carousel__card-head">
+      <span class="carousel__card-label">The gap</span>
+      <h3 class="carousel__card-title">Daily limit vs. average intake</h3>
+    </div>
+    <div class="carousel__card-body">
+      <div class="carousel__compare-grid">
+        <div class="carousel__compare-cell">
+          <span class="carousel__compare-val">2,300mg</span>
+          <span class="carousel__compare-desc">FDA recommended daily limit</span>
+        </div>
+        <div class="carousel__compare-cell">
+          <span class="carousel__compare-val">3,400mg</span>
+          <span class="carousel__compare-desc">Average fast food daily intake</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel__card-foot">
+      <span class="carousel__card-source">FDA / USDA · 2024</span>
+    </div>
+  </article>
+
+  <article class="carousel__card card--c" role="group" aria-label="Slide 3 of 4">
+    <div class="carousel__card-head">
+      <span class="carousel__card-label">The argument</span>
+    </div>
+    <div class="carousel__card-body">
+      <blockquote class="carousel__card-quote">"The cheapest meals carry the heaviest health cost."</blockquote>
+      <p class="carousel__card-attribution">Alterrell Interactive</p>
+    </div>
+    <div class="carousel__card-foot">
+      <span class="carousel__card-source">Editorial · 2024</span>
+    </div>
+  </article>
+
+  <article class="carousel__card card--b" role="group" aria-label="Slide 4 of 4">
+    <div class="carousel__card-head">
+      <span class="carousel__card-label">By chain</span>
+      <h3 class="carousel__card-title">Sodium per meal (% of daily limit)</h3>
+    </div>
+    <div class="carousel__card-body">
+      <div class="carousel__bar-row">
+        <span class="carousel__bar-label">Wendy's</span>
+        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="88"></div></div>
+        <span class="carousel__bar-val">88%</span>
+      </div>
+      <div class="carousel__bar-row">
+        <span class="carousel__bar-label">McDonald's</span>
+        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="75"></div></div>
+        <span class="carousel__bar-val">75%</span>
+      </div>
+      <div class="carousel__bar-row">
+        <span class="carousel__bar-label">Burger King</span>
+        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="70"></div></div>
+        <span class="carousel__bar-val">70%</span>
+      </div>
+      <div class="carousel__bar-row">
+        <span class="carousel__bar-label">Subway</span>
+        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="52"></div></div>
+        <span class="carousel__bar-val">52%</span>
+      </div>
+    </div>
+    <div class="carousel__card-foot">
+      <span class="carousel__card-source">CDC · 2023</span>
+    </div>
+  </article>
+</Carousel>
+
+<div class="ai-body">
+  <p>Fast food isn't just convenient — for tens of millions of Americans, it's the most affordable meal on the table. But the structural economics of cheap food hide a compounding health cost: the salt load in a single value meal can exceed what nutritionists recommend for an entire day.</p>
+  <p>This isn't accidental. Sodium is a cheap preservative, a flavor amplifier, and an appetite driver. The industry has spent decades calibrating these levels to maximize repeat purchase. The result is a system where the people who can least afford healthcare are buying the food most likely to put them in the hospital.</p>
+</div>
+
+<div class="share-block">
+  <div class="share-block-label">Share this piece</div>
+  <p class="share-block-nudge">If you've ever eaten a value meal and wondered why you were still thirsty an hour later — this is why.</p>
+  <div class="share-block-btns">
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Ffast-food-sodium%2F&text=The%20cheapest%20meals%20carry%20the%20heaviest%20health%20cost.%20%40alterrell&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X">&#x58; Share on X</a>
+    <button class="share-btn share-btn--outline" id="piece-copy-link" aria-label="Copy link">&#x25CE; <span id="piece-copy-label">Copy link</span></button>
+  </div>
+  <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+</div>
+
+</TabSection>
+
+<TabSection id="tab-the-data">
+
+<span class="ai-eyebrow">The Data</span>
+<h2 class="ai-h2">Sodium levels across the fast food landscape.</h2>
+
+<div class="ai-body">
+  <p>Content for this tab — detailed data breakdown — is carried over from the live piece at <code>/fast-food-sodium/</code>. The MDX system is ready to accept it.</p>
+</div>
+
+</TabSection>
+
+<TabSection id="tab-by-chain">
+
+<span class="ai-eyebrow">By Chain</span>
+<h2 class="ai-h2">How each chain stacks up.</h2>
+
+<div class="ai-body">
+  <p>Chain-by-chain breakdown content goes here.</p>
+</div>
+
+</TabSection>
+
+<TabSection id="tab-share">
+
+<span class="ai-eyebrow">Share to Social</span>
+<h2 class="ai-h2">Share this piece.</h2>
+
+<div class="ai-body">
+  <p>Pre-rendered share cards and platform CTAs go here.</p>
+</div>
+
+</TabSection>
+
+<TabSection id="tab-sources">
+
+<span class="ai-eyebrow">Sources ——</span>
+<h2 class="ai-h2">Methodology &amp; Sources</h2>
+
+<div class="ai-body">
+  <p>All sodium data sourced from FDA nutritional databases and CDC dietary surveys. Chain-specific data compiled from published nutritional guides cross-referenced against 2022–2024 menu samples. Analysis performed by Alterrell Interactive.</p>
+</div>
+
+<ol class="ai-source-list">
+  <li>U.S. Food and Drug Administration. <em>Sodium in Your Diet.</em> FDA.gov · 2024</li>
+  <li>Centers for Disease Control and Prevention. <em>Sodium Intake Among Adults.</em> CDC.gov · 2023</li>
+  <li>U.S. Department of Agriculture. <em>Dietary Guidelines for Americans 2020–2025.</em> USDA.gov · 2020</li>
+</ol>
+
+</TabSection>

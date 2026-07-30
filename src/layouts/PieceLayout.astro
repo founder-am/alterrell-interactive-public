@@ -1,0 +1,220 @@
+---
+/**
+ * PieceLayout — the canonical scaffold for every Alterrell Interactive piece.
+ *
+ * Renders: breadcrumb → nav → dark hero → journey block → tab bar → <slot /> → footer
+ * The MDX body (slot) should contain <TabSection> components for each tab.
+ *
+ * Compliant with SKEL-01 through SKEL-06, HERO-01 through HERO-04,
+ * JRNY-01 through JRNY-05, TABS-09 through TABS-11, FOOT-01.
+ */
+import type { CollectionEntry } from 'astro:content';
+import '../styles/alterrell-interactive.css';
+
+interface Props {
+  piece: CollectionEntry<'pieces'>;
+}
+
+const { piece } = Astro.props;
+const {
+  title,
+  description,
+  hero,
+  journey,
+  tabs,
+  category,
+  status,
+} = piece.data;
+
+// In Astro v5 legacy collections, piece.id includes the .mdx extension.
+// piece.slug is the clean version (filename without extension).
+const slug = (piece as any).slug ?? piece.id.replace(/\.mdx?$/, '');
+const canonicalUrl = `https://interactive.alterrell.com/${slug}/`;
+const ogImage      = `https://interactive.alterrell.com/og/${slug}.png`;
+
+const youtubeUrl   = journey?.youtube  ?? 'https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS';
+const substackUrl  = journey?.substack ?? 'https://alterrell.substack.com/s/alterrell-interactive';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} — Alterrell Interactive</title>
+  <meta name="description" content={description}>
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="Alterrell Interactive">
+  <meta property="og:title"       content={`${title} — Alterrell Interactive`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image"       content={ogImage}>
+  <meta property="og:url"         content={canonicalUrl}>
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@alterrell">
+  <meta name="twitter:title"       content={`${title} — Alterrell Interactive`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image"       content={ogImage}>
+  <link rel="canonical" href={canonicalUrl}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body class="has-breadcrumb">
+
+<!-- ── 1. BREADCRUMB (must precede nav in DOM — SKEL-02) ── -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">{title}</span>
+</nav>
+
+<!-- ── 2. PLATFORM NAV ── -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/">← All pieces</a>
+  </div>
+</nav>
+
+<!-- ── 3. HERO — always dark (HERO-01) ── -->
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed">{hero.headline}</h1>
+    {hero.dek && <p class="ai-hero-dek">{hero.dek}</p>}
+  </div>
+</header>
+
+<!-- ── 4. JOURNEY BLOCK — exactly 3 items, above tab bar (JRNY-01) ── -->
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-inner">
+
+    <a href={youtubeUrl} target="_blank" rel="noopener" class="ai-journey-path primary">
+      <span class="ai-journey-icon">▶</span>
+      <span class="ai-journey-label">Watch</span>
+      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
+      <span class="ai-journey-meta">Video essays on the numbers behind the news</span>
+      <span class="ai-journey-cta">Watch now →</span>
+    </a>
+
+    <a href={substackUrl} target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon">✦</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">Long-form essays and analysis</span>
+      <span class="ai-journey-cta">Read now →</span>
+    </a>
+
+    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="ai-journey-path tertiary">
+      <span class="ai-journey-icon">◆</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── 5. TAB BAR — ARIA per TABS-09; active + dark fill per TABS-11 ── -->
+{tabs && tabs.length > 0 && (
+  <div
+    class="ai-tabs ai-tabs--fill"
+    id="piece-tabs"
+    role="tablist"
+    aria-label={`${title} sections`}
+  >
+    {tabs.map((tab, i) => (
+      <button
+        id={`tab-btn-${tab.id}`}
+        class:list={['ai-tab', { active: i === 0 }]}
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-controls={tab.id}
+        data-target={tab.id}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+)}
+
+<!-- ── 6. TAB SECTIONS (slot — filled by MDX <TabSection> components) ── -->
+<slot />
+
+<!-- ── 7. FOOTER (FOOT-01: wordmark + back-link + copyright only) ── -->
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    </div>
+
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">← All pieces</a>
+    </div>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
+      <a href={canonicalUrl} class="ai-footer-url">interactive.alterrell.com/{slug}</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ── 8. SCRIPTS ── -->
+<script is:inline>
+(function () {
+  var tabs     = Array.from(document.querySelectorAll('.ai-tab'));
+  var tabBar   = document.getElementById('piece-tabs');
+  var sections = tabs.map(function (tab) {
+    return document.getElementById(tab.dataset.target);
+  });
+
+  function activateTab(targetId) {
+    tabs.forEach(function (t) {
+      var on = t.dataset.target === targetId;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    sections.forEach(function (s) {
+      if (!s) return;
+      s.classList.toggle('active', s.id === targetId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var active = tabs.find(function (t) { return t.dataset.target === targetId; });
+    if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activateTab(tab.dataset.target); });
+  });
+
+  function checkTabOverflow() {
+    if (tabBar && tabBar.scrollWidth <= tabBar.clientWidth) {
+      tabBar.classList.add('no-fade');
+    } else if (tabBar) {
+      tabBar.classList.remove('no-fade');
+    }
+  }
+  checkTabOverflow();
+  window.addEventListener('resize', checkTabOverflow);
+
+  // Copy link button
+  var copyBtn   = document.getElementById('piece-copy-link');
+  var copyLabel = document.getElementById('piece-copy-label');
+  if (copyBtn && copyLabel) {
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          copyLabel.textContent = 'Copied!';
+          setTimeout(function () { copyLabel.textContent = 'Copy link'; }, 2000);
+        });
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

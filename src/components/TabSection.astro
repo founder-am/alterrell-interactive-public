@@ -1,0 +1,32 @@
+---
+/**
+ * TabSection — wraps a tab panel in the platform's section shell.
+ *
+ * Usage in MDX:
+ *   import TabSection from '../../components/TabSection.astro';
+ *   <TabSection id="tab-overview" active>
+ *     ## Content here
+ *   </TabSection>
+ *
+ * The first section should get `active` so it's visible on load.
+ * The tab bar in PieceLayout drives switching via vanilla JS.
+ */
+interface Props {
+  id: string;
+  /** Extra CSS classes — e.g. "ai-section--dark" or "ai-section--white" */
+  class?: string;
+  /** Show this section by default (first tab) */
+  active?: boolean;
+}
+const { id, class: extraClass, active = false } = Astro.props;
+---
+<section
+  id={id}
+  class:list={['ai-section', extraClass, { active }]}
+  role="tabpanel"
+  aria-labelledby={`tab-btn-${id}`}
+>
+  <div class="ai-inner">
+    <slot />
+  </div>
+</section>

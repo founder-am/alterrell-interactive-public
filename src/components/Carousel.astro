@@ -1,0 +1,117 @@
+---
+/**
+ * Carousel — platform standard card carousel.
+ *
+ * Usage:
+ *   <Carousel lane="teal" label="Key findings from this piece">
+ *     <article class="carousel__card card--a" ...>...</article>
+ *     ...
+ *   </Carousel>
+ *
+ * lane: "teal" (default, light treatment) | "dark" (Obsidian Futures)
+ * label: aria-label for the region
+ * The carousel JS is included inline — no separate script file needed.
+ */
+interface Props {
+  lane?: 'teal' | 'dark';
+  label?: string;
+}
+const { lane = 'teal', label = 'Key findings' } = Astro.props;
+---
+<div
+  class={`carousel carousel--${lane}`}
+  role="region"
+  aria-label={label}
+  aria-roledescription="carousel"
+>
+  <div class="carousel__outer">
+    <div class="carousel__viewport">
+      <div class="carousel__track">
+        <slot />
+      </div>
+    </div>
+    <div class="carousel__controls">
+      <div class="carousel__arrows">
+        <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous slide">&#8592;</button>
+        <button class="carousel__arrow carousel__arrow--next" aria-label="Next slide">&#8594;</button>
+      </div>
+      <div class="carousel__dots" role="tablist" aria-label="Slide indicators"></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  var GAP = 16;
+  function initCarousel(el) {
+    var track  = el.querySelector('.carousel__track');
+    var cards  = Array.from(el.querySelectorAll('.carousel__card'));
+    var prev   = el.querySelector('.carousel__arrow--prev');
+    var next   = el.querySelector('.carousel__arrow--next');
+    var dotsEl = el.querySelector('.carousel__dots');
+    var vp     = el.querySelector('.carousel__viewport');
+    if (!track || !cards.length) return;
+    var idx = 0, startX = 0;
+
+    el.querySelectorAll('.carousel__bar-fill[data-fill]').forEach(function(b) {
+      b.style.setProperty('--c-bar-fill', b.dataset.fill + '%');
+    });
+
+    function cardW()   { return cards[0].getBoundingClientRect().width; }
+    function vpW()     { return vp.getBoundingClientRect().width; }
+    function visible() { var cw = cardW(); return cw > 0 ? Math.max(1, Math.floor((vpW() + GAP) / (cw + GAP))) : 1; }
+    function maxIdx()  { return Math.max(0, cards.length - visible()); }
+
+    function buildDots() {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = '';
+      cards.forEach(function(_, i) {
+        var d = document.createElement('button');
+        d.className = 'carousel__dot';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', function() { idx = i; update(); });
+        dotsEl.appendChild(d);
+      });
+    }
+
+    function update() {
+      var cw = cardW();
+      idx = Math.min(idx, maxIdx());
+      track.style.transform = 'translateX(-' + (idx * (cw + GAP)) + 'px)';
+      if (prev) prev.disabled = idx === 0;
+      if (next) next.disabled = idx >= maxIdx();
+      if (dotsEl) dotsEl.querySelectorAll('.carousel__dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === idx);
+        d.setAttribute('aria-selected', String(i === idx));
+      });
+    }
+
+    if (prev) prev.addEventListener('click', function() { if (idx > 0) { idx--; update(); } });
+    if (next) next.addEventListener('click', function() { if (idx < maxIdx()) { idx++; update(); } });
+
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft'  && idx > 0)       { idx--; update(); e.preventDefault(); }
+      if (e.key === 'ArrowRight' && idx < maxIdx()) { idx++; update(); e.preventDefault(); }
+    });
+
+    if (vp) {
+      vp.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      vp.addEventListener('touchend', function(e) {
+        var dx = startX - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) {
+          if (dx > 0 && idx < maxIdx()) idx++;
+          else if (dx < 0 && idx > 0)  idx--;
+          update();
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', update);
+    buildDots();
+    update();
+  }
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+})();
+</script>
