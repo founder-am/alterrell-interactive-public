@@ -14,6 +14,7 @@
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
+const crypto = require('crypto');
 const { chromium } = require('playwright');
 
 const REPO = path.resolve(__dirname, '..');
@@ -22,6 +23,10 @@ const PLATFORM_CSS = path.join(REPO, 'alterrell-interactive.css');
 // They live in alterrell-hq, the sibling checkout. Override with --shots.
 const HQ = path.resolve(REPO, '..', 'alterrell-hq');
 const DEFAULT_SHOTS_DIR = path.join(HQ, 'reports', 'shots');
+// Pinned browser build. Geometry, line breaking, and contrast are only
+// comparable across runs of the same engine build, so a mismatch is
+// reported loudly rather than silently absorbed.
+const PINNED_CHROMIUM = '151.0.7922.34';
 const WIDTHS = [
   { w: 360, h: 780 },
   { w: 768, h: 1024 },
@@ -34,6 +39,12 @@ const args = process.argv.slice(2);
 const jsonOut = argValue('--json') || path.join(__dirname, 'results.json');
 const SHOTS_DIR = argValue('--shots') || DEFAULT_SHOTS_DIR;
 const takeShots = !args.includes('--no-shots');
+// --deterministic omits wall-clock and environment-varying fields so two
+// runs over an unchanged tree produce byte-identical JSON.
+const deterministic = args.includes('--deterministic');
+// --file <path> tests one shell directly, bypassing discovery. Needed for
+// fixtures and any shell not named index.html.
+const singleFile = argValue('--file');
 
 function argValue(flag) {
   const i = args.indexOf(flag);
@@ -66,6 +77,29 @@ function discover(dir, rel = '') {
     }
   }
   return out;
+}
+
+/* Drop anything .gitignore excludes. Build output (dist/) and scratch
+ * directories contain index.html files that are not pieces; auditing
+ * them reports defects in generated copies of the real thing. Filtering
+ * on git rather than a hardcoded list means the checker follows the
+ * repo's own definition of what is not source. */
+function dropIgnored(relPaths) {
+  if (!relPaths.length) return { kept: relPaths, ignored: [] };
+  let out = '';
+  try {
+    out = require('child_process').execSync('git check-ignore --stdin', {
+      cwd: REPO,
+      input: relPaths.join('\n'),
+      encoding: 'utf8',
+    });
+  } catch (e) {
+    // exit 1 simply means nothing matched; anything else is a real error
+    if (e.status !== 1) throw e;
+    out = e.stdout || '';
+  }
+  const ignored = new Set(out.split('\n').map((s) => s.trim()).filter(Boolean));
+  return { kept: relPaths.filter((p) => !ignored.has(p)), ignored: [...ignored] };
 }
 
 /* Static server. Pieces reference root-absolute assets (/_data/config.js),
@@ -189,6 +223,15 @@ function splitSelectorList(prelude) {
 /* ------------------------------------------------------------------ *
  * 3. In-page evaluation
  * ------------------------------------------------------------------ */
+
+/* === RULE DEFINITIONS BEGIN ===
+ * Everything between this marker and RULE DEFINITIONS END is the rule
+ * logic: what is measured and what counts as PASS/FAIL. It is hashed
+ * (SHA-256, see ruleHash()) and the hash is printed on every run and
+ * carried in every report, so a report can be tied to the exact rule
+ * text that produced it. Changing anything in this block changes the
+ * hash by design. Changing the driver, discovery, or output format
+ * below does not. */
 
 // Serialised into the browser. Returns raw measurements; PASS/FAIL is
 // decided in Node so the rule logic stays in one readable place.
@@ -664,6 +707,43 @@ function evalGeometry(d) {
   return r;
 }
 
+/* === RULE DEFINITIONS END === */
+
+/* ------------------------------------------------------------------ *
+ * 4b. Rule hash + font vendoring
+ * ------------------------------------------------------------------ */
+
+// SHA-256 over the rule-definition block only. Normalises line endings
+// so the hash does not depend on checkout settings.
+function ruleHash() {
+  const src = fs.readFileSync(__filename, 'utf8').replace(/\r\n/g, '\n');
+  const b = src.indexOf('/* === RULE DEFINITIONS BEGIN ===');
+  const e = src.indexOf('/* === RULE DEFINITIONS END === */');
+  if (b < 0 || e < 0) throw new Error('rule-definition markers not found');
+  return crypto.createHash('sha256').update(src.slice(b, e), 'utf8').digest('hex');
+}
+
+const FONTS_DIR = path.join(__dirname, 'fonts');
+
+/* Serve the vendored webfonts instead of letting the page reach the
+ * network. Text geometry (G1, G3, G5, G7 line boxes) is meaningless if
+ * the font that rendered it was a fallback because a CDN was slow. */
+async function routeFonts(page) {
+  const cssPath = path.join(FONTS_DIR, 'fonts.css');
+  if (!fs.existsSync(cssPath)) {
+    throw new Error(`vendored fonts missing at ${FONTS_DIR} — run: node fetch-fonts.js`);
+  }
+  const css = fs.readFileSync(cssPath, 'utf8');
+  await page.route('https://fonts.googleapis.com/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'text/css; charset=utf-8', body: css })
+  );
+  await page.route('https://fonts.gstatic.com/**', (route) => {
+    const file = path.join(FONTS_DIR, 'woff2', path.basename(new URL(route.request().url()).pathname));
+    if (!fs.existsSync(file)) return route.abort();
+    return route.fulfill({ status: 200, contentType: 'font/woff2', body: fs.readFileSync(file) });
+  });
+}
+
 /* ------------------------------------------------------------------ *
  * 5. Driver
  * ------------------------------------------------------------------ */
@@ -674,22 +754,65 @@ function evalGeometry(d) {
     process.exit(1);
   }
 
-  const discovered = discover(REPO).sort();
-  const excludedPieces = discovered.filter((p) => NON_PIECE.has(p));
-  const only = argValue('--only');
+  const RULE_HASH = ruleHash();
   const onlyWidth = argValue('--width') ? Number(argValue('--width')) : null;
-  let pieces = discovered.filter((p) => !NON_PIECE.has(p));
-  if (only) pieces = pieces.filter((p) => p.includes(only));
-  if (!pieces.length) {
-    console.error('FATAL: no pieces discovered');
-    process.exit(1);
+  let pieces, excludedPieces = [];
+
+  if (singleFile) {
+    // Bypass discovery entirely. Path may be absolute or relative to cwd;
+    // it is converted to a repo-relative path so the static server can
+    // reach it and relative asset paths still resolve.
+    const abs = path.resolve(singleFile);
+    if (!fs.existsSync(abs)) {
+      console.error(`FATAL: --file not found: ${abs}`);
+      process.exit(1);
+    }
+    if (!abs.startsWith(REPO + path.sep)) {
+      console.error(`FATAL: --file must live inside ${REPO}`);
+      process.exit(1);
+    }
+    // A directory is accepted too: every .html directly inside it is
+    // tested. The fixture meta-test uses this to run one browser instead
+    // of one per fixture.
+    if (fs.statSync(abs).isDirectory()) {
+      pieces = fs
+        .readdirSync(abs)
+        .filter((f) => f.endsWith('.html'))
+        .sort()
+        .map((f) => path.relative(REPO, path.join(abs, f)).split(path.sep).join('/'));
+      if (!pieces.length) {
+        console.error(`FATAL: no .html files in ${abs}`);
+        process.exit(1);
+      }
+      console.log(`Directory (discovery bypassed), ${pieces.length} files:`);
+      pieces.forEach((p) => console.log(`  + ${p}`));
+    } else {
+      pieces = [path.relative(REPO, abs).split(path.sep).join('/')];
+      console.log(`Single file (discovery bypassed):\n  + ${pieces[0]}`);
+    }
+  } else {
+    const raw = discover(REPO).sort();
+    const { kept: discovered, ignored } = dropIgnored(raw);
+    if (ignored.length) {
+      console.log(`Skipped ${ignored.length} gitignored path(s):`);
+      ignored.sort().forEach((p) => console.log(`  ~ ${p}`));
+    }
+    excludedPieces = discovered.filter((p) => NON_PIECE.has(p));
+    const only = argValue('--only');
+    pieces = discovered.filter((p) => !NON_PIECE.has(p));
+    if (only) pieces = pieces.filter((p) => p.includes(only));
+    if (!pieces.length) {
+      console.error('FATAL: no pieces discovered');
+      process.exit(1);
+    }
+    console.log(`Included (${pieces.length} pieces):`);
+    pieces.forEach((p) => console.log(`  + ${p}`));
+    console.log(`Excluded (${excludedPieces.length}, not pieces):`);
+    excludedPieces.forEach((p) =>
+      console.log(`  - ${p}  (${p === 'index.html' ? 'site hub' : 'series landing page'})`)
+    );
   }
-  console.log(`Included (${pieces.length} pieces):`);
-  pieces.forEach((p) => console.log(`  + ${p}`));
-  console.log(`Excluded (${excludedPieces.length}, not pieces):`);
-  excludedPieces.forEach((p) =>
-    console.log(`  - ${p}  (${p === 'index.html' ? 'site hub' : 'series landing page'})`)
-  );
+  console.log(`\nRule hash (SHA-256 of rule-definition block):\n  ${RULE_HASH}`);
 
   const platformSelectors = extractSelectors(fs.readFileSync(PLATFORM_CSS, 'utf8'));
   console.log(`\nPlatform stylesheet: ${platformSelectors.size} distinct selectors\n`);
@@ -699,9 +822,24 @@ function evalGeometry(d) {
   const { server, port } = await serveRepo();
   console.log(`Serving repo at http://127.0.0.1:${port}\n`);
   const browser = await chromium.launch();
+  const CHROMIUM = browser.version();
+  const PLAYWRIGHT = require('playwright/package.json').version;
+  if (CHROMIUM !== PINNED_CHROMIUM) {
+    console.warn(
+      `\n!! Chromium ${CHROMIUM} does not match the pinned ${PINNED_CHROMIUM}.\n` +
+      `   Geometry and contrast results are only comparable within one build.\n` +
+      `   Update PINNED_CHROMIUM deliberately, and say so in the report.\n`
+    );
+  }
+  console.log(`Chromium ${CHROMIUM} (pinned ${PINNED_CHROMIUM}), Playwright ${PLAYWRIGHT}\n`);
   const results = {
-    generated: new Date().toISOString(),
+    ...(deterministic ? {} : { generated: new Date().toISOString() }),
     repo: REPO,
+    chromium: CHROMIUM,
+    chromiumPinned: PINNED_CHROMIUM,
+    playwright: PLAYWRIGHT,
+    ruleHash: RULE_HASH,
+    fontsVendored: fs.existsSync(path.join(FONTS_DIR, 'manifest.json')),
     widths: WIDTHS.map((v) => v.w),
     platformSelectorCount: platformSelectors.size,
     pieces: [],
@@ -724,8 +862,12 @@ function evalGeometry(d) {
       page.on('pageerror', (err) => piece.errors.push(`[${w}] pageerror: ${err.message}`));
 
       try {
+        await routeFonts(page);
         await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+        // Never measure text before its font is the font it will be.
+        await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(1200); // let tab/carousel init settle
+        await page.evaluate(() => document.fonts.ready); // re-settle after JS
         const data = await page.evaluate(collect, TOL);
 
         piece.widths[w] = {
@@ -733,7 +875,10 @@ function evalGeometry(d) {
           g5: data.g5,
           g6: data.g6,
           docHeight: data.docHeight,
-          failedRequests: failedReqs.filter((u) => !u.startsWith('data:')),
+          // Strip the ephemeral port so output does not vary per run.
+          failedRequests: failedReqs
+            .filter((u) => !u.startsWith('data:'))
+            .map((u) => u.replace(/127\.0\.0\.1:\d+/g, '127.0.0.1:PORT')),
         };
 
         if (w === STRUCTURE_WIDTH) {
@@ -756,7 +901,7 @@ function evalGeometry(d) {
         }
         console.log(`  ${w}px  ok`);
       } catch (err) {
-        piece.errors.push(`[${w}] ${err.message}`);
+        piece.errors.push(`[${w}] ${err.message}`.replace(/127\.0\.0\.1:\d+/g, '127.0.0.1:PORT'));
         console.log(`  ${w}px  ERROR ${err.message.split('\n')[0]}`);
       } finally {
         await ctx.close();
@@ -797,6 +942,8 @@ function evalGeometry(d) {
   fs.mkdirSync(path.dirname(jsonOut), { recursive: true });
   fs.writeFileSync(jsonOut, JSON.stringify(results, null, 2));
   console.log(`\n--- totals ---`);
+  console.log(`Rule hash: ${RULE_HASH}`);
+  console.log(`Chromium: ${CHROMIUM} (pinned ${PINNED_CHROMIUM})`);
   console.log(`FAIL cells: ${results.summary.totalFailCells}`);
   console.log(`D1 duplicate selectors: ${results.summary.totalDuplicateSelectors}`);
   console.log(`Most-failed: ${results.summary.rulesByPieceCount.slice(0, 5).map((r) => `${r.rule}(${r.pieces})`).join(' ')}`);

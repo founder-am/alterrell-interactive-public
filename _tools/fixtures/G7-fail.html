@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fixture</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; background: #ffffff; color: #111111;
+           font-family: Arial, Helvetica, sans-serif; }
+    .wrap { width: 1000px; margin: 0 auto; padding: 16px; }
+    h1 { font-size: 32px; color: #111111; margin: 0 0 16px; }
+    p  { font-size: 16px; color: #111111; margin: 0 0 12px; }
+    .ai-tabs { display: flex; gap: 4px; margin: 0 0 16px; }
+    .ai-tab { flex: 1 1 auto; height: 48px; min-width: 48px; border: 0;
+              background: #eeeeee; color: #111111; font-size: 14px; }
+    a.btn { display: inline-block; width: 140px; height: 48px; line-height: 48px;
+            text-align: center; background: #eeeeee; color: #111111;
+            text-decoration: none; }
+    .faint { color: #bbbbbb; background: #ffffff; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Fixture heading</h1>
+  <div class="ai-tabs" role="tablist" aria-label="Sections">
+    <button class="ai-tab" role="tab" aria-selected="true" aria-controls="p1" data-target="p1">One</button>
+    <button class="ai-tab" role="tab" aria-selected="false" aria-controls="p2" data-target="p2">Two</button>
+  </div>
+  <section id="p1" role="tabpanel"><p>Body copy at a comfortable contrast.</p></section>
+  <section id="p2" role="tabpanel"><p>More body copy at a comfortable contrast.</p></section>
+  <a class="btn" href="#target">Action</a>
+  <p class="faint">Low contrast paragraph.</p>
+</div>
+</body>
+</html>

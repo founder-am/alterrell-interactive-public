@@ -5,9 +5,13 @@
   "description": "Browser-based structure, duplication, and geometry checker for alterrell-interactive-public pieces.",
   "type": "commonjs",
   "scripts": {
-    "check": "node check.js"
+    "check": "node check.js",
+    "meta-test": "node meta-test.js",
+    "fixtures": "node fixtures/_generate.js",
+    "fonts": "node fetch-fonts.js"
   },
+  "comment": "playwright is pinned exactly, not caret-ranged: the Chromium build ships with it, and geometry/contrast results are only comparable within one engine build. See PINNED_CHROMIUM in check.js.",
   "dependencies": {
-    "playwright": "^1.47.0"
+    "playwright": "1.62.0"
   }
 }
