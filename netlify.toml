@@ -1,11 +1,24 @@
 [build]
-  command = "pnpm run build"
+  # npm, not pnpm: this repo carries package-lock.json and no pnpm lockfile,
+  # so `pnpm run build` would resolve dependencies without honouring the
+  # committed lockfile and could deploy a different tree than was tested.
+  command = "npm run build"
+  # Must stay equal to `outDir` in astro.config.mjs, which is now set
+  # explicitly to './dist' so the two cannot drift apart silently.
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-[[redirects]]
-  from   = "/*"
-  to     = "/index.html"
-  status = 404
+# No catch-all redirect here, on purpose.
+#
+# This file previously carried:
+#   from = "/*"  to = "/index.html"  status = 404
+# which served the hub page under a 404 status: the hub rendered normally,
+# but every unmatched URL returned "not found" to crawlers and link
+# checkers, and the real 404 page was never reached. netlify.toml redirects
+# take precedence over public/_redirects, so this rule also overrode the
+# correct catch-all defined there.
+#
+# Redirects now live in exactly one place: public/_redirects, which Astro
+# copies into dist/ at build time.

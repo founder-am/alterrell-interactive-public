@@ -14,5 +14,8 @@
 /what-in-a-name/*         /naming/part-1/:splat  301
 /big-black-love/*         /gay-uncles/:splat     301
 
-# Catch-all: anything not matched → 404
+# Catch-all: anything not matched → the real 404 page, under a 404 status.
+# This must point at /404.html, never at /index.html: sending the hub under
+# a 404 status makes every mistyped URL look like the site works while
+# telling crawlers it does not.
 /*    /404.html    404

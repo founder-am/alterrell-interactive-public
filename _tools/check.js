@@ -18,7 +18,21 @@ const crypto = require('crypto');
 const { chromium } = require('playwright');
 
 const REPO = path.resolve(__dirname, '..');
-const PLATFORM_CSS = path.join(REPO, 'alterrell-interactive.css');
+const DIST = path.join(REPO, 'dist');
+// Canonical stylesheet moved under src/styles/ in the Astro migration.
+// Read-only here; used only to measure D1 duplication.
+const PLATFORM_CSS = [
+  path.join(REPO, 'src', 'styles', 'alterrell-interactive.css'),
+  path.join(REPO, 'alterrell-interactive.css'),
+].find((p) => fs.existsSync(p)) || path.join(REPO, 'alterrell-interactive.css');
+
+/* Web root for the harness server.
+ *
+ * dist/ pages reference their assets root-absolutely (/_astro/...), so when
+ * scoring build output the server must be rooted at dist/ — serving from the
+ * repo root would 404 every stylesheet and silently turn every geometry and
+ * contrast measurement into a measurement of unstyled HTML. */
+let SERVE_ROOT = REPO;
 // Screenshots are binaries and never belong in the public piece repo.
 // They live in alterrell-hq, the sibling checkout. Override with --shots.
 const HQ = path.resolve(REPO, '..', 'alterrell-hq');
@@ -45,6 +59,9 @@ const deterministic = args.includes('--deterministic');
 // --file <path> tests one shell directly, bypassing discovery. Needed for
 // fixtures and any shell not named index.html.
 const singleFile = argValue('--file');
+// Source directory scanned by the content family (T7b). Overridable so the
+// fixtures can point it at a controlled directory.
+const contentDir = path.resolve(argValue('--content-dir') || path.join(REPO, 'src', 'content'));
 
 function argValue(flag) {
   const i = args.indexOf(flag);
@@ -62,18 +79,18 @@ const EXCLUDED_DIRS = new Set(['node_modules', '.git', '_tools', 'old']);
 // scored against them without manufacturing failures.
 const NON_PIECE = new Set(['index.html', 'naming/index.html']);
 
+/* Discovery is build output. The instrument scores what ships, not what is
+ * authored: an .astro source file is not a page, and a page can fail a rule
+ * for reasons no source file shows. Every .html under dist/ is in scope,
+ * excluding nothing — including the hub and 404.html. */
 function discover(dir, rel = '') {
   const out = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const relPath = rel ? `${rel}/${entry.name}` : entry.name;
     if (entry.isDirectory()) {
-      if (EXCLUDED_DIRS.has(entry.name)) continue;
-      if (relPath === '_data/archive') continue;
       out.push(...discover(path.join(dir, entry.name), relPath));
-    } else if (entry.isFile()) {
-      if (entry.name === 'index.html' || entry.name.endsWith('.new.html')) {
-        out.push(relPath);
-      }
+    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+      out.push(relPath);
     }
   }
   return out;
@@ -126,8 +143,8 @@ function serveRepo() {
   return new Promise((resolve) => {
     const server = http.createServer((req, res) => {
       const urlPath = decodeURIComponent(req.url.split('?')[0]);
-      let file = path.join(REPO, path.normalize(urlPath).replace(/^(\.\.[/\\])+/, ''));
-      if (!file.startsWith(REPO)) {
+      let file = path.join(SERVE_ROOT, path.normalize(urlPath).replace(/^(\.\.[/\\])+/, ''));
+      if (!file.startsWith(SERVE_ROOT)) {
         res.writeHead(403).end('forbidden');
         return;
       }
@@ -707,6 +724,52 @@ function evalGeometry(d) {
   return r;
 }
 
+/* ---------- content family ----------
+ *
+ * T7b: no content file under src/content/ contains a <style> block.
+ *
+ * A source rule, not a DOM rule. It is evaluated once per run against the
+ * content directory rather than per page, because by the time a piece is
+ * rendered a piece-local <style> block is indistinguishable from platform
+ * CSS — the defect is only visible in the source. Content files carry copy;
+ * styling belongs to the canonical stylesheet, which is read-only, so a
+ * <style> block in an .mdx is how the canonical CSS gets forked in practice.
+ */
+function evalContent(contentDir) {
+  if (!fs.existsSync(contentDir)) {
+    return { T7b: NA(`no content directory at ${contentDir}`) };
+  }
+  const files = [];
+  (function walk(d, rel = '') {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const r = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) walk(path.join(d, e.name), r);
+      else if (/\.mdx?$/.test(e.name)) files.push({ rel: r, full: path.join(d, e.name) });
+    }
+  })(contentDir);
+
+  if (!files.length) return { T7b: NA('no .md/.mdx content files') };
+
+  const offenders = [];
+  for (const f of files) {
+    const text = fs.readFileSync(f.full, 'utf8');
+    const hits = [...text.matchAll(/<style[\s>]/gi)];
+    if (hits.length) {
+      const line = text.slice(0, hits[0].index).split('\n').length;
+      offenders.push({
+        selector: f.rel,
+        value: `${hits.length} <style> block(s), first at line ${line}`,
+      });
+    }
+  }
+  return {
+    T7b:
+      offenders.length === 0
+        ? P(`${files.length} content files clean`)
+        : F(`${offenders.length}/${files.length} content files carry a <style> block`, offenders),
+  };
+}
+
 /* === RULE DEFINITIONS END === */
 
 /* ------------------------------------------------------------------ *
@@ -771,6 +834,9 @@ async function routeFonts(page) {
       console.error(`FATAL: --file must live inside ${REPO}`);
       process.exit(1);
     }
+    // --file serves from the repo root, so a target anywhere in the tree
+    // (fixtures, scratch, a single dist page) resolves its assets.
+    SERVE_ROOT = REPO;
     // A directory is accepted too: every .html directly inside it is
     // tested. The fixture meta-test uses this to run one browser instead
     // of one per fixture.
@@ -791,26 +857,22 @@ async function routeFonts(page) {
       console.log(`Single file (discovery bypassed):\n  + ${pieces[0]}`);
     }
   } else {
-    const raw = discover(REPO).sort();
-    const { kept: discovered, ignored } = dropIgnored(raw);
-    if (ignored.length) {
-      console.log(`Skipped ${ignored.length} gitignored path(s):`);
-      ignored.sort().forEach((p) => console.log(`  ~ ${p}`));
-    }
-    excludedPieces = discovered.filter((p) => NON_PIECE.has(p));
-    const only = argValue('--only');
-    pieces = discovered.filter((p) => !NON_PIECE.has(p));
-    if (only) pieces = pieces.filter((p) => p.includes(only));
-    if (!pieces.length) {
-      console.error('FATAL: no pieces discovered');
+    if (!fs.existsSync(DIST)) {
+      console.error(`FATAL: no build output at ${DIST}. Run: npm run build`);
       process.exit(1);
     }
-    console.log(`Included (${pieces.length} pieces):`);
-    pieces.forEach((p) => console.log(`  + ${p}`));
-    console.log(`Excluded (${excludedPieces.length}, not pieces):`);
-    excludedPieces.forEach((p) =>
-      console.log(`  - ${p}  (${p === 'index.html' ? 'site hub' : 'series landing page'})`)
-    );
+    // Serve dist/ as the web root so its root-absolute /_astro/ asset paths
+    // resolve exactly as they will in production.
+    SERVE_ROOT = DIST;
+    const only = argValue('--only');
+    pieces = discover(DIST).sort();
+    if (only) pieces = pieces.filter((p) => p.includes(only));
+    if (!pieces.length) {
+      console.error(`FATAL: no .html found under ${DIST}`);
+      process.exit(1);
+    }
+    console.log(`Build output (${pieces.length} pages, nothing excluded):`);
+    pieces.forEach((p) => console.log(`  + dist/${p}`));
   }
   console.log(`\nRule hash (SHA-256 of rule-definition block):\n  ${RULE_HASH}`);
 
@@ -820,7 +882,7 @@ async function routeFonts(page) {
   if (takeShots) fs.mkdirSync(SHOTS_DIR, { recursive: true });
 
   const { server, port } = await serveRepo();
-  console.log(`Serving repo at http://127.0.0.1:${port}\n`);
+  console.log(`Serving ${path.relative(REPO, SERVE_ROOT) || '.'}/ at http://127.0.0.1:${port}\n`);
   const browser = await chromium.launch();
   const CHROMIUM = browser.version();
   const PLAYWRIGHT = require('playwright/package.json').version;
@@ -840,6 +902,9 @@ async function routeFonts(page) {
     playwright: PLAYWRIGHT,
     ruleHash: RULE_HASH,
     fontsVendored: fs.existsSync(path.join(FONTS_DIR, 'manifest.json')),
+    contentDir: path.relative(REPO, contentDir) || '.',
+    // Content family (T7b) is a source rule, evaluated once per run.
+    contentRules: evalContent(contentDir),
     widths: WIDTHS.map((v) => v.w),
     platformSelectorCount: platformSelectors.size,
     pieces: [],
@@ -916,6 +981,13 @@ async function routeFonts(page) {
   // Summary
   let fails = 0;
   const byRule = {};
+  for (const [rule, res] of Object.entries(results.contentRules || {})) {
+    if (res.status === 'FAIL') {
+      fails++;
+      byRule[rule] = byRule[rule] || new Set();
+      byRule[rule].add('(repo)');
+    }
+  }
   for (const piece of results.pieces) {
     const bump = (rule) => {
       fails++;

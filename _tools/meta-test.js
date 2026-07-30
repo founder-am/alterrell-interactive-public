@@ -29,7 +29,11 @@ const TOOLS = __dirname;
 const FIXTURES = path.join(TOOLS, 'fixtures');
 const STRUCTURE = ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10','S11'];
 const GEOMETRY = ['G1','G2','G3','G4','G7'];
-const ALL = [...STRUCTURE, ...GEOMETRY];
+// Content rules are source rules: evaluated once per run against a content
+// directory, not per rendered page. Their fixtures are directories of .mdx,
+// not HTML shells, so they are driven separately below.
+const CONTENT = ['T7b'];
+const ALL = [...STRUCTURE, ...GEOMETRY, ...CONTENT];
 
 const jsonOut = path.join(os.tmpdir(), `fixture-run-${process.pid}.json`);
 console.log(`Running check.js over ${FIXTURES} at width 1280...\n`);
@@ -45,7 +49,7 @@ const bySlug = new Map(run.pieces.map((p) => [path.basename(p.path, '.html'), p]
 const failures = [];
 
 /* ---- 1. coverage ---- */
-for (const rule of ALL) {
+for (const rule of [...STRUCTURE, ...GEOMETRY]) {
   for (const kind of ['pass', 'fail']) {
     const name = `${rule}-${kind}`;
     if (!fs.existsSync(path.join(FIXTURES, `${name}.html`))) {
@@ -53,6 +57,34 @@ for (const rule of ALL) {
     } else if (!bySlug.has(name)) {
       failures.push(`COVERAGE  ${name}.html exists but produced no result`);
     }
+  }
+}
+for (const rule of CONTENT) {
+  for (const kind of ['pass', 'fail']) {
+    const dir = path.join(FIXTURES, `content-${rule.toLowerCase()}-${kind}`);
+    if (!fs.existsSync(dir)) {
+      failures.push(`COVERAGE  ${rule} has no ${kind} fixture (${path.basename(dir)}/ missing)`);
+    }
+  }
+}
+
+/* ---- 1b. content rules ---- */
+for (const rule of CONTENT) {
+  for (const kind of ['pass', 'fail']) {
+    const dir = path.join(FIXTURES, `content-${rule.toLowerCase()}-${kind}`);
+    if (!fs.existsSync(dir)) continue;
+    const out = path.join(os.tmpdir(), `content-${rule}-${kind}-${process.pid}.json`);
+    execFileSync(
+      process.execPath,
+      [path.join(TOOLS, 'check.js'), '--file', path.join(FIXTURES, 'S1-pass.html'),
+       '--content-dir', dir, '--width', '1280', '--no-shots', '--deterministic', '--json', out],
+      { stdio: ['ignore', 'pipe', 'inherit'] }
+    );
+    const res = JSON.parse(fs.readFileSync(out, 'utf8'));
+    fs.unlinkSync(out);
+    const want = kind === 'fail' ? 'FAIL' : 'PASS';
+    const got = (res.contentRules[rule] || {}).status;
+    if (got !== want) failures.push(`TARGET    ${rule} ${kind} fixture: expected ${want}, got ${got}`);
   }
 }
 
@@ -63,7 +95,7 @@ const statusOf = (piece, rule) => {
   return w && w.geometry ? (w.geometry[rule] || {}).status : undefined;
 };
 
-for (const rule of ALL) {
+for (const rule of [...STRUCTURE, ...GEOMETRY]) {
   const family = STRUCTURE.includes(rule) ? STRUCTURE : GEOMETRY;
   for (const kind of ['pass', 'fail']) {
     const piece = bySlug.get(`${rule}-${kind}`);

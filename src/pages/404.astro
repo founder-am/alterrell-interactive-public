@@ -1,0 +1,72 @@
+---
+/**
+ * 404. Built to dist/404.html, which Netlify serves automatically for any
+ * unmatched path, and which public/_redirects names explicitly as the
+ * catch-all target.
+ *
+ * Uses only canonical classes from alterrell-interactive.css. It defines no
+ * selectors of its own and carries no <style> block, so it stays inside the
+ * piece-CSS budget by construction.
+ */
+import '../styles/alterrell-interactive.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — Alterrell Interactive</title>
+  <meta name="description" content="That page does not exist. Browse every Alterrell Interactive piece instead.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="has-breadcrumb">
+
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Alterrell Interactive</a>
+  <span class="ai-breadcrumb-sep">›</span>
+  <span class="ai-breadcrumb-current">Page not found</span>
+</nav>
+
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/">← All pieces</a>
+  </div>
+</nav>
+
+<header class="ai-hero">
+  <div class="ai-inner">
+    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
+    <h1 class="ai-hero-hed">Page not found</h1>
+    <p class="ai-hero-dek">That address does not point at anything. The piece may have been renamed, or the link may be incomplete.</p>
+  </div>
+</header>
+
+<section class="ai-section active">
+  <div class="ai-inner">
+    <h2 class="ai-h2">Try the hub</h2>
+    <p>Every piece is listed on the front page, newest first.</p>
+    <p><a href="/" class="ai-footer-series-hub">← All pieces</a></p>
+  </div>
+</section>
+
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    </div>
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">← All pieces</a>
+    </div>
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">© 2026 Alterrell Interactive</span>
+      <a href="https://interactive.alterrell.com/" class="ai-footer-url">interactive.alterrell.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
