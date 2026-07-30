@@ -41,3 +41,7 @@ _data/naming/**/*.csv
 # Keep markdown and HTML in _data tracked
 !_data/**/*.md
 !_data/**/*.html
+node_modules/
+dist/
+.astro/
+.DS_Store
