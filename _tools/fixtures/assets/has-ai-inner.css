@@ -1,0 +1,5 @@
+/* S10 positive fixture stylesheet.
+   Stands in for the bundled canonical CSS: a real file, reachable from the
+   page, carrying the .ai-inner marker S10 looks for. */
+.ai-inner { max-width: 1600px; margin: 0 auto; padding: 0 1.25rem; }
+.ai-tab { min-height: 44px; }

@@ -27,7 +27,12 @@ const OUT = __dirname;
 
 const sDoc = (o = {}) => {
   const bodyClass = o.bodyClass ?? 'has-breadcrumb';
-  const css = o.noCss ? '' : '\n  <link rel="stylesheet" href="../../alterrell-interactive.css">';
+  // S10 asserts that a linked stylesheet resolves to a real file containing
+  // .ai-inner — not that its filename says "alterrell-interactive.css",
+  // which a bundler rewrites. The default fixture stylesheet carries the
+  // marker; o.cssNoMarker swaps in a valid file that does not.
+  const sheet = o.cssNoMarker ? 'assets/no-ai-inner.css' : 'assets/has-ai-inner.css';
+  const css = o.noCss ? '' : `\n  <link rel="stylesheet" href="${sheet}">`;
   const crumb = '<nav class="ai-breadcrumb" aria-label="Breadcrumb"><span>Alterrell Interactive</span></nav>';
   const nav = '<nav class="ai-nav" role="navigation" aria-label="Platform navigation"><a href="/">Alterrell Interactive</a></nav>';
   const order = o.navFirst ? `${nav}\n${crumb}` : `${crumb}\n${nav}`;
@@ -72,7 +77,9 @@ const STRUCTURE = {
   S7: { fail: { firstTab: 'Introduction' } },
   S8: { fail: { lastTab: 'Notes' } },
   S9: { fail: { bbl: true } },
-  S10: { fail: { noCss: true } },
+  // Negative case is the one a filename check cannot see: a stylesheet that
+  // links fine and resolves fine but is not the platform's.
+  S10: { fail: { cssNoMarker: true } },
   S11: { fail: { placeholder: true } },
 };
 

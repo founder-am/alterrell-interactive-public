@@ -74,10 +74,19 @@ function argValue(flag) {
 
 const EXCLUDED_DIRS = new Set(['node_modules', '.git', '_tools', 'old']);
 
-// Discovered, but not pieces. The site hub and the Naming series landing
-// page carry no hero/breadcrumb/tab contract, so piece rules cannot be
-// scored against them without manufacturing failures.
-const NON_PIECE = new Set(['index.html', 'naming/index.html']);
+/* Two classes of built page.
+ *
+ * PIECE — an article. Carries the full contract: breadcrumb, hero, tab bar,
+ *   Overview first, Sources last. Evaluated against every rule.
+ * PAGE  — shipped, but not an article. The hub is a card grid; 404 is a
+ *   stub. Neither has a tab bar or an Overview tab, so scoring S1-S11
+ *   against them manufactures failures that describe the rule, not the page.
+ *   Still evaluated against geometry, because a page that overflows at 360
+ *   or hides a control under 44px is broken whatever class it is in.
+ *
+ * Paths are relative to dist/. */
+const PAGE_CLASS = new Set(['index.html', '404.html']);
+const classOf = (rel) => (PAGE_CLASS.has(rel) ? 'PAGE' : 'PIECE');
 
 /* Discovery is build output. The instrument scores what ships, not what is
  * authored: an .astro source file is not a page, and a page can fail a rule
@@ -626,7 +635,44 @@ function fmt(list, n = 5) {
   return list.slice(0, n).map((o) => `\`${o.selector}\` — ${o.value}`);
 }
 
-function evalStructure(d, relPath) {
+/* S10 support.
+ *
+ * A bundler renames the canonical stylesheet to a content-hashed artefact
+ * (/_astro/_slug_.4InW3Dje.css), so matching on the filename
+ * "alterrell-interactive.css" tests the pipeline, not the page. What matters
+ * is that a linked stylesheet actually resolves to a real file in the served
+ * tree, and that the file is the platform's — established here by the
+ * presence of the .ai-inner selector, which every piece layout depends on.
+ *
+ * Each href is resolved the way the browser resolved it: root-absolute
+ * against the served root, otherwise relative to the page's own directory.
+ * Remote hrefs (the font CDN) are reported but cannot satisfy the rule. */
+const S10_MARKER = '.ai-inner';
+
+function resolveStylesheets(hrefs, pageRel, rootDir) {
+  return hrefs.map((href) => {
+    if (!href) return { href: '(empty)', kind: 'invalid' };
+    if (/^(https?:)?\/\//i.test(href) || href.startsWith('data:')) {
+      return { href, kind: 'remote' };
+    }
+    const clean = href.split('?')[0].split('#')[0];
+    const file = clean.startsWith('/')
+      ? path.join(rootDir, clean)
+      : path.resolve(path.dirname(path.join(rootDir, pageRel)), clean);
+    if (!file.startsWith(rootDir) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
+      return { href, kind: 'missing', file: path.relative(rootDir, file) };
+    }
+    const text = fs.readFileSync(file, 'utf8');
+    return {
+      href,
+      kind: text.includes(S10_MARKER) ? 'platform' : 'no-marker',
+      file: path.relative(rootDir, file),
+      bytes: text.length,
+    };
+  });
+}
+
+function evalStructure(d, relPath, rootDir) {
   const s = d.structure;
   const r = {};
 
@@ -674,7 +720,26 @@ function evalStructure(d, relPath) {
   r.S9 = s.bblCount === 0 ? P() : F(`${s.bblCount} bbl- elements`, s.bblEls);
 
   const linksCss = s.stylesheetHrefs.some((h) => h && h.includes('alterrell-interactive.css'));
-  r.S10 = linksCss ? P() : F(`stylesheets: ${s.stylesheetHrefs.join(', ') || '(none)'}`);
+  const sheets = resolveStylesheets(s.stylesheetHrefs, relPath, rootDir);
+  const platform = sheets.filter((x) => x.kind === 'platform');
+  r.S10 = platform.length
+    ? P(`${platform[0].file} contains ${S10_MARKER}`)
+    : F(
+        sheets.length
+          ? `no linked stylesheet resolves to a file containing ${S10_MARKER}`
+          : 'no <link rel="stylesheet"> on the page',
+        sheets.map((x) => ({
+          selector: x.href.length > 70 ? x.href.slice(0, 67) + '...' : x.href,
+          value:
+            x.kind === 'remote'
+              ? 'remote stylesheet, cannot satisfy the rule'
+              : x.kind === 'missing'
+                ? `resolves to ${x.file}, which does not exist in the served tree`
+                : x.kind === 'invalid'
+                  ? 'empty href'
+                  : `resolves to ${x.file} (${x.bytes}b) but does not contain ${S10_MARKER}`,
+        }))
+      );
 
   r.S11 =
     s.placeholders.length === 0
@@ -871,8 +936,13 @@ async function routeFonts(page) {
       console.error(`FATAL: no .html found under ${DIST}`);
       process.exit(1);
     }
+    const asPiece = pieces.filter((p) => classOf(p) === 'PIECE');
+    const asPage = pieces.filter((p) => classOf(p) === 'PAGE');
     console.log(`Build output (${pieces.length} pages, nothing excluded):`);
-    pieces.forEach((p) => console.log(`  + dist/${p}`));
+    console.log(`  PIECE (${asPiece.length}) — all 17 rules:`);
+    asPiece.forEach((p) => console.log(`    + dist/${p}`));
+    console.log(`  PAGE  (${asPage.length}) — geometry only, S1-S11 not applicable:`);
+    asPage.forEach((p) => console.log(`    · dist/${p}`));
   }
   console.log(`\nRule hash (SHA-256 of rule-definition block):\n  ${RULE_HASH}`);
 
@@ -913,7 +983,10 @@ async function routeFonts(page) {
   for (const rel of pieces) {
     const slug = slugFor(rel);
     const url = `http://127.0.0.1:${port}/${rel}`;
-    const piece = { path: rel, slug, widths: {}, structure: null, d1: null, errors: [] };
+    // --file mode has no dist-relative notion of class, so everything tested
+    // directly is treated as a PIECE and gets the full rule set.
+    const pageClass = singleFile ? 'PIECE' : classOf(rel);
+    const piece = { path: rel, slug, pageClass, widths: {}, structure: null, d1: null, errors: [] };
     console.log(`\n=== ${rel} (${slug})`);
 
     for (const { w, h } of WIDTHS.filter((v) => !onlyWidth || v.w === onlyWidth)) {
@@ -947,7 +1020,9 @@ async function routeFonts(page) {
         };
 
         if (w === STRUCTURE_WIDTH) {
-          piece.structure = evalStructure(data, rel);
+          // PAGE-class files ship, and their geometry counts, but they carry
+          // no piece contract, so S1-S11 are not applicable to them.
+          piece.structure = piece.pageClass === 'PAGE' ? null : evalStructure(data, rel, SERVE_ROOT);
           piece.scope = data.structure.scope;
           const inline = extractSelectors(data.structure.inlineStyleText);
           const shared = [...inline].filter((sel) => platformSelectors.has(sel)).sort();

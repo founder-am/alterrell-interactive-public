@@ -1,0 +1,6 @@
+/* S10 negative fixture stylesheet.
+   A real, resolvable file that is simply not the platform stylesheet. This
+   is the case filename-matching could never catch: the link is valid, the
+   file exists, and the page still has no platform CSS. */
+.some-local-thing { color: #111111; }
+.another-thing { display: block; }
