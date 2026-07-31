@@ -1,0 +1,220 @@
+---
+/**
+ * Scratch page — teal lane. Not a piece. Not linked from the hub.
+ *
+ * It exists so the checker has something to measure: the Piece.astro shell
+ * at maximum plausible load. Ten tabs (the ceiling), a five-level
+ * breadcrumb, a hero with all four elements filled, and an Overview panel
+ * carrying every editorial block a real piece would use.
+ *
+ * Only the active panel is measured — `.ai-section:not(.active)` is
+ * `display: none`, so the checker sees the Overview panel and nothing else.
+ * The remaining panels are filled anyway, so a tab switch during a manual
+ * pass has something to show.
+ */
+import Piece from '../layouts/Piece.astro';
+
+const tabs = [
+  { id: 'tab-overview',      label: 'Overview' },
+  { id: 'tab-the-numbers',   label: 'The Numbers' },
+  { id: 'tab-who-pays',      label: 'Who Pays' },
+  { id: 'tab-mechanism',     label: 'The Mechanism' },
+  { id: 'tab-state-by-state',label: 'State by State' },
+  { id: 'tab-what-changed',  label: 'What Changed' },
+  { id: 'tab-counter',       label: 'The Counterargument' },
+  { id: 'tab-take-action',   label: 'Take Action' },
+  { id: 'tab-share',         label: 'Share to Social' },
+  { id: 'tab-sources',       label: 'Sources' },
+];
+
+const breadcrumb = [
+  { label: 'Alterrell Interactive', href: '/' },
+  { label: 'Investigations', href: '/' },
+  { label: 'The Cost of Admission', href: '/' },
+  { label: 'Part 3 of 7', href: '/' },
+  { label: 'Who Pays the Service Fee' },
+];
+---
+<Piece
+  title="Who Pays the Service Fee"
+  description="A structural scratch page for the Piece layout, rendered at maximum plausible load so the conformance checker has something to measure."
+  slug="scratch"
+  lane="teal"
+  headline="The fee nobody <em>voted</em> for"
+  dek="Every ticket carries a charge that no legislature passed, no regulator approved, and no buyer agreed to before checkout. Here is where it goes."
+  tags={['Industry', 'Consumer', 'Pricing', 'Long read']}
+  breadcrumb={breadcrumb}
+  tabs={tabs}
+  shareStat="27%"
+  shareNudge="Twenty-seven cents of every ticket dollar never reaches the stage."
+  shareCopy="27 cents of every ticket dollar never reaches the stage. The fee nobody voted for — interactive.alterrell.com/scratch/"
+>
+
+  <Fragment slot="tab-1">
+    <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">The charge is not a tax, but it behaves like one.</h2>
+
+    <div class="ai-body">
+      <p>A service fee is not levied by a government, is not disclosed at the point of interest, and is not negotiable at the point of sale. It is added after a buyer has chosen a seat, and it is collected by a party the buyer did not choose. In every functional respect except its name, it is a toll on attendance.</p>
+      <p>The numbers below come from settlement filings, quarterly disclosures, and a sample of 4,180 primary-market transactions collected over eighteen months. Where a figure could not be sourced twice, it is not here.</p>
+      <p>What follows is the structure, not the outrage. The outrage is available anywhere. The structure is not.</p>
+    </div>
+
+    <div class="ai-metrics">
+      <div class="ai-metric">
+        <div class="ai-metric-num">27%</div>
+        <div class="ai-metric-label">of the average ticket price is charged <strong>after</strong> the seat is selected</div>
+        <div class="ai-metric-sub">4,180 transactions, 18 months</div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-num ai-metric-num--teal">$4.1B</div>
+        <div class="ai-metric-label">collected in fees across the primary market in a single year</div>
+        <div class="ai-metric-sub">Quarterly disclosures, four operators</div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-num ai-metric-num--ink">11</div>
+        <div class="ai-metric-label">states with an all-in pricing statute on the books</div>
+        <div class="ai-metric-sub">Legislative trackers, current session</div>
+      </div>
+    </div>
+
+    <div class="ai-callout">
+      <div class="ai-callout-num">$31.40</div>
+      <p>The median fee on a $100 face-value ticket, across the four largest primary sellers. <strong>The face value is the advertised price. The fee is not.</strong></p>
+    </div>
+
+    <p class="ai-pullquote">The seat costs what the seat costs. Everything after that is a question about who is allowed to stand between a buyer and a room.</p>
+
+    <div class="ai-chart-wrap">
+      <div class="ai-chart-title">Fee share of total price, by venue capacity band</div>
+
+      <div class="ai-legend-item">Under 1,000 seats</div>
+      <div class="ai-bar-wrap"><div class="ai-bar" style="width: 34%"></div></div>
+      <div class="ai-legend-item">1,000 to 5,000 seats</div>
+      <div class="ai-bar-wrap"><div class="ai-bar" style="width: 58%"></div></div>
+      <div class="ai-legend-item">5,000 to 20,000 seats</div>
+      <div class="ai-bar-wrap"><div class="ai-bar ai-bar--orange" style="width: 79%"></div></div>
+      <div class="ai-legend-item">Over 20,000 seats</div>
+      <div class="ai-bar-wrap"><div class="ai-bar ai-bar--danger" style="width: 90%"></div></div>
+
+      <div class="ai-chart-legend">
+        <div class="ai-legend-item"><span class="ai-legend-swatch" style="background: var(--teal)"></span>At or under the band median</div>
+        <div class="ai-legend-item"><span class="ai-legend-swatch" style="background: var(--danger)"></span>Above the band median</div>
+      </div>
+      <div class="ai-stamp">Primary-market sample, 4,180 transactions</div>
+    </div>
+
+    <div class="ai-table-wrap">
+      <table class="ai-table">
+        <thead>
+          <tr>
+            <th>Operator</th>
+            <th>Face value</th>
+            <th>Service fee</th>
+            <th>Facility</th>
+            <th>Delivery</th>
+            <th>All in</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="ai-table-section" colspan="6">Arena tier</td></tr>
+          <tr><td>Operator A</td><td>$100.00</td><td class="val-bad">$22.50</td><td>$6.00</td><td>$4.95</td><td>$133.45</td></tr>
+          <tr><td>Operator B</td><td>$100.00</td><td class="val-warn">$18.75</td><td>$5.50</td><td>$3.95</td><td>$128.20</td></tr>
+          <tr><td>Operator C</td><td>$100.00</td><td class="val-good">$11.20</td><td>$4.00</td><td>$0.00</td><td>$115.20</td></tr>
+          <tr><td class="ai-table-section" colspan="6">Club tier</td></tr>
+          <tr><td>Operator A</td><td>$35.00</td><td class="val-bad">$12.40</td><td>$2.00</td><td>$3.95</td><td>$53.35</td></tr>
+          <tr><td>Operator D</td><td>$35.00</td><td class="val-good">$4.10</td><td>$0.00</td><td>$0.00</td><td>$39.10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ai-stat">
+      <span class="ai-stat-num">1 in 4</span>
+      <span class="ai-datalabel">buyers abandoned the purchase once the fee appeared</span>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-2">
+    <span class="ai-eyebrow">The Numbers</span>
+    <h2 class="ai-h2">Eighteen months, 4,180 transactions.</h2>
+    <div class="ai-body">
+      <p>Every figure in this piece resolves to a filing, a disclosure, or a transaction record. The sample is primary market only: resale carries a different fee structure and a different set of actors, and mixing the two would flatter the primary market.</p>
+    </div>
+    <div class="ai-callout ai-callout--orange">
+      <p>Sampling ran from the first Tuesday of each month, across four operators, in eleven metropolitan areas. <strong>No operator was notified in advance.</strong></p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-3">
+    <span class="ai-eyebrow">Who Pays</span>
+    <h2 class="ai-h2">The fee is flat. Incomes are not.</h2>
+    <div class="ai-body">
+      <p>A fixed charge falls hardest on the smallest purchase. On a $35 club ticket the fee is 35 percent of face value; on a $400 arena seat it is 9 percent. The buyer with the least room absorbs the largest share.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-4">
+    <span class="ai-eyebrow">The Mechanism</span>
+    <h2 class="ai-h2">Exclusivity, then extraction.</h2>
+    <div class="ai-body">
+      <p>The fee is not a price for a service. It is a price for access to a room that has already agreed not to sell tickets any other way. The contract comes first; the charge follows.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-5">
+    <span class="ai-eyebrow">State by State</span>
+    <h2 class="ai-h2">Eleven statutes, four enforcement regimes.</h2>
+    <div class="ai-body">
+      <p>All-in pricing laws exist in eleven states. Four of them carry a penalty. The remaining seven describe a duty with no consequence attached, which is a preference rather than a rule.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-6">
+    <span class="ai-eyebrow">What Changed</span>
+    <h2 class="ai-h2">The disclosure moved, not the number.</h2>
+    <div class="ai-body">
+      <p>After the last round of settlements, the fee appeared earlier in the checkout flow at three of the four operators. At none of them did the amount fall.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-7">
+    <span class="ai-eyebrow">The Counterargument</span>
+    <h2 class="ai-h2">The strongest version of the other side.</h2>
+    <div class="ai-body">
+      <p>Someone runs the servers, absorbs the chargebacks, and eats the loss when a show cancels. That work is real and it is not free. The question this piece asks is narrower: whether the price of that work is set by anything other than the absence of an alternative.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-8">
+    <span class="ai-eyebrow">Take Action</span>
+    <h2 class="ai-h2">Three things that move the number.</h2>
+    <div class="ai-body">
+      <p>Read the all-in pricing bill in your state before it reaches committee. Buy at the box office when a box office exists. And say the total out loud when someone asks what a ticket cost, because the face value is not the price.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-9">
+    <span class="ai-eyebrow">Share to Social</span>
+    <h2 class="ai-h2">Take the number with you.</h2>
+    <div class="ai-body">
+      <p>Pre-rendered cards for each finding, sized for every platform. The figure travels further than the argument does, so the figure is what the cards carry.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-10">
+    <span class="ai-eyebrow">Sources</span>
+    <h2 class="ai-h2">Methodology and sources</h2>
+    <div class="ai-body">
+      <p>Transaction figures come from a rolling sample of primary-market purchases collected over eighteen months. Operator revenue figures come from quarterly disclosures. Statute counts come from current-session legislative trackers, checked twice.</p>
+      <p>Where a figure could be sourced only once, it was cut rather than qualified.</p>
+    </div>
+    <ol class="ai-source-list">
+      <li>Quarterly disclosure, Operator A, fiscal year filings</li>
+      <li>Quarterly disclosure, Operator B, fiscal year filings</li>
+      <li>Consent decree and settlement docket, primary-market antitrust matter</li>
+      <li>All-in pricing statutes, eleven states, current session</li>
+      <li>Primary-market transaction sample, 4,180 records, eighteen months</li>
+    </ol>
+  </Fragment>
+
+</Piece>

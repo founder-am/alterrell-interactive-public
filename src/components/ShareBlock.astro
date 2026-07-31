@@ -1,0 +1,122 @@
+---
+/**
+ * ShareBlock — the Overview share block (SHARE-01, SHARE-02).
+ *
+ * Platform, not per-piece. Seven of the eight legacy pieces carried a share
+ * block, built from an invented `share-block-*` / `share-btn*` family that
+ * has no entry in the canonical stylesheet. That family is not carried
+ * forward.
+ *
+ * The canonical share system does cover an inline block: `.ai-share-trigger`
+ * is the inline element ("Inline share trigger — below a key finding"), and
+ * it opens `.ai-share-overlay` / `.ai-share-modal`, which carries the
+ * destinations. Exactly two destinations, X and Copy link, per SHARE-02.
+ *
+ * Rendered once per page by Piece.astro, into the Overview panel. The ids
+ * below are therefore page-unique by construction.
+ *
+ * Controls and the token each one consumes:
+ *   .ai-share-trigger      min-height: var(--touch)
+ *   .ai-share-modal-close  min-height / min-width: var(--touch)
+ *   .ai-share-btn          min-height: var(--touch)
+ *
+ * Known gap, reported rather than patched: `.ai-share-btn` sets no `display`
+ * and no `text-align`, so on the `<a>` that carries the X destination the
+ * label sits left rather than centred. The canonical rule assumes a
+ * `<button>`. A link-capable action button is a missing component.
+ */
+interface Props {
+  /** Trigger label — the visible call to action. */
+  label?: string;
+  /** Trigger sub-label. */
+  sub?: string;
+  /** Modal title. */
+  title?: string;
+  /** Share-card eyebrow. */
+  cardEyebrow?: string;
+  /** Share-card headline figure. */
+  cardStat?: string;
+  /** Share-card context line. */
+  cardContext?: string;
+  /** Domain stamp on the share card footer. */
+  cardStamp?: string;
+  /** Text placed in the copy box and written to the clipboard. */
+  copyText: string;
+  /** Fully-formed X intent URL. */
+  xUrl: string;
+}
+
+const {
+  label = 'Share this piece',
+  sub = 'Two destinations. Nothing tracked.',
+  title = 'Share this piece',
+  cardEyebrow = 'Alterrell Interactive',
+  cardStat = '',
+  cardContext = '',
+  cardStamp = 'interactive.alterrell.com',
+  copyText,
+  xUrl,
+} = Astro.props;
+---
+<button
+  type="button"
+  class="ai-share-trigger"
+  id="ai-share-open"
+  aria-haspopup="dialog"
+  aria-controls="ai-share-overlay"
+>
+  <span class="ai-share-trigger-icon" aria-hidden="true">&#x25CE;</span>
+  <span class="ai-share-trigger-text">
+    <span class="ai-share-trigger-label">{label}</span>
+    <span class="ai-share-trigger-sub">{sub}</span>
+  </span>
+  <span class="ai-share-trigger-arrow" aria-hidden="true">&#x2192;</span>
+</button>
+
+<div
+  class="ai-share-overlay"
+  id="ai-share-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="ai-share-modal-title"
+>
+  <div class="ai-share-modal">
+    <div class="ai-share-modal-head">
+      <h2 class="ai-share-modal-title" id="ai-share-modal-title">{title}</h2>
+      <button
+        type="button"
+        class="ai-share-modal-close"
+        id="ai-share-close"
+        aria-label="Close share dialog"
+      >CLOSE</button>
+    </div>
+
+    <div class="ai-share-modal-body">
+      <div class="ai-share-card">
+        <div class="ai-share-card-eyebrow">{cardEyebrow}</div>
+        {cardStat && <div class="ai-share-card-num">{cardStat}</div>}
+        <div class="ai-share-card-context">{cardContext}</div>
+        <div class="ai-share-card-footer">
+          <span>Alterrell Interactive</span>
+          <span>{cardStamp}</span>
+        </div>
+      </div>
+
+      <div class="ai-share-textbox" id="ai-share-textbox">{copyText}</div>
+
+      <div class="ai-share-actions">
+        <button
+          type="button"
+          class="ai-share-btn ai-share-btn--copy"
+          id="ai-share-copy-btn"
+        >Copy link</button>
+        <a
+          class="ai-share-btn ai-share-btn--download"
+          href={xUrl}
+          target="_blank"
+          rel="noopener"
+        >Share on X</a>
+      </div>
+    </div>
+  </div>
+</div>

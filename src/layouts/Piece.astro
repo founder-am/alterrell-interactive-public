@@ -1,0 +1,419 @@
+---
+/**
+ * Piece.astro — the single shell for every Alterrell Interactive piece.
+ *
+ * Structure only. This file owns chrome and nothing else: breadcrumb, nav,
+ * hero, tab bar, tab panels, share block, section nav, action link, footer.
+ * Editorial copy arrives through the ten named slots, `tab-1` .. `tab-10`.
+ *
+ * DESIGN VIEWPORT IS 360. Desktop is the enhancement, not the base.
+ *
+ * DOM order
+ *   breadcrumb -> nav -> compact hero -> tab bar -> N panels -> footer
+ *
+ *   - The hero is compact: eyebrow, headline, dek, tags. No full-bleed
+ *     block, no `.ai-inner` wrapper (which would add 2rem of side padding
+ *     on top of the hero's own 1.25rem and cost 64px of the 360px design
+ *     viewport, forcing more headline lines and a taller hero).
+ *   - There is no journey block above the tab bar. YouTube and Substack use
+ *     `.ai-footer-journey`, the canonical footer pattern. Ko-fi belongs to
+ *     the action tab and is rendered there.
+ *
+ * Tab contract
+ *   Up to 10 slots. Unused slots render nothing.
+ *   Labels come from frontmatter; the order is enforced at build time:
+ *     position 1   Overview
+ *     position n-2 the action tab
+ *     position n-1 Share to Social
+ *     position n   Sources
+ *
+ * Lanes
+ *   `lane="teal"` and `lane="dark"` render identical structure. The only
+ *   difference the layout applies is `.ai-section--dark` on the tab panels.
+ *   NOTE, reported not built: `.ai-section--dark` is not a colour-only
+ *   modifier in the canonical stylesheet. It also changes padding, from
+ *   `var(--space-xl) 1.25rem` to `var(--space-2xl) 1.25rem` — 56px to 80px
+ *   of vertical padding at 360. That is a structural difference between the
+ *   lanes that the canonical stylesheet forces and this layout cannot
+ *   remove without editing it.
+ *
+ * Touch tokens
+ *   Every interactive control resolves to a canonical class that consumes
+ *   `--touch`, and every tab consumes `--tab-height`:
+ *     .ai-tab                 height: var(--tab-height); min-height: var(--touch)
+ *     .ai-nav-brand           min-height: var(--touch)
+ *     .ai-share-trigger       min-height: var(--touch)
+ *     .ai-share-modal-close   min-height / min-width: var(--touch)
+ *     .ai-share-btn           min-height: var(--touch)
+ *     .ai-btn                 min-height: var(--touch)
+ *     .ai-footer-journey-item min-height: var(--touch)
+ *     .ai-footer-series-prev  min-height: var(--touch)
+ *     .ai-footer-series-next  min-height: var(--touch)
+ *   Known gap, reported not patched: `.ai-footer-nav a` carries no
+ *   `min-height`, so the footer back-link does not consume --touch. It is
+ *   the only canonical class for that link.
+ */
+import '../styles/alterrell-interactive.css';
+import ShareBlock from '../components/ShareBlock.astro';
+import SectionNav from '../components/SectionNav.astro';
+
+export interface Crumb {
+  label: string;
+  href?: string;
+}
+
+export interface PieceTab {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  /** <title> and the breadcrumb tail when no explicit trail is given. */
+  title: string;
+  description: string;
+  /** Path segment, e.g. "concert-tax" or "naming/part-0". */
+  slug: string;
+  /** Colour lane. Structure is identical; see the note above. */
+  lane?: 'teal' | 'dark';
+
+  /** Hero. */
+  eyebrow?: string;
+  headline: string;
+  dek?: string;
+  tags?: string[];
+
+  /** Breadcrumb trail, root first. The last entry renders as current. */
+  breadcrumb?: Crumb[];
+
+  /** 4 to 10 tabs. Order is enforced; see the tab contract above. */
+  tabs: PieceTab[];
+
+  /** Platform destinations. */
+  youtubeUrl?: string;
+  substackUrl?: string;
+  kofiUrl?: string;
+
+  /** Overview share block. */
+  shareNudge?: string;
+  shareStat?: string;
+  shareCopy?: string;
+  shareX?: string;
+}
+
+const MAX_TABS = 10;
+
+const {
+  title,
+  description,
+  slug,
+  lane = 'teal',
+  eyebrow = 'ALTERRELL INTERACTIVE',
+  headline,
+  dek,
+  tags = [],
+  breadcrumb,
+  tabs,
+  youtubeUrl = 'https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS',
+  substackUrl = 'https://alterrell.substack.com/s/alterrell-interactive',
+  kofiUrl = 'https://ko-fi.com/alterrell',
+  shareNudge,
+  shareStat,
+  shareCopy,
+  shareX,
+} = Astro.props;
+
+/* The tab contract is a build gate, not a lint. A piece that violates it is
+ * a piece that would ship wrong, so it fails the build instead. */
+if (!Array.isArray(tabs) || tabs.length < 4) {
+  throw new Error(
+    `Piece.astro (${slug}): a piece needs at least 4 tabs — Overview, the action tab, Share to Social, Sources. Got ${tabs?.length ?? 0}.`
+  );
+}
+if (tabs.length > MAX_TABS) {
+  throw new Error(
+    `Piece.astro (${slug}): the tab bar takes at most ${MAX_TABS} slots. Got ${tabs.length}.`
+  );
+}
+if (tabs[0].label !== 'Overview') {
+  throw new Error(
+    `Piece.astro (${slug}): position 1 must be "Overview". Got "${tabs[0].label}".`
+  );
+}
+if (tabs[tabs.length - 1].label !== 'Sources') {
+  throw new Error(
+    `Piece.astro (${slug}): the last tab must be "Sources". Got "${tabs[tabs.length - 1].label}".`
+  );
+}
+if (tabs[tabs.length - 2].label !== 'Share to Social') {
+  throw new Error(
+    `Piece.astro (${slug}): the second-to-last tab must be "Share to Social". Got "${tabs[tabs.length - 2].label}".`
+  );
+}
+const ids = new Set(tabs.map((t) => t.id));
+if (ids.size !== tabs.length) {
+  throw new Error(`Piece.astro (${slug}): tab ids must be unique.`);
+}
+
+/* Third from last. This is where Ko-fi lives — never above the tab bar. */
+const actionIndex = tabs.length - 3;
+
+const canonicalUrl = `https://interactive.alterrell.com/${slug}/`;
+const ogImage = `https://interactive.alterrell.com/og/${slug.replace(/\//g, '-')}.png`;
+const urlLabel = `interactive.alterrell.com/${slug}`;
+
+const trail: Crumb[] =
+  breadcrumb && breadcrumb.length
+    ? breadcrumb
+    : [{ label: 'Alterrell Interactive', href: '/' }, { label: title }];
+
+const sectionLane = lane === 'dark' ? 'ai-section--dark' : undefined;
+
+const copyText = shareCopy ?? `${title} — ${canonicalUrl}`;
+const xUrl =
+  shareX ??
+  `https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(title)}&via=alterrell`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} — Alterrell Interactive</title>
+  <meta name="description" content={description}>
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="Alterrell Interactive">
+  <meta property="og:title"       content={`${title} — Alterrell Interactive`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image"       content={ogImage}>
+  <meta property="og:url"         content={canonicalUrl}>
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@alterrell">
+  <meta name="twitter:title"       content={`${title} — Alterrell Interactive`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image"       content={ogImage}>
+  <link rel="canonical" href={canonicalUrl}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body class="has-breadcrumb">
+
+<!-- 1. BREADCRUMB — precedes .ai-nav in document order (S2) -->
+<nav class="ai-breadcrumb" aria-label="Breadcrumb">
+  {trail.map((crumb, i) => (
+    <>
+      {i > 0 && <span class="ai-breadcrumb-sep" aria-hidden="true">&#8250;</span>}
+      {crumb.href && i < trail.length - 1
+        ? <a href={crumb.href}>{crumb.label}</a>
+        : <span class="ai-breadcrumb-current" aria-current="page">{crumb.label}</span>}
+    </>
+  ))}
+</nav>
+
+<!-- 2. PLATFORM NAV -->
+<nav class="ai-nav" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/">&#8592; All pieces</a>
+  </div>
+</nav>
+
+<!-- 3. COMPACT HERO — eyebrow, headline, dek, tags. No .ai-inner. -->
+<header class="ai-hero">
+  <span class="ai-eyebrow">{eyebrow}</span>
+  <h1 class="ai-hero-hed" set:html={headline}></h1>
+  {dek && <p class="ai-hero-dek">{dek}</p>}
+  {tags.length > 0 && (
+    <div class="ai-stamp">{tags.join(' · ')}</div>
+  )}
+</header>
+
+<!-- 4. TAB BAR — up to 10 slots, unused slots render nothing -->
+<div
+  class="ai-tabs ai-tabs--fill"
+  id="piece-tabs"
+  role="tablist"
+  aria-label={`${title} sections`}
+>
+  {tabs.map((tab, i) => (
+    <button
+      type="button"
+      id={`tab-btn-${tab.id}`}
+      class:list={['ai-tab', { active: i === 0 }]}
+      role="tab"
+      aria-selected={i === 0 ? 'true' : 'false'}
+      aria-controls={tab.id}
+      data-target={tab.id}
+    >{tab.label}</button>
+  ))}
+</div>
+
+<!-- 5. TAB PANELS -->
+{tabs.map((tab, i) => (
+  <section
+    id={tab.id}
+    class:list={['ai-section', sectionLane, { active: i === 0 }]}
+    role="tabpanel"
+    aria-labelledby={`tab-btn-${tab.id}`}
+  >
+    <div class="ai-inner">
+      {i === 0 && <slot name="tab-1" />}
+      {i === 1 && <slot name="tab-2" />}
+      {i === 2 && <slot name="tab-3" />}
+      {i === 3 && <slot name="tab-4" />}
+      {i === 4 && <slot name="tab-5" />}
+      {i === 5 && <slot name="tab-6" />}
+      {i === 6 && <slot name="tab-7" />}
+      {i === 7 && <slot name="tab-8" />}
+      {i === 8 && <slot name="tab-9" />}
+      {i === 9 && <slot name="tab-10" />}
+
+      {i === 0 && (
+        <ShareBlock
+          cardEyebrow={eyebrow}
+          cardStat={shareStat}
+          cardContext={shareNudge ?? description}
+          cardStamp={urlLabel}
+          copyText={copyText}
+          xUrl={xUrl}
+        />
+      )}
+
+      {i === actionIndex && (
+        <a class="ai-btn ai-btn--primary" href={kofiUrl} target="_blank" rel="noopener">
+          Support this work on Ko-fi
+        </a>
+      )}
+
+      <SectionNav
+        prev={i > 0 ? { id: tabs[i - 1].id, label: tabs[i - 1].label } : null}
+        next={i < tabs.length - 1 ? { id: tabs[i + 1].id, label: tabs[i + 1].label } : null}
+      />
+    </div>
+  </section>
+))}
+
+<!-- 6. FOOTER — journey lives here (YouTube + Substack), never above the tabs -->
+<footer class="ai-footer">
+  <div class="ai-footer-inner">
+
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    </div>
+
+    <div class="ai-footer-journey">
+      <a href={youtubeUrl} target="_blank" rel="noopener" class="ai-footer-journey-item">
+        <span class="ai-footer-journey-icon" aria-hidden="true">&#9654;</span>
+        <span class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Watch</span>
+          <span class="ai-footer-journey-name">Alterrell Interactive on YouTube</span>
+        </span>
+      </a>
+      <a href={substackUrl} target="_blank" rel="noopener" class="ai-footer-journey-item">
+        <span class="ai-footer-journey-icon" aria-hidden="true">&#10022;</span>
+        <span class="ai-footer-journey-text">
+          <span class="ai-footer-journey-label">Read</span>
+          <span class="ai-footer-journey-name">The full argument on Substack</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="ai-footer-nav">
+      <a href="/">&#8592; All pieces</a>
+    </div>
+
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">&#169; 2026 Alterrell Interactive</span>
+      <span class="ai-footer-url">{urlLabel}</span>
+    </div>
+
+  </div>
+</footer>
+
+<script is:inline>
+(function () {
+  var bar   = document.getElementById('piece-tabs');
+  if (!bar) return;
+  var tabs  = Array.prototype.slice.call(bar.querySelectorAll('[role=tab]'));
+  var order = tabs.map(function (t) { return t.getAttribute('data-target'); });
+
+  function activate(targetId) {
+    if (order.indexOf(targetId) < 0) return;
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-target') === targetId;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    order.forEach(function (id) {
+      var panel = document.getElementById(id);
+      if (panel) panel.classList.toggle('active', id === targetId);
+    });
+    var live = tabs.filter(function (t) { return t.getAttribute('data-target') === targetId; })[0];
+    if (live) live.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activate(tab.getAttribute('data-target'));
+    });
+    tab.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(tab);
+      var to = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+      if (to < 0 || to >= tabs.length) return;
+      e.preventDefault();
+      tabs[to].focus();
+      activate(tabs[to].getAttribute('data-target'));
+    });
+  });
+
+  // Section nav — same switch, driven from inside a panel.
+  document.querySelectorAll('[data-nav-to]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      activate(link.getAttribute('data-nav-to'));
+    });
+  });
+
+  // Drop the right-edge fade when every tab already fits.
+  function checkOverflow() {
+    bar.classList.toggle('no-fade', bar.scrollWidth <= bar.clientWidth);
+  }
+  checkOverflow();
+  window.addEventListener('resize', checkOverflow);
+
+  // Share block.
+  var overlay = document.getElementById('ai-share-overlay');
+  var open    = document.getElementById('ai-share-open');
+  var close   = document.getElementById('ai-share-close');
+  var copyBtn = document.getElementById('ai-share-copy-btn');
+  var textbox = document.getElementById('ai-share-textbox');
+
+  if (open && overlay)  open.addEventListener('click', function () { overlay.classList.add('visible'); });
+  if (close && overlay) close.addEventListener('click', function () { overlay.classList.remove('visible'); });
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) overlay.classList.remove('visible');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') overlay.classList.remove('visible');
+    });
+  }
+  if (copyBtn && textbox && navigator.clipboard) {
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(textbox.textContent.trim()).then(function () {
+        copyBtn.textContent = 'Copied';
+        copyBtn.classList.add('copied');
+        setTimeout(function () {
+          copyBtn.textContent = 'Copy link';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

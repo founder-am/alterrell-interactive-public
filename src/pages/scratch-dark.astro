@@ -1,0 +1,152 @@
+---
+/**
+ * Scratch page — dark lane. Not a piece. Not linked from the hub.
+ *
+ * Same shell, same slots, same tab contract as scratch.astro. The only
+ * thing that changes is `lane="dark"`. It exists to prove the two lanes are
+ * one structure, and to measure the one place they are not: the canonical
+ * `.ai-section--dark` modifier also changes panel padding, from
+ * `var(--space-xl)` to `var(--space-2xl)`. That difference is reported, not
+ * built — the layout applies the canonical class and nothing else.
+ *
+ * Dense copy stays on a light surface (`.ai-callout`, `.ai-table-wrap`,
+ * `.ai-metric`) per PROSE-04, which is also what keeps it above the
+ * contrast floor on a dark panel.
+ */
+import Piece from '../layouts/Piece.astro';
+
+const tabs = [
+  { id: 'tab-overview',    label: 'Overview' },
+  { id: 'tab-the-signal',  label: 'The Signal' },
+  { id: 'tab-the-record',  label: 'The Record' },
+  { id: 'tab-the-cost',    label: 'The Cost' },
+  { id: 'tab-take-action', label: 'Take Action' },
+  { id: 'tab-share',       label: 'Share to Social' },
+  { id: 'tab-sources',     label: 'Sources' },
+];
+
+const breadcrumb = [
+  { label: 'Alterrell Interactive', href: '/' },
+  { label: 'Obsidian Futures', href: '/' },
+  { label: 'What the Record Kept' },
+];
+---
+<Piece
+  title="What the Record Kept"
+  description="The dark-lane structural scratch page for the Piece layout, identical in structure to the teal lane."
+  slug="scratch-dark"
+  lane="dark"
+  headline="What the record <em>kept</em>"
+  dek="Two lanes, one structure. This page differs from the teal scratch page in colour and in nothing else that the layout controls."
+  tags={['Culture', 'Archive', 'Dark lane']}
+  breadcrumb={breadcrumb}
+  tabs={tabs}
+  shareStat="63%"
+  shareNudge="Sixty-three percent of the collection has never been catalogued."
+  shareCopy="63% of the collection has never been catalogued. What the record kept — interactive.alterrell.com/scratch-dark/"
+>
+
+  <Fragment slot="tab-1">
+    <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">The archive is complete. The catalogue is not.</h2>
+
+    <div class="ai-body">
+      <p>A collection that cannot be searched is a collection that cannot be cited, and a collection that cannot be cited does not appear in the record that gets written about it. The gap is not in what was kept. The gap is in what was indexed.</p>
+      <p>The figures here come from accession registers, finding aids, and a shelf-by-shelf count taken across four holdings. Where a register and a shelf disagreed, the shelf won.</p>
+    </div>
+
+    <div class="ai-metrics">
+      <div class="ai-metric">
+        <div class="ai-metric-num">63%</div>
+        <div class="ai-metric-label">of accessioned material has <strong>no</strong> item-level catalogue entry</div>
+        <div class="ai-metric-sub">Four holdings, shelf count</div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-num ai-metric-num--teal">1,204</div>
+        <div class="ai-metric-label">boxes described only at the collection level</div>
+        <div class="ai-metric-sub">Accession registers</div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-num ai-metric-num--ink">9 yrs</div>
+        <div class="ai-metric-label">median time from accession to a public finding aid</div>
+        <div class="ai-metric-sub">Finding aid timestamps</div>
+      </div>
+    </div>
+
+    <div class="ai-callout">
+      <p>Dense copy sits on a light surface even in the dark lane, because PROSE-04 puts tables and reading copy on white or paper and never on dark. <strong>This is a canonical composition, not a lane exception.</strong></p>
+    </div>
+
+    <p class="ai-pullquote">An index is an argument about what is worth finding again.</p>
+
+    <div class="ai-table-wrap">
+      <table class="ai-table">
+        <thead>
+          <tr><th>Holding</th><th>Boxes</th><th>Item level</th><th>Collection level</th><th>Backlog</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Holding A</td><td>820</td><td class="val-good">412</td><td>408</td><td>50%</td></tr>
+          <tr><td>Holding B</td><td>1,140</td><td class="val-warn">301</td><td>839</td><td>74%</td></tr>
+          <tr><td>Holding C</td><td>390</td><td class="val-bad">44</td><td>346</td><td>89%</td></tr>
+          <tr><td>Holding D</td><td>560</td><td class="val-warn">198</td><td>362</td><td>65%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-2">
+    <span class="ai-eyebrow">The Signal</span>
+    <h2 class="ai-h2">What a finding aid actually promises.</h2>
+    <div class="ai-body">
+      <p>A finding aid is a claim that something can be located on request. Below the collection level, that claim thins out fast.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-3">
+    <span class="ai-eyebrow">The Record</span>
+    <h2 class="ai-h2">Four holdings, one pattern.</h2>
+    <div class="ai-body">
+      <p>Backlog tracks staffing, not size. The smallest holding in the sample carries the largest uncatalogued share.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-4">
+    <span class="ai-eyebrow">The Cost</span>
+    <h2 class="ai-h2">Nine years is a generation of scholarship.</h2>
+    <div class="ai-body">
+      <p>A median of nine years from accession to public description means a researcher who asked at the wrong moment was told, accurately, that nothing was there.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-5">
+    <span class="ai-eyebrow">Take Action</span>
+    <h2 class="ai-h2">Ask for the accession register.</h2>
+    <div class="ai-body">
+      <p>The register exists even where the finding aid does not. It is usually available on request, and it is usually not offered.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-6">
+    <span class="ai-eyebrow">Share to Social</span>
+    <h2 class="ai-h2">Take the number with you.</h2>
+    <div class="ai-body">
+      <p>Pre-rendered cards for each finding, sized for every platform.</p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="tab-7">
+    <span class="ai-eyebrow">Sources</span>
+    <h2 class="ai-h2">Methodology and sources</h2>
+    <div class="ai-body">
+      <p>Counts come from accession registers and a shelf-by-shelf survey across four holdings. Timestamps come from published finding aids.</p>
+    </div>
+    <div class="ai-callout">
+      <ol class="ai-source-list">
+        <li>Accession registers, four holdings, current year</li>
+        <li>Published finding aids, timestamp extract</li>
+        <li>Shelf survey, box-level count</li>
+      </ol>
+    </div>
+  </Fragment>
+
+</Piece>

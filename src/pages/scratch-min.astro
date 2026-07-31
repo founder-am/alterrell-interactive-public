@@ -1,0 +1,58 @@
+---
+/**
+ * Scratch page — minimum configuration. Not a piece. Not linked from the hub.
+ *
+ * The floor case, built to answer one question: is G1 reachable at 360 by any
+ * piece at all, or only by pieces smaller than the contract allows?
+ *
+ * Four tabs is the minimum the tab contract permits — Overview, the action
+ * tab, Share to Social, Sources. Two breadcrumb crumbs is the minimum a
+ * breadcrumb can be. No table, no chart, no wide content of any kind. If the
+ * tab bar still exceeds the viewport here, it exceeds it for every piece, and
+ * the G1 result on the loaded scratch page is a property of the platform
+ * rather than of that page's content.
+ */
+import Piece from '../layouts/Piece.astro';
+
+const tabs = [
+  { id: 'tab-overview',    label: 'Overview' },
+  { id: 'tab-take-action', label: 'Take Action' },
+  { id: 'tab-share',       label: 'Share to Social' },
+  { id: 'tab-sources',     label: 'Sources' },
+];
+---
+<Piece
+  title="Floor case"
+  description="Minimum-configuration scratch page: four tabs, two crumbs, no wide content."
+  slug="scratch-min"
+  lane="teal"
+  headline="Floor case"
+  dek="The smallest page the tab contract allows."
+  breadcrumb={[{ label: 'Alterrell Interactive', href: '/' }, { label: 'Floor case' }]}
+  tabs={tabs}
+  shareNudge="The smallest page the tab contract allows."
+>
+  <Fragment slot="tab-1">
+    <span class="ai-eyebrow">Overview</span>
+    <h2 class="ai-h2">Nothing wide on this page.</h2>
+    <div class="ai-body"><p>Short copy only. No table, no chart, no metric grid.</p></div>
+  </Fragment>
+
+  <Fragment slot="tab-2">
+    <span class="ai-eyebrow">Take Action</span>
+    <h2 class="ai-h2">One thing to do.</h2>
+    <div class="ai-body"><p>Short copy only.</p></div>
+  </Fragment>
+
+  <Fragment slot="tab-3">
+    <span class="ai-eyebrow">Share to Social</span>
+    <h2 class="ai-h2">Take it with you.</h2>
+    <div class="ai-body"><p>Short copy only.</p></div>
+  </Fragment>
+
+  <Fragment slot="tab-4">
+    <span class="ai-eyebrow">Sources</span>
+    <h2 class="ai-h2">Methodology and sources</h2>
+    <div class="ai-body"><p>Short copy only.</p></div>
+  </Fragment>
+</Piece>

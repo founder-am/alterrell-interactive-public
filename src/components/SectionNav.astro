@@ -1,0 +1,59 @@
+---
+/**
+ * SectionNav — previous/next navigation between tab sections.
+ *
+ * Platform, not per-piece. Five of the eight legacy pieces carried this
+ * pattern (fast-food-sodium, naming part-0 through part-3), each with its
+ * own invented `.section-nav*` / `.ct-snav-*` family. Those families are not
+ * canonical and are not carried forward.
+ *
+ * The canonical stylesheet has exactly one previous/next pattern:
+ * `.ai-footer-series` with `.ai-footer-series-prev` / `-next` / `-label`.
+ * Its structure is an exact match for what the legacy families rebuilt by
+ * hand — space-between row, direction label over destination name, both
+ * targets carrying `min-height: var(--touch)`. It is used here unchanged.
+ *
+ * Known gap, reported rather than patched: the canonical class is tuned for
+ * the dark footer (border `#2a2838`, text `#6e6a88`). On a paper section it
+ * still clears WCAG AA at 13px, but a content-tab variant of this component
+ * does not exist in the canonical stylesheet.
+ *
+ * Every control here consumes --touch, via `.ai-footer-series-prev/-next`.
+ */
+export interface NavTarget {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  prev?: NavTarget | null;
+  next?: NavTarget | null;
+}
+
+const { prev = null, next = null } = Astro.props;
+---
+{(prev || next) && (
+  <nav class="ai-footer-series" aria-label="Section navigation">
+    {prev ? (
+      <a class="ai-footer-series-prev" href={`#${prev.id}`} data-nav-to={prev.id}>
+        <span>
+          <span class="ai-footer-series-label">Previous</span>
+          {prev.label}
+        </span>
+      </a>
+    ) : (
+      <span aria-hidden="true"></span>
+    )}
+
+    {next ? (
+      <a class="ai-footer-series-next" href={`#${next.id}`} data-nav-to={next.id}>
+        <span>
+          <span class="ai-footer-series-label">Next</span>
+          {next.label}
+        </span>
+      </a>
+    ) : (
+      <span aria-hidden="true"></span>
+    )}
+  </nav>
+)}
