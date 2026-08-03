@@ -17,6 +17,13 @@
     a.btn { display: inline-block; width: 140px; height: 48px; line-height: 48px;
             text-align: center; background: #eeeeee; color: #111111;
             text-decoration: none; }
+    /* Deliberate scroller. Its own content is wider than .wrap, so it
+       triggers the G1 measurement, and it computes overflow-x: auto, so
+       G1 skips it. .wide is still measured against it as parent and lands
+       in the scrollableParent bucket. Both are exclusions, not passes by
+       accident: remove the overflow-x and this fixture fails. */
+    .scroller { overflow-x: auto; background: #ffffff; }
+    .wide     { width: 1400px; background: #ffffff; }
   </style>
 </head>
 <body>
@@ -29,6 +36,7 @@
   <section id="p1" role="tabpanel"><p>Body copy at a comfortable contrast.</p></section>
   <section id="p2" role="tabpanel"><p>More body copy at a comfortable contrast.</p></section>
   <a class="btn" href="#target">Action</a>
+  <div class="scroller"><div class="wide"><p>Wide content inside its own scroller.</p></div></div>
 </div>
 </body>
 </html>

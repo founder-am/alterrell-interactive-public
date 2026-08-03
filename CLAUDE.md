@@ -5,7 +5,8 @@ DO NOT begin any build, editorial, or audit session without reading,
 in this order:
 1. ALTERRELL-INTERACTIVE-BIBLE.md  (canonical rules — the only file at this path)
 2. piece-template.html  (repo root, the only template)
-3. alterrell-interactive.css
+3. src/styles/alterrell-interactive.css  (canonical; the root copy is
+   pre-migration)
 4. _data/platform/PROJECT-STATUS.md  (current state, upload queue)
 5. _design/CHART-LIBRARY-REFERENCE.html  (chart work only)
 6. tools/ai-card-studio.html  (card export tool, use only when

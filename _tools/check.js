@@ -385,21 +385,41 @@ function collect(TOL) {
     inlineStyleText: [...document.querySelectorAll('style')].map((s) => s.textContent).join('\n'),
   };
 
-  /* ---------- G1: horizontal overflow past parent ---------- */
-  const g1 = { real: [], scrollableParent: [] };
+  /* ---------- G1: horizontal overflow past parent ----------
+   *
+   * Two exclusions, both about elements that scroll on purpose.
+   *
+   * selfScrollable — the element itself computes overflow-x: auto or
+   *   scroll. Its content is wider than its parent by design and the
+   *   browser gives the reader a scroller for it; that is the intended
+   *   pattern for a tab bar, a breadcrumb trail, and a wide table, not a
+   *   defect. G4 already passes the same element on the same grounds and
+   *   is worded non-scrollable, so scoring it here contradicted G4. Its
+   *   children are NOT exempted by this: they are still measured against
+   *   it as their parent, and land in scrollableParent below.
+   *
+   * scrollableParent — the parent scrolls, so the child's width is the
+   *   scroller's content, not an escape from the layout.
+   *
+   * Anything else is real: content wider than a container that gives the
+   * reader no way to reach it. */
+  const g1 = { real: [], scrollableParent: [], selfScrollable: [] };
   for (const el of all) {
     const parent = el.parentElement;
     if (!parent || parent === document.documentElement) continue;
     if (!rendered(el)) continue;
     if (el.scrollWidth <= parent.clientWidth + TOL) continue;
+    const selfOx = getComputedStyle(el).overflowX;
     const ox = getComputedStyle(parent).overflowX;
     const rec = {
       selector: cssPath(el),
       parent: cssPath(parent),
       value: `scrollWidth ${el.scrollWidth} > parent clientWidth ${parent.clientWidth}`,
       overflowX: ox,
+      selfOverflowX: selfOx,
     };
-    if (ox === 'auto' || ox === 'scroll') g1.scrollableParent.push(rec);
+    if (selfOx === 'auto' || selfOx === 'scroll') g1.selfScrollable.push(rec);
+    else if (ox === 'auto' || ox === 'scroll') g1.scrollableParent.push(rec);
     else g1.real.push(rec);
   }
 
@@ -752,9 +772,13 @@ function evalStructure(d, relPath, rootDir) {
 function evalGeometry(d) {
   const r = {};
 
+  const g1Excluded = [
+    d.g1.selfScrollable.length ? `${d.g1.selfScrollable.length} self-scrollable` : '',
+    d.g1.scrollableParent.length ? `${d.g1.scrollableParent.length} in scrollable parents` : '',
+  ].filter(Boolean);
   r.G1 =
     d.g1.real.length === 0
-      ? P(d.g1.scrollableParent.length ? `${d.g1.scrollableParent.length} in scrollable parents (excluded)` : '')
+      ? P(g1Excluded.length ? `${g1Excluded.join(', ')} (excluded)` : '')
       : F(`${d.g1.real.length} overflowing`, d.g1.real);
 
   r.G2 = d.g2.length === 0 ? P() : F(`${d.g2.length} clipped`, d.g2);
