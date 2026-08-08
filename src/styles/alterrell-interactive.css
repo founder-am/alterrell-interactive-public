@@ -94,6 +94,7 @@
   --max-editorial:  1600px;
   --max-tool:       680px;
   --nav-height:     52px;
+  --crumb-height:   0px;
   --tab-height:     44px;
 
   /* Radius + shadow */
@@ -200,7 +201,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 
 /* Body offset when nav + breadcrumb present */
 .has-nav { padding-top: var(--nav-height); }
-.has-breadcrumb { padding-top: calc(var(--nav-height) + 32px); }
+.has-breadcrumb { padding-top: calc(var(--nav-height) + var(--crumb-height)); }
 
 
 /* ── 3b. HERO SHELL ─────────────────────────────────────────── */
@@ -218,7 +219,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 /* ── 4. TAB BAR ─────────────────────────────────────────────── */
 .ai-tabs {
   position: sticky;
-  top: calc(var(--nav-height) + 32px); /* below nav + breadcrumb */
+  top: calc(var(--nav-height) + var(--crumb-height)); /* below nav + breadcrumb */
   z-index: 100;
   background: var(--paper-card);
   border-bottom: 1px solid var(--border);

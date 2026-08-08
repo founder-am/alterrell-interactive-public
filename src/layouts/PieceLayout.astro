@@ -32,7 +32,6 @@ const slug = (piece as any).slug ?? piece.id.replace(/\.mdx?$/, '');
 const canonicalUrl = `https://interactive.alterrell.com/${slug}/`;
 const ogImage      = `https://interactive.alterrell.com/og/${slug}.png`;
 
-const youtubeUrl   = journey?.youtube  ?? 'https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS';
 const substackUrl  = journey?.substack ?? 'https://alterrell.substack.com/s/alterrell-interactive';
 ---
 <!DOCTYPE html>
@@ -61,13 +60,6 @@ const substackUrl  = journey?.substack ?? 'https://alterrell.substack.com/s/alte
 </head>
 <body class="has-breadcrumb">
 
-<!-- ── 1. BREADCRUMB (must precede nav in DOM — SKEL-02) ── -->
-<nav class="ai-breadcrumb" aria-label="Breadcrumb">
-  <a href="/">Alterrell Interactive</a>
-  <span class="ai-breadcrumb-sep">›</span>
-  <span class="ai-breadcrumb-current">{title}</span>
-</nav>
-
 <!-- ── 2. PLATFORM NAV ── -->
 <nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
@@ -79,23 +71,14 @@ const substackUrl  = journey?.substack ?? 'https://alterrell.substack.com/s/alte
 <!-- ── 3. HERO — always dark (HERO-01) ── -->
 <header class="ai-hero">
   <div class="ai-inner">
-    <span class="ai-eyebrow">ALTERRELL INTERACTIVE ——</span>
     <h1 class="ai-hero-hed">{hero.headline}</h1>
     {hero.dek && <p class="ai-hero-dek">{hero.dek}</p>}
   </div>
 </header>
 
-<!-- ── 4. JOURNEY BLOCK — exactly 3 items, above tab bar (JRNY-01) ── -->
+<!-- ── 4. JOURNEY BLOCK — Read + Support (Watch cut, step-0 deletion pass) ── -->
 <section class="ai-journey" aria-label="Ways to engage">
   <div class="ai-journey-inner">
-
-    <a href={youtubeUrl} target="_blank" rel="noopener" class="ai-journey-path primary">
-      <span class="ai-journey-icon">▶</span>
-      <span class="ai-journey-label">Watch</span>
-      <span class="ai-journey-title">Alterrell Interactive on YouTube</span>
-      <span class="ai-journey-meta">Video essays on the numbers behind the news</span>
-      <span class="ai-journey-cta">Watch now →</span>
-    </a>
 
     <a href={substackUrl} target="_blank" rel="noopener" class="ai-journey-path secondary">
       <span class="ai-journey-icon">✦</span>

@@ -57,18 +57,13 @@ import '../styles/alterrell-interactive.css';
 import ShareBlock from '../components/ShareBlock.astro';
 import SectionNav from '../components/SectionNav.astro';
 
-export interface Crumb {
-  label: string;
-  href?: string;
-}
-
 export interface PieceTab {
   id: string;
   label: string;
 }
 
 interface Props {
-  /** <title> and the breadcrumb tail when no explicit trail is given. */
+  /** <title> and the hub card label. */
   title: string;
   description: string;
   /** Path segment, e.g. "concert-tax" or "naming/part-0". */
@@ -82,14 +77,10 @@ interface Props {
   dek?: string;
   tags?: string[];
 
-  /** Breadcrumb trail, root first. The last entry renders as current. */
-  breadcrumb?: Crumb[];
-
   /** 4 to 10 tabs. Order is enforced; see the tab contract above. */
   tabs: PieceTab[];
 
   /** Platform destinations. */
-  youtubeUrl?: string;
   substackUrl?: string;
   kofiUrl?: string;
 
@@ -111,9 +102,7 @@ const {
   headline,
   dek,
   tags = [],
-  breadcrumb,
   tabs,
-  youtubeUrl = 'https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS',
   substackUrl = 'https://alterrell.substack.com/s/alterrell-interactive',
   kofiUrl = 'https://ko-fi.com/alterrell',
   shareNudge,
@@ -161,11 +150,6 @@ const canonicalUrl = `https://interactive.alterrell.com/${slug}/`;
 const ogImage = `https://interactive.alterrell.com/og/${slug.replace(/\//g, '-')}.png`;
 const urlLabel = `interactive.alterrell.com/${slug}`;
 
-const trail: Crumb[] =
-  breadcrumb && breadcrumb.length
-    ? breadcrumb
-    : [{ label: 'Alterrell Interactive', href: '/' }, { label: title }];
-
 const sectionLane = lane === 'dark' ? 'ai-section--dark' : undefined;
 
 const copyText = shareCopy ?? `${title} — ${canonicalUrl}`;
@@ -199,18 +183,6 @@ const xUrl =
 </head>
 <body class="has-breadcrumb">
 
-<!-- 1. BREADCRUMB — precedes .ai-nav in document order (S2) -->
-<nav class="ai-breadcrumb" aria-label="Breadcrumb">
-  {trail.map((crumb, i) => (
-    <>
-      {i > 0 && <span class="ai-breadcrumb-sep" aria-hidden="true">&#8250;</span>}
-      {crumb.href && i < trail.length - 1
-        ? <a href={crumb.href}>{crumb.label}</a>
-        : <span class="ai-breadcrumb-current" aria-current="page">{crumb.label}</span>}
-    </>
-  ))}
-</nav>
-
 <!-- 2. PLATFORM NAV -->
 <nav class="ai-nav" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
@@ -219,9 +191,8 @@ const xUrl =
   </div>
 </nav>
 
-<!-- 3. COMPACT HERO — eyebrow, headline, dek, tags. No .ai-inner. -->
+<!-- 3. COMPACT HERO — headline, dek, tags. No .ai-inner. -->
 <header class="ai-hero">
-  <span class="ai-eyebrow">{eyebrow}</span>
   <h1 class="ai-hero-hed" set:html={headline}></h1>
   {dek && <p class="ai-hero-dek">{dek}</p>}
   {tags.length > 0 && (
@@ -303,13 +274,6 @@ const xUrl =
     </div>
 
     <div class="ai-footer-journey">
-      <a href={youtubeUrl} target="_blank" rel="noopener" class="ai-footer-journey-item">
-        <span class="ai-footer-journey-icon" aria-hidden="true">&#9654;</span>
-        <span class="ai-footer-journey-text">
-          <span class="ai-footer-journey-label">Watch</span>
-          <span class="ai-footer-journey-name">Alterrell Interactive on YouTube</span>
-        </span>
-      </a>
       <a href={substackUrl} target="_blank" rel="noopener" class="ai-footer-journey-item">
         <span class="ai-footer-journey-icon" aria-hidden="true">&#10022;</span>
         <span class="ai-footer-journey-text">
