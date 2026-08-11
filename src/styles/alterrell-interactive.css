@@ -91,6 +91,7 @@
   --space-2xl:      7rem;
 
   /* Layout */
+  --lane-page:      1080px;   /* the one page lane: hub bands + piece journey/footer */
   --max-editorial:  1600px;
   --max-tool:       680px;
   --nav-height:     52px;
@@ -827,16 +828,21 @@ button { cursor: pointer; font-family: var(--font-body); }
   border-bottom: 1px solid var(--border);
 }
 .ai-journey-inner {
-  max-width: var(--max-editorial);
+  max-width: var(--lane-page);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Auto-flow, so the grid fits however many paths the markup carries.
+     Adding a third path back needs no CSS change. */
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 1px;
   background: var(--border);
 }
 @media (max-width: 520px) {
-  .ai-journey-inner { grid-template-columns: 1fr; }
+  .ai-journey-inner { grid-auto-flow: row; grid-template-columns: 1fr; }
 }
+/* Paths whose title/meta slots are unfilled (the hub) collapse them. */
+.ai-journey-path > :empty { display: none }
 
 .ai-journey-path {
   background: var(--paper-card);
@@ -925,7 +931,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   border-bottom: 1px solid var(--border);
 }
 .ai-journey-compact-inner {
-  max-width: var(--max-editorial);
+  max-width: var(--lane-page);
   margin: 0 auto;
   padding: 0 1.25rem;
   display: flex;
@@ -996,7 +1002,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   padding: var(--space-xl) 1.25rem var(--space-md);
 }
 .ai-footer-inner {
-  max-width: var(--max-editorial);
+  max-width: var(--lane-page);
   margin: 0 auto;
 }
 

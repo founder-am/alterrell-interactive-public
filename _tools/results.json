@@ -1,0 +1,2215 @@
+{
+  "generated": "2026-08-08T20:49:59.318Z",
+  "repo": "/Users/alterrellmills/Documents/GitHub/alterrell-interactive-public",
+  "chromium": "151.0.7922.34",
+  "chromiumPinned": "151.0.7922.34",
+  "playwright": "1.62.0",
+  "ruleHash": "bcab670dcf6993fffbbbcced3bfb010680bf9a4c0f8123db799347182adeffc4",
+  "fontsVendored": true,
+  "contentDir": "src/content",
+  "contentRules": {
+    "T7b": {
+      "status": "PASS",
+      "note": "4 content files clean"
+    }
+  },
+  "widths": [
+    360,
+    768,
+    1280
+  ],
+  "platformSelectorCount": 278,
+  "pieces": [
+    {
+      "path": "404.html",
+      "slug": "404",
+      "pageClass": "PAGE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "3/3 controls under 44x44 (3 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "157.8x16.2",
+                  "text": "interactive.alterrell.com"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 256,
+            "widestLinePx": 247,
+            "chars": 104,
+            "lines": 4,
+            "charsPerLine": 26,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 1415,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "3/3 controls under 44x44 (3 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "157.8x16.2",
+                  "text": "interactive.alterrell.com"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 664,
+            "widestLinePx": 644,
+            "chars": 104,
+            "lines": 2,
+            "charsPerLine": 52,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 1637,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "3/3 controls under 44x44 (3 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "157.8x16.2",
+                  "text": "interactive.alterrell.com"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1176,
+            "widestLinePx": 991,
+            "chars": 104,
+            "lines": 1,
+            "charsPerLine": 104,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 1535,
+          "failedRequests": []
+        }
+      },
+      "structure": null,
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": null,
+        "primaryBarMatchedBy": "none",
+        "primaryTabCount": 0,
+        "primaryTabLabels": [],
+        "outOfScope": [],
+        "totalTablists": 0
+      }
+    },
+    {
+      "path": "concert-tax/index.html",
+      "slug": "concert-tax",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "6 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 256",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                },
+                {
+                  "selector": "article.carousel__card.card--a:nth-of-type(1)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--d:nth-of-type(2)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--c:nth-of-type(3)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--b:nth-of-type(4)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/13 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "233.5x16.2",
+                  "text": "interactive.alterrell.com/concert-tax"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 256,
+            "widestLinePx": 245,
+            "chars": 74,
+            "lines": 3,
+            "charsPerLine": 25,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 863,
+          "docHeight": 2239,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "2 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 664",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 664",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/15 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "233.5x16.2",
+                  "text": "interactive.alterrell.com/concert-tax"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 664,
+            "widestLinePx": 536,
+            "chars": 74,
+            "lines": 1,
+            "charsPerLine": 74,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 625,
+          "docHeight": 1890,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "2 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 1176",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 1176",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/15 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "233.5x16.2",
+                  "text": "interactive.alterrell.com/concert-tax"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1176,
+            "widestLinePx": 669,
+            "chars": 74,
+            "lines": 1,
+            "charsPerLine": 74,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 723,
+          "docHeight": 1890,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": "1 carousel tablist(s) out of scope"
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 6,
+        "primaryTabLabels": [
+          "Overview",
+          "The Gap",
+          "By Genre",
+          "Take Action",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [
+          {
+            "selector": "div.carousel__dots:nth-of-type(2)",
+            "value": "4 role=tab children",
+            "label": "Slide indicators"
+          }
+        ],
+        "totalTablists": 2
+      }
+    },
+    {
+      "path": "fast-food-sodium/index.html",
+      "slug": "fast-food-sodium",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "6 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 256",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                },
+                {
+                  "selector": "article.carousel__card.card--a:nth-of-type(1)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--d:nth-of-type(2)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--c:nth-of-type(3)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--b:nth-of-type(4)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/12 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "265.0x16.2",
+                  "text": "interactive.alterrell.com/fast-food-sodi"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 256,
+            "widestLinePx": 253,
+            "chars": 102,
+            "lines": 3,
+            "charsPerLine": 34,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 821,
+          "docHeight": 2438,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "2 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 664",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 664",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/14 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "265.0x16.2",
+                  "text": "interactive.alterrell.com/fast-food-sodi"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 664,
+            "widestLinePx": 636,
+            "chars": 102,
+            "lines": 2,
+            "charsPerLine": 51,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 656,
+          "docHeight": 2016,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "2 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 1248 > parent clientWidth 1176",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 1248 > parent clientWidth 1176",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "7/14 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(4)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "265.0x16.2",
+                  "text": "interactive.alterrell.com/fast-food-sodi"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1176,
+            "widestLinePx": 916,
+            "chars": 102,
+            "lines": 1,
+            "charsPerLine": 102,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 723,
+          "docHeight": 1987,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": "1 carousel tablist(s) out of scope"
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 5,
+        "primaryTabLabels": [
+          "Overview",
+          "The Data",
+          "By Chain",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [
+          {
+            "selector": "div.carousel__dots:nth-of-type(2)",
+            "value": "4 role=tab children",
+            "label": "Slide indicators"
+          }
+        ],
+        "totalTablists": 2
+      }
+    },
+    {
+      "path": "gay-uncles/index.html",
+      "slug": "gay-uncles",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/9 controls under 44x44 (5 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "227.2x16.2",
+                  "text": "interactive.alterrell.com/gay-uncles"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 256,
+            "widestLinePx": 236,
+            "chars": 85,
+            "lines": 3,
+            "charsPerLine": 28,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 821,
+          "docHeight": 1842,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/9 controls under 44x44 (5 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "227.2x16.2",
+                  "text": "interactive.alterrell.com/gay-uncles"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 664,
+            "widestLinePx": 643,
+            "chars": 85,
+            "lines": 1,
+            "charsPerLine": 85,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 625,
+          "docHeight": 1890,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/9 controls under 44x44 (5 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "227.2x16.2",
+                  "text": "interactive.alterrell.com/gay-uncles"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1176,
+            "widestLinePx": 802,
+            "chars": 85,
+            "lines": 1,
+            "charsPerLine": 85,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 723,
+          "docHeight": 1864,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 7,
+        "primaryTabLabels": [
+          "Overview",
+          "The Map",
+          "My Story",
+          "The Data",
+          "Take Action",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
+      "path": "index.html",
+      "slug": "index",
+      "pageClass": "PAGE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "1 controls checked, 11 inline links out of scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 274,
+            "widestLinePx": 241,
+            "chars": 74,
+            "lines": 2,
+            "charsPerLine": 37,
+            "selector": "p.hub-card-sub"
+          },
+          "g6": null,
+          "docHeight": 1675,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "1 controls checked, 11 inline links out of scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 308,
+            "widestLinePx": 307,
+            "chars": 74,
+            "lines": 2,
+            "charsPerLine": 37,
+            "selector": "p.hub-card-sub"
+          },
+          "g6": null,
+          "docHeight": 1132,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "1 overflowing",
+              "offenders": [
+                {
+                  "selector": "h1.hub-hero-headline",
+                  "parent": "div.hub-hero-inner",
+                  "value": "scrollWidth 1147 > parent clientWidth 1080",
+                  "overflowX": "visible",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "1 controls checked, 11 inline links out of scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 301,
+            "widestLinePx": 278,
+            "chars": 74,
+            "lines": 2,
+            "charsPerLine": 37,
+            "selector": "p.hub-card-sub"
+          },
+          "g6": null,
+          "docHeight": 1106,
+          "failedRequests": []
+        }
+      },
+      "structure": null,
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": null,
+        "primaryBarMatchedBy": "none",
+        "primaryTabCount": 0,
+        "primaryTabLabels": [],
+        "outOfScope": [],
+        "totalTablists": 0
+      }
+    },
+    {
+      "path": "naming/index.html",
+      "slug": "naming",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "5 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 932 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 932 > parent clientWidth 256",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                },
+                {
+                  "selector": "article.carousel__card.card--a:nth-of-type(1)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--c:nth-of-type(2)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "article.carousel__card.card--a:nth-of-type(3)",
+                  "parent": "div.carousel__track",
+                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                }
+              ]
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "6/11 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "201.9x16.2",
+                  "text": "interactive.alterrell.com/naming"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 256,
+            "widestLinePx": 250,
+            "chars": 146,
+            "lines": 5,
+            "charsPerLine": 29,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 839,
+          "docHeight": 2100,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "FAIL",
+              "note": "2 overflowing",
+              "offenders": [
+                {
+                  "selector": "div.carousel__viewport:nth-of-type(1)",
+                  "parent": "div.carousel__outer",
+                  "value": "scrollWidth 932 > parent clientWidth 664",
+                  "overflowX": "visible",
+                  "selfOverflowX": "hidden"
+                },
+                {
+                  "selector": "div.carousel__track",
+                  "parent": "div.carousel__viewport:nth-of-type(1)",
+                  "value": "scrollWidth 932 > parent clientWidth 664",
+                  "overflowX": "hidden",
+                  "selfOverflowX": "visible"
+                }
+              ]
+            },
+            "G2": {
+              "status": "FAIL",
+              "note": "1 clipped",
+              "offenders": [
+                {
+                  "selector": "div.carousel__card-body:nth-of-type(2)",
+                  "value": "scrollHeight 91 > clientHeight 88 (height 87.8906px, max-height none, overflow-y hidden)"
+                }
+              ]
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "6/13 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "201.9x16.2",
+                  "text": "interactive.alterrell.com/naming"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 664,
+            "widestLinePx": 642,
+            "chars": 146,
+            "lines": 2,
+            "charsPerLine": 73,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 588,
+          "docHeight": 1853,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "FAIL",
+              "note": "1 clipped",
+              "offenders": [
+                {
+                  "selector": "div.carousel__card-body:nth-of-type(2)",
+                  "value": "scrollHeight 91 > clientHeight 88 (height 87.8906px, max-height none, overflow-y hidden)"
+                }
+              ]
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "6/13 controls under 44x44 (6 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "button.carousel__dot.active:nth-of-type(1)",
+                  "value": "9.0x9.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(2)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button.carousel__dot:nth-of-type(3)",
+                  "value": "6.0x6.0",
+                  "text": ""
+                },
+                {
+                  "selector": "button#piece-copy-link",
+                  "value": "77.7x25.0",
+                  "text": "◎ Copy link"
+                },
+                {
+                  "selector": "a.ai-footer-series-hub",
+                  "value": "92.4x19.3",
+                  "text": "← All pieces"
+                },
+                {
+                  "selector": "a.ai-footer-url",
+                  "value": "201.9x16.2",
+                  "text": "interactive.alterrell.com/naming"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1176,
+            "widestLinePx": 1167,
+            "chars": 146,
+            "lines": 2,
+            "charsPerLine": 73,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 649,
+          "docHeight": 1795,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": "1 carousel tablist(s) out of scope"
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 5,
+        "primaryTabLabels": [
+          "Overview",
+          "The Data",
+          "The Series",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [
+          {
+            "selector": "div.carousel__dots:nth-of-type(2)",
+            "value": "3 role=tab children",
+            "label": "Slide indicators"
+          }
+        ],
+        "totalTablists": 2
+      }
+    },
+    {
+      "path": "scratch-dark/index.html",
+      "slug": "scratch-dark",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "2 self-scrollable, 1 in scrollable parents (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 314,
+            "chars": 126,
+            "lines": 3,
+            "charsPerLine": 42,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 396,
+          "docHeight": 2889,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 721,
+            "chars": 126,
+            "lines": 2,
+            "charsPerLine": 63,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 404,
+          "docHeight": 2230,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 1125,
+            "chars": 126,
+            "lines": 1,
+            "charsPerLine": 126,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 427,
+          "docHeight": 2209,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 7,
+        "primaryTabLabels": [
+          "Overview",
+          "The Signal",
+          "The Record",
+          "The Cost",
+          "Take Action",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
+      "path": "scratch-min/index.html",
+      "slug": "scratch-min",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "5 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 312,
+            "chars": 42,
+            "lines": 1,
+            "charsPerLine": 42,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 277,
+          "docHeight": 1365,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "5 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 312,
+            "chars": 42,
+            "lines": 1,
+            "charsPerLine": 42,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 358,
+          "docHeight": 1693,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "5 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 389,
+            "chars": 42,
+            "lines": 1,
+            "charsPerLine": 42,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 411,
+          "docHeight": 1622,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 4,
+        "primaryTabLabels": [
+          "Overview",
+          "Take Action",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
+      "path": "scratch/index.html",
+      "slug": "scratch",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "2 self-scrollable, 1 in scrollable parents (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "11 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 308,
+            "chars": 143,
+            "lines": 4,
+            "charsPerLine": 36,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 426,
+          "docHeight": 3708,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "11 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 680,
+            "chars": 143,
+            "lines": 2,
+            "charsPerLine": 72,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 404,
+          "docHeight": 2868,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "11 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 1234,
+            "chars": 143,
+            "lines": 2,
+            "charsPerLine": 72,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 465,
+          "docHeight": 2817,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S1": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S2": {
+          "status": "FAIL",
+          "note": "missing .ai-breadcrumb",
+          "offenders": []
+        },
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/scratch-dark.C055CTGI.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 10,
+        "primaryTabLabels": [
+          "Overview",
+          "The Numbers",
+          "Who Pays",
+          "The Mechanism",
+          "State by State",
+          "What Changed",
+          "The Counterargument",
+          "Take Action",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    }
+  ],
+  "summary": {
+    "totalFailCells": 33,
+    "totalDuplicateSelectors": 0,
+    "rulesByPieceCount": [
+      {
+        "rule": "S2",
+        "pieces": 7,
+        "cells": 0
+      },
+      {
+        "rule": "G3",
+        "pieces": 5,
+        "cells": 0
+      },
+      {
+        "rule": "G1",
+        "pieces": 4,
+        "cells": 0
+      },
+      {
+        "rule": "G2",
+        "pieces": 1,
+        "cells": 0
+      }
+    ]
+  }
+}
