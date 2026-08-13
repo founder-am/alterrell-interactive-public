@@ -26,16 +26,17 @@ const OUT = __dirname;
 /* ---------------- structure family ---------------- */
 
 const sDoc = (o = {}) => {
-  const bodyClass = o.bodyClass ?? 'has-breadcrumb';
+  // has-nav, not has-breadcrumb. S1 and S2 were retired 2026-08-11 and the
+  // breadcrumb is gone from every surface; a fixture that still carried one
+  // would be authoring the retired element back into the test corpus.
+  const bodyClass = o.bodyClass ?? 'has-nav';
   // S10 asserts that a linked stylesheet resolves to a real file containing
   // .ai-inner — not that its filename says "alterrell-interactive.css",
   // which a bundler rewrites. The default fixture stylesheet carries the
   // marker; o.cssNoMarker swaps in a valid file that does not.
   const sheet = o.cssNoMarker ? 'assets/no-ai-inner.css' : 'assets/has-ai-inner.css';
   const css = o.noCss ? '' : `\n  <link rel="stylesheet" href="${sheet}">`;
-  const crumb = '<nav class="ai-breadcrumb" aria-label="Breadcrumb"><span>Alterrell Interactive</span></nav>';
-  const nav = '<nav class="ai-nav" role="navigation" aria-label="Platform navigation"><a href="/">Alterrell Interactive</a></nav>';
-  const order = o.navFirst ? `${nav}\n${crumb}` : `${crumb}\n${nav}`;
+  const order = '<nav class="ai-nav" role="navigation" aria-label="Platform navigation"><a href="/">Alterrell Interactive</a></nav>';
   const firstLabel = o.firstTab ?? 'Overview';
   const lastLabel = o.lastTab ?? 'Sources';
   const dt = (id) => (o.hashTarget ? `#${id}` : id);
@@ -67,9 +68,10 @@ ${order}
 `;
 };
 
+// S1 (has-breadcrumb on body) and S2 (.ai-breadcrumb precedes .ai-nav) were
+// retired by AMA on 2026-08-11. See alterrell-hq/reference/NEVER-IMPLEMENT.md.
+// The remaining ids are not renumbered.
 const STRUCTURE = {
-  S1: { fail: { bodyClass: '' } },
-  S2: { fail: { navFirst: true } },
   S3: { fail: { secondBar: true } },
   S4: { fail: { hashTarget: true } },
   S5: { fail: { noAriaControls: true } },
@@ -125,9 +127,30 @@ ${body}</div>
 `;
 };
 
+/* G1's self-scrollable exclusion, carried by both G1 fixtures.
+ *
+ * .scroller computes overflow-x: auto and its own content is wider than
+ * .wrap, so it trips the measurement and is excluded as self-scrollable.
+ * .wide is still measured against it and lands in scrollableParent. Both
+ * are exclusions, not passes by accident: remove the overflow-x and the
+ * pass fixture fails. */
+const G1_SCROLLER_CSS =
+  '    .scroller   { overflow-x: auto; background: #ffffff; }\n' +
+  '    .wide       { width: 1400px; background: #ffffff; }\n';
+const G1_SCROLLER_BODY =
+  '  <div class="scroller"><div class="wide"><p>Wide content inside its own scroller.</p></div></div>\n';
+
 const GEOMETRY = {
-  // child wider than its non-scrollable parent
-  G1: { fail: { body: '  <div class="overflower"><p>Too wide.</p></div>\n', css: '    .overflower { width: 2000px; background: #ffffff; }\n' } },
+  /* The pass fixture proves the exclusion holds; the fail fixture carries the
+   * same exclusion plus one real defect, so a rule that exempted everything
+   * would pass the first and fail the second. */
+  G1: {
+    pass: { body: G1_SCROLLER_BODY, css: G1_SCROLLER_CSS },
+    fail: {
+      body: G1_SCROLLER_BODY + '  <div class="overflower"><p>Too wide.</p></div>\n',
+      css: G1_SCROLLER_CSS + '    .overflower { width: 2000px; background: #ffffff; }\n',
+    },
+  },
   // fixed height + overflow hidden clips text with no scrollbar
   G2: { fail: { body: '  <div class="clipper"><p>One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Eleven. Twelve. Thirteen. Fourteen. Fifteen. Sixteen. Seventeen. Eighteen.</p></div>\n', css: '    .clipper { height: 32px; overflow: hidden; width: 300px; }\n' } },
   // a control below the 44x44 minimum
@@ -138,20 +161,63 @@ const GEOMETRY = {
   G7: { fail: { body: '  <p class="faint">Low contrast paragraph.</p>\n', css: '    .faint { color: #bbbbbb; background: #ffffff; }\n' } },
 };
 
+/* ---------------- variants ----------------
+ *
+ * A variant is a second fixture pair for a rule that already has one,
+ * isolating one specific exclusion or branch. It carries the rule's id in
+ * `rule` so meta-test knows which result to assert, and is otherwise built
+ * exactly like a normal fixture of its family.
+ */
+const VARIANTS = {
+  /* G1's hiddenParent exclusion, added 2026-08-11.
+   *
+   * .clip computes overflow-x: hidden. Its child's content extent is wider
+   * than .clip's client width, but the clip is what the reader sees: there
+   * is no content stranded outside a container the reader cannot reach,
+   * because the container does the reaching. Mirrors scrollableParent.
+   *
+   * The two fixtures differ in exactly one declaration — overflow-x on the
+   * parent — so nothing but the new exclusion can be what moves the result.
+   *
+   * The widths matter. .clipped (600px) overflows .clip (200px) but stays
+   * inside .wrap (968px of client width), so .clip itself never trips the
+   * measurement and the fixture is about the child alone. Sizing .clipped
+   * wider than .wrap would flag .clip too — overflow-x: hidden still
+   * reports a content-extent scrollWidth — and an element's own hidden
+   * overflow is a separate case this rule change deliberately leaves
+   * scored. */
+  'G1-hidden-parent': {
+    rule: 'G1',
+    family: 'geometry',
+    body:
+      '  <div class="clip"><div class="clipped"><p>Wide content inside a clipping parent.</p></div></div>\n',
+    passCss: '    .clip    { overflow-x: hidden;  width: 200px; background: #ffffff; }\n',
+    failCss: '    .clip    { overflow-x: visible; width: 200px; background: #ffffff; }\n',
+    css: '    .clipped { width: 600px; background: #ffffff; }\n',
+  },
+};
+
 /* ---------------- emit ---------------- */
 
 let n = 0;
 const written = [];
 for (const [rule, spec] of Object.entries(STRUCTURE)) {
-  fs.writeFileSync(path.join(OUT, `${rule}-pass.html`), sDoc({}));
+  fs.writeFileSync(path.join(OUT, `${rule}-pass.html`), sDoc(spec.pass ?? {}));
   fs.writeFileSync(path.join(OUT, `${rule}-fail.html`), sDoc(spec.fail));
   written.push(`${rule}-pass.html`, `${rule}-fail.html`);
   n += 2;
 }
 for (const [rule, spec] of Object.entries(GEOMETRY)) {
-  fs.writeFileSync(path.join(OUT, `${rule}-pass.html`), gDoc({}));
+  fs.writeFileSync(path.join(OUT, `${rule}-pass.html`), gDoc(spec.pass ?? {}));
   fs.writeFileSync(path.join(OUT, `${rule}-fail.html`), gDoc(spec.fail));
   written.push(`${rule}-pass.html`, `${rule}-fail.html`);
+  n += 2;
+}
+for (const [name, spec] of Object.entries(VARIANTS)) {
+  const doc = spec.family === 'structure' ? sDoc : gDoc;
+  fs.writeFileSync(path.join(OUT, `${name}-pass.html`), doc({ body: spec.body, css: spec.css + spec.passCss }));
+  fs.writeFileSync(path.join(OUT, `${name}-fail.html`), doc({ body: spec.body, css: spec.css + spec.failCss }));
+  written.push(`${name}-pass.html`, `${name}-fail.html`);
   n += 2;
 }
 
@@ -161,6 +227,9 @@ fs.writeFileSync(
     {
       structureRules: Object.keys(STRUCTURE),
       geometryRules: Object.keys(GEOMETRY),
+      variants: Object.fromEntries(
+        Object.entries(VARIANTS).map(([name, spec]) => [name, { rule: spec.rule, family: spec.family }])
+      ),
       evaluatedAtWidth: 1280,
       files: written.sort(),
     },

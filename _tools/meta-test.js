@@ -27,13 +27,25 @@ const { execFileSync } = require('child_process');
 
 const TOOLS = __dirname;
 const FIXTURES = path.join(TOOLS, 'fixtures');
-const STRUCTURE = ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10','S11'];
+// S1 and S2 were retired by AMA on 2026-08-11 and are recorded in
+// alterrell-hq/reference/NEVER-IMPLEMENT.md. The remaining ids keep the
+// numbers they have always had; nothing is renumbered.
+const STRUCTURE = ['S3','S4','S5','S6','S7','S8','S9','S10','S11'];
 const GEOMETRY = ['G1','G2','G3','G4','G7'];
 // Content rules are source rules: evaluated once per run against a content
 // directory, not per rendered page. Their fixtures are directories of .mdx,
 // not HTML shells, so they are driven separately below.
 const CONTENT = ['T7b'];
 const ALL = [...STRUCTURE, ...GEOMETRY, ...CONTENT];
+
+/* Variants — a second fixture pair for a rule that already has one,
+ * isolating a single exclusion or branch. Held to the same two assertions
+ * as a primary pair: the named rule must FAIL on -fail and PASS on -pass,
+ * and every other rule in its family must PASS on both. Kept in step with
+ * the VARIANTS map in fixtures/_generate.js. */
+const VARIANTS = {
+  'G1-hidden-parent': { rule: 'G1', family: 'geometry' },
+};
 
 const jsonOut = path.join(os.tmpdir(), `fixture-run-${process.pid}.json`);
 console.log(`Running check.js over ${FIXTURES} at width 1280...\n`);
@@ -76,7 +88,7 @@ for (const rule of CONTENT) {
     const out = path.join(os.tmpdir(), `content-${rule}-${kind}-${process.pid}.json`);
     execFileSync(
       process.execPath,
-      [path.join(TOOLS, 'check.js'), '--file', path.join(FIXTURES, 'S1-pass.html'),
+      [path.join(TOOLS, 'check.js'), '--file', path.join(FIXTURES, 'S3-pass.html'),
        '--content-dir', dir, '--width', '1280', '--no-shots', '--deterministic', '--json', out],
       { stdio: ['ignore', 'pipe', 'inherit'] }
     );
@@ -115,14 +127,46 @@ for (const rule of [...STRUCTURE, ...GEOMETRY]) {
   }
 }
 
+/* ---- 3. variants ---- */
+for (const [name, spec] of Object.entries(VARIANTS)) {
+  const family = spec.family === 'structure' ? STRUCTURE : GEOMETRY;
+  for (const kind of ['pass', 'fail']) {
+    const file = `${name}-${kind}`;
+    if (!fs.existsSync(path.join(FIXTURES, `${file}.html`))) {
+      failures.push(`COVERAGE  variant ${name} has no ${kind} fixture (${file}.html missing)`);
+      continue;
+    }
+    const piece = bySlug.get(file);
+    if (!piece) {
+      failures.push(`COVERAGE  ${file}.html exists but produced no result`);
+      continue;
+    }
+    const want = kind === 'fail' ? 'FAIL' : 'PASS';
+    const got = statusOf(piece, spec.rule);
+    if (got !== want) failures.push(`TARGET    ${file}: expected ${spec.rule}=${want}, got ${got}`);
+    for (const other of family) {
+      if (other === spec.rule) continue;
+      const s = statusOf(piece, other);
+      if (s !== 'PASS') failures.push(`ISOLATION ${file}: ${other} should be PASS, got ${s}`);
+    }
+  }
+}
+
 /* ---- report ---- */
 console.log(`\nRule hash: ${run.ruleHash}`);
 console.log(`Chromium:  ${run.chromium} (pinned ${run.chromiumPinned})`);
-console.log(`Fixtures:  ${run.pieces.length} evaluated, ${ALL.length} rules covered\n`);
+const variantCount = Object.keys(VARIANTS).length;
+console.log(
+  `Fixtures:  ${run.pieces.length} evaluated, ${ALL.length} rules covered` +
+  `${variantCount ? `, ${variantCount} variant pair(s)` : ''}\n`
+);
 
 if (failures.length) {
   console.error(`META-TEST FAILED — ${failures.length} problem(s):\n`);
   failures.forEach((f) => console.error('  ' + f));
   process.exit(1);
 }
-console.log(`META-TEST PASSED — all ${ALL.length} rules have a passing and a failing fixture, each isolated within its family.`);
+console.log(
+  `META-TEST PASSED — all ${ALL.length} rules have a passing and a failing fixture, each isolated within its family` +
+  `${variantCount ? `, plus ${variantCount} variant pair(s)` : ''}.`
+);

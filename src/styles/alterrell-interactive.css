@@ -95,7 +95,6 @@
   --max-editorial:  1600px;
   --max-tool:       680px;
   --nav-height:     52px;
-  --crumb-height:   0px;
   --tab-height:     44px;
 
   /* Radius + shadow */
@@ -200,9 +199,9 @@ button { cursor: pointer; font-family: var(--font-body); }
 .ai-breadcrumb-sep { color: #333; }
 .ai-breadcrumb-current { color: #888; }
 
-/* Body offset when nav + breadcrumb present */
+/* Body offset when the fixed nav is present. There is no breadcrumb:
+   retired by AMA 2026-08-11, see alterrell-hq/reference/NEVER-IMPLEMENT.md */
 .has-nav { padding-top: var(--nav-height); }
-.has-breadcrumb { padding-top: calc(var(--nav-height) + var(--crumb-height)); }
 
 
 /* ── 3b. HERO SHELL ─────────────────────────────────────────── */
@@ -220,7 +219,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 /* ── 4. TAB BAR ─────────────────────────────────────────────── */
 .ai-tabs {
   position: sticky;
-  top: calc(var(--nav-height) + var(--crumb-height)); /* below nav + breadcrumb */
+  top: var(--nav-height); /* below the fixed nav */
   z-index: 100;
   background: var(--paper-card);
   border-bottom: 1px solid var(--border);
@@ -801,6 +800,9 @@ button { cursor: pointer; font-family: var(--font-body); }
   border-radius: var(--radius-sm);
   cursor: pointer;
   min-height: var(--touch);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.15s;
   letter-spacing: 0.02em;
 }
@@ -818,6 +820,10 @@ button { cursor: pointer; font-family: var(--font-body); }
   border: 1px solid #2a2838;
 }
 .ai-share-btn--download:hover { color: var(--paper); }
+
+/* The copy control the piece layout wires by id. Scored by G3 like any
+   other control, so it consumes --touch like any other control. */
+#piece-copy-link { min-height: var(--touch); }
 
 
 /* ── 11. JOURNEY BLOCK ──────────────────────────────────────── */
@@ -1137,6 +1143,10 @@ button { cursor: pointer; font-family: var(--font-body); }
   color: var(--teal-light);
   text-decoration: none;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
 }
 .ai-footer-series-hub:hover { text-decoration: underline; }
 
@@ -1228,6 +1238,9 @@ details[open] .ai-footer-methodology summary::before {
   color: #2a2838;
   letter-spacing: 0.08em;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  min-height: var(--touch);
 }
 
 
@@ -1925,19 +1938,33 @@ details[open] .ai-footer-methodology summary::before {
   flex-wrap: wrap;
 }
 
+/* The control is 44x44 so it can be tapped; the dot the reader sees is the
+   6px ::before at its centre. Sizing the visible dot to the target instead
+   would put four fat circles under the cards. */
 .carousel__dot {
+  width: var(--touch);
+  height: var(--touch);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__dot::before {
+  content: '';
+  display: block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--c-dot);
-  border: none;
-  padding: 0;
-  cursor: pointer;
   transition: background 0.2s, transform 0.2s;
-  flex-shrink: 0;
 }
 
-.carousel__dot.active {
+.carousel__dot.active::before {
   background: var(--c-dot-active);
   transform: scale(1.5);
 }

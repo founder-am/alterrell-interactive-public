@@ -1,7 +1,5 @@
 {
   "structureRules": [
-    "S1",
-    "S2",
     "S3",
     "S4",
     "S5",
@@ -19,9 +17,17 @@
     "G4",
     "G7"
   ],
+  "variants": {
+    "G1-hidden-parent": {
+      "rule": "G1",
+      "family": "geometry"
+    }
+  },
   "evaluatedAtWidth": 1280,
   "files": [
     "G1-fail.html",
+    "G1-hidden-parent-fail.html",
+    "G1-hidden-parent-pass.html",
     "G1-pass.html",
     "G2-fail.html",
     "G2-pass.html",
@@ -31,14 +37,10 @@
     "G4-pass.html",
     "G7-fail.html",
     "G7-pass.html",
-    "S1-fail.html",
-    "S1-pass.html",
     "S10-fail.html",
     "S10-pass.html",
     "S11-fail.html",
     "S11-pass.html",
-    "S2-fail.html",
-    "S2-pass.html",
     "S3-fail.html",
     "S3-pass.html",
     "S4-fail.html",

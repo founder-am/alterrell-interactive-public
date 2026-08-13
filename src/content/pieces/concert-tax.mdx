@@ -1,6 +1,6 @@
 ---
 title: "Female Musicians Earn Less But Share More"
-description: "Men set the ceiling. Women deliver more to justify their place beneath it."
+description: "Men set the ceiling. Women are required to exceed it just to belong."
 status: live
 category: industry
 format: interactive
@@ -8,17 +8,18 @@ stakes: "Pay equity"
 publishDate: 2024-06-01
 hero:
   headline: "Female Musicians Earn Less But Share More"
-  dek: "Men set the ceiling. Women deliver more to justify their place beneath it."
+  dek: "Men set the ceiling. Women are required to exceed it just to belong."
 journey:
-  youtube: "https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
   substack: "https://alterrell.substack.com/s/alterrell-interactive"
 tabs:
   - id: tab-overview
     label: Overview
-  - id: tab-the-gap
-    label: The Gap
-  - id: tab-by-genre
-    label: By Genre
+  - id: tab-the-data
+    label: The Data
+  - id: tab-double-standard
+    label: The Double Standard
+  - id: tab-history
+    label: History
   - id: tab-take-action
     label: Take Action
   - id: tab-share
@@ -28,136 +29,511 @@ tabs:
 ---
 
 import TabSection from '../../components/TabSection.astro';
-import Carousel from '../../components/Carousel.astro';
+
+{/*
+  Migrated from concert-tax/index.html (149,659 B) on 2026-08-11.
+
+  No carousel — ruled 2026-08-11. Every card gallery in the static piece is a
+  stacked grid on .ai-metrics / .ai-metric, or an .ai-table, or an
+  .ai-pullquote. No class is invented here; everything resolves to the
+  canonical stylesheet.
+
+  Figures. A figure ships only where the Sources tab attaches that exact
+  number to a named publication, or the card carried its own dated source
+  stamp. Everything else reads [[FIGURE NEEDS SOURCE]] and is not filled with
+  a plausible value. The invented Pollstar figures ($4.2M / $2.8M,
+  "Pollstar 2023") are deleted, not replaced.
+*/}
 
 <TabSection id="tab-overview" active>
 
-<h2 class="ai-h2">Male headliners earn 3× more. Female headliners deliver comparable ticket demand.</h2>
+<h2 class="ai-h2">The Numbers Behind Who Performs More and Earns Less</h2>
 
-<Carousel lane="teal" label="Key findings from the concert tax">
-  <article class="carousel__card card--a" role="group" aria-label="Slide 1 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">The headliner gap</span>
-      <span class="carousel__card-stat">3×</span>
-      <h3 class="carousel__card-title">Male headliner earnings advantage</h3>
-    </div>
-    <div class="carousel__card-body">
-      <p class="carousel__card-text">Male headliners earn three times more than female headliners at equivalent venues and tour scales.</p>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">Pollstar · 2023</span>
-    </div>
-  </article>
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">~$10M</div>
+    <div class="ai-metric-label"><strong>Justin Bieber</strong> — no dancers, no choreography, no costume changes. Laptop, projector, and guest appearances.</div>
+    <div class="ai-metric-sub">Coachella 2026 headliner fee · Rolling Stone</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">~$5M</div>
+    <div class="ai-metric-label"><strong>Sabrina Carpenter</strong> — full choreography, multiple costume changes, complete theatrical staging.</div>
+    <div class="ai-metric-sub">Standard Coachella headliner benchmark, per weekend · Grey Journal / Billboard</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">12</div>
+    <div class="ai-metric-label">Dancers on the Carpenter <em>Short n' Sweet</em> tour.</div>
+    <div class="ai-metric-sub">Short n' Sweet Tour production details · Wikipedia</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num">[[FIGURE NEEDS SOURCE]]</div>
+    <div class="ai-metric-label">Visible crew on the Carpenter staging. The static piece read “60+”; no source in this piece carries that number.</div>
+    <div class="ai-metric-sub">Unsourced — do not publish until confirmed</div>
+  </div>
+</div>
 
-  <article class="carousel__card card--d" role="group" aria-label="Slide 2 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">Same venue, different deal</span>
-      <h3 class="carousel__card-title">Gross comparison</h3>
-    </div>
-    <div class="carousel__card-body">
-      <div class="carousel__compare-grid">
-        <div class="carousel__compare-cell">
-          <span class="carousel__compare-val">$4.2M</span>
-          <span class="carousel__compare-desc">Male headliner avg. per show</span>
-        </div>
-        <div class="carousel__compare-cell">
-          <span class="carousel__compare-val">$2.8M</span>
-          <span class="carousel__compare-desc">Female headliner avg. per show</span>
-        </div>
-      </div>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">Pollstar · 2023</span>
-    </div>
-  </article>
-
-  <article class="carousel__card card--c" role="group" aria-label="Slide 3 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">The standard</span>
-    </div>
-    <div class="carousel__card-body">
-      <blockquote class="carousel__card-quote">"Men set the ceiling. Women deliver more to justify their place beneath it."</blockquote>
-      <p class="carousel__card-attribution">Female Musicians Earn Less But Share More</p>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">Alterrell Interactive · 2024</span>
-    </div>
-  </article>
-
-  <article class="carousel__card card--b" role="group" aria-label="Slide 4 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">Genre share</span>
-      <h3 class="carousel__card-title">Female headliners by genre</h3>
-    </div>
-    <div class="carousel__card-body">
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Pop</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="61"></div></div>
-        <span class="carousel__bar-val">61%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">R&amp;B</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="44"></div></div>
-        <span class="carousel__bar-val">44%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Country</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="28"></div></div>
-        <span class="carousel__bar-val">28%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Hip-Hop</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="19"></div></div>
-        <span class="carousel__bar-val">19%</span>
-      </div>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">Billboard · 2023</span>
-    </div>
-  </article>
-</Carousel>
+<blockquote class="ai-pullquote">“Men set the ceiling. Women are required to exceed it just to belong.”</blockquote>
 
 <div class="ai-body">
-  <p>The data on concert pay is unambiguous: the music industry extracts a premium from female artists at every tier. They fill the same seats, generate the same merchandise revenue, and in many genres draw more consistent ticket demand — and then receive a fraction of what their male counterparts are paid.</p>
+  <p>The modern concert industry runs on an uneven equation. Male performers often establish the financial ceiling for ticket prices, booking fees, and headliner status while operating with comparatively sparse production requirements. Women enter that same market under entirely different expectations. They are expected to sing, dance, reinvent, costume, conceptualize, and advance the art of performance. Spectacle is not simply a creative choice for female performers: it has become the cost of legitimacy.</p>
+  <p>Once you notice the pattern, it becomes hard to unsee. A male artist can walk onstage with a microphone, a smoke machine, and vibes. A female artist is expected to deliver a near-Broadway production. One performer is evaluated on presence while the other is evaluated as a production system where every missed note, awkward transition, or weak visual becomes evidence of failure.</p>
+  <p>This is not just a pop music issue. It is a labor issue hidden beneath the surface. Women are often carrying larger human-centered productions with dancers, stylists, choreographers, rehearsal teams, creative directors, wardrobe staff, and touring infrastructure that expands in complexity every time a show moves cities or countries. Men frequently retain more financial upside because concert production minimalism is socially acceptable for them. Women are forced to absorb more cost because the standards are not equally enforced for what is deemed a performance or listening party.</p>
 </div>
 
-<div class="share-block">
-  <div class="share-block-label">Share this piece</div>
-  <p class="share-block-nudge">The gap is documented. The data is public. The industry just hopes you don't look.</p>
-  <div class="share-block-btns">
-    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&text=Men%20set%20the%20ceiling.%20Women%20deliver%20more%20to%20justify%20their%20place%20beneath%20it.%20%40alterrell&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X">&#x58; Share on X</a>
-    <button class="share-btn share-btn--outline" id="piece-copy-link" aria-label="Copy link">&#x25CE; <span id="piece-copy-label">Copy link</span></button>
+</TabSection>
+
+<TabSection id="tab-the-data">
+
+<h2 class="ai-h2">What the production gap costs, in fees and in labor</h2>
+
+<h3 class="ai-h3">Cardi B, Coachella 2018</h3>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">~$70K</div>
+    <div class="ai-metric-label">Earned in fees for a 35-minute set, seven months pregnant.</div>
+    <div class="ai-metric-sub">Cardi B, SiriusXM interview, 2018</div>
   </div>
-  <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">~$300K</div>
+    <div class="ai-metric-label">Spent on production for the same set.</div>
+    <div class="ai-metric-sub">Cardi B, SiriusXM interview, 2018</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num">−$230K</div>
+    <div class="ai-metric-label">Net position on the performance.</div>
+    <div class="ai-metric-sub">Derived from the two figures above</div>
+  </div>
+</div>
+
+<div class="ai-callout ai-callout--orange">
+  <p>A man can headline with momentum. A woman often has to underwrite a Broadway-scale argument for her own legitimacy.</p>
+</div>
+
+<h3 class="ai-h3">Who's grossing what</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Artist</th>
+        <th>Tour gross</th>
+        <th>Shows</th>
+        <th>Production</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Taylor Swift — <em>Eras</em></td>
+        <td>$2.07B</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td>Large</td>
+      </tr>
+      <tr>
+        <td>Ed Sheeran — <em>Mathematics</em></td>
+        <td>$875.7M</td>
+        <td>188</td>
+        <td>Solo / minimal</td>
+      </tr>
+      <tr>
+        <td>Beyoncé — <em>Renaissance</em></td>
+        <td>$579M</td>
+        <td>56</td>
+        <td>Large</td>
+      </tr>
+      <tr>
+        <td>Bad Bunny — <em>World's Hottest</em></td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td>Large</td>
+      </tr>
+      <tr>
+        <td>Harry Styles — <em>Love on Tour</em></td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td>Small</td>
+      </tr>
+      <tr>
+        <td>P!nk — <em>Summer Carnival</em></td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td>Large</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ai-stamp">Gross and show counts carried forward only where the Sources tab attaches that exact number to a named publication. The remainder are marked rather than estimated.</p>
+
+<h3 class="ai-h3">Male and female rap headliners, side by side</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Male rap headliners</th>
+        <th>Female rap headliners</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Production posture</td>
+        <td>Minimal</td>
+        <td>Full spectacle</td>
+      </tr>
+      <tr>
+        <td>Dancers</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td>Costume changes</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td>Choreography</td>
+        <td>Rarely expected</td>
+        <td>Expected</td>
+      </tr>
+      <tr>
+        <td>Audience forgiveness</td>
+        <td>High</td>
+        <td>Low</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-body">
+  <p>The production gap is not abstract: it appears directly in touring economics, staffing complexity, and take-home margins.</p>
+  <p>Male artists frequently operate with hardware-heavy productions that can be reused across cities with relatively stable costs. Female artists disproportionately rely on human-heavy systems where every additional city means more labor, rehearsal, insurance, travel, coordination, and risk.</p>
+  <p>Cardi B's 2018 Coachella performance cost nearly $300,000 while she reportedly earned around $70,000 for her set. These economics reflect an understanding that female rappers are rarely afforded the privilege of minimalism while still being perceived as legitimate performers.</p>
+  <p>The numbers also complicate how audiences discuss touring success. Taylor Swift and Beyoncé generated massive grosses through highly complex productions involving enormous human coordination. Yet artists like Ed Sheeran demonstrate that audiences are fully willing to support minimalist performance models at scale when attached to male performers. Revenue alone does not explain the production expectations gap.</p>
+</div>
+
+<hr class="ai-rule" />
+
+<h3 class="ai-h3">Your ticket, decoded</h3>
+
+<div class="ai-body">
+  <p>Where a $100 ticket actually goes. Only the artist's share is carried forward from a named source; the four line items above it are not attached to a figure anywhere in this piece and are marked rather than estimated.</p>
+</div>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Line item</th>
+        <th>Share of a $100 ticket</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ticketing &amp; service fees</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td>Venue &amp; facility costs</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td>Promoter &amp; production</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td>Management &amp; agent fees</td>
+        <td class="val-warn">[[FIGURE NEEDS SOURCE]]</td>
+      </tr>
+      <tr>
+        <td><strong>Artist take-home</strong></td>
+        <td class="val-bad">~$8.00 (~8%)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ai-stamp">Artist share: NITO “What Artists Earn” survey, Dec 2024, via Pollstar News and Hypebot. Approximate industry average; figures vary by tour, artist tier, and deal structure.</p>
+
+<div class="ai-body">
+  <p>Industry research documents that female artists invest significantly more in production relative to gross earnings than male peers at comparable popularity levels. That same 8% artist take-home funds a more expensive show for the artists most likely to be required to deliver spectacle.</p>
+</div>
+
+<h3 class="ai-h3">What that production line actually buys</h3>
+
+<div class="ai-body">
+  <p>Three documented production tiers. The promoter and production line item is the same share across all of them — but what it costs to be on stage is not.</p>
+</div>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">$875.7M</div>
+    <div class="ai-metric-label"><strong>Tier 1 · Solo / minimal — Ed Sheeran.</strong> One performer, loop pedal, no dancers, no costume changes, one set design for the entire run.</div>
+    <div class="ai-metric-sub">188 shows · ~$25M total production investment · 0 dancers · IQ Magazine, Jan 2026</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">$199M</div>
+    <div class="ai-metric-label"><strong>Tier 2 · Band + staging — Zach Bryan, Post Malone.</strong> Full live band, custom stage design and lighting rig. No dancers, no costume changes. Hardware-heavy, not human-heavy.</div>
+    <div class="ai-metric-sub">49 shows (Zach Bryan) · 0 dancers · crew [[FIGURE NEEDS SOURCE]] · Pollstar 2024 Year-End</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">$579M</div>
+    <div class="ai-metric-label"><strong>Tier 3 · Full production — Beyoncé.</strong> Choreography, flying rigs, pyrotechnics, floor-to-ceiling video walls.</div>
+    <div class="ai-metric-sub">56 shows · 23 dancers · 89 trucks · Complex / Variety</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">$2.07B</div>
+    <div class="ai-metric-label"><strong>Tier 3 · Full production — Taylor Swift.</strong> The same tier, the same human overhead, at the largest scale the format has reached.</div>
+    <div class="ai-metric-sub">15 dancers · ~90 trucks · Guinness World Records</div>
+  </div>
+</div>
+
+<p class="ai-stamp">The static piece also credited Tier 3 with “~20 costume changes per show” and a “$100M+ stage.” Neither number is attached to a source in this piece, so both are withheld: [[FIGURE NEEDS SOURCE]].</p>
+
+<div class="ai-callout">
+  <p>The artists who invest the most in their shows are overwhelmingly women. The artists who invest the least still out-earn them. That is not a talent gap. That is a structural one.</p>
 </div>
 
 </TabSection>
 
-<TabSection id="tab-the-gap">
-<h2 class="ai-h2">Earnings by tier, venue, and scale.</h2>
-<div class="ai-body"><p>Detailed earnings breakdown content goes here.</p></div>
+<TabSection id="tab-double-standard">
+
+<h2 class="ai-h2">Women are critiqued as performers. Men are allowed to be personalities.</h2>
+
+<h3 class="ai-h3">Dua Lipa — the cost of “give us nothing”</h3>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">2018</div>
+    <div class="ai-metric-label"><strong>“Go girl, give us nothing.”</strong> An internet meme mocking her stage presence goes viral. Dua later calls it humiliating.</div>
+    <div class="ai-metric-sub">Know Your Meme · 2018 BRIT Awards</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">2019–2020</div>
+    <div class="ai-metric-label"><strong>Complete performance rebuild.</strong> New choreography team, movement training, visual direction overhaul, full production redesign.</div>
+    <div class="ai-metric-sub">Rolling Stone · The Guardian · Bustle</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">2022</div>
+    <div class="ai-metric-label"><strong>Future Nostalgia Tour.</strong> Full spectacle — dancers, costumes, staging. Critically praised as a performance revelation.</div>
+    <div class="ai-metric-sub">Public discourse and tour documentation</div>
+  </div>
+</div>
+
+<h3 class="ai-h3">The same performance, judged twice</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>What men are forgiven for</th>
+        <th>What women are penalized for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="val-good">Minimal staging</td><td class="val-bad">Weak vocals</td></tr>
+      <tr><td class="val-good">No choreography</td><td class="val-bad">Awkward dancing</td></tr>
+      <tr><td class="val-good">Repeat outfits</td><td class="val-bad">Bad styling</td></tr>
+      <tr><td class="val-good">Low energy</td><td class="val-bad">Low energy</td></tr>
+      <tr><td class="val-good">“Vibes-based” sets</td><td class="val-bad">Poor concepts</td></tr>
+      <tr><td class="val-good">Standing still</td><td class="val-bad">Boring staging</td></tr>
+      <tr><td></td><td class="val-bad">Imperfect choreography</td></tr>
+      <tr><td></td><td class="val-bad">Wrong era</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-callout ai-callout--orange">
+  <p>The same low-effort performance that makes a man look effortless can make a woman look unprofessional. Men are allowed to appear casual onstage because the industry already assumes their legitimacy.</p>
+</div>
+
+<blockquote class="ai-pullquote">Beyoncé sets the standard through extraordinary labor. Every woman after her inherits it. None of them inherit the fee.</blockquote>
+
+<div class="ai-body">
+  <p>When men change genres, it's treated as artistic evolution. When women do it, they're expected to compensate with bigger visuals, tighter execution, and total reinvention.</p>
+  <p>Social media transformed concert discourse into a real-time feedback loop where viral clips, memes, and criticism can permanently alter an artist's reputation.</p>
+  <p>Audiences now play a major role in enforcing performance expectations. These critiques often focus on women as performers rather than men as entertainers. Dua Lipa became the clearest example. The phrase “go girl, give us nothing” became shorthand for a female performer serving minimalism. Her eventual reinvention through Future Nostalgia was widely celebrated, but it also normalized the expectation that women must dramatically escalate their performance complexity in order to reclaim legitimacy.</p>
+  <p>Male artists are rarely subjected to the same standards. Standing still, minimal staging, repeated outfits, or “vibes-based” performance styles are often treated as authentic, relaxed, or cool for male musicians. Women performing at the same level are framed as lazy, awkward, under-rehearsed, or lacking star power.</p>
+</div>
+
 </TabSection>
 
-<TabSection id="tab-by-genre">
-<h2 class="ai-h2">Where the gap is narrowest — and widest.</h2>
-<div class="ai-body"><p>Genre breakdown content goes here.</p></div>
+<TabSection id="tab-history">
+
+<h2 class="ai-h2">Men performed. Women entertained.</h2>
+
+<blockquote class="ai-pullquote">“Men performed. Women entertained.”</blockquote>
+
+<h3 class="ai-h3">Crossing into pop, and what came with it</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>These men kept it minimal</th>
+        <th>These women inherited everything</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Drake</td><td>Dua Lipa</td></tr>
+      <tr><td>Ed Sheeran</td><td>Lizzo</td></tr>
+      <tr><td>Post Malone</td><td>Doja Cat</td></tr>
+      <tr><td></td><td>Cardi B</td></tr>
+      <tr><td></td><td>Megan Thee Stallion</td></tr>
+      <tr><td></td><td>Karol G</td></tr>
+      <tr>
+        <td>No dancers. No choreography. No costume changes. No visual direction required.</td>
+        <td>Dancers. Choreography. Costumes. Visual direction. Conceptual eras. All mandatory.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ai-stamp">Crossed into pop, no spectacle inherited (left) against crossed into pop, full spectacle inherited (right).</p>
+
+<div class="ai-body">
+  <p>The production gap did not emerge in a vacuum: it developed through a history of racial segregation, genre segmentation, and unequal expectations around performance.</p>
+  <p>Black women in particular have often been required to redefine the medium itself before receiving equal recognition. Beyoncé's Coachella performance did not simply raise the bar for female performers. Beychella transformed the expectation attached to modern headlining itself. Her female musical peers were either silent or recreated the gender hierarchy, swapping one privileged class for another.</p>
+  <p>Ariana Grande's production team openly discussed the production pressure of following Beyoncé. Three years later, Billie Eilish publicly apologized for not being Beyoncé while headlining Coachella herself.</p>
+  <p>Male artists rarely position themselves this way. No major male headliner walks onstage apologizing for not being Michael Jackson. Nor is MJ the frequently mentioned comparison for streams, physical sales, concert attendance, or other superlatives within male-only comparisons.</p>
+</div>
+
 </TabSection>
 
 <TabSection id="tab-take-action">
-<h2 class="ai-h2">What you can do with this information.</h2>
-<div class="ai-body"><p>Action pathways and resources go here.</p></div>
+
+<h2 class="ai-h2">What you can do with this information</h2>
+
+<blockquote class="ai-pullquote">“I paid Beyoncé prices for a listening party.”</blockquote>
+
+<h3 class="ai-h3">The expectation asymmetry</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>What audiences demand from women</th>
+        <th>What audiences accept from men</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Vocals</td><td rowspan="10">A microphone.</td></tr>
+      <tr><td>Dance</td></tr>
+      <tr><td>Styling</td></tr>
+      <tr><td>Staging</td></tr>
+      <tr><td>Eras</td></tr>
+      <tr><td>Reinvention</td></tr>
+      <tr><td>Perfection</td></tr>
+      <tr><td>Choreography</td></tr>
+      <tr><td>Costumes</td></tr>
+      <tr><td>Stamina</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<blockquote class="ai-pullquote">“Women create longer tables. Men often feast alone.”</blockquote>
+
+<div class="ai-body">
+  <p>Audiences already understand value when it comes to theater, sports, and film production. Music has obscured that conversation because we tend to flatten concerts into the same pricing category regardless of labor complexity. Two artists can charge identical ticket prices while one artist employs dozens more workers, rehearses for months longer, and assumes substantially higher production risk.</p>
+  <p>Consumers are often paying Beyoncé prices for what amounts to a listening party. The goal is not to demand that every artist become Beyoncé. The goal is consistency. If audiences value minimalism, then women should be granted the same freedom to scale back without career punishment. If audiences value theatricality, then male performers should be evaluated against the same standards around staging, innovation, choreography, transitions, and visual ambition.</p>
+  <p>Shifting the expectation requires changing the language around performance itself. We should ask what labor is invisible inside a concert ticket. Who created jobs? Who absorbed risk? Who rehearsed longer? Who built a larger creative ecosystem around their work? Female artists are often creating longer tables while receiving a smaller share of the meal. Once audiences begin recognizing that imbalance, the economics of live performance start to look less natural and more structural.</p>
+</div>
+
+<div class="ai-callout">
+  <p>If you enjoyed this piece, please consider supporting this independent publication — a one-person operation. We operate on tips and donations to avoid any perceived or actual conflicts of interest.</p>
+</div>
+
 </TabSection>
 
 <TabSection id="tab-share">
-<h2 class="ai-h2">Share this piece.</h2>
-<div class="ai-body"><p>Share cards and platform CTAs go here.</p></div>
+
+<h2 class="ai-h2">Share this piece</h2>
+
+<div class="ai-body">
+  <p>The charts are screenshot-friendly. Post what surprises you.</p>
+</div>
+
+<div class="ai-share-card">
+  <div class="ai-share-card-eyebrow">Alterrell Interactive</div>
+  <div class="ai-share-card-num">~$8.00</div>
+  <div class="ai-share-card-context">What the artist keeps out of a $100 concert ticket — while the artists carrying the largest productions are overwhelmingly women.</div>
+  <div class="ai-share-card-footer">
+    <span>Alterrell Interactive</span>
+    <span>interactive.alterrell.com</span>
+  </div>
+</div>
+
+<div class="ai-share-actions">
+  <button type="button" class="ai-share-btn ai-share-btn--copy" id="piece-copy-link"><span id="piece-copy-label">Copy link</span></button>
+  <a class="ai-share-btn ai-share-btn--download" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fconcert-tax%2F&amp;text=Female+Musicians+Earn+Less+But+Share+More+%E2%80%94+Men+set+the+ceiling.+Women+are+required+to+exceed+it+just+to+belong.&amp;via=alterrell" target="_blank" rel="noopener">Share on X</a>
+</div>
+
+<p class="ai-stamp">Two destinations, per SHARE-02. Get the story behind the story → <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+
 </TabSection>
 
 <TabSection id="tab-sources">
+
 <h2 class="ai-h2">Methodology &amp; Sources</h2>
-<div class="ai-body"><p>Touring data sourced from Pollstar's annual industry reports. Genre representation data sourced from Billboard chart analysis. Methodology: top-100 touring acts by gross revenue, segmented by headliner gender as reported by artist management.</p></div>
+
+<div class="ai-body">
+  <p>Production intensity scored on a four-tier proxy scale: 1 = solo/minimal instrument, 2 = small band/limited staging, 3 = dancers + full band/multiple costume changes, 4 = full theatrical with architectural set, aerial, or 10+ dancers and narrative structure. Revenue per show = reported tour gross divided by reported shows. Career touring scale = total reported lifetime gross from Billboard Boxscore. Genre classification uses primary Grammy category at time of most recent major tour.</p>
+  <p>This piece uses “female artist” and “male artist” following the nomenclature of the Recording Academy, Billboard, Pollstar, and Billboard Boxscore. These are the terms used in the data sources cited throughout.</p>
+</div>
+
+<h3 class="ai-h3">Cited sources</h3>
+
 <ol class="ai-source-list">
-  <li>Pollstar. <em>Year-End Concert Industry Report.</em> Pollstar.com · 2023</li>
-  <li>Billboard. <em>Women in Music: Annual Report.</em> Billboard.com · 2023</li>
+  <li>NITO (National Independent Talent Organization) “What Artists Earn” survey · Dec 2024 · via Pollstar News and Hypebot · ~8% artist take-home from $100 ticket face value</li>
+  <li>IQ Magazine — Ed Sheeran Mathematics Tour analysis · Jan 2026 · $25M production investment confirmed, $875.7M gross, 188 shows</li>
+  <li>Guinness World Records — Taylor Swift Eras Tour $2.07B gross confirmed · 15 dancers · ~90 trucks</li>
+  <li>Complex / Variety — Beyoncé Renaissance World Tour · $579M gross · 56 shows · 23 dancers · 89 trucks (Bank of America Stadium setup figure)</li>
+  <li>Pollstar 2024 Year-End — Zach Bryan $199M gross, 49 shows</li>
+  <li>Rolling Stone — Bieber Coachella fee “north of $10M”</li>
+  <li>Grey Journal / Billboard — Standard Coachella headliner $5M per weekend benchmark</li>
+  <li>Stufish Entertainment Architects — Sabrina Carpenter Short n' Sweet set design documentation</li>
+  <li>Wikipedia / Short n' Sweet Tour — 12 dancers, tour production details</li>
+  <li>Hollywood Reporter — Bieber/Carpenter double standard debate, April 2026</li>
+  <li>Rolling Stone — Katy Perry, Lizzo, Zara Larsson reactions to Bieber set</li>
+  <li>Billboard Boxscore — tour gross figures</li>
+  <li>Pollstar Year-End 2024, 2025 — industry-wide touring data</li>
+  <li>Billboard Top Rap Tours 2024 — Nicki Minaj $99.8M, Megan Thee Stallion $40.2M, Doja Cat $46M</li>
+  <li>Billboard Top R&amp;B Tours 2025 — The Weeknd, Usher, Chris Brown figures</li>
+  <li>Billboard, multiple sources — industry standard 30–50% production/operating burn rate</li>
+  <li>Jalopnik — Taylor Swift Eras Tour ~50 trucks</li>
+  <li>WSJ / Morson — “most technically ambitious production of the 21st century”</li>
+  <li>Variety — Drake, It's All a Blur production breakdown</li>
+  <li>Break Every Rule World Tour, Wikipedia / Grokipedia — Tina Turner 1987, $60M gross</li>
+  <li>Adele Live, Wikipedia — 2011 sparse staging, production designer intent documented</li>
+  <li>Rolling Stone — Adele Live 2016, $278M gross</li>
+  <li>Rolling Stone, The Guardian, Bustle — “go girl give us nothing” meme, two-year impact</li>
+  <li>Know Your Meme — origin documentation, 2018 BRIT Awards</li>
+  <li>Radical Optimism Tour, Wikipedia — $141M gross, production upgrade</li>
+  <li>Massachusetts Daily Collegian — “Who gets to be Pop?”</li>
+  <li>Cardi B, SiriusXM interview, 2018 — ~$70K fee against ~$300K production spend, Coachella 2018</li>
 </ol>
+
+<h3 class="ai-h3">Figures withheld pending a source</h3>
+
+<div class="ai-body">
+  <p>Every figure below appeared in the static piece and is not attached to a source anywhere in it. Each renders as [[FIGURE NEEDS SOURCE]] rather than a plausible value, and stays that way until AMA confirms or rejects it.</p>
+</div>
+
+<ol class="ai-source-list">
+  <li>Bad Bunny — World's Hottest tour gross and show count</li>
+  <li>Harry Styles — Love on Tour gross and show count</li>
+  <li>P!nk — Summer Carnival gross and show count</li>
+  <li>Taylor Swift — Eras Tour show count</li>
+  <li>Ticket split — ticketing and service fees, venue and facility costs, promoter and production, management and agent fees</li>
+  <li>Sabrina Carpenter — visible crew count</li>
+  <li>Tier 2 production — crew count</li>
+  <li>Tier 3 production — costume changes per show, stage cost</li>
+  <li>Rap headliners — dancer counts and costume changes, both columns</li>
+</ol>
+
+<div class="ai-callout ai-callout--warning">
+  <p>Two figures were deleted outright rather than marked: the male and female headliner per-show averages attributed to “Pollstar · 2023.” They were invented and carried a real source name. Ruled removed 2026-08-11, and not replaced with other numbers.</p>
+</div>
+
 </TabSection>

@@ -76,10 +76,10 @@ const EXCLUDED_DIRS = new Set(['node_modules', '.git', '_tools', 'old']);
 
 /* Two classes of built page.
  *
- * PIECE — an article. Carries the full contract: breadcrumb, hero, tab bar,
- *   Overview first, Sources last. Evaluated against every rule.
+ * PIECE — an article. Carries the full contract: hero, tab bar, Overview
+ *   first, Sources last. Evaluated against every rule.
  * PAGE  — shipped, but not an article. The hub is a card grid; 404 is a
- *   stub. Neither has a tab bar or an Overview tab, so scoring S1-S11
+ *   stub. Neither has a tab bar or an Overview tab, so scoring S3-S11
  *   against them manufactures failures that describe the rule, not the page.
  *   Still evaluated against geometry, because a page that overflows at 360
  *   or hides a control under 44px is broken whatever class it is in.
@@ -340,19 +340,13 @@ function collect(TOL) {
     }
   }
 
-  const breadcrumb = document.querySelector('.ai-breadcrumb');
-  const nav = document.querySelector('.ai-nav');
-  let breadcrumbOrder = null;
-  if (breadcrumb && nav) {
-    const pos = breadcrumb.compareDocumentPosition(nav);
-    breadcrumbOrder = !!(pos & Node.DOCUMENT_POSITION_FOLLOWING);
-  }
+  /* No breadcrumb measurement. S1 (has-breadcrumb on body) and S2
+   * (.ai-breadcrumb precedes .ai-nav) were retired by AMA on 2026-08-11 and
+   * are recorded in alterrell-hq/reference/NEVER-IMPLEMENT.md. The breadcrumb
+   * is gone from every surface, so a rule that asserts its presence measures
+   * the rule, not the page. Nothing here reads .ai-breadcrumb. */
 
   const structure = {
-    bodyClasses: [...document.body.classList],
-    hasBreadcrumbEl: !!breadcrumb,
-    hasNavEl: !!nav,
-    breadcrumbBeforeNav: breadcrumbOrder,
     scope,
     primaryBarCount: primaryBars.length || (primary ? 1 : 0),
     primaryBarSelectors: (primaryBars.length ? primaryBars : primary ? [primary] : []).map(cssPath),
@@ -401,9 +395,20 @@ function collect(TOL) {
    * scrollableParent — the parent scrolls, so the child's width is the
    *   scroller's content, not an escape from the layout.
    *
+   * hiddenParent — the parent computes overflow-x: hidden, so it clips.
+   *   Added 2026-08-11, mirroring scrollableParent: in both cases the
+   *   child's extent is the parent's business, not the layout's. Nothing
+   *   escapes the container and nothing pushes the page wider, because the
+   *   parent absorbs it — by scrolling in one case and by clipping in the
+   *   other. The canonical case is a track inside a masked viewport. What
+   *   this does NOT cover is an element whose own overflow-x is hidden;
+   *   that element still reports a content-extent scrollWidth and is still
+   *   scored, because a box that silently swallows its own content is the
+   *   defect G2 exists for on the other axis.
+   *
    * Anything else is real: content wider than a container that gives the
    * reader no way to reach it. */
-  const g1 = { real: [], scrollableParent: [], selfScrollable: [] };
+  const g1 = { real: [], scrollableParent: [], selfScrollable: [], hiddenParent: [] };
   for (const el of all) {
     const parent = el.parentElement;
     if (!parent || parent === document.documentElement) continue;
@@ -420,6 +425,7 @@ function collect(TOL) {
     };
     if (selfOx === 'auto' || selfOx === 'scroll') g1.selfScrollable.push(rec);
     else if (ox === 'auto' || ox === 'scroll') g1.scrollableParent.push(rec);
+    else if (ox === 'hidden' || ox === 'clip') g1.hiddenParent.push(rec);
     else g1.real.push(rec);
   }
 
@@ -696,17 +702,9 @@ function evalStructure(d, relPath, rootDir) {
   const s = d.structure;
   const r = {};
 
-  r.S1 = s.bodyClasses.includes('has-breadcrumb')
-    ? P()
-    : F(`body class="${s.bodyClasses.join(' ') || '(none)'}"`);
-
-  if (!s.hasBreadcrumbEl || !s.hasNavEl) {
-    r.S2 = F(
-      `missing ${!s.hasBreadcrumbEl ? '.ai-breadcrumb' : ''}${!s.hasBreadcrumbEl && !s.hasNavEl ? ' and ' : ''}${!s.hasNavEl ? '.ai-nav' : ''}`
-    );
-  } else {
-    r.S2 = s.breadcrumbBeforeNav ? P() : F('.ai-nav precedes .ai-breadcrumb');
-  }
+  /* S1 and S2 are retired, not renumbered. The remaining structure rules keep
+   * the ids they have always had so a historical report still reads straight.
+   * See alterrell-hq/reference/NEVER-IMPLEMENT.md. */
 
   // Scoped: exactly one primary tab bar. Carousel dot strips are excluded.
   const oos = s.scope.outOfScope.length;
@@ -775,6 +773,7 @@ function evalGeometry(d) {
   const g1Excluded = [
     d.g1.selfScrollable.length ? `${d.g1.selfScrollable.length} self-scrollable` : '',
     d.g1.scrollableParent.length ? `${d.g1.scrollableParent.length} in scrollable parents` : '',
+    (d.g1.hiddenParent || []).length ? `${d.g1.hiddenParent.length} in clipping parents` : '',
   ].filter(Boolean);
   r.G1 =
     d.g1.real.length === 0
@@ -963,9 +962,9 @@ async function routeFonts(page) {
     const asPiece = pieces.filter((p) => classOf(p) === 'PIECE');
     const asPage = pieces.filter((p) => classOf(p) === 'PAGE');
     console.log(`Build output (${pieces.length} pages, nothing excluded):`);
-    console.log(`  PIECE (${asPiece.length}) — all 17 rules:`);
+    console.log(`  PIECE (${asPiece.length}) — all 15 rules:`);
     asPiece.forEach((p) => console.log(`    + dist/${p}`));
-    console.log(`  PAGE  (${asPage.length}) — geometry only, S1-S11 not applicable:`);
+    console.log(`  PAGE  (${asPage.length}) — geometry only, S3-S11 not applicable:`);
     asPage.forEach((p) => console.log(`    · dist/${p}`));
   }
   console.log(`\nRule hash (SHA-256 of rule-definition block):\n  ${RULE_HASH}`);
@@ -1045,7 +1044,7 @@ async function routeFonts(page) {
 
         if (w === STRUCTURE_WIDTH) {
           // PAGE-class files ship, and their geometry counts, but they carry
-          // no piece contract, so S1-S11 are not applicable to them.
+          // no piece contract, so S3-S11 are not applicable to them.
           piece.structure = piece.pageClass === 'PAGE' ? null : evalStructure(data, rel, SERVE_ROOT);
           piece.scope = data.structure.scope;
           const inline = extractSelectors(data.structure.inlineStyleText);

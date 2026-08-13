@@ -17,8 +17,8 @@
     a.btn { display: inline-block; width: 140px; height: 48px; line-height: 48px;
             text-align: center; background: #eeeeee; color: #111111;
             text-decoration: none; }
-    .scroller   { overflow-x: auto; background: #ffffff; }
-    .wide       { width: 1400px; background: #ffffff; }
+    .clipped { width: 600px; background: #ffffff; }
+    .clip    { overflow-x: hidden;  width: 200px; background: #ffffff; }
   </style>
 </head>
 <body>
@@ -31,7 +31,7 @@
   <section id="p1" role="tabpanel"><p>Body copy at a comfortable contrast.</p></section>
   <section id="p2" role="tabpanel"><p>More body copy at a comfortable contrast.</p></section>
   <a class="btn" href="#target">Action</a>
-  <div class="scroller"><div class="wide"><p>Wide content inside its own scroller.</p></div></div>
+  <div class="clip"><div class="clipped"><p>Wide content inside a clipping parent.</p></div></div>
 </div>
 </body>
 </html>

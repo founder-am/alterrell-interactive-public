@@ -17,14 +17,9 @@
     a.btn { display: inline-block; width: 140px; height: 48px; line-height: 48px;
             text-align: center; background: #eeeeee; color: #111111;
             text-decoration: none; }
-    /* .overflower is the real defect: wider than .wrap, and .wrap gives
-       the reader no way to reach it. .scroller is the same geometry with
-       overflow-x: auto, which G1 skips. Both are on this page so the
-       fixture proves the rule still catches the real one while exempting
-       the scrollable one — a rule that exempted both would pass here. */
-    .overflower { width: 2000px; background: #ffffff; }
     .scroller   { overflow-x: auto; background: #ffffff; }
     .wide       { width: 1400px; background: #ffffff; }
+    .overflower { width: 2000px; background: #ffffff; }
   </style>
 </head>
 <body>
