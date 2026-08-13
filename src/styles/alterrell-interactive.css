@@ -1995,3 +1995,120 @@ details[open] .ai-footer-methodology summary::before {
   margin-bottom: 1rem;
 }
 .carousel-demo-section--dark .carousel-demo-label { color: rgba(248,246,241,0.35); }
+/* Alterrell Interactive - tuned family layer
+   body:not(#x) Generated from tuner v3 export, body:not(#x) 2026-08-13, body:not(#x) corrected.
+   Desktop unconditional. Mobile inside one 640 breakpoint.
+   Paste into BOTH copies of alterrell-interactive.css, body:not(#x) at the end.
+*/
+
+/* ---------- DESKTOP ---------- */
+.ai-nav { height: 52px; padding-inline: 22px }
+body:not(#x) .ai-nav-brand { font-size: 11px }
+body:not(#x) .ai-nav-meta { font-size: 10px }
+body:not(#x) .ai-tabs { padding: 16px }
+body:not(#x) .ai-tab { height: 44px; padding-inline: 6px; font-size: 12px; font-weight: 800 }
+body:not(#x) .ai-inner, body:not(#x) .ai-journey-inner, body:not(#x) .hub-hero-inner, body:not(#x) .hub-grid-section-inner, body:not(#x) .ai-footer-inner { max-width: 1080px }
+body:not(#x) .ai-hero, body:not(#x) .hub-hero { padding-inline: 20px; padding-top: 7px; padding-bottom: 13px }
+body:not(#x) .ai-inner, body:not(#x) .hub-hero-inner, body:not(#x) .hub-grid-section-inner { padding-inline: 0px }
+body:not(#x) .ai-section, body:not(#x) .hub-grid-section { padding-inline: 18px; padding-top: 18px; padding-bottom: 56px }
+body:not(#x) .ai-hero-hed, body:not(#x) .hub-hero-headline { white-space: normal; font-size: 74px; line-height: 1; margin-bottom: 11px; max-width: 1080px; text-wrap: balance }
+body:not(#x) .ai-hero-dek { font-size: 20px; line-height: 1.7; margin-top: 5px }
+body:not(#x) .ai-journey, body:not(#x) .hub-journey { padding-block: 3px; padding-inline: 20px }
+body:not(#x) .ai-journey-inner { gap: 5px }
+body:not(#x) .ai-journey-path { min-height: 33px; padding-block: 0px; padding-inline: 9px; gap: 6px; border-top-width: 3px }
+body:not(#x) .ai-journey-icon { display: none; font-size: 27px; margin-bottom: 0px }
+body:not(#x) .ai-journey-label { display: none; font-size: 11px }
+body:not(#x) .ai-journey-title { font-size: 11px }
+body:not(#x) .ai-journey-meta { font-size: 9px }
+body:not(#x) .ai-journey-cta { font-size: 10px }
+body:not(#x) .ai-h2 { font-size: 44px; line-height: 1; margin-bottom: 18px }
+body:not(#x) .ai-h3 { font-size: 17px }
+body:not(#x) .ai-body { font-size: 16px; line-height: 1.75; margin-bottom: 28px }
+body:not(#x) .hub-piece-grid { grid-template-columns: repeat(2,1fr); gap: 20px }
+body:not(#x) .hub-card { border-left-width: 5px }
+body:not(#x) .hub-card-bar { padding: 8px; min-height: 70px }
+body:not(#x) .hub-card-bar-title { font-size: 22px; line-height: 1.15 }
+body:not(#x) .hub-card-body { padding: 12px }
+body:not(#x) .hub-card-sub { font-size: 11px; -webkit-line-clamp: 2 }
+body:not(#x) .hub-card-pill { font-size: 10px }
+body:not(#x) .hub-card-stakes { font-size: 9px }
+body:not(#x) .ai-footer, body:not(#x) .hub-footer { padding-block: 18px; padding-inline: 20px; font-size: 10px }
+body:not(#x) .ai-footer-series-hub { min-height: 44px }
+body:not(#x) .ai-footer-url { min-height: 44px }
+body:not(#x) .ai-metrics { grid-template-columns: repeat(4,1fr); gap: 18px }
+body:not(#x) .ai-metric { padding: 25px; border-width: 1px }
+body:not(#x) .ai-metric-num { font-size: 34px }
+body:not(#x) .ai-metric-label { font-size: 13px }
+body:not(#x) .ai-metric-sub { font-size: 9px }
+body:not(#x) .ai-table-wrap { padding: 0px }
+body:not(#x) .ai-table td, body:not(#x) .ai-table th { padding: 12px }
+body:not(#x) .ai-table { font-size: 13px }
+body:not(#x) .ai-callout { padding: 22px; font-size: 14px }
+body:not(#x) .ai-pullquote { font-size: 18px }
+body:not(#x) .ai-share-card { width: 380px }
+body:not(#x) .ai-share-card-num { font-size: 35px }
+body:not(#x) .ai-share-card-eyebrow { font-size: 9px }
+body:not(#x) .ai-share-btn { min-height: 44px }
+body:not(#x) .ai-share-actions { gap: 12px }
+body:not(#x) .ai-source-list { font-size: 13px }
+body:not(#x) .ai-source-list li { margin-bottom: 12px }
+body:not(#x) .ai-stamp { font-size: 9px }
+
+/* ---------- MOBILE, single breakpoint ---------- */
+@media (max-width: 640px) {
+  body:not(#x) .hub-hero { padding-top: 10px }
+  body:not(#x) .has-nav { padding-top: 0 }
+  body:not(#x) .ai-tab { min-height: 0 }
+  body:not(#x) .ai-hero-hed, body:not(#x) .hub-hero-headline { white-space: normal }
+  body:not(#x) .ai-nav { display: none; height: 38px; padding-inline: 16px }
+  body:not(#x) .ai-nav-brand { font-size: 11px }
+  body:not(#x) .ai-nav-meta { font-size: 10px }
+  body:not(#x) .ai-tabs { padding: 1px }
+  body:not(#x) .ai-tab { height: 26px; padding-inline: 4px; font-size: 12px; font-weight: 600 }
+  body:not(#x) .ai-inner, body:not(#x) .ai-journey-inner, body:not(#x) .hub-hero-inner, body:not(#x) .hub-grid-section-inner, body:not(#x) .ai-footer-inner { max-width: 1080px }
+  body:not(#x) .ai-hero, body:not(#x) .hub-hero { padding-inline: 16px; padding-top: 10px; padding-bottom: 5px }
+  body:not(#x) .ai-inner, body:not(#x) .hub-hero-inner, body:not(#x) .hub-grid-section-inner { padding-inline: 10px }
+  body:not(#x) .ai-section, body:not(#x) .hub-grid-section { padding-inline: 16px; padding-top: 12px; padding-bottom: 0px }
+  body:not(#x) .ai-hero-hed, body:not(#x) .hub-hero-headline { font-size: 23px; line-height: 0.8; margin-bottom: 1px; max-width: 360px; text-wrap: balance }
+  body:not(#x) .ai-hero-dek { font-size: 15px; line-height: 1.45; margin-top: 3px; -webkit-line-clamp: 2 }
+  body:not(#x) .ai-journey, body:not(#x) .hub-journey { padding-block: 2px; padding-inline: 16px }
+  body:not(#x) .ai-journey-inner { gap: 1px }
+  body:not(#x) .ai-journey-path { min-height: 24px; padding-block: 0px; padding-inline: 6px; gap: 0px; border-top-width: 3px }
+  body:not(#x) .ai-journey-icon { display: none; font-size: 27px; margin-bottom: 0px }
+  body:not(#x) .ai-journey-label { display: none; font-size: 9px }
+  body:not(#x) .ai-journey-title { font-size: 11px }
+  body:not(#x) .ai-journey-meta { display: none; font-size: 9px }
+  body:not(#x) .ai-journey-cta { font-size: 10px }
+  body:not(#x) .ai-h2 { font-size: 19px; line-height: 1.15; margin-bottom: 12px }
+  body:not(#x) .ai-h3 { font-size: 17px }
+  body:not(#x) .ai-body { font-size: 16px; line-height: 1.35; margin-bottom: 18px }
+  body:not(#x) .hub-piece-grid { grid-template-columns: repeat(1,1fr); gap: 13px }
+  body:not(#x) .hub-card { border-left-width: 5px }
+  body:not(#x) .hub-card-bar { padding: 1px; min-height: 48px }
+  body:not(#x) .hub-card-bar-title { font-size: 22px; line-height: 1.15 }
+  body:not(#x) .hub-card-body { padding: 7px }
+  body:not(#x) .hub-card-sub { font-size: 11px; -webkit-line-clamp: 2 }
+  body:not(#x) .hub-card-pill { font-size: 10px }
+  body:not(#x) .hub-card-stakes { font-size: 9px }
+  body:not(#x) .ai-footer, body:not(#x) .hub-footer { padding-block: 8px; padding-inline: 16px; font-size: 10px }
+  body:not(#x) .ai-footer-series-hub { min-height: 44px }
+  body:not(#x) .ai-footer-url { display: none; min-height: 44px }
+  body:not(#x) .ai-metrics { grid-template-columns: repeat(1,1fr); gap: 12px }
+  body:not(#x) .ai-metric { padding: 16px; border-width: 1px }
+  body:not(#x) .ai-metric-num { font-size: 34px }
+  body:not(#x) .ai-metric-label { font-size: 13px }
+  body:not(#x) .ai-metric-sub { font-size: 9px }
+  body:not(#x) .ai-table-wrap { padding: 0px }
+  body:not(#x) .ai-table td, body:not(#x) .ai-table th { padding: 8px }
+  body:not(#x) .ai-table { font-size: 13px }
+  body:not(#x) .ai-callout { padding: 14px; font-size: 14px }
+  body:not(#x) .ai-pullquote { font-size: 18px }
+  body:not(#x) .ai-share-card { width: 300px }
+  body:not(#x) .ai-share-card-num { font-size: 35px }
+  body:not(#x) .ai-share-card-eyebrow { font-size: 9px }
+  body:not(#x) .ai-share-btn { min-height: 44px }
+  body:not(#x) .ai-share-actions { gap: 8px }
+  body:not(#x) .ai-source-list { font-size: 13px }
+  body:not(#x) .ai-source-list li { margin-bottom: 8px }
+  body:not(#x) .ai-stamp { font-size: 9px }
+}

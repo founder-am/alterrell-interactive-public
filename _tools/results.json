@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12T23:41:00.882Z",
+  "generated": "2026-08-13T20:11:00.301Z",
   "repo": "/Users/alterrellmills/Documents/GitHub/alterrell-interactive-public",
   "chromium": "151.0.7922.34",
   "chromiumPinned": "151.0.7922.34",
@@ -18,7 +18,7 @@
     768,
     1280
   ],
-  "platformSelectorCount": 280,
+  "platformSelectorCount": 295,
   "pieces": [
     {
       "path": "404.html",
@@ -49,15 +49,15 @@
             }
           },
           "g5": {
-            "widthPx": 256,
-            "widestLinePx": 247,
+            "widthPx": 308,
+            "widestLinePx": 291,
             "chars": 104,
-            "lines": 4,
-            "charsPerLine": 26,
+            "lines": 3,
+            "charsPerLine": 35,
             "selector": "p.ai-hero-dek"
           },
           "g6": null,
-          "docHeight": 1467,
+          "docHeight": 1088,
           "failedRequests": []
         },
         "768": {
@@ -84,15 +84,15 @@
             }
           },
           "g5": {
-            "widthPx": 664,
-            "widestLinePx": 644,
-            "chars": 104,
-            "lines": 2,
-            "charsPerLine": 52,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 359,
+            "chars": 54,
+            "lines": 1,
+            "charsPerLine": 54,
+            "selector": "p:nth-of-type(1)"
           },
           "g6": null,
-          "docHeight": 1690,
+          "docHeight": 1461,
           "failedRequests": []
         },
         "1280": {
@@ -119,7 +119,7 @@
             }
           },
           "g5": {
-            "widthPx": 1176,
+            "widthPx": 1080,
             "widestLinePx": 991,
             "chars": 104,
             "lines": 1,
@@ -127,7 +127,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": null,
-          "docHeight": 1588,
+          "docHeight": 1303,
           "failedRequests": []
         }
       },
@@ -164,7 +164,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 6 inline links out of scope"
+              "note": "7 controls checked, 3 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -176,22 +176,22 @@
             }
           },
           "g5": {
-            "widthPx": 256,
-            "widestLinePx": 231,
+            "widthPx": 308,
+            "widestLinePx": 298,
             "chars": 68,
-            "lines": 3,
-            "charsPerLine": 23,
+            "lines": 2,
+            "charsPerLine": 34,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 863,
-          "docHeight": 3547,
+          "g6": 230,
+          "docHeight": 2314,
           "failedRequests": []
         },
         "768": {
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": "1 self-scrollable (excluded)"
+              "note": ""
             },
             "G2": {
               "status": "PASS",
@@ -211,15 +211,15 @@
             }
           },
           "g5": {
-            "widthPx": 664,
-            "widestLinePx": 499,
-            "chars": 68,
-            "lines": 1,
-            "charsPerLine": 68,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 728,
+            "chars": 505,
+            "lines": 6,
+            "charsPerLine": 84,
+            "selector": "p:nth-of-type(1)"
           },
-          "g6": 625,
-          "docHeight": 2393,
+          "g6": 434,
+          "docHeight": 1935,
           "failedRequests": []
         },
         "1280": {
@@ -246,15 +246,15 @@
             }
           },
           "g5": {
-            "widthPx": 1176,
+            "widthPx": 1080,
             "widestLinePx": 623,
             "chars": 68,
             "lines": 1,
             "charsPerLine": 68,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 723,
-          "docHeight": 2084,
+          "g6": 354,
+          "docHeight": 1639,
           "failedRequests": []
         }
       },
@@ -289,7 +289,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -328,40 +328,12 @@
           "geometry": {
             "G1": {
               "status": "FAIL",
-              "note": "5 overflowing",
+              "note": "1 overflowing",
               "offenders": [
                 {
                   "selector": "div.carousel__viewport:nth-of-type(1)",
                   "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--a:nth-of-type(1)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--d:nth-of-type(2)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--c:nth-of-type(3)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--b:nth-of-type(4)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "value": "scrollWidth 1248 > parent clientWidth 308",
                   "overflowX": "visible",
                   "selfOverflowX": "hidden"
                 }
@@ -373,7 +345,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "10 controls checked, 8 inline links out of scope"
+              "note": "10 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -385,15 +357,15 @@
             }
           },
           "g5": {
-            "widthPx": 256,
-            "widestLinePx": 253,
+            "widthPx": 308,
+            "widestLinePx": 306,
             "chars": 102,
             "lines": 3,
             "charsPerLine": 34,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 821,
-          "docHeight": 2547,
+          "g6": 252,
+          "docHeight": 1632,
           "failedRequests": []
         },
         "768": {
@@ -405,7 +377,7 @@
                 {
                   "selector": "div.carousel__viewport:nth-of-type(1)",
                   "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 664",
+                  "value": "scrollWidth 1248 > parent clientWidth 732",
                   "overflowX": "visible",
                   "selfOverflowX": "hidden"
                 }
@@ -429,15 +401,15 @@
             }
           },
           "g5": {
-            "widthPx": 664,
-            "widestLinePx": 636,
-            "chars": 102,
-            "lines": 2,
-            "charsPerLine": 51,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 713,
+            "chars": 283,
+            "lines": 3,
+            "charsPerLine": 94,
+            "selector": "p:nth-of-type(1)"
           },
-          "g6": 656,
-          "docHeight": 2086,
+          "g6": 388,
+          "docHeight": 1751,
           "failedRequests": []
         },
         "1280": {
@@ -449,7 +421,7 @@
                 {
                   "selector": "div.carousel__viewport:nth-of-type(1)",
                   "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 1176",
+                  "value": "scrollWidth 1248 > parent clientWidth 1080",
                   "overflowX": "visible",
                   "selfOverflowX": "hidden"
                 }
@@ -473,15 +445,15 @@
             }
           },
           "g5": {
-            "widthPx": 1176,
+            "widthPx": 1080,
             "widestLinePx": 916,
             "chars": 102,
             "lines": 1,
             "charsPerLine": 102,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 723,
-          "docHeight": 2058,
+          "g6": 354,
+          "docHeight": 1617,
           "failedRequests": []
         }
       },
@@ -516,7 +488,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -567,7 +539,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 7 inline links out of scope"
+              "note": "7 controls checked, 4 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -579,22 +551,22 @@
             }
           },
           "g5": {
-            "widthPx": 256,
-            "widestLinePx": 236,
+            "widthPx": 308,
+            "widestLinePx": 289,
             "chars": 85,
             "lines": 3,
             "charsPerLine": 28,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 821,
-          "docHeight": 1894,
+          "g6": 252,
+          "docHeight": 1203,
           "failedRequests": []
         },
         "768": {
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": "1 self-scrollable (excluded)"
+              "note": ""
             },
             "G2": {
               "status": "PASS",
@@ -614,15 +586,15 @@
             }
           },
           "g5": {
-            "widthPx": 664,
-            "widestLinePx": 643,
-            "chars": 85,
+            "widthPx": 732,
+            "widestLinePx": 363,
+            "chars": 89,
             "lines": 1,
-            "charsPerLine": 85,
-            "selector": "p.ai-hero-dek"
+            "charsPerLine": 89,
+            "selector": "p"
           },
-          "g6": 625,
-          "docHeight": 1943,
+          "g6": 388,
+          "docHeight": 1661,
           "failedRequests": []
         },
         "1280": {
@@ -649,15 +621,15 @@
             }
           },
           "g5": {
-            "widthPx": 1176,
+            "widthPx": 1080,
             "widestLinePx": 802,
             "chars": 85,
             "lines": 1,
             "charsPerLine": 85,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 723,
-          "docHeight": 1917,
+          "g6": 354,
+          "docHeight": 1503,
           "failedRequests": []
         }
       },
@@ -692,7 +664,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -739,7 +711,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "1 controls checked, 11 inline links out of scope"
+              "note": "1 controls checked, 8 inline links out of scope"
             },
             "G4": {
               "status": "NA",
@@ -751,7 +723,7 @@
             }
           },
           "g5": {
-            "widthPx": 274,
+            "widthPx": 254,
             "widestLinePx": 239,
             "chars": 68,
             "lines": 2,
@@ -759,7 +731,7 @@
             "selector": "p.hub-card-sub"
           },
           "g6": null,
-          "docHeight": 1802,
+          "docHeight": 1588,
           "failedRequests": []
         },
         "768": {
@@ -794,7 +766,7 @@
             "selector": "p.hub-card-sub"
           },
           "g6": null,
-          "docHeight": 1195,
+          "docHeight": 1083,
           "failedRequests": []
         },
         "1280": {
@@ -838,7 +810,7 @@
             "selector": "p.hub-card-sub"
           },
           "g6": null,
-          "docHeight": 1169,
+          "docHeight": 1057,
           "failedRequests": []
         }
       },
@@ -867,33 +839,12 @@
           "geometry": {
             "G1": {
               "status": "FAIL",
-              "note": "4 overflowing",
+              "note": "1 overflowing",
               "offenders": [
                 {
                   "selector": "div.carousel__viewport:nth-of-type(1)",
                   "parent": "div.carousel__outer",
-                  "value": "scrollWidth 932 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--a:nth-of-type(1)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--c:nth-of-type(2)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                },
-                {
-                  "selector": "article.carousel__card.card--a:nth-of-type(3)",
-                  "parent": "div.carousel__track",
-                  "value": "scrollWidth 286 > parent clientWidth 256",
+                  "value": "scrollWidth 932 > parent clientWidth 308",
                   "overflowX": "visible",
                   "selfOverflowX": "hidden"
                 }
@@ -905,7 +856,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "9 controls checked, 8 inline links out of scope"
+              "note": "9 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -917,15 +868,15 @@
             }
           },
           "g5": {
-            "widthPx": 256,
-            "widestLinePx": 250,
+            "widthPx": 308,
+            "widestLinePx": 282,
             "chars": 146,
-            "lines": 5,
-            "charsPerLine": 29,
+            "lines": 4,
+            "charsPerLine": 37,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 839,
-          "docHeight": 2210,
+          "g6": 255,
+          "docHeight": 1357,
           "failedRequests": []
         },
         "768": {
@@ -937,7 +888,7 @@
                 {
                   "selector": "div.carousel__viewport:nth-of-type(1)",
                   "parent": "div.carousel__outer",
-                  "value": "scrollWidth 932 > parent clientWidth 664",
+                  "value": "scrollWidth 932 > parent clientWidth 732",
                   "overflowX": "visible",
                   "selfOverflowX": "hidden"
                 }
@@ -967,15 +918,15 @@
             }
           },
           "g5": {
-            "widthPx": 664,
-            "widestLinePx": 642,
-            "chars": 146,
-            "lines": 2,
-            "charsPerLine": 73,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 725,
+            "chars": 267,
+            "lines": 3,
+            "charsPerLine": 89,
+            "selector": "p"
           },
-          "g6": 588,
-          "docHeight": 1906,
+          "g6": 422,
+          "docHeight": 1695,
           "failedRequests": []
         },
         "1280": {
@@ -1008,15 +959,15 @@
             }
           },
           "g5": {
-            "widthPx": 1176,
-            "widestLinePx": 1167,
+            "widthPx": 1080,
+            "widestLinePx": 1067,
             "chars": 146,
             "lines": 2,
             "charsPerLine": 73,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 649,
-          "docHeight": 1865,
+          "g6": 308,
+          "docHeight": 1457,
           "failedRequests": []
         }
       },
@@ -1051,7 +1002,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1102,7 +1053,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "8 controls checked, 5 inline links out of scope"
+              "note": "8 controls checked, 3 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1114,22 +1065,22 @@
             }
           },
           "g5": {
-            "widthPx": 320,
-            "widestLinePx": 314,
+            "widthPx": 328,
+            "widestLinePx": 327,
             "chars": 126,
             "lines": 3,
             "charsPerLine": 42,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 396,
-          "docHeight": 2916,
+          "g6": 168,
+          "docHeight": 2211,
           "failedRequests": []
         },
         "768": {
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": "1 self-scrollable (excluded)"
+              "note": ""
             },
             "G2": {
               "status": "PASS",
@@ -1149,15 +1100,15 @@
             }
           },
           "g5": {
-            "widthPx": 728,
-            "widestLinePx": 721,
-            "chars": 126,
-            "lines": 2,
-            "charsPerLine": 63,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 713,
+            "chars": 235,
+            "lines": 3,
+            "charsPerLine": 78,
+            "selector": "p:nth-of-type(1)"
           },
-          "g6": 404,
-          "docHeight": 2258,
+          "g6": 325,
+          "docHeight": 2122,
           "failedRequests": []
         },
         "1280": {
@@ -1191,8 +1142,8 @@
             "charsPerLine": 126,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 427,
-          "docHeight": 2236,
+          "g6": 211,
+          "docHeight": 1871,
           "failedRequests": []
         }
       },
@@ -1227,7 +1178,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1266,7 +1217,7 @@
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": "1 self-scrollable (excluded)"
+              "note": ""
             },
             "G2": {
               "status": "PASS",
@@ -1274,7 +1225,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "5 controls checked, 5 inline links out of scope"
+              "note": "5 controls checked, 3 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1286,15 +1237,15 @@
             }
           },
           "g5": {
-            "widthPx": 320,
-            "widestLinePx": 312,
+            "widthPx": 328,
+            "widestLinePx": 293,
             "chars": 42,
             "lines": 1,
             "charsPerLine": 42,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 277,
-          "docHeight": 1392,
+          "g6": 110,
+          "docHeight": 1097,
           "failedRequests": []
         },
         "768": {
@@ -1321,15 +1272,15 @@
             }
           },
           "g5": {
-            "widthPx": 728,
-            "widestLinePx": 312,
-            "chars": 42,
+            "widthPx": 732,
+            "widestLinePx": 376,
+            "chars": 52,
             "lines": 1,
-            "charsPerLine": 42,
-            "selector": "p.ai-hero-dek"
+            "charsPerLine": 52,
+            "selector": "p"
           },
-          "g6": 358,
-          "docHeight": 1721,
+          "g6": 197,
+          "docHeight": 1505,
           "failedRequests": []
         },
         "1280": {
@@ -1363,8 +1314,8 @@
             "charsPerLine": 42,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 411,
-          "docHeight": 1650,
+          "g6": 197,
+          "docHeight": 1381,
           "failedRequests": []
         }
       },
@@ -1399,7 +1350,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1443,7 +1394,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "11 controls checked, 5 inline links out of scope"
+              "note": "11 controls checked, 3 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1455,15 +1406,15 @@
             }
           },
           "g5": {
-            "widthPx": 320,
-            "widestLinePx": 308,
+            "widthPx": 328,
+            "widestLinePx": 325,
             "chars": 143,
             "lines": 4,
             "charsPerLine": 36,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 426,
-          "docHeight": 3735,
+          "g6": 190,
+          "docHeight": 3006,
           "failedRequests": []
         },
         "768": {
@@ -1490,22 +1441,22 @@
             }
           },
           "g5": {
-            "widthPx": 728,
-            "widestLinePx": 680,
-            "chars": 143,
-            "lines": 2,
-            "charsPerLine": 72,
-            "selector": "p.ai-hero-dek"
+            "widthPx": 732,
+            "widestLinePx": 730,
+            "chars": 306,
+            "lines": 4,
+            "charsPerLine": 77,
+            "selector": "p:nth-of-type(1)"
           },
-          "g6": 404,
-          "docHeight": 2896,
+          "g6": 325,
+          "docHeight": 2802,
           "failedRequests": []
         },
         "1280": {
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": "1 self-scrollable (excluded)"
+              "note": ""
             },
             "G2": {
               "status": "PASS",
@@ -1532,8 +1483,8 @@
             "charsPerLine": 72,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 465,
-          "docHeight": 2845,
+          "g6": 245,
+          "docHeight": 2541,
           "failedRequests": []
         }
       },
@@ -1568,7 +1519,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.D1eDQQMV.css contains .ai-inner"
+          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
