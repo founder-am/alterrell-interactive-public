@@ -16,9 +16,12 @@ import path from 'node:path';
 const DIST = 'dist';
 const REPORT = '../alterrell-hq/reports/2026-08-13-render-readout.txt';
 
+// Concert Tax moved from /concert-tax/ to /pieces/concert-tax/ on 2026-08-13,
+// when the hand-written folder was archived and the piece became a content
+// collection route. The old path no longer exists in dist.
 const ROUTES = [
   ['HUB',   '/index.html'],
-  ['PIECE', '/concert-tax/index.html']
+  ['PIECE', '/pieces/concert-tax/index.html']
 ];
 const WIDTHS = [360, 1280];
 

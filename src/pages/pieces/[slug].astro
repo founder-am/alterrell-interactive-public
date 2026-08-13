@@ -1,0 +1,220 @@
+---
+/**
+ * The piece template. Built 2026-08-13.
+ *
+ * A content collection route. One page per entry in LINKED_SLUGS, and the hub
+ * links from that same list, so a card can never point at a page that was not
+ * built and a page is never built that nothing points at.
+ *
+ * DOM order is fixed and ruled:
+ *   nav -> hero -> journey block -> tab bar -> tab panels -> footer
+ * The journey block sits ABOVE the tab bar. Ruled. Do not move it.
+ *
+ * This file carries ZERO CSS rules, for the same reason index.astro does:
+ * Astro scopes a component <style> block with [data-astro-cid-*], which
+ * outranks the shared stylesheet and forces a specificity hack to undo. Every
+ * class here resolves to src/styles/alterrell-interactive.css.
+ *
+ * Not present, and why:
+ *   breadcrumb  retired — alterrell-hq/reference/NEVER-IMPLEMENT.md
+ *   eyebrow     retired — same file
+ *   Watch path  retired — same file; the journey block carries Read + Support
+ *   carousel    ruled out of the pieces 2026-08-11
+ *
+ * TAB_COUNT is the one number the tab bar and every count in this file read
+ * from. It comes from the .mdx frontmatter and nowhere else — there is no
+ * hardcoded tab list here, and adding or removing a tab in the frontmatter is
+ * the whole change.
+ *
+ * h3 is styled once, by .ai-h3 in section 6 of the stylesheet, in one colour
+ * (var(--ink)). Panels here are plain .ai-section, so an h3 only ever renders
+ * on --paper, --paper-card or --paper-warm. .ai-section--dark is deliberately
+ * never applied, because var(--ink) on var(--dark-section) would not clear
+ * 4.5:1 and the one-colour rule leaves nowhere to put an exception.
+ */
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import '../../styles/alterrell-interactive.css';
+import { LINKED_SLUGS } from '../../lib/hub';
+
+export async function getStaticPaths() {
+  const pieces = await getCollection('pieces');
+  const linked = LINKED_SLUGS as readonly string[];
+  return pieces
+    .map((piece) => ({
+      slug: (piece as any).slug ?? piece.id.replace(/\.mdx?$/, ''),
+      piece,
+    }))
+    .filter(({ slug }) => linked.includes(slug))
+    .map(({ slug, piece }) => ({ params: { slug }, props: { piece } }));
+}
+
+interface Props {
+  piece: CollectionEntry<'pieces'>;
+}
+
+const { piece } = Astro.props;
+const { Content } = await render(piece);
+
+const { title, description, hero, journey, tabs = [] } = piece.data;
+const slug = Astro.params.slug;
+
+/** The one tab count. Read from frontmatter, never written down here. */
+const TAB_COUNT = tabs.length;
+
+const canonicalUrl = `https://interactive.alterrell.com/pieces/${slug}/`;
+const ogImage = `https://interactive.alterrell.com/og/${slug}.png`;
+const substackUrl = journey?.substack ?? 'https://alterrell.substack.com/s/alterrell-interactive';
+const kofiUrl = 'https://ko-fi.com/alterrell';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} — Alterrell Interactive</title>
+  <meta name="description" content={description}>
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="Alterrell Interactive">
+  <meta property="og:title"       content={`${title} — Alterrell Interactive`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image"       content={ogImage}>
+  <meta property="og:url"         content={canonicalUrl}>
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@alterrell">
+  <meta name="twitter:title"       content={`${title} — Alterrell Interactive`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image"       content={ogImage}>
+  <link rel="canonical" href={canonicalUrl}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="has-nav">
+
+<!-- 1. NAV. Visible at every width, 360 included. Wordmark + All pieces. -->
+<nav class="ai-nav" role="navigation" aria-label="Platform navigation">
+  <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
+  <div class="ai-nav-meta">
+    <a href="/">&#8592; All pieces</a>
+  </div>
+</nav>
+
+<!-- 2. HERO. Headline wraps on text-wrap: balance. Never a <br>. -->
+<header class="ai-hero" role="banner">
+  <div class="ai-inner">
+    <h1 class="ai-hero-hed">{hero.headline}</h1>
+    {hero.dek && <p class="ai-hero-dek">{hero.dek}</p>}
+  </div>
+</header>
+
+<!-- 3. JOURNEY BLOCK. Above the tab bar. Ruled. Do not move it.
+     Two paths: Read and Support. There is no third (Watch) path. -->
+<section class="ai-journey" aria-label="Ways to engage">
+  <div class="ai-journey-inner">
+    <a href={substackUrl} target="_blank" rel="noopener" class="ai-journey-path secondary">
+      <span class="ai-journey-icon" aria-hidden="true">&#10022;</span>
+      <span class="ai-journey-label">Read</span>
+      <span class="ai-journey-title">The full argument on Substack</span>
+      <span class="ai-journey-meta">Long-form essays and analysis</span>
+      <span class="ai-journey-cta">Read now &rarr;</span>
+    </a>
+    <a href={kofiUrl} target="_blank" rel="noopener" class="ai-journey-path tertiary">
+      <span class="ai-journey-icon" aria-hidden="true">&#9829;&#xFE0E;</span>
+      <span class="ai-journey-label">Support</span>
+      <span class="ai-journey-title">Ko-fi — keep this work free</span>
+      <span class="ai-journey-meta">Independent civic journalism</span>
+      <span class="ai-journey-cta">Support &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- 4. TAB BAR. TAB_COUNT tabs, all of them from frontmatter. -->
+{TAB_COUNT > 0 && (
+  <div
+    class="ai-tabs ai-tabs--fill"
+    id="piece-tabs"
+    role="tablist"
+    aria-label={`${title} sections`}
+    data-tab-count={TAB_COUNT}
+  >
+    {tabs.map((tab, i) => (
+      <button
+        type="button"
+        id={`tab-btn-${tab.id}`}
+        class:list={['ai-tab', { active: i === 0 }]}
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-controls={tab.id}
+        data-target={tab.id}
+      >{tab.label}</button>
+    ))}
+  </div>
+)}
+
+<!-- 5. TAB PANELS. One <TabSection> per tab, from the .mdx body. -->
+<main role="main">
+  <Content />
+</main>
+
+<!-- 6. FOOTER -->
+<footer class="ai-footer" role="contentinfo">
+  <div class="ai-footer-inner">
+    <div class="ai-footer-brand">
+      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    </div>
+    <div class="ai-footer-series">
+      <a href="/" class="ai-footer-series-hub">&#8592; All pieces</a>
+    </div>
+    <div class="ai-footer-bottom">
+      <span class="ai-footer-copy">&#169; 2026 Alterrell Interactive</span>
+      <a href={canonicalUrl} class="ai-footer-url">interactive.alterrell.com/pieces/{slug}</a>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+(function () {
+  var bar = document.getElementById('piece-tabs');
+  if (!bar) return;
+
+  // The tab count is the frontmatter's, carried through one data attribute.
+  // Nothing in this script counts tabs a second way.
+  var tabs = Array.prototype.slice.call(bar.querySelectorAll('[role=tab]'));
+
+  function activate(targetId) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-target') === targetId;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+      var panel = document.getElementById(t.getAttribute('data-target'));
+      if (panel) panel.classList.toggle('active', on);
+    });
+    var live = tabs.filter(function (t) { return t.getAttribute('data-target') === targetId; })[0];
+    if (live) live.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activate(tab.getAttribute('data-target')); });
+    tab.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(tab);
+      var to = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+      if (to < 0 || to >= tabs.length) return;
+      e.preventDefault();
+      tabs[to].focus();
+      activate(tabs[to].getAttribute('data-target'));
+    });
+  });
+
+  // Drop the right-edge fade when every tab already fits.
+  function checkOverflow() {
+    bar.classList.toggle('no-fade', bar.scrollWidth <= bar.clientWidth);
+  }
+  checkOverflow();
+  window.addEventListener('resize', checkOverflow);
+})();
+</script>
+
+</body>
+</html>

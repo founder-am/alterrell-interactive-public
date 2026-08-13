@@ -1,199 +1,132 @@
 ---
+/**
+ * The hub. Rewritten 2026-08-13.
+ *
+ * This file carries ZERO CSS rules. Every hub style lives in section 19 of
+ * src/styles/alterrell-interactive.css. Astro scopes a component <style>
+ * block with a [data-astro-cid-*] attribute selector, which adds a
+ * class-level unit to every rule inside it and outranks the shared
+ * stylesheet — that is what forced the old id-level `body`+negated-id
+ * specificity hack. No block here, no hack anywhere.
+ *
+ * What this page does not have, and why:
+ *   breadcrumb   retired — alterrell-hq/reference/NEVER-IMPLEMENT.md
+ *   eyebrow      retired — same file
+ *   Watch path   retired — same file
+ *   carousel     not a hub element
+ *   hub journey  cut 2026-08-13; the journey block belongs to a piece
+ *
+ * Cards: one per .mdx in src/content/pieces, plus every entry in
+ * EXTRA_CARDS. A card links only if its slug is in LINKED_SLUGS, which is
+ * also the list src/pages/pieces/[slug].astro builds from, so an href can
+ * never point at a page that does not exist.
+ */
 import { getCollection } from 'astro:content';
 import '../styles/alterrell-interactive.css';
+import { EXTRA_CARDS, CATEGORY_CLASS, isLinked, type HubCard } from '../lib/hub';
 
-const allPieces = await getCollection('pieces');
+const collection = await getCollection('pieces');
 
-// Sort: live pieces first (preserving order by publishDate desc), then coming-soon
-const live        = allPieces.filter(p => p.data.status === 'live')
-                              .sort((a, b) => (b.data.publishDate?.getTime() ?? 0) - (a.data.publishDate?.getTime() ?? 0));
-const comingSoon  = allPieces.filter(p => p.data.status === 'coming-soon');
-const pieces      = [...live, ...comingSoon];
+const fromMdx: HubCard[] = collection.map((piece) => ({
+  slug: (piece as any).slug ?? piece.id.replace(/\.mdx?$/, ''),
+  title: piece.data.title,
+  description: piece.data.description,
+  stakes: piece.data.stakes,
+  category: piece.data.category,
+}));
 
-const categoryBorderClass: Record<string, string> = {
-  industry: 'hub-card--industry',
-  culture:  'hub-card--culture',
-  govt:     'hub-card--govt',
-  health:   'hub-card--health',
-};
+// Linked pieces first, then everything still to come. Inside each group,
+// alphabetical by slug, so the order is a property of the data and not of
+// the order the collection happens to load in.
+const bySlug = (a: HubCard, b: HubCard) => a.slug.localeCompare(b.slug);
+const all = [...fromMdx, ...EXTRA_CARDS];
+const cards = [
+  ...all.filter((c) => isLinked(c.slug)).sort(bySlug),
+  ...all.filter((c) => !isLinked(c.slug)).sort(bySlug),
+];
+
+const HUB_TITLE = 'Alterrell Interactive: Data unravels the structure.';
+const HUB_DESC =
+  'Alterrell Interactive builds civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it.';
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alterrell Interactive: Data unravels the structure.</title>
-  <meta name="description" content="Alterrell Interactive builds civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it.">
+  <title>{HUB_TITLE}</title>
+  <meta name="description" content={HUB_DESC}>
   <meta property="og:type"        content="website">
   <meta property="og:site_name"   content="Alterrell Interactive">
-  <meta property="og:title"       content="Alterrell Interactive: Data unravels the structure.">
-  <meta property="og:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it.">
+  <meta property="og:title"       content={HUB_TITLE}>
+  <meta property="og:description" content={HUB_DESC}>
   <meta property="og:url"         content="https://interactive.alterrell.com">
   <meta property="og:image"       content="https://interactive.alterrell.com/og/hub.png">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@alterrell">
-  <meta name="twitter:title"       content="Alterrell Interactive: Data unravels the structure.">
-  <meta name="twitter:description" content="Civic and cultural data tools for people who know something is wrong but have never seen the numbers that prove it.">
+  <meta name="twitter:title"       content={HUB_TITLE}>
+  <meta name="twitter:description" content={HUB_DESC}>
   <meta name="twitter:image"       content="https://interactive.alterrell.com/og/hub.png">
   <link rel="canonical" href="https://interactive.alterrell.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ── HUB HERO ── */
-    .hub-hero{padding:calc(var(--nav-height) + 2.5rem) 1.25rem 2.5rem;background:var(--dark-section);}
-    .hub-hero-inner{max-width: var(--lane-page);margin:0 auto;}
-    .hub-hero-eyebrow{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:0.875rem;display:block;}
-    .hub-hero-headline{font-family:var(--font-display);text-wrap:balance;font-size:clamp(3rem,7.5vw,7rem);font-weight:700;font-style:italic;line-height:1.0;color:var(--paper);letter-spacing:-0.02em;margin-bottom:0.5rem;white-space:nowrap;}
-    .hub-hero-headline em{color:var(--teal-light);font-style:normal;}
-
-    /* ── HUB ABOUT ── */
-    .hub-about{background:var(--paper);padding:var(--space-md) 1.25rem;border-bottom:1px solid var(--border);}
-    .hub-about-inner{max-width: var(--lane-page);margin:0 auto;}
-    .hub-about p{font-family:var(--font-body);font-size:clamp(0.9375rem,1.4vw,1.05rem);line-height:var(--leading-body);color:var(--ink-secondary);}
-
-    /* ── HUB JOURNEY ── */
-    .hub-journey{background:var(--paper-warm);border-bottom:1px solid var(--border);padding:var(--space-sm) 1.25rem;}
-    .hub-journey-inner{max-width: var(--lane-page);margin:0 auto;}
-    .hub-journey-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-    .hub-journey-item{background:var(--paper-card);display:grid;grid-template-columns:38% 62%;text-decoration:none;transition:background 0.15s;min-height:80px;}
-    .hub-journey-item:hover{background:var(--teal-bg);text-decoration:none;}
-    .hub-journey-icon-cell{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);padding:1rem 0.5rem;}
-    .hub-journey-item:hover .hub-journey-icon-cell{border-right-color:rgba(10,124,114,0.2);}
-    .hub-journey-icon{font-size:1.75rem;line-height:1;color:var(--teal);}
-    .hub-journey-text-cell{display:flex;flex-direction:column;justify-content:center;gap:0.2rem;padding:0.875rem 1rem;}
-    .hub-journey-action{font-family:var(--font-body);font-size:var(--text-body);font-weight:600;color:var(--ink);line-height:1.2;}
-    .hub-journey-dest{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);font-weight:500;}
-
-    /* ── HUB GRID ── */
-    .hub-grid-section{background:var(--paper);padding:var(--space-lg) 1.25rem var(--space-xl);}
-    .hub-grid-section-inner{max-width: var(--lane-page);margin:0 auto;}
-    .hub-piece-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:var(--space-md);}
-
-    /* ── CARD BASE ── */
-    .hub-card{background:var(--paper-card);border:1px solid var(--border);border-left:5px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
-    .hub-card--industry{border-left-color:var(--category-industry);}
-    .hub-card--culture {border-left-color:var(--category-culture);}
-    .hub-card--govt    {border-left-color:var(--category-govt);}
-    .hub-card--health  {border-left-color:var(--category-health);}
-    .hub-card--live{transition:transform 0.2s;cursor:pointer;}
-    .hub-card--live:hover{transform:translateY(-2px);text-decoration:none;}
-    .hub-card--next{opacity:0.45;}
-
-    /* ── CARD DARK BLOCK ── */
-    .hub-card-bar{background:#16141f;padding:1rem 1.25rem 0.875rem;flex-shrink:0;}
-    .hub-card--next .hub-card-bar{background:#2a2a2a;}
-    .hub-card-bar-title{font-family:var(--font-editorial);font-size:20px;font-weight:500;color:rgba(248,246,241,0.95);line-height:1.35;margin:0;}
-
-    /* ── CARD BODY ── */
-    .hub-card-body{padding:0.875rem 1.25rem;display:flex;flex-direction:column;gap:0.5rem;flex:1;}
-    .hub-card-sub{font-family:var(--font-body);font-size:12px;font-weight:400;color:var(--ink-secondary);line-height:1.55;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-    .hub-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:0.375rem;padding-top:0.5rem;border-top:1px solid var(--border);}
-    .hub-card-stakes{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);}
-    .hub-card-pill{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;}
-    .pill--explore{background:var(--ink);color:var(--paper);border:1px solid var(--ink);}
-    .pill--coming-soon{background:var(--paper-warm);color:var(--ink-muted);border:1px solid var(--border);}
-
-    /* ── HUB FOOTER ── */
-    .hub-footer{background:var(--dark-section);padding:var(--space-md) 1.25rem;}
-    .hub-footer-inner{max-width: var(--lane-page);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
-    .hub-footer-left{display:flex;flex-direction:column;gap:0.25rem;}
-    .hub-footer-brand{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.14em;text-transform:uppercase;color:#555;}
-    .hub-footer-brand span{color:var(--teal);}
-    .hub-footer-credit{font-family:var(--font-mono);font-size:var(--text-micro);color:#333;letter-spacing:0.06em;}
-    .hub-footer-right{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-    .hub-footer-link{font-family:var(--font-mono);font-size:var(--text-stamp);letter-spacing:0.1em;text-transform:uppercase;color:#555;text-decoration:none;min-height:var(--touch);display:flex;align-items:center;transition:color 0.15s;}
-    .hub-footer-link:hover{color:var(--teal);text-decoration:none;}
-
-    /* ── NAV CONTRAST FIX ── */
-    .ai-nav-meta a{color:rgba(248,246,241,0.88) !important;font-weight:500 !important;}
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:900px){.hub-piece-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:600px){.hub-piece-grid{grid-template-columns:1fr;}}
-    @media(max-width:640px){
-      .hub-hero-headline{white-space:normal;font-size:clamp(2.6rem,10vw,4rem);}
-      .hub-journey-grid{grid-template-columns:1fr;}
-      .hub-footer-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
-    }
-    @media(max-width:380px){.hub-hero-headline{font-size:clamp(2.2rem,11vw,3rem);}}
-  </style>
 </head>
 <body class="has-nav">
 
+<!-- Nav. Visible at every width, 360 included. Wordmark + All pieces. -->
 <nav class="ai-nav" role="navigation" aria-label="Platform navigation">
   <a href="/" class="ai-nav-brand"><span>Alterrell</span>&nbsp;Interactive</a>
   <div class="ai-nav-meta">
-    <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">Substack</a>
-    &nbsp;&middot;&nbsp;
-    <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener">YouTube</a>
+    <a href="#work">All pieces</a>
   </div>
 </nav>
 
+<!-- Headline wraps on text-wrap: balance. Never a <br>. -->
 <header class="hub-hero" role="banner">
   <div class="hub-hero-inner">
     <h1 class="hub-hero-headline"><em>Data</em> unravels <em>the structure.</em></h1>
   </div>
 </header>
 
-<section class="hub-journey" aria-label="Follow the platform">
-  <div class="ai-journey-inner">
-    <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener"
-       class="ai-journey-path secondary" aria-label="Read on Substack">
-      <span class="ai-journey-icon">&#10022;</span>
-      <span class="ai-journey-label">Read</span>
-      <span class="ai-journey-title"></span>
-      <span class="ai-journey-meta"></span>
-      <span class="ai-journey-cta">Substack &rarr;</span>
-    </a>
-    <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener"
-       class="ai-journey-path tertiary" aria-label="Support on Ko-fi">
-      <span class="ai-journey-icon">&#9829;&#xFE0E;</span>
-      <span class="ai-journey-label">Support</span>
-      <span class="ai-journey-title"></span>
-      <span class="ai-journey-meta"></span>
-      <span class="ai-journey-cta">Ko-fi &rarr;</span>
-    </a>
+<section class="hub-about">
+  <div class="hub-about-inner">
+    <p>{HUB_DESC}</p>
   </div>
 </section>
 
 <main id="work" class="hub-grid-section" role="main">
   <div class="hub-grid-section-inner">
     <div class="hub-piece-grid">
-      {pieces.map((piece) => {
-        const isLive     = piece.data.status === 'live';
-        const borderClass = categoryBorderClass[piece.data.category] ?? '';
-        const pieceSlug = (piece as any).slug ?? piece.id.replace(/\.mdx?$/, '');
-        return isLive ? (
+      {cards.map((card) => {
+        const categoryClass = card.category ? CATEGORY_CLASS[card.category] : undefined;
+        return isLinked(card.slug) ? (
           <a
-            href={`/${pieceSlug}/`}
-            class:list={['hub-card', 'hub-card--live', borderClass]}
-            aria-label={piece.data.title}
+            href={`/pieces/${card.slug}/`}
+            class:list={['hub-card', 'hub-card--live', categoryClass]}
+            aria-label={card.title}
           >
             <div class="hub-card-bar">
-              <h2 class="hub-card-bar-title">{piece.data.title}</h2>
+              <h2 class="hub-card-bar-title">{card.title}</h2>
             </div>
             <div class="hub-card-body">
-              <p class="hub-card-sub">{piece.data.description}</p>
+              <p class="hub-card-sub">{card.description}</p>
               <div class="hub-card-footer">
-                <span class="hub-card-stakes">{piece.data.stakes}</span>
+                <span class="hub-card-stakes">{card.stakes}</span>
                 <span class="hub-card-pill pill--explore">Explore</span>
               </div>
             </div>
           </a>
         ) : (
-          <div
-            class:list={['hub-card', 'hub-card--next', borderClass]}
-            aria-hidden="true"
-          >
+          <div class:list={['hub-card', 'hub-card--next', categoryClass]}>
             <div class="hub-card-bar">
-              <h2 class="hub-card-bar-title">{piece.data.title}</h2>
+              <h2 class="hub-card-bar-title">{card.title}</h2>
             </div>
             <div class="hub-card-body">
-              <p class="hub-card-sub">{piece.data.description}</p>
+              <p class="hub-card-sub">{card.description}</p>
               <div class="hub-card-footer">
-                <span class="hub-card-stakes">{piece.data.stakes}</span>
-                <span class="hub-card-pill pill--coming-soon">Coming Soon</span>
+                <span class="hub-card-stakes">{card.stakes}</span>
+                <span class="hub-card-pill pill--coming-soon">Coming soon</span>
               </div>
             </div>
           </div>
@@ -210,10 +143,7 @@ const categoryBorderClass: Record<string, string> = {
       <div class="hub-footer-credit">&copy; 2026 &middot; interactive.alterrell.com &middot; Data as Dignity</div>
     </div>
     <div class="hub-footer-right">
-      <a href="https://www.netlify.com" target="_blank" rel="noopener" aria-label="Deploys by Netlify">
-        <img src="https://www.netlify.com/assets/badges/netlify-badge-color-bg.svg" alt="Deploys by Netlify" width="114" height="51">
-      </a>
-      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-footer-link" style="color:var(--teal);border:1px solid rgba(10,124,114,0.3);padding:0.4rem 0.75rem;border-radius:100px;">$ Support</a>
+      <a href="https://ko-fi.com/alterrell" target="_blank" rel="noopener" class="hub-footer-link hub-footer-link--support">$ Support</a>
       <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener" class="hub-footer-link">Substack</a>
       <a href="https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS" target="_blank" rel="noopener" class="hub-footer-link">YouTube</a>
     </div>
