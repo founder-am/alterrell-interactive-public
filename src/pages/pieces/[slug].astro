@@ -110,7 +110,15 @@ const kofiUrl = 'https://ko-fi.com/alterrell';
 </header>
 
 <!-- 3. JOURNEY BLOCK. Above the tab bar. Ruled. Do not move it.
-     Two paths: Read and Support. There is no third (Watch) path. -->
+     Two paths: Read and Support. There is no third (Watch) path.
+
+     Both paths carry .secondary, so both draw the same accent: a 3px
+     var(--orange) top rule (stylesheet L876-878) and a var(--orange) CTA
+     (L918). Support previously carried .tertiary, which is a different
+     accent by design — var(--ink-muted) rule, var(--ink) CTA (L879-881,
+     L919) — and not a .secondary that a later declaration flattened.
+     Ruled 2026-08-13: the two cells read as one pair, so they take one
+     accent. .ai-journey-path.tertiary stays defined and is unused here. -->
 <section class="ai-journey" aria-label="Ways to engage">
   <div class="ai-journey-inner">
     <a href={substackUrl} target="_blank" rel="noopener" class="ai-journey-path secondary">
@@ -120,7 +128,7 @@ const kofiUrl = 'https://ko-fi.com/alterrell';
       <span class="ai-journey-meta">Long-form essays and analysis</span>
       <span class="ai-journey-cta">Read now &rarr;</span>
     </a>
-    <a href={kofiUrl} target="_blank" rel="noopener" class="ai-journey-path tertiary">
+    <a href={kofiUrl} target="_blank" rel="noopener" class="ai-journey-path secondary">
       <span class="ai-journey-icon" aria-hidden="true">&#9829;&#xFE0E;</span>
       <span class="ai-journey-label">Support</span>
       <span class="ai-journey-title">Ko-fi — keep this work free</span>
@@ -158,15 +166,21 @@ const kofiUrl = 'https://ko-fi.com/alterrell';
   <Content />
 </main>
 
-<!-- 6. FOOTER -->
+<!-- 6. FOOTER
+     Two wrapper divs were removed here on 2026-08-13, and their children
+     kept: .ai-footer-brand (border-bottom, stylesheet L1021-1025) and
+     .ai-footer-series (border-top AND border-bottom, L1107-1117). Both are
+     shells for content this footer does not carry — brand is sized for a
+     wordmark plus .ai-footer-tagline, series for prev/hub/next — so each
+     drew a rule with nothing on one side of it. Stacked with the margin
+     between them, they rendered as an empty bordered band above and below
+     ALL PIECES. Removing the wrappers removes three of the four rules.
+     .ai-footer-bottom keeps its single border-top (L1225-1233): that one
+     has content on both sides. No placeholder link was added. -->
 <footer class="ai-footer" role="contentinfo">
   <div class="ai-footer-inner">
-    <div class="ai-footer-brand">
-      <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
-    </div>
-    <div class="ai-footer-series">
-      <a href="/" class="ai-footer-series-hub">&#8592; All pieces</a>
-    </div>
+    <div class="ai-footer-wordmark"><span>Alterrell</span> Interactive</div>
+    <a href="/" class="ai-footer-series-hub">&#8592; All pieces</a>
     <div class="ai-footer-bottom">
       <span class="ai-footer-copy">&#169; 2026 Alterrell Interactive</span>
       <a href={canonicalUrl} class="ai-footer-url">interactive.alterrell.com/pieces/{slug}</a>
