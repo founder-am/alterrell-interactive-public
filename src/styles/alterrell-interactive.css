@@ -834,7 +834,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 /* ── 11. JOURNEY BLOCK ──────────────────────────────────────── */
 /* Sits at top of every piece, below hero, above first section  */
 .ai-journey {
-  background: #ffffff; /* explicit — piece journey blocks always white; hub uses .hub-journey */
+  background: var(--paper); /* not white — ruled by AMA 2026-08-13. --paper #f8f6f1, design-tokens.md core palette. The two cells inside keep --paper-card. */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -2194,7 +2194,7 @@ details[open] .ai-footer-methodology summary::before {
 .ai-nav-brand { font-size: 11px }
 .ai-nav-meta { font-size: 10px }
 .ai-tabs { padding: 16px }
-.ai-tab { height: 44px; padding-inline: 6px; font-size: 12px; font-weight: 800 }
+.ai-tab { height: 44px; padding-inline: 6px; font-size: 13px; font-weight: 800 }
 .ai-inner, .ai-journey-inner, .hub-hero-inner, .hub-grid-section-inner, .ai-footer-inner { max-width: 1080px }
 .ai-hero, .hub-hero { padding-inline: 20px; padding-top: 7px; padding-bottom: 13px }
 .ai-inner, .hub-hero-inner, .hub-grid-section-inner { padding-inline: 0px }
@@ -2206,8 +2206,8 @@ details[open] .ai-footer-methodology summary::before {
 .ai-journey-path { padding-block: 0px; padding-inline: 9px; gap: 6px; border-top-width: 3px }
 .ai-journey-icon { display: none; font-size: 27px; margin-bottom: 0px }
 .ai-journey-label { display: none; font-size: 11px }
-.ai-journey-title { font-size: 11px }
-.ai-journey-meta { font-size: 9px }
+.ai-journey-title { font-size: 14px }
+.ai-journey-meta { font-size: 11px }
 .ai-journey-cta { font-size: 10px }
 .ai-h2 { font-size: 44px; line-height: 1; margin-bottom: 18px }
 .ai-h3 { font-size: 17px }
@@ -2261,8 +2261,8 @@ details[open] .ai-footer-methodology summary::before {
   .ai-journey-path { padding-block: 0px; padding-inline: 6px; gap: 0px; border-top-width: 3px }
   .ai-journey-icon { display: none; font-size: 27px; margin-bottom: 0px }
   .ai-journey-label { display: none; font-size: 9px }
-  .ai-journey-title { font-size: 11px }
-  .ai-journey-meta { display: none; font-size: 9px }
+  .ai-journey-title { font-size: 14px }
+  .ai-journey-meta { display: none; font-size: 11px }
   .ai-journey-cta { font-size: 10px }
   .ai-h2 { font-size: 19px; line-height: 1.15; margin-bottom: 12px }
   .ai-h3 { font-size: 17px }
