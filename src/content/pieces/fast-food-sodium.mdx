@@ -17,10 +17,6 @@ tabs:
     label: The System
   - id: tab-systemic
     label: Systemic Issues
-  - id: tab-compare
-    label: Compare Your Order
-  - id: tab-data
-    label: By Franchise
   - id: tab-franchise
     label: Best Options
   - id: tab-spread
@@ -49,8 +45,18 @@ import TabSection from '../../components/TabSection.astro';
                                      accordion bodies in The System and the two
                                      in Systemic Issues are flattened to h3 +
                                      prose. No words changed.
-    the swap calculator (Compare)    a JS widget over a nutrition array, not prose.
-    the sortable item table (By Franchise)  same: its rows are generated at runtime.
+    the swap calculator (Compare Your Order)  a JS widget over a 137-item
+                                     nutrition array, not prose.
+    the sortable item table (By Franchise)    same: its rows are generated at
+                                     runtime.
+
+  Both of those tabs were CUT from the shipped piece 2026-08-14, not deleted.
+  Each had been left as a heading plus a stamp reading "is not ported here",
+  which is a live page admitting a feature is missing. Ruled by AMA: no
+  half-finished tabs ship. Both come back as one component reading a JSON
+  table in src/data/ — the 137 items are still in
+  _archive/legacy-2026-08-13/fast-food-sodium/index.html. Best Options is
+  untouched and still carries the per-chain swap tables in full.
 
   Figures. Every number below is attached to a named publication in the archived
   file itself — USDA Food Access Research Atlas, Wang et al. 2024, AHA
@@ -263,33 +269,7 @@ import TabSection from '../../components/TabSection.astro';
 
 </TabSection>
 
-<TabSection id="tab-compare">
 
-<h2 class="ai-h2">Same budget. Less sodium.</h2>
-
-<div class="ai-body">
-  <p>Pick what you usually order. We'll show you a lower-sodium option at the same chain and the best swap across all chains — same protein category, no cooking required.</p>
-</div>
-
-<div class="ai-callout">
-  <p>The FDA recommends no more than 2,300mg of sodium per day. Most Americans consume over 3,400mg. A single fast food meal can use more than half your daily limit.</p>
-</div>
-
-<p class="ai-stamp">The swap calculator is a JavaScript widget in the archived file and is not ported here. Nutritional data from chain-published nutrition disclosures, verified 2024–2025. Prices vary by location and are not included in comparisons.</p>
-
-</TabSection>
-
-<TabSection id="tab-data">
-
-<h2 class="ai-h2">Protein efficiency vs. sodium load.</h2>
-
-<div class="ai-body">
-  <p>Ordered by protein per item, descending. Sodium is color-coded: red is above 65% of the daily limit, amber is 40–65%, green is below 40%. Fiber column reveals which high-protein items deliver zero fiber.</p>
-</div>
-
-<p class="ai-stamp">The sortable item table is generated at runtime in the archived file and is not ported here. Source: Chain-published nutrition disclosures, 2024–2025. FDA daily sodium limit: 2,300mg. FDA daily fiber value: 28g.</p>
-
-</TabSection>
 
 <TabSection id="tab-franchise">
 
@@ -438,7 +418,7 @@ import TabSection from '../../components/TabSection.astro';
 <h2 class="ai-h2">Methodology &amp; Sources</h2>
 
 <div class="ai-body">
-  <p>Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024–2025. Sodium values for US items were taken directly from each chain’s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald’s UK, McDonald’s Germany, KFC Japan, and McDonald’s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g × 0.95g serving weight = ~228mg). CEO compensation data is from McDonald’s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
+  <p>Nutritional data for every item named on this page was sourced from chain-published nutrition disclosures as of 2024–2025. Sodium values for US items were taken directly from each chain’s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald’s UK, McDonald’s Germany, KFC Japan, and McDonald’s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g × 0.95g serving weight = ~228mg). CEO compensation data is from McDonald’s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
 </div>
 
 <h3 class="ai-h3">Cited sources</h3>
