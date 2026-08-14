@@ -35,15 +35,16 @@ const fromMdx: HubCard[] = collection.map((piece) => ({
   category: piece.data.category,
 }));
 
-// Linked pieces first, then everything still to come. Inside each group,
-// alphabetical by slug, so the order is a property of the data and not of
-// the order the collection happens to load in.
+// Ruled 2026-08-13: the hub shows exactly the pieces you can read. No
+// coming-soon cards. A piece with an .mdx that is not in LINKED_SLUGS —
+// wheres-beyonce and gay-uncles, both unfinished — produces no card at all,
+// which is why this filters rather than sorting the unlinked ones to the end.
+// Alphabetical by slug, so the order is a property of the data and not of the
+// order the collection happens to load in.
 const bySlug = (a: HubCard, b: HubCard) => a.slug.localeCompare(b.slug);
-const all = [...fromMdx, ...EXTRA_CARDS];
-const cards = [
-  ...all.filter((c) => isLinked(c.slug)).sort(bySlug),
-  ...all.filter((c) => !isLinked(c.slug)).sort(bySlug),
-];
+const cards = [...fromMdx, ...EXTRA_CARDS]
+  .filter((c) => isLinked(c.slug))
+  .sort(bySlug);
 
 const HUB_TITLE = 'Alterrell Interactive: Data unravels the structure.';
 const HUB_DESC =
@@ -98,40 +99,33 @@ const HUB_DESC =
 <main id="work" class="hub-grid-section" role="main">
   <div class="hub-grid-section-inner">
     <div class="hub-piece-grid">
-      {cards.map((card) => {
-        const categoryClass = card.category ? CATEGORY_CLASS[card.category] : undefined;
-        return isLinked(card.slug) ? (
-          <a
-            href={`/pieces/${card.slug}/`}
-            class:list={['hub-card', 'hub-card--live', categoryClass]}
-            aria-label={card.title}
-          >
-            <div class="hub-card-bar">
-              <h2 class="hub-card-bar-title">{card.title}</h2>
-            </div>
-            <div class="hub-card-body">
-              <p class="hub-card-sub">{card.description}</p>
-              <div class="hub-card-footer">
-                <span class="hub-card-stakes">{card.stakes}</span>
-                <span class="hub-card-pill pill--explore">Explore</span>
-              </div>
-            </div>
-          </a>
-        ) : (
-          <div class:list={['hub-card', 'hub-card--next', categoryClass]}>
-            <div class="hub-card-bar">
-              <h2 class="hub-card-bar-title">{card.title}</h2>
-            </div>
-            <div class="hub-card-body">
-              <p class="hub-card-sub">{card.description}</p>
-              <div class="hub-card-footer">
-                <span class="hub-card-stakes">{card.stakes}</span>
-                <span class="hub-card-pill pill--coming-soon">Coming soon</span>
-              </div>
+      {/* One card shape, because every card is a link now. The coming-soon
+          branch that used to live here was removed 2026-08-13 with the
+          no-coming-soons ruling: `cards` is filtered to LINKED_SLUGS above,
+          so an unlinked branch would have been unreachable code carrying a
+          "Coming soon" string into a build that must not contain one. */}
+      {cards.map((card) => (
+        <a
+          href={`/pieces/${card.slug}/`}
+          class:list={[
+            'hub-card',
+            'hub-card--live',
+            card.category ? CATEGORY_CLASS[card.category] : undefined,
+          ]}
+          aria-label={card.title}
+        >
+          <div class="hub-card-bar">
+            <h2 class="hub-card-bar-title">{card.title}</h2>
+          </div>
+          <div class="hub-card-body">
+            <p class="hub-card-sub">{card.description}</p>
+            <div class="hub-card-footer">
+              <span class="hub-card-stakes">{card.stakes}</span>
+              <span class="hub-card-pill pill--explore">Explore</span>
             </div>
           </div>
-        );
-      })}
+        </a>
+      ))}
     </div>
   </div>
 </main>
