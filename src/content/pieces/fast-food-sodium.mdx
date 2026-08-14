@@ -1,184 +1,464 @@
 ---
 title: "Fast Food's Hidden Sodium Tax"
 description: "How the cheapest meals carry the heaviest health cost."
-status: live
+status: coming-soon
 category: industry
 format: interactive
 stakes: "Public health"
-publishDate: 2024-03-01
 hero:
   headline: "Fast Food's Hidden Sodium Tax"
-  dek: "The meals we can afford are the meals most likely to hurt us. That's not accident — it's architecture."
+  dek: "The sodium in your meal and the ads targeting your zip code aren't accidents. They're architecture — and they're driving a healthcare crisis that costs all of us."
 journey:
-  youtube: "https://www.youtube.com/playlist?list=PLBmJd1HY9o6YvRW5PDW0jOGJley2AjNYS"
   substack: "https://alterrell.substack.com/s/alterrell-interactive"
 tabs:
   - id: tab-overview
     label: Overview
-  - id: tab-the-data
-    label: The Data
-  - id: tab-by-chain
-    label: By Chain
-  - id: tab-share
-    label: Share to Social
+  - id: tab-the-system
+    label: The System
+  - id: tab-systemic
+    label: Systemic Issues
+  - id: tab-compare
+    label: Compare Your Order
+  - id: tab-data
+    label: By Franchise
+  - id: tab-franchise
+    label: Best Options
+  - id: tab-spread
+    label: Spread the Word
   - id: tab-sources
     label: Sources
 ---
 
 import TabSection from '../../components/TabSection.astro';
-import Carousel from '../../components/Carousel.astro';
+
+{/*
+  Ported from _archive/legacy-2026-08-13/fast-food-sodium/index.html on
+  2026-08-13. Prose and headings extracted verbatim. Nothing on this page was
+  composed, summarised, or voice-passed in that pass.
+
+  Tab labels and order are the archived file's own. Its section ids were bare
+  (#overview, #the-system, …); they carry the tab- prefix here because
+  src/pages/pieces/[slug].astro derives the tab button id from the panel id.
+  The card description is the archived hub's own hub-card-sub for this piece,
+  which differs from the page's <meta name="description">.
+
+  Not carried across, and why:
+    breadcrumb, eyebrow, Watch path  retired — alterrell-hq/reference/NEVER-IMPLEMENT.md
+    carousel                         ruled out of the pieces 2026-08-11
+    accordions                       retired forward per Bible D-88. The four
+                                     accordion bodies in The System and the two
+                                     in Systemic Issues are flattened to h3 +
+                                     prose. No words changed.
+    the swap calculator (Compare)    a JS widget over a nutrition array, not prose.
+    the sortable item table (By Franchise)  same: its rows are generated at runtime.
+
+  Figures. Every number below is attached to a named publication in the archived
+  file itself — USDA Food Access Research Atlas, Wang et al. 2024, AHA
+  Presidential Advisory 2024, Rudd Center Fast Food FACTS 2021, and the chains'
+  own published nutrition disclosures. Nothing carried an unsourced figure, so
+  no [[FIGURE NEEDS SOURCE]] marker was needed on this piece.
+*/}
 
 <TabSection id="tab-overview" active>
 
-<span class="ai-eyebrow">Overview</span>
-<h2 class="ai-h2">Nearly half of fast food meals exceed your daily sodium limit in a single sitting.</h2>
+<h2 class="ai-h2">This is a structural argument, not a moral one.</h2>
 
-<Carousel lane="teal" label="Key sodium findings">
-  <article class="carousel__card card--a" role="group" aria-label="Slide 1 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">Daily intake</span>
-      <span class="carousel__card-stat">42%</span>
-      <h3 class="carousel__card-title">Exceed daily sodium in one meal</h3>
-    </div>
-    <div class="carousel__card-body">
-      <p class="carousel__card-text">Nearly half of fast food meals exceed the FDA's recommended daily sodium limit in a single serving.</p>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">FDA · 2024</span>
-    </div>
-  </article>
-
-  <article class="carousel__card card--d" role="group" aria-label="Slide 2 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">The gap</span>
-      <h3 class="carousel__card-title">Daily limit vs. average intake</h3>
-    </div>
-    <div class="carousel__card-body">
-      <div class="carousel__compare-grid">
-        <div class="carousel__compare-cell">
-          <span class="carousel__compare-val">2,300mg</span>
-          <span class="carousel__compare-desc">FDA recommended daily limit</span>
-        </div>
-        <div class="carousel__compare-cell">
-          <span class="carousel__compare-val">3,400mg</span>
-          <span class="carousel__compare-desc">Average fast food daily intake</span>
-        </div>
-      </div>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">FDA / USDA · 2024</span>
-    </div>
-  </article>
-
-  <article class="carousel__card card--c" role="group" aria-label="Slide 3 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">The argument</span>
-    </div>
-    <div class="carousel__card-body">
-      <blockquote class="carousel__card-quote">"The cheapest meals carry the heaviest health cost."</blockquote>
-      <p class="carousel__card-attribution">Alterrell Interactive</p>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">Editorial · 2024</span>
-    </div>
-  </article>
-
-  <article class="carousel__card card--b" role="group" aria-label="Slide 4 of 4">
-    <div class="carousel__card-head">
-      <span class="carousel__card-label">By chain</span>
-      <h3 class="carousel__card-title">Sodium per meal (% of daily limit)</h3>
-    </div>
-    <div class="carousel__card-body">
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Wendy's</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="88"></div></div>
-        <span class="carousel__bar-val">88%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">McDonald's</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="75"></div></div>
-        <span class="carousel__bar-val">75%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Burger King</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="70"></div></div>
-        <span class="carousel__bar-val">70%</span>
-      </div>
-      <div class="carousel__bar-row">
-        <span class="carousel__bar-label">Subway</span>
-        <div class="carousel__bar-track"><div class="carousel__bar-fill" data-fill="52"></div></div>
-        <span class="carousel__bar-val">52%</span>
-      </div>
-    </div>
-    <div class="carousel__card-foot">
-      <span class="carousel__card-source">CDC · 2023</span>
-    </div>
-  </article>
-</Carousel>
-
-<div class="ai-body">
-  <p>Fast food isn't just convenient — for tens of millions of Americans, it's the most affordable meal on the table. But the structural economics of cheap food hide a compounding health cost: the salt load in a single value meal can exceed what nutritionists recommend for an entire day.</p>
-  <p>This isn't accidental. Sodium is a cheap preservative, a flavor amplifier, and an appetite driver. The industry has spent decades calibrating these levels to maximize repeat purchase. The result is a system where the people who can least afford healthcare are buying the food most likely to put them in the hospital.</p>
-</div>
-
-<div class="share-block">
-  <div class="share-block-label">Share this piece</div>
-  <p class="share-block-nudge">If you've ever eaten a value meal and wondered why you were still thirsty an hour later — this is why.</p>
-  <div class="share-block-btns">
-    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Ffast-food-sodium%2F&text=The%20cheapest%20meals%20carry%20the%20heaviest%20health%20cost.%20%40alterrell&via=alterrell" target="_blank" rel="noopener" class="share-btn share-btn--outline" aria-label="Share on X">&#x58; Share on X</a>
-    <button class="share-btn share-btn--outline" id="piece-copy-link" aria-label="Copy link">&#x25CE; <span id="piece-copy-label">Copy link</span></button>
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">2.4×</div>
+    <div class="ai-metric-label">More sodium in a US 6-piece McNuggets than the same item in the UK</div>
+    <div class="ai-metric-sub">McDonald's published nutrition data (US, UK) · 2024; UK 6-piece calculated from CMAJ per-100g data</div>
   </div>
-  <p class="share-block-substack">Get the story behind the story &#x2192; <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">76%</div>
+    <div class="ai-metric-label">Of your daily sodium limit in a single Chick-fil-A Spicy Deluxe Sandwich</div>
+    <div class="ai-metric-sub">Chain-published nutrition disclosures, 2024–2025 · FDA daily sodium limit 2,300mg</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">$219B</div>
+    <div class="ai-metric-label">Annual US hypertension healthcare cost — every year</div>
+    <div class="ai-metric-sub">Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored. 2019 data.</div>
+  </div>
+</div>
+
+<div class="ai-body">
+  <p>The FDA recommends no more than 2,300mg of sodium per day. The American Heart Association recommends even less: 1,500mg for most adults. A single fast food meal can exceed either limit with any one item on the menu.</p>
+  <p>Fast food gets blamed for America's health crisis and frames the issue as solely individual choice rather than systemic inequalities.</p>
+</div>
+
+<ol class="ai-body">
+  <li><strong>Formulas aren't neutral choices.</strong> McDonald's sells the same McNuggets in the UK with 2.4× less sodium than in the US. There is no technical barrier to lower sodium: it's a formulation choice.</li>
+  <li><strong>Advertising has a bias.</strong> Black youth see 75% more fast food TV ads than their white peers. On Spanish-language television, only value meals and large-portion items are shown.</li>
+  <li><strong>The healthcare cost lands on everyone.</strong> Hypertension (the primary chronic condition linked to excess sodium) costs the US $219 billion per year spread across an already distressed healthcare system.</li>
+  <li><strong>ZIP codes predict nutrition.</strong> Fast food density is higher in low-income and majority-Black and Latino neighborhoods, while grocery stores are scarcer. ZIP code is destiny before you ever place an order.</li>
+</ol>
+
+<div class="ai-callout">
+  <p>McDonald's CEO didn't formulate the high-sodium US recipe, but he didn't change it for American consumers when forced by European regulators. Consumer protections in the US are not as well regulated, which reflects on our government and private sectors.</p>
+</div>
+
+<div class="ai-body">
+  <p>One more thing the data reveals: fast food protein comes almost entirely without fiber. Protein without fiber means your body absorbs it differently — less satiety, faster blood sugar spikes, and none of the cholesterol and gut health benefits that come with fiber-rich protein sources. The system optimized for palatability and shelf life. Fiber wasn't part of the equation.</p>
+</div>
+
+<p class="ai-stamp">All sources and methodology are in the Sources tab.</p>
+
+</TabSection>
+
+<TabSection id="tab-the-system">
+
+<h2 class="ai-h2">What the infrastructure produces at scale.</h2>
+
+<div class="ai-body">
+  <p>The item-level data shows what's in the food. This tab shows what the system produces when you aggregate that across millions of people, decades of targeted marketing, and deliberate decisions about where to locate stores and where not to.</p>
+</div>
+
+<h3 class="ai-h3">01 Where You Live</h3>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">18.8M</div>
+    <div class="ai-metric-label"><strong>Americans live in low-income, low-access areas</strong> where residents have limited access to affordable and nutritious food — about 6.1% of the US population.</div>
+    <div class="ai-metric-sub">Source: USDA Food Access Research Atlas</div>
+  </div>
+</div>
+
+<div class="ai-body">
+  <p>Predominantly Black neighborhoods have 2.4 fast-food restaurants per square mile compared to 1.5 in predominantly white neighborhoods. Research across New York City found that exposure to fast food outlets around schools was significantly associated with the proportion of ethnic minority and low-income students. Block-by-block assessments found the lowest food environment scores in East and Central Harlem. Those areas have the highest proportions of Black and Hispanic residents and the lowest median household incomes.</p>
+  <p>Wealthy districts have three times as many supermarkets as poor ones and white neighborhoods contain an average of four times as many supermarkets as predominantly Black neighborhoods. These conditions are designed and outcrops of redlining and zoning choices.</p>
+</div>
+
+<h3 class="ai-h3">02 Zip Code Exposure</h3>
+
+<div class="ai-body">
+  <p>Within the same borough, a small county in NYC terms, nearby communities along the same subway line have different food exposure and access. NYC is a dense city, you pass by fast food establishments in your commute to work, school, or to the main form of transit: the subway. Daily exposure is not a neutral incident.</p>
+</div>
+
+<h3 class="ai-h3">New York City — A walking city</h3>
+
+<div class="ai-body">
+  <p>Same borough. Same subway lines. Contiguous neighborhoods on the same island. The exposure gap is created before a single order is placed.</p>
+  <p>The “just drive somewhere” critique doesn’t hold where it is assumed everyone has a car.</p>
+</div>
+
+<h3 class="ai-h3">Houston — A driving city</h3>
+
+<div class="ai-body">
+  <p>The "just drive somewhere" critique doesn't survive contact with Third Ward. This is what the absence of a car looks like in a city built around the assumption that everyone has one.</p>
+</div>
+
+<div class="ai-callout">
+  <p>61% of Houston residents live in a food desert — over 1.3 million people. In some neighborhoods, 94% of residents are in a food desert. Fast food is not a choice when it is the only infrastructure present.</p>
+</div>
+
+<h3 class="ai-h3">03 The Healthcare Bill</h3>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">$219B</div>
+    <div class="ai-metric-label"><strong>Annual US healthcare expenditures associated with hypertension</strong> — including $79.4B in inpatient services, $70.2B in outpatient care, and $32.5B in prescription medications.</div>
+    <div class="ai-metric-sub">Source: Wang et al., American Journal of Preventive Medicine, 2024. CDC/AHA co-authored. 2019 data.</div>
+  </div>
+</div>
+
+<div class="ai-body">
+  <p>People with hypertension pay $2,759 more per year in healthcare costs than people without it. However, that cost is not staying in the neighborhoods where the fast food is densest. The costs are distributed across the entire US healthcare system through insurance premiums, Medicare and Medicaid, and out-of-pocket costs.</p>
+</div>
+
+<h3 class="ai-h3">Where costs are headed</h3>
+
+<div class="ai-body">
+  <p>The American Heart Association projects that cardiovascular risk factor healthcare costs will triple by 2050 from $400 billion to $1.3 trillion annually if current trends continue. Hypertension is the primary driver. About 1 in every 8 healthcare dollars is spent on cardiovascular disease. That ratio doesn't change unless the underlying exposure including the sodium load, the food access gap, and the advertising skew changes first.</p>
+</div>
+
+<p class="ai-stamp">All cardiovascular risk factors. Inflation-adjusted 2022 dollars. Source: AHA Presidential Advisory 2024.</p>
+
+<h3 class="ai-h3">04 Fiber as Counter-Metric</h3>
+
+<div class="ai-body">
+  <p>Sodium gets the headline, but fast food's lack of fiber is also bad for blood pressure. Lower fiber also affects gut health, cholesterol regulation, and blood sugar stability simultaneously.</p>
+  <p>The FDA daily recommended fiber intake is 28g. Most Americans consume less than half that. Fast food rarely provides more than 3–4g per item. Items like Taco Bell's Bean Burrito (9g) and Chipotle bowls (6–10g) are exceptions — but they are swimming in sodium.</p>
+</div>
+
+<h3 class="ai-h3">High-protein fast food items: sodium vs. fiber</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="text-right">Protein</th>
+        <th class="text-right">Sodium</th>
+        <th class="text-right">Fiber</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Chick-fil-A 12pc Grilled Nuggets</td><td class="text-right ai-num ai-text-success">38g</td><td class="text-right ai-num ai-text-success">440mg</td><td class="text-right ai-num ai-text-danger">0g</td><td>Best protein, zero fiber</td></tr>
+      <tr><td>Wingstop 10pc Classic Wings (plain)</td><td class="text-right ai-num ai-text-success">60g</td><td class="text-right ai-num ai-text-success">900mg</td><td class="text-right ai-num ai-text-danger">0g</td><td>High protein, zero fiber</td></tr>
+      <tr><td>Chipotle Chicken Bowl</td><td class="text-right ai-num ai-text-success">45g</td><td class="text-right ai-num">1,040mg</td><td class="text-right ai-num ai-text-teal">8g</td><td>Best fiber of any item in database</td></tr>
+      <tr><td>Taco Bell Bean Burrito</td><td class="text-right ai-num">13g</td><td class="text-right ai-num">870mg</td><td class="text-right ai-num ai-text-teal">9g</td><td>Low protein, high fiber — outlier</td></tr>
+      <tr><td>Popeyes Spicy Chicken Sandwich</td><td class="text-right ai-num">28g</td><td class="text-right ai-num ai-text-danger">1,765mg</td><td class="text-right ai-num">2g</td><td>77% daily sodium, 7% daily fiber</td></tr>
+      <tr><td>McDonald's 6pc McNuggets</td><td class="text-right ai-num">14g</td><td class="text-right ai-num">540mg</td><td class="text-right ai-num ai-text-danger">1g</td><td>US formula; UK equivalent: ~228mg sodium</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-body">
+  <p>High sodium optimizes for taste (enhancing flavor), but also for extended perceived food freshness. Sodium was designed to be a considerable part of processed foods while fiber is not even an afterthought.</p>
 </div>
 
 </TabSection>
 
-<TabSection id="tab-the-data">
+<TabSection id="tab-systemic">
 
-<span class="ai-eyebrow">The Data</span>
-<h2 class="ai-h2">Sodium levels across the fast food landscape.</h2>
+<h2 class="ai-h2">How the system was built.</h2>
 
 <div class="ai-body">
-  <p>Content for this tab — detailed data breakdown — is carried over from the live piece at <code>/fast-food-sodium/</code>. The MDX system is ready to accept it.</p>
+  <p>Two mechanisms. Each one is a decision that was made by a person, at a company, with a financial reason. None of them are accidents.</p>
+</div>
+
+<h3 class="ai-h3">01 The Formula</h3>
+
+<div class="ai-body">
+  <p>McDonald's sells the same menu items worldwide, yet the sodium content varies significantly by country. The promise of McDonald's is consistency in taste, not variation outside of some special dishes. The sodium gap is a reflection of poorer regulation in the US and possibly consumer expectations. It is not a necessity.</p>
+</div>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="text-right">US Sodium</th>
+        <th class="text-right">International</th>
+        <th class="text-right">Gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>McNuggets (10pc)</td><td class="text-right ai-num ai-text-danger">900mg</td><td class="text-right ai-num ai-text-success">🇬🇧 UK · 660mg</td><td class="text-right ai-num">−27%</td></tr>
+      <tr><td>McNuggets (6pc)</td><td class="text-right ai-num ai-text-danger">540mg</td><td class="text-right ai-num ai-text-success">🇬🇧 UK · ~228mg</td><td class="text-right ai-num">−58%</td></tr>
+      <tr><td>Whopper</td><td class="text-right ai-num ai-text-danger">980mg</td><td class="text-right ai-num ai-text-success">🇩🇪 Germany · 690mg</td><td class="text-right ai-num">−30%</td></tr>
+      <tr><td>Original Recipe Breast (KFC)</td><td class="text-right ai-num ai-text-danger">1,010mg</td><td class="text-right ai-num ai-text-success">🇯🇵 Japan · 740mg</td><td class="text-right ai-num">−27%</td></tr>
+      <tr><td>Crispy Chicken Sandwich</td><td class="text-right ai-num ai-text-danger">1,470mg</td><td class="text-right ai-num ai-text-success">🇫🇷 France · 950mg</td><td class="text-right ai-num">−35%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ai-stamp">Sources: McDonald's, Burger King, KFC published nutrition data (UK, US, DE, JP, FR) · 2024. UK 6-piece sodium calculated from CMAJ peer-reviewed per-100g data.</p>
+
+<h3 class="ai-h3">02 The Advertising</h3>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">75%</div>
+    <div class="ai-metric-label"><strong>More fast food TV ads seen by Black youth</strong> compared to their white peers of the same age demographic.</div>
+    <div class="ai-metric-sub">Source: Rudd Center for Food Policy &amp; Health, Fast Food FACTS 2021 · Nielsen data · University of Connecticut</div>
+  </div>
+</div>
+
+<div class="ai-body">
+  <p>The advertising architecture is not neutral. Fast food companies invest more advertising in markets with less ability to resist it. This is not an accident.</p>
+  <p>Advertising spend is allocated where return is highest. The communities with the least alternatives are the most valuable markets for fast food. As a result, they receive the most advertising exposure for the least healthy options.</p>
 </div>
 
 </TabSection>
 
-<TabSection id="tab-by-chain">
+<TabSection id="tab-compare">
 
-<span class="ai-eyebrow">By Chain</span>
-<h2 class="ai-h2">How each chain stacks up.</h2>
+<h2 class="ai-h2">Same budget. Less sodium.</h2>
 
 <div class="ai-body">
-  <p>Chain-by-chain breakdown content goes here.</p>
+  <p>Pick what you usually order. We'll show you a lower-sodium option at the same chain and the best swap across all chains — same protein category, no cooking required.</p>
+</div>
+
+<div class="ai-callout">
+  <p>The FDA recommends no more than 2,300mg of sodium per day. Most Americans consume over 3,400mg. A single fast food meal can use more than half your daily limit.</p>
+</div>
+
+<p class="ai-stamp">The swap calculator is a JavaScript widget in the archived file and is not ported here. Nutritional data from chain-published nutrition disclosures, verified 2024–2025. Prices vary by location and are not included in comparisons.</p>
+
+</TabSection>
+
+<TabSection id="tab-data">
+
+<h2 class="ai-h2">Protein efficiency vs. sodium load.</h2>
+
+<div class="ai-body">
+  <p>Ordered by protein per item, descending. Sodium is color-coded: red is above 65% of the daily limit, amber is 40–65%, green is below 40%. Fiber column reveals which high-protein items deliver zero fiber.</p>
+</div>
+
+<p class="ai-stamp">The sortable item table is generated at runtime in the archived file and is not ported here. Source: Chain-published nutrition disclosures, 2024–2025. FDA daily sodium limit: 2,300mg. FDA daily fiber value: 28g.</p>
+
+</TabSection>
+
+<TabSection id="tab-franchise">
+
+<h2 class="ai-h2">What better looks like inside each chain.</h2>
+
+<div class="ai-body">
+  <p>You don't always get to choose the chain. Here's what a lower-sodium order looks like at the places you're most likely to find yourself.</p>
+</div>
+
+<h3 class="ai-h3">McDonald's</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crispy Chicken Sandwich (1,070mg)</td><td>McChicken</td><td class="val-good">510mg sodium</td><td>Same chicken category. Less than half the sodium. 14g protein vs 27g — meaningful tradeoff, but within the same chain and price tier.</td></tr>
+      <tr><td>10pc McNuggets (900mg)</td><td>6pc McNuggets</td><td class="val-good">360mg sodium</td><td>540mg vs 900mg. The US formula is still higher sodium than the UK equivalent at any serving size — but smaller is less.</td></tr>
+      <tr><td>Big Mac (1,010mg)</td><td>McDouble</td><td class="val-good">90mg sodium</td><td>Similar protein (22g vs 25g), lower sodium, lower price. One of the better protein efficiency options at any chain.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="ai-h3">Chick-fil-A</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Classic Chicken Sandwich (1,350mg)</td><td>Grilled Chicken Sandwich</td><td class="val-good">670mg sodium</td><td>The grilled vs fried gap at Chick-fil-A is one of the largest at any chain. More protein (31g vs 28g), significantly less sodium.</td></tr>
+      <tr><td>8pc Fried Nuggets (1,030mg)</td><td>8pc Grilled Nuggets</td><td class="val-good">590mg sodium</td><td>440mg vs 1,030mg. Similar protein. The grilled nuggets are one of the lowest-sodium high-protein items in the entire database.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="ai-h3">Popeyes</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Spicy Chicken Sandwich (1,765mg)</td><td>2pc Leg &amp; Thigh</td><td class="val-good">805mg sodium</td><td>The sandwich is among the highest-sodium items in the database at 77% of daily limit. The 2pc is more sodium-efficient with similar protein (32g).</td></tr>
+      <tr><td>Classic Chicken Sandwich (1,443mg)</td><td>Mild Chicken Breast (pc)</td><td class="val-good">313mg sodium</td><td>Similar protein (35g vs 27g), less sodium. Popeyes doesn't have a low-sodium option — this is the best available within the chain.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="ai-h3">Chipotle</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Steak Burrito (1,860mg)</td><td>Chicken Bowl</td><td class="val-good">820mg sodium</td><td>The burrito wrapper adds sodium. Bowls are consistently lower. Chicken Bowl also delivers 8g fiber — the highest fiber option in the database alongside Chipotle's other bowls.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-callout ai-callout--warning">
+  <p><strong>The healthy bowl trap.</strong> Watch the Falafel Crunch Bowl — 2,030mg sodium. CAVA and Chipotle market as healthy alternatives. The Falafel Crunch Bowl exceeds the FDA daily limit in a single meal. "Fast casual" is not a sodium guarantee.</p>
+</div>
+
+<h3 class="ai-h3">Burger King</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bacon King (2,150mg)</td><td>Whopper Jr.</td><td class="val-good">1,640mg sodium</td><td>The Bacon King is one of the highest-sodium items across all 19 chains. The Whopper Jr. at 510mg is one of the lowest at BK. Enormous gap within the same brand.</td></tr>
+      <tr><td>Spicy Ch'King (1,710mg)</td><td>Whopper</td><td class="val-good">730mg sodium</td><td>The Whopper at 980mg is not a low-sodium item. But the spicy chicken sandwich is significantly worse. This is about reducing exposure within a constrained environment.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="ai-h3">Taco Bell</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crunchwrap Supreme (1,200mg)</td><td>Crunchy Taco × 2</td><td class="val-good">600mg sodium</td><td>Two Crunchy Tacos (600mg combined) give you more volume than one Crunchwrap at half the sodium. Taco Bell has more low-sodium options than most chains due to smaller portion sizes.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-callout">
+  <p><strong>Highest fiber at any chain.</strong> Bean Burrito — 9g fiber · 870mg sodium. Not a protein-efficient choice (13g), but the Bean Burrito is the highest-fiber single item across the entire database. An anomaly in the fast food landscape.</p>
+</div>
+
+<h3 class="ai-h3">Wendy's</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dave's Triple (1,660mg)</td><td>Jr. Cheeseburger</td><td class="val-good">1,110mg sodium</td><td>The protein gap is real (15g vs 68g) but so is the sodium gap. For sodium reduction, the Jr. Cheeseburger is the best available within Wendy's.</td></tr>
+      <tr><td>Spicy Chicken Sandwich (1,090mg)</td><td>Grilled Chicken Sandwich</td><td class="val-good">190mg sodium</td><td>More protein (35g vs 31g), less sodium. The grilled option also delivers 2g fiber — modest but present.</td></tr>
+    </tbody>
+  </table>
 </div>
 
 </TabSection>
 
-<TabSection id="tab-share">
+<TabSection id="tab-spread">
 
-<span class="ai-eyebrow">Share to Social</span>
-<h2 class="ai-h2">Share this piece.</h2>
+<h2 class="ai-h2">Take This Further</h2>
 
 <div class="ai-body">
-  <p>Pre-rendered share cards and platform CTAs go here.</p>
+  <p>The architecture is visible. Now make it impossible to ignore.</p>
+  <p>The charts are screenshot-friendly. Post what surprises you.</p>
 </div>
+
+<div class="ai-share-card">
+  <div class="ai-share-card-num">$219B</div>
+  <div class="ai-share-card-context">Annual US hypertension healthcare cost — the bill for a sodium load that ZIP code helps decide.</div>
+  <div class="ai-share-card-footer">
+    <span>Alterrell Interactive</span>
+    <span>interactive.alterrell.com</span>
+  </div>
+</div>
+
+<div class="ai-share-actions">
+  <button type="button" class="ai-share-btn ai-share-btn--copy" id="piece-copy-link"><span id="piece-copy-label">Copy link</span></button>
+  <a class="ai-share-btn ai-share-btn--download" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fpieces%2Ffast-food-sodium%2F&amp;text=Fast+Food%27s+Hidden+Sodium+Tax+%E2%80%94+How+the+cheapest+meals+carry+the+heaviest+health+cost.&amp;via=alterrell" target="_blank" rel="noopener">Share on X</a>
+</div>
+
+<p class="ai-stamp">Get the story behind the story → <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
 
 </TabSection>
 
 <TabSection id="tab-sources">
 
-<span class="ai-eyebrow">Sources ——</span>
 <h2 class="ai-h2">Methodology &amp; Sources</h2>
 
 <div class="ai-body">
-  <p>All sodium data sourced from FDA nutritional databases and CDC dietary surveys. Chain-specific data compiled from published nutritional guides cross-referenced against 2022–2024 menu samples. Analysis performed by Alterrell Interactive.</p>
+  <p>Nutritional data for all calculator items was sourced from chain-published nutrition disclosures as of 2024–2025. Sodium values for US items were taken directly from each chain’s official nutrition calculator or published PDF. International sodium comparisons were sourced from peer-reviewed research (Canadian Medical Association Journal, 2013) cross-referenced with McDonald’s UK, McDonald’s Germany, KFC Japan, and McDonald’s France published nutrition data (2024). The UK 6-piece McNuggets figure is calculated from the per-100g sodium value established in peer-reviewed research (0.6g salt per 100g = 240mg sodium per 100g × 0.95g serving weight = ~228mg). CEO compensation data is from McDonald’s 2024 Proxy Statement filed with the SEC, reporting 2023 compensation. Healthcare cost data is from a 2024 peer-reviewed study co-authored by CDC and AHA researchers, published in the American Journal of Preventive Medicine, using 2019 Medical Expenditure Panel Survey data. Food desert statistics are from the USDA Food Access Research Atlas (2019 data). Fast food density research is from peer-reviewed studies cited throughout. Income data for zip code comparisons is from US Census American Community Survey estimates.</p>
 </div>
 
+<h3 class="ai-h3">Cited sources</h3>
+
 <ol class="ai-source-list">
-  <li>U.S. Food and Drug Administration. <em>Sodium in Your Diet.</em> FDA.gov · 2024</li>
-  <li>Centers for Disease Control and Prevention. <em>Sodium Intake Among Adults.</em> CDC.gov · 2023</li>
-  <li>U.S. Department of Agriculture. <em>Dietary Guidelines for Americans 2020–2025.</em> USDA.gov · 2020</li>
+  <li>McDonald’s, Burger King, KFC published nutrition data (US, UK, DE, JP, FR) · 2024 · mcdonalds.com, bk.com, kfc.com and international equivalents</li>
+  <li>Rudd Center for Food Policy &amp; Health · Fast Food FACTS 2021 · Nielsen data · University of Connecticut · uconnruddcenter.org</li>
+  <li>Wang Y, Lee JS, Pollack LM, Kumar A, Honeycutt S, Luo F. Health care expenditures and use associated with hypertension among U.S. adults. Am J Prev Med. 2024;67(6):820–831</li>
+  <li>CDC / NCCDPHP. Health and Economic Benefits of High Blood Pressure Interventions · 2024 · cdc.gov/nccdphp</li>
+  <li>Martin SS et al.; American Heart Association. 2024 Heart Disease and Stroke Statistics. Circulation. 2024;149(8):e347–e913</li>
+  <li>Joynt Maddox KE et al.; American Heart Association. Forecasting the Economic Burden of Cardiovascular Disease and Stroke Through 2050. Circulation. 2024</li>
+  <li>USDA Economic Research Service · Food Access Research Atlas · 2019 data · ers.usda.gov</li>
+  <li>Block JP, Scribner RA, DeSalvo KB. Fast food, race/ethnicity, and income: a geographic analysis. Am J Prev Med. 2004;27(3):211–217</li>
+  <li>Hilmers A, Hilmers DC, Dave J. Neighborhood disparities in access to healthy foods and their effects on environmental justice. Am J Public Health. 2012;102(9):1644–1654</li>
+  <li>Neckerman KM et al. Disparities in food access around homes and schools for New York City children. PLOS One. 2019</li>
+  <li>Arcaya MC et al. Do minority and poor neighborhoods have higher access to fast-food restaurants in the United States? Health &amp; Place. 2016;29:10–17</li>
+  <li>McDonald’s 2024 Proxy Statement · SEC filing, 2023 compensation data · sec.gov</li>
+  <li>AFL-CIO Executive PayWatch · 2023 · aflcio.org/paywatch</li>
+  <li>Gordon M. Houston food deserts hinder healthy eating · Houston Landing · 2023</li>
+  <li>Moore M et al. Food access and shopping behavior in Houston’s Third Ward · 2019</li>
 </ol>
 
 </TabSection>

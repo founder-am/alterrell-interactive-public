@@ -4,7 +4,7 @@
 DO NOT begin any build, editorial, or audit session without reading,
 in this order:
 1. ALTERRELL-INTERACTIVE-BIBLE.md  (canonical rules — the only file at this path)
-2. piece-template.html  (repo root, the only template)
+2. src/pages/pieces/[slug].astro  (the only template)
 3. src/styles/alterrell-interactive.css  (canonical; the root copy is
    pre-migration)
 4. _data/platform/PROJECT-STATUS.md  (current state, upload queue)
@@ -13,6 +13,12 @@ in this order:
    generating share-card PNGs)
 If a file is not readable, STOP and tell AMA rather than building from
 memory.
+
+piece-template.html is archived at
+_archive/legacy-2026-08-13/piece-template.html on 2026-08-13. It is the
+pre-Astro template. Do not read it as canon and do not build from it. The
+template is src/pages/pieces/[slug].astro, and piece bodies are .mdx
+entries in src/content/pieces/ that it renders.
 
 ## SESSION RULES
 D-107: A turn containing a question contains no writes. A turn
@@ -29,8 +35,8 @@ commits and pushes alterrell-hq.
 
 ## Output
 Any answer longer than 5 lines is written to a file, not printed to the
-terminal. Write it to alterrell-hq/reports/YYYY-MM-DD-[slug].md and print
-only the file path plus a summary of at most 3 lines. This applies to
+terminal. Write it into ../alterrell-hq/reports/ named YYYY-MM-DD-[slug].md,
+and print only the file path plus a summary of at most 3 lines. This applies to
 findings, analyses, recommendations, error explanations, and disposition
 lists, not only to formal reports. If a session produces several such
 answers, append to one file rather than creating several.
@@ -49,7 +55,7 @@ A rule failing on most pieces is a wrong rule, not many broken pieces.
 ## Writes
 Never move a file to old/ or delete a file without explicit instruction.
 Propose demotions as a commented-out script for review.
-Every session appends exactly one line to alterrell-hq/LEDGER.md in the
+Every session appends exactly one line to ../alterrell-hq/LEDGER.md in the
 format: - item | status | date
 Status is never "completed" for work that was not verified done.
 

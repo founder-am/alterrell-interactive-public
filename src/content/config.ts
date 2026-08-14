@@ -6,9 +6,13 @@ const pieces = defineCollection({
     title: z.string(),
     description: z.string(),
     status: z.enum(['live', 'coming-soon']),
-    category: z.enum(['industry', 'culture', 'govt', 'health']),
+    // category and stakes are optional so a piece whose source names neither
+    // can ship without one being invented. HubCard in src/lib/hub.ts already
+    // types both as optional for that reason; this makes the schema agree.
+    // Where's Beyoncé is the piece that carries neither.
+    category: z.enum(['industry', 'culture', 'govt', 'health']).optional(),
     format: z.enum(['interactive', 'series']),
-    stakes: z.string(),
+    stakes: z.string().optional(),
     publishDate: z.coerce.date().optional(),
     hero: z.object({
       headline: z.string(),

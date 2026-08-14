@@ -2,9 +2,10 @@
 /**
  * The piece template. Built 2026-08-13.
  *
- * A content collection route. One page per entry in LINKED_SLUGS, and the hub
- * links from that same list, so a card can never point at a page that was not
- * built and a page is never built that nothing points at.
+ * A content collection route. One page per entry in BUILT_SLUGS. The hub links
+ * from LINKED_SLUGS, which is a subset of it, so a card can never point at a
+ * page that was not built. See src/lib/hub.ts for why the two lists are not
+ * the same list, and what separating them costs.
  *
  * DOM order is fixed and ruled:
  *   nav -> hero -> journey block -> tab bar -> tab panels -> footer
@@ -35,17 +36,17 @@
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import '../../styles/alterrell-interactive.css';
-import { LINKED_SLUGS } from '../../lib/hub';
+import { BUILT_SLUGS } from '../../lib/hub';
 
 export async function getStaticPaths() {
   const pieces = await getCollection('pieces');
-  const linked = LINKED_SLUGS as readonly string[];
+  const built = BUILT_SLUGS as readonly string[];
   return pieces
     .map((piece) => ({
       slug: (piece as any).slug ?? piece.id.replace(/\.mdx?$/, ''),
       piece,
     }))
-    .filter(({ slug }) => linked.includes(slug))
+    .filter(({ slug }) => built.includes(slug))
     .map(({ slug, piece }) => ({ params: { slug }, props: { piece } }));
 }
 

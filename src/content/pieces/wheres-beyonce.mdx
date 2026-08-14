@@ -1,0 +1,218 @@
+---
+title: "Where's Beyoncé?"
+description: "White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible."
+status: coming-soon
+format: interactive
+hero:
+  headline: "Where's Beyoncé?"
+  dek: "White wealth is framed as voluntary warmth. Black wealth is treated as obligatory debt. This tool makes the architecture visible."
+journey:
+  substack: "https://alterrell.substack.com/s/alterrell-interactive"
+tabs:
+  - id: tab-overview
+    label: Overview
+  - id: tab-data
+    label: Data & Headlines
+  - id: tab-wealthy
+    label: The Wealthy
+  - id: tab-tool
+    label: The Tool
+  - id: tab-spread
+    label: Spread the Word
+---
+
+import TabSection from '../../components/TabSection.astro';
+
+{/*
+  Ported from _archive/legacy-2026-08-13/wheres-beyonce/index.html on
+  2026-08-13. Prose and headings extracted verbatim. Nothing on this page was
+  composed, summarised, or voice-passed in that pass.
+
+  Tab ids and labels are the archived file's own, in its own order.
+
+  Not carried across, and why:
+    breadcrumb, eyebrow, Watch path  retired — alterrell-hq/reference/NEVER-IMPLEMENT.md
+    carousel                         ruled out of the pieces 2026-08-11
+    the state selector (tab-tool)    a JS widget over a STATES array, not prose.
+                                     Its nine entries — Texas, Florida, California,
+                                     Hawaii, Louisiana, North Carolina, Georgia,
+                                     Pacific Northwest, Tornado / Dixie Alley — are
+                                     still in the archived file and are not ported here.
+    the expandable wealth-holder cards (tab-wealthy)   same reason.
+
+  Figures. Every number here is attached to a named publication in the archived
+  file itself — Billboard for the Hart challenge table, and the publication
+  column plus the source stamp for the sentiment table. Nothing carried an
+  unsourced figure, so no [[FIGURE NEEDS SOURCE]] marker was needed on this piece.
+
+  No category and no stakes in the frontmatter: the archived file names neither,
+  and src/lib/hub.ts records that the card carries neither rather than carrying
+  an invented one.
+*/}
+
+<TabSection id="tab-overview" active>
+
+<h2 class="ai-h2">The Black Tax at Scale</h2>
+
+<ul class="ai-body">
+  <li><strong>Government abdication.</strong> Celebrity giving fills gaps that policy was never supposed to create. The headline obscures the accountability gap.</li>
+  <li><strong>Same mechanism, different reaction.</strong> When Dolly Parton gives after Gatlinburg, she is a hero. When Oprah gives after Maui, she is a target. The act is identical. Only the race changes.</li>
+  <li><strong>The Black Tax at scale.</strong> Black wealth is treated as communal obligation. White wealth is treated as personal virtue. This pattern is structural, not individual.</li>
+  <li><strong>Domicile as obligation.</strong> When Beyoncé was born in Houston, she inherited a debt. When Elon Musk moved to Texas, he inherited no such expectation.</li>
+  <li><strong>Owners vs. players.</strong> The people who own the teams, the buildings, the land — are never asked. The people who perform are asked first, loudest, and most publicly.</li>
+</ul>
+
+<h3 class="ai-h3">The Kevin Hart Hurricane Harvey Challenge — August 2017</h3>
+
+<div class="ai-body">
+  <p>Kevin Hart publicly challenged eight celebrities to donate to Harvey relief. Here is who he named — and who he did not.</p>
+</div>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Celebrity</th>
+        <th>Race</th>
+        <th>Reported Donation</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Beyoncé</td><td>Black</td><td>$7M+ (BeyGOOD)</td><td class="val-good">Called out</td></tr>
+      <tr><td>Jay-Z</td><td>Black</td><td>Documented response</td><td class="val-good">Called out</td></tr>
+      <tr><td>Chris Rock</td><td>Black</td><td>&#8212;</td><td class="val-good">Called out</td></tr>
+      <tr><td>Dave Chappelle</td><td>Black</td><td>&#8212;</td><td class="val-good">Called out</td></tr>
+      <tr><td>Steve Harvey</td><td>Black</td><td>&#8212;</td><td class="val-good">Called out</td></tr>
+      <tr><td>Dwayne Johnson</td><td>Black / Pacific Islander</td><td>Donated</td><td class="val-good">Called out</td></tr>
+      <tr><td>Justin Timberlake</td><td>White</td><td>&#8212;</td><td class="val-good">Called out</td></tr>
+      <tr><td>Jerry Seinfeld</td><td>White</td><td>&#8212;</td><td class="val-good">Called out</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-body">
+  <p>6 Black celebrities. 2 white celebrities. 0 Houston billionaires.</p>
+</div>
+
+<p class="ai-stamp">Source: Billboard — Kevin Hart Hurricane Harvey Challenge documentation, August 2017</p>
+
+<h3 class="ai-h3">What This Tool Does</h3>
+
+<div class="ai-body">
+  <p>This tool documents every major wealth holder across nine disaster-prone states — by domicile and birth state — and whether they were publicly asked to contribute to disaster relief.</p>
+  <p>It does not criticize any individual's choice to give or not give. It maps the structural pattern: who gets asked, who gets praised, who gets ignored, and who gets attacked.</p>
+  <p>The same act — a wealthy person donating money after a natural disaster — produces radically different cultural responses depending on the race of the giver. This tool makes that architecture visible.</p>
+</div>
+
+<blockquote class="ai-pullquote">75% of Hart's challenge targets were Black. 0 billionaires were named.</blockquote>
+
+<p class="ai-stamp">Both figures derived from the eight names in the table above.</p>
+
+</TabSection>
+
+<TabSection id="tab-data">
+
+<h2 class="ai-h2">Same Act. Different Story.</h2>
+
+<div class="ai-body">
+  <p>Two women. Two disasters. Two donations. The same structural act produced two entirely different media narratives. The only variable: race.</p>
+</div>
+
+<div class="ai-metrics">
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--ink">Case A</div>
+    <div class="ai-metric-label"><strong>Dolly Parton</strong> — Donated $1M through the My People Fund. Distributed directly to wildfire victims. Praised uniformly across conservative and mainstream media as selfless, community-driven generosity.</div>
+    <div class="ai-metric-sub">Gatlinburg Wildfires &middot; Tennessee &middot; 2016 &middot; Positive framing</div>
+  </div>
+  <div class="ai-metric">
+    <div class="ai-metric-num ai-metric-num--teal">Case B</div>
+    <div class="ai-metric-label"><strong>Oprah Winfrey</strong> — Donated $25M+ to the People's Fund of Maui — the largest single private donation to Maui relief. Faced immediate viral criticism, conspiracy theories, and demands for more. Coverage framed around not giving enough.</div>
+    <div class="ai-metric-sub">Maui Wildfires &middot; Hawaii &middot; 2023 &middot; Negative framing</div>
+  </div>
+</div>
+
+<h3 class="ai-h3">Headline Sentiment by Race — Disaster Philanthropy Coverage</h3>
+
+<div class="ai-table-wrap">
+  <table class="ai-table">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Race</th>
+        <th>Disaster</th>
+        <th>Amount</th>
+        <th>Publication</th>
+        <th>Reach</th>
+        <th>Framing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Dolly Parton</td><td>White</td><td>Gatlinburg 2016</td><td>$1M</td><td>NPR / ABC News</td><td>National</td><td class="val-good">Hero / Generous</td></tr>
+      <tr><td>Oprah Winfrey</td><td>Black</td><td>Maui 2023</td><td>$25M+</td><td>Newsweek</td><td>95M+ monthly</td><td class="val-bad">Insufficient / Criticized</td></tr>
+      <tr><td>Oprah Winfrey</td><td>Black</td><td>Maui 2023</td><td>$25M+</td><td>Atlanta Black Star</td><td>14M monthly</td><td class="val-bad">Conspiracy theories</td></tr>
+      <tr><td>Taylor Swift</td><td>White</td><td>Various</td><td>Multiple</td><td>Mainstream</td><td>National</td><td class="val-good">Celebrated / Generous</td></tr>
+      <tr><td>Beyoncé</td><td>Black</td><td>Harvey 2017</td><td>$7M+</td><td>Multiple outlets</td><td>National</td><td class="val-warn">Scrutinized / More demanded</td></tr>
+      <tr><td>Beyoncé</td><td>Black</td><td>LA Fires 2025</td><td>$2.5M</td><td>Multiple outlets</td><td>National</td><td class="val-warn">Scrutinized / Why not more</td></tr>
+      <tr><td>Blake Shelton</td><td>White</td><td>Oklahoma 2013</td><td>Donated</td><td>Entertainment press</td><td>National</td><td class="val-good">Hero / Community champion</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ai-callout">
+  <p>Same act. Same structure. The only variable: race. Dolly Parton gives $1M — hero. Oprah gives $25M — not enough. The gap between the dollar amounts is 25×. The gap between the cultural responses is the architecture this tool documents.</p>
+</div>
+
+<p class="ai-stamp">Sources: Newsweek (95M+ monthly visitors, Similarweb 2024) &middot; Atlanta Black Star (14M monthly) &middot; NPR &middot; ABC News &middot; Spectrum News Hawaii — People's Fund of Maui ($60M raised, 8,100 recipients)</p>
+
+</TabSection>
+
+<TabSection id="tab-wealthy">
+
+<h2 class="ai-h2">Who Was Here. Who Was Asked.</h2>
+
+<div class="ai-body">
+  <p>Nine states and regions. Every major wealth holder — by domicile. Whether they were publicly asked to contribute. Select a card to expand the full data.</p>
+</div>
+
+<p class="ai-stamp">The expandable wealth-holder cards are a JavaScript widget in the archived file and are not ported here.</p>
+
+</TabSection>
+
+<TabSection id="tab-tool">
+
+<h2 class="ai-h2">Equal Asks. Equal Visibility.</h2>
+
+<div class="ai-body">
+  <p>Select a disaster state to see every major wealth holder — by domicile and birth state — and whether they were publicly asked to contribute.</p>
+</div>
+
+<p class="ai-stamp">The state selector is a JavaScript widget in the archived file and is not ported here.</p>
+
+</TabSection>
+
+<TabSection id="tab-spread">
+
+<h2 class="ai-h2">Take This Further</h2>
+
+<div class="ai-body">
+  <p>The architecture is visible. Now make it impossible to ignore.</p>
+</div>
+
+<div class="ai-share-card">
+  <div class="ai-share-card-num">75%</div>
+  <div class="ai-share-card-context">Of Kevin Hart's eight Hurricane Harvey challenge targets were Black. No Houston billionaire was named.</div>
+  <div class="ai-share-card-footer">
+    <span>Alterrell Interactive</span>
+    <span>interactive.alterrell.com</span>
+  </div>
+</div>
+
+<div class="ai-share-actions">
+  <button type="button" class="ai-share-btn ai-share-btn--copy" id="piece-copy-link"><span id="piece-copy-label">Copy link</span></button>
+  <a class="ai-share-btn ai-share-btn--download" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finteractive.alterrell.com%2Fpieces%2Fwheres-beyonce%2F&amp;text=Where%27s+Beyonc%C3%A9%3F+%E2%80%94+White+wealth+is+framed+as+voluntary+warmth.+Black+wealth+is+treated+as+obligatory+debt.&amp;via=alterrell" target="_blank" rel="noopener">Share on X</a>
+</div>
+
+<p class="ai-stamp">Get the story behind the story → <a href="https://alterrell.substack.com/s/alterrell-interactive" target="_blank" rel="noopener">alterrell.substack.com</a></p>
+
+</TabSection>
