@@ -1,48 +1,40 @@
-# macOS
-.DS_Store
-**/.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.Spotlight-V100
-.Trashes
 
-# Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Local environment
-.env
-.env.local
-
-# Node (if ever used)
-node_modules/
-npm-debug.log*
-
-# Instrument tooling
-_tools/node_modules/
-
-# Checker screenshots live in alterrell-hq/reports/shots/, never here
-reports/shots/
-
-# Local-only scratch projects (not part of this site)
-foreverloved/
-
-# Large data files (raw SSA data, CSVs)
-_data/**/*.txt
 _data/**/*.csv
-_data/naming/raw/
+_data/**/*.txt
 _data/naming/*.csv
 _data/naming/**/*.csv
-
-# Keep markdown and HTML in _data tracked
-!_data/**/*.md
-!_data/**/*.html
-node_modules/
-dist/
-.astro/
-.DS_Store
+_data/naming/raw/
+_tools/node_modules/
 _tools/scratch/ANSWER-KEY.txt
+!_data/**/*.html
+!_data/**/*.md
+._*
+.AppleDouble
+.astro/
+.claude/
+.DS_Store
+.env
+.env.local
+.idea/
+.LSOverride
+.Spotlight-V100
+.Trashes
+.vscode/
+*.swo
+*.swp
+**/.DS_Store
+# Checker screenshots live in alterrell-hq/reports/shots/, never here
+# Editor files
+# Instrument tooling
+# Keep markdown and HTML in _data tracked
+# Large data files (raw SSA data, CSVs)
+# Local environment
+# Local-only scratch projects (not part of this site)
+# macOS
+# Node (if ever used)
+dist/
+foreverloved/
+Icon
+node_modules/
+npm-debug.log*
+reports/shots/
