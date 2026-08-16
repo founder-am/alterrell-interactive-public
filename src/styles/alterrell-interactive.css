@@ -450,12 +450,20 @@ button { cursor: pointer; font-family: var(--font-body); }
   max-width: 160px;
 }
 
-/* Stamp — source/methodology/nav only */
+/* Stamp — source/methodology/nav only
+ *
+ * Colour moved from --ink-muted to --ink-secondary on 2026-08-16. At 9px on
+ * --paper, --ink-muted (#888888) measures 3.28:1, below the 4.5:1 G7 floor,
+ * and check.js failed it on fast-food-sodium at all three widths.
+ * --ink-secondary (#444444) measures 9.02:1 on --paper, 9.74:1 on
+ * --paper-card and 8.33:1 on --paper-warm — the three backgrounds a stamp
+ * ever renders on. No new colour: the token already exists at L33 and is
+ * what .ai-source-list uses two rules up. */
 .ai-stamp {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   font-weight: 400;
-  color: var(--ink-muted);
+  color: var(--ink-secondary);
   letter-spacing: 0.08em;
   line-height: 1.6;
 }

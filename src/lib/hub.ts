@@ -17,13 +17,13 @@
  *    hand-written folder, which is exactly what happened to Where's Beyoncé
  *    on the previous hub: it had a page, and no card.
  *
- * GO-LIVE SET, ruled by AMA 2026-08-13.
- * Three pieces ship: concert-tax, fast-food-sodium, naming. Where's Beyoncé
- * and gay-uncles are unfinished and do not ship — no page, and no card. There
- * are no coming-soon cards on the hub at all; the hub shows exactly the pieces
- * you can read.
+ * GO-LIVE SET, ruled by AMA 2026-08-13, narrowed by AMA 2026-08-16.
+ * Two pieces ship: concert-tax and fast-food-sodium. naming came off the live
+ * list on 2026-08-16 and now sits where wheres-beyonce and gay-uncles already
+ * sat — unfinished, and so no page and no card. There are no coming-soon cards
+ * on the hub at all; the hub shows exactly the pieces you can read.
  *
- * The two unfinished .mdx files stay in src/content/pieces. They are not
+ * The three unfinished .mdx files stay in src/content/pieces. They are not
  * deleted and not archived — they are work in progress. They are simply absent
  * from both lists, so nothing builds them and nothing points at them. Adding
  * one back is one line in each list.
@@ -38,7 +38,6 @@
 export const BUILT_SLUGS = [
   'concert-tax',
   'fast-food-sodium',
-  'naming',
 ] as const;
 
 /** Every piece whose hub card carries an href. Equal to BUILT_SLUGS. */

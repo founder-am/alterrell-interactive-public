@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-13T20:11:00.301Z",
+  "generated": "2026-08-16T14:55:49.605Z",
   "repo": "/Users/alterrellmills/Documents/GitHub/alterrell-interactive-public",
   "chromium": "151.0.7922.34",
   "chromiumPinned": "151.0.7922.34",
@@ -10,7 +10,7 @@
   "contentRules": {
     "T7b": {
       "status": "PASS",
-      "note": "4 content files clean"
+      "note": "5 content files clean"
     }
   },
   "widths": [
@@ -18,7 +18,7 @@
     768,
     1280
   ],
-  "platformSelectorCount": 295,
+  "platformSelectorCount": 319,
   "pieces": [
     {
       "path": "404.html",
@@ -57,7 +57,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": null,
-          "docHeight": 1088,
+          "docHeight": 1059,
           "failedRequests": []
         },
         "768": {
@@ -85,14 +85,14 @@
           },
           "g5": {
             "widthPx": 732,
-            "widestLinePx": 359,
+            "widestLinePx": 383,
             "chars": 54,
             "lines": 1,
             "charsPerLine": 54,
             "selector": "p:nth-of-type(1)"
           },
           "g6": null,
-          "docHeight": 1461,
+          "docHeight": 1426,
           "failedRequests": []
         },
         "1280": {
@@ -127,7 +127,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": null,
-          "docHeight": 1303,
+          "docHeight": 1268,
           "failedRequests": []
         }
       },
@@ -148,8 +148,135 @@
       }
     },
     {
-      "path": "concert-tax/index.html",
-      "slug": "concert-tax",
+      "path": "index.html",
+      "slug": "index",
+      "pageClass": "PAGE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "NA",
+              "note": "no controls in scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 317,
+            "chars": 144,
+            "lines": 4,
+            "charsPerLine": 36,
+            "selector": "p"
+          },
+          "g6": null,
+          "docHeight": 780,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "NA",
+              "note": "no controls in scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 701,
+            "chars": 144,
+            "lines": 2,
+            "charsPerLine": 72,
+            "selector": "p"
+          },
+          "g6": null,
+          "docHeight": 1024,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "NA",
+              "note": "no controls in scope"
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1080,
+            "widestLinePx": 1058,
+            "chars": 144,
+            "lines": 2,
+            "charsPerLine": 72,
+            "selector": "p"
+          },
+          "g6": null,
+          "docHeight": 900,
+          "failedRequests": []
+        }
+      },
+      "structure": null,
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": null,
+        "primaryBarMatchedBy": "none",
+        "primaryTabCount": 0,
+        "primaryTabLabels": [],
+        "outOfScope": [],
+        "totalTablists": 0
+      }
+    },
+    {
+      "path": "pieces/concert-tax/index.html",
+      "slug": "pieces-concert-tax",
       "pageClass": "PIECE",
       "widths": {
         "360": {
@@ -164,7 +291,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 3 inline links out of scope"
+              "note": "7 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -183,8 +310,8 @@
             "charsPerLine": 34,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 230,
-          "docHeight": 2314,
+          "g6": 246,
+          "docHeight": 2005,
           "failedRequests": []
         },
         "768": {
@@ -218,8 +345,8 @@
             "charsPerLine": 84,
             "selector": "p:nth-of-type(1)"
           },
-          "g6": 434,
-          "docHeight": 1935,
+          "g6": 423,
+          "docHeight": 1771,
           "failedRequests": []
         },
         "1280": {
@@ -253,8 +380,8 @@
             "charsPerLine": 68,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 354,
-          "docHeight": 1639,
+          "g6": 349,
+          "docHeight": 1448,
           "failedRequests": []
         }
       },
@@ -289,7 +416,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
+          "note": "_astro/scratch-dark.imwDFMEk.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -320,211 +447,8 @@
       }
     },
     {
-      "path": "fast-food-sodium/index.html",
-      "slug": "fast-food-sodium",
-      "pageClass": "PIECE",
-      "widths": {
-        "360": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "div.carousel__viewport:nth-of-type(1)",
-                  "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 308",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                }
-              ]
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "10 controls checked, 5 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 308,
-            "widestLinePx": 306,
-            "chars": 102,
-            "lines": 3,
-            "charsPerLine": 34,
-            "selector": "p.ai-hero-dek"
-          },
-          "g6": 252,
-          "docHeight": 1632,
-          "failedRequests": []
-        },
-        "768": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "div.carousel__viewport:nth-of-type(1)",
-                  "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 732",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                }
-              ]
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "12 controls checked, 8 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 732,
-            "widestLinePx": 713,
-            "chars": 283,
-            "lines": 3,
-            "charsPerLine": 94,
-            "selector": "p:nth-of-type(1)"
-          },
-          "g6": 388,
-          "docHeight": 1751,
-          "failedRequests": []
-        },
-        "1280": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "div.carousel__viewport:nth-of-type(1)",
-                  "parent": "div.carousel__outer",
-                  "value": "scrollWidth 1248 > parent clientWidth 1080",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                }
-              ]
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "12 controls checked, 8 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 1080,
-            "widestLinePx": 916,
-            "chars": 102,
-            "lines": 1,
-            "charsPerLine": 102,
-            "selector": "p.ai-hero-dek"
-          },
-          "g6": 354,
-          "docHeight": 1617,
-          "failedRequests": []
-        }
-      },
-      "structure": {
-        "S3": {
-          "status": "PASS",
-          "note": "1 carousel tablist(s) out of scope"
-        },
-        "S4": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S5": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S7": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S8": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S6": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S9": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S10": {
-          "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
-        },
-        "S11": {
-          "status": "PASS",
-          "note": ""
-        }
-      },
-      "d1": {
-        "inlineSelectorCount": 0,
-        "duplicateCount": 0,
-        "duplicates": []
-      },
-      "errors": [],
-      "scope": {
-        "primaryBar": "div#piece-tabs",
-        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
-        "primaryTabCount": 5,
-        "primaryTabLabels": [
-          "Overview",
-          "The Data",
-          "By Chain",
-          "Share to Social",
-          "Sources"
-        ],
-        "outOfScope": [
-          {
-            "selector": "div.carousel__dots:nth-of-type(2)",
-            "value": "4 role=tab children",
-            "label": "Slide indicators"
-          }
-        ],
-        "totalTablists": 2
-      }
-    },
-    {
-      "path": "gay-uncles/index.html",
-      "slug": "gay-uncles",
+      "path": "pieces/fast-food-sodium/index.html",
+      "slug": "pieces-fast-food-sodium",
       "pageClass": "PIECE",
       "widths": {
         "360": {
@@ -539,7 +463,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 4 inline links out of scope"
+              "note": "6 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -552,14 +476,14 @@
           },
           "g5": {
             "widthPx": 308,
-            "widestLinePx": 289,
-            "chars": 85,
-            "lines": 3,
-            "charsPerLine": 28,
+            "widestLinePx": 300,
+            "chars": 162,
+            "lines": 4,
+            "charsPerLine": 41,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 252,
-          "docHeight": 1203,
+          "g6": 290,
+          "docHeight": 2299,
           "failedRequests": []
         },
         "768": {
@@ -574,7 +498,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 7 inline links out of scope"
+              "note": "6 controls checked, 6 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -587,14 +511,14 @@
           },
           "g5": {
             "widthPx": 732,
-            "widestLinePx": 363,
-            "chars": 89,
-            "lines": 1,
-            "charsPerLine": 89,
-            "selector": "p"
+            "widestLinePx": 732,
+            "chars": 215,
+            "lines": 3,
+            "charsPerLine": 72,
+            "selector": "p:nth-of-type(1)"
           },
-          "g6": 388,
-          "docHeight": 1661,
+          "g6": 417,
+          "docHeight": 1966,
           "failedRequests": []
         },
         "1280": {
@@ -609,7 +533,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "7 controls checked, 7 inline links out of scope"
+              "note": "6 controls checked, 6 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -622,14 +546,14 @@
           },
           "g5": {
             "widthPx": 1080,
-            "widestLinePx": 802,
-            "chars": 85,
-            "lines": 1,
-            "charsPerLine": 85,
+            "widestLinePx": 1036,
+            "chars": 162,
+            "lines": 2,
+            "charsPerLine": 81,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 354,
-          "docHeight": 1503,
+          "g6": 309,
+          "docHeight": 1584,
           "failedRequests": []
         }
       },
@@ -664,7 +588,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
+          "note": "_astro/scratch-dark.imwDFMEk.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -680,360 +604,17 @@
       "scope": {
         "primaryBar": "div#piece-tabs",
         "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
-        "primaryTabCount": 7,
+        "primaryTabCount": 6,
         "primaryTabLabels": [
           "Overview",
-          "The Map",
-          "My Story",
-          "The Data",
-          "Take Action",
-          "Share to Social",
+          "The System",
+          "Systemic Issues",
+          "Best Options",
+          "Spread the Word",
           "Sources"
         ],
         "outOfScope": [],
         "totalTablists": 1
-      }
-    },
-    {
-      "path": "index.html",
-      "slug": "index",
-      "pageClass": "PAGE",
-      "widths": {
-        "360": {
-          "geometry": {
-            "G1": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "1 controls checked, 8 inline links out of scope"
-            },
-            "G4": {
-              "status": "NA",
-              "note": "no tabs"
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 254,
-            "widestLinePx": 239,
-            "chars": 68,
-            "lines": 2,
-            "charsPerLine": 34,
-            "selector": "p.hub-card-sub"
-          },
-          "g6": null,
-          "docHeight": 1588,
-          "failedRequests": []
-        },
-        "768": {
-          "geometry": {
-            "G1": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "1 controls checked, 11 inline links out of scope"
-            },
-            "G4": {
-              "status": "NA",
-              "note": "no tabs"
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 308,
-            "widestLinePx": 294,
-            "chars": 68,
-            "lines": 2,
-            "charsPerLine": 34,
-            "selector": "p.hub-card-sub"
-          },
-          "g6": null,
-          "docHeight": 1083,
-          "failedRequests": []
-        },
-        "1280": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "h1.hub-hero-headline",
-                  "parent": "div.hub-hero-inner",
-                  "value": "scrollWidth 1147 > parent clientWidth 1080",
-                  "overflowX": "visible",
-                  "selfOverflowX": "visible"
-                }
-              ]
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "1 controls checked, 11 inline links out of scope"
-            },
-            "G4": {
-              "status": "NA",
-              "note": "no tabs"
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 301,
-            "widestLinePx": 294,
-            "chars": 68,
-            "lines": 2,
-            "charsPerLine": 34,
-            "selector": "p.hub-card-sub"
-          },
-          "g6": null,
-          "docHeight": 1057,
-          "failedRequests": []
-        }
-      },
-      "structure": null,
-      "d1": {
-        "inlineSelectorCount": 0,
-        "duplicateCount": 0,
-        "duplicates": []
-      },
-      "errors": [],
-      "scope": {
-        "primaryBar": null,
-        "primaryBarMatchedBy": "none",
-        "primaryTabCount": 0,
-        "primaryTabLabels": [],
-        "outOfScope": [],
-        "totalTablists": 0
-      }
-    },
-    {
-      "path": "naming/index.html",
-      "slug": "naming",
-      "pageClass": "PIECE",
-      "widths": {
-        "360": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "div.carousel__viewport:nth-of-type(1)",
-                  "parent": "div.carousel__outer",
-                  "value": "scrollWidth 932 > parent clientWidth 308",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                }
-              ]
-            },
-            "G2": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "9 controls checked, 5 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 308,
-            "widestLinePx": 282,
-            "chars": 146,
-            "lines": 4,
-            "charsPerLine": 37,
-            "selector": "p.ai-hero-dek"
-          },
-          "g6": 255,
-          "docHeight": 1357,
-          "failedRequests": []
-        },
-        "768": {
-          "geometry": {
-            "G1": {
-              "status": "FAIL",
-              "note": "1 overflowing",
-              "offenders": [
-                {
-                  "selector": "div.carousel__viewport:nth-of-type(1)",
-                  "parent": "div.carousel__outer",
-                  "value": "scrollWidth 932 > parent clientWidth 732",
-                  "overflowX": "visible",
-                  "selfOverflowX": "hidden"
-                }
-              ]
-            },
-            "G2": {
-              "status": "FAIL",
-              "note": "1 clipped",
-              "offenders": [
-                {
-                  "selector": "div.carousel__card-body:nth-of-type(2)",
-                  "value": "scrollHeight 91 > clientHeight 88 (height 87.8906px, max-height none, overflow-y hidden)"
-                }
-              ]
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "11 controls checked, 8 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 732,
-            "widestLinePx": 725,
-            "chars": 267,
-            "lines": 3,
-            "charsPerLine": 89,
-            "selector": "p"
-          },
-          "g6": 422,
-          "docHeight": 1695,
-          "failedRequests": []
-        },
-        "1280": {
-          "geometry": {
-            "G1": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G2": {
-              "status": "FAIL",
-              "note": "1 clipped",
-              "offenders": [
-                {
-                  "selector": "div.carousel__card-body:nth-of-type(2)",
-                  "value": "scrollHeight 91 > clientHeight 88 (height 87.8906px, max-height none, overflow-y hidden)"
-                }
-              ]
-            },
-            "G3": {
-              "status": "PASS",
-              "note": "11 controls checked, 8 inline links out of scope"
-            },
-            "G4": {
-              "status": "PASS",
-              "note": ""
-            },
-            "G7": {
-              "status": "PASS",
-              "note": ""
-            }
-          },
-          "g5": {
-            "widthPx": 1080,
-            "widestLinePx": 1067,
-            "chars": 146,
-            "lines": 2,
-            "charsPerLine": 73,
-            "selector": "p.ai-hero-dek"
-          },
-          "g6": 308,
-          "docHeight": 1457,
-          "failedRequests": []
-        }
-      },
-      "structure": {
-        "S3": {
-          "status": "PASS",
-          "note": "1 carousel tablist(s) out of scope"
-        },
-        "S4": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S5": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S7": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S8": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S6": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S9": {
-          "status": "PASS",
-          "note": ""
-        },
-        "S10": {
-          "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
-        },
-        "S11": {
-          "status": "PASS",
-          "note": ""
-        }
-      },
-      "d1": {
-        "inlineSelectorCount": 0,
-        "duplicateCount": 0,
-        "duplicates": []
-      },
-      "errors": [],
-      "scope": {
-        "primaryBar": "div#piece-tabs",
-        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
-        "primaryTabCount": 5,
-        "primaryTabLabels": [
-          "Overview",
-          "The Data",
-          "The Series",
-          "Share to Social",
-          "Sources"
-        ],
-        "outOfScope": [
-          {
-            "selector": "div.carousel__dots:nth-of-type(2)",
-            "value": "3 role=tab children",
-            "label": "Slide indicators"
-          }
-        ],
-        "totalTablists": 2
       }
     },
     {
@@ -1053,7 +634,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "8 controls checked, 3 inline links out of scope"
+              "note": "8 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1073,7 +654,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": 168,
-          "docHeight": 2211,
+          "docHeight": 2182,
           "failedRequests": []
         },
         "768": {
@@ -1107,8 +688,8 @@
             "charsPerLine": 78,
             "selector": "p:nth-of-type(1)"
           },
-          "g6": 325,
-          "docHeight": 2122,
+          "g6": 239,
+          "docHeight": 2007,
           "failedRequests": []
         },
         "1280": {
@@ -1142,8 +723,8 @@
             "charsPerLine": 126,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 211,
-          "docHeight": 1871,
+          "g6": 205,
+          "docHeight": 1836,
           "failedRequests": []
         }
       },
@@ -1178,7 +759,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
+          "note": "_astro/scratch-dark.imwDFMEk.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1225,7 +806,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "5 controls checked, 3 inline links out of scope"
+              "note": "5 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1279,8 +860,8 @@
             "charsPerLine": 52,
             "selector": "p"
           },
-          "g6": 197,
-          "docHeight": 1505,
+          "g6": 191,
+          "docHeight": 1499,
           "failedRequests": []
         },
         "1280": {
@@ -1314,8 +895,8 @@
             "charsPerLine": 42,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 197,
-          "docHeight": 1381,
+          "g6": 191,
+          "docHeight": 1375,
           "failedRequests": []
         }
       },
@@ -1350,7 +931,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
+          "note": "_astro/scratch-dark.imwDFMEk.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1394,7 +975,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "11 controls checked, 3 inline links out of scope"
+              "note": "11 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -1414,7 +995,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": 190,
-          "docHeight": 3006,
+          "docHeight": 2978,
           "failedRequests": []
         },
         "768": {
@@ -1448,8 +1029,8 @@
             "charsPerLine": 77,
             "selector": "p:nth-of-type(1)"
           },
-          "g6": 325,
-          "docHeight": 2802,
+          "g6": 313,
+          "docHeight": 2761,
           "failedRequests": []
         },
         "1280": {
@@ -1483,8 +1064,8 @@
             "charsPerLine": 72,
             "selector": "p.ai-hero-dek"
           },
-          "g6": 245,
-          "docHeight": 2541,
+          "g6": 239,
+          "docHeight": 2506,
           "failedRequests": []
         }
       },
@@ -1519,7 +1100,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/scratch-dark.BQ_WcWbh.css contains .ai-inner"
+          "note": "_astro/scratch-dark.imwDFMEk.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -1554,19 +1135,8 @@
     }
   ],
   "summary": {
-    "totalFailCells": 8,
+    "totalFailCells": 0,
     "totalDuplicateSelectors": 0,
-    "rulesByPieceCount": [
-      {
-        "rule": "G1",
-        "pieces": 3,
-        "cells": 0
-      },
-      {
-        "rule": "G2",
-        "pieces": 1,
-        "cells": 0
-      }
-    ]
+    "rulesByPieceCount": []
   }
 }
