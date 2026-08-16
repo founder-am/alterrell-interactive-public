@@ -9,4 +9,4 @@ Files needed:
 
 To generate: screenshot the hero stat section of each piece at 1200px viewport width, crop to 630px height. Save as PNG.
 
-These are referenced in the og:image meta tags on each page. Until real images exist, social previews will fall back to no image.
+These are referenced in the og:image meta tags on each page. The three images in this directory are real; only concert-tax.png is missing, so that piece alone falls back to no image.
