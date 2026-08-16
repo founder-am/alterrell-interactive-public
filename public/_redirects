@@ -1,18 +1,25 @@
 # Alterrell Interactive — Netlify redirects
 # Clean URLs: strip trailing slashes, handle common patterns
 
-/fast-food-sodium     /fast-food-sodium/     301
-/congress-salary      /congress-salary/      301
-/congress             /congress-salary/      301
-/sodium               /fast-food-sodium/     301
+# Held: all four target pre-Astro paths that no longer exist in dist, so each
+# one 301s into the /* catch-all and lands on 404.html anyway. Holding them
+# changes nothing a visitor sees; it only drops the wasted hop. The sodium
+# pair can be revived by AMA against /pieces/fast-food-sodium/, which is live.
+# Congress has not been built.
+# /fast-food-sodium     /fast-food-sodium/     301
+# /congress-salary      /congress-salary/      301
+# /congress             /congress-salary/      301
+# /sodium               /fast-food-sodium/     301
 
 # Slug renames — May 2026
 # IMPORTANT: specific paths must precede the what-in-a-name/* catch-all
 # so Netlify matches part-0 and part-2 before falling through to part-1
-/what-in-a-name/part-0/*  /naming/part-0/:splat  301
-/what-in-a-name/part-2/*  /naming/part-2/:splat  301
-/what-in-a-name/*         /naming/part-1/:splat  301
-/big-black-love/*         /gay-uncles/:splat     301
+# Held until naming ships; the target will then be /pieces/naming/.
+# /what-in-a-name/part-0/*  /naming/part-0/:splat  301
+# /what-in-a-name/part-2/*  /naming/part-2/:splat  301
+# /what-in-a-name/*         /naming/part-1/:splat  301
+# Held: /gay-uncles/ has not migrated to Astro and is not in dist.
+# /big-black-love/*         /gay-uncles/:splat     301
 
 # Catch-all: anything not matched → the real 404 page, under a 404 status.
 # This must point at /404.html, never at /index.html: sending the hub under

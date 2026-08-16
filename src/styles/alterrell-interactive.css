@@ -545,8 +545,14 @@ button { cursor: pointer; font-family: var(--font-body); }
   border-left-color: var(--warning);
   background: var(--warning-bg);
 }
+/* Pinned to the type scale's body step, 0.9375rem/15px, rather than reading
+   --text-body. The token is 15px everywhere except inside the 380 breakpoint
+   at L1514, which drops it to 0.875rem/14px — under the 15px mobile floor in
+   alterrell-hq/reference/design-tokens.md. Raising the token would move all
+   six rules that read it; this moves the callout paragraph only. Same 15px at
+   768 and 1280 as before, so only the 360 column changes. */
 .ai-callout p {
-  font-size: var(--text-body);
+  font-size: 0.9375rem;
   line-height: var(--leading-body);
   color: var(--ink-secondary);
 }
