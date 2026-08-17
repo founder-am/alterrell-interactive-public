@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-16T20:33:15.128Z",
+  "generated": "2026-08-17T01:30:10.528Z",
   "repo": "/Users/alterrellmills/Documents/GitHub/alterrell-interactive-public",
   "chromium": "151.0.7922.34",
   "chromiumPinned": "151.0.7922.34",
@@ -18,7 +18,7 @@
     768,
     1280
   ],
-  "platformSelectorCount": 319,
+  "platformSelectorCount": 384,
   "pieces": [
     {
       "path": "404.html",
@@ -416,7 +416,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/index.DXxfyVEN.css contains .ai-inner"
+          "note": "_astro/index.B0dRHWH5.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -463,7 +463,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "6 controls checked, 5 inline links out of scope"
+              "note": "7 controls checked, 5 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -490,7 +490,7 @@
           "geometry": {
             "G1": {
               "status": "PASS",
-              "note": ""
+              "note": "1 self-scrollable (excluded)"
             },
             "G2": {
               "status": "PASS",
@@ -498,7 +498,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "6 controls checked, 6 inline links out of scope"
+              "note": "7 controls checked, 6 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -533,7 +533,7 @@
             },
             "G3": {
               "status": "PASS",
-              "note": "6 controls checked, 6 inline links out of scope"
+              "note": "7 controls checked, 6 inline links out of scope"
             },
             "G4": {
               "status": "PASS",
@@ -588,7 +588,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/index.DXxfyVEN.css contains .ai-inner"
+          "note": "_astro/index.B0dRHWH5.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -604,11 +604,12 @@
       "scope": {
         "primaryBar": "div#piece-tabs",
         "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
-        "primaryTabCount": 6,
+        "primaryTabCount": 7,
         "primaryTabLabels": [
           "Overview",
           "The System",
           "Systemic Issues",
+          "Compare Your Order",
           "Best Options",
           "Spread the Word",
           "Sources"

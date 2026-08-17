@@ -17,6 +17,8 @@ tabs:
     label: The System
   - id: tab-systemic
     label: Systemic Issues
+  - id: tab-compare
+    label: Compare Your Order
   - id: tab-franchise
     label: Best Options
   - id: tab-spread
@@ -26,6 +28,7 @@ tabs:
 ---
 
 import TabSection from '../../components/TabSection.astro';
+import SodiumPicker from '../../components/SodiumPicker.astro';
 
 {/*
   Ported from _archive/legacy-2026-08-13/fast-food-sodium/index.html on
@@ -266,6 +269,30 @@ import TabSection from '../../components/TabSection.astro';
   <p>The advertising architecture is not neutral. Fast food companies invest more advertising in markets with less ability to resist it. This is not an accident.</p>
   <p>Advertising spend is allocated where return is highest. The communities with the least alternatives are the most valuable markets for fast food. As a result, they receive the most advertising exposure for the least healthy options.</p>
 </div>
+
+</TabSection>
+
+
+
+<TabSection id="tab-compare">
+
+<h2 class="ai-h2">Same budget. Less sodium.</h2>
+
+<div class="ai-body">
+  <p>Pick what you usually order. We'll show you a lower-sodium option at the same chain and the best swap across all chains — same protein category, no cooking required.</p>
+</div>
+
+<div class="ai-callout">
+  <p>The FDA recommends no more than 2,300mg of sodium per day. Most Americans consume over 3,400mg. A single fast food meal can use more than half your daily limit.</p>
+</div>
+
+<SodiumPicker />
+
+<div class="ai-body">
+  <p>This tool is about navigation within a constrained system — not judgment of individual choices. You're not on a diet. You're operating within infrastructure that was designed without your health as a priority. The swap recommendations exist because the system left some room. They don't fix the system.</p>
+</div>
+
+<p class="ai-stamp">Nutritional data from chain-published nutrition disclosures, verified 2024–2025. Prices vary by location and are not included in comparisons.</p>
 
 </TabSection>
 

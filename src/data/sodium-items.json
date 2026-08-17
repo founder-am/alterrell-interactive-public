@@ -1,0 +1,1197 @@
+{
+  "DAILY_SODIUM": 2300,
+  "DAILY_FIBER": 28,
+  "MENU": {
+    "mcdonalds": {
+      "name": "McDonald's",
+      "items": [
+        {
+          "id": "mc-mcdouble",
+          "label": "McDouble",
+          "cat": "beef",
+          "sodium": 920,
+          "fiber": 2,
+          "protein": 22
+        },
+        {
+          "id": "mc-bigmac",
+          "label": "Big Mac",
+          "cat": "beef",
+          "sodium": 1010,
+          "fiber": 3,
+          "protein": 25
+        },
+        {
+          "id": "mc-qpwcheese",
+          "label": "Quarter Pounder w/ Cheese",
+          "cat": "beef",
+          "sodium": 1110,
+          "fiber": 3,
+          "protein": 30
+        },
+        {
+          "id": "mc-doubqp",
+          "label": "Double Quarter Pounder",
+          "cat": "beef",
+          "sodium": 1360,
+          "fiber": 3,
+          "protein": 48
+        },
+        {
+          "id": "mc-mcchicken",
+          "label": "McChicken",
+          "cat": "chicken",
+          "sodium": 560,
+          "fiber": 1,
+          "protein": 14
+        },
+        {
+          "id": "mc-crispychicken",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1070,
+          "fiber": 2,
+          "protein": 27
+        },
+        {
+          "id": "mc-spicycrispy",
+          "label": "Spicy Crispy Chicken",
+          "cat": "chicken",
+          "sodium": 1250,
+          "fiber": 2,
+          "protein": 27
+        },
+        {
+          "id": "mc-10nuggets",
+          "label": "10pc McNuggets",
+          "cat": "nuggets",
+          "sodium": 900,
+          "fiber": 1,
+          "protein": 23
+        },
+        {
+          "id": "mc-6nuggets",
+          "label": "6pc McNuggets",
+          "cat": "nuggets",
+          "sodium": 540,
+          "fiber": 1,
+          "protein": 14
+        },
+        {
+          "id": "mc-filetoffish",
+          "label": "Filet-O-Fish",
+          "cat": "other",
+          "sodium": 640,
+          "fiber": 1,
+          "protein": 16
+        }
+      ]
+    },
+    "wendys": {
+      "name": "Wendy's",
+      "items": [
+        {
+          "id": "w-jr",
+          "label": "Jr. Cheeseburger",
+          "cat": "beef",
+          "sodium": 550,
+          "fiber": 1,
+          "protein": 15
+        },
+        {
+          "id": "w-jrbacon",
+          "label": "Jr. Bacon Cheeseburger",
+          "cat": "beef",
+          "sodium": 600,
+          "fiber": 1,
+          "protein": 16
+        },
+        {
+          "id": "w-dave1",
+          "label": "Dave's Single",
+          "cat": "beef",
+          "sodium": 1080,
+          "fiber": 2,
+          "protein": 30
+        },
+        {
+          "id": "w-dave2",
+          "label": "Dave's Double",
+          "cat": "beef",
+          "sodium": 1340,
+          "fiber": 2,
+          "protein": 50
+        },
+        {
+          "id": "w-dave3",
+          "label": "Dave's Triple",
+          "cat": "beef",
+          "sodium": 1660,
+          "fiber": 2,
+          "protein": 68
+        },
+        {
+          "id": "w-spicychicken",
+          "label": "Spicy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1090,
+          "fiber": 2,
+          "protein": 31
+        },
+        {
+          "id": "w-crispychicken",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1030,
+          "fiber": 2,
+          "protein": 28
+        },
+        {
+          "id": "w-grilledchicken",
+          "label": "Grilled Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 900,
+          "fiber": 2,
+          "protein": 35
+        },
+        {
+          "id": "w-4nuggets",
+          "label": "4pc Nuggets",
+          "cat": "nuggets",
+          "sodium": 370,
+          "fiber": 0,
+          "protein": 9
+        },
+        {
+          "id": "w-10nuggets",
+          "label": "10pc Nuggets",
+          "cat": "nuggets",
+          "sodium": 930,
+          "fiber": 0,
+          "protein": 22
+        }
+      ]
+    },
+    "burgerking": {
+      "name": "Burger King",
+      "items": [
+        {
+          "id": "bk-doublecheese",
+          "label": "Double Cheeseburger",
+          "cat": "beef",
+          "sodium": 690,
+          "fiber": 1,
+          "protein": 22
+        },
+        {
+          "id": "bk-whopperjr",
+          "label": "Whopper Jr.",
+          "cat": "beef",
+          "sodium": 510,
+          "fiber": 1,
+          "protein": 13
+        },
+        {
+          "id": "bk-whopper",
+          "label": "Whopper",
+          "cat": "beef",
+          "sodium": 980,
+          "fiber": 2,
+          "protein": 28
+        },
+        {
+          "id": "bk-doublewhopper",
+          "label": "Double Whopper",
+          "cat": "beef",
+          "sodium": 1050,
+          "fiber": 2,
+          "protein": 47
+        },
+        {
+          "id": "bk-baconking",
+          "label": "Bacon King",
+          "cat": "beef",
+          "sodium": 2150,
+          "fiber": 1,
+          "protein": 61
+        },
+        {
+          "id": "bk-origchicken",
+          "label": "Original Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1140,
+          "fiber": 3,
+          "protein": 23
+        },
+        {
+          "id": "bk-chking",
+          "label": "Ch'King Sandwich",
+          "cat": "chicken",
+          "sodium": 1500,
+          "fiber": 2,
+          "protein": 26
+        },
+        {
+          "id": "bk-spicychking",
+          "label": "Spicy Ch'King",
+          "cat": "chicken",
+          "sodium": 1710,
+          "fiber": 3,
+          "protein": 26
+        },
+        {
+          "id": "bk-8nuggets",
+          "label": "8pc Chicken Nuggets",
+          "cat": "nuggets",
+          "sodium": 680,
+          "fiber": 1,
+          "protein": 15
+        },
+        {
+          "id": "bk-12nuggets",
+          "label": "12pc Chicken Nuggets",
+          "cat": "nuggets",
+          "sodium": 1020,
+          "fiber": 1,
+          "protein": 23
+        }
+      ]
+    },
+    "inout": {
+      "name": "In-N-Out",
+      "items": [
+        {
+          "id": "io-hamburger",
+          "label": "Hamburger",
+          "cat": "beef",
+          "sodium": 650,
+          "fiber": 2,
+          "protein": 19
+        },
+        {
+          "id": "io-cheeseburger",
+          "label": "Cheeseburger",
+          "cat": "beef",
+          "sodium": 1000,
+          "fiber": 2,
+          "protein": 22
+        },
+        {
+          "id": "io-doubledouble",
+          "label": "Double-Double",
+          "cat": "beef",
+          "sodium": 1440,
+          "fiber": 2,
+          "protein": 37
+        },
+        {
+          "id": "io-3x3",
+          "label": "3x3",
+          "cat": "beef",
+          "sodium": 1900,
+          "fiber": 2,
+          "protein": 54
+        },
+        {
+          "id": "io-4x4",
+          "label": "4x4",
+          "cat": "beef",
+          "sodium": 2370,
+          "fiber": 2,
+          "protein": 71
+        }
+      ]
+    },
+    "fiveguys": {
+      "name": "Five Guys",
+      "items": [
+        {
+          "id": "fg-lithamburger",
+          "label": "Little Hamburger",
+          "cat": "beef",
+          "sodium": 380,
+          "fiber": 2,
+          "protein": 26
+        },
+        {
+          "id": "fg-hamburger",
+          "label": "Hamburger",
+          "cat": "beef",
+          "sodium": 430,
+          "fiber": 2,
+          "protein": 43
+        },
+        {
+          "id": "fg-litcheese",
+          "label": "Little Cheeseburger",
+          "cat": "beef",
+          "sodium": 690,
+          "fiber": 2,
+          "protein": 30
+        },
+        {
+          "id": "fg-cheeseburger",
+          "label": "Cheeseburger",
+          "cat": "beef",
+          "sodium": 1050,
+          "fiber": 2,
+          "protein": 51
+        },
+        {
+          "id": "fg-baconcheeseburger",
+          "label": "Bacon Cheeseburger",
+          "cat": "beef",
+          "sodium": 1310,
+          "fiber": 2,
+          "protein": 57
+        },
+        {
+          "id": "fg-litbaconburger",
+          "label": "Little Bacon Burger",
+          "cat": "beef",
+          "sodium": 640,
+          "fiber": 2,
+          "protein": 32
+        }
+      ]
+    },
+    "shakeshack": {
+      "name": "Shake Shack",
+      "items": [
+        {
+          "id": "ss-hamburger",
+          "label": "Hamburger",
+          "cat": "beef",
+          "sodium": 680,
+          "fiber": 1,
+          "protein": 22
+        },
+        {
+          "id": "ss-cheeseburger",
+          "label": "Cheeseburger",
+          "cat": "beef",
+          "sodium": 860,
+          "fiber": 1,
+          "protein": 26
+        },
+        {
+          "id": "ss-shackburger",
+          "label": "ShackBurger",
+          "cat": "beef",
+          "sodium": 960,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "ss-doubleshack",
+          "label": "Double ShackBurger",
+          "cat": "beef",
+          "sodium": 1650,
+          "fiber": 1,
+          "protein": 42
+        },
+        {
+          "id": "ss-crispychicken",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1020,
+          "fiber": 1,
+          "protein": 27
+        },
+        {
+          "id": "ss-chickenshack",
+          "label": "Chicken Shack",
+          "cat": "chicken",
+          "sodium": 1530,
+          "fiber": 1,
+          "protein": 34
+        },
+        {
+          "id": "ss-spicychicken",
+          "label": "Spicy Chicken Shack",
+          "cat": "chicken",
+          "sodium": 1620,
+          "fiber": 1,
+          "protein": 34
+        }
+      ]
+    },
+    "sonic": {
+      "name": "Sonic",
+      "items": [
+        {
+          "id": "so-jrburger",
+          "label": "Jr. Burger",
+          "cat": "beef",
+          "sodium": 410,
+          "fiber": 1,
+          "protein": 12
+        },
+        {
+          "id": "so-jrdoublecheese",
+          "label": "Jr. Double Cheeseburger",
+          "cat": "beef",
+          "sodium": 630,
+          "fiber": 1,
+          "protein": 19
+        },
+        {
+          "id": "so-sonicburger",
+          "label": "Sonic Burger",
+          "cat": "beef",
+          "sodium": 800,
+          "fiber": 1,
+          "protein": 23
+        },
+        {
+          "id": "so-doublesonic",
+          "label": "Double Sonic Burger",
+          "cat": "beef",
+          "sodium": 1010,
+          "fiber": 1,
+          "protein": 40
+        },
+        {
+          "id": "so-grilledchicken",
+          "label": "Grilled Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 860,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "so-crispychicken",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1100,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "so-5tenders",
+          "label": "5pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 1280,
+          "fiber": 1,
+          "protein": 30
+        }
+      ]
+    },
+    "dairyqueen": {
+      "name": "Dairy Queen",
+      "items": [
+        {
+          "id": "dq-cheeseburger",
+          "label": "Cheeseburger",
+          "cat": "beef",
+          "sodium": 630,
+          "fiber": 1,
+          "protein": 18
+        },
+        {
+          "id": "dq-doublecheese",
+          "label": "Double Cheeseburger",
+          "cat": "beef",
+          "sodium": 1020,
+          "fiber": 1,
+          "protein": 34
+        },
+        {
+          "id": "dq-baconburger",
+          "label": "Bacon Double Cheeseburger",
+          "cat": "beef",
+          "sodium": 1200,
+          "fiber": 1,
+          "protein": 40
+        },
+        {
+          "id": "dq-grillburger",
+          "label": "1/3 lb GrillBurger",
+          "cat": "beef",
+          "sodium": 940,
+          "fiber": 2,
+          "protein": 31
+        },
+        {
+          "id": "dq-grilledchicken",
+          "label": "Grilled Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 900,
+          "fiber": 2,
+          "protein": 29
+        },
+        {
+          "id": "dq-crispychicken",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1090,
+          "fiber": 2,
+          "protein": 24
+        },
+        {
+          "id": "dq-chickentenders",
+          "label": "5pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 1040,
+          "fiber": 1,
+          "protein": 29
+        }
+      ]
+    },
+    "checkers": {
+      "name": "Checkers / Rally's",
+      "items": [
+        {
+          "id": "ch-checkerburger",
+          "label": "Checkerburger",
+          "cat": "beef",
+          "sodium": 560,
+          "fiber": 1,
+          "protein": 14
+        },
+        {
+          "id": "ch-bigbuford",
+          "label": "Big Buford",
+          "cat": "beef",
+          "sodium": 1180,
+          "fiber": 2,
+          "protein": 41
+        },
+        {
+          "id": "ch-baconzilla",
+          "label": "Baconzilla",
+          "cat": "beef",
+          "sodium": 1810,
+          "fiber": 1,
+          "protein": 55
+        },
+        {
+          "id": "ch-chickensandwich",
+          "label": "Crispy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1020,
+          "fiber": 2,
+          "protein": 23
+        },
+        {
+          "id": "ch-spicychicken",
+          "label": "Spicy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1130,
+          "fiber": 2,
+          "protein": 23
+        },
+        {
+          "id": "ch-4tenders",
+          "label": "4pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 860,
+          "fiber": 1,
+          "protein": 24
+        },
+        {
+          "id": "ch-mothercruncher",
+          "label": "Mother Cruncher Chicken",
+          "cat": "chicken",
+          "sodium": 1490,
+          "fiber": 2,
+          "protein": 30
+        }
+      ]
+    },
+    "chickfila": {
+      "name": "Chick-fil-A",
+      "items": [
+        {
+          "id": "cfa-classicsandwich",
+          "label": "Classic Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1350,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "cfa-spicysandwich",
+          "label": "Spicy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1490,
+          "fiber": 2,
+          "protein": 29
+        },
+        {
+          "id": "cfa-grilledsandwich",
+          "label": "Grilled Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 680,
+          "fiber": 2,
+          "protein": 31
+        },
+        {
+          "id": "cfa-deluxe",
+          "label": "Chicken Deluxe Sandwich",
+          "cat": "chicken",
+          "sodium": 1430,
+          "fiber": 2,
+          "protein": 30
+        },
+        {
+          "id": "cfa-grilledclub",
+          "label": "Grilled Chicken Club",
+          "cat": "chicken",
+          "sodium": 1150,
+          "fiber": 2,
+          "protein": 40
+        },
+        {
+          "id": "cfa-8nuggets",
+          "label": "8pc Nuggets (fried)",
+          "cat": "nuggets",
+          "sodium": 1030,
+          "fiber": 1,
+          "protein": 26
+        },
+        {
+          "id": "cfa-12nuggets",
+          "label": "12pc Nuggets (fried)",
+          "cat": "nuggets",
+          "sodium": 1440,
+          "fiber": 1,
+          "protein": 38
+        },
+        {
+          "id": "cfa-8grillnuggets",
+          "label": "8pc Grilled Nuggets",
+          "cat": "nuggets",
+          "sodium": 440,
+          "fiber": 1,
+          "protein": 25
+        },
+        {
+          "id": "cfa-12grillnuggets",
+          "label": "12pc Grilled Nuggets",
+          "cat": "nuggets",
+          "sodium": 660,
+          "fiber": 1,
+          "protein": 38
+        }
+      ]
+    },
+    "popeyes": {
+      "name": "Popeyes",
+      "items": [
+        {
+          "id": "pop-spicychicken",
+          "label": "Spicy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1765,
+          "fiber": 2,
+          "protein": 28
+        },
+        {
+          "id": "pop-classicchicken",
+          "label": "Classic Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1443,
+          "fiber": 2,
+          "protein": 27
+        },
+        {
+          "id": "pop-spicybreast",
+          "label": "Spicy Chicken Breast (pc)",
+          "cat": "chicken",
+          "sodium": 1330,
+          "fiber": 1,
+          "protein": 35
+        },
+        {
+          "id": "pop-mildbreast",
+          "label": "Mild Chicken Breast (pc)",
+          "cat": "chicken",
+          "sodium": 1130,
+          "fiber": 1,
+          "protein": 35
+        },
+        {
+          "id": "pop-2pcleg",
+          "label": "2pc Leg & Thigh",
+          "cat": "chicken",
+          "sodium": 960,
+          "fiber": 0,
+          "protein": 32
+        },
+        {
+          "id": "pop-3tenders",
+          "label": "3pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 1580,
+          "fiber": 1,
+          "protein": 26
+        },
+        {
+          "id": "pop-shrimppoboy",
+          "label": "Shrimp Po'Boy",
+          "cat": "other",
+          "sodium": 1890,
+          "fiber": 2,
+          "protein": 18
+        }
+      ]
+    },
+    "raisingcanes": {
+      "name": "Raising Cane's",
+      "items": [
+        {
+          "id": "rc-3fingers",
+          "label": "3 Chicken Fingers (no sides)",
+          "cat": "nuggets",
+          "sodium": 900,
+          "fiber": 0,
+          "protein": 30
+        },
+        {
+          "id": "rc-3combo",
+          "label": "3 Finger Combo (w/ sides)",
+          "cat": "nuggets",
+          "sodium": 1200,
+          "fiber": 1,
+          "protein": 30
+        },
+        {
+          "id": "rc-boxcombo",
+          "label": "Box Combo (4 fingers)",
+          "cat": "nuggets",
+          "sodium": 1700,
+          "fiber": 2,
+          "protein": 40
+        },
+        {
+          "id": "rc-caniac",
+          "label": "Caniac Combo (6 fingers)",
+          "cat": "nuggets",
+          "sodium": 2500,
+          "fiber": 3,
+          "protein": 60
+        },
+        {
+          "id": "rc-sandwich",
+          "label": "Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1600,
+          "fiber": 1,
+          "protein": 47
+        }
+      ]
+    },
+    "churchs": {
+      "name": "Church's Chicken",
+      "items": [
+        {
+          "id": "cc-breast",
+          "label": "Chicken Breast (pc)",
+          "cat": "chicken",
+          "sodium": 960,
+          "fiber": 0,
+          "protein": 32
+        },
+        {
+          "id": "cc-legthigh",
+          "label": "2pc Leg & Thigh",
+          "cat": "chicken",
+          "sodium": 1040,
+          "fiber": 0,
+          "protein": 35
+        },
+        {
+          "id": "cc-sandwich",
+          "label": "Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1250,
+          "fiber": 1,
+          "protein": 25
+        },
+        {
+          "id": "cc-spicysandwich",
+          "label": "Spicy Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1380,
+          "fiber": 1,
+          "protein": 25
+        },
+        {
+          "id": "cc-tenders3",
+          "label": "3pc Tenders",
+          "cat": "nuggets",
+          "sodium": 1100,
+          "fiber": 1,
+          "protein": 24
+        }
+      ]
+    },
+    "bojangles": {
+      "name": "Bojangles",
+      "items": [
+        {
+          "id": "bo-legthigh",
+          "label": "Leg & Thigh",
+          "cat": "chicken",
+          "sodium": 960,
+          "fiber": 0,
+          "protein": 29
+        },
+        {
+          "id": "bo-breast",
+          "label": "Chicken Breast (pc)",
+          "cat": "chicken",
+          "sodium": 1100,
+          "fiber": 0,
+          "protein": 31
+        },
+        {
+          "id": "bo-sandwich",
+          "label": "Cajun Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1290,
+          "fiber": 1,
+          "protein": 27
+        },
+        {
+          "id": "bo-4tenders",
+          "label": "4pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 1160,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "bo-supremesandwich",
+          "label": "Supremes Sandwich",
+          "cat": "chicken",
+          "sodium": 1490,
+          "fiber": 2,
+          "protein": 32
+        },
+        {
+          "id": "bo-bo2pc",
+          "label": "2pc Combo (leg + breast)",
+          "cat": "chicken",
+          "sodium": 2060,
+          "fiber": 0,
+          "protein": 63
+        }
+      ]
+    },
+    "wingstop": {
+      "name": "Wingstop",
+      "items": [
+        {
+          "id": "ws-6classic",
+          "label": "6pc Classic Wings (plain)",
+          "cat": "nuggets",
+          "sodium": 540,
+          "fiber": 0,
+          "protein": 36
+        },
+        {
+          "id": "ws-10classic",
+          "label": "10pc Classic Wings (plain)",
+          "cat": "nuggets",
+          "sodium": 900,
+          "fiber": 0,
+          "protein": 60
+        },
+        {
+          "id": "ws-15classic",
+          "label": "15pc Classic Wings (plain)",
+          "cat": "nuggets",
+          "sodium": 1350,
+          "fiber": 0,
+          "protein": 90
+        },
+        {
+          "id": "ws-6classic-sauced",
+          "label": "6pc Classic Wings (sauced)",
+          "cat": "nuggets",
+          "sodium": 1200,
+          "fiber": 0,
+          "protein": 36
+        },
+        {
+          "id": "ws-6boneless",
+          "label": "6pc Boneless Wings",
+          "cat": "nuggets",
+          "sodium": 1100,
+          "fiber": 1,
+          "protein": 28
+        },
+        {
+          "id": "ws-10boneless",
+          "label": "10pc Boneless Wings",
+          "cat": "nuggets",
+          "sodium": 1830,
+          "fiber": 1,
+          "protein": 46
+        },
+        {
+          "id": "ws-sandwich",
+          "label": "Chicken Sandwich",
+          "cat": "chicken",
+          "sodium": 1720,
+          "fiber": 2,
+          "protein": 32
+        }
+      ]
+    },
+    "arbys": {
+      "name": "Arby's",
+      "items": [
+        {
+          "id": "ab-roastbeef",
+          "label": "Classic Roast Beef",
+          "cat": "other",
+          "sodium": 900,
+          "fiber": 1,
+          "protein": 23
+        },
+        {
+          "id": "ab-beefncheddar",
+          "label": "Beef n Cheddar (classic)",
+          "cat": "other",
+          "sodium": 1280,
+          "fiber": 1,
+          "protein": 26
+        },
+        {
+          "id": "ab-doubleroast",
+          "label": "Double Roast Beef",
+          "cat": "other",
+          "sodium": 1550,
+          "fiber": 1,
+          "protein": 40
+        },
+        {
+          "id": "ab-halfpound",
+          "label": "Half Pound Beef n Cheddar",
+          "cat": "other",
+          "sodium": 2140,
+          "fiber": 1,
+          "protein": 49
+        },
+        {
+          "id": "ab-grilledchicken",
+          "label": "Classic Roast Chicken",
+          "cat": "chicken",
+          "sodium": 880,
+          "fiber": 2,
+          "protein": 36
+        },
+        {
+          "id": "ab-crispychicken",
+          "label": "Classic Crispy Chicken",
+          "cat": "chicken",
+          "sodium": 1300,
+          "fiber": 2,
+          "protein": 30
+        },
+        {
+          "id": "ab-spicychicken",
+          "label": "Spicy Crispy Chicken",
+          "cat": "chicken",
+          "sodium": 1570,
+          "fiber": 2,
+          "protein": 30
+        },
+        {
+          "id": "ab-4tenders",
+          "label": "4pc Chicken Tenders",
+          "cat": "nuggets",
+          "sodium": 1290,
+          "fiber": 1,
+          "protein": 26
+        }
+      ]
+    },
+    "chipotle": {
+      "name": "Chipotle",
+      "items": [
+        {
+          "id": "ct-chickenbowl",
+          "label": "Chicken Bowl",
+          "cat": "bowl",
+          "sodium": 1040,
+          "fiber": 8,
+          "protein": 45
+        },
+        {
+          "id": "ct-steakbowl",
+          "label": "Steak Bowl",
+          "cat": "bowl",
+          "sodium": 1250,
+          "fiber": 8,
+          "protein": 40
+        },
+        {
+          "id": "ct-carnitasbowl",
+          "label": "Carnitas Bowl",
+          "cat": "bowl",
+          "sodium": 1180,
+          "fiber": 8,
+          "protein": 40
+        },
+        {
+          "id": "ct-doublechicken",
+          "label": "Double Chicken Bowl",
+          "cat": "bowl",
+          "sodium": 1800,
+          "fiber": 8,
+          "protein": 75
+        },
+        {
+          "id": "ct-chickenwrap",
+          "label": "Chicken Burrito",
+          "cat": "wrap",
+          "sodium": 1650,
+          "fiber": 9,
+          "protein": 50
+        },
+        {
+          "id": "ct-steakwrap",
+          "label": "Steak Burrito",
+          "cat": "wrap",
+          "sodium": 1860,
+          "fiber": 9,
+          "protein": 44
+        },
+        {
+          "id": "ct-veggiewrap",
+          "label": "Sofritas Burrito",
+          "cat": "wrap",
+          "sodium": 1530,
+          "fiber": 10,
+          "protein": 28
+        }
+      ]
+    },
+    "tacobell": {
+      "name": "Taco Bell",
+      "items": [
+        {
+          "id": "tb-crunchtaco",
+          "label": "Crunchy Taco",
+          "cat": "wrap",
+          "sodium": 300,
+          "fiber": 3,
+          "protein": 8
+        },
+        {
+          "id": "tb-softchicktaco",
+          "label": "Soft Taco (chicken)",
+          "cat": "wrap",
+          "sodium": 490,
+          "fiber": 2,
+          "protein": 11
+        },
+        {
+          "id": "tb-beefburrito",
+          "label": "Bean Burrito",
+          "cat": "wrap",
+          "sodium": 870,
+          "fiber": 9,
+          "protein": 13
+        },
+        {
+          "id": "tb-chickdlxtaco",
+          "label": "Chicken Chalupa Supreme",
+          "cat": "wrap",
+          "sodium": 890,
+          "fiber": 4,
+          "protein": 20
+        },
+        {
+          "id": "tb-powerbowl",
+          "label": "Chicken Power Menu Bowl",
+          "cat": "bowl",
+          "sodium": 1000,
+          "fiber": 7,
+          "protein": 27
+        },
+        {
+          "id": "tb-chickquesa",
+          "label": "Chicken Quesadilla",
+          "cat": "chicken",
+          "sodium": 1180,
+          "fiber": 4,
+          "protein": 26
+        },
+        {
+          "id": "tb-crunchwrap",
+          "label": "Crunchwrap Supreme",
+          "cat": "wrap",
+          "sodium": 1200,
+          "fiber": 5,
+          "protein": 16
+        },
+        {
+          "id": "tb-cantina",
+          "label": "Steak Cantina Chicken Burrito",
+          "cat": "wrap",
+          "sodium": 1480,
+          "fiber": 6,
+          "protein": 31
+        }
+      ]
+    },
+    "cava": {
+      "name": "CAVA",
+      "items": [
+        {
+          "id": "cv-chickenwrap",
+          "label": "Grilled Chicken Pita Wrap",
+          "cat": "wrap",
+          "sodium": 1010,
+          "fiber": 4,
+          "protein": 34
+        },
+        {
+          "id": "cv-roastedveg",
+          "label": "Roasted Veg Bowl",
+          "cat": "bowl",
+          "sodium": 1120,
+          "fiber": 10,
+          "protein": 18
+        },
+        {
+          "id": "cv-grilledchicken",
+          "label": "Grilled Chicken Bowl",
+          "cat": "bowl",
+          "sodium": 1340,
+          "fiber": 6,
+          "protein": 45
+        },
+        {
+          "id": "cv-falafelwrap",
+          "label": "Falafel Pita Wrap",
+          "cat": "wrap",
+          "sodium": 1580,
+          "fiber": 6,
+          "protein": 16
+        },
+        {
+          "id": "cv-lambmeatball",
+          "label": "Lamb Meatball Bowl",
+          "cat": "bowl",
+          "sodium": 1860,
+          "fiber": 6,
+          "protein": 36
+        },
+        {
+          "id": "cv-falafelcrunch",
+          "label": "Falafel Crunch Bowl",
+          "cat": "bowl",
+          "sodium": 2030,
+          "fiber": 9,
+          "protein": 18
+        }
+      ]
+    }
+  }
+}
