@@ -4,84 +4,103 @@
  *
  * Ported 2026-08-16 from _archive/legacy-2026-08-13/fast-food-sodium/index.html,
  * where it lived in the "Compare Your Order" tab (<section id="compare">, archive
- * lines 1072-1152) with its logic at archive lines 1770-1925 and its data in the
- * MENU literal at archive lines 1480-1656.
+ * lines 1072-1148) with its logic at archive lines 1767-1925 and its data in the
+ * MENU literal at archive lines 1480-1656. Reworked 2026-08-17: see NAMESPACE
+ * and DATA below, both of which changed.
  *
- * SODIUM-SPECIFIC, not generic. Ruled by AMA 2026-08-16. Every selector this
- * component uses is scoped under .sodium-picker so that .comp-card, .nutrient
- * and friends can never collide with a future platform component of the same
- * name. The class names inside that scope are the archive's own.
+ * SODIUM-SPECIFIC, not generic. Ruled by AMA. It is not a component another
+ * piece configures — the data shape, the swap rule, the 2,300mg limit and the
+ * 40/65% bands are all sodium's.
+ *
+ * NAMESPACE. Every class this component introduces is prefixed ai-sodium-.
+ * One stylesheet serves every page, so a scoped-but-unprefixed name like
+ * .comp-card or .nutrient claims a word the next component will plausibly
+ * want, and the collision surfaces as a styling bug on a page neither
+ * component's author was looking at. Prefixing puts the collision at the name,
+ * where it is visible, instead of at the cascade, where it is not. The ids are
+ * prefixed for the same reason: #chain-select on a shared page is a guess.
+ * Existing platform classes (.ai-label, .ai-select) are reused as they are.
  *
  * This file carries ZERO CSS rules, for the same reason [slug].astro and
- * index.astro do: Astro scopes a component's scoped-style block with
+ * index.astro do: Astro scopes a component's <style> block with
  * [data-astro-cid-*], which adds a class-level unit of specificity and outranks
  * the shared stylesheet. That is what forced the no-op-selector specificity hack
  * Batch A removed. Every rule lives in src/styles/alterrell-interactive.css,
  * section 21.
  *
- * Data crosses to the browser on a data- attribute, not define:vars, which opts
- * the script out of bundling. The JSON is read once from src/data/sodium-items.json
- * at build time and parsed once at runtime.
+ * DATA. The 137 items cross to the browser in a <script type="application/json">
+ * block the picker's script reads by id — not a data- attribute (137 items in an
+ * HTML attribute is a value that has to survive attribute escaping to be read
+ * back) and not define:vars (which inlines the script and opts it out of
+ * bundling). The JSON is read once from src/data/sodium-items.json at build
+ * time and parsed once at runtime.
  *
  * No framework. astro.config.mjs registers exactly one integration, mdx(), and
  * no renderer is installed, so a client: directive would have nothing to hydrate
  * with. Interactivity is a plain <script is:inline>, the same mechanism
- * Carousel.astro and pieces/[slug].astro use.
+ * pieces/[slug].astro uses for the tab bar.
  */
 import data from '../data/sodium-items.json';
 
 const { MENU } = data;
 /** Chain order is the archive's MENU key order, which is its <select> order. */
 const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain as any).name }));
+const payload = JSON.stringify(data);
 ---
-<div class="sodium-picker" data-sodium={JSON.stringify(data)}>
+<div class="ai-sodium-picker">
 
-  <div class="calc-section">
+  <script type="application/json" id="ai-sodium-data" is:inline set:html={payload}></script>
+
+  <div class="ai-sodium-form">
     <p class="ai-label">Step 1 &mdash; What do you usually order?</p>
-    <div class="calc-selectors">
+    <div class="ai-sodium-selectors">
       <div>
-        <label class="ai-label" for="chain-select">Chain</label>
-        <select class="ai-select" id="chain-select">
+        <label class="ai-label" for="ai-sodium-chain">Chain</label>
+        <select class="ai-select" id="ai-sodium-chain">
           <option value="">Select a chain...</option>
           {chains.map((c) => <option value={c.key}>{c.name}</option>)}
         </select>
       </div>
       <div>
-        <label class="ai-label" for="item-select">Item</label>
-        <select class="ai-select" id="item-select">
+        <label class="ai-label" for="ai-sodium-item">Item</label>
+        <select class="ai-select" id="ai-sodium-item">
           <option value="">Select chain first...</option>
         </select>
       </div>
     </div>
 
-    <p class="ai-label calc-step-2">Step 2 &mdash; What kind of swap?</p>
-    <div class="calc-mode-btns" role="group" aria-label="Swap type">
-      <button type="button" class="calc-mode-btn active" data-mode="both">Show both options</button>
-      <button type="button" class="calc-mode-btn" data-mode="samechain">Same chain only</button>
-      <button type="button" class="calc-mode-btn" data-mode="crosschain">Any chain</button>
+    <p class="ai-label ai-sodium-step2">Step 2 &mdash; What kind of swap?</p>
+    <div class="ai-sodium-modes" role="group" aria-label="Swap type">
+      <button type="button" class="ai-sodium-mode-btn ai-sodium-mode-btn--on" data-mode="both">Show both options</button>
+      <button type="button" class="ai-sodium-mode-btn" data-mode="samechain">Same chain only</button>
+      <button type="button" class="ai-sodium-mode-btn" data-mode="crosschain">Any chain</button>
     </div>
 
-    <button type="button" class="calc-find-btn" id="calc-find">Find a Better Swap &rarr;</button>
+    <button type="button" class="ai-sodium-find-btn" id="ai-sodium-find">Find a Better Swap &rarr;</button>
 
-    <div id="calc-results" class="calc-results" role="status" aria-live="polite"></div>
+    <div id="ai-sodium-results" class="ai-sodium-results" role="status" aria-live="polite"></div>
   </div>
 
 </div>
 
 <script is:inline>
 (function () {
-  var root = document.querySelector('.sodium-picker');
+  var root = document.querySelector('.ai-sodium-picker');
   if (!root) return;
 
-  var data = JSON.parse(root.dataset.sodium);
+  var store = document.getElementById('ai-sodium-data');
+  if (!store) return;
+
+  var data = JSON.parse(store.textContent);
   var MENU = data.MENU;
   var DAILY_SODIUM = data.DAILY_SODIUM;
   var DAILY_FIBER = data.DAILY_FIBER;
 
-  var chainSel = root.querySelector('#chain-select');
-  var itemSel  = root.querySelector('#item-select');
-  var findBtn  = root.querySelector('#calc-find');
-  var results  = root.querySelector('#calc-results');
+  var chainSel = document.getElementById('ai-sodium-chain');
+  var itemSel  = document.getElementById('ai-sodium-item');
+  var findBtn  = document.getElementById('ai-sodium-find');
+  var results  = document.getElementById('ai-sodium-results');
+  var modeBtns = root.querySelectorAll('.ai-sodium-mode-btn');
   var calcMode = 'both';
 
   // ── swap search. Same category, lower sodium, lowest wins. ──
@@ -111,16 +130,19 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
   // ── banding. 40% and 65% of the daily limit, the archive's thresholds. ──
   function sodiumClass(mg) {
     var p = mg / DAILY_SODIUM;
-    return p >= 0.65 ? 'high' : p >= 0.40 ? 'med' : 'low';
+    return p >= 0.65 ? 'ai-sodium-val--high' : p >= 0.40 ? 'ai-sodium-val--med' : 'ai-sodium-val--low';
   }
   function barClass(mg) {
     var p = mg / DAILY_SODIUM;
-    return p >= 0.65 ? 'sodium-high' : p >= 0.40 ? 'sodium-med' : 'sodium-low';
+    return p >= 0.65 ? 'ai-sodium-bar--high' : p >= 0.40 ? 'ai-sodium-bar--med' : 'ai-sodium-bar--low';
   }
   function pct(v, m) { return Math.min(100, Math.round((v / m) * 100)); }
   function meterZone(mg) {
     var p = pct(mg, DAILY_SODIUM);
-    return p > 100 ? 'zone-over' : p >= 65 ? 'zone-high' : p >= 40 ? 'zone-med' : 'zone-low';
+    return p > 100 ? 'ai-sodium-zone--over'
+         : p >= 65 ? 'ai-sodium-zone--high'
+         : p >= 40 ? 'ai-sodium-zone--med'
+         : 'ai-sodium-zone--low';
   }
 
   function esc(s) {
@@ -132,28 +154,28 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
   function nutrientHTML(name, val, max, type) {
     var p = pct(val, max), unit = type === 'sodium' ? 'mg' : 'g';
     var cls = type === 'sodium' ? sodiumClass(val) : '';
-    var barCls = type === 'sodium' ? barClass(val) : 'fiber';
-    return '<div class="nutrient">' +
-      '<div class="nutrient-row">' +
-        '<span class="nutrient-name">' + esc(name) + '</span>' +
-        '<div class="nutrient-vals">' +
-          '<span class="nutrient-val ' + cls + '">' + val.toLocaleString() + unit + '</span>' +
-          '<span class="nutrient-pct">' + p + '% daily</span>' +
+    var barCls = type === 'sodium' ? barClass(val) : 'ai-sodium-bar--fiber';
+    return '<div class="ai-sodium-nutrient">' +
+      '<div class="ai-sodium-nutrient-row">' +
+        '<span class="ai-sodium-nutrient-name">' + esc(name) + '</span>' +
+        '<div class="ai-sodium-nutrient-vals">' +
+          '<span class="ai-sodium-nutrient-val ' + cls + '">' + val.toLocaleString() + unit + '</span>' +
+          '<span class="ai-sodium-nutrient-pct">' + p + '% daily</span>' +
         '</div>' +
       '</div>' +
-      '<div class="bar-track"><div class="bar-fill ' + barCls + '" style="width:' + p + '%"></div></div>' +
+      '<div class="ai-sodium-bar-track"><div class="ai-sodium-bar-fill ' + barCls + '" style="width:' + p + '%"></div></div>' +
     '</div>';
   }
 
   function cardHTML(chainName, item, tag, cardClass, badge) {
-    return '<div class="comp-card ' + cardClass + '">' +
-      '<div class="comp-card-header">' +
-        '<span class="comp-card-tag">' + esc(tag) + '</span>' +
-        '<span class="comp-card-badge">' + esc(badge) + '</span>' +
+    return '<div class="ai-sodium-card ' + cardClass + '">' +
+      '<div class="ai-sodium-card-head">' +
+        '<span class="ai-sodium-card-tag">' + esc(tag) + '</span>' +
+        '<span class="ai-sodium-card-badge">' + esc(badge) + '</span>' +
       '</div>' +
-      '<div class="comp-card-body">' +
-        '<div class="comp-card-chain">' + esc(chainName) + '</div>' +
-        '<div class="comp-card-item">' + esc(item.label) + '</div>' +
+      '<div class="ai-sodium-card-body">' +
+        '<div class="ai-sodium-card-chain">' + esc(chainName) + '</div>' +
+        '<div class="ai-sodium-card-item">' + esc(item.label) + '</div>' +
         nutrientHTML('Sodium', item.sodium, DAILY_SODIUM, 'sodium') +
         nutrientHTML('Fiber', item.fiber, DAILY_FIBER, 'fiber') +
       '</div>' +
@@ -163,9 +185,9 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
   function savingsCard(saved, tint, label) {
     if (saved <= 0) return '';
     var p = Math.round((saved / DAILY_SODIUM) * 100);
-    return '<div class="savings-callout ' + tint + '">' +
-      '<div class="savings-num">&minus;' + saved.toLocaleString() + 'mg</div>' +
-      '<div class="savings-lbl"><strong>' + p + '% of your daily sodium limit</strong> ' + esc(label) + '</div>' +
+    return '<div class="ai-sodium-savings ' + tint + '">' +
+      '<div class="ai-sodium-savings-num">&minus;' + saved.toLocaleString() + 'mg</div>' +
+      '<div class="ai-sodium-savings-lbl"><strong>' + p + '% of your daily sodium limit</strong> ' + esc(label) + '</div>' +
     '</div>';
   }
 
@@ -174,7 +196,7 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
     itemSel.innerHTML = '';
     if (!k) {
       itemSel.innerHTML = '<option value="">Select chain first...</option>';
-      results.classList.remove('visible');
+      results.classList.remove('ai-sodium-results--open');
       return;
     }
     itemSel.innerHTML = '<option value="">Select an item...</option>';
@@ -184,15 +206,15 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
       o.textContent = i.label;
       itemSel.appendChild(o);
     });
-    results.classList.remove('visible');
+    results.classList.remove('ai-sodium-results--open');
   }
 
   function findSwap() {
     var chainKey = chainSel.value;
     var itemId = itemSel.value;
     if (!chainKey || !itemId) {
-      results.innerHTML = '<div class="no-swap"><strong>Pick a chain and an item first.</strong></div>';
-      results.classList.add('visible');
+      results.innerHTML = '<div class="ai-sodium-no-swap"><strong>Pick a chain and an item first.</strong></div>';
+      results.classList.add('ai-sodium-results--open');
       return;
     }
 
@@ -206,81 +228,81 @@ const chains = Object.entries(MENU).map(([key, chain]) => ({ key, name: (chain a
 
     if (calcMode === 'samechain') {
       var swapCard = sameSwap
-        ? cardHTML(chainName, sameSwap, 'Better at ' + chainName, 'same-chain-better',
+        ? cardHTML(chainName, sameSwap, 'Better at ' + chainName, 'ai-sodium-card--same',
             '−' + (item.sodium - sameSwap.sodium).toLocaleString() + 'mg Na')
-        : '<div class="no-swap"><strong>You&rsquo;re ordering the lowest-sodium ' + esc(item.cat) + ' at ' + esc(chainName) + '.</strong> Try &ldquo;Any chain&rdquo; to see what else is out there.</div>';
-      mainHTML = '<div class="comp-grid">' + origCard + swapCard + '</div>' +
-        (sameSwap ? '<div class="savings-row">' + savingsCard(item.sodium - sameSwap.sodium, 'orange-tint', 'saved — no need to change where you go.') + '</div>' : '');
+        : '<div class="ai-sodium-no-swap"><strong>You&rsquo;re ordering the lowest-sodium ' + esc(item.cat) + ' at ' + esc(chainName) + '.</strong> Try &ldquo;Any chain&rdquo; to see what else is out there.</div>';
+      mainHTML = '<div class="ai-sodium-grid">' + origCard + swapCard + '</div>' +
+        (sameSwap ? '<div class="ai-sodium-savings-row">' + savingsCard(item.sodium - sameSwap.sodium, 'ai-sodium-savings--orange', 'saved — no need to change where you go.') + '</div>' : '');
 
     } else if (calcMode === 'crosschain') {
       var swapCard2 = crossSwap
-        ? cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'better',
+        ? cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'ai-sodium-card--best',
             '−' + (item.sodium - crossSwap.sodium).toLocaleString() + 'mg Na')
-        : '<div class="no-swap"><strong>Your order is already among the lowest-sodium ' + esc(item.cat) + ' options across all chains in our database.</strong></div>';
-      mainHTML = '<div class="comp-grid">' + origCard + swapCard2 + '</div>' +
-        (crossSwap ? '<div class="savings-row">' + savingsCard(item.sodium - crossSwap.sodium, '', 'saved by switching to ' + crossSwap.chainName + '.') + '</div>' : '');
+        : '<div class="ai-sodium-no-swap"><strong>Your order is already among the lowest-sodium ' + esc(item.cat) + ' options across all chains in our database.</strong></div>';
+      mainHTML = '<div class="ai-sodium-grid">' + origCard + swapCard2 + '</div>' +
+        (crossSwap ? '<div class="ai-sodium-savings-row">' + savingsCard(item.sodium - crossSwap.sodium, '', 'saved by switching to ' + crossSwap.chainName + '.') + '</div>' : '');
 
     } else {
       if (sameSwap && crossSwap) {
         mainHTML =
-          '<div class="comp-grid">' + origCard +
-            cardHTML(chainName, sameSwap, 'Stay at ' + chainName, 'same-chain-better',
+          '<div class="ai-sodium-grid">' + origCard +
+            cardHTML(chainName, sameSwap, 'Stay at ' + chainName, 'ai-sodium-card--same',
               '−' + (item.sodium - sameSwap.sodium).toLocaleString() + 'mg Na') +
           '</div>' +
-          '<div class="savings-row">' +
-            savingsCard(item.sodium - sameSwap.sodium, 'orange-tint', 'saved — no need to change where you go.') +
+          '<div class="ai-sodium-savings-row">' +
+            savingsCard(item.sodium - sameSwap.sodium, 'ai-sodium-savings--orange', 'saved — no need to change where you go.') +
             savingsCard(item.sodium - crossSwap.sodium, '', 'saved by switching to ' + crossSwap.chainName + '.') +
           '</div>' +
-          '<div class="dual-label">Best swap across all chains</div>' +
-          '<div class="comp-grid">' + origCard +
-            cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'better',
+          '<div class="ai-sodium-dual-label">Best swap across all chains</div>' +
+          '<div class="ai-sodium-grid">' + origCard +
+            cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'ai-sodium-card--best',
               '−' + (item.sodium - crossSwap.sodium).toLocaleString() + 'mg Na') +
           '</div>';
       } else if (sameSwap) {
-        mainHTML = '<div class="comp-grid">' + origCard +
-          cardHTML(chainName, sameSwap, 'Better at ' + chainName, 'same-chain-better',
+        mainHTML = '<div class="ai-sodium-grid">' + origCard +
+          cardHTML(chainName, sameSwap, 'Better at ' + chainName, 'ai-sodium-card--same',
             '−' + (item.sodium - sameSwap.sodium).toLocaleString() + 'mg Na') +
-          '</div><div class="savings-row">' +
-          savingsCard(item.sodium - sameSwap.sodium, 'orange-tint', 'saved — no need to change where you go.') +
-          '</div><div class="no-swap"><strong>No lower-sodium ' + esc(item.cat) + ' option exists at other chains</strong> in our current database.</div>';
+          '</div><div class="ai-sodium-savings-row">' +
+          savingsCard(item.sodium - sameSwap.sodium, 'ai-sodium-savings--orange', 'saved — no need to change where you go.') +
+          '</div><div class="ai-sodium-no-swap"><strong>No lower-sodium ' + esc(item.cat) + ' option exists at other chains</strong> in our current database.</div>';
       } else if (crossSwap) {
-        mainHTML = '<div class="no-swap"><strong>' + esc(chainName) + ' doesn&rsquo;t have a lower-sodium ' + esc(item.cat) + ' option.</strong> But another chain does.</div>' +
-          '<div class="comp-grid">' + origCard +
-          cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'better',
+        mainHTML = '<div class="ai-sodium-no-swap"><strong>' + esc(chainName) + ' doesn&rsquo;t have a lower-sodium ' + esc(item.cat) + ' option.</strong> But another chain does.</div>' +
+          '<div class="ai-sodium-grid">' + origCard +
+          cardHTML(crossSwap.chainName, crossSwap, 'Best Across All Chains', 'ai-sodium-card--best',
             '−' + (item.sodium - crossSwap.sodium).toLocaleString() + 'mg Na') +
-          '</div><div class="savings-row">' +
+          '</div><div class="ai-sodium-savings-row">' +
           savingsCard(item.sodium - crossSwap.sodium, '', 'saved by switching to ' + crossSwap.chainName + '.') +
           '</div>';
       } else {
         mainHTML = origCard +
-          '<div class="no-swap"><strong>You&rsquo;re ordering one of the lowest-sodium ' + esc(item.cat) + ' options across all chains in our database.</strong> That said &mdash; no fast food is truly low-sodium. The system is the problem, not just the item.</div>';
+          '<div class="ai-sodium-no-swap"><strong>You&rsquo;re ordering one of the lowest-sodium ' + esc(item.cat) + ' options across all chains in our database.</strong> That said &mdash; no fast food is truly low-sodium. The system is the problem, not just the item.</div>';
       }
     }
 
     results.innerHTML =
-      '<p class="calc-selection">You selected: <strong>' + esc(chainName) + ' &mdash; ' + esc(item.label) + '</strong></p>' +
+      '<p class="ai-sodium-selection">You selected: <strong>' + esc(chainName) + ' &mdash; ' + esc(item.label) + '</strong></p>' +
       mainHTML +
-      '<div class="meter-section">' +
-        '<div class="meter-title">Your order as % of daily sodium limit (2,300mg)</div>' +
-        '<div class="meter-track">' +
-          '<div class="meter-fill ' + meterZone(item.sodium) + '" style="width:' + Math.min(100, sodiumPct) + '%"></div>' +
-          '<div class="meter-threshold"><span class="meter-threshold-label">Daily limit</span></div>' +
+      '<div class="ai-sodium-meter">' +
+        '<div class="ai-sodium-meter-title">Your order as % of daily sodium limit (2,300mg)</div>' +
+        '<div class="ai-sodium-meter-track">' +
+          '<div class="ai-sodium-meter-fill ' + meterZone(item.sodium) + '" style="width:' + Math.min(100, sodiumPct) + '%"></div>' +
+          '<div class="ai-sodium-meter-threshold"><span class="ai-sodium-meter-threshold-label">Daily limit</span></div>' +
         '</div>' +
-        '<div class="meter-labels"><span>0mg</span><span>1,150mg</span><span>2,300mg</span></div>' +
+        '<div class="ai-sodium-meter-labels"><span>0mg</span><span>1,150mg</span><span>2,300mg</span></div>' +
       '</div>';
-    results.classList.add('visible');
+    results.classList.add('ai-sodium-results--open');
   }
 
   chainSel.addEventListener('change', populateItems);
-  itemSel.addEventListener('change', function () { results.classList.remove('visible'); });
+  itemSel.addEventListener('change', function () { results.classList.remove('ai-sodium-results--open'); });
   findBtn.addEventListener('click', findSwap);
 
-  root.querySelectorAll('.calc-mode-btn').forEach(function (btn) {
+  Array.prototype.forEach.call(modeBtns, function (btn) {
     btn.addEventListener('click', function () {
-      root.querySelectorAll('.calc-mode-btn').forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
+      Array.prototype.forEach.call(modeBtns, function (b) { b.classList.remove('ai-sodium-mode-btn--on'); });
+      btn.classList.add('ai-sodium-mode-btn--on');
       calcMode = btn.dataset.mode;
-      results.classList.remove('visible');
+      results.classList.remove('ai-sodium-results--open');
     });
   });
 })();

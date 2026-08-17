@@ -2323,19 +2323,23 @@ body { font-size: 16px }
 /* The swap calculator from the archived Fast Food Sodium piece, ported
    2026-08-16 from the <style> block at
    _archive/legacy-2026-08-13/fast-food-sodium/index.html lines 342-447.
-   Sodium-specific, ruled by AMA 2026-08-16, so every selector is scoped
-   under .sodium-picker: .comp-card and .nutrient are names a future
-   platform component could plausibly want, and an unscoped copy here
-   would claim them first.
+   Sodium-specific, ruled by AMA.
+
+   Renamed 2026-08-17 from a .sodium-picker descendant scope to an
+   ai-sodium- prefix on every class. Scoping hid the collision instead of
+   removing it: .comp-card and .nutrient are names a future platform
+   component will plausibly want, and the first one to declare them
+   unscoped would silently reach into this component's markup. A prefix
+   puts the collision at the name, where a grep finds it.
 
    Colours are the archive's own and every one resolves to a token that
    already exists in section 1 — no new colour is introduced. Type sizes
    are moved onto the scale: the archive's ad-hoc 0.72/0.78/0.58/0.62rem
    become --text-stamp for mono labels (the step design-tokens.md reserves
-   for exactly that) and --text-body for anything a reader reads as prose,
+   for exactly that) and 0.9375rem for anything a reader reads as prose,
    which holds the 15px mobile floor. */
 
-.sodium-picker .calc-section {
+.ai-sodium-picker .ai-sodium-form {
   max-width: var(--max-tool);
   margin: 0 auto;
 }
@@ -2344,24 +2348,24 @@ body { font-size: 16px }
    section is a literal 0.9375rem rather than var(--text-body): the token drops
    to 0.875rem/14px inside the 380 breakpoint at L1514, under the 15px mobile
    floor in alterrell-hq/reference/design-tokens.md. Batch E made the identical
-   repair to .ai-callout p at L555. Scoped to .sodium-picker so the platform
+   repair to .ai-callout p at L555. Scoped to .ai-sodium-picker so the platform
    .ai-select is unchanged for any future consumer. */
-.sodium-picker .ai-select { max-width: 100%; font-size: 0.9375rem; }
-.sodium-picker .calc-step-2 { margin-bottom: 0.5rem; }
+.ai-sodium-picker .ai-select { max-width: 100%; font-size: 0.9375rem; min-height: var(--touch); }
+.ai-sodium-picker .ai-sodium-step2 { margin-bottom: 0.5rem; }
 
-.sodium-picker .calc-selectors {
+.ai-sodium-picker .ai-sodium-selectors {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
-.sodium-picker .calc-mode-btns {
+.ai-sodium-picker .ai-sodium-modes {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 1.25rem;
 }
-.sodium-picker .calc-mode-btn {
+.ai-sodium-picker .ai-sodium-mode-btn {
   padding: 0.4rem 0.85rem;
   border: 1.5px solid var(--border);
   border-radius: 100px;
@@ -2374,9 +2378,9 @@ body { font-size: 16px }
   transition: all 0.15s;
   min-height: var(--touch);
 }
-.sodium-picker .calc-mode-btn:hover { border-color: var(--teal); color: var(--teal); }
-.sodium-picker .calc-mode-btn.active { background: var(--teal); border-color: var(--teal); color: var(--paper-card); }
-.sodium-picker .calc-find-btn {
+.ai-sodium-picker .ai-sodium-mode-btn:hover { border-color: var(--teal); color: var(--teal); }
+.ai-sodium-picker .ai-sodium-mode-btn--on { background: var(--teal); border-color: var(--teal); color: var(--paper-card); }
+.ai-sodium-picker .ai-sodium-find-btn {
   width: 100%;
   padding: 0.875rem;
   background: var(--teal);
@@ -2391,81 +2395,81 @@ body { font-size: 16px }
   margin-bottom: var(--space-md);
   min-height: var(--touch);
 }
-.sodium-picker .calc-find-btn:hover { background: var(--teal-light); }
-.sodium-picker .calc-results { display: none; }
-.sodium-picker .calc-results.visible { display: block; }
-.sodium-picker .calc-selection {
+.ai-sodium-picker .ai-sodium-find-btn:hover { background: var(--teal-light); }
+.ai-sodium-picker .ai-sodium-results { display: none; }
+.ai-sodium-picker .ai-sodium-results--open { display: block; }
+.ai-sodium-picker .ai-sodium-selection {
   font-family: var(--font-editorial);
   font-size: 0.9375rem;
   color: var(--ink-secondary);
   margin-bottom: 1.25rem;
   line-height: 1.4;
 }
-.sodium-picker .calc-selection strong { color: var(--ink); }
+.ai-sodium-picker .ai-sodium-selection strong { color: var(--ink); }
 
 /* Comparison cards */
-.sodium-picker .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
-.sodium-picker .comp-card { background: var(--paper-card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
-.sodium-picker .comp-card.better { border-color: var(--teal); }
-.sodium-picker .comp-card.same-chain-better { border-color: var(--orange); }
-.sodium-picker .comp-card-header { padding: 0.6rem 0.875rem; background: var(--paper-warm); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
-.sodium-picker .comp-card.better .comp-card-header { background: var(--teal); border-color: var(--teal); }
-.sodium-picker .comp-card.same-chain-better .comp-card-header { background: var(--orange); border-color: var(--orange); }
-.sodium-picker .comp-card-tag { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); }
-.sodium-picker .comp-card.better .comp-card-tag,
-.sodium-picker .comp-card.same-chain-better .comp-card-tag { color: var(--paper-card); }
-.sodium-picker .comp-card-badge { font-family: var(--font-mono); font-size: var(--text-stamp); padding: 0.15rem 0.4rem; border-radius: 2px; background: var(--danger-bg); color: var(--danger); white-space: nowrap; }
-.sodium-picker .comp-card.better .comp-card-badge,
-.sodium-picker .comp-card.same-chain-better .comp-card-badge { background: rgba(255,255,255,0.2); color: var(--paper-card); }
-.sodium-picker .comp-card-body { padding: 0.875rem; }
-.sodium-picker .comp-card-chain { font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.1rem; color: var(--ink); }
-.sodium-picker .comp-card-item { font-size: 0.9375rem; color: var(--ink-secondary); margin-bottom: 1rem; line-height: 1.35; }
+.ai-sodium-picker .ai-sodium-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.ai-sodium-picker .ai-sodium-card { background: var(--paper-card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+.ai-sodium-picker .ai-sodium-card--best { border-color: var(--teal); }
+.ai-sodium-picker .ai-sodium-card--same { border-color: var(--orange); }
+.ai-sodium-picker .ai-sodium-card-head { padding: 0.6rem 0.875rem; background: var(--paper-warm); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.ai-sodium-picker .ai-sodium-card--best .ai-sodium-card-head { background: var(--teal); border-color: var(--teal); }
+.ai-sodium-picker .ai-sodium-card--same .ai-sodium-card-head { background: var(--orange); border-color: var(--orange); }
+.ai-sodium-picker .ai-sodium-card-tag { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); }
+.ai-sodium-picker .ai-sodium-card--best .ai-sodium-card-tag,
+.ai-sodium-picker .ai-sodium-card--same .ai-sodium-card-tag { color: var(--paper-card); }
+.ai-sodium-picker .ai-sodium-card-badge { font-family: var(--font-mono); font-size: var(--text-stamp); padding: 0.15rem 0.4rem; border-radius: 2px; background: var(--danger-bg); color: var(--danger); white-space: nowrap; }
+.ai-sodium-picker .ai-sodium-card--best .ai-sodium-card-badge,
+.ai-sodium-picker .ai-sodium-card--same .ai-sodium-card-badge { background: rgba(255,255,255,0.2); color: var(--paper-card); }
+.ai-sodium-picker .ai-sodium-card-body { padding: 0.875rem; }
+.ai-sodium-picker .ai-sodium-card-chain { font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.1rem; color: var(--ink); }
+.ai-sodium-picker .ai-sodium-card-item { font-size: 0.9375rem; color: var(--ink-secondary); margin-bottom: 1rem; line-height: 1.35; }
 
 /* Nutrient bars */
-.sodium-picker .nutrient { margin-bottom: 0.75rem; }
-.sodium-picker .nutrient:last-child { margin-bottom: 0; }
-.sodium-picker .nutrient-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.25rem; gap: 0.5rem; }
-.sodium-picker .nutrient-name { font-family: var(--font-mono); font-size: var(--text-stamp); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-secondary); }
-.sodium-picker .nutrient-vals { display: flex; align-items: baseline; gap: 0.35rem; }
-.sodium-picker .nutrient-val { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 500; }
-.sodium-picker .nutrient-val.high { color: var(--danger); }
-.sodium-picker .nutrient-val.med { color: var(--warning); }
-.sodium-picker .nutrient-val.low { color: var(--success); }
-.sodium-picker .nutrient-pct { font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); }
-.sodium-picker .bar-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
-.sodium-picker .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
-.sodium-picker .bar-fill.sodium-high { background: var(--danger); }
-.sodium-picker .bar-fill.sodium-med { background: var(--warning); }
-.sodium-picker .bar-fill.sodium-low { background: var(--success); }
-.sodium-picker .bar-fill.fiber { background: var(--teal); }
+.ai-sodium-picker .ai-sodium-nutrient { margin-bottom: 0.75rem; }
+.ai-sodium-picker .ai-sodium-nutrient:last-child { margin-bottom: 0; }
+.ai-sodium-picker .ai-sodium-nutrient-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.25rem; gap: 0.5rem; }
+.ai-sodium-picker .ai-sodium-nutrient-name { font-family: var(--font-mono); font-size: var(--text-stamp); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-secondary); }
+.ai-sodium-picker .ai-sodium-nutrient-vals { display: flex; align-items: baseline; gap: 0.35rem; }
+.ai-sodium-picker .ai-sodium-nutrient-val { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 500; }
+.ai-sodium-picker .ai-sodium-val--high { color: var(--danger); }
+.ai-sodium-picker .ai-sodium-val--med { color: var(--warning); }
+.ai-sodium-picker .ai-sodium-val--low { color: var(--success); }
+.ai-sodium-picker .ai-sodium-nutrient-pct { font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); }
+.ai-sodium-picker .ai-sodium-bar-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.ai-sodium-picker .ai-sodium-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+.ai-sodium-picker .ai-sodium-bar--high { background: var(--danger); }
+.ai-sodium-picker .ai-sodium-bar--med { background: var(--warning); }
+.ai-sodium-picker .ai-sodium-bar--low { background: var(--success); }
+.ai-sodium-picker .ai-sodium-bar--fiber { background: var(--teal); }
 
 /* Savings */
-.sodium-picker .savings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
-.sodium-picker .savings-callout { background: var(--teal-bg); border: 1px solid rgba(10,124,114,0.2); border-radius: var(--radius); padding: 1rem 1.25rem; }
-.sodium-picker .savings-callout.orange-tint { background: var(--orange-bg); border-color: rgba(201,95,26,0.2); }
-.sodium-picker .savings-num { font-family: var(--font-editorial); font-size: 1.5rem; color: var(--teal); line-height: 1; margin-bottom: 0.2rem; }
-.sodium-picker .savings-callout.orange-tint .savings-num { color: var(--orange); }
-.sodium-picker .savings-lbl { font-size: 0.9375rem; color: var(--ink-secondary); line-height: 1.5; }
-.sodium-picker .dual-label { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); margin: 0.5rem 0; }
-.sodium-picker .no-swap { background: var(--paper-warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; font-size: 0.9375rem; color: var(--ink-secondary); line-height: var(--leading-body); margin-bottom: 1rem; }
+.ai-sodium-picker .ai-sodium-savings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.ai-sodium-picker .ai-sodium-savings { background: var(--teal-bg); border: 1px solid rgba(10,124,114,0.2); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.ai-sodium-picker .ai-sodium-savings--orange { background: var(--orange-bg); border-color: rgba(201,95,26,0.2); }
+.ai-sodium-picker .ai-sodium-savings-num { font-family: var(--font-editorial); font-size: 1.5rem; color: var(--teal); line-height: 1; margin-bottom: 0.2rem; }
+.ai-sodium-picker .ai-sodium-savings--orange .ai-sodium-savings-num { color: var(--orange); }
+.ai-sodium-picker .ai-sodium-savings-lbl { font-size: 0.9375rem; color: var(--ink-secondary); line-height: 1.5; }
+.ai-sodium-picker .ai-sodium-dual-label { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); margin: 0.5rem 0; }
+.ai-sodium-picker .ai-sodium-no-swap { background: var(--paper-warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; font-size: 0.9375rem; color: var(--ink-secondary); line-height: var(--leading-body); margin-bottom: 1rem; }
 
 /* Daily-limit meter */
-.sodium-picker .meter-section { margin-bottom: var(--space-md); }
-.sodium-picker .meter-title { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); margin-bottom: 0.75rem; }
-.sodium-picker .meter-track { height: 10px; background: var(--border); border-radius: 5px; position: relative; margin-bottom: 0.5rem; }
-.sodium-picker .meter-fill { height: 100%; border-radius: 5px; transition: width 0.5s ease; }
-.sodium-picker .meter-fill.zone-low { background: var(--success); }
-.sodium-picker .meter-fill.zone-med { background: var(--warning); }
-.sodium-picker .meter-fill.zone-high { background: var(--danger); }
-.sodium-picker .meter-fill.zone-over { background: var(--danger); width: 100%; }
-.sodium-picker .meter-threshold { position: absolute; top: -4px; right: 0; width: 2px; height: 18px; background: var(--ink); border-radius: 1px; }
-.sodium-picker .meter-threshold-label { position: absolute; top: 16px; right: 0; font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); white-space: nowrap; transform: translateX(50%); }
-.sodium-picker .meter-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); margin-top: 1.25rem; }
+.ai-sodium-picker .ai-sodium-meter { margin-bottom: var(--space-md); }
+.ai-sodium-picker .ai-sodium-meter-title { font-family: var(--font-mono); font-size: var(--text-stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-secondary); margin-bottom: 0.75rem; }
+.ai-sodium-picker .ai-sodium-meter-track { height: 10px; background: var(--border); border-radius: 5px; position: relative; margin-bottom: 0.5rem; }
+.ai-sodium-picker .ai-sodium-meter-fill { height: 100%; border-radius: 5px; transition: width 0.5s ease; }
+.ai-sodium-picker .ai-sodium-zone--low { background: var(--success); }
+.ai-sodium-picker .ai-sodium-zone--med { background: var(--warning); }
+.ai-sodium-picker .ai-sodium-zone--high { background: var(--danger); }
+.ai-sodium-picker .ai-sodium-zone--over { background: var(--danger); width: 100%; }
+.ai-sodium-picker .ai-sodium-meter-threshold { position: absolute; top: -4px; right: 0; width: 2px; height: 18px; background: var(--ink); border-radius: 1px; }
+.ai-sodium-picker .ai-sodium-meter-threshold-label { position: absolute; top: 16px; right: 0; font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); white-space: nowrap; transform: translateX(50%); }
+.ai-sodium-picker .ai-sodium-meter-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: var(--text-stamp); color: var(--ink-secondary); margin-top: 1.25rem; }
 
 /* One column at 360: the two-up grids cannot hold a 44px control and a
    readable label side by side at that width. */
 @media (max-width: 520px) {
-  .sodium-picker .calc-selectors,
-  .sodium-picker .comp-grid,
-  .sodium-picker .savings-row { grid-template-columns: 1fr; }
+  .ai-sodium-picker .ai-sodium-selectors,
+  .ai-sodium-picker .ai-sodium-grid,
+  .ai-sodium-picker .ai-sodium-savings-row { grid-template-columns: 1fr; }
 }
