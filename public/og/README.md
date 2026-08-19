@@ -1,12 +1,26 @@
 # OG Images
 
-Placeholder for social share preview images (1200×630px).
+Social share preview images, 1200×630px, referenced by the `og:image` meta tag on each page.
 
-Files needed:
-- hub.png — hub page preview
-- fast-food-sodium.png — Fast Food Sodium piece preview  
-- naming.png — What's in a Name piece preview
+## Present
 
-To generate: screenshot the hero stat section of each piece at 1200px viewport width, crop to 630px height. Save as PNG.
+Measured by `ls public/og/` on 2026-08-19:
 
-These are referenced in the og:image meta tags on each page. The three images in this directory are real; only concert-tax.png is missing, so that piece alone falls back to no image.
+- `fast-food-sodium.png` — Fast Food's Hidden Sodium Tax (189,587 bytes)
+- `hub.png` — hub page (247,125 bytes)
+- `naming.png` — That Name Is So Ghetto (178,322 bytes)
+
+## Outstanding
+
+- `concert-tax.png` — **outstanding.** It does not exist in this directory.
+  Until it exists, Female Musicians Earn Less But Share More falls back to no
+  image: the piece ships without an `og:image`, and a share of that URL renders
+  as a text-only card.
+
+## Generating one
+
+Screenshot the hero stat section of the piece at 1200px viewport width, crop to
+630px height, save as PNG into this directory named for the piece slug.
+
+This list is measured, not aspirational. Every filename under Present exists on
+disk; anything that does not exist belongs under Outstanding.
