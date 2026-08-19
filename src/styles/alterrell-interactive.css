@@ -2472,3 +2472,133 @@ body { font-size: 16px }
   .ai-sodium-picker .ai-sodium-grid,
   .ai-sodium-picker .ai-sodium-savings-row { grid-template-columns: 1fr; }
 }
+
+
+/* ── 22. TICKET SPLIT ───────────────────────────────────────── */
+/* The Concert Tax ticket-price slider, rebuilt 2026-08-19 against NITO's
+   four-part split. See src/components/TicketSplit.astro for the model, the
+   derived figure and the rounding rule; none of that is repeated here.
+
+   Every colour resolves to a token from section 1 — no new colour. Reading
+   sizes are a literal 0.9375rem rather than var(--text-body) for the reason
+   .ai-callout p at L554 and the Sodium Picker both are: the token drops to
+   0.875rem/14px inside the 380 breakpoint at L1519, under the 15px mobile
+   floor in alterrell-hq/reference/design-tokens.md.
+
+   The range input is new to this stylesheet — nothing styled input[type=range]
+   before 2026-08-19. It needs three engines. The input's own box is held at
+   var(--touch) so G3 measures 44px on the control itself; the visible track is
+   drawn inside that box and the thumb is centred on it. */
+
+.ai-ticket {
+  max-width: var(--max-tool);
+  margin: 0 auto var(--space-md);
+}
+
+.ai-ticket-control {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem 0.75rem;
+  margin-bottom: var(--space-sm);
+}
+.ai-ticket-control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.ai-ticket-price {
+  font-family: var(--font-editorial);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--teal);
+}
+
+/* Track and thumb. The input box is 44px so the control clears G3; the track
+   is a 6px band painted inside it, and the thumb is centred on that band. */
+.ai-ticket-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: var(--touch);
+  height: var(--touch);
+  background: transparent;
+  cursor: pointer;
+}
+.ai-ticket-slider:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+.ai-ticket-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--paper-warm);
+  border: 1px solid var(--border);
+}
+.ai-ticket-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--paper-warm);
+  border: 1px solid var(--border);
+}
+.ai-ticket-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 3px solid var(--paper-card);
+  box-shadow: var(--shadow-sm);
+  margin-top: -12px;
+}
+.ai-ticket-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 3px solid var(--paper-card);
+  box-shadow: var(--shadow-sm);
+}
+.ai-ticket-slider:hover::-webkit-slider-thumb { background: var(--teal-light); }
+.ai-ticket-slider:hover::-moz-range-thumb     { background: var(--teal-light); }
+
+.ai-ticket-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  color: var(--ink-secondary);
+}
+
+/* The amount column is mono so the digits line up as the slider moves. */
+.ai-ticket-amount-col { text-align: right; }
+.ai-ticket-amount {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.ai-ticket-derived {
+  font-size: 0.9375rem;
+  line-height: var(--leading-body);
+  color: var(--ink-secondary);
+  margin-top: var(--space-sm);
+}
+.ai-ticket-derived strong {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 520px) {
+  .ai-ticket-control-row { flex-wrap: wrap; }
+  .ai-ticket-price { font-size: 1.5rem; }
+}

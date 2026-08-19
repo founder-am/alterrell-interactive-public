@@ -1,0 +1,173 @@
+---
+/**
+ * TicketSplit — the ticket-price slider from the archived Concert Tax piece.
+ *
+ * Rebuilt 2026-08-19, not ported. The archive's version is at
+ * _archive/legacy-2026-08-13/concert-tax/index.html, markup at lines 1287-1345
+ * and logic at 2383-2413, and every number in it is superseded. It computed a
+ * FIVE-line split — ticketing .27, venue .17, promoter .30, management .18,
+ * artist .08 — and carried the artist on a row of the receipt. Both are wrong
+ * now: the piece publishes NITO's four-part split, and AMA ruled 2026-08-19
+ * that the artist figure is a live derived sentence, never a row.
+ *
+ * THE MODEL. Four rows, each a fixed share of face value, taken from the table
+ * in concert-tax.mdx and verified to reproduce every printed figure:
+ *
+ *   ticketing   .2200        remainder is 1 - .22 - .30 = .48
+ *   production  .3000        artist share   85% of .48 = .408
+ *   artist      .4080        promoter share 15% of .48 = .072
+ *   promoter    .0720        the four sum to 1.0000 exactly
+ *
+ * THE DERIVED FIGURE. take-home = face x .408 x (1 - own costs). The piece
+ * states own costs of "75 to 85 percent"; $8.16 at $100 is the 80% case, the
+ * midpoint, and AMA ruled 2026-08-19 to keep that point value rather than show
+ * the band, so the sentence matches the prose two blocks down. COSTS is that
+ * one number and the sentence reads from nowhere else.
+ *
+ * ROUNDING. Ruled by AMA 2026-08-19: compute from the unrounded share, round
+ * half up for display only, and never re-derive the sentence from a rounded
+ * row. It matters — across the 96 stops of this slider the four rows are exact
+ * to the cent at every one, but the derived figure is not at 76 of them
+ * ($30 gives 2.4480, $45 gives 3.6720). toFixed() rounds half to even on some
+ * engines, so the half-up step is explicit below.
+ *
+ * THE STATIC TABLE STAYS. AMA ruled 2026-08-19 that the published $100 table
+ * sits above this component rather than being replaced, stacked and not side
+ * by side, because a two-column layout has nowhere to go at 360. At $100 this
+ * receipt and that table agree line for line, which is the point: the tool is
+ * visibly faithful to the source it cites.
+ *
+ * NAMESPACE. Every class and id introduced here is prefixed ai-ticket-, for
+ * the reason SodiumPicker.astro gives at length: one stylesheet serves every
+ * page, so an unprefixed name like .receipt or #price claims a word the next
+ * component will want, and the collision surfaces as a styling bug on a page
+ * neither author was looking at. The archive's ct-* and cr-* names are not
+ * carried forward.
+ *
+ * This file carries ZERO CSS rules, for the same reason SodiumPicker.astro,
+ * [slug].astro and index.astro do: Astro scopes a component <style> block with
+ * [data-astro-cid-*], which outranks the shared stylesheet. Every rule lives in
+ * src/styles/alterrell-interactive.css, section 22.
+ *
+ * No framework. astro.config.mjs registers only mdx() and no renderer, so a
+ * client: directive would have nothing to hydrate. Interactivity is a plain
+ * <script is:inline>, the same mechanism the tab bar uses.
+ */
+---
+<div class="ai-ticket">
+
+  <div class="ai-ticket-control">
+    <div class="ai-ticket-control-row">
+      <label class="ai-label" for="ai-ticket-price">Your ticket price</label>
+      <span class="ai-ticket-price" id="ai-ticket-price-display">$100</span>
+    </div>
+    <input
+      type="range"
+      class="ai-ticket-slider"
+      id="ai-ticket-price"
+      min="25" max="500" value="100" step="5"
+      aria-label="Ticket face value in dollars"
+      aria-valuemin="25" aria-valuemax="500" aria-valuenow="100" aria-valuetext="$100"
+    />
+    <div class="ai-ticket-scale" aria-hidden="true">
+      <span>$25</span>
+      <span>$500</span>
+    </div>
+  </div>
+
+  <div class="ai-table-wrap">
+    <table class="ai-table ai-ticket-table">
+      <thead>
+        <tr>
+          <th>Line item</th>
+          <th class="ai-ticket-amount-col">Share of your ticket</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ticketing and service fees</td>
+          <td class="ai-ticket-amount" id="ai-ticket-ticketing">$22.00</td>
+        </tr>
+        <tr>
+          <td>Production and venue operations</td>
+          <td class="ai-ticket-amount" id="ai-ticket-production">$30.00</td>
+        </tr>
+        <tr>
+          <td>Artist share, 85% of the remainder</td>
+          <td class="ai-ticket-amount" id="ai-ticket-artist-share">$40.80</td>
+        </tr>
+        <tr>
+          <td>Promoter and venue share, 15% of the remainder</td>
+          <td class="ai-ticket-amount" id="ai-ticket-promoter">$7.20</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="ai-ticket-derived" id="ai-ticket-derived" aria-live="polite">
+    Of that <strong>$40.80</strong>, the artist&rsquo;s own costs take about 80 percent,
+    leaving <strong>$8.16</strong>.
+  </p>
+
+  <p class="ai-stamp">The artist&rsquo;s take-home is derived, not a NITO line item. NITO
+  publishes the four rows above; the 75 to 85 percent own-costs range is the piece&rsquo;s
+  own sourcing, and this sentence shows the 80 percent case.</p>
+
+</div>
+
+<script is:inline>
+(function () {
+  var slider = document.getElementById('ai-ticket-price');
+  if (!slider) return;
+
+  /* The four NITO rows. Each is a fixed share of face value and the four sum
+     to exactly 1. Changing one without changing the others breaks that. */
+  var ROWS = [
+    { id: 'ai-ticket-ticketing',    share: 0.2200 },
+    { id: 'ai-ticket-production',   share: 0.3000 },
+    { id: 'ai-ticket-artist-share', share: 0.4080 },
+    { id: 'ai-ticket-promoter',     share: 0.0720 }
+  ];
+
+  /* The artist's own costs, as a share of the artist's own row. 0.80 is the
+     midpoint of the published 75-85% band and the value $8.16 comes from. */
+  var COSTS = 0.80;
+  var ARTIST_ROW = 0.4080;
+
+  var display = document.getElementById('ai-ticket-price-display');
+  var derived = document.getElementById('ai-ticket-derived');
+
+  /* Half-up to the cent. toFixed rounds half to even on some engines, which
+     would put the derived figure a cent under at some of the 76 stops where it
+     is not already exact. */
+  function money(n) {
+    var cents = Math.floor(n * 100 + 0.5);
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  function update() {
+    var face = parseInt(slider.value, 10);
+
+    slider.setAttribute('aria-valuenow', String(face));
+    slider.setAttribute('aria-valuetext', '$' + face);
+    if (display) display.textContent = '$' + face;
+
+    for (var i = 0; i < ROWS.length; i++) {
+      var el = document.getElementById(ROWS[i].id);
+      if (el) el.textContent = money(face * ROWS[i].share);
+    }
+
+    /* Computed from the unrounded share, never from the rounded row above. */
+    var artistRow = face * ARTIST_ROW;
+    var takeHome  = artistRow * (1 - COSTS);
+    if (derived) {
+      derived.innerHTML =
+        'Of that <strong>' + money(artistRow) + '</strong>, the artist’s own costs ' +
+        'take about 80 percent, leaving <strong>' + money(takeHome) + '</strong>.';
+    }
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
