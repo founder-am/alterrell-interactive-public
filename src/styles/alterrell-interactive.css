@@ -779,7 +779,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 .ai-share-card-footer {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--text-micro);
   color: #504d68;
   letter-spacing: 0.1em;
   display: flex;
@@ -2302,6 +2302,7 @@ details[open] .ai-footer-methodology summary::before {
   .ai-callout { padding: 14px; font-size: 14px }
   .ai-pullquote { font-size: 18px }
   .ai-share-card { width: 300px }
+  .ai-share-card-footer { flex-direction: column; align-items: stretch; gap: 8px }
   .ai-share-card-num { font-size: 35px }
   .ai-share-card-eyebrow { font-size: 9px }
   .ai-share-btn { min-height: 44px }
