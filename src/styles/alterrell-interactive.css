@@ -2603,3 +2603,27 @@ body { font-size: 16px }
   .ai-ticket-control-row { flex-wrap: wrap; }
   .ai-ticket-price { font-size: 1.5rem; }
 }
+
+/* M3, the ticket-split row label. Fixed 2026-08-20.
+
+   At 360 the label "Promoter and venue share, 15% of the remainder" wrapped
+   to three line boxes with the last holding the single word "remainder" at
+   48.5% of the td content box. Under the ruled wrap definition a last line
+   box is a defect when it is under 30% of the content width OR holds one
+   word; 48.5% does not save it, the single word is the defect.
+
+   The remedy is layout, not copy, per the 08-19 remedy-ladder ruling, and it
+   is scoped to .ai-ticket-table rather than .ai-table on purpose. .ai-table
+   carries 19 tables across 5 files and two of those files are coming-soon
+   pieces with no live page, so a fix written there would land changes in
+   pieces nobody has reviewed. .ai-ticket-table is declared at
+   TicketSplit.astro line 79 and had no rule in this file before this block.
+
+   The amount cell is excluded because it carries white-space: nowrap above
+   and never wraps. The static table at concert-tax.mdx line 231 keeps the
+   same label on bare .ai-table and is deliberately NOT covered here; it was
+   measured at 360 on the same run and wraps to three lines with two words on
+   the last, which is not a defect. */
+@media (max-width: 520px) {
+  .ai-ticket-table td:not(.ai-ticket-amount) { text-wrap: balance; }
+}
