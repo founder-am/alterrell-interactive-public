@@ -1,0 +1,361 @@
+{
+  "STEPS": [
+    {
+      "step": 1,
+      "key": "dancers",
+      "question": "How many dancers on stage?",
+      "options": [
+        {
+          "value": "none",
+          "num": "0",
+          "label": "Just me"
+        },
+        {
+          "value": "few",
+          "num": "1–5",
+          "label": "A few"
+        },
+        {
+          "value": "full",
+          "num": "15+",
+          "label": "Full troupe"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "key": "costumes",
+      "question": "Costume changes?",
+      "options": [
+        {
+          "value": "none",
+          "num": "0",
+          "label": "One look, all night"
+        },
+        {
+          "value": "few",
+          "num": "2–5",
+          "label": "A few changes"
+        },
+        {
+          "value": "many",
+          "num": "10+",
+          "label": "Full wardrobe"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "key": "staging",
+      "question": "Stage production?",
+      "options": [
+        {
+          "value": "minimal",
+          "num": "Minimal",
+          "label": "You, the band, a mic"
+        },
+        {
+          "value": "mid",
+          "num": "Custom",
+          "label": "Custom staging, LED, set design"
+        },
+        {
+          "value": "max",
+          "num": "Spectacle",
+          "label": "Theatrical, aerial, architectural"
+        }
+      ]
+    }
+  ],
+  "ARTISTS": [
+    {
+      "name": "Ed Sheeran",
+      "dancers": "none",
+      "costumes": "none",
+      "staging": "mid",
+      "gross": "$876M",
+      "shows": "188",
+      "dancers_s": "0",
+      "changes": "0",
+      "ticket": "$99",
+      "desc": "One man and a guitar grossed $876M across 188 stadium shows. No dancers. No costume changes.",
+      "tags": [
+        "Solo",
+        "Loop pedal",
+        "8.8M tickets sold"
+      ]
+    },
+    {
+      "name": "Zach Bryan",
+      "dancers": "none",
+      "costumes": "none",
+      "staging": "minimal",
+      "gross": "$199M",
+      "shows": "49",
+      "dancers_s": "0",
+      "changes": "0",
+      "ticket": "$190",
+      "desc": "Jeans, a guitar, and raw vocals. $199M from 49 shows with minimal production.",
+      "tags": [
+        "Solo/band",
+        "No frills",
+        "Country/folk"
+      ]
+    },
+    {
+      "name": "Post Malone",
+      "dancers": "none",
+      "costumes": "none",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Stadium tour ongoing",
+      "dancers_s": "0",
+      "changes": "0",
+      "ticket": "$150+",
+      "desc": "Custom circular staging, full band, celebrity walkouts. Zero choreography investment.",
+      "tags": [
+        "Band",
+        "Custom stage",
+        "Stadium"
+      ]
+    },
+    {
+      "name": "Morgan Wallen",
+      "dancers": "none",
+      "costumes": "none",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Stadium tour 2025",
+      "dancers_s": "0",
+      "changes": "0",
+      "ticket": "$150+",
+      "desc": "Stadium-filling country with custom staging and celebrity guest walkouts. Zero choreography.",
+      "tags": [
+        "Band",
+        "Stadium",
+        "Celebrity walkouts"
+      ]
+    },
+    {
+      "name": "Drake",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "$693M",
+      "shows": "Varies",
+      "dancers_s": "2–4",
+      "changes": "2–3",
+      "ticket": "$200+",
+      "desc": "LED-heavy arena production with a small dancer rotation on select songs and a few outfit changes.",
+      "tags": [
+        "LED visuals",
+        "Arena",
+        "A few looks"
+      ]
+    },
+    {
+      "name": "Bad Bunny",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "max",
+      "gross": "$211M",
+      "shows": "Arena/stadium",
+      "dancers_s": "4–8",
+      "changes": "3–5",
+      "ticket": "$280",
+      "desc": "Theatrical staging with select dancers and multiple looks. Heavy production, not quite full pop spectacle.",
+      "tags": [
+        "Theatrical",
+        "Latin",
+        "$280 avg ticket"
+      ]
+    },
+    {
+      "name": "Kendrick Lamar",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Stadium 2025",
+      "dancers_s": "2–6",
+      "changes": "2–3",
+      "ticket": "$150+",
+      "desc": "Conceptual staging with select dancers. Super Bowl LIX halftime performer. Growing production ambition.",
+      "tags": [
+        "Conceptual",
+        "Super Bowl LIX",
+        "Stadium"
+      ]
+    },
+    {
+      "name": "SZA",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Arena/stadium",
+      "dancers_s": "4–6",
+      "changes": "3–5",
+      "ticket": "$150+",
+      "desc": "Visually rich arena show with a handful of dancers and several costume changes.",
+      "tags": [
+        "Visual",
+        "Arena",
+        "R&B"
+      ]
+    },
+    {
+      "name": "Billie Eilish",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Arena",
+      "dancers_s": "2–4",
+      "changes": "2–3",
+      "ticket": "$120+",
+      "desc": "Visually distinctive arena shows with minimal dancers and a few wardrobe shifts.",
+      "tags": [
+        "Minimal dancers",
+        "Visual",
+        "Arena"
+      ]
+    },
+    {
+      "name": "Sabrina Carpenter",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Arena",
+      "dancers_s": "4–8",
+      "changes": "4–6",
+      "ticket": "$150+",
+      "desc": "Pop-theatrical arena show with dancers, costume changes, and themed staging.",
+      "tags": [
+        "Pop",
+        "Theatrical",
+        "Arena"
+      ]
+    },
+    {
+      "name": "Dua Lipa",
+      "dancers": "few",
+      "costumes": "few",
+      "staging": "mid",
+      "gross": "TBD",
+      "shows": "Arena/stadium",
+      "dancers_s": "6–10",
+      "changes": "4–6",
+      "ticket": "$130+",
+      "desc": "Disco-pop production with dancers, multiple looks, and LED-heavy staging. Growing toward full spectacle.",
+      "tags": [
+        "Dancers",
+        "Disco-pop",
+        "Arena"
+      ]
+    },
+    {
+      "name": "Beyoncé",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "$579M",
+      "shows": "56",
+      "dancers_s": "20+",
+      "changes": "10+",
+      "ticket": "$198",
+      "desc": "Robotic arms, a mechanical horse, 14 chefs, an automation team. $2.5M per night in production.",
+      "tags": [
+        "20+ dancers",
+        "350+ crew",
+        "30 trucks"
+      ]
+    },
+    {
+      "name": "Taylor Swift",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "$2.07B",
+      "shows": "149",
+      "dancers_s": "15",
+      "changes": "16",
+      "ticket": "$204",
+      "desc": "90 trucks. 16 costume changes. Stage design over $100M. First tour to gross $2B.",
+      "tags": [
+        "15 dancers",
+        "16 changes",
+        "90 trucks"
+      ]
+    },
+    {
+      "name": "Madonna",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "$179M",
+      "shows": "64",
+      "dancers_s": "15+",
+      "changes": "10+",
+      "ticket": "$209",
+      "desc": "Theatrical pop spectacle with full dance troupe and cinematic staging. Set the template everyone else follows.",
+      "tags": [
+        "Full troupe",
+        "Theatrical",
+        "Pioneer"
+      ]
+    },
+    {
+      "name": "Lady Gaga",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "Varies",
+      "shows": "Arena/stadium",
+      "dancers_s": "12–16",
+      "changes": "10+",
+      "ticket": "$175+",
+      "desc": "Full choreography, elaborate costuming, conceptual staging. One of the highest production-investment artists touring.",
+      "tags": [
+        "Full troupe",
+        "Conceptual",
+        "Pop spectacle"
+      ]
+    },
+    {
+      "name": "Usher",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "TBD",
+      "shows": "Arena",
+      "dancers_s": "12+",
+      "changes": "8+",
+      "ticket": "$150+",
+      "desc": "Full choreography, roller skating, multiple wardrobe changes. Super Bowl LVIII halftime. One of the few men who invests like this.",
+      "tags": [
+        "Male exception",
+        "Super Bowl LVIII",
+        "Full choreo"
+      ]
+    },
+    {
+      "name": "Chris Brown",
+      "dancers": "full",
+      "costumes": "many",
+      "staging": "max",
+      "gross": "TBD",
+      "shows": "Arena",
+      "dancers_s": "10–15",
+      "changes": "6–8",
+      "ticket": "$120+",
+      "desc": "Full dance troupe, multiple costume changes, athletic choreography. One of the few male artists with this production commitment.",
+      "tags": [
+        "Male exception",
+        "Full choreo",
+        "Arena"
+      ]
+    }
+  ]
+}

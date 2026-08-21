@@ -2627,3 +2627,242 @@ body { font-size: 16px }
 @media (max-width: 520px) {
   .ai-ticket-table td:not(.ai-ticket-amount) { text-wrap: balance; }
 }
+
+
+/* ── 23. CONCERT BUILDER ────────────────────────────────────── */
+/* The Concert Tax three-step picker, ported 2026-08-20. See
+   src/components/ConcertBuilder.astro for the six AMA rulings it carries and
+   for why no sentence reads a record's own dancers_s field; none of that is
+   repeated here.
+
+   PAPER, ruled Q5. The archive drew this tool on a dark workbench (#0a0a12)
+   under an exception written as an HTML comment on .cb-wrap at archive line
+   1207. No LEDGER line grants that exception, so it does not carry: there is
+   no --dark-section fill anywhere below and both sibling tools are paper.
+
+   Every colour resolves to a token from section 1 — no new colour and no
+   blend. Reading sizes are a literal 0.9375rem rather than var(--text-body)
+   for the reason .ai-callout p at L554, the Sodium Picker and the Ticket
+   Split all give: the token drops to 0.875rem/14px inside the 380 breakpoint
+   at L1519, under the 15px mobile floor in
+   alterrell-hq/reference/design-tokens.md.
+
+   Selected state is styled on [aria-pressed="true"], not on a modifier class.
+   The state has to live in the attribute for the button to be announced
+   correctly, so styling the attribute keeps one source of truth instead of
+   two that can drift.
+
+   All three steps are visible from the start, ruled Q6, so nothing here
+   hides a step and there is no reveal transition to write. */
+
+.ai-concert {
+  max-width: var(--max-tool);
+  margin: 0 auto var(--space-md);
+}
+
+.ai-concert-step { margin-bottom: var(--space-sm); }
+
+.ai-concert-question {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* Three across on desktop, one column at 520 where a 44px control and a
+   readable label stop fitting side by side — the same breakpoint and the
+   same reason as the Sodium Picker's grids. */
+.ai-concert-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xs);
+}
+
+.ai-concert-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  min-height: var(--touch);
+  padding: 0.75rem;
+  background: var(--paper-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+}
+.ai-concert-option:hover { border-color: var(--teal); }
+/* R5, 2026-08-20. This outline was var(--teal), the same token as the selected
+   fill below, and both computed to rgb(10, 124, 114). At 360 the options stack
+   to one column, so a focused-but-unselected button and a selected button sit
+   directly above one another in the same teal — measured, not inferred, and the
+   two read as two selections in one step. The ring moves to var(--ink)
+   (#111111, design-tokens.md "Core palette"); the offset stays 2px, which
+   already places it outside the 1.5px button border. Selection is unchanged and
+   is still the teal fill. */
+.ai-concert-option:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.ai-concert-option[aria-pressed="true"] {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+/* Token compliance, ruled by AMA 2026-08-20. Not taste.
+   design-tokens.md scopes DM Mono twice and both scopes exclude this element:
+   line 19 "Stamps/labels | DM Mono 400, 500", and line 71 "stamp 0.6875rem
+   (mono labels only)". The nine option values are neither a stamp nor a mono
+   label, and they render at 0.9375rem, which is the body step and not the
+   0.6875rem stamp step — outside the documented scope on role AND on size.
+   Family moves to var(--font-body). Size and weight are deliberately held at
+   0.9375rem/500 so the hierarchy against .ai-concert-option-label below
+   (--text-stamp, --ink-secondary) does not collapse.
+   .ai-concert-card-stat-val keeps var(--font-mono): those are tabular figures
+   in a card, which is the stamp-and-label role the token layer does scope. */
+.ai-concert-option-num {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.ai-concert-option-label {
+  font-family: var(--font-body);
+  font-size: var(--text-stamp);
+  line-height: var(--leading-body);
+  color: var(--ink-secondary);
+}
+.ai-concert-option[aria-pressed="true"] .ai-concert-option-num,
+.ai-concert-option[aria-pressed="true"] .ai-concert-option-label {
+  color: var(--paper-card);
+}
+
+/* The result is empty until the third setting is chosen, and an empty box
+   should not draw a frame. :empty does that without a state class. */
+.ai-concert-result {
+  margin-top: var(--space-sm);
+  padding: 1.25rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.ai-concert-result:empty {
+  padding: 0;
+  border: 0;
+  margin-top: 0;
+}
+
+/* The unoccupied cell. R3, 2026-08-20: line 1 is a headline, not a flat
+   sentence, and it now carries .ai-concert-results-hed — the SAME rule the
+   occupied headline uses, so the two cannot drift apart. Lines 2 and 3 stay
+   flat on .ai-body: no card, no badge, the empty state is a finding, not an
+   error, and it is not dressed as one.
+
+   These two rules select .ai-body rather than p on purpose. `.ai-concert-empty
+   p` is 0-1-1 and would outrank `.ai-concert-results-hed` at 0-1-0 on
+   margin-bottom, which is exactly the drift R3 exists to close. */
+.ai-concert-empty .ai-body { margin-bottom: var(--space-xs); }
+.ai-concert-empty .ai-body:last-child { margin-bottom: 0; }
+
+.ai-concert-results-hed {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+  margin: 0.25rem 0 var(--space-sm);
+}
+
+.ai-concert-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.ai-concert-card {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+.ai-concert-card-name {
+  font-family: var(--font-editorial);
+  font-size: 1.125rem;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+  margin-bottom: 0.375rem;
+}
+.ai-concert-card-desc {
+  font-size: 0.9375rem;
+  line-height: var(--leading-body);
+  color: var(--ink-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.ai-concert-card-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.ai-concert-card-stat { display: flex; flex-direction: column; gap: 0.125rem; }
+.ai-concert-card-stat-key {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.ai-concert-card-stat-val {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-small);
+  color: var(--ink);
+}
+/* TBD is muted rather than coloured. It is missing sourcing, not a warning. */
+.ai-concert-card-stat-val--tbd { color: var(--ink-muted); }
+
+.ai-concert-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.ai-concert-card-tag {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  color: var(--teal);
+  background: var(--teal-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.4rem;
+}
+
+.ai-concert-tbd-note { margin-bottom: 0.25rem; }
+.ai-concert-source-note { margin-bottom: 0; }
+
+.ai-concert-reset {
+  margin-top: var(--space-sm);
+  min-height: var(--touch);
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--ink-secondary);
+  cursor: pointer;
+}
+.ai-concert-reset:hover { border-color: var(--teal); color: var(--teal); }
+/* R5 one rung down, 2026-08-20. Measured before changing: at 360, with the
+   reset under real keyboard focus, its outline-color computed
+   rgb(10, 124, 114) and a selected option's background computed
+   rgb(10, 124, 114) — the same value, both var(--teal), on the same screen.
+   That is the condition R5 moved .ai-concert-option:focus-visible for, and
+   the reset sits inside the same tool, so the two can be in view together.
+   The ring moves to var(--ink) (#111111, design-tokens.md "Core palette",
+   declared at line 32 of this file). No hex is invented. outline-offset is
+   unchanged at 2px, which already clears the 1.5px border. Hover is
+   untouched and still teal. */
+.ai-concert-reset:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (max-width: 520px) {
+  .ai-concert-options,
+  .ai-concert-cards,
+  .ai-concert-card-stats { grid-template-columns: 1fr; }
+}

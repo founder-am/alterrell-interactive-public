@@ -1,0 +1,272 @@
+---
+/**
+ * ConcertBuilder — the three-step picker from the archived Concert Tax piece.
+ *
+ * Ported 2026-08-20 from _archive/legacy-2026-08-13/concert-tax/index.html,
+ * markup at archive lines 1206-1285, logic and the ARTISTS literal at archive
+ * lines 2415-2610. Six questions were ruled by AMA 2026-08-20 before this file
+ * existed and every one of them is carried here, not decided here:
+ *
+ *   Q1  Every setting token in a rendered sentence is the picker's NUMERIC
+ *       span, never the descriptive one. 0 / 1-5 / 15+, 0 / 2-5 / 10+,
+ *       Minimal / Custom / Spectacle. The descriptive string stays on the
+ *       button and never enters a sentence. That is why NUM below is built
+ *       from STEPS and why no sentence reads a record's dancers_s field.
+ *   Q3  Four line-3 branches, written out in alterrell-hq/reference/
+ *       concert-builder-copy.md and copied from it character for character.
+ *       Branch C is unreachable against these 17 records and the copy file
+ *       says so; it is implemented anyway because the dataset may change.
+ *   Q4  The occupied cell ports the archive's chrome verbatim — "Your concert
+ *       profile", "Artists who built this", the TBD footnote, the source line.
+ *       Nothing on that path is authored here.
+ *   Q5  Paper, not dark. The archive's dark-workbench exception is an HTML
+ *       comment on .cb-wrap at archive line 1207 and no LEDGER line grants it,
+ *       so it does not carry. Both sibling components are paper.
+ *   Q6  All three steps visible from the start. The archive's progressive
+ *       reveal (its reveal() and its hidden attributes) is not ported.
+ *
+ * TOKENS. SEL_ is the reader's own setting, REC_ is a named artist's record
+ * value. The copy file used one name for both in consecutive lines and the
+ * rename is what fixed it. `sel` and `rec` below keep that separation.
+ *
+ * THE NEAR-MISS FALLBACK IS CUT. The archive answered an unoccupied cell with
+ * "Close matches — 2 of 3 criteria" and a card. The copy file replaces that
+ * with the flat report: the empty state is a finding, not an error. No
+ * apology, no "try again", no near match presented as a match.
+ *
+ * COUNTS. TOTAL_TOURS is ARTISTS.length and the cell total is the product of
+ * the per-step option counts. Neither is hardcoded. TOTAL_TOURS is the only
+ * one that reaches the reader, because line 2 of the copy calls for it.
+ *
+ * NAMESPACE. Every class is prefixed ai-concert-, for the reason
+ * SodiumPicker.astro and TicketSplit.astro both give: one stylesheet serves
+ * every page, so an unprefixed .card or .option claims a word the next
+ * component will want. The archive's cb-* names are not carried forward.
+ * .ai-label, .ai-body and .ai-stamp are reused as they are.
+ *
+ * This file carries ZERO CSS rules, for the reason TicketSplit.astro states at
+ * its lines 47 to 50: Astro scopes a component <style> with [data-astro-cid-*],
+ * which adds a class-level unit of specificity and outranks the shared sheet.
+ * Every rule lives in src/styles/alterrell-interactive.css, section 23.
+ *
+ * DATA. src/data/concert-artists.json is extracted from the archive by script,
+ * never transcribed. It crosses to the browser in a
+ * <script type="application/json"> block read once by id, the mechanism
+ * SodiumPicker.astro uses and for the same reasons. ARTISTS order is the
+ * archive's order and is preserved, because dataset order is the tiebreak;
+ * that is why nothing below sorts or ranks.
+ *
+ * No framework. astro.config.mjs registers only mdx() and no renderer, so a
+ * client: directive would have nothing to hydrate. Plain <script is:inline>.
+ */
+import data from '../data/concert-artists.json';
+
+const { STEPS } = data;
+const payload = JSON.stringify(data);
+---
+<div class="ai-concert">
+
+  <script type="application/json" id="ai-concert-data" is:inline set:html={payload}></script>
+
+  {STEPS.map((step) => (
+    <div class="ai-concert-step">
+      <p class="ai-concert-question" id={`ai-concert-q-${step.key}`}>{step.question}</p>
+      <div class="ai-concert-options" role="group" aria-labelledby={`ai-concert-q-${step.key}`}>
+        {step.options.map((o) => (
+          <button type="button" class="ai-concert-option" data-step={step.key} data-value={o.value} aria-pressed="false">
+            <span class="ai-concert-option-num">{o.num}</span>
+            <span class="ai-concert-option-label">{o.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <div class="ai-concert-result" id="ai-concert-result" role="status" aria-live="polite"></div>
+
+  <button type="button" class="ai-concert-reset" id="ai-concert-reset">Start over</button>
+
+</div>
+
+<script is:inline>
+(function () {
+  var root = document.querySelector('.ai-concert');
+  if (!root) return;
+
+  var store = document.getElementById('ai-concert-data');
+  if (!store) return;
+
+  var data    = JSON.parse(store.textContent);
+  var STEPS   = data.STEPS;
+  var ARTISTS = data.ARTISTS;
+
+  /* Measured, never hardcoded. TOTAL_TOURS is the only one the reader sees. */
+  var TOTAL_TOURS = ARTISTS.length;
+  var TOTAL_CELLS = STEPS.reduce(function (p, s) { return p * s.options.length; }, 1);
+
+  /* Q1. NUM[key][value] is the picker's numeric span. Every SEL_ and REC_
+     token in every sentence resolves through here, so a record's own
+     dancers_s / changes fields never reach a sentence — only a card. */
+  var NUM = {};
+  STEPS.forEach(function (s) {
+    NUM[s.key] = {};
+    s.options.forEach(function (o) { NUM[s.key][o.value] = o.num; });
+  });
+
+  var KEYS = STEPS.map(function (s) { return s.key; });   /* dancers, costumes, staging */
+  var sel  = { dancers: null, costumes: null, staging: null };
+
+  var result   = document.getElementById('ai-concert-result');
+  var resetBtn = document.getElementById('ai-concert-reset');
+  var options  = root.querySelectorAll('.ai-concert-option');
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+
+  /* Distance and occupancy are one function. A cell is occupied when some
+     record scores 0. Ties are the records at the minimum, and Array.filter
+     preserves index order, so dataset order comes free — no sort, no key. */
+  function dist(a) {
+    return (a.dancers !== sel.dancers) + (a.costumes !== sel.costumes) + (a.staging !== sel.staging);
+  }
+
+  var TBD_VALS = ['TBD', 'Varies'];
+  function isTbd(v) {
+    return TBD_VALS.some(function (t) { return String(v).indexOf(t) !== -1; });
+  }
+
+  /* N_WORD is spelled, N is a numeral. Against these 17 records N_WORD only
+     ever renders "Three": branches B and C are its only users and no cell
+     ties at two. "Two" is carried because the branch reads "three or fewer". */
+  var N_WORD = { 1: 'One', 2: 'Two', 3: 'Three' };
+
+  /* The three settings of one record, as numeric spans, in sentence order. */
+  function recSpans(a) {
+    return { d: NUM.dancers[a.dancers], c: NUM.costumes[a.costumes], s: NUM.staging[a.staging] };
+  }
+  function recClause(a) {
+    var r = recSpans(a);
+    return esc(a.name) + ', ' + esc(r.d) + ' dancers, ' + esc(r.c) + ' costume changes, ' + esc(r.s) + ' staging';
+  }
+  function nameList(list) {
+    var n = list.map(function (a) { return esc(a.name); });
+    if (n.length === 1) return n[0];
+    return n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1];
+  }
+  function sameSettings(list) {
+    return list.every(function (a) {
+      return a.dancers === list[0].dancers && a.costumes === list[0].costumes && a.staging === list[0].staging;
+    });
+  }
+
+  /* ── The unoccupied cell. Every sentence is concert-builder-copy.md. ── */
+  function emptyHTML(tied) {
+    var line1 = 'No one has built this.';
+
+    var line2 = 'Of ' + TOTAL_TOURS + ' tours, none pairs ' + esc(NUM.dancers[sel.dancers]) +
+                ' dancers with ' + esc(NUM.costumes[sel.costumes]) + ' costume changes and ' +
+                esc(NUM.staging[sel.staging]) + ' staging.';
+
+    var line3;
+    if (tied.length === 1) {
+      /* Branch A, one nearest record and no tie. */
+      line3 = 'The closest anyone came: ' + recClause(tied[0]) + '.';
+
+    } else if (tied.length <= 3 && sameSettings(tied)) {
+      /* Branch B, three or fewer tied, every tied record on the same settings. */
+      var r = recSpans(tied[0]);
+      line3 = N_WORD[tied.length] + ' tours tie for closest: ' + nameList(tied) +
+              ', each at ' + esc(r.d) + ' dancers, ' + esc(r.c) + ' costume changes, ' +
+              esc(r.s) + ' staging.';
+
+    } else if (tied.length <= 3) {
+      /* Branch C, three or fewer tied with settings differing between them.
+         Unreachable against these 17 records — the copy file says so, and if
+         it ever renders that is a finding, not a bug. */
+      line3 = N_WORD[tied.length] + ' tours tie for closest: ' +
+              tied.map(recClause).join('; ') + '.';
+
+    } else {
+      /* Branch D, above three tied. N is a numeral here, not spelled. */
+      line3 = tied.length + ' tours tie for closest. The first three: ' +
+              tied.slice(0, 3).map(recClause).join('; ') + '.';
+    }
+
+    return '<div class="ai-concert-empty">' +
+      '<p class="ai-concert-results-hed">' + line1 + '</p>' +
+      '<p class="ai-body">' + line2 + '</p>' +
+      '<p class="ai-body">' + line3 + '</p>' +
+    '</div>';
+  }
+
+  /* ── The occupied cell. Archive chrome, ported verbatim per Q4. ── */
+  function cardHTML(a) {
+    var stats = [
+      { k: 'Dancers',    v: a.dancers_s },
+      { k: 'Changes',    v: a.changes   },
+      { k: 'Gross',      v: a.gross     },
+      { k: 'Avg ticket', v: a.ticket    }
+    ];
+    var html = '<div class="ai-concert-card">' +
+      '<div class="ai-concert-card-name">' + esc(a.name) + '</div>' +
+      '<div class="ai-concert-card-desc">' + esc(a.desc) + '</div>' +
+      '<div class="ai-concert-card-stats">';
+    stats.forEach(function (it) {
+      var tbd = isTbd(it.v);
+      html += '<div class="ai-concert-card-stat">' +
+        '<span class="ai-concert-card-stat-key">' + esc(it.k) + '</span>' +
+        '<span class="ai-concert-card-stat-val' + (tbd ? ' ai-concert-card-stat-val--tbd' : '') + '">' +
+          esc(tbd ? 'TBD*' : it.v) +
+        '</span></div>';
+    });
+    html += '</div>';
+    if (a.tags && a.tags.length) {
+      html += '<div class="ai-concert-card-tags">';
+      a.tags.forEach(function (t) { html += '<span class="ai-concert-card-tag">' + esc(t) + '</span>'; });
+      html += '</div>';
+    }
+    return html + '</div>';
+  }
+
+  function occupiedHTML(exact) {
+    var hasTbd = exact.some(function (a) { return isTbd(a.gross); });
+    return '<p class="ai-concert-results-hed">Artists who built this</p>' +
+      '<div class="ai-concert-cards">' + exact.map(cardHTML).join('') + '</div>' +
+      (hasTbd ? '<p class="ai-stamp ai-concert-tbd-note">* Gross is carried forward only where the Sources tab attaches that exact figure to a named publication. The rest are marked, not estimated.</p>' : '') +
+      '<p class="ai-stamp ai-concert-source-note">Pollstar &middot; Billboard Boxscore &middot; IQ Magazine &middot; Rolling Stone &middot; TAIT staging docs &middot; Wikipedia tour pages</p>';
+  }
+
+  /* The result renders only once the third setting is chosen. There is no
+     find button; choosing the last option is the trigger. */
+  function render() {
+    if (!sel.dancers || !sel.costumes || !sel.staging) { result.innerHTML = ''; return; }
+
+    var exact = ARTISTS.filter(function (a) { return dist(a) === 0; });
+    if (exact.length) { result.innerHTML = occupiedHTML(exact); return; }
+
+    var min = Math.min.apply(null, ARTISTS.map(dist));
+    var tied = ARTISTS.filter(function (a) { return dist(a) === min; });
+    result.innerHTML = emptyHTML(tied);
+  }
+
+  Array.prototype.forEach.call(options, function (btn) {
+    btn.addEventListener('click', function () {
+      var step = btn.dataset.step, val = btn.dataset.value;
+      sel[step] = val;
+      root.querySelectorAll('.ai-concert-option[data-step="' + step + '"]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      render();
+    });
+  });
+
+  resetBtn.addEventListener('click', function () {
+    KEYS.forEach(function (k) { sel[k] = null; });
+    Array.prototype.forEach.call(options, function (b) { b.setAttribute('aria-pressed', 'false'); });
+    result.innerHTML = '';
+  });
+})();
+</script>
