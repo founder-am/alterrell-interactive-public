@@ -1292,8 +1292,25 @@ details[open] .ai-footer-methodology summary::before {
   cursor: pointer;
   transition: border-color 0.15s;
 }
+/* R5 at the platform layer, 2026-08-21. Measured before changing: at 360, on
+   fast-food-sodium, with the first .ai-select under real keyboard focus, its
+   outline-color computed rgb(10, 124, 114) and .ai-sodium-mode-btn--on's
+   background-color computed rgb(10, 124, 114) — the same value, both
+   var(--teal). The two are on the same screen: the select measures top 135.1 /
+   bottom 179.5 and the selected mode button top 304.8 / bottom 348.8 in the
+   same 900px viewport, so a focused control and a selected control are read
+   together, in one teal. This is the condition R5 already moved
+   .ai-concert-option:focus-visible and .ai-concert-reset:focus-visible for
+   (L2696-2707, L2852-2862); .ai-select and .ai-input are the same case one
+   layer up. The ring moves to var(--ink) (#111111, design-tokens.md "Core
+   palette", declared at line 32 of this file). No hex is invented.
+   outline-width and outline-offset are unchanged at 2px and 2px, which already
+   clears the 1px border. The selector stays :focus and is deliberately NOT
+   narrowed to :focus-visible — that would drop the ring for pointer and
+   programmatic focus, which is a behaviour change nobody ruled. border-color
+   stays var(--teal): it is the field's own affordance, not the ring. */
 .ai-select:focus {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
   border-color: var(--teal);
 }
@@ -1310,8 +1327,13 @@ details[open] .ai-footer-methodology summary::before {
   width: 100%;
   transition: border-color 0.15s;
 }
+/* Same ruling and the same measurement as .ai-select:focus above. NOTE: this
+   selector has no instance anywhere in the built site as of 2026-08-21 — the
+   measured value was read off a synthetic .ai-input appended to the picker for
+   the reading and removed again. It is moved with its sibling so the pair
+   cannot drift; nothing on a live page changes from this rule today. */
 .ai-input:focus {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
   border-color: var(--teal);
 }
