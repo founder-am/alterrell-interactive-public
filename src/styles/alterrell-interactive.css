@@ -1391,6 +1391,33 @@ details[open] .ai-footer-methodology summary::before {
 .ai-text-danger  { color: var(--danger); }
 .ai-text-success { color: var(--success); }
 
+/* Numeric cell, 2026-08-21 (BW). ONE rule, and it is the first rule this class
+   has ever had: .ai-num was carried into fast-food-sodium.mdx from the archived
+   piece alongside a second utility, .text-right, and NEITHER was ever declared
+   in this file. Measured before changing, at 360, 768 and 1280 on
+   pieces/fast-food-sodium: every cell in the Sodium column computed
+   text-align: start and font-variant-numeric: normal, and the column's <th>
+   computed text-align: left off `.ai-table th` at L594. Both classes were dead
+   markup; the columns were never right-aligned on any live page.
+
+   .text-right is deliberately NOT given a rule — an unprefixed utility in a
+   platform stylesheet is a name any piece can collide with, which is the same
+   reasoning that put the ai-sodium- prefix on section 21. The redundant
+   .text-right token is removed from the 33 numeric <td> cells that already
+   carried .ai-num, and from nothing else.
+
+   The six <th> cells at fast-food-sodium.mdx L199-201 and L241-243 KEEP
+   .text-right and are untouched: they are column headers reading "Protein",
+   "Sodium", "Fiber", "US Sodium", "International" and "Gap" — words, not
+   numeric cells, so .ai-num is not theirs to carry. They therefore still
+   compute text-align: left while their columns now compute right. That
+   mismatch is real, it is logged for AMA in the BW report, and closing it
+   needs a ruling this session does not have. */
+.ai-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Chart containers */
 .ai-chart-wrap {
   position: relative;
