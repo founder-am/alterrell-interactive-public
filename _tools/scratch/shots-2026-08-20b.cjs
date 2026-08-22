@@ -15,6 +15,18 @@
  * WHAT THEY CANNOT DETECT: whether the page LOOKS right. A shot can be the
  * correct width and still show a broken layout. These are width assertions,
  * not design review. The review is AMA's, off the images.
+ *
+ * CAPTURE-ONLY NAV NEUTRALISER, added 2026-08-21 (BW). The live page was
+ * measured first, at 360, with the builder scrolled into view: .ai-nav computes
+ * position:fixed, z-index:200, top:0px, rect 0,0 360x52, and the first
+ * .ai-concert-step computes rect top 95.22 at scrollIntoView block:start. The
+ * two do NOT intersect at any scroll position the page puts itself in, so there
+ * is no live defect here and nothing on the page is changed. The style tag
+ * below exists for the CAMERA only: it takes .ai-nav out of the overlay layer
+ * so a full-page capture can never paint the band over content, and it zeroes
+ * .has-nav's padding-top so the nav entering flow does not shift the document
+ * down by its own 52px height and move every clip with it. Both declarations
+ * are injected per page, after load, and live only in this script.
  */
 const { chromium } = require('playwright');
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
@@ -37,6 +49,11 @@ const pngSize=f=>{const b=fs.readFileSync(f).subarray(16,24);
     const ctx=await b.newContext({viewport:{width:W,height:900},deviceScaleFactor:DPR});
     const page=await ctx.newPage();
     await page.goto(`http://127.0.0.1:${port}/pieces/concert-tax/`,{waitUntil:'load'});
+    // Capture-only. See the header note: measured on the live page first, no
+    // overlap found, nothing on the page changed. .has-nav's padding-top is
+    // zeroed in the same tag because it exists solely to reserve the fixed
+    // band's height, and the band is no longer fixed.
+    await page.addStyleTag({content:'.ai-nav{position:static}.has-nav{padding-top:0}'});
     await page.click('[data-target="tab-the-data"]');
     await page.evaluate(()=>document.fonts.ready);
     await page.waitForTimeout(400);
