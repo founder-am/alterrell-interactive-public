@@ -1406,17 +1406,34 @@ details[open] .ai-footer-methodology summary::before {
    .text-right token is removed from the 33 numeric <td> cells that already
    carried .ai-num, and from nothing else.
 
-   The six <th> cells at fast-food-sodium.mdx L199-201 and L241-243 KEEP
-   .text-right and are untouched: they are column headers reading "Protein",
-   "Sodium", "Fiber", "US Sodium", "International" and "Gap" — words, not
-   numeric cells, so .ai-num is not theirs to carry. They therefore still
-   compute text-align: left while their columns now compute right. That
-   mismatch is real, it is logged for AMA in the BW report, and closing it
-   needs a ruling this session does not have. */
+   The six <th> cells at fast-food-sodium.mdx L199-201 and L241-243 kept
+   .text-right through 2026-08-21 and computed text-align: left while their
+   columns computed right. That mismatch is CLOSED 2026-08-22, ruled by AMA
+   on that date: the six <th> now carry .ai-num instead of .text-right, and
+   the th rule below gives .ai-num the win on a header cell.
+
+   Measured on pieces/fast-food-sodium before the change, at 360, 768 and
+   1280, on all six columns: 18 header readings all computed left, 99 cell
+   readings all computed right — 18 of 18 header/column pairs disagreed.
+
+   Specificity, verified against the file rather than assumed:
+     .ai-table th        L584   (0,1,1)  text-align: left
+     .ai-num             L1416  (0,1,0)  loses to the above ON A th
+     .ai-table th.ai-num        (0,2,1)  wins, which is why it is written
+                                          as a th rule and not as a bare
+                                          .ai-num bump
+     .ai-table td        L597   carries NO text-align at all, which is why
+                                the data cells moved on .ai-num alone.
+   No bare .text-right rule is added. .text-right stays undeclared for the
+   same reason it was left undeclared on 2026-08-21: an unprefixed utility in
+   a platform stylesheet is a name any piece can collide with. */
 .ai-num {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+/* A header cell needs the extra type unit to outrank .ai-table th (0,1,1).
+   Ruled by AMA 2026-08-22. */
+.ai-table th.ai-num { text-align: right; }
 
 /* Chart containers */
 .ai-chart-wrap {
