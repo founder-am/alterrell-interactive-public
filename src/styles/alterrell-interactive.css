@@ -2595,8 +2595,26 @@ body { font-size: 16px }
   background: transparent;
   cursor: pointer;
 }
+/* R5, the last rung, 2026-08-22. Ruled by AMA that date. Measured before
+   changing, at 360 on pieces/concert-tax, with the slider under REAL keyboard
+   focus (Tab, not .focus()): the element matched :focus-visible and its
+   outline-color computed rgb(10, 124, 114). The thumb was measured off painted
+   pixels, not off getComputedStyle — Chromium does not resolve
+   getComputedStyle(el, '::-webkit-slider-thumb') and returns the host input's
+   own box instead — and the thumb paints rgb(10, 124, 114), 332 device px in a
+   266 x 45 clip of the control. Ring and handle were the same value, both
+   var(--teal), on the same 44px control: the exact condition R5 already moved
+   .ai-select:focus (L1338), .ai-concert-option:focus-visible and
+   .ai-concert-reset:focus-visible for.
+
+   The ring moves to var(--ink) (#111111, design-tokens.md "Core palette",
+   declared at line 32 of this file). No hex is invented. outline-width and
+   outline-offset are unchanged at 2px and 2px. The selector stays
+   :focus-visible and is deliberately NOT widened to :focus — the two are not
+   interchangeable and widening it is a behaviour change nobody ruled. The
+   thumb keeps its teal: it is the control's own affordance, not the ring. */
 .ai-ticket-slider:focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
