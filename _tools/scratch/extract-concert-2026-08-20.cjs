@@ -23,7 +23,15 @@ for(const n of [1,2,3]){
   const aria=(block.match(/role="group" aria-label="([^"]+)"/)||[])[1];
   const opts=[...block.matchAll(/data-step="\d+" data-value="([^"]+)"[^>]*>\s*<span class="cb-option-num">([^<]*)<\/span>\s*<span class="cb-option-label">([^<]*)<\/span>/g)]
     .map(m=>({value:m[1],num:m[2],label:m[3]}));
-  STEPS.push({step:n,key:['dancers','costumes','staging'][n-1],question,ariaLabel:aria,options:opts});
+  /* ariaLabel dropped 2026-08-22, ruled by AMA that date. The field was written
+     into src/data/concert-artists.json by this script and read by nothing:
+     ConcertBuilder.astro labels each group with aria-labelledby pointing at the
+     question element (line 74), never with step.ariaLabel. The live data file
+     carries 0 occurrences of it, so re-running this extractor over src/data/
+     would have INJECTED a field the shipped data does not have. `aria` above is
+     still parsed and left in place: it is a read of the archive markup and
+     costs nothing, and removing the parse is a separate change nobody ruled. */
+  STEPS.push({step:n,key:['dancers','costumes','staging'][n-1],question,options:opts});
 }
 
 // ---- derivations ----

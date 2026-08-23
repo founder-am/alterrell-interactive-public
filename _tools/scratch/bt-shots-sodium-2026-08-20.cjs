@@ -39,7 +39,13 @@ const pngSize=f=>{const b=fs.readFileSync(f).subarray(16,24);
       return e?e.getBoundingClientRect().height:0;});
     if(!laid){fails.push(`@${W}: .ai-sodium-picker laid out at height 0 — the shot would show nothing`);}
 
-    const name=`pieces-fast-food-sodium-${W}.png`;
+    /* Renamed 2026-08-22, ruled by AMA that date. This was
+       pieces-fast-food-sodium-${W}.png, which is byte-for-byte the filename
+       _tools/check.js builds at line 1061 from its own slug
+       (`${slug}-${w}.png`, slug "pieces-fast-food-sodium") into the same
+       directory. Whichever of the two ran second silently overwrote the
+       other's three files. check.js is not edited; this script's output moves. */
+    const name=`sodium-eyebrow-${W}.png`;
     const declared=Number(name.match(/-(\d+)\.png$/)[1]);
     const vp=page.viewportSize().width;
     if(vp!==declared){fails.push(`${name}: viewport ${vp} != ${declared} in the filename`);await ctx.close();continue;}
