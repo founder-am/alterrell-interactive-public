@@ -21,6 +21,15 @@
 # Held: /gay-uncles/ has not migrated to Astro and is not in dist.
 # /big-black-love/*         /gay-uncles/:splat     301
 
+# Added 2026-08-27. Both must sit above the catch-all: Netlify is
+# first-match-wins, so a rule below /* is dead.
+# concert-tax: the legacy URL recovers its inbound links.
+/concert-tax/*        /pieces/concert-tax/          301
+/concert-tax          /pieces/concert-tax/          301
+# naming part-3 was cut 2026-08-14 but index.html and part-2 still link it.
+/naming/part-3/*      /naming/                      301
+/naming/part-3        /naming/                      301
+
 # Catch-all: anything not matched → the real 404 page, under a 404 status.
 # This must point at /404.html, never at /index.html: sending the hub under
 # a 404 status makes every mistyped URL look like the site works while
