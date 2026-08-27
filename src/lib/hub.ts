@@ -65,7 +65,8 @@ export type HubCard = {
 /**
  * Cards with no .mdx behind them.
  *
- * Empty since 2026-08-13. Where's Beyoncé was the only entry; it now has
+ * Empty 2026-08-13 to 2026-08-27, when naming was added below. Where's
+ * Beyoncé was the only prior entry; it now has
  * src/content/pieces/wheres-beyonce.mdx, so its card comes from the
  * collection like every other one and would be a duplicate here. The
  * mechanism stays because the failure it exists to prevent has not gone
@@ -74,7 +75,20 @@ export type HubCard = {
  * That .mdx still carries no category and no stakes, for the reason this
  * entry recorded — the archived file names neither, so nothing is invented.
  */
-export const EXTRA_CARDS: HubCard[] = [];
+export const EXTRA_CARDS: HubCard[] = [
+  // naming. Cancelled as an Astro route 2026-08-26 and kept as static files
+  // under public/naming/, so it has no .mdx the hub can read and no built
+  // route — precisely the case this list exists for. Every field is copied
+  // from src/content/pieces/naming.mdx, which stays parked and unbuilt:
+  // title L2, description L3, category L5, stakes L7.
+  {
+    slug: 'naming',
+    title: 'That Name Is So Ghetto',
+    description: 'What 60 years of baby name data reveals about who gets to be "normal."',
+    stakes: 'Series',
+    category: 'culture',
+  },
+];
 
 export function isLinked(slug: string): boolean {
   return (LINKED_SLUGS as readonly string[]).includes(slug);

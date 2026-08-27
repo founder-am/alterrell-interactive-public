@@ -42,9 +42,28 @@ const fromMdx: HubCard[] = collection.map((piece) => ({
 // Alphabetical by slug, so the order is a property of the data and not of the
 // order the collection happens to load in.
 const bySlug = (a: HubCard, b: HubCard) => a.slug.localeCompare(b.slug);
-const cards = [...fromMdx, ...EXTRA_CARDS]
-  .filter((c) => isLinked(c.slug))
-  .sort(bySlug);
+
+// Two sources, two rules, because they answer to different invariants.
+//
+// A card from the collection links only if its slug is in LINKED_SLUGS, which
+// is the list [slug].astro builds from — that is what stops an href pointing
+// at a route that was not built.
+//
+// An EXTRA_CARD has no .mdx and no built route by definition (hub.ts), so
+// LINKED_SLUGS can never contain it and filtering it through isLinked
+// discarded every entry — the mechanism was dead for the one case it exists
+// for. It is admitted directly instead. Its href is checked a stronger way
+// than list membership: Phase 3 of the 2026-08-27 run fetches every rendered
+// href and requires 200.
+//
+// Deduped by slug, collection first, because a parked .mdx can share a slug
+// with an EXTRA_CARD — naming does, and two cards at /naming/ is LANE-04's
+// literal fail condition.
+const fromMdxLinked = fromMdx.filter((c) => isLinked(c.slug));
+const mdxSlugs = new Set(fromMdxLinked.map((c) => c.slug));
+const extra = EXTRA_CARDS.filter((c) => !mdxSlugs.has(c.slug));
+const extraSlugs = new Set(extra.map((c) => c.slug));
+const cards = [...fromMdxLinked, ...extra].sort(bySlug);
 
 const HUB_TITLE = 'Alterrell Interactive: Data unravels the structure.';
 const HUB_DESC =
@@ -106,7 +125,7 @@ const HUB_DESC =
           "Coming soon" string into a build that must not contain one. */}
       {cards.map((card) => (
         <a
-          href={`/pieces/${card.slug}/`}
+          href={extraSlugs.has(card.slug) ? `/${card.slug}/` : `/pieces/${card.slug}/`}
           class:list={[
             'hub-card',
             'hub-card--live',
