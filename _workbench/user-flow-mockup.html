@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REHEARSE - User Flow & Report Mockup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+      .page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      .page-break {
+        page-break-after: always;
+        border-bottom: 3px dashed #ccc;
+        margin: 60px 0;
+        padding-bottom: 60px;
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #0a1628;
+      }
+      h2 {
+        font-size: 24px;
+        margin: 40px 0 20px;
+        color: #0a1628;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 10px;
+      }
+      h3 {
+        font-size: 18px;
+        margin: 20px 0 10px;
+        color: #1a2942;
+      }
+      .subtitle {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
+      .flow-step {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .flow-step-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background: #d4af37;
+        color: #0a1628;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .step-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #0a1628;
+      }
+      .step-content {
+        color: #555;
+        padding-left: 55px;
+      }
+      .step-content ul {
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+      .step-content li {
+        margin: 8px 0;
+      }
+
+      .screen-mockup {
+        background: #0a1628;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 15px 0;
+        color: white;
+      }
+      .mockup-title {
+        font-size: 14px;
+        color: #d4af37;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .mockup-content {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 20px;
+      }
+      .mockup-button {
+        display: inline-block;
+        background: #d4af37;
+        color: #0a1628;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        margin-top: 15px;
+      }
+
+      .report-section {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .score-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .score-green {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .score-yellow {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .score-red {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .dimension-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .dimension-card {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        border-left: 4px solid #3b82f6;
+      }
+      .dimension-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .dimension-score {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .checkin-example {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .checkin-day {
+        font-weight: 600;
+        color: #3b82f6;
+        margin-bottom: 10px;
+      }
+      .checkin-question {
+        font-style: italic;
+        color: #555;
+        margin: 10px 0;
+        padding-left: 15px;
+        border-left: 3px solid #d4af37;
+      }
+
+      .toc {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .toc h3 {
+        margin-bottom: 15px;
+      }
+      .toc ul {
+        list-style: none;
+      }
+      .toc li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .toc a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+
+      .email-preview {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+      .email-header {
+        background: #f5f5f5;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+      }
+      .email-from {
+        font-size: 14px;
+        color: #666;
+      }
+      .email-subject {
+        font-weight: 600;
+        margin-top: 5px;
+      }
+      .email-body {
+        padding: 20px;
+      }
+
+      @media print {
+        .page-break {
+          page-break-after: always;
+        }
+        body {
+          background: white;
+        }
+        .flow-step,
+        .report-section,
+        .toc {
+          box-shadow: none;
+          border: 1px solid #ddd;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>REHEARSE</h1>
+      <p class="subtitle">Complete User Flow & Report Mockup Documentation</p>
+
+      <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+          <li>1. User Flow Overview</li>
+          <li>2. Founder 1 (F1) Journey</li>
+          <li>3. Founder 2 (F2) Journey</li>
+          <li>4. Daily Check-in Experience</li>
+          <li>5. Compatibility Report Mockup</li>
+          <li>6. Email Communications</li>
+        </ul>
+      </div>
+
+      <h2>1. User Flow Overview</h2>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">1</div>
+          <div class="step-title">F1 Pays First</div>
+        </div>
+        <div class="step-content">
+          <p>
+            Founder 1 visits the landing page and pays $50 via Stripe. No
+            account creation required until after payment.
+          </p>
+          <div class="screen-mockup">
+            <div class="mockup-title">Homepage Hero</div>
+            <div class="mockup-content">
+              <h3 style="font-size: 28px; margin-bottom: 10px">REHEARSE</h3>
+              <p style="color: #d4af37; margin-bottom: 15px">
+                "What if you could trial the co-founder marriage before you say
+                'I do'?"
+              </p>
+              <p style="opacity: 0.8">
+                Test your partnership under pressure before you incorporate.
+              </p>
+              <div class="mockup-button">Pay Now — $50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">2</div>
+          <div class="step-title">F1 Completes Profile</div>
+        </div>
+        <div class="step-content">
+          <p>
+            After successful payment, F1 enters their details and selects sprint
+            duration (14 or 21 days).
+          </p>
+          <ul>
+            <li>Full name</li>
+            <li>Email address</li>
+            <li>Sprint duration selection</li>
+          </ul>
+          <p style="margin-top: 15px">
+            <strong>Result:</strong> F1 receives a unique invite link to share
+            with their co-founder.
+          </p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">3</div>
+          <div class="step-title">F2 Pays via Invite Link</div>
+        </div>
+        <div class="step-content">
+          <p>
+            Founder 2 receives the invite link, sees sprint details, and pays
+            $50.
+          </p>
+          <div class="screen-mockup">
+            <div class="mockup-title">Join Sprint Page</div>
+            <div class="mockup-content">
+              <p style="color: #d4af37">You're Invited to a Pressure Test</p>
+              <p style="margin: 15px 0">
+                <strong>Sarah Chen</strong> has invited you to a 14-day
+                co-founder pressure test.
+              </p>
+              <p style="opacity: 0.7">
+                Your payment activates the sprint for both founders.
+              </p>
+              <div class="mockup-button">Pay $50 & Join</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">4</div>
+          <div class="step-title">Sprint Activates</div>
+        </div>
+        <div class="step-content">
+          <p>Once both founders have paid:</p>
+          <ul>
+            <li>Sprint status changes to "active"</li>
+            <li>Both founders receive magic link emails</li>
+            <li>Daily check-ins become available</li>
+            <li>Day 1 begins immediately</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">5</div>
+          <div class="step-title">Daily Check-ins</div>
+        </div>
+        <div class="step-content">
+          <p>
+            Each founder completes daily check-ins independently. Questions
+            probe the 7 dimensions of alignment.
+          </p>
+          <div class="checkin-example">
+            <div class="checkin-day">Day 3: Decision Making</div>
+            <div class="checkin-question">
+              "When you and your co-founder disagree on a strategic decision,
+              how do you typically resolve it?"
+            </div>
+            <div class="checkin-question">
+              "Describe a recent situation where you had to make a quick
+              decision without your partner's input. How did they react?"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <div class="step-number">6</div>
+          <div class="step-title">Report Generation</div>
+        </div>
+        <div class="step-content">
+          <p>
+            After the sprint completes, an admin reviews responses and generates
+            the compatibility report. Both founders receive email notification
+            when the report is ready.
+          </p>
+        </div>
+      </div>
+
+      <div class="page-break"></div>
+
+      <h2>2. Sample Daily Check-in Questions</h2>
+
+      <div class="report-section">
+        <h3>Week 1: Foundation</h3>
+        <div class="checkin-example">
+          <div class="checkin-day">Day 1: Vision & Goals</div>
+          <div class="checkin-question">
+            "What does success look like for this company in 5 years? Be
+            specific about metrics."
+          </div>
+          <div class="checkin-question">
+            "What would make you want to quit this venture?"
+          </div>
+        </div>
+        <div class="checkin-example">
+          <div class="checkin-day">Day 2: Work Style</div>
+          <div class="checkin-question">
+            "Describe your ideal work week - hours, location, communication
+            frequency."
+          </div>
+          <div class="checkin-question">
+            "How do you handle periods of intense stress or pressure?"
+          </div>
+        </div>
+        <div class="checkin-example">
+          <div class="checkin-day">Day 3: Decision Making</div>
+          <div class="checkin-question">
+            "When you disagree on strategy, how should final decisions be made?"
+          </div>
+          <div class="checkin-question">
+            "What decisions should require unanimous agreement vs. individual
+            authority?"
+          </div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h3>Week 2: Under Pressure</h3>
+        <div class="checkin-example">
+          <div class="checkin-day">Day 8: Conflict</div>
+          <div class="checkin-question">
+            "Describe how you typically react in the first 5 minutes of
+            receiving critical feedback."
+          </div>
+          <div class="checkin-question">
+            "What behavior from a partner would you find unforgivable?"
+          </div>
+        </div>
+        <div class="checkin-example">
+          <div class="checkin-day">Day 10: Money</div>
+          <div class="checkin-question">
+            "What's your personal financial runway and how does it affect your
+            risk tolerance?"
+          </div>
+          <div class="checkin-question">
+            "At what valuation would you sell the company?"
+          </div>
+        </div>
+      </div>
+
+      <div class="page-break"></div>
+
+      <h2>3. Compatibility Report Mockup</h2>
+
+      <div class="report-section" style="background: #0a1628; color: white">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+          "
+        >
+          <div>
+            <h3 style="color: #d4af37; font-size: 24px; margin-bottom: 5px">
+              REHEARSE
+            </h3>
+            <p style="opacity: 0.7">Co-Founder Compatibility Report</p>
+          </div>
+          <div style="text-align: right">
+            <p style="font-size: 14px; opacity: 0.7">
+              Generated: February 4, 2026
+            </p>
+            <p style="font-size: 14px; opacity: 0.7">
+              Sprint Duration: 14 days
+            </p>
+          </div>
+        </div>
+
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+          "
+        >
+          <p
+            style="
+              color: #d4af37;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              margin-bottom: 10px;
+            "
+          >
+            Overall Compatibility
+          </p>
+          <div style="font-size: 72px; font-weight: bold; color: #22c55e">
+            78%
+          </div>
+          <span class="score-badge score-green" style="margin-top: 15px"
+            >GREEN ZONE - Proceed with Awareness</span
+          >
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h3>Founders Profile</h3>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+          "
+        >
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px">
+            <p style="font-weight: 600; margin-bottom: 10px">Sarah Chen (F1)</p>
+            <p style="font-size: 14px; color: #666">
+              Archetype: Visionary Builder
+            </p>
+            <p style="font-size: 14px; color: #666; margin-top: 5px">
+              Primary Driver: Impact & Innovation
+            </p>
+          </div>
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px">
+            <p style="font-weight: 600; margin-bottom: 10px">
+              Marcus Johnson (F2)
+            </p>
+            <p style="font-size: 14px; color: #666">
+              Archetype: Pragmatic Operator
+            </p>
+            <p style="font-size: 14px; color: #666; margin-top: 5px">
+              Primary Driver: Execution & Growth
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h3>7 Dimensions Analysis</h3>
+        <div class="dimension-grid">
+          <div class="dimension-card" style="border-left-color: #22c55e">
+            <div class="dimension-name">1. Energy Alignment</div>
+            <div class="dimension-score">
+              <span class="score-badge score-green">GREEN</span> 85%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Both founders show compatible work rhythms and stamina
+              expectations.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #22c55e">
+            <div class="dimension-name">2. Trust & Transparency</div>
+            <div class="dimension-score">
+              <span class="score-badge score-green">GREEN</span> 82%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Strong foundation of mutual respect and open communication
+              observed.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #eab308">
+            <div class="dimension-name">3. Goal Setting</div>
+            <div class="dimension-score">
+              <span class="score-badge score-yellow">YELLOW</span> 68%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Some divergence on timeline expectations. Recommend alignment
+              discussion.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #22c55e">
+            <div class="dimension-name">4. Conflict Style</div>
+            <div class="dimension-score">
+              <span class="score-badge score-green">GREEN</span> 79%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Complementary approaches to disagreement resolution.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #eab308">
+            <div class="dimension-name">5. Feedback Culture</div>
+            <div class="dimension-score">
+              <span class="score-badge score-yellow">YELLOW</span> 65%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              F1 prefers direct feedback; F2 needs processing time. Establish
+              protocols.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #22c55e">
+            <div class="dimension-name">6. Culture & Hiring</div>
+            <div class="dimension-score">
+              <span class="score-badge score-green">GREEN</span> 88%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Aligned on team culture values and hiring philosophy.
+            </p>
+          </div>
+          <div class="dimension-card" style="border-left-color: #ef4444">
+            <div class="dimension-name">7. Exit Alignment</div>
+            <div class="dimension-score">
+              <span class="score-badge score-red">RED</span> 52%
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 10px">
+              Significant gap in exit timeline expectations. Critical discussion
+              needed.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h3>Key Findings</h3>
+
+        <div style="margin: 20px 0">
+          <h4 style="color: #22c55e; margin-bottom: 10px">Green Flags</h4>
+          <ul style="padding-left: 20px">
+            <li>Strong alignment on company culture and values</li>
+            <li>Complementary skill sets with minimal overlap conflict</li>
+            <li>Both founders demonstrate high commitment levels</li>
+            <li>
+              Healthy conflict resolution patterns observed in check-in
+              responses
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin: 20px 0">
+          <h4 style="color: #ef4444; margin-bottom: 10px">Red Flags</h4>
+          <ul style="padding-left: 20px">
+            <li>
+              <strong>Exit Timeline Mismatch:</strong> F1 envisions a 10+ year
+              journey; F2 targets 5-7 year exit. This fundamental difference
+              requires explicit discussion and documented agreement.
+            </li>
+            <li>
+              <strong>Risk Tolerance Gap:</strong> During stress scenarios,
+              founders showed divergent risk appetites that could cause friction
+              during pivots.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h3>Recommendations</h3>
+        <ol style="padding-left: 20px">
+          <li style="margin: 15px 0">
+            <strong>Schedule Exit Alignment Discussion:</strong> Before
+            incorporating, have an explicit conversation about exit scenarios,
+            timelines, and what "success" means to each founder.
+          </li>
+          <li style="margin: 15px 0">
+            <strong>Establish Feedback Protocols:</strong> Create agreed-upon
+            norms for how and when to deliver critical feedback to accommodate
+            different processing styles.
+          </li>
+          <li style="margin: 15px 0">
+            <strong>Document Decision Authority:</strong> Clearly define which
+            decisions require consensus vs. individual authority to prevent
+            future conflicts.
+          </li>
+          <li style="margin: 15px 0">
+            <strong>Quarterly Check-ins:</strong> Schedule recurring partnership
+            health checks using the 7 dimensions framework.
+          </li>
+        </ol>
+      </div>
+
+      <div class="page-break"></div>
+
+      <h2>4. Email Communications</h2>
+
+      <div class="email-preview">
+        <div class="email-header">
+          <div class="email-from">
+            From: REHEARSE &lt;assessments@mirror.alterrell.com&gt;
+          </div>
+          <div class="email-subject">
+            Subject: Your Pressure Test Magic Link - Day 1 Begins!
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Hi Sarah,</p>
+          <p style="margin: 15px 0">
+            Great news! Marcus has completed their payment and your 14-day
+            Pressure Test is now active.
+          </p>
+          <p style="margin: 15px 0">
+            <strong>Your magic link to access check-ins:</strong>
+          </p>
+          <div
+            style="
+              background: #f5f5f5;
+              padding: 15px;
+              border-radius: 8px;
+              margin: 15px 0;
+            "
+          >
+            <code
+              >https://sprint.mirror.alterrell.com/sprint/abc123/checkin?token=xyz789</code
+            >
+          </div>
+          <p style="margin: 15px 0">
+            Day 1 check-in is now available. Complete it before midnight to stay
+            on track.
+          </p>
+          <p style="margin: 15px 0">Best,<br />The REHEARSE Team</p>
+        </div>
+      </div>
+
+      <div class="email-preview">
+        <div class="email-header">
+          <div class="email-from">
+            From: REHEARSE &lt;assessments@mirror.alterrell.com&gt;
+          </div>
+          <div class="email-subject">
+            Subject: Your Compatibility Report is Ready
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Hi Sarah,</p>
+          <p style="margin: 15px 0">
+            Your co-founder compatibility report has been reviewed and is now
+            ready.
+          </p>
+          <p style="margin: 15px 0">
+            <strong>Overall Compatibility Score:</strong>
+            <span style="color: #22c55e; font-weight: bold"
+              >78% - GREEN ZONE</span
+            >
+          </p>
+          <p style="margin: 15px 0">
+            View your full report with detailed analysis across all 7
+            dimensions:
+          </p>
+          <div style="margin: 20px 0">
+            <a
+              href="#"
+              style="
+                background: #3b82f6;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 6px;
+                text-decoration: none;
+                display: inline-block;
+              "
+              >View Full Report</a
+            >
+          </div>
+          <p style="margin: 15px 0">
+            This report is shared between you and Marcus. We recommend reviewing
+            it together.
+          </p>
+          <p style="margin: 15px 0">Best,<br />The REHEARSE Team</p>
+        </div>
+      </div>
+
+      <div
+        class="report-section"
+        style="
+          margin-top: 40px;
+          background: #0a1628;
+          color: white;
+          text-align: center;
+        "
+      >
+        <p
+          style="
+            color: #d4af37;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+          "
+        >
+          End of Documentation
+        </p>
+        <p style="opacity: 0.7; margin-top: 10px">
+          REHEARSE - Test the Partnership Before You Commit
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

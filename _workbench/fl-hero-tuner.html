@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Forever Loved — Hero Tuner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#6B8F71; --slate:#1C1C1A; --terracotta:#B07355;
+    --muted:#6B6A68; --border:#E8E6E2; --surface:#F8F7F5; --hint:#B0AEA8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#EDEBE7;font-family:'DM Sans',sans-serif;color:var(--slate)}
+  header{background:#fff;border-bottom:1px solid var(--border);padding:16px 24px}
+  header h1{font-family:'DM Serif Display',serif;font-size:20px;margin:0}
+  header p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+  .wrap{padding:20px 24px 60px}
+
+  .stage{display:flex;gap:24px;align-items:flex-start;overflow-x:auto;padding-bottom:12px}
+  .framebox{background:#fff;border:1px solid var(--border);border-radius:4px;padding:10px;flex:0 0 auto}
+  .framelabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;gap:16px}
+  .framelabel b{color:var(--slate);font-weight:500}
+  .clip{overflow:hidden;background:var(--surface);border:1px solid var(--border)}
+  .scaler{transform-origin:top left}
+
+  /* ---- the actual hero replica ---- */
+  .app{background:var(--surface);font-family:'DM Sans',sans-serif}
+  .nav{background:#fff;border-bottom:1px solid var(--border)}
+  .nav-in{margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .brand{font-family:'DM Serif Display',serif;font-size:20px;color:var(--slate)}
+  .brand span{letter-spacing:.05em}
+  .brand em{color:var(--sage);font-style:italic}
+  .tag{font-size:12px;color:var(--hint);margin:0}
+  .hero{margin:0 auto}
+  .hero h1{font-family:'DM Serif Display',serif;color:var(--slate);margin:0}
+  .hero h1 em{color:var(--sage);font-style:italic}
+  .hero p{color:var(--muted);margin:0}
+  .strip{border-bottom:1px solid var(--border);background:var(--surface)}
+  .strip-in{margin:0 auto;padding-top:16px;padding-bottom:16px}
+  .strip-lab{font-size:12px;font-weight:500;color:var(--muted);margin:0 0 8px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .chip{font-size:14px;border-radius:999px;padding:4px 12px;border:1px solid var(--border);background:#fff;color:var(--muted)}
+  .chip.on{background:var(--sage);border-color:var(--sage);color:#fff}
+  .tabbar{border-bottom:1px solid var(--border);background:#fff}
+  .tabbar-in{margin:0 auto;display:flex;gap:24px}
+  .tabbtn{padding:12px 0;font-size:14px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+  .tabbtn.on{color:var(--sage);border-bottom-color:var(--sage)}
+
+  /* ---- controls ---- */
+  .panel{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:14px 16px}
+  .card h2{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:500}
+  .row{margin-bottom:12px}
+  .row:last-child{margin-bottom:0}
+  .row label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+  .row label .v{font-family:'DM Mono',monospace;font-size:12px;color:var(--sage)}
+  .row label .scope{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--hint);margin-left:6px}
+  input[type=range]{width:100%;accent-color:var(--sage);margin:0}
+  input[type=text]{width:100%;font-family:'DM Sans',sans-serif;font-size:13px;padding:6px 8px;border:1px solid var(--border);border-radius:3px;background:var(--surface);color:var(--slate)}
+  .toggles{display:flex;flex-wrap:wrap;gap:8px}
+  .tg{font-size:12px;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif}
+  .tg.on{background:var(--sage);border-color:var(--sage);color:#fff}
+  .note{font-size:11px;color:var(--muted);line-height:1.5;margin:8px 0 0}
+  .warn{color:var(--terracotta)}
+
+  .out{margin-top:24px;background:var(--slate);border-radius:4px;padding:16px 18px}
+  .out-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .out-head h2{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hint);margin:0;font-weight:500}
+  .out pre{margin:0;font-family:'DM Mono',monospace;font-size:11.5px;line-height:1.6;color:#E8E6E2;white-space:pre-wrap;word-break:break-word}
+  .copy{font-family:'DM Sans',sans-serif;font-size:12px;background:var(--sage);color:#fff;border:none;border-radius:3px;padding:6px 14px;cursor:pointer}
+  .reset{font-family:'DM Sans',sans-serif;font-size:12px;background:transparent;color:var(--hint);border:1px solid #3a3a37;border-radius:3px;padding:6px 14px;cursor:pointer;margin-right:8px}
+  .readout{margin-top:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);line-height:1.7}
+  .readout b{color:var(--slate);font-weight:500}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Forever Loved — Hero Tuner</h1>
+  <p>Built from src/components/Hero.jsx, Nav.jsx, App.jsx and tailwind.config.js as committed. Every slider starts at the shipped value. 360 and 1280 render simultaneously from one control set.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="stage">
+    <div class="framebox">
+      <div class="framelabel"><span>Mobile <b>360</b></span><span id="m-h">—</span></div>
+      <div class="clip" id="clip-m"><div class="scaler" id="scale-m"></div></div>
+    </div>
+    <div class="framebox">
+      <div class="framelabel"><span>Desktop <b>1280</b></span><span id="d-h">—</span></div>
+      <div class="clip" id="clip-d"><div class="scaler" id="scale-d"></div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+
+    <div class="card">
+      <h2>Structure</h2>
+      <div class="row">
+        <label>Line break in headline <span class="v" id="v-br">on</span></label>
+        <div class="toggles">
+          <button class="tg on" data-tg="br" data-val="1">Keep &lt;br&gt;</button>
+          <button class="tg" data-tg="br" data-val="0">Remove, let it wrap</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>Alignment <span class="v" id="v-align">left</span></label>
+        <div class="toggles">
+          <button class="tg on" data-tg="align" data-val="left">Left</button>
+          <button class="tg" data-tg="align" data-val="center">Center</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>Show intake strip <span class="v" id="v-strip">on</span></label>
+        <div class="toggles">
+          <button class="tg on" data-tg="strip" data-val="1">Show</button>
+          <button class="tg" data-tg="strip" data-val="0">Hide</button>
+        </div>
+      </div>
+      <p class="note">Intake strip and tab bar are shown for spacing context only. They are not tunable here.</p>
+    </div>
+
+    <div class="card">
+      <h2>Copy</h2>
+      <div class="row">
+        <label>Headline, line 1</label>
+        <input type="text" id="t-h1" value="You don&#39;t have to figure">
+      </div>
+      <div class="row">
+        <label>Headline, line 2 (sage italic)</label>
+        <input type="text" id="t-h2" value="this out alone.">
+      </div>
+      <div class="row">
+        <label>Paragraph</label>
+        <input type="text" id="t-p" value="We&#39;ve organized everything into one quiet, private checklist. So you can focus on what matters.">
+      </div>
+      <p class="note warn">The shipped paragraph contains an em dash. It has been replaced with a full stop here. Change it if you want something else.</p>
+    </div>
+
+    <div class="card">
+      <h2>Container</h2>
+      <div class="row">
+        <label>Max width <span><span class="scope">both</span><span class="v" id="v-max">768</span></span></label>
+        <input type="range" id="s-max" min="560" max="1200" step="8" value="768">
+      </div>
+      <div class="row">
+        <label>Gutter <span><span class="scope">both</span><span class="v" id="v-gut">24</span></span></label>
+        <input type="range" id="s-gut" min="8" max="64" step="1" value="24">
+      </div>
+      <p class="note">One control moves both widths. Shipped is Tailwind max-w-3xl (768) and px-6 (24).</p>
+    </div>
+
+    <div class="card">
+      <h2>Hero padding</h2>
+      <div class="row">
+        <label>Top, mobile <span><span class="scope">360</span><span class="v" id="v-ptm">48</span></span></label>
+        <input type="range" id="s-ptm" min="0" max="140" step="2" value="48">
+      </div>
+      <div class="row">
+        <label>Bottom, mobile <span><span class="scope">360</span><span class="v" id="v-pbm">48</span></span></label>
+        <input type="range" id="s-pbm" min="0" max="140" step="2" value="48">
+      </div>
+      <div class="row">
+        <label>Top, desktop <span><span class="scope">1280</span><span class="v" id="v-ptd">64</span></span></label>
+        <input type="range" id="s-ptd" min="0" max="180" step="2" value="64">
+      </div>
+      <div class="row">
+        <label>Bottom, desktop <span><span class="scope">1280</span><span class="v" id="v-pbd">64</span></span></label>
+        <input type="range" id="s-pbd" min="0" max="180" step="2" value="64">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Headline</h2>
+      <div class="row">
+        <label>Size, mobile <span><span class="scope">360</span><span class="v" id="v-hm">36</span></span></label>
+        <input type="range" id="s-hm" min="20" max="60" step="1" value="36">
+      </div>
+      <div class="row">
+        <label>Size, desktop <span><span class="scope">1280</span><span class="v" id="v-hd">48</span></span></label>
+        <input type="range" id="s-hd" min="24" max="88" step="1" value="48">
+      </div>
+      <div class="row">
+        <label>Line height <span><span class="scope">both</span><span class="v" id="v-hlh">1.20</span></span></label>
+        <input type="range" id="s-hlh" min="0.9" max="1.7" step="0.01" value="1.2">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Paragraph</h2>
+      <div class="row">
+        <label>Gap below headline <span><span class="scope">both</span><span class="v" id="v-gap">16</span></span></label>
+        <input type="range" id="s-gap" min="0" max="64" step="1" value="16">
+      </div>
+      <div class="row">
+        <label>Size <span><span class="scope">both</span><span class="v" id="v-ps">16</span></span></label>
+        <input type="range" id="s-ps" min="12" max="26" step="1" value="16">
+      </div>
+      <div class="row">
+        <label>Line height <span><span class="scope">both</span><span class="v" id="v-plh">1.63</span></span></label>
+        <input type="range" id="s-plh" min="1.1" max="2.2" step="0.01" value="1.625">
+      </div>
+      <div class="row">
+        <label>Max width <span><span class="scope">both</span><span class="v" id="v-pmax">520</span></span></label>
+        <input type="range" id="s-pmax" min="240" max="900" step="10" value="520">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Preview scale</h2>
+      <div class="row">
+        <label>360 frame <span class="v" id="v-sm">100%</span></label>
+        <input type="range" id="s-sm" min="40" max="100" step="5" value="100">
+      </div>
+      <div class="row">
+        <label>1280 frame <span class="v" id="v-sd">50%</span></label>
+        <input type="range" id="s-sd" min="25" max="100" step="5" value="50">
+      </div>
+      <p class="note">Scale affects display only. Wrapping and proportions are measured at true width.</p>
+    </div>
+
+  </div>
+
+  <div class="readout" id="readout"></div>
+
+  <div class="out">
+    <div class="out-head">
+      <h2>Hero.jsx — generated</h2>
+      <div>
+        <button class="reset" id="btn-reset">Reset to shipped</button>
+        <button class="copy" id="btn-copy">Copy</button>
+      </div>
+    </div>
+    <pre id="code"></pre>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var S = {
+    br:1, align:'left', strip:1,
+    max:768, gut:24,
+    ptm:48, pbm:48, ptd:64, pbd:64,
+    hm:36, hd:48, hlh:1.2,
+    gap:16, ps:16, plh:1.625, pmax:520,
+    sm:100, sd:50,
+    h1:"You don't have to figure",
+    h2:"this out alone.",
+    p:"We've organized everything into one quiet, private checklist. So you can focus on what matters."
+  };
+  var SHIPPED = JSON.parse(JSON.stringify(S));
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function buildApp(w, isMobile){
+    var pt = isMobile ? S.ptm : S.ptd;
+    var pb = isMobile ? S.pbm : S.pbd;
+    var hs = isMobile ? S.hm : S.hd;
+    var inner = 'max-width:' + S.max + 'px;padding-left:' + S.gut + 'px;padding-right:' + S.gut + 'px;';
+    var brk = S.br ? '<br>' : ' ';
+
+    var chips1 = ['Myself','A spouse','A parent','A child','A sibling','A friend'];
+    var chips2 = ['Spouse / Partner','Parent','Child','Sibling','Grandparent','Friend','Other'];
+    function chipHtml(arr){
+      return arr.map(function(c){ return '<span class="chip">' + esc(c) + '</span>'; }).join('');
+    }
+
+    var stripHtml = '';
+    if (S.strip) {
+      stripHtml =
+        '<div class="strip"><div class="strip-in" style="' + inner + '">' +
+        '<p class="strip-lab">I&rsquo;m doing this for:</p><div class="chips">' + chipHtml(chips1) + '</div>' +
+        '<p class="strip-lab">They were my:</p><div class="chips" style="margin-bottom:0">' + chipHtml(chips2) + '</div>' +
+        '</div></div>';
+    }
+
+    return '' +
+      '<div class="app" style="width:' + w + 'px">' +
+        '<div class="nav"><div class="nav-in" style="' + inner + '">' +
+          '<div class="brand"><span>FOREVER</span> <em>Loved</em></div>' +
+          '<p class="tag">Free. Private. No accounts needed.</p>' +
+        '</div></div>' +
+        '<div class="hero" id="hero-' + (isMobile?'m':'d') + '" style="' + inner +
+          'padding-top:' + pt + 'px;padding-bottom:' + pb + 'px;text-align:' + S.align + '">' +
+          '<h1 style="font-size:' + hs + 'px;line-height:' + S.hlh + '">' +
+            esc(S.h1) + brk + '<em>' + esc(S.h2) + '</em>' +
+          '</h1>' +
+          '<p style="margin-top:' + S.gap + 'px;font-size:' + S.ps + 'px;line-height:' + S.plh +
+            ';max-width:' + S.pmax + 'px' + (S.align === 'center' ? ';margin-left:auto;margin-right:auto' : '') + '">' +
+            esc(S.p) +
+          '</p>' +
+        '</div>' +
+        stripHtml +
+        '<div class="tabbar"><div class="tabbar-in" style="' + inner + '">' +
+          '<span class="tabbtn on">Admin Checklist</span>' +
+          '<span class="tabbtn">Making Arrangements</span>' +
+          '<span class="tabbtn">Helpful Resources</span>' +
+        '</div></div>' +
+      '</div>';
+  }
+
+  function code(){
+    var brLine = S.br
+      ? "        " + S.h1 + "\n        <br />\n"
+      : "        " + S.h1 + "{' '}\n";
+    var alignCls = S.align === 'center' ? ' text-center' : '';
+    var pAuto = S.align === 'center' ? ", marginLeft: 'auto', marginRight: 'auto'" : '';
+
+    return "import React from 'react'\n\n" +
+      "export default function Hero() {\n" +
+      "  return (\n" +
+      "    <section\n" +
+      "      className=\"mx-auto" + alignCls + "\"\n" +
+      "      style={{\n" +
+      "        maxWidth: '" + S.max + "px',\n" +
+      "        paddingLeft: '" + S.gut + "px',\n" +
+      "        paddingRight: '" + S.gut + "px',\n" +
+      "        paddingTop: 'var(--hero-pt)',\n" +
+      "        paddingBottom: 'var(--hero-pb)',\n" +
+      "      }}\n" +
+      "    >\n" +
+      "      <h1\n" +
+      "        style={{\n" +
+      "          fontFamily: 'DM Serif Display, serif',\n" +
+      "          color: 'var(--slate)',\n" +
+      "          fontSize: 'var(--hero-hed)',\n" +
+      "          lineHeight: '" + S.hlh + "',\n" +
+      "        }}\n" +
+      "      >\n" +
+      brLine +
+      "        <em style={{ color: 'var(--sage)', fontStyle: 'italic' }}>" + S.h2 + "</em>\n" +
+      "      </h1>\n" +
+      "      <p\n" +
+      "        style={{\n" +
+      "          marginTop: '" + S.gap + "px',\n" +
+      "          fontSize: '" + S.ps + "px',\n" +
+      "          lineHeight: '" + S.plh + "',\n" +
+      "          color: 'var(--muted)',\n" +
+      "          maxWidth: '" + S.pmax + "px'" + pAuto + ",\n" +
+      "        }}\n" +
+      "      >\n" +
+      "        " + S.p + "\n" +
+      "      </p>\n" +
+      "    </section>\n" +
+      "  )\n" +
+      "}\n\n" +
+      "/* Add to src/index.css so one place owns the breakpoint:\n\n" +
+      ":root {\n" +
+      "  --hero-pt: " + S.ptm + "px;\n" +
+      "  --hero-pb: " + S.pbm + "px;\n" +
+      "  --hero-hed: " + S.hm + "px;\n" +
+      "}\n" +
+      "@media (min-width: 768px) {\n" +
+      "  :root {\n" +
+      "    --hero-pt: " + S.ptd + "px;\n" +
+      "    --hero-pb: " + S.pbd + "px;\n" +
+      "    --hero-hed: " + S.hd + "px;\n" +
+      "  }\n" +
+      "}\n*/\n";
+  }
+
+  function render(){
+    var sm = S.sm/100, sd = S.sd/100;
+
+    var mEl = document.getElementById('scale-m');
+    var dEl = document.getElementById('scale-d');
+    mEl.innerHTML = buildApp(360, true);
+    dEl.innerHTML = buildApp(1280, false);
+    mEl.style.transform = 'scale(' + sm + ')';
+    dEl.style.transform = 'scale(' + sd + ')';
+
+    var mh = mEl.firstChild.offsetHeight, dh = dEl.firstChild.offsetHeight;
+    document.getElementById('clip-m').style.width  = Math.round(360*sm) + 'px';
+    document.getElementById('clip-m').style.height = Math.round(mh*sm) + 'px';
+    document.getElementById('clip-d').style.width  = Math.round(1280*sd) + 'px';
+    document.getElementById('clip-d').style.height = Math.round(dh*sd) + 'px';
+
+    var hm = document.getElementById('hero-m').offsetHeight;
+    var hd = document.getElementById('hero-d').offsetHeight;
+    document.getElementById('m-h').textContent = 'hero ' + hm + 'px';
+    document.getElementById('d-h').textContent = 'hero ' + hd + 'px';
+
+    var textW = Math.min(S.max, 360) - 2*S.gut;
+    var gapTxt = Math.abs(hm - hd);
+    document.getElementById('readout').innerHTML =
+      'Text column at 360: <b>' + textW + 'px</b> &nbsp;·&nbsp; ' +
+      'Hero height 360: <b>' + hm + 'px</b> &nbsp;·&nbsp; ' +
+      'Hero height 1280: <b>' + hd + 'px</b> &nbsp;·&nbsp; ' +
+      'Divergence: <b>' + gapTxt + 'px</b><br>' +
+      'Shipped for comparison: hero 360 was <b>' + (S.br?'':'') + '</b> whatever you reset to. ' +
+      'Press Reset to shipped to measure the baseline.';
+
+    document.getElementById('code').textContent = code();
+  }
+
+  function bindRange(id, key, fmt){
+    var el = document.getElementById('s-'+id);
+    var out = document.getElementById('v-'+id);
+    el.addEventListener('input', function(){
+      S[key] = parseFloat(el.value);
+      out.textContent = fmt ? fmt(S[key]) : S[key];
+      render();
+    });
+  }
+  bindRange('max','max'); bindRange('gut','gut');
+  bindRange('ptm','ptm'); bindRange('pbm','pbm');
+  bindRange('ptd','ptd'); bindRange('pbd','pbd');
+  bindRange('hm','hm');   bindRange('hd','hd');
+  bindRange('hlh','hlh', function(v){return v.toFixed(2)});
+  bindRange('gap','gap'); bindRange('ps','ps');
+  bindRange('plh','plh', function(v){return v.toFixed(2)});
+  bindRange('pmax','pmax');
+  bindRange('sm','sm', function(v){return v+'%'});
+  bindRange('sd','sd', function(v){return v+'%'});
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tg'), function(b){
+    b.addEventListener('click', function(){
+      var g = b.getAttribute('data-tg'), v = b.getAttribute('data-val');
+      Array.prototype.forEach.call(document.querySelectorAll('.tg[data-tg="'+g+'"]'), function(o){
+        o.classList.remove('on');
+      });
+      b.classList.add('on');
+      S[g] = (g === 'align') ? v : parseInt(v,10);
+      var lbl = document.getElementById('v-'+g);
+      if (lbl) lbl.textContent = (g==='align') ? v : (S[g] ? 'on' : 'off');
+      render();
+    });
+  });
+
+  ['h1','h2','p'].forEach(function(k){
+    var el = document.getElementById('t-'+k);
+    el.addEventListener('input', function(){ S[k] = el.value; render(); });
+  });
+
+  document.getElementById('btn-copy').addEventListener('click', function(){
+    navigator.clipboard.writeText(code());
+    this.textContent = 'Copied';
+    var b = this;
+    setTimeout(function(){ b.textContent = 'Copy'; }, 1400);
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', function(){
+    S = JSON.parse(JSON.stringify(SHIPPED));
+    ['max','gut','ptm','pbm','ptd','pbd','hm','hd','hlh','gap','ps','plh','pmax','sm','sd'].forEach(function(k){
+      var el = document.getElementById('s-'+k);
+      if(el){ el.value = S[k]; }
+      var out = document.getElementById('v-'+k);
+      if(out){ out.textContent = (k==='hlh'||k==='plh') ? S[k].toFixed(2) : (k==='sm'||k==='sd') ? S[k]+'%' : S[k]; }
+    });
+    document.getElementById('t-h1').value = S.h1;
+    document.getElementById('t-h2').value = S.h2;
+    document.getElementById('t-p').value  = S.p;
+    Array.prototype.forEach.call(document.querySelectorAll('.tg'), function(o){ o.classList.remove('on'); });
+    document.querySelector('.tg[data-tg="br"][data-val="1"]').classList.add('on');
+    document.querySelector('.tg[data-tg="align"][data-val="left"]').classList.add('on');
+    document.querySelector('.tg[data-tg="strip"][data-val="1"]').classList.add('on');
+    document.getElementById('v-br').textContent='on';
+    document.getElementById('v-align').textContent='left';
+    document.getElementById('v-strip').textContent='on';
+    render();
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(render);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
