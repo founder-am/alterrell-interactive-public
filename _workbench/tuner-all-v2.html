@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alterrell Interactive · unified tuner v2</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#16141f;color:#f8f6f1;display:flex;height:100vh;overflow:hidden}
+#panel{width:340px;flex:none;overflow-y:auto;padding:14px 16px 60px;background:#1e1c29;
+  border-right:1px solid #33303f}
+#stage{flex:1;background:#2a2836;overflow:auto;display:flex;gap:14px;padding:12px;align-items:flex-start}
+.pane{flex:none;display:flex;flex-direction:column;height:calc(100vh - 24px)}
+.pane b{font:600 11px/2.2 inherit;letter-spacing:.1em;text-transform:uppercase;color:#8d8aa0;
+  text-align:center;flex:none}
+.pane iframe{border:0;background:#fff;flex:1;width:100%}
+h1{font-size:14px;margin:0 0 10px;letter-spacing:.05em;text-transform:uppercase;color:#0d9488}
+h2{font-size:10px;margin:14px 0 3px;padding-top:8px;border-top:1px solid #33303f;
+  letter-spacing:.12em;text-transform:uppercase;color:#8d8aa0}
+.seg{display:flex;gap:5px;margin-bottom:8px}
+.seg button{flex:1;padding:8px 3px;font:600 12px/1 inherit;border:1px solid #44405a;
+  background:none;color:#c9c6d8;border-radius:5px;cursor:pointer}
+.seg button.on{background:#0d9488;color:#0b0a12;border-color:#0d9488}
+.w{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.w button{padding:5px 8px;font:500 11px/1 inherit;border:1px solid #44405a;background:none;
+  color:#c9c6d8;border-radius:4px;cursor:pointer}
+.w button.on{background:#c95f1a;color:#fff;border-color:#c95f1a}
+.pg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:11px;color:#a5a2b8}
+.pg label{display:flex;align-items:center;gap:4px;cursor:pointer}
+.row{display:flex;align-items:center;gap:7px;margin:4px 0}
+.row label{flex:0 0 92px;font-size:11px;color:#a5a2b8;cursor:help}
+.row label.na{color:#5a5670;text-decoration:line-through}
+.row input[type=range]{flex:1;min-width:0;accent-color:#0d9488}
+.row output{flex:0 0 38px;text-align:right;font:500 11px/1 ui-monospace,monospace}
+#link{display:flex;align-items:center;gap:6px;font-size:11px;color:#c9c6d8;margin:6px 0 2px}
+#out{margin-top:14px;padding:10px;background:#12111a;border-radius:6px;
+  font:11px/1.55 ui-monospace,monospace;color:#9fd8d0;white-space:pre-wrap;
+  max-height:230px;overflow:auto}
+#copy{width:100%;margin-top:8px;padding:9px;font:600 12px/1 inherit;background:#0d9488;
+  color:#0b0a12;border:0;border-radius:5px;cursor:pointer}
+#note{margin-top:10px;font-size:10px;color:#6e6a88;line-height:1.55}
+</style></head><body>
+<div id="panel">
+  <h1>Unified tuner v2 · 67 controls</h1>
+  <div class="seg" id="mode">
+    <button data-m="mobile" class="on">Mobile</button>
+    <button data-m="desktop">Desktop</button>
+  </div>
+  <div class="w" id="widths"></div>
+  <h2>Pages in view</h2>
+  <div class="pg" id="pages"></div>
+  <div id="link"><input type="checkbox" id="linkhub" checked>
+    <span>Hub moves with the pieces</span></div>
+  <div id="controls"></div>
+  <h2>Accessibility</h2>
+  <div id="warnline" style="font-size:10px;line-height:1.5"></div>
+  <h2>Generated CSS</h2>
+  <div id="out"></div>
+  <button id="copy">Copy CSS</button>
+  <div id="note">One slider writes the piece selector and the hub selector together.
+    A struck-through label means that control has no selector on the pages currently in
+    view. Previews are real iframes, so vw units and media queries resolve against the
+    frame width, not your window.</div>
+</div>
+<div id="stage"></div>
+<script src="tuner-data-v2.js"></script>
+<script>
+const WIDTHS={mobile:[320,360,390,414],desktop:[768,1024,1280,1600]};
+let mode='mobile', frameW=360;
+const vals={mobile:{},desktop:{}}, hubVals={mobile:{},desktop:{}};
+const K=c=>c[0]+'|'+c[3];
+CTRL.forEach(g=>g[1].forEach(c=>{
+  vals.mobile[K(c)]=c[6]; vals.desktop[K(c)]=c[6];
+  hubVals.mobile[K(c)]=c[6]; hubVals.desktop[K(c)]=c[6];
+}));
+const cssBlob=URL.createObjectURL(new Blob([CSS_TEXT],{type:'text/css'}));
+const shown=new Set(PAGES.map(p=>p.id));
+
+function fmt(c,v){
+  if(c[7]==='toggle') return v?'revert':'none';
+  if(c[3]==='grid-template-columns') return 'repeat('+v+',1fr)';
+  if(c[3]==='-webkit-line-clamp') return v===0?'unset':String(v);
+  return c[7]===''?String(v):v+'px';
+}
+function warn(){
+  const w=[]; const V=vals[mode];
+  CTRL.forEach(g=>g[1].forEach(c=>{
+    const v=V[K(c)];
+    if(c[3]==='font-size'&&v>0&&v<12) w.push(c[0]+' '+v+'px under 12');
+    if(c[3]==='font-size'&&v===0) w.push(c[0]+' hidden at 0px');
+    if((c[3]==='height'||c[3]==='min-height')&&v>0&&v<44&&/tab|item/.test(c[0]))
+      w.push(c[0]+' '+v+' under the 44 comfort target');
+  }));
+  const el=document.getElementById('warnline');
+  el.innerHTML = w.length
+    ? '<b>'+w.length+' flags</b> · '+w.slice(0,6).join(' · ')+(w.length>6?' …':'')
+    : 'no accessibility flags';
+  el.style.color = w.length ? '#e9a03b' : '#5fb89f';
+}
+function rules(which){
+  const acc={};
+  CTRL.forEach(g=>g[1].forEach(c=>{
+    const linked=document.getElementById('linkhub').checked;
+    const pv=vals[which][K(c)], hv=linked?pv:hubVals[which][K(c)];
+    if(pv!==c[6]) c[1].forEach(s=>{(acc[s]=acc[s]||[]).push(c[3]+':'+fmt(c,pv));
+      if(c[3]==='-webkit-line-clamp'&&pv>0) acc[s].push('display:-webkit-box','-webkit-box-orient:vertical','overflow:hidden');});
+    if(hv!==c[6]) c[2].forEach(s=>{(acc[s]=acc[s]||[]).push(c[3]+':'+fmt(c,hv));
+      if(c[3]==='-webkit-line-clamp'&&hv>0) acc[s].push('display:-webkit-box','-webkit-box-orient:vertical','overflow:hidden');});
+  }));
+  return Object.entries(acc).map(([s,d])=>s+'{'+d.join(';')+'}').join('\n');
+}
+function fullCss(){
+  const d=rules('desktop'), m=rules('mobile');
+  return d+(m?'\n@media (max-width:640px){\n'+m+'\n}':'');
+}
+function inject(){
+  const text=fullCss();
+  document.getElementById('out').textContent=text||'/* nothing changed from shipped values */';
+  warn();
+  PAGES.forEach(p=>{
+    const f=document.getElementById('f-'+p.id); if(!f) return;
+    const doc=f.contentDocument; if(!doc||!doc.head) return;
+    if(!doc.getElementById('base-css')){
+      const l=doc.createElement('link'); l.id='base-css'; l.rel='stylesheet'; l.href=cssBlob;
+      doc.head.appendChild(l);
+    }
+    let s=doc.getElementById('tuner-style');
+    if(!s){s=doc.createElement('style');s.id='tuner-style';doc.head.appendChild(s);}
+    s.textContent=text;
+  });
+}
+function buildStage(){
+  const st=document.getElementById('stage'); st.innerHTML='';
+  PAGES.filter(p=>shown.has(p.id)).forEach(p=>{
+    const d=document.createElement('div'); d.className='pane'; d.style.width=frameW+'px';
+    d.innerHTML='<b>'+p.name+'</b><iframe id="f-'+p.id+'"></iframe>';
+    st.appendChild(d);
+    const f=d.querySelector('iframe');
+    f.addEventListener('load',inject);
+    f.srcdoc=new TextDecoder('utf-8').decode(Uint8Array.from(atob(p.b64),ch=>ch.charCodeAt(0)));
+  });
+}
+function activeSelectors(){
+  const on=new Set();
+  PAGES.filter(p=>shown.has(p.id)).forEach(p=>p.sel.forEach(s=>on.add(s)));
+  return on;
+}
+function buildControls(){
+  const on=activeSelectors(), wrap=document.getElementById('controls'); wrap.innerHTML='';
+  CTRL.forEach(g=>{
+    const h=document.createElement('h2'); h.textContent=g[0]; wrap.appendChild(h);
+    g[1].forEach(c=>{
+      const all=c[1].concat(c[2]), live=all.some(s=>on.has(s));
+      const step=c[3].indexOf('line-height')>=0?0.05:1;
+      const r=document.createElement('div'); r.className='row';
+      if(c[7]==='toggle'){
+        r.innerHTML='<label class="'+(live?'':'na')+'" title="'+all.join(', ')+'">'+c[0]+'</label>'+
+          '<input type="checkbox" '+(vals[mode][K(c)]?'checked':'')+
+          ' style="flex:0 0 auto;margin-right:auto"><output>'+(vals[mode][K(c)]?'on':'off')+'</output>';
+        const cb=r.querySelector('input'), ob=r.querySelector('output');
+        cb.addEventListener('change',()=>{vals[mode][K(c)]=cb.checked?1:0;ob.value=cb.checked?'on':'off';inject();});
+        wrap.appendChild(r); return;
+      }
+      r.innerHTML='<label class="'+(live?'':'na')+'" title="'+all.join(', ')+'">'+c[0]+'</label>'+
+        '<input type="range" min="'+c[4]+'" max="'+c[5]+'" step="'+step+'" value="'+vals[mode][K(c)]+'">'+
+        '<output>'+vals[mode][K(c)]+'</output>';
+      const i=r.querySelector('input'), o=r.querySelector('output');
+      i.addEventListener('input',()=>{vals[mode][K(c)]=+i.value;o.value=i.value;inject();});
+      wrap.appendChild(r);
+    });
+  });
+}
+function buildWidths(){
+  const w=document.getElementById('widths'); w.innerHTML='';
+  WIDTHS[mode].forEach((px,idx)=>{
+    const b=document.createElement('button'); b.textContent=px;
+    if((mode==='mobile'&&idx===1)||(mode==='desktop'&&idx===2)){b.className='on';frameW=px;}
+    b.onclick=()=>{[...w.children].forEach(x=>x.className='');b.className='on';frameW=px;
+      document.querySelectorAll('.pane').forEach(p=>p.style.width=px+'px');};
+    w.appendChild(b);
+  });
+}
+function buildPages(){
+  const p=document.getElementById('pages'); p.innerHTML='';
+  PAGES.forEach(pg=>{
+    const l=document.createElement('label');
+    l.innerHTML='<input type="checkbox" '+(shown.has(pg.id)?'checked':'')+'>'+pg.name;
+    l.querySelector('input').onchange=e=>{
+      e.target.checked?shown.add(pg.id):shown.delete(pg.id);
+      buildStage(); buildControls();
+    };
+    p.appendChild(l);
+  });
+}
+document.querySelectorAll('#mode button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#mode button').forEach(x=>x.className='');
+    b.className='on'; mode=b.dataset.m; buildWidths();
+    document.querySelectorAll('.pane').forEach(p=>p.style.width=frameW+'px');
+    buildControls(); inject();};
+});
+document.getElementById('linkhub').onchange=inject;
+document.getElementById('copy').onclick=()=>{
+  navigator.clipboard.writeText(document.getElementById('out').textContent);
+  const b=document.getElementById('copy');b.textContent='Copied';
+  setTimeout(()=>b.textContent='Copy CSS',1200);
+};
+buildWidths(); buildPages(); buildStage(); buildControls();
+</script></body></html>

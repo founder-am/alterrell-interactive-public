@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hub · redline</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f4f2ee;color:#16141f}
+#bar{position:sticky;top:0;z-index:50;background:#16141f;color:#f8f6f1;padding:10px 16px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+#bar h1{font:600 13px/1 inherit;margin:0;letter-spacing:.08em;text-transform:uppercase;color:#0d9488}
+#bar label{display:flex;align-items:center;gap:5px;font-size:12px;color:#c9c6d8;cursor:pointer}
+#bar .stat{margin-left:auto;font:500 12px/1 ui-monospace,monospace;color:#e9a03b}
+#wrap{display:flex;gap:20px;padding:16px;align-items:flex-start}
+#stagebox{position:relative;flex:none;width:360px;background:#fff;
+  box-shadow:0 0 0 1px #d8d4c8}
+#frame{border:0;width:360px;display:block}
+#ov{position:absolute;inset:0;pointer-events:none}
+.bx{position:absolute;outline:1px solid rgba(214,51,108,.55);outline-offset:-1px}
+.bx.gp{outline:1px dashed rgba(20,120,200,.75);background:rgba(20,120,200,.07)}
+.bx.txt{outline-color:rgba(200,120,20,.6)}
+.n{position:absolute;font:600 9px/1.35 ui-monospace,monospace;color:#fff;
+  background:#d6336c;padding:1px 3px;border-radius:2px;white-space:nowrap}
+.n.gp{background:#1478c8}
+.n.txt{background:#c87814}
+#key{flex:1;min-width:0}
+table{width:100%;border-collapse:collapse;font:11px/1.45 ui-monospace,monospace;background:#fff}
+th,td{border:1px solid #e0dcd4;padding:3px 5px;text-align:left;vertical-align:top}
+th{background:#16141f;color:#f8f6f1;position:sticky;top:41px;font-size:10px;
+  letter-spacing:.06em;text-transform:uppercase}
+tr.gp td{background:#eef6fd}
+tr.no td:last-child{background:#fdeaea;color:#a3122f;font-weight:600}
+tr.yes td:last-child{background:#e9f7f0;color:#0a7c72}
+td:first-child{font-weight:700;color:#d6336c;text-align:right;width:34px}
+tr.gp td:first-child{color:#1478c8}
+</style></head><body>
+<div id="bar">
+  <h1>Hub · redline · 360</h1>
+  <label><input type="checkbox" id="tEl" checked> elements</label>
+  <label><input type="checkbox" id="tGap" checked> gaps</label>
+  <label><input type="checkbox" id="tNum" checked> numbers</label>
+  <label><input type="checkbox" id="tOnly"> untuned only</label>
+  <span class="stat" id="stat"></span>
+</div>
+<div id="wrap">
+  <div id="stagebox"><iframe id="frame"></iframe><div id="ov"></div></div>
+  <div id="key"><table id="tbl"><thead><tr>
+    <th>#</th><th>selector</th><th>w×h</th><th>padding</th><th>margin</th>
+    <th>gap</th><th>border / radius</th><th>type</th><th>tuner</th>
+  </tr></thead><tbody></tbody></table></div>
+</div>
+<script src="redline-hub-data.js"></script>
+<script>
+const frame=document.getElementById('frame'), ov=document.getElementById('ov');
+frame.srcdoc=new TextDecoder('utf-8').decode(Uint8Array.from(atob(PAGE_B64),c=>c.charCodeAt(0)));
+const px=v=>Math.round(parseFloat(v)||0);
+const box=(t,r,b,l)=>[t,r,b,l].map(px).every(v=>v===0)?'':
+  (px(t)===px(b)&&px(l)===px(r)?(px(t)+' '+px(l)):[t,r,b,l].map(px).join(' '));
+function sel(el){
+  let s=el.tagName.toLowerCase();
+  if(el.id) s+='#'+el.id;
+  const c=(el.getAttribute('class')||'').trim().split(/\s+/).filter(Boolean);
+  if(c.length) s+='.'+c.slice(0,3).join('.');
+  return s;
+}
+function tuned(el, props){
+  const cls=(el.getAttribute('class')||'').split(/\s+/).filter(Boolean);
+  const hits=[];
+  TUNER.forEach(([tsel,tprop])=>{ if(cls.includes(tsel.slice(1)) && props.includes(tprop)) hits.push(tprop); });
+  return hits;
+}
+function run(){
+  const doc=frame.contentDocument, W=360;
+  frame.style.height=doc.documentElement.scrollHeight+'px';
+  const items=[], rows=[];
+  const all=doc.body.querySelectorAll('*');
+  all.forEach(el=>{
+    const cs=doc.defaultView.getComputedStyle(el);
+    if(cs.display==='none'||cs.visibility==='hidden') return;
+    const r=el.getBoundingClientRect();
+    if(r.width<2||r.height<2) return;
+    const pad=box(cs.paddingTop,cs.paddingRight,cs.paddingBottom,cs.paddingLeft);
+    const mar=box(cs.marginTop,cs.marginRight,cs.marginBottom,cs.marginLeft);
+    const gap=(px(cs.rowGap)||px(cs.columnGap))?(px(cs.rowGap)+'/'+px(cs.columnGap)):'';
+    const bw=box(cs.borderTopWidth,cs.borderRightWidth,cs.borderBottomWidth,cs.borderLeftWidth);
+    const rad=px(cs.borderRadius)?px(cs.borderRadius)+'r':'';
+    const hasText=[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim().length>1);
+    const flexy=cs.display.indexOf('flex')>=0||cs.display.indexOf('grid')>=0;
+    if(!(pad||mar||gap||bw||hasText||flexy)) return;
+    const props=[];
+    if(pad) props.push('padding','padding-top','padding-bottom','padding-inline');
+    if(mar) props.push('margin','margin-block','margin-bottom');
+    if(gap) props.push('gap');
+    if(bw) props.push('border-width');
+    if(hasText) props.push('font-size','line-height');
+    if(flexy) props.push('grid-template-columns');
+    props.push('height','min-height','max-width');
+    items.push({el,r,cs,pad,mar,gap,bw,rad,hasText,
+      type: hasText?[cs.fontFamily.split(',')[0].replace(/["']/g,''),px(cs.fontSize)+'px',
+        '/'+(parseFloat(cs.lineHeight)/parseFloat(cs.fontSize)||1).toFixed(2),
+        cs.fontWeight,px(cs.letterSpacing)?px(cs.letterSpacing)+'ls':''].filter(Boolean).join(' '):'',
+      tune: tuned(el,props)});
+  });
+  // vertical gaps between adjacent siblings
+  const gaps=[];
+  items.forEach(it=>{
+    const kids=[...it.el.children].filter(k=>{
+      const cr=k.getBoundingClientRect();
+      return cr.height>1 && doc.defaultView.getComputedStyle(k).position==='static';
+    });
+    for(let i=0;i<kids.length-1;i++){
+      const a=kids[i].getBoundingClientRect(), b=kids[i+1].getBoundingClientRect();
+      const g=Math.round(b.top-a.bottom);
+      if(g>=4 && b.left<a.right && a.left<b.right)
+        gaps.push({top:a.bottom,h:g,left:Math.max(a.left,b.left),
+          w:Math.min(a.right,b.right)-Math.max(a.left,b.left),
+          label:sel(kids[i])+' → '+sel(kids[i+1]), h2:g,
+          parent:sel(it.el), pgap:it.gap});
+    }
+  });
+  let n=0; const tb=document.querySelector('#tbl tbody'); tb.innerHTML=''; ov.innerHTML='';
+  const emit=(o,kind)=>{
+    n++;
+    const d=document.createElement('div');
+    d.className='bx '+(kind==='gap'?'gp':(o.hasText?'txt':''));
+    d.style.cssText='left:'+(o.left||o.r.left)+'px;top:'+(o.top||o.r.top)+'px;width:'+
+      (o.w||o.r.width)+'px;height:'+(o.h||o.r.height)+'px';
+    d.dataset.k=kind; d.dataset.t=(o.tune&&o.tune.length)?'y':'n';
+    ov.appendChild(d);
+    const b=document.createElement('div');
+    b.className='n '+(kind==='gap'?'gp':(o.hasText?'txt':''));
+    b.textContent=n; b.style.cssText='left:'+((o.left||o.r.left)+1)+'px;top:'+((o.top||o.r.top)+1)+'px';
+    b.dataset.k=kind; b.dataset.t=(o.tune&&o.tune.length)?'y':'n';
+    ov.appendChild(b);
+    const tr=document.createElement('tr');
+    tr.className=(kind==='gap'?'gp ':'')+((o.tune&&o.tune.length)?'yes':'no');
+    tr.dataset.k=kind; tr.dataset.t=(o.tune&&o.tune.length)?'y':'n';
+    if(kind==='gap'){
+      tr.innerHTML='<td>'+n+'</td><td>gap · '+o.label+'</td><td>'+Math.round(o.w)+'×'+o.h+
+        '</td><td></td><td></td><td>'+(o.pgap||'margin')+'</td><td></td><td></td>'+
+        '<td>'+(o.pgap?'gap on '+o.parent:'margin collapse')+'</td>';
+    } else {
+      tr.innerHTML='<td>'+n+'</td><td>'+sel(o.el)+'</td><td>'+Math.round(o.r.width)+'×'+
+        Math.round(o.r.height)+'</td><td>'+o.pad+'</td><td>'+o.mar+'</td><td>'+o.gap+
+        '</td><td>'+[o.bw,o.rad].filter(Boolean).join(' ')+'</td><td>'+o.type+'</td><td>'+
+        (o.tune.length?[...new Set(o.tune)].join(' '):'none')+'</td>';
+    }
+    tb.appendChild(tr);
+  };
+  const merged=[...items.map(o=>({o,kind:'el',y:o.r.top})),
+                ...gaps.map(o=>({o,kind:'gap',y:o.top}))].sort((a,b)=>a.y-b.y||0);
+  merged.forEach(m=>emit(m.o,m.kind));
+  const untuned=[...tb.children].filter(r=>r.dataset.t==='n').length;
+  document.getElementById('stat').textContent=
+    n+' numbered · '+items.length+' elements · '+gaps.length+' gaps · '+untuned+' not reachable by the tuner';
+  filter();
+}
+function filter(){
+  const el=tEl.checked, gp=tGap.checked, num=tNum.checked, only=tOnly.checked;
+  const vis=o=>(o.dataset.k==='gap'?gp:el)&&(!only||o.dataset.t==='n');
+  ov.querySelectorAll('.bx').forEach(b=>b.style.display=vis(b)?'':'none');
+  ov.querySelectorAll('.n').forEach(b=>b.style.display=(num&&vis(b))?'':'none');
+  document.querySelectorAll('#tbl tbody tr').forEach(r=>r.style.display=vis(r)?'':'none');
+}
+['tEl','tGap','tNum','tOnly'].forEach(id=>document.getElementById(id).addEventListener('change',filter));
+frame.addEventListener('load',()=>setTimeout(run,400));
+</script></body></html>
