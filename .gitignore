@@ -38,3 +38,6 @@ Icon
 node_modules/
 npm-debug.log*
 reports/shots/
+
+# Decoy guard: the only LEDGER is alterrell-hq/LEDGER.md, sweep gate G13
+LEDGER.md
