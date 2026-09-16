@@ -2302,7 +2302,22 @@ details[open] .ai-footer-methodology summary::before {
 .ai-footer, .hub-footer { padding-block: 18px; padding-inline: 20px; font-size: 10px }
 .ai-footer-series-hub { min-height: 44px }
 .ai-footer-url { min-height: 44px }
-.ai-metrics { grid-template-columns: repeat(4,1fr); gap: 18px }
+/* .ai-metrics: the column override that used to sit on this line is gone.
+   Measured 2026-09-16 with Chromium against the built tree, on
+   pieces/concert-tax, pieces/fast-food-sodium and pieces/gay-uncles:
+     360   grid-template-columns  308px                       1 column
+     768   grid-template-columns  169.5px x4                  4 columns
+     1280  grid-template-columns  256.5px x4                  4 columns
+   This rule is in the tuned family layer's DESKTOP block, which is
+   unconditional, so repeat(4,1fr) applied at EVERY width and L490's
+   repeat(auto-fit, minmax(180px,1fr)) never applied anywhere. Every
+   .ai-metrics in the tree holds 1, 2 or 3 cells, so desktop and tablet drew
+   one, two or three cards and then one to three empty columns. Dropping the
+   override hands those widths back to auto-fit. The tuned 18px gap is kept,
+   because that was a deliberate change from L490's 1px and is not the defect.
+   The 640px block below already sets one column; it was measured, not
+   assumed, and is left alone. */
+.ai-metrics { gap: 18px }
 .ai-metric { padding: 25px; border-width: 1px }
 .ai-metric-num { font-size: 34px }
 .ai-metric-label { font-size: 13px }
@@ -2359,7 +2374,8 @@ details[open] .ai-footer-methodology summary::before {
   .ai-footer-url { display: none; min-height: 44px }
   .ai-metrics { grid-template-columns: repeat(1,1fr); gap: 12px }
   .ai-metric { padding: 16px; border-width: 1px }
-  .ai-metric-num { font-size: 34px }
+  /* .ai-metric-num 34px removed 2026-09-16: a verbatim duplicate of the
+     same declaration in the desktop block above, so it changed nothing. */
   .ai-metric-label { font-size: 13px }
   .ai-metric-sub { font-size: 9px }
   .ai-table-wrap { padding: 0px }

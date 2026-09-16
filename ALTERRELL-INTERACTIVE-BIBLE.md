@@ -1,6 +1,6 @@
 # Alterrell Interactive Bible
 
-**Last updated:** 2026-07-27
+**Last updated:** 2026-09-16 (COPY-06 through COPY-09 and Appendix A D-110/D-111 added; everything else is the 2026-07-27 text)
 
 This file is canonical because it is the only file at this path. It does not declare rank.
 
@@ -167,6 +167,10 @@ This file is canonical because it is the only file at this path. It does not dec
 | COPY-03 | Em dash budget in editorial prose: 1–2 per 1,000 words (VOICE-MASTER.md's stricter standard governs over the Decision Log's 2–3-per-piece figure until AMA reconciles the two). | DDL; VOICE-MASTER.md; AMR §13.1 | Em dash count in a piece's editorial prose exceeds 1–2 per 1,000 words. |
 | COPY-04 | No build notes or TODO comments in production HTML. | AMR §10; DC | `TODO`, `FIXME`, or an HTML comment describing build state is present in a shipped file. |
 | COPY-05 | Nothing ships live with a visible placeholder. Placeholders (`[[PLACEHOLDER: ...]]`, `[BRACKETED CAPS]`, `[AMA ...]`) never block a *build* — they only block a *ship*. | D-94 | A live (non-draft, non-`.new.html`) `index.html` contains `[[PLACEHOLDER`, a `[AMA` marker, or an unresolved `[BRACKETED CAPS]` token. |
+| COPY-06 | Every piece has at most one copy of record and it is a `*-COPY.md` file. Nothing in `src/` is ever a source. A factpack, brief or voice spine is not copy of record. If no `*-COPY.md` exists, state "no proper copy of record exists" and label any interim choice as interim. | D-111 (AMA ruled 2026-09-15) | A session names a copy of record whose filename does not match `*-COPY.md`; or names a file under `src/` as a source; or promotes a `-BRIEF`/`-FACTPACK`/voice-spine file; or picks an interim file without printing the "no proper copy of record exists" sentence and the word interim. |
+| COPY-07 | When a rendering, port or migration loses content, the rendering is the defect. Rebuild from the copy of record. Never ask AMA to re-supply copy that already exists anywhere on disk. | D-111 (AMA ruled 2026-09-15) | A shipping file carries less of a piece's content than an earlier generation on disk, and the gap is recorded as missing copy rather than as a defect in the rendering; or AMA is asked for copy that a `grep` over the repo already returns. |
+| COPY-08 | Before asking AMA for copy, read the copy of record and every prior generation. A slot is open only if it is unwritten in all of them. Name every generation read and every one not read. | D-111 (AMA ruled 2026-09-15) | A slot is reported open without every generation having been checked; or a session's report does not name both the generations it read and the generations it did not. |
+| COPY-09 | Placeholder markers are not a fixed list. Grep `[AMA`, `[[FIGURE`, `ama-placeholder`, `[Did the data`, `<!-- AMA VOICE PASS NEEDED -->` and the pencil `EDIT` marker, and report any bracketed all-caps token not on the list. | D-111 (AMA ruled 2026-09-15) | A placeholder scan runs fewer than these six patterns, or runs them and does not also report the bracketed all-caps tokens that fall outside them. |
 
 ---
 
@@ -283,6 +287,8 @@ This file is canonical because it is the only file at this path. It does not dec
 | D-107 | A turn with a question has no writes. A turn with writes has no questions. | BUILD (session rule — also stated in CLAUDE.md) |
 | D-108 | D-72's 380×660 exception for Crowning Achievements/BTU is deferred, not retired. Decided when Crowning Achievements builds. | CARD |
 | D-109 | Every ruling is forward-only from 2026-07-01 unless it states otherwise. Pieces live before that date grandfather by default. | BUILD (Appendix B — governance principle, sets the default reading for D-93 through D-108) |
+| D-110 | Cited, never logged. `_archive/legacy-2026-08-13/gay-uncles/index.new.html:108` calls 8 tabs for Gay Uncles "the D-110 exception", against TABS-05's 7 and D-97's cut of Hold Your Ground. `reports/2026-07-27-gay-uncles-rebuild.md:150-155` already flagged that no D-110 row exists. The row is still not written, and the rebuilt piece ships 8 tabs with Hold Your Ground on 2026-09-16. Recorded here as an open conflict, not resolved. | TABS — unresolved |
+| D-111 | Copy of record: one per piece, `*-COPY.md` only, never `src/`, never a brief or factpack. A lossy rendering is the defect, not missing copy. A slot is open only if unwritten in every generation. The placeholder marker list is open-ended. | COPY (COPY-06 through COPY-09) |
 
 ---
 

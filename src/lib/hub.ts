@@ -38,6 +38,12 @@
 export const BUILT_SLUGS = [
   'concert-tax',
   'fast-food-sodium',
+  // gay-uncles. Added 2026-09-16 (AMA ruled 09-15), when the piece was rebuilt
+  // from _archive/legacy-2026-08-13/gay-uncles/index.new.html with its 3 charts,
+  // 24 bar rows and 11 cards restored and status flipped to live. LINKED_SLUGS
+  // is BUILT_SLUGS, so this also puts its card on the hub — the invariant above
+  // holds in both directions and the hub goes from 3 cards to 4.
+  'gay-uncles',
 ] as const;
 
 /** Every piece whose hub card carries an href. Equal to BUILT_SLUGS. */
