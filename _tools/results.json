@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-23T01:52:52.938Z",
+  "generated": "2026-09-16T05:21:58.616Z",
   "repo": "/Users/alterrellmills/Documents/GitHub/alterrell-interactive-public",
   "chromium": "151.0.7922.34",
   "chromiumPinned": "151.0.7922.34",
@@ -184,7 +184,7 @@
             "selector": "p"
           },
           "g6": null,
-          "docHeight": 780,
+          "docHeight": 1058,
           "failedRequests": []
         },
         "768": {
@@ -275,6 +275,1266 @@
       }
     },
     {
+      "path": "naming/index.html",
+      "slug": "naming",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/1 controls under 44x44 (10 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "1/2 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.naming-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Sixty years of Social Security baby name",
+                  "ratio": 4.25,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 307,
+            "chars": 116,
+            "lines": 3,
+            "charsPerLine": 39,
+            "selector": "p.naming-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 2193,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/1 controls under 44x44 (10 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "1/2 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.naming-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Sixty years of Social Security baby name",
+                  "ratio": 4.25,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 680,
+            "widestLinePx": 653,
+            "chars": 116,
+            "lines": 2,
+            "charsPerLine": 58,
+            "selector": "p.naming-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 1559,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/1 controls under 44x44 (10 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "NA",
+              "note": "no tabs"
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "1/2 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.naming-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 17.6px",
+                  "text": "Sixty years of Social Security baby name",
+                  "ratio": 4.25,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 680,
+            "widestLinePx": 678,
+            "chars": 116,
+            "lines": 2,
+            "charsPerLine": 58,
+            "selector": "p.naming-hero-dek"
+          },
+          "g6": null,
+          "docHeight": 1537,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S3": {
+          "status": "FAIL",
+          "note": "0 primary tab bars",
+          "offenders": []
+        },
+        "S4": {
+          "status": "NA",
+          "note": "no tabs"
+        },
+        "S5": {
+          "status": "NA",
+          "note": "no tabs"
+        },
+        "S7": {
+          "status": "NA",
+          "note": "no tabs"
+        },
+        "S8": {
+          "status": "NA",
+          "note": "no tabs"
+        },
+        "S6": {
+          "status": "NA",
+          "note": "no tabpanels"
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "alterrell-interactive.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 37,
+        "duplicateCount": 6,
+        "duplicates": [
+          ".ai-breadcrumb",
+          ".ai-breadcrumb a",
+          ".ai-breadcrumb a:hover",
+          ".ai-nav",
+          ":root",
+          "body"
+        ]
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": null,
+        "primaryBarMatchedBy": "none",
+        "primaryTabCount": 0,
+        "primaryTabLabels": [],
+        "outOfScope": [],
+        "totalTablists": 0
+      }
+    },
+    {
+      "path": "naming/part-0/index.html",
+      "slug": "naming-part-0",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "3/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                },
+                {
+                  "selector": "button.ai-tab:nth-of-type(4)",
+                  "value": "37.1x44.0",
+                  "text": "Data"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/8 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "SSA data records names given to at least",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Black Americans were stripped of the nam",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 319,
+            "chars": 201,
+            "lines": 5,
+            "charsPerLine": 40,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 798,
+          "docHeight": 2679,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/8 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "SSA data records names given to at least",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Black Americans were stripped of the nam",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 725,
+            "chars": 201,
+            "lines": 3,
+            "charsPerLine": 67,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 608,
+          "docHeight": 2089,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/8 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "SSA data records names given to at least",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 17.6px",
+                  "text": "Black Americans were stripped of the nam",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 1188,
+            "chars": 201,
+            "lines": 2,
+            "charsPerLine": 101,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 622,
+          "docHeight": 2030,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "FAIL",
+          "note": "5 bad data-target",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "#tab-leash"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "#tab-lastname"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "#tab-firstname"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "#tab-data"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "#tab-about"
+            }
+          ]
+        },
+        "S5": {
+          "status": "FAIL",
+          "note": "5 unresolved aria-controls",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "(absent)"
+            }
+          ]
+        },
+        "S7": {
+          "status": "FAIL",
+          "note": "first tab is \"Roots\"",
+          "offenders": []
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "NA",
+          "note": "no tabpanels"
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "alterrell-interactive.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 75,
+        "duplicateCount": 8,
+        "duplicates": [
+          ".ai-breadcrumb",
+          ".ai-nav",
+          ".ai-tab",
+          ".ai-tab.active",
+          ".ai-tab:hover",
+          ".ai-tabs",
+          ":root",
+          "body"
+        ]
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "nav#tabBar",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 5,
+        "primaryTabLabels": [
+          "Roots",
+          "Surnames",
+          "First Names",
+          "Data",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
+      "path": "naming/part-1/index.html",
+      "slug": "naming-part-1",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "2 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/7 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/11 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Fame doesn't just make stars, fame makes",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "The charts are screenshot-friendly. Post",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 316,
+            "chars": 72,
+            "lines": 2,
+            "charsPerLine": 36,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 1048,
+          "docHeight": 3328,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/7 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/11 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Fame doesn't just make stars, fame makes",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "The charts are screenshot-friendly. Post",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 548,
+            "chars": 72,
+            "lines": 1,
+            "charsPerLine": 72,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 721,
+          "docHeight": 2315,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "1/7 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/11 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 17.6px",
+                  "text": "Fame doesn't just make stars, fame makes",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "The charts are screenshot-friendly. Post",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 603,
+            "chars": 72,
+            "lines": 1,
+            "charsPerLine": 72,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 754,
+          "docHeight": 2354,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "FAIL",
+          "note": "5 bad data-target",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "#tab-overview"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "#tab-system"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "#tab-latifah"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "#tab-whitney-mariah"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "#tab-data"
+            }
+          ]
+        },
+        "S5": {
+          "status": "FAIL",
+          "note": "5 unresolved aria-controls",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "(absent)"
+            }
+          ]
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "FAIL",
+          "note": "last tab is \"What the Data Shows\"",
+          "offenders": []
+        },
+        "S6": {
+          "status": "NA",
+          "note": "no tabpanels"
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "alterrell-interactive.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 129,
+        "duplicateCount": 8,
+        "duplicates": [
+          ".ai-breadcrumb",
+          ".ai-nav",
+          ".ai-tab",
+          ".ai-tab.active",
+          ".ai-tab:hover",
+          ".ai-tabs",
+          ":root",
+          "body"
+        ]
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "nav#tabBar",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 5,
+        "primaryTabLabels": [
+          "Overview",
+          "The System",
+          "Queen Latifah",
+          "Whitney & Mariah",
+          "What the Data Shows"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
+      "path": "naming/part-2/index.html",
+      "slug": "naming-part-2",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/10 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Carlton was not cool. But people liked A",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 320,
+            "widestLinePx": 320,
+            "chars": 193,
+            "lines": 5,
+            "charsPerLine": 39,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 1169,
+          "docHeight": 3817,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/10 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 16px",
+                  "text": "Carlton was not cool. But people liked A",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 728,
+            "widestLinePx": 705,
+            "chars": 193,
+            "lines": 3,
+            "charsPerLine": 64,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 795,
+          "docHeight": 2481,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "FAIL",
+              "note": "2/8 controls under 44x44 (19 inline links out of scope)",
+              "offenders": [
+                {
+                  "selector": "a:nth-of-type(1)",
+                  "value": "136.4x16.2",
+                  "text": "Alterrell Interactive"
+                },
+                {
+                  "selector": "a:nth-of-type(2)",
+                  "value": "103.9x16.2",
+                  "text": "What's in a Name"
+                }
+              ]
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "FAIL",
+              "note": "4/10 below WCAG minimum",
+              "offenders": [
+                {
+                  "selector": "p.win-footer-methodology-note",
+                  "value": "2.20:1 (need 4.5:1) — rgb(74, 70, 94) on rgb(10, 10, 10) at 13px",
+                  "text": "All name frequency data is from the Soci",
+                  "ratio": 2.2,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.win-hero-dek",
+                  "value": "4.25:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(10, 10, 18) at 17.6px",
+                  "text": "Carlton was not cool. But people liked A",
+                  "ratio": 4.25,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-nudge:nth-of-type(1)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Copy the link or post directly to 6 plat",
+                  "ratio": 4.28,
+                  "required": 4.5
+                },
+                {
+                  "selector": "p.share-block-substack:nth-of-type(2)",
+                  "value": "4.28:1 (need 4.5:1) — rgba(248, 246, 241, 0.45) on rgb(17, 17, 24) at 13px",
+                  "text": "Get the story behind the story →",
+                  "ratio": 4.28,
+                  "required": 4.5
+                }
+              ]
+            }
+          },
+          "g5": {
+            "widthPx": 1240,
+            "widestLinePx": 1226,
+            "chars": 193,
+            "lines": 2,
+            "charsPerLine": 97,
+            "selector": "p.win-hero-dek"
+          },
+          "g6": 803,
+          "docHeight": 2466,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "FAIL",
+          "note": "5 bad data-target",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "#tab-overview"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "#tab-living-single"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "#tab-different-world"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "#tab-fresh-prince"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "#tab-counter"
+            }
+          ]
+        },
+        "S5": {
+          "status": "FAIL",
+          "note": "5 unresolved aria-controls",
+          "offenders": [
+            {
+              "selector": "button.ai-tab.active:nth-of-type(1)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(2)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(3)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(4)",
+              "value": "(absent)"
+            },
+            {
+              "selector": "button.ai-tab:nth-of-type(5)",
+              "value": "(absent)"
+            }
+          ]
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "FAIL",
+          "note": "last tab is \"The Counter-Example\"",
+          "offenders": []
+        },
+        "S6": {
+          "status": "NA",
+          "note": "no tabpanels"
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "alterrell-interactive.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 97,
+        "duplicateCount": 8,
+        "duplicates": [
+          ".ai-breadcrumb",
+          ".ai-nav",
+          ".ai-tab",
+          ".ai-tab.active",
+          ".ai-tab:hover",
+          ".ai-tabs",
+          ":root",
+          "body"
+        ]
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "nav#tabBar",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 5,
+        "primaryTabLabels": [
+          "Overview",
+          "Living Single",
+          "A Different World",
+          "Fresh Prince",
+          "The Counter-Example"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
+    },
+    {
       "path": "pieces/concert-tax/index.html",
       "slug": "pieces-concert-tax",
       "pageClass": "PIECE",
@@ -346,7 +1606,7 @@
             "selector": "p:nth-of-type(1)"
           },
           "g6": 423,
-          "docHeight": 1771,
+          "docHeight": 1706,
           "failedRequests": []
         },
         "1280": {
@@ -381,7 +1641,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": 349,
-          "docHeight": 1448,
+          "docHeight": 1416,
           "failedRequests": []
         }
       },
@@ -416,7 +1676,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/index.BS8RN6vO.css contains .ai-inner"
+          "note": "_astro/index.BUdziGa-.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -518,7 +1778,7 @@
             "selector": "p:nth-of-type(1)"
           },
           "g6": 417,
-          "docHeight": 1968,
+          "docHeight": 1904,
           "failedRequests": []
         },
         "1280": {
@@ -553,7 +1813,7 @@
             "selector": "p.ai-hero-dek"
           },
           "g6": 309,
-          "docHeight": 1586,
+          "docHeight": 1554,
           "failedRequests": []
         }
       },
@@ -588,7 +1848,7 @@
         },
         "S10": {
           "status": "PASS",
-          "note": "_astro/index.BS8RN6vO.css contains .ai-inner"
+          "note": "_astro/index.BUdziGa-.css contains .ai-inner"
         },
         "S11": {
           "status": "PASS",
@@ -617,11 +1877,220 @@
         "outOfScope": [],
         "totalTablists": 1
       }
+    },
+    {
+      "path": "pieces/gay-uncles/index.html",
+      "slug": "pieces-gay-uncles",
+      "pageClass": "PIECE",
+      "widths": {
+        "360": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": "1 self-scrollable (excluded)"
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 5 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 308,
+            "widestLinePx": 273,
+            "chars": 61,
+            "lines": 2,
+            "charsPerLine": 31,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 246,
+          "docHeight": 2936,
+          "failedRequests": []
+        },
+        "768": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 6 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 732,
+            "widestLinePx": 660,
+            "chars": 97,
+            "lines": 1,
+            "charsPerLine": 97,
+            "selector": "p.ai-stamp"
+          },
+          "g6": 349,
+          "docHeight": 2357,
+          "failedRequests": []
+        },
+        "1280": {
+          "geometry": {
+            "G1": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G2": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G3": {
+              "status": "PASS",
+              "note": "8 controls checked, 6 inline links out of scope"
+            },
+            "G4": {
+              "status": "PASS",
+              "note": ""
+            },
+            "G7": {
+              "status": "PASS",
+              "note": ""
+            }
+          },
+          "g5": {
+            "widthPx": 1080,
+            "widestLinePx": 591,
+            "chars": 61,
+            "lines": 1,
+            "charsPerLine": 61,
+            "selector": "p.ai-hero-dek"
+          },
+          "g6": 349,
+          "docHeight": 2015,
+          "failedRequests": []
+        }
+      },
+      "structure": {
+        "S3": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S4": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S5": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S7": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S8": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S6": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S9": {
+          "status": "PASS",
+          "note": ""
+        },
+        "S10": {
+          "status": "PASS",
+          "note": "_astro/index.BUdziGa-.css contains .ai-inner"
+        },
+        "S11": {
+          "status": "PASS",
+          "note": ""
+        }
+      },
+      "d1": {
+        "inlineSelectorCount": 0,
+        "duplicateCount": 0,
+        "duplicates": []
+      },
+      "errors": [],
+      "scope": {
+        "primaryBar": "div#piece-tabs",
+        "primaryBarMatchedBy": ".ai-tabs[role=tablist]",
+        "primaryTabCount": 8,
+        "primaryTabLabels": [
+          "Overview",
+          "My Story",
+          "The Map",
+          "The Data",
+          "Hold Your Ground",
+          "Supporting Us",
+          "Share to Social",
+          "Sources"
+        ],
+        "outOfScope": [],
+        "totalTablists": 1
+      }
     }
   ],
   "summary": {
-    "totalFailCells": 0,
-    "totalDuplicateSelectors": 0,
-    "rulesByPieceCount": []
+    "totalFailCells": 34,
+    "totalDuplicateSelectors": 30,
+    "rulesByPieceCount": [
+      {
+        "rule": "G3",
+        "pieces": 4,
+        "cells": 0
+      },
+      {
+        "rule": "G7",
+        "pieces": 4,
+        "cells": 0
+      },
+      {
+        "rule": "S4",
+        "pieces": 3,
+        "cells": 0
+      },
+      {
+        "rule": "S5",
+        "pieces": 3,
+        "cells": 0
+      },
+      {
+        "rule": "S8",
+        "pieces": 2,
+        "cells": 0
+      },
+      {
+        "rule": "S3",
+        "pieces": 1,
+        "cells": 0
+      },
+      {
+        "rule": "S7",
+        "pieces": 1,
+        "cells": 0
+      }
+    ]
   }
 }
