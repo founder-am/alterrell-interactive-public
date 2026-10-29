@@ -12,13 +12,14 @@ The Comparison (US vs. EU additives / banned ingredients)
 The Cost (health consequence card overlaid with additive growth)
 What Now (journey block + actions)
 
-Foods in scope:
+Foods in scope (Phase 1, per BACK-IN-MY-DAY-RESEARCH.md):
 
 Bread
-Yogurt
-Cheese
-Cereal
-(Milk, pasta under consideration)
+Ice Cream
+Pasta
+Milk
+
+Earlier list, superseded: Yogurt, Cheese, Cereal
 
 Macro argument cards (The System tab):
 

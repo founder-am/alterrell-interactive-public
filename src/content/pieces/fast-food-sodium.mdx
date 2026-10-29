@@ -74,12 +74,12 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
 
 <div class="ai-metrics">
   <div class="ai-metric">
-    <div class="ai-metric-num ai-metric-num--ink">2.4×</div>
+    <div class="ai-metric-num ai-metric-num--ink">2.2×</div>
     <div class="ai-metric-label">More sodium in a US 6-piece McNuggets than the same item in the UK</div>
     <div class="ai-metric-sub">McDonald's published nutrition data (US, UK) · 2024; UK 6-piece calculated from CMAJ per-100g data</div>
   </div>
   <div class="ai-metric">
-    <div class="ai-metric-num ai-metric-num--ink">76%</div>
+    <div class="ai-metric-num ai-metric-num--ink">82%</div>
     <div class="ai-metric-label">Of your daily sodium limit in a single Chick-fil-A Spicy Deluxe Sandwich</div>
     <div class="ai-metric-sub">Chain-published nutrition disclosures, 2024–2025 · FDA daily sodium limit 2,300mg</div>
   </div>
@@ -96,7 +96,7 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
 </div>
 
 <ol class="ai-body">
-  <li><strong>Formulas aren't neutral choices.</strong> McDonald's sells the same McNuggets in the UK with 2.4× less sodium than in the US. There is no technical barrier to lower sodium: it's a formulation choice.</li>
+  <li><strong>Formulas aren't neutral choices.</strong> McDonald's sells the same McNuggets in the UK with 2.2× less sodium than in the US. There is no technical barrier to lower sodium: it's a formulation choice.</li>
   <li><strong>Advertising has a bias.</strong> Black youth see 75% more fast food TV ads than their white peers. On Spanish-language television, only value meals and large-portion items are shown.</li>
   <li><strong>The healthcare cost lands on everyone.</strong> Hypertension (the primary chronic condition linked to excess sodium) costs the US $219 billion per year spread across an already distressed healthcare system.</li>
   <li><strong>ZIP codes predict nutrition.</strong> Fast food density is higher in low-income and majority-Black and Latino neighborhoods, while grocery stores are scarcer. ZIP code is destiny before you ever place an order.</li>
@@ -203,12 +203,12 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
       </tr>
     </thead>
     <tbody>
-      <tr><td>Chick-fil-A 12pc Grilled Nuggets</td><td class="ai-num ai-text-success">38g</td><td class="ai-num ai-text-success">440mg</td><td class="ai-num ai-text-danger">0g</td><td>Best protein, zero fiber</td></tr>
+      <tr><td>Chick-fil-A 8pc Grilled Nuggets</td><td class="ai-num ai-text-success">25g</td><td class="ai-num ai-text-success">440mg</td><td class="ai-num ai-text-danger">0g</td><td>Best protein, zero fiber</td></tr>
       <tr><td>Wingstop 10pc Classic Wings (plain)</td><td class="ai-num ai-text-success">60g</td><td class="ai-num ai-text-success">900mg</td><td class="ai-num ai-text-danger">0g</td><td>High protein, zero fiber</td></tr>
       <tr><td>Chipotle Chicken Bowl</td><td class="ai-num ai-text-success">45g</td><td class="ai-num">1,040mg</td><td class="ai-num ai-text-teal">8g</td><td>Best fiber of any item in database</td></tr>
       <tr><td>Taco Bell Bean Burrito</td><td class="ai-num">13g</td><td class="ai-num">870mg</td><td class="ai-num ai-text-teal">9g</td><td>Low protein, high fiber — outlier</td></tr>
       <tr><td>Popeyes Spicy Chicken Sandwich</td><td class="ai-num">28g</td><td class="ai-num ai-text-danger">1,765mg</td><td class="ai-num">2g</td><td>77% daily sodium, 7% daily fiber</td></tr>
-      <tr><td>McDonald's 6pc McNuggets</td><td class="ai-num">14g</td><td class="ai-num">540mg</td><td class="ai-num ai-text-danger">1g</td><td>US formula; UK equivalent: ~228mg sodium</td></tr>
+      <tr><td>McDonald's 6pc McNuggets</td><td class="ai-num">14g</td><td class="ai-num">500mg</td><td class="ai-num ai-text-danger">1g</td><td>US formula; UK equivalent: ~228mg sodium</td></tr>
     </tbody>
   </table>
 </div>
@@ -244,8 +244,8 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
       </tr>
     </thead>
     <tbody>
-      <tr><td>McNuggets (10pc)</td><td class="ai-num ai-text-danger">900mg</td><td class="ai-num ai-text-success">🇬🇧 UK · 660mg</td><td class="ai-num">−27%</td></tr>
-      <tr><td>McNuggets (6pc)</td><td class="ai-num ai-text-danger">540mg</td><td class="ai-num ai-text-success">🇬🇧 UK · ~228mg</td><td class="ai-num">−58%</td></tr>
+      <tr><td>McNuggets (10pc)</td><td class="ai-num ai-text-danger">850mg</td><td class="ai-num ai-text-success">🇬🇧 UK · 660mg</td><td class="ai-num">−22%</td></tr>
+      <tr><td>McNuggets (6pc)</td><td class="ai-num ai-text-danger">500mg</td><td class="ai-num ai-text-success">🇬🇧 UK · ~228mg</td><td class="ai-num">−54%</td></tr>
       <tr><td>Whopper</td><td class="ai-num ai-text-danger">980mg</td><td class="ai-num ai-text-success">🇩🇪 Germany · 690mg</td><td class="ai-num">−30%</td></tr>
       <tr><td>Original Recipe Breast (KFC)</td><td class="ai-num ai-text-danger">1,010mg</td><td class="ai-num ai-text-success">🇯🇵 Japan · 740mg</td><td class="ai-num">−27%</td></tr>
       <tr><td>Crispy Chicken Sandwich</td><td class="ai-num ai-text-danger">1,470mg</td><td class="ai-num ai-text-success">🇫🇷 France · 950mg</td><td class="ai-num">−35%</td></tr>
@@ -314,9 +314,9 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
       <tr><th>Instead of</th><th>Order</th><th>Saves</th><th>Why</th></tr>
     </thead>
     <tbody>
-      <tr><td>Crispy Chicken Sandwich (1,070mg)</td><td>McChicken</td><td class="val-good">510mg sodium</td><td>Same chicken category. Less than half the sodium. 14g protein vs 27g — meaningful tradeoff, but within the same chain and price tier.</td></tr>
-      <tr><td>10pc McNuggets (900mg)</td><td>6pc McNuggets</td><td class="val-good">360mg sodium</td><td>540mg vs 900mg. The US formula is still higher sodium than the UK equivalent at any serving size — but smaller is less.</td></tr>
-      <tr><td>Big Mac (1,010mg)</td><td>McDouble</td><td class="val-good">90mg sodium</td><td>Similar protein (22g vs 25g), lower sodium, lower price. One of the better protein efficiency options at any chain.</td></tr>
+      <tr><td>Crispy Chicken Sandwich (1,070mg)</td><td>McChicken</td><td class="val-good">510mg sodium</td><td>Same chicken category. About half the sodium. 14g protein vs 27g — meaningful tradeoff, but within the same chain and price tier.</td></tr>
+      <tr><td>10pc McNuggets (850mg)</td><td>6pc McNuggets</td><td class="val-good">350mg sodium</td><td>500mg vs 850mg. The US formula is still higher sodium than the UK equivalent at any serving size — but smaller is less.</td></tr>
+      <tr><td>Big Mac (1,060mg)</td><td>McDouble</td><td class="val-good">140mg sodium</td><td>Similar protein (22g vs 25g), lower sodium, lower price. One of the better protein efficiency options at any chain.</td></tr>
     </tbody>
   </table>
 </div>
@@ -363,7 +363,7 @@ import SodiumPicker from '../../components/SodiumPicker.astro';
 </div>
 
 <div class="ai-callout ai-callout--warning">
-  <p><strong>The healthy bowl trap.</strong> Watch the Falafel Crunch Bowl — 2,030mg sodium. CAVA and Chipotle market as healthy alternatives. The Falafel Crunch Bowl exceeds the FDA daily limit in a single meal. "Fast casual" is not a sodium guarantee.</p>
+  <p><strong>The healthy bowl trap.</strong> Watch the Falafel Crunch Bowl — 2,030mg sodium. CAVA and Chipotle market as healthy alternatives. The Falafel Crunch Bowl uses 88% of the FDA daily limit, and clears the American Heart Association's 1,500mg limit, in a single meal. "Fast casual" is not a sodium guarantee.</p>
 </div>
 
 <h3 class="ai-h3">Burger King</h3>
