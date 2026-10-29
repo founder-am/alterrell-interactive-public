@@ -34,8 +34,17 @@
 # naming part-3 was cut 2026-08-14. The on-page links in the naming index
 # and in part-2 were removed 2026-08-27; these two stay to catch inbound
 # links from outside the site.
-/naming/part-3/*      /naming/                      301
-/naming/part-3        /naming/                      301
+# Parts 3-6 are built on the live spine but hold open copy slots. Held
+# 2026-10-29 (AMA ruled): files stay in public/, the ! forces the redirect
+# over the existing file so no part with a visible placeholder is reachable.
+/naming/part-3/*      /naming/                      301!
+/naming/part-3        /naming/                      301!
+/naming/part-4/*      /naming/                      301!
+/naming/part-4        /naming/                      301!
+/naming/part-5/*      /naming/                      301!
+/naming/part-5        /naming/                      301!
+/naming/part-6/*      /naming/                      301!
+/naming/part-6        /naming/                      301!
 
 # Catch-all: anything not matched → the real 404 page, under a 404 status.
 # This must point at /404.html, never at /index.html: sending the hub under
