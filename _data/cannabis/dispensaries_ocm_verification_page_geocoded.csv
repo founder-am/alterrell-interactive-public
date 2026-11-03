@@ -1,0 +1,756 @@
+id,address,city,zip,geocode_status,geocoder,lon,lat,precinct,unit
+v720,260 Lark St,Albany,12210,Match,Census Geocoder Public_AR_Current,-73.76604588735,42.653954343096,,
+v716,43005 NY-28,Arkville,12406,No_Match,,,,,
+v717,5901 Church Ave,Brooklyn,11203,Match,Census Geocoder Public_AR_Current,-73.921714692373,40.65255264758,67,67
+v714,45 Aqueduct Rd,White Plains,10606,Match,Census Geocoder Public_AR_Current,-73.782401546144,41.036178100278,,
+v715,162-20 Northern Blvd,Flushing,11358,Match,Census Geocoder Public_AR_Current,-73.802894652214,40.761380983059,109,109
+v712,248-06 Northern Blvd,Little Neck,11362,Match,Census Geocoder Public_AR_Current,-73.73911092754,40.766978047447,111,111
+v713,367 Flatbush Ave,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.972084805123,40.676782596592,78,78
+v710,7723 S Main St,Pine Plains,12567,Match,Census Geocoder Public_AR_Current,-73.655445038877,41.973839372226,,
+v711,1736 Black River Blvd N,Rome,13440,Match,Census Geocoder Public_AR_Current,-75.43878080545,43.231370252114,,
+v718,191 Route 59 Ste 8,Airmont,10901,Match,Census Geocoder Public_AR_Current,-74.144360011344,41.115045721809,,
+v719,1839 South Rd,Wappingers Falls,12590,Match,Census Geocoder Public_AR_Current,-73.91470766807,41.61462900596,,
+v705,3115 Victory Blvd,Staten Island,10314,Match,Census Geocoder Public_AR_Current,-74.163993978536,40.607073384495,121,121
+v706,2195 Broadway,New York,10024,Match,Census Geocoder Public_AR_Current,-73.980627336794,40.783011155956,20,20
+v703,856 Knickerbocker Ave,Brooklyn,11207,Match,Census Geocoder Public_AR_Current,-73.905830863951,40.691611769963,83,83
+v704,2101 Mott Ave,Far Rockaway,11691,Match,Census Geocoder Public_AR_Current,-73.754102737128,40.604764026769,101,101
+v701,4930 Broadway,New York,10034,Match,Census Geocoder Public_AR_Current,-73.921438648581,40.867549445364,34,34
+v702,2245 South Rd,Poughkeepsie,12601,Match,Census Geocoder Public_AR_Current,-73.921833040343,41.643759853646,,
+v700,147 Rt 9 West,Haverstraw,10927,Match,Census Geocoder Public_AR_Current,-73.960664309192,41.191865089652,,
+v709,649 Park Ave,Rochester,14607,Match,Census Geocoder Public_AR_Current,-77.578485758607,43.148255584353,,
+v707,98-48 Queens Blvd,Rego Park,11374,Match,Census Geocoder Public_AR_Current,-73.85655309459,40.727723266809,112,112
+v708,3042b Fenton Ave,Bronx,10469,Match,Census Geocoder Public_AR_Current,-73.844406953722,40.869651954449,47,47
+v620,388 West St,New York,10014,Match,Census Geocoder Public_AR_Current,-74.010172821273,40.732449897348,6,6
+v741,245 Broadway,Saranac Lake,12983,Match,Census Geocoder Public_AR_Current,-74.139196400026,44.335422325969,,
+v500,96 Columbia St,Rensselaer,12144,Match,Census Geocoder Public_AR_Current,-73.746480243882,42.634717681489,,
+v621,765 Washington Ave,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.962936002191,40.673903191193,77,77
+v742,99-25 Horace Harding Expy,Corona,11368,Match,Census Geocoder Public_AR_Current,-73.85830466061,40.736161875247,110,110
+v740,222-06 S Conduit Ave,Springfield Gardens,11413,Match,Census Geocoder Public_AR_Current,-73.755620855118,40.665438805075,116,105+116
+v617,30 N Main St,Alfred,14802,Match,Census Geocoder Public_AR_Current,-77.789961413122,42.25551644211,,
+v738,"752 Targee St, Unit 1",Staten Island,10304,Match,Census Geocoder Public_AR_Current,-74.087751929513,40.609439822691,120,120
+v618,834 Dekalb Ave,Brooklyn,11221,Match,Census Geocoder Public_AR_Current,-73.942870387877,40.692292782173,79,79
+v739,52 W 27th St,New York,10001,Match,Census Geocoder Public_AR_Current,-73.989996350406,40.744944300407,13,13
+v615,1284 Central Ave,Albany,12205,Match,Census Geocoder Public_AR_Current,-73.812501897587,42.699691700568,,
+v736,43-03 Broadway,Astoria,11103,Match,Census Geocoder Public_AR_Current,-73.916486175345,40.757860049066,114,114
+v616,29 N Cascade Dr,Springville,14141,Match,Census Geocoder Public_AR_Current,-78.689028079132,42.510208792435,,
+v737,1745 Lakeville Rd,Avon,14414,Match,Census Geocoder Public_AR_Current,-77.706824076994,42.906103331694,,
+v613,85-08 Pitkin Ave,Ozone Park,11417,Match,Census Geocoder Public_AR_Current,-73.851354114269,40.674971863252,106,106
+v734,1584 Flatbush Ave,Brooklyn,11210,Match,Census Geocoder Public_AR_Current,-73.947225206957,40.632329259676,70,70
+v614,1155 Liberty Ave,Brooklyn,11208,Match,Census Geocoder Public_AR_Current,-73.866677807784,40.678820209288,75,75
+v735,2257 Emmons Ave,Brooklyn,11235,Match,Census Geocoder Public_AR_Current,-73.944714126862,40.583739824669,61,61
+v611,4790 Commercial Dr,New Hartford,13413,Match,Census Geocoder Public_AR_Current,-75.304349283142,43.095911427932,,
+v732,40-28 Murray St,Flushing,11354,Match,Census Geocoder Public_AR_Current,-73.812788061116,40.76381568506,109,109
+v612,1610 Eastern Pkwy,Schenectady,12309,Match,Census Geocoder Public_AR_Current,-73.912652110699,42.806611066128,,
+v733,435 5th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.986028877089,40.669396086739,78,78
+v619,58 Greenpoint Ave,Brooklyn,11222,Match,Census Geocoder Public_AR_Current,-73.958587502288,40.72972667112,94,94
+v730,2353 Millersport Hwy,Amherst,14068,Match,Census Geocoder Public_AR_Current,-78.769907590442,43.012765930994,,
+v610,566 7th Ave,New York,10018,Match,Census Geocoder Public_AR_Current,-73.987863600252,40.754910105487,14,14
+v731,8415 18th Ave,Brooklyn,11214,Match,Census Geocoder Public_AR_Current,-74.001347901037,40.608226443786,62,62
+v606,85 Nassau St,New York,10038,Match,Census Geocoder Public_AR_Current,-74.008025666011,40.710029308272,1,1
+v727,3658 North Ave,New Rochelle,10801,No_Match,,,,,
+v607,348 N Goodman St,Rochester,14607,Match,Census Geocoder Public_AR_Current,-77.584661952347,43.159886269996,,
+v728,51 Richmond Hill Rd,Staten Island,10314,Match,Census Geocoder Public_AR_Current,-74.166156512454,40.588176768865,121,121
+v604,599 10th Ave,New York,10036,Match,Census Geocoder Public_AR_Current,-73.994778051278,40.760699702666,18,18
+v725,133 Wyckoff Ave,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.918957436477,40.704215804801,83,83
+v605,3043 Fulton St,Brooklyn,11208,Match,Census Geocoder Public_AR_Current,-73.882446267408,40.680709264699,75,75
+v726,3461 E Tremont Ave,Bronx,10465,Match,Census Geocoder Public_AR_Current,-73.827399310469,40.832133279219,45,45
+v602,262 Middle Island Rd,Medford,11763,Match,Census Geocoder Public_AR_Current,-72.988919464183,40.840979037759,,
+v723,900 E Fayette St,Syracuse,13210,Match,Census Geocoder Public_AR_Current,-76.13764043094,43.048429110216,,
+v603,44 Wyckoff Ave,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.921744909899,40.705805172065,83,83
+v724,1582 Pitkin Ave,Brooklyn,11212,Match,Census Geocoder Public_AR_Current,-73.915060359343,40.668984611399,73,73
+v600,75-20 Roosevelt Ave,Jackson Heights,11372,Match,Census Geocoder Public_AR_Current,-73.89025654164,40.746909664175,110,110
+v721,307 Adams St,Rome,13340,Match,Census Geocoder Public_AR_Current,-75.463015519899,43.211619362648,,
+v601,695 5th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.993530255329,40.66115121359,72,72
+v722,345 N Highland Ave,Ossining,10562,Match,Census Geocoder Public_AR_Current,-73.868998137392,41.179629662347,,
+v608,434 Main St,Schoharie,12157,Match,Census Geocoder Public_AR_Current,-74.309820706148,42.668384050585,,
+v729,440 Niagara Falls Blvd,Buffalo,14223,Match,Census Geocoder Public_AR_Current,-78.823593821358,42.96608542581,,
+v609,317 10th Ave,New York,10001,Match,Census Geocoder Public_AR_Current,-74.001803276856,40.75105357753,10,10
+v400,2615 South Rd,Poughkeepsie,12601,Match,Census Geocoder Public_AR_Current,-73.929696758274,41.667976729652,,
+v521,5 Washington St,Trumansburg,14886,Match,Census Geocoder Public_AR_Current,-76.663591774762,42.542880911167,,
+v642,302 Kings Hwy,Brooklyn,11223,Match,Census Geocoder Public_AR_Current,-73.979374775672,40.605037267559,62,62
+v401,607 W 3rd St,Jamestown,14701,Match,Census Geocoder Public_AR_Current,-79.254219129762,42.094153165958,,
+v522,132 Metropolitan Ave,Brooklyn,11249,Match,Census Geocoder Public_AR_Current,-73.962540005952,40.716213118077,90,90
+v643,31 Washington St,Brooklyn,11201,Match,Census Geocoder Public_AR_Current,-73.989408930095,40.703336551604,84,84
+v640,1597 Saint Nicholas Ave,New York,10040,Match,Census Geocoder Public_AR_Current,-73.929787513201,40.854830351916,34,34
+v520,90-67 Sutphin Blvd,Jamaica,11435,Match,Census Geocoder Public_AR_Current,-73.8077936083,40.701141374501,103,103
+v641,656 South Ave,Rochester,14620,Match,Census Geocoder Public_AR_Current,-77.604475022582,43.142687773269,,
+v518,260 Clemens Center Pkwy,Elmira,14901,Match,Census Geocoder Public_AR_Current,-76.8051641506,42.090353661051,,
+v639,1255 NY-300,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.069919634884,41.503018016698,,
+v519,406 Middle Country Rd,Coram,11727,No_Match,,,,,
+v516,6669 West Main Rd,Lima,14485,Match,Census Geocoder Public_AR_Current,-77.648064064871,42.901562750926,,
+v637,1645 State Route 104,Ontario,14519,Match,Census Geocoder Public_AR_Current,-77.30113758621,43.227699879434,,
+v517,34 Main St,Ossining,10562,Match,Census Geocoder Public_AR_Current,-73.867686464537,41.158687418392,,
+v638,3118 Main St,Buffalo,14214,Match,Census Geocoder Public_AR_Current,-78.827778183491,42.949572456546,,
+v514,971 Albany Shaker Rd,Latham,12110,Match,Census Geocoder Public_AR_Current,-73.815071831943,42.764085414294,,
+v635,25-15 Broadway,Astoria,11106,Match,Census Geocoder Public_AR_Current,-73.928133535153,40.763343718538,114,114
+v515,190-194 E Main St,Rochester,14604,Match,Census Geocoder Public_AR_Current,-77.607212007716,43.157034667407,,
+v636,230 W Main St,Batavia,14020,Match,Census Geocoder Public_AR_Current,-78.193933175443,43.000968506579,,
+v512,556 Victory Rd,Red Creek,13143,Match,Census Geocoder Public_AR_Current,-76.70378999409,43.214833168998,,
+v633,4123 NY-96,Manchester,14504,Match,Census Geocoder Public_AR_Current,-77.229297276643,42.974973017226,,
+v754,1 Northern Dr,Troy,12182,Match,Census Geocoder Public_AR_Current,-73.668153409706,42.78581911277,,
+v513,1508 US-9,Clifton Park,12065,Match,Census Geocoder Public_AR_Current,-73.743296665157,42.838996786101,,
+v634,257 County Road 39A,Southampton,11968,Match,Census Geocoder Public_AR_Current,-72.386286037397,40.900237004109,,
+v510,"909 US-9, Suite #3",Queensbury,12804,Match,Census Geocoder Public_AR_Current,-73.679230116735,43.33649158233,,
+v631,4245 Lakeville Rd,Geneseo,14454,Match,Census Geocoder Public_AR_Current,-77.787944515511,42.797431017839,,
+v752,1271 Broadway,Brooklyn,11221,Match,Census Geocoder Public_AR_Current,-73.924756765843,40.691102751763,83,83
+v511,35 Route 9W,Haverstraw,10927,No_Match,,,,,
+v632,227 Smith St,Brooklyn,11231,Match,Census Geocoder Public_AR_Current,-73.992204652129,40.684034288648,76,76
+v753,900 Broadhollow Rd,Farmingdale,11735,Match,Census Geocoder Public_AR_Current,-73.42437551188,40.724829597402,,
+v750,1228 Wellwood Ave,West Babylon,11704,Match,Census Geocoder Public_AR_Current,-73.397455894611,40.729957802927,,
+v630,64-01 Grand Ave,Maspeth,11378,Match,Census Geocoder Public_AR_Current,-73.901770784836,40.722876752651,104,104
+v751,4944 NY-28,Cooperstown,13326,Match,Census Geocoder Public_AR_Current,-74.958480998109,42.663534029605,,
+v507,1708 Broadway,Schenectady,12306,Match,Census Geocoder Public_AR_Current,-73.961210683703,42.799243785016,,
+v628,570 Midland Ave,Staten Island,10306,Match,Census Geocoder Public_AR_Current,-74.093360153207,40.572377126463,122,122
+v749,48 West Fulton St,Gloversville,12078,Match,Census Geocoder Public_AR_Current,-74.347494528057,43.050476521508,,
+v508,723 11th Ave,New York,10019,Match,Census Geocoder Public_AR_Current,-73.994150296735,40.766655992078,18,18
+v629,148 Kingsland Ave,Brooklyn,11222,Match,Census Geocoder Public_AR_Current,-73.940854021666,40.721252451099,94,94
+v505,112 Christopher St,New York,10014,Match,Census Geocoder Public_AR_Current,-74.005268381887,40.733180294027,6,6
+v626,548 Court St,New York,11231,Match,Census Geocoder Public_AR_Current,-73.999470216893,40.67512095205,76,76
+v747,1656 Western Ave,Albany,12203,Match,Census Geocoder Public_AR_Current,-73.854321241253,42.686398701968,,
+v506,30-12 Astoria Blvd,Astoria,11102,Match,Census Geocoder Public_AR_Current,-73.91886658257,40.770205128962,114,114
+v627,9206 3rd Ave,Brooklyn,11209,Match,Census Geocoder Public_AR_Current,-74.032900551399,40.619153081815,68,68
+v748,549 Albany Ave,Kingston,12402,Match,Census Geocoder Public_AR_Current,-73.997157340731,41.943776013543,,
+v503,2935 3rd Ave,Bronx,10455,Match,Census Geocoder Public_AR_Current,-73.915635027061,40.817578814472,40,40
+v624,1557 Lexington Ave,New York,10029,Match,Census Geocoder Public_AR_Current,-73.949253196021,40.78805007208,23,23
+v745,119-07 Jamaica Ave,Richmond Hill,11418,Match,Census Geocoder Public_AR_Current,-73.830792200688,40.700091056872,102,102
+v504,465 Forest Ave,Staten Island,10301,Match,Census Geocoder Public_AR_Current,-74.104957881328,40.630721341564,120,120
+v625,2273A Broadway,New York,10024,Match,Census Geocoder Public_AR_Current,-73.978851085362,40.785479883732,20,20
+v746,5306 Route 9W,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.005562082845,41.550104445922,,
+v501,501 Route 9W,Piermont,10968,Tie,,,,,
+v622,377 Metropolitan Ave,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.955699616074,40.714140907574,94,94
+v743,28 Sodus St,Clyde,14433,Match,Census Geocoder Public_AR_Current,-76.871951489064,43.083300222183,,
+v502,24502 Horace Harding Expressway,Little Neck,11362,Match,Census Geocoder Public_AR_Current,-73.737155003944,40.757893666811,111,111
+v623,10880 Transit Rd,East Amherst,14051,Match,Census Geocoder Public_AR_Current,-78.696973810535,43.066715877865,,
+v744,1669 Richmond Rd,Staten Island,10304,Match,Census Geocoder Public_AR_Current,-74.10168167194,40.589246289721,122,122
+v509,662 Seneca Ave,Ridgewood,11385,Match,Census Geocoder Public_AR_Current,-73.908848965615,40.703423808994,104,104
+v301,270-01 Hillside Ave,Queens,11064,No_Match,,,,,
+v422,242 Lake Street Plaza,Penn Yan,14527,Match,Census Geocoder Public_AR_Current,-77.058258212738,42.653958948767,,
+v543,2521 Niagara Falls Blvd,Amherst,14228,Match,Census Geocoder Public_AR_Current,-78.82211186103,43.022618847616,,
+v664,7621 Oswego Rd,Liverpool,13090,No_Match,,,,,
+v302,115 Main St,Rochester,14445,Match,Census Geocoder Public_AR_Current,-77.484596454953,43.114025056396,,
+v423,"393 Main St, Unit #101",Oneonta,13820,Match,Census Geocoder Public_AR_Current,-75.053401503143,42.458311854531,,
+v544,73-13 Beach Channel Dr,Arverne,11692,Match,Census Geocoder Public_AR_Current,-73.801524818057,40.590782904063,100,100
+v665,172-02 Hillside Ave,Jamaica,11432,Match,Census Geocoder Public_AR_Current,-73.790101094454,40.711693797818,103,103
+v420,1727 Genesee St,Buffalo,14211,Match,Census Geocoder Public_AR_Current,-78.81699120995,42.911253858643,,
+v541,111-19 Liberty Ave,South Richmond Hill,11419,Match,Census Geocoder Public_AR_Current,-73.830958251704,40.684877208201,106,106
+v662,309 S Main St,Elmira,14904,Match,Census Geocoder Public_AR_Current,-76.804370060253,42.081537452486,,
+v300,214-24 73rd Ave,Oakland Gardens,11364,Match,Census Geocoder Public_AR_Current,-73.759654639413,40.740328197388,111,111
+v421,87 East Front St,Hancock,13783,Match,Census Geocoder Public_AR_Current,-75.279769255889,41.954202587303,,
+v542,626 Oriskany Blvd,Yorkville,13495,Match,Census Geocoder Public_AR_Current,-75.278463870792,43.114339326311,,
+v663,95-31 Jamaica Ave,Jamaica,11421,Match,Census Geocoder Public_AR_Current,-73.849471340398,40.694498887821,102,102
+v660,1455 Niagara St,Buffalo,14212,Match,Census Geocoder Public_AR_Current,-78.898052386232,42.923985652006,,
+v540,221 Oriskany St E,Utica,13501,No_Match,,,,,
+v661,545 W Ridge Rd,Rochester,14615,Match,Census Geocoder Public_AR_Current,-77.640959242344,43.201183366229,,
+v419,1143 Upper Front St,Binghamton,13905,Match,Census Geocoder Public_AR_Current,-75.899779310336,42.149105154231,,
+v417,206 8th Ave,New York,10011,Match,Census Geocoder Public_AR_Current,-73.999568821026,40.743689290165,10,10
+v538,247-14 South Conduit Ave,Rosedale,11422,Match,Census Geocoder Public_AR_Current,-73.730792360455,40.665302871382,116,105+116
+v659,136-15 Roosevelt Ave,Flushing,11354,Match,Census Geocoder Public_AR_Current,-73.829594562969,40.759765417801,109,109
+v418,904 Elmwood Ave,Buffalo,14222,Match,Census Geocoder Public_AR_Current,-78.877088779152,42.921775037891,,
+v539,8137 Lefferts Blvd,Kew Gardens,11415,Match,Census Geocoder Public_AR_Current,-73.830628512264,40.708466863754,102,102
+v10,3 E 3rd St,New York,10003,Match,Census Geocoder Public_AR_Current,-73.991601616275,40.726375634333,9,9
+v415,204 E. Main St,Batavia,14020,Match,Census Geocoder Public_AR_Current,-78.181462531005,42.997249388605,,
+v536,7110 Grand Ave,Maspeth,11378,Match,Census Geocoder Public_AR_Current,-73.892114162742,40.727778209281,104,104
+v657,229A Beach 20th St,Far Rockaway,11691,Match,Census Geocoder Public_AR_Current,-73.754143061936,40.595780673771,101,101
+v416,350 W Commercial St,East Rochester,14445,Match,Census Geocoder Public_AR_Current,-77.492467648739,43.114906994756,,
+v537,539 Metropolitan Ave,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.950574909409,40.714123767494,94,94
+v658,3162 Lake Rd,Horseheads,14845,Match,Census Geocoder Public_AR_Current,-76.814391506884,42.142856441555,,
+v12,810C Broadway,Rensselaer,12144,Match,Census Geocoder Public_AR_Current,-73.739624558289,42.646364036254,,
+v413,3264 85th St,East Elmhurst,11370,Match,Census Geocoder Public_AR_Current,-73.882789553417,40.756596563307,115,115
+v534,9 Newkirk Plz,Brooklyn,11226,Match,Census Geocoder Public_AR_Current,-73.962853203951,40.635619889144,70,70
+v655,243 Wolf Rd,Colonie,12205,Match,Census Geocoder Public_AR_Current,-73.797130967343,42.725805607389,,
+v11,74-03 Metropolitan Ave,Middle Village,11379,Match,Census Geocoder Public_AR_Current,-73.878139877555,40.712903627641,104,104
+v414,"6850 Main St, Suite 1",Williamsville,14221,Match,Census Geocoder Public_AR_Current,-78.698877605756,42.965406695088,,
+v535,820 2nd Ave,New York,10017,Match,Census Geocoder Public_AR_Current,-73.971232637307,40.751044325396,17,17
+v656,3653 E Tremont Ave,Bronx,10465,Match,Census Geocoder Public_AR_Current,-73.823666721939,40.828056132029,45,45
+v14,4219 Webster Ave,Bronx,10470,Match,Census Geocoder Public_AR_Current,-73.863061987435,40.896300869657,47,47
+v13,219 Walton St,Syracuse,13202,Match,Census Geocoder Public_AR_Current,-76.156392314407,43.047928300621,,
+v16,535 Main St,New Rochelle,10801,Match,Census Geocoder Public_AR_Current,-73.78284976441,40.908144835582,,
+v15,246 Main St,Johnson City,13790,Match,Census Geocoder Public_AR_Current,-75.955196167778,42.115089884512,,
+v18,"1308 Vestal Pkwy E, 1st Floor, Set D",Vestal,13850,Match,Census Geocoder Public_AR_Current,-76.030930995379,42.091615356297,,
+v17,1815 Broadhollow Rd,Farmingdale,11735,Match,Census Geocoder Public_AR_Current,-73.422489961636,40.745092909067,,
+v19,501 Main St,Buffalo,14203,Match,Census Geocoder Public_AR_Current,-78.873781860908,42.88730930712,,
+v411,"2415 Queens Plza N, Unit NR1",Long Island City,11101,Match,Census Geocoder Public_AR_Current,-73.940289385308,40.751044980076,114,114
+v532,132 Broadway,Whitehall,12887,Match,Census Geocoder Public_AR_Current,-73.404353842246,43.551120115833,,
+v653,500 Highland Ave,Peekskill,10566,Match,Census Geocoder Public_AR_Current,-73.920047065632,41.296159298142,,
+v412,"5211 Broadway, Ste 300",Lancaster,14086,Match,Census Geocoder Public_AR_Current,-78.679943219572,42.900662706899,,
+v533,2675 Main St,Buffalo,14214,Match,Census Geocoder Public_AR_Current,-78.838304803236,42.939876963469,,
+v654,994 Atlantic Ave,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.960956413486,40.680323031566,77,77
+v530,2400 N Ocean Ave,Farmingville,11738,Match,Census Geocoder Public_AR_Current,-73.021087778055,40.828329925909,,
+v651,110 Broadway,Brooklyn,11249,Match,Census Geocoder Public_AR_Current,-73.965020897004,40.710370146601,90,90
+v410,435 5th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.986028877089,40.669396086739,78,78
+v531,7536 N Broadway,Red Hook,12571,Match,Census Geocoder Public_AR_Current,-73.87468650317,41.996307537287,,
+v652,137 Main St,Cold Spring,10516,Match,Census Geocoder Public_AR_Current,-73.956841429872,41.418660656938,,
+v650,245-02 Merrick Blvd,Rosedale,11422,Match,Census Geocoder Public_AR_Current,-73.729416719809,40.67410341196,116,105+116
+v408,1118 Pennsylvania Ave,Brooklyn,11207,Match,Census Geocoder Public_AR_Current,-73.886887407902,40.653454195303,75,75
+v529,"4761 Cold Springs Rd, Bldg 1",Lockport,14094,Match,Census Geocoder Public_AR_Current,-78.665334413142,43.185652060256,,
+v409,70 Canal St,New York,10002,Match,Census Geocoder Public_AR_Current,-73.99289536599,40.715140860807,5,5
+v406,95-38 Queens Blvd,Rego Park,11374,Match,Census Geocoder Public_AR_Current,-73.863828459335,40.730368396698,112,112
+v527,4151 Mckinley Pkwy,Hamburg,14075,No_Match,,,,,
+v648,1300 Wellwood Ave,West Babylon,11704,Match,Census Geocoder Public_AR_Current,-73.398151780088,40.732422231352,,
+v407,175-01 Rockaway Blvd,Jamaica,11434,Match,Census Geocoder Public_AR_Current,-73.770394788442,40.657889926447,116,105+116
+v528,"377 S Union St, Ste 5",Spencerport,14559,Match,Census Geocoder Public_AR_Current,-77.804084020496,43.185361294077,,
+v649,1823 Western Ave,Albany,12203,Match,Census Geocoder Public_AR_Current,-73.868753574548,42.691048689739,,
+v21,"451 Elmwood Ave, Ste 105",Buffalo,14222,Match,Census Geocoder Public_AR_Current,-78.877024586922,42.909270431582,,
+v404,1280 Dryden Rd,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.411814543757,42.467050391944,,
+v525,114-19 Rockawary Beach Blvd,Rockaway Park,11694,Match,Census Geocoder Public_AR_Current,-73.835586007898,40.580208404607,100,100
+v646,399 Albany Shaker Rd,Loudonville,12211,Match,Census Geocoder Public_AR_Current,-73.768042895347,42.697292684201,,
+v20,6300 Transit Rd,Depew,14043,Match,Census Geocoder Public_AR_Current,-78.696999529308,42.927284395315,,
+v405,316 East State St,Herkimer,13350,Match,Census Geocoder Public_AR_Current,-74.980518906372,43.027507283737,,
+v526,61 N 11th St,Brooklyn,11249,Match,Census Geocoder Public_AR_Current,-73.958173342305,40.721879857763,94,94
+v647,151 Hoosick St,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.676756632918,42.73928844374,,
+v23,1707 Oriskany St W,Utica,13502,Match,Census Geocoder Public_AR_Current,-75.256107165474,43.110731398222,,
+v402,360 W Ridge Rd,Rochester,14615,Match,Census Geocoder Public_AR_Current,-77.636777937643,43.199649335072,,
+v523,15 Campbell Ave,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.687263344667,42.703962384547,,
+v644,133-36 Whitestone Expy,Flushing,11354,Match,Census Geocoder Public_AR_Current,-73.835867342651,40.769104853764,109,109
+v22,76 Main St,Oneonta,13820,Match,Census Geocoder Public_AR_Current,-75.063809952465,42.450841236738,,
+v403,19 Technology Dr,East Setauket,11733,Match,Census Geocoder Public_AR_Current,-73.086424615979,40.898198121539,,
+v524,"130 Broad St, Ste 7 & 8",Glens Falls,12801,Match,Census Geocoder Public_AR_Current,-73.656745867162,43.304930480105,,
+v645,6320 Main S,Tannersville,12485,Match,Census Geocoder Public_AR_Current,-74.149688865701,42.195663493111,,
+v25,3610 Ditmars Blvd,Queens,11105,Match,Census Geocoder Public_AR_Current,-73.908125005069,40.774234469513,114,114
+v24,"622 Lake Flower Ave, Ste 7",Saranac Lake,12983,Match,Census Geocoder Public_AR_Current,-74.115580516048,44.311254224722,,
+v27,25 Market St,Potsdam,13676,Match,Census Geocoder Public_AR_Current,-74.986943392518,44.669250645867,,
+v26,85 Delancey St,New York,10002,Match,Census Geocoder Public_AR_Current,-73.989693996667,40.718838575476,7,7
+v29,"997 Central Ave, Ste 200",Albany,12205,Match,Census Geocoder Public_AR_Current,-73.794408234234,42.684012699645,,
+v28,1297 Hertel Ave,Buffalo,14216,Match,Census Geocoder Public_AR_Current,-78.859319855042,42.947672957502,,
+v202,187 Mill St,Liberty,12754,Match,Census Geocoder Public_AR_Current,-74.73535220865,41.793266151086,,
+v323,1 Hall Ave,White Plains,10603,Match,Census Geocoder Public_AR_Current,-73.759249213587,41.038363266358,,
+v444,2200 Walden Ave,Cheektowaga,14225,No_Match,,,,,
+v565,12 W 18th St,New York,10011,Match,Census Geocoder Public_AR_Current,-73.99222249577,40.738617191149,13,13
+v686,179-36 Hillside Ave,Jamaica,11432,Match,Census Geocoder Public_AR_Current,-73.783375470871,40.712695825026,103,103
+v203,224-15 Union Tpke,Oakland Gardens,11364,Match,Census Geocoder Public_AR_Current,-73.746290852435,40.735891778949,111,111
+v324,1444 Route 9D,Wappingers Falls,12590,Match,Census Geocoder Public_AR_Current,-73.967605891907,41.525539795072,,
+v445,108 South St,New York,10038,Match,Census Geocoder Public_AR_Current,-74.001981695711,40.706976514907,1,1
+v566,1151 Hylan Blvd,Staten Island,10305,Match,Census Geocoder Public_AR_Current,-74.081101233437,40.598678651121,122,122
+v687,2121 Niagara Falls Blvd,Amherst,14215,Match,Census Geocoder Public_AR_Current,-78.822203800587,43.012251201632,,
+v200,784 Allerton Ave,Bronx,10467,Match,Census Geocoder Public_AR_Current,-73.864054270365,40.865439898804,49,49
+v321,459 Lexington Ave,New York,10017,Match,Census Geocoder Public_AR_Current,-73.974468229677,40.753494721896,17,17
+v442,"1900 Empire Blvd, Ste 190",Rochester,14580,Match,Census Geocoder Public_AR_Current,-77.502912550647,43.191682922959,,
+v563,2192 Saranac Ave,Lake Placid,12946,Match,Census Geocoder Public_AR_Current,-73.994282359852,44.293840646541,,
+v684,162 S Main St,Albion,14411,Match,Census Geocoder Public_AR_Current,-78.193938197972,43.24242673172,,
+v201,1363 Delaware Ave,Buffalo,14209,Match,Census Geocoder Public_AR_Current,-78.867363008249,42.921871576652,,
+v322,40-07 A Queens Blvd,Sunnyside,11104,Match,Census Geocoder Public_AR_Current,-73.924097649265,40.743998526686,108,108
+v443,4441 Broadway,New York,10040,Match,Census Geocoder Public_AR_Current,-73.93253030366,40.857064537643,34,34
+v564,3430 Boston Rd,Bronx,10467,Match,Census Geocoder Public_AR_Current,-73.849384920376,40.875985848105,47,47
+v685,600 State Route 299,Highland,12528,Match,Census Geocoder Public_AR_Current,-74.036609930827,41.737958369404,,
+v440,383 8th Ave,New York,10001,Match,Census Geocoder Public_AR_Current,-73.995778751118,40.749129849203,14,14
+v561,6075 E Henrietta Rd,Rush,14543,Match,Census Geocoder Public_AR_Current,-77.64513409758,42.992028154422,,
+v682,71-19 Austin St,Forest Hills,11375,Match,Census Geocoder Public_AR_Current,-73.844104079634,40.719979440264,112,112
+v320,356 W 40th St,New York,10018,Match,Census Geocoder Public_AR_Current,-73.99237326363,40.756578645992,14,14
+v441,3448 Nostrand Ave,Brooklyn,11229,Match,Census Geocoder Public_AR_Current,-73.941848684586,40.599821397861,61,61
+v562,828 W Genesee St,Skaneateles,13152,Match,Census Geocoder Public_AR_Current,-76.444681561278,42.944140846705,,
+v683,111 Central Park North,New York,10028,Match,Census Geocoder Public_AR_Current,-73.952785126397,40.798445838789,28,28
+v680,6519 Main St,Westport,12993,No_Match,,,,,
+v560,1280 1st Ave,New York,10065,Match,Census Geocoder Public_AR_Current,-73.957429507459,40.765723960405,19,19
+v681,1055 Flushing Ave,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.930129432635,40.704238555887,90,90
+v30,740 Hoosick Rd,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.642456372215,42.745175845972,,
+v318,241 5th Ave,New York,10016,Match,Census Geocoder Public_AR_Current,-73.987455798364,40.744346344842,13,13
+v439,381 Broadway,New York,10013,Match,Census Geocoder Public_AR_Current,-74.003068900144,40.718105144662,1,1
+v319,3645 Front St,Wellsburg,14894,Match,Census Geocoder Public_AR_Current,-76.730214642449,42.016902574805,,
+v32,"900 Jefferson Rd, Ste 902",Rochester,14623,Match,Census Geocoder Public_AR_Current,-77.614636578315,43.087250656004,,
+v316,20917 Northern Blvd,Bayside,11361,Match,Census Geocoder Public_AR_Current,-73.774159114464,40.759122041108,111,111
+v437,25306 Northern Blvd,Little Neck,11362,Match,Census Geocoder Public_AR_Current,-73.735283202136,40.770815367415,111,111
+v558,2180 Clarendon Rd,Brooklyn,11226,Match,Census Geocoder Public_AR_Current,-73.956705802651,40.642694489545,70,70
+v679,8520 Transit Rd,Amherst,14221,Match,Census Geocoder Public_AR_Current,-78.696996931492,42.999211519969,,
+v31,1451 State Highway 5S,Amsterdam,12010,Match,Census Geocoder Public_AR_Current,-74.201661087336,42.929117142784,,
+v317,10-50 Jackson Ave,Long Island City,11101,Match,Census Geocoder Public_AR_Current,-73.95300038207,40.742280877547,108,108
+v438,4-10 Taft Ave,Poughkeepsie,12603,Match,Census Geocoder Public_AR_Current,-73.896325483195,41.697192706346,,
+v559,99 NY-17K Suite 2,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.075138512535,41.505703996502,,
+v34,412 W Broadway,New York,10012,Match,Census Geocoder Public_AR_Current,-74.00184982037,40.724756142371,1,1
+v314,769 Franklin Ave,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.957227814391,40.672503752352,77,77
+v435,12044 E. Main St,Wolcott,14590,Match,Census Geocoder Public_AR_Current,-76.81392891495,43.220247276679,,
+v556,2668 Coney Island Ave,Brooklyn,11233,Match,Census Geocoder Public_AR_Current,-73.960759687637,40.59165186101,61,61
+v677,734 NY 32A,Palenville,12414,Match,Census Geocoder Public_AR_Current,-74.019229342025,42.174132894468,,
+v33,"2460 Williamsbridge Rd, Fl 1",Bronx,10469,Match,Census Geocoder Public_AR_Current,-73.857577091736,40.861838825627,49,49
+v315,"9229 Queens Blvd, CU-9",Rego Park,11374,Match,Census Geocoder Public_AR_Current,-73.867385812486,40.732505677746,112,112
+v436,405 West 39th St,New York,10018,Match,Census Geocoder Public_AR_Current,-73.994082371985,40.75661945024,10,10
+v557,203 Main St,East Aurora,14052,Match,Census Geocoder Public_AR_Current,-78.627342960144,42.767770555199,,
+v678,4535 Vestal Rd,Vestal,13850,Match,Census Geocoder Public_AR_Current,-75.958420260325,42.095236283143,,
+v36,127 S Terrace Ave,Mt Vernon,10550,Match,Census Geocoder Public_AR_Current,-73.849715018848,40.91005616668,,
+v35,7479 US Highway 11,Potsdam,13676,Match,Census Geocoder Public_AR_Current,-75.02906004853,44.664527416381,,
+v38,"4205 Long Branch Rd, Ste 5",Liverpool,13090,Match,Census Geocoder Public_AR_Current,-76.222871797675,43.130109038041,,
+v37,2370 Coney Island Ave,Brooklyn,11223,Match,Census Geocoder Public_AR_Current,-73.961334620822,40.59925904833,61,61
+v39,98 N Chestnut St,New Paltz,12561,Match,Census Geocoder Public_AR_Current,-74.083637208284,41.754966292769,,
+v312,515 Nostrand Ave,Brooklyn,11216,Match,Census Geocoder Public_AR_Current,-73.949507361539,40.679691661866,79,79
+v433,3547 Broadway,New York,10031,Match,Census Geocoder Public_AR_Current,-73.950368149494,40.826664351575,30,30
+v554,1399 Hylan Blvd,Staten Island,10305,Match,Census Geocoder Public_AR_Current,-74.086531658905,40.594473284037,122,122
+v675,79-28 Metropolitan Ave,Middle Village,11379,Match,Census Geocoder Public_AR_Current,-73.872851859322,40.713206445864,104,104
+v313,2500 Arthur Ave,Bronx,10458,Match,Census Geocoder Public_AR_Current,-73.885771314417,40.857556119643,48,48
+v434,120 Union St,Brooklyn,11231,Match,Census Geocoder Public_AR_Current,-74.002644215606,40.684227334065,76,76
+v555,3 Cherry Hill Rd,New Paltz,12561,Match,Census Geocoder Public_AR_Current,-74.071184361371,41.741717071187,,
+v676,974 NY-67,Ballston Spa,12020,Match,Census Geocoder Public_AR_Current,-73.851881785814,42.984960340682,,
+v310,3871 S Park Ave,Blasdell,14219,Match,Census Geocoder Public_AR_Current,-78.823935978464,42.792268371325,,
+v431,101 E 10th St,New York,10003,No_Match,NYC DCP GeoSearch v2,-73.988649,40.730789,9,9
+v552,34 Scott St,Jamestown,14701,Match,Census Geocoder Public_AR_Current,-79.229273407399,42.099363108873,,
+v673,28 Sawgrass Dr,Bellport,11713,Match,Census Geocoder Public_AR_Current,-72.949183144521,40.804944158238,,
+v311,875 Neptune Ave,Brooklyn,11224,Match,Census Geocoder Public_AR_Current,-73.976886198507,40.57980295327,60,60
+v432,64 Henry St,Brooklyn,11201,Match,Census Geocoder Public_AR_Current,-73.992348366281,40.698998540862,84,84
+v553,1720 2nd Ave,New York,10128,Match,Census Geocoder Public_AR_Current,-73.950124750548,40.779980147585,19,19
+v674,2 E Main St,Bloomfield,14469,Match,Census Geocoder Public_AR_Current,-77.419610285044,42.902297082697,,
+v550,386 Canal St,New York,10013,Match,Census Geocoder Public_AR_Current,-74.004741635862,40.721348330032,1,1
+v671,104-39 Queens Blvd,Forest Hills,11375,Match,Census Geocoder Public_AR_Current,-73.848568312226,40.723681112942,112,112
+v430,2280 Flatbush Ave,Brooklyn,11234,Match,Census Geocoder Public_AR_Current,-73.927944162223,40.614449557661,63,63
+v551,157-48 Crossbay Blvd,Howard Beach,11414,Match,Census Geocoder Public_AR_Current,-73.840689177058,40.66167484641,106,106
+v672,34-21 Greenpoint Ave,Long Island City,11101,Match,Census Geocoder Public_AR_Current,-73.932443177274,40.736507343188,108,108
+v670,110-04 Jamaica Ave,Richmond Hill,11418,Match,Census Geocoder Public_AR_Current,-73.837767039727,40.696381699842,102,102
+v309,104 7th Ave,New York,10011,Match,Census Geocoder Public_AR_Current,-73.998654656891,40.740080909967,10,10
+v41,105 Route 109,Farmingdale,11735,Match,Census Geocoder Public_AR_Current,-73.45537704973,40.731050703025,,
+v307,292 Atlantic Ave,Brooklyn,11201,Match,Census Geocoder Public_AR_Current,-73.989135216671,40.688537876223,84,84
+v428,442 Broadway,Menands,12204,Match,Census Geocoder Public_AR_Current,-73.717603747188,42.70048379164,,
+v549,110 Jersey Ave,Port Jervis,12771,Match,Census Geocoder Public_AR_Current,-74.688776214835,41.369727426672,,
+v40,2 Wade Rd,Latham,12110,Match,Census Geocoder Public_AR_Current,-73.776363955541,42.756139920567,,
+v308,125 State St,Rochester,14614,Match,Census Geocoder Public_AR_Current,-77.61459070469,43.157721420305,,
+v429,"1150 University Ave, Bldg 5, Ste 7",Rochester,14607,Match,Census Geocoder Public_AR_Current,-77.572690060552,43.152242747412,,
+v43,1412 Lexington Ave,New York,10128,Match,Census Geocoder Public_AR_Current,-73.952572712504,40.783738754629,19,19
+v305,365 S Wall St,Kingston,12401,Match,Census Geocoder Public_AR_Current,-74.012307633721,41.92366620168,,
+v426,102-15 159 Rd,Howard Beach,11414,Match,Census Geocoder Public_AR_Current,-73.831171919021,40.659786187642,106,106
+v547,185-24 Horace Harding Expy,Fresh Meadows,11365,Match,Census Geocoder Public_AR_Current,-73.788971325998,40.739890087801,107,107
+v668,1 Old Route 299,New Paltz,12561,Match,Census Geocoder Public_AR_Current,-74.057384063067,41.741341502184,,
+v42,405 Mamaroneck Ave,White Plains,10605,Match,Census Geocoder Public_AR_Current,-73.762222481176,41.023713810951,,
+v306,144-07 243rd St,Rosedale,11422,Match,Census Geocoder Public_AR_Current,-73.739338003112,40.660220049419,116,105+116
+v427,640 Main St,East Aurora,14052,Match,Census Geocoder Public_AR_Current,-78.610890122003,42.767933837388,,
+v548,489 Delaware Ave,Albany,12209,No_Match,,,,,
+v669,3219 Broadway,Astoria,11106,Match,Census Geocoder Public_AR_Current,-73.924360610512,40.76156104008,114,114
+v45,5161 Camp Rd,Hamburg,14075,Match,Census Geocoder Public_AR_Current,-78.852584604458,42.747265349934,,
+v303,701 8th Ave,New York,10036,Match,Census Geocoder Public_AR_Current,-73.98887248222,40.758610660819,14,14
+v424,25 Beekman Ave,Sleepy Hollow,10591,Match,Census Geocoder Public_AR_Current,-73.859593220955,41.085218496642,,
+v545,3764 E Tremont Ave,Bronx,10465,Match,Census Geocoder Public_AR_Current,-73.821330716294,40.825814372287,45,45
+v666,772 Nostrand Ave,Brooklyn,11216,Match,Census Geocoder Public_AR_Current,-73.950353970349,40.672237581359,77,77
+v44,"1308 Dolsontown Rd, Ste 3 & 4",Wawayanda,10940,Match,Census Geocoder Public_AR_Current,-74.404133308401,41.428955333088,,
+v304,245 W 14th St,New York,10011,Match,Census Geocoder Public_AR_Current,-74.00092903501,40.739143420567,10,10
+v425,514 Congress St,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.678272268664,42.721910349332,,
+v546,219-17 Hillside Ave,Queens Village,11427,Match,Census Geocoder Public_AR_Current,-73.745404807584,40.729635931646,105,105+116
+v667,256 Manhattan Ave,New York,10026,Match,Census Geocoder Public_AR_Current,-73.959292986565,40.801524236416,28,28
+v47,158 W 23rd St,New York,10011,Match,Census Geocoder Public_AR_Current,-73.994510460632,40.743554834508,13,13
+v46,334 E 73rd St,New York,10021,Match,Census Geocoder Public_AR_Current,-73.957062376254,40.769078938948,19,19
+v49,-,Queens,-,No_Match,,,,,
+v48,556 Jefferson Rd,Rochester,14623,Match,Census Geocoder Public_AR_Current,-77.630031146052,43.087129488958,,
+v580,142 Route 17K,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.089352361882,41.50866183376,,
+v103,2179 Sheridan Dr,Tonawanda,14223,Match,Census Geocoder Public_AR_Current,-78.853824196745,42.980709267611,,
+v224,74 Lake Ave,Rochester,14608,Match,Census Geocoder Public_AR_Current,-77.624150526291,43.165934726193,,
+v345,165 S Plank Rd,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.063489650705,41.522585352497,,
+v466,4638 Main St,Hemlock,14466,Tie,,,,,
+v587,146-01 Union Tpke,Flushing,11367,Match,Census Geocoder Public_AR_Current,-73.816145841443,40.718044444981,107,107
+v104,244 Main St,White Plains,10601,Match,Census Geocoder Public_AR_Current,-73.764607901929,41.03329997325,,
+v225,8701 Rockaway Beach Blvd,Rockaway Beach,11693,Match,Census Geocoder Public_AR_Current,-73.812219705468,40.587379471162,100,100
+v346,3169 Coney Island Ave,Brooklyn,11235,Match,Census Geocoder Public_AR_Current,-73.959631822173,40.578902834256,60,60
+v467,2079 Leicester Rd,Leicester,14481,Match,Census Geocoder Public_AR_Current,-77.929326535999,42.753761583015,,
+v588,138-72 Queens Blvd,Briarwood,11435,Match,Census Geocoder Public_AR_Current,-73.81734907113,40.706953215376,107,107
+v101,2043 Wellwood Ave,Farmingdale,11735,Match,Census Geocoder Public_AR_Current,-73.40213754681,40.753348589974,,
+v222,185 W Seneca St,Manlius,13104,Match,Census Geocoder Public_AR_Current,-75.985405843628,42.997791700628,,
+v343,3553 West Henrietta Rd,Rochester,14623,Match,Census Geocoder Public_AR_Current,-77.639183762943,43.082877948899,,
+v464,545 Clinton Ave S,Rochester,14620,Match,Census Geocoder Public_AR_Current,-77.602293010584,43.146198616038,,
+v585,201 W Main St,Honeoye Falls,14472,Match,Census Geocoder Public_AR_Current,-77.602251308726,42.949295914065,,
+v102,6606 Kinne Rd,Syracuse,13214,Match,Census Geocoder Public_AR_Current,-76.063910702404,43.042851929329,,
+v223,2102 Ralph Ave,Brooklyn,11234,Match,Census Geocoder Public_AR_Current,-73.91805697635,40.626349696976,63,63
+v344,3405 Avenue H,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.943558977345,40.631963650153,67,67
+v465,343 N Comrie Ave,Johnstown,12095,Match,Census Geocoder Public_AR_Current,-74.360788691407,43.023531200171,,
+v586,1649 Columbia Tpke,Castleton-on-Hudson,12033,Match,Census Geocoder Public_AR_Current,-73.684691200417,42.56847745148,,
+v220,137 4th St,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.689740524825,42.728359846445,,
+v341,330 Tompkins Ave,Brooklyn,11216,Match,Census Geocoder Public_AR_Current,-73.944602481156,40.686426250028,79,79
+v462,1557 Fulton St,Brooklyn,11216,Match,Census Geocoder Public_AR_Current,-73.938990554762,40.679873636275,79,79
+v583,722 N Winton Rd,Rochester,14609,Match,Census Geocoder Public_AR_Current,-77.547698103557,43.159255593699,,
+v100,2442 Clinton St,Cheektowaga,14224,Match,Census Geocoder Public_AR_Current,-78.785688329362,42.871485667732,,
+v221,301 Broadway,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.957722481262,40.708425951373,90,90
+v342,146 10th Ave,New York,10011,Match,Census Geocoder Public_AR_Current,-74.005857274613,40.745253575688,10,10
+v463,3176 Niagara Falls Blvd,North Tonawanda,14120,Match,Census Geocoder Public_AR_Current,-78.870356613055,43.079378793649,,
+v584,2470 Hamburg Tpke,Lackawanna,14218,Match,Census Geocoder Public_AR_Current,-78.846964928392,42.817938685211,,
+v460,956 Jewett Ave,Staten Island,10314,Match,Census Geocoder Public_AR_Current,-74.130806878866,40.612731039736,121,121
+v581,978 Montauk Hwy,Water Mill,11976,Match,Census Geocoder Public_AR_Current,-72.347166017707,40.915424467411,,
+v340,"3711 Brewerton Rd, Ste 8-10",North Syracuse,13212,Match,Census Geocoder Public_AR_Current,-76.144992947063,43.116608634323,,
+v461,"4946 NY-52, Unit 1",Jeffersonville,12748,Match,Census Geocoder Public_AR_Current,-74.938451176569,41.776707977143,,
+v582,6740 State Route 31 E,Newark,14513,Match,Census Geocoder Public_AR_Current,-77.057614024187,43.054245403727,,
+v50,3022 Veterans Rd W,Staten Island,10309,Match,Census Geocoder Public_AR_Current,-74.235884692819,40.528071864596,123,123
+v52,8 North Plank Rd,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.022693229063,41.520362526006,,
+v219,-,Farmingdale,-,No_Match,,,,,
+v51,1350 Forest Ave,Staten Island,10302,Match,Census Geocoder Public_AR_Current,-74.134529973216,40.62579472688,121,121
+v54,958 Sixth Ave,New York,10001,Match,Census Geocoder Public_AR_Current,-73.987277361537,40.750354046607,14,14
+v217,396 Kenmore Ave,Buffalo,14223,Match,Census Geocoder Public_AR_Current,-78.832539675276,42.95823990108,,
+v338,237 Dekalb Ave,Brooklyn,11205,Match,Census Geocoder Public_AR_Current,-73.969759489433,40.689549626553,88,88
+v459,2234 Seneca St,Buffalo,14210,Match,Census Geocoder Public_AR_Current,-78.805642591408,42.851940024253,,
+v53,1056 Flatbush Ave,Brooklyn,11226,Match,Census Geocoder Public_AR_Current,-73.958108706626,40.645241980091,70,70
+v218,106 Main St,Greenwich,12834,Match,Census Geocoder Public_AR_Current,-73.499202901279,43.090056359111,,
+v339,3047 W Henrietta Rd,Henrietta,14623,Match,Census Geocoder Public_AR_Current,-77.634595706317,43.091378394003,,
+v56,248-09 Jericho Turnpike,Bellerose,11426,Match,Census Geocoder Public_AR_Current,-73.718076940062,40.726214069,105,105+116
+v215,1577 State Route 17B,White Lake,12786,No_Match,,,,,
+v336,17 Tinker St,Woodstock,12498,Match,Census Geocoder Public_AR_Current,-74.118953874551,42.040689109145,,
+v457,1031 Southern Blvd,Bronx,10459,Match,Census Geocoder Public_AR_Current,-73.891935714038,40.823869849321,41,41
+v578,2540 George Urban Blvd,Depew,14043,Match,Census Geocoder Public_AR_Current,-78.718571769497,42.918744031994,,
+v699,331 East 9th St,New York,10003,Match,Census Geocoder Public_AR_Current,-73.987072404646,40.729187232664,9,9
+v55,40 W 55th St,New York,10019,Match,Census Geocoder Public_AR_Current,-73.976241716972,40.762159863905,18,18
+v216,81 Wolf Rd,Colonie,12205,Match,Census Geocoder Public_AR_Current,-73.812212888083,42.714949130319,,
+v337,519 Madison Ave,New York,10022,Match,Census Geocoder Public_AR_Current,-73.973992310409,40.759936895872,18,18
+v458,8112 5th Ave,Brooklyn,11209,Match,Census Geocoder Public_AR_Current,-74.024574926573,40.62493573277,68,68
+v579,225 Malcolm X Blvd,Brooklyn,11221,Match,Census Geocoder Public_AR_Current,-73.929436488187,40.685224417839,81,81
+v58,28 Route 59,Nyack,10960,Match,Census Geocoder Public_AR_Current,-73.918499473364,41.09106201291,,
+v57,31-35 Steinway St,Astoria,11103,Match,Census Geocoder Public_AR_Current,-73.91769904713,40.760461103711,114,114
+v59,1938 Clove Rd,Staten Island,10304,Match,Census Geocoder Public_AR_Current,-74.086853153065,40.606093184482,122,122
+v690,66 Jane St,New York,10014,Match,Census Geocoder Public_AR_Current,-74.006394414021,40.738081698342,6,6
+v213,887 Yonkers Ave,Yonkers,10704,Match,Census Geocoder Public_AR_Current,-73.860588703798,40.919325712423,,
+v334,"131-135 Saratoga Ave, Suite 7",South Glens Falls,12803,Match,Census Geocoder Public_AR_Current,-73.638382021063,43.289102266742,,
+v455,496 Broadway,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.025456181349,41.501050288577,,
+v576,88-20 Roosevelt Ave,Jackson Heights,11372,Match,Census Geocoder Public_AR_Current,-73.878149318049,40.748184879534,110,110
+v697,"190 South Plank Rd, Unit 10",Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.068354567776,41.52553807923,,
+v214,1650 Crane St,Schenectady,12303,Match,Census Geocoder Public_AR_Current,-73.943955399906,42.789510466533,,
+v335,"39 Eastern Blvd, Unit 101",Canandaigua,14424,Match,Census Geocoder Public_AR_Current,-77.267714209249,42.877940443577,,
+v456,"1380 French Rd, Suite #1",Cheektowaga,14043,Match,Census Geocoder Public_AR_Current,-78.702261534208,42.867939839453,,
+v577,"1332 Front St, Ste 4",Binghamton,13901,Match,Census Geocoder Public_AR_Current,-75.891720605535,42.163557768797,,
+v698,"53 West Fordham Rd, Store 1",Bronx,10468,Match,Census Geocoder Public_AR_Current,-73.903393924598,40.862792916483,52,52
+v211,2921 Erie Blvd E,Syracuse,13224,Match,Census Geocoder Public_AR_Current,-76.089843414682,43.055415065982,,
+v332,5100 Transit Rd,Depew,14043,Match,Census Geocoder Public_AR_Current,-78.697025875234,42.891593259545,,
+v453,217-12 Hempstead Ave,Queens Village,11429,Match,Census Geocoder Public_AR_Current,-73.740899460971,40.71473959126,105,105+116
+v574,844 Route-211,Middletown,10941,Match,Census Geocoder Public_AR_Current,-74.349899648225,41.466641762575,,
+v695,424 Troutman St,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.922314542628,40.707019832438,83,83
+v212,300 Kent Ave,Brooklyn,11249,Match,Census Geocoder Public_AR_Current,-73.968127782653,40.711888063797,90,90
+v333,3343 Fulton St,Brooklyn,11208,Match,Census Geocoder Public_AR_Current,-73.872284077306,40.683682793222,75,75
+v454,296 Route 59,Airmont,10901,Match,Census Geocoder Public_AR_Current,-74.135149918811,41.112357814448,,
+v575,279 East Main St,Port Jervis,12771,Match,Census Geocoder Public_AR_Current,-74.683440734871,41.358477707888,,
+v696,317 1st Ave,New York,10003,Match,Census Geocoder Public_AR_Current,-73.980636913835,40.734032810032,13,13
+v330,134-24 Northern Blvd,Flushing,11354,Match,Census Geocoder Public_AR_Current,-73.834139914429,40.762519178952,109,109
+v451,3065 Erie Blvd E,Syracuse,13224,Match,Census Geocoder Public_AR_Current,-76.084908585532,43.055645431479,,
+v572,471 McLean Ave,Yonkers,10705,Match,Census Geocoder Public_AR_Current,-73.882429921862,40.910708027162,,
+v693,418A E Sandford Blvd,Mount Vernon,10550,Match,Census Geocoder Public_AR_Current,-73.820470644073,40.901423021378,,
+v210,212 Ohio St,Buffalo,14204,Match,Census Geocoder Public_AR_Current,-78.870291663466,42.871073837658,,
+v331,2119 Frederick Douglass Blvd,New York,10026,Match,Census Geocoder Public_AR_Current,-73.956157256839,40.803457248768,28,28
+v452,5440 Route 9W,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-73.99298858485,41.569748098737,,
+v573,400 North Galleria Dr,Middletown,10941,Match,Census Geocoder Public_AR_Current,-74.370631436168,41.461652017516,,
+v694,911 N Salina St,Syracuse,13208,Match,Census Geocoder Public_AR_Current,-76.155258990027,43.063088800701,,
+v570,127 E 56th St,New York,10022,Match,Census Geocoder Public_AR_Current,-73.970066859942,40.760503987735,18,18
+v691,11 Martha St,Ellicottville,14731,Match,Census Geocoder Public_AR_Current,-78.670962154731,42.274342310704,,
+v450,23004 S Conduit Ave,Springfield Gardens,11413,Match,Census Geocoder Public_AR_Current,-73.747378024583,40.665414179227,116,105+116
+v571,2520 Vestal Pkwy E,Vestal,13850,Match,Census Geocoder Public_AR_Current,-76.008992122811,42.094652874705,,
+v692,1011 W Genesee St,Syracuse,13204,Match,Census Geocoder Public_AR_Current,-76.170938249208,43.053604468434,,
+v61,1686 Central Ave,Albany,12205,Match,Census Geocoder Public_AR_Current,-73.838857614546,42.722761502558,,
+v60,332 Northern Blvd,Albany,12204,Match,Census Geocoder Public_AR_Current,-73.749214938988,42.674539832191,,
+v63,475 Central Ave,White Plains,10606,No_Match,,,,,
+v208,105 Dryden Rd,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.486838659656,42.441812112716,,
+v329,10 Executive Park Dr,Albany,12203,Match,Census Geocoder Public_AR_Current,-73.837306185631,42.684061275877,,
+v62,"90 Broadway, #8",Menands,12204,Match,Census Geocoder Public_AR_Current,-73.732159360436,42.68183166554,,
+v209,332 Broad St,Waverly,13743,Match,Census Geocoder Public_AR_Current,-76.54022814867,42.000970814373,,
+v65,30-30 Steinway St,Astoria,11103,Match,Census Geocoder Public_AR_Current,-73.915713689345,40.763115864546,114,114
+v206,3056 State Route 213,Stone Ridge,12484,Match,Census Geocoder Public_AR_Current,-74.150011067981,41.839411148483,,
+v327,75 Bridge Street,Margaretville,12455,Match,Census Geocoder Public_AR_Current,-74.64740161636,42.147929753814,,
+v448,217 S Plank Rd,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.072147055249,41.527961852755,,
+v569,469 Dekalb Ave,Brooklyn,11205,Match,Census Geocoder Public_AR_Current,-73.958349239521,40.690629865887,79,79
+v64,779 State Route 3,Plattsburgh,12901,Match,Census Geocoder Public_AR_Current,-73.524684618255,44.695553944791,,
+v207,1533 Country Rd 39,Southampton,11968,Match,Census Geocoder Public_AR_Current,-72.449187665616,40.894771190554,,
+v328,215-46 39th Ave,Bayside,11361,Match,Census Geocoder Public_AR_Current,-73.767811362679,40.765959857814,111,111
+v449,76 Route 59,Spring Valley,10977,Match,Census Geocoder Public_AR_Current,-74.034583373152,41.106101067644,,
+v67,75 Mamaroneck Ave,White Plains,10601,Match,Census Geocoder Public_AR_Current,-73.765801498659,41.030375814298,,
+v204,5 Railroad St,Victor,14564,Match,Census Geocoder Public_AR_Current,-77.411597139524,42.974639404252,,
+v325,90 E Market St,Corning,14830,Match,Census Geocoder Public_AR_Current,-77.050836142684,42.142684645925,,
+v446,111 Fulton St,New York,10038,Match,Census Geocoder Public_AR_Current,-74.006764056534,40.709793460215,1,1
+v567,743 Central Park Ave,Yonkers,10704,Match,Census Geocoder Public_AR_Current,-73.857873744474,40.927944762149,,
+v688,3478 Walden Ave,Depew,14043,Match,Census Geocoder Public_AR_Current,-78.679836820601,42.914669992216,,
+v66,85 Suydam St,Brooklyn,11221,Match,Census Geocoder Public_AR_Current,-73.929383072397,40.697793599306,83,83
+v205,308 Plaza Rd,Kingston,12401,No_Match,,,,,
+v326,305 Saw Mill River Rd,Yonkers,10701,Match,Census Geocoder Public_AR_Current,-73.876832548314,40.947246528832,,
+v447,8890 Thompson Rd,Holland Patent,13354,Match,Census Geocoder Public_AR_Current,-75.244292030188,43.292874501263,,
+v568,"9570 Transit Route, Ste 200",East Amherst,14051,Match,Census Geocoder Public_AR_Current,-78.697011308473,43.029545529683,,
+v689,3565 US-9W,Highland,12528,Match,Census Geocoder Public_AR_Current,-73.963773995921,41.71421813496,,
+v69,900 Niagara Falls Blvd,Buffalo,14201,Match,Census Geocoder Public_AR_Current,-78.823127552506,42.977894464359,,
+v68,44-45 Vernon Blvd,Long Island City,11101,Match,Census Geocoder Public_AR_Current,-73.952149090013,40.749394789986,108,108
+v480,102 State St,Schenectady,12305,Match,Census Geocoder Public_AR_Current,-73.947529514914,42.815111220858,,
+v360,230 S Main St,Canandaigua,14424,Match,Census Geocoder Public_AR_Current,-77.279019517309,42.884291522712,,
+v481,2059 Richmond Ave,Staten Island,10314,Match,Census Geocoder Public_AR_Current,-74.162365118557,40.597822805845,121,121
+v125,2245 Central Park Ave,Yonkers,10710,Match,Census Geocoder Public_AR_Current,-73.833722756295,40.974567068508,,
+v246,1520 Crescent Rd,Clifton Park,12065,No_Match,,,,,
+v367,360 7th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.982416786973,40.665996602166,78,78
+v488,8529 Niagara Falls Blvd,Niagara Falls,14304,Match,Census Geocoder Public_AR_Current,-78.965957641007,43.090837113042,,
+v126,4658 Onondaga Blvd,Syracuse,13219,Match,Census Geocoder Public_AR_Current,-76.194089326351,43.032086059258,,
+v247,18 Westage Dr,Fishkill,12524,Match,Census Geocoder Public_AR_Current,-73.89600835468,41.524397670604,,
+v368,48 E Genesee St,Auburn,13021,Match,Census Geocoder Public_AR_Current,-76.560169227052,42.933164098551,,
+v489,1164 NY-29,Schuylerville,12871,Match,Census Geocoder Public_AR_Current,-73.602394827846,43.10826574657,,
+v123,956 South 1st St,Fulton,13069,Match,Census Geocoder Public_AR_Current,-76.399391970896,43.308829947932,,
+v244,320 S Transit St,Lockport,14094,Match,Census Geocoder Public_AR_Current,-78.696795342856,43.158613421938,,
+v365,235 Fairview Ave,Hudson,12534,Match,Census Geocoder Public_AR_Current,-73.764851565429,42.261161825201,,
+v486,137 Court St,Brooklyn,11201,Match,Census Geocoder Public_AR_Current,-73.992319425083,40.689616356128,84,84
+v124,3220 Westchester Ave,Bronx,10461,Match,Census Geocoder Public_AR_Current,-73.828558920641,40.852192554169,45,45
+v245,4462 Middle Country Rd,Calverton,11933,Match,Census Geocoder Public_AR_Current,-72.780240921529,40.928212971939,,
+v366,81 West Ramapo Rd,Garnerville,10923,Match,Census Geocoder Public_AR_Current,-74.010520148388,41.196708054439,,
+v487,2971 Route 426,Findley Lake,14736,Match,Census Geocoder Public_AR_Current,-79.740682186274,42.127219971473,,
+v121,161-05 29th Ave,Flushing,11358,Match,Census Geocoder Public_AR_Current,-73.803370861331,40.77123767277,109,109
+v242,1354 Lower Broadway,Schenectady,12306,Match,Census Geocoder Public_AR_Current,-73.954689234218,42.803673033384,,
+v363,7815 3rd Ave,Brooklyn,11209,Match,Census Geocoder Public_AR_Current,-74.028664396681,40.629133671284,68,68
+v484,623 Bergen St,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.968899565794,40.679621809047,78,78
+v122,"1503 Canandaigua Rd, Suite 3B & C",Macedon,14502,No_Match,,,,,
+v243,8053 Pittsford Victor Rd,Victor,14564,No_Match,,,,,
+v364,588 4th Ave,New York,11215,Match,Census Geocoder Public_AR_Current,-73.992631783238,40.665775383284,72,72
+v485,1410 Central Ave,Albany,12205,Match,Census Geocoder Public_AR_Current,-73.819711773953,42.705998605967,,
+v70,221-50 Horace Harding Expy,Bayside,11364,Match,Census Geocoder Public_AR_Current,-73.754874197465,40.749470639672,111,111
+v240,229 Avenue B,New York,10009,Match,Census Geocoder Public_AR_Current,-73.978347221394,40.728874741824,9,9
+v361,129 Avenue C,New York,10009,Match,Census Geocoder Public_AR_Current,-73.978397101354,40.724831853712,9,9
+v482,24 Washington St,Ellicottville,14731,Match,Census Geocoder Public_AR_Current,-78.672285039978,42.27533699506,,
+v120,2595 Central Park Ave,Yonkers,10710,No_Match,,,,,
+v241,304 Ellery St,Brooklyn,11206,Match,Census Geocoder Public_AR_Current,-73.940296170283,40.699336791581,81,81
+v362,2152 3rd Ave,New York,10035,Match,Census Geocoder Public_AR_Current,-73.939358220698,40.798966786059,25,25
+v483,755 Forest Ave,Staten Island,10310,Match,Census Geocoder Public_AR_Current,-74.114433447281,40.6292105869,120,120
+v72,255 Genesse St,Utica,13501,Match,Census Geocoder Public_AR_Current,-75.234917818973,43.09952156431,,
+v71,232 Allen St,Buffalo,14201,Match,Census Geocoder Public_AR_Current,-78.878637923096,42.899407138393,,
+v74,166-30 Jamaica Ave,Jamaica,11432,Match,Census Geocoder Public_AR_Current,-73.793460724289,40.705948520267,103,103
+v73,1511 Neptune Ave,Brooklyn,11224,Match,Census Geocoder Public_AR_Current,-73.983264033453,40.579201544495,60,60
+v76,118 Flatbush Ave,Brooklyn,11217,Match,Census Geocoder Public_AR_Current,-73.978201263011,40.684982408797,84,84
+v118,2375 Arthur Ave,Bronx,10458,Match,Census Geocoder Public_AR_Current,-73.888064327216,40.855073573727,48,48
+v239,428 Rogers Ave,Brooklyn,11225,Match,Census Geocoder Public_AR_Current,-73.953781638366,40.662226260985,71,71
+v75,665 North French Rd,Amherst,14228,Match,Census Geocoder Public_AR_Current,-78.800327658922,43.034637242063,,
+v119,196 Washington Ave,Albany,12210,Match,Census Geocoder Public_AR_Current,-73.763152192114,42.65661163966,,
+v78,1099 Loudon Rd,Cohoes,12047,Match,Census Geocoder Public_AR_Current,-73.744441572121,42.783179343396,,
+v116,584 8th Ave,New York,10018,Match,Census Geocoder Public_AR_Current,-73.991338839847,40.754990705287,14,14
+v237,1546 Route 9,Wappingers Falls,12590,Match,Census Geocoder Public_AR_Current,-73.909776775475,41.594501914378,,
+v358,1429 Danby Rd,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.491252317795,42.380963615385,,
+v479,114-19 Rockaway Beach Blvd,Rockaway Park,11694,Match,Census Geocoder Public_AR_Current,-73.835586007898,40.580208404607,100,100
+v77,533 5th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.988705684812,40.66618762023,78,78
+v117,2207 Dryden Rd,Dryden,13053,Match,Census Geocoder Public_AR_Current,-76.327610005166,42.489594465061,,
+v238,"400 Jefferson Rd, Ste 2",Rochester,14623,Match,Census Geocoder Public_AR_Current,-77.640797763328,43.089166628802,,
+v359,6970 Transit Rd,Amherst,14221,Match,Census Geocoder Public_AR_Current,-78.697073528517,42.957361367824,,
+v79,"4106 NY-31, Ste 903",Clay,13041,Match,Census Geocoder Public_AR_Current,-76.229978348648,43.185564852984,,
+v590,1601 Avenue U,Brooklyn,11229,Match,Census Geocoder Public_AR_Current,-73.95541108074,40.599002308465,61,61
+v470,2610 Broadway Ave,New York,10025,Match,Census Geocoder Public_AR_Current,-73.970519540759,40.796285127057,24,24
+v591,7101 Packard Rd,Niagara Falls,14304,Match,Census Geocoder Public_AR_Current,-78.984219861173,43.109244790133,,
+v114,157 West 72nd St,New York,10023,Match,Census Geocoder Public_AR_Current,-73.980365556335,40.778140535927,20,20
+v235,2700 Erie Blvd E,Syracuse,13224,Match,Census Geocoder Public_AR_Current,-76.097559408947,43.054217666939,,
+v356,1330 Mount Hope Ave,Rochester,14620,Match,Census Geocoder Public_AR_Current,-77.617668940574,43.124202208947,,
+v477,3551 Boston Rd,Bronx,10469,Match,Census Geocoder Public_AR_Current,-73.844797724456,40.877962987772,47,47
+v598,351 Southern Blvd,Albany,12209,Match,Census Geocoder Public_AR_Current,-73.776397575795,42.628846614899,,
+v115,2441 Flatbush Ave,Brooklyn,10710,Match,Census Geocoder Public_AR_Current,-73.923414864721,40.610718887129,63,63
+v236,5044 Route 17M,New Hampton,10958,Match,Census Geocoder Public_AR_Current,-74.416591044215,41.410255981824,,
+v357,11 Commercial St,Angola,14006,Match,Census Geocoder Public_AR_Current,-79.027972264631,42.638133370753,,
+v478,2760 Union Rd,Cheektowaga,14227,Match,Census Geocoder Public_AR_Current,-78.75465041198,42.88706101026,,
+v599,45 Main St,Hastings On Hudson,10706,Match,Census Geocoder Public_AR_Current,-73.880687759697,40.994225925966,,
+v112,122 E 25th St,New York,10010,Match,Census Geocoder Public_AR_Current,-73.982404152174,40.740131058919,13,13
+v233,453 Fulton St,Brooklyn,11201,Match,Census Geocoder Public_AR_Current,-73.986871188368,40.691331649904,84,84
+v354,1400 Route 300,Newburgh,12550,No_Match,,,,,
+v475,135 Marshall St,Syracuse,13210,Match,Census Geocoder Public_AR_Current,-76.13585911646,43.041651363862,,
+v596,"755 Center St, Unit 7",Lewiston,14092,Match,Census Geocoder Public_AR_Current,-79.037204211545,43.172441862368,,
+v113,481 Broadway,New York,10013,Match,Census Geocoder Public_AR_Current,-74.000139058383,40.72156089167,1,1
+v234,946 Fulton St,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.963122664761,40.682634481363,88,88
+v355,7560 Niagara Falls Blvd,Niagara Falls,14304,No_Match,,,,,
+v476,46 Ronald Reagan Blvd,Warwick,10990,Match,Census Geocoder Public_AR_Current,-74.332546454695,41.271287755114,,
+v597,716 Amsterdam Ave,New York,10025,Match,Census Geocoder Public_AR_Current,-73.971008960078,40.793291744791,24,24
+v110,259 Bowery,New York,10002,Match,Census Geocoder Public_AR_Current,-73.992869292097,40.723202820497,5,5
+v231,50-22 72nd St,Woodside,11378,Match,Census Geocoder Public_AR_Current,-73.892345355582,40.736795513255,108,108
+v352,1819 2nd Avenue,New York,10128,Match,Census Geocoder Public_AR_Current,-73.947997303766,40.783118880245,19,19
+v473,471 County Rd 39,Southampton,11968,Match,Census Geocoder Public_AR_Current,-72.415058513769,40.896788858134,,
+v594,683 State Fair Blvd,Syracuse,13209,Match,Census Geocoder Public_AR_Current,-76.232663271748,43.083343254958,,
+v111,4906 Arthur Kill Rd,Staten Island,10309,Match,Census Geocoder Public_AR_Current,-74.239294791659,40.523036257264,123,123
+v232,1829 Como Park Blvd,Lancaster,14086,Match,Census Geocoder Public_AR_Current,-78.683240794445,42.892807337042,,
+v353,574 Columbia Tpke,East Greenbush,12061,Match,Census Geocoder Public_AR_Current,-73.713444312823,42.602055485162,,
+v474,8723 Noble St,Evan Mills,13637,Match,Census Geocoder Public_AR_Current,-75.8081174402,44.088418512297,,
+v595,2 Munsell Rd,Medford,11763,Match,Census Geocoder Public_AR_Current,-72.96245730389,40.81675290464,,
+v81,12 East 42nd St,New York,10017,Match,Census Geocoder Public_AR_Current,-73.98053964042,40.753267371014,14,14
+v350,387 Van Brunt St,Brooklyn,11231,Match,Census Geocoder Public_AR_Current,-74.014382152758,40.676004196237,76,76
+v471,978 Payne Ave,North Tonawanda,14120,Match,Census Geocoder Public_AR_Current,-78.877455798898,43.049576755531,,
+v592,474 7th Ave,New York,10018,Match,Census Geocoder Public_AR_Current,-73.98991921206,40.75208327719,14,14
+v80,925 Hunts Point Ave,Bronx,10459,Match,Census Geocoder Public_AR_Current,-73.89101312567,40.820382500152,41,41
+v230,12187 Route 9W,West Coxsackie,12192,Match,Census Geocoder Public_AR_Current,-73.831136404171,42.375451787316,,
+v351,733 Flatbush Ave,Brooklyn,11226,Match,Census Geocoder Public_AR_Current,-73.959668510152,40.655075190013,71,71
+v472,1307 North Ave,New Rochelle,10804,Match,Census Geocoder Public_AR_Current,-73.79559086074,40.946767364809,,
+v593,22-35 31st St,Astoria,11105,Match,Census Geocoder Public_AR_Current,-73.911432183188,40.775444980032,114,114
+v83,27 B Saratoga Ave,Waterford,12188,Match,Census Geocoder Public_AR_Current,-73.695914485818,42.781546656595,,
+v82,1115 1st Ave,New York,10065,Match,Census Geocoder Public_AR_Current,-73.961054457453,40.76099476178,19,19
+v85,25 N Pearl St,Albany,12207,Match,Census Geocoder Public_AR_Current,-73.75216478657,42.650488600959,,
+v109,2412 Third Ave,Bronx,10454,Match,Census Geocoder Public_AR_Current,-73.930469667154,40.808524353734,40,40
+v84,128 E 86th St,New York,10028,Match,Census Geocoder Public_AR_Current,-73.956182892022,40.779682940411,19,19
+v87,205 N Fulton St,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.510523432721,42.440137027182,,
+v107,32 Westchester Ave,Pound Ridge,10576,Match,Census Geocoder Public_AR_Current,-73.544705317062,41.187284142353,,
+v228,743 9th Ave,New York,10019,Match,Census Geocoder Public_AR_Current,-73.988928711694,40.763629330959,18,18
+v349,381 5th Avenue,New York,10016,Match,Census Geocoder Public_AR_Current,-73.983755081759,40.749422499497,14,14
+v86,236 Meehan Rd,Malone,12953,Match,Census Geocoder Public_AR_Current,-74.338135141395,44.84330723549,,
+v108,977 2nd Ave,New York,10022,Match,Census Geocoder Public_AR_Current,-73.967793122281,40.755994167492,17,17
+v229,51 Main St,Canton,13617,Match,Census Geocoder Public_AR_Current,-75.170823933493,44.595582570214,,
+v89,2981 Delaware Ave,Kenmore,14217,Match,Census Geocoder Public_AR_Current,-78.870273684383,42.96536899079,,
+v105,299 Knickerbocker Ave,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.923527434258,40.701825214924,83,83
+v226,12317 Vaughn St,East Concord,14055,Match,Census Geocoder Public_AR_Current,-78.640638676748,42.538313439887,,
+v347,799 Lexington Ave,New York,10065,Match,Census Geocoder Public_AR_Current,-73.966813309674,40.763986696256,19,19
+v468,6308 Woodhaven Blvd,Rego Park,11374,Match,Census Geocoder Public_AR_Current,-73.869138268082,40.72414925203,104,104
+v589,364 Broadway,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.024256082911,41.500967733235,,
+v88,2988 US Route 20,Seneca Falls,13148,No_Match,,,,,
+v106,152 Bedford Ave,Brooklyn,11249,Match,Census Geocoder Public_AR_Current,-73.95682901419,40.718758778937,94,94
+v227,170 W Bridge St,Catskill,12414,Match,Census Geocoder Public_AR_Current,-73.877797808676,42.21546578396,,
+v348,572 Manhattan Ave,Brooklyn,11222,Match,Census Geocoder Public_AR_Current,-73.9500239683,40.722594622888,94,94
+v469,89 Kent St,Keeseville,12944,Match,Census Geocoder Public_AR_Current,-73.477837269555,44.505083093419,,
+v260,719 7th Ave,New York,10036,Match,Census Geocoder Public_AR_Current,-73.984144526915,40.759763102941,18,18
+v381,321 4th Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.985474332839,40.674139086568,78,78
+v140,3807 Harlem Rd,Cheektowaga,14215,Match,Census Geocoder Public_AR_Current,-78.783989526981,42.947156898454,,
+v261,7345 South Broadway,Red Hook,12571,Match,Census Geocoder Public_AR_Current,-73.881191280395,41.987382506931,,
+v382,34 W Pulteney St,Corning,14830,Match,Census Geocoder Public_AR_Current,-77.062124732018,42.151102563737,,
+v380,360 Graham Ave,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.944396336601,40.715061538874,94,94
+v147,109 E Taft Rd,North Syracuse,13212,Match,Census Geocoder Public_AR_Current,-76.14052511715,43.122811964057,,
+v268,288 Flushing Ave,Brooklyn,11205,Match,Census Geocoder Public_AR_Current,-73.964374121111,40.697734412317,88,88
+v389,6730 Lake Rd,Appleton,14008,Match,Census Geocoder Public_AR_Current,-78.660570813208,43.345177046093,,
+v148,106 Everett Rd,Albany,12205,Match,Census Geocoder Public_AR_Current,-73.773241761688,42.694116911486,,
+v269,519 State Route 3,Plattsburgh,12901,Match,Census Geocoder Public_AR_Current,-73.498999644154,44.696084664656,,
+v145,2075 Central Ave,Schenectady,12304,No_Match,,,,,
+v266,1190 Lexington Ave,New York,10028,Match,Census Geocoder Public_AR_Current,-73.957965618427,40.776352866934,19,19
+v387,372 E Fordham Rd,Bronx,10458,Match,Census Geocoder Public_AR_Current,-73.892369122496,40.861768253356,46,46
+v146,6633 Fresh Pond Rd,Ridgewood,11385,Match,Census Geocoder Public_AR_Current,-73.897654190856,40.70801636236,104,104
+v267,"245 Broadway, Suite 4",Schenectady,12305,No_Match,,,,,
+v388,156 Clinton Ave,Cortland,13045,Match,Census Geocoder Public_AR_Current,-76.166977378025,42.607646029202,,
+v90,811 Canandaigua Rd,Geneva,14456,Match,Census Geocoder Public_AR_Current,-77.013615811391,42.856845972682,,
+v143,3006 E Main St,Cortlandt Manor,10567,Match,Census Geocoder Public_AR_Current,-73.876335892433,41.307483228841,,
+v264,846 Sixth Ave,New York,10001,Match,Census Geocoder Public_AR_Current,-73.989754814034,40.74696906786,14,14
+v385,172 N Union St,Olean,14760,Match,Census Geocoder Public_AR_Current,-78.429803754781,42.079576017135,,
+v144,214 3rd Ave,New York,10003,Match,Census Geocoder Public_AR_Current,-73.985213679044,40.736110690097,13,13
+v265,2454 Elmwood Ave,Kenmore,14217,Match,Census Geocoder Public_AR_Current,-78.87882147291,42.963989591679,,
+v386,1471 State Route 9,Lake George,12845,Match,Census Geocoder Public_AR_Current,-73.698977131501,43.3676542879,,
+v92,201 East 30th St,New York,10016,Match,Census Geocoder Public_AR_Current,-73.979856383081,40.743227832289,17,17
+v141,75 Weibel Ave,Saratoga Springs,12866,No_Match,,,,,
+v262,692 Grand St,Brooklyn,11211,Match,Census Geocoder Public_AR_Current,-73.944921188761,40.711487158325,90,90
+v383,45 Grove Ave,Albany,12208,Match,Census Geocoder Public_AR_Current,-73.787160764906,42.653260079154,,
+v91,27-25 44th Dr,Long Island City,11101,Match,Census Geocoder Public_AR_Current,-73.942138918109,40.746881716593,108,108
+v142,501 Exchange St,Geneva,14456,Match,Census Geocoder Public_AR_Current,-76.981468373901,42.867696630114,,
+v263,898 Gerard Ave,Bronx,10452,Match,Census Geocoder Public_AR_Current,-73.924451831289,40.828188581214,44,44
+v384,2201 Avenue U,Brooklyn,11229,Match,Census Geocoder Public_AR_Current,-73.949383755716,40.599662737412,61,61
+v94,196 Rock Hill Dr,Rock Hill,12775,Match,Census Geocoder Public_AR_Current,-74.598773279301,41.626280898015,,
+v93,696 East 241st St,Bronx,10470,Match,Census Geocoder Public_AR_Current,-73.850552334492,40.90344241081,47,47
+v96,155 Monroe Ave,Rochester,14607,Match,Census Geocoder Public_AR_Current,-77.60116641575,43.150767150405,,
+v95,57-01 Myrtle Ave,Ridgewood,11385,Match,Census Geocoder Public_AR_Current,-73.903605969022,40.700470856906,104,104
+v98,51 N Main St,Brockport,14420,Match,Census Geocoder Public_AR_Current,-77.937200055536,43.220062768405,,
+v97,22 W 66th St,New York,10023,Match,Census Geocoder Public_AR_Current,-73.979395870962,40.772629765396,20,20
+v138,1675 Route 9,Halfmoon,12065,Match,Census Geocoder Public_AR_Current,-73.764844331775,42.859805148282,,
+v259,289 Oakwood Ave,Troy,12182,Match,Census Geocoder Public_AR_Current,-73.660128266786,42.769476026611,,
+v99,650 Orchard Park Rd,West Seneca,14224,Match,Census Geocoder Public_AR_Current,-78.776699340289,42.830674082719,,
+v139,531 Warren St,Hudson,12434,Match,Census Geocoder Public_AR_Current,-73.786007907748,42.249060925653,,
+v370,1708 Trumansburg Rd,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.594057414018,42.4946454449,,
+v491,577 Forest Ave,Buffalo,14222,Match,Census Geocoder Public_AR_Current,-78.878237725668,42.927875501265,,
+v250,12 Hudson Ave,Glens Falls,12801,Match,Census Geocoder Public_AR_Current,-73.65108818577,43.305649230802,,
+v371,27206 Union Tpke,Queens,11040,Match,Census Geocoder Public_AR_Current,-73.702038602288,40.752210567014,105,105+116
+v492,2 Jewel St,Brooklyn,11222,Match,Census Geocoder Public_AR_Current,-73.945733373438,40.725507244321,94,94
+v490,1120 NY-29,Schuylerville,12871,Match,Census Geocoder Public_AR_Current,-73.606281387798,43.107857600785,,
+v136,182 5th Ave,New York,10010,Match,Census Geocoder Public_AR_Current,-73.989937433375,40.741176465198,13,13
+v257,217 Guideboard Rd,Halfmoon,12065,Match,Census Geocoder Public_AR_Current,-73.73906380866,42.837727572925,,
+v378,248-15 Union Tpke,Jamaica,11426,Match,Census Geocoder Public_AR_Current,-73.721894387777,40.742459073422,105,105+116
+v499,728 Broadway,Kingston,12401,Match,Census Geocoder Public_AR_Current,-74.009851784235,41.931607974626,,
+v137,698 2nd Ave,New York,10016,Match,Census Geocoder Public_AR_Current,-73.974045887422,40.747175230684,17,17
+v258,New Hartford Shopping Ctr Suite 41,New Hartford,13413,No_Match,,,,,
+v379,57 W 86th St,New York,10024,Match,Census Geocoder Public_AR_Current,-73.971138812295,40.786116993736,24,24
+v134,1102 Bedford Ave,Brooklyn,11216,Match,Census Geocoder Public_AR_Current,-73.95471653836,40.687024874902,79,79
+v255,1871 Old Country Rd,Riverhead,11901,Match,Census Geocoder Public_AR_Current,-72.713767333207,40.922556234494,,
+v376,598 Broadway,New York,10012,Match,Census Geocoder Public_AR_Current,-73.996807389526,40.725284045914,5,5
+v497,999 S Clinton Ave,Rochester,14620,Match,Census Geocoder Public_AR_Current,-77.595345631442,43.138750699528,,
+v135,123 E Willow St,Syracuse,13202,Match,Census Geocoder Public_AR_Current,-76.15188276009,43.052424149228,,
+v256,4179 State Route 20,Castleton,12033,No_Match,,,,,
+v377,950 Chemung St,Horseheads,14845,Match,Census Geocoder Public_AR_Current,-76.836403782752,42.158352019695,,
+v498,2124 Doubleday Ave #2,Ballston Spa,12020,Match,Census Geocoder Public_AR_Current,-73.843451628769,43.017610358148,,
+v132,797 8th Ave,New York,10019,Match,Census Geocoder Public_AR_Current,-73.986940015841,40.761258018984,18,18
+v253,324 Jefferson Rd,Rochester,14623,Match,Census Geocoder Public_AR_Current,-77.648786042572,43.091552846335,,
+v374,309 S. Main St,Elmira,14904,Match,Census Geocoder Public_AR_Current,-76.804370060253,42.081537452486,,
+v495,15 Avenue B,New York,10009,Match,Census Geocoder Public_AR_Current,-73.983412219342,40.721941645423,9,9
+v133,9200 Niagara Falls Blvd,Niagara Falls,14304,No_Match,,,,,
+v254,1936 S Park Ave,Buffalo,14220,Match,Census Geocoder Public_AR_Current,-78.823642487155,42.846232002968,,
+v375,1019 Surf Ave,Brooklyn,11224,Match,Census Geocoder Public_AR_Current,-73.97829418079,40.575519226113,60,60
+v496,2028 Western Ave,Albany,12203,Match,Census Geocoder Public_AR_Current,-73.886864731615,42.697237142608,,
+v130,587 Fifth Ave,New York,10017,Match,Census Geocoder Public_AR_Current,-73.978226830408,40.757008275912,18,18
+v251,807 Washington St,Peekskill,10566,Match,Census Geocoder Public_AR_Current,-73.927637207886,41.276674721955,,
+v372,51 Main St,Tarrytown,10591,Match,Census Geocoder Public_AR_Current,-73.861044994653,41.076920901432,,
+v493,1156 NY-29,Greenwich,12834,Match,Census Geocoder Public_AR_Current,-73.515476493857,43.102225674101,,
+v131,4215 Bell Blvd,Bayside,11361,Match,Census Geocoder Public_AR_Current,-73.770348161196,40.762483846478,111,111
+v252,1673 Hertel Ave,Buffalo,14216,Match,Census Geocoder Public_AR_Current,-78.846060242282,42.947549344576,,
+v373,146 Virginia St,Buffalo,14201,Match,Census Geocoder Public_AR_Current,-78.88536843838,42.893180006515,,
+v494,135-26 Crossbay Blvd,Ozone Park,11417,Match,Census Geocoder Public_AR_Current,-73.843425178691,40.673547724015,106,106
+v129,814 NY-52,Fishkill,12524,Match,Census Geocoder Public_AR_Current,-73.920904465399,41.525831475093,,
+v127,"144 Eastern Blvd, Ste 11",Watertown,13601,Match,Census Geocoder Public_AR_Current,-75.880772639563,43.96889177183,,
+v248,268 Forest Hill Dr,Kingston,12401,Match,Census Geocoder Public_AR_Current,-74.04238832181,41.950580135939,,
+v369,714 W Ridge Rd,Rochester,14615,Match,Census Geocoder Public_AR_Current,-77.64538805015,43.202672329325,,
+v128,3748 State Highway 37,Ogdensburg,13669,Tie,,,,,
+v249,94 East Industry Ct,Deer Park,11729,Match,Census Geocoder Public_AR_Current,-73.297169765595,40.7636096188,,
+v161,186 Orchard St,New York,10002,Match,Census Geocoder Public_AR_Current,-73.988357735078,40.721619080711,7,7
+v282,"220 Harborside Dr, Ste 111",Schenectady,12305,Match,Census Geocoder Public_AR_Current,-73.93249657868,42.824706846586,,
+v162,3808 State Route 13,Pulaski,13142,Match,Census Geocoder Public_AR_Current,-76.118137613337,43.557863075535,,
+v283,463 Main St,Beacon,12508,Match,Census Geocoder Public_AR_Current,-73.967457265481,41.503578709062,,
+v280,8412 3rd Ave,Brooklyn,11209,Match,Census Geocoder Public_AR_Current,-74.030550340626,40.624902393697,68,68
+v160,1326 CR-12,New Hampton,10958,Tie,,,,,
+v281,154 Vanderbilt Ave,Brooklyn,11205,Match,Census Geocoder Public_AR_Current,-73.969882038053,40.693006492978,88,88
+v169,110 Chambers St,New York,10007,Match,Census Geocoder Public_AR_Current,-74.008199657483,40.714978660184,1,1
+v167,137 Maple Ave,Saratoga Springs,12866,Match,Census Geocoder Public_AR_Current,-73.780318542036,43.08758587918,,
+v288,1221 Ulster Ave,Kingston,12401,Match,Census Geocoder Public_AR_Current,-73.989272808724,41.966462316457,,
+v168,2223 State Route 32,Kingston,12401,Match,Census Geocoder Public_AR_Current,-74.067012341813,41.861957309291,,
+v289,37 N Main St,Ellenville,12428,Match,Census Geocoder Public_AR_Current,-74.392121247323,41.721417324003,,
+v165,939 Central Ave,Peekskill,10566,Match,Census Geocoder Public_AR_Current,-73.921224952666,41.290423070677,,
+v286,73 Pleasant St,Monticello,12701,Match,Census Geocoder Public_AR_Current,-74.680250034986,41.658546384299,,
+v166,54 State Highway 357,Unadilla,13849,Match,Census Geocoder Public_AR_Current,-75.293919743449,42.331461391515,,
+v287,"1460 Lyell Ave, Ste 200",Rochester,14606,Match,Census Geocoder Public_AR_Current,-77.664043565317,43.164723860387,,
+v163,151 Dyckman St,New York,10040,Match,Census Geocoder Public_AR_Current,-73.925757275918,40.863311174276,34,34
+v284,4034 Hylan Blvd,Staten Island,10308,Match,Census Geocoder Public_AR_Current,-74.146709368995,40.541372505237,122,122
+v164,501 State St,Schenectady,12305,Match,Census Geocoder Public_AR_Current,-73.940080805514,42.811798289365,,
+v285,41 E Genesee St,Auburn,13021,Match,Census Geocoder Public_AR_Current,-76.576396592597,42.925998847811,,
+v150,107-18 70th Rd,Forest Hills,11375,Match,Census Geocoder Public_AR_Current,-73.845683485675,40.720768875125,112,112
+v271,465 Onderdonk Ave,Ridgewood,11385,Match,Census Geocoder Public_AR_Current,-73.912191586286,40.706998433325,104,104
+v392,2227 Clifford Ave,Rochester,14609,Match,Census Geocoder Public_AR_Current,-77.561646110157,43.176196285067,,
+v151,1412 Broadway,New York,10018,Match,Census Geocoder Public_AR_Current,-73.986997856249,40.753649428761,14,14
+v272,3665 Albany Post Rd,Poughkeepsie,12601,Match,Census Geocoder Public_AR_Current,-73.930270592976,41.739704048815,,
+v393,3873 Main St,Warrensburg,12885,Match,Census Geocoder Public_AR_Current,-73.775981610593,43.496616351986,,
+v390,121B Commercial St,Theresa,13691,Match,Census Geocoder Public_AR_Current,-75.795769830057,44.216102232052,,
+v270,1119 Broadway,Brooklyn,11221,Match,Census Geocoder Public_AR_Current,-73.929540621688,40.693841650065,83,83
+v391,807 Manhattan Ave,Brooklyn,11222,Match,Census Geocoder Public_AR_Current,-73.953312505923,40.728057730798,94,94
+v158,862 9th Ave,New York,10019,Match,Census Geocoder Public_AR_Current,-73.98620889306,40.767117330018,18,18
+v279,187 Kingston Ave,Wurtsboro,12790,Match,Census Geocoder Public_AR_Current,-74.488776062053,41.577335070404,,
+v159,2371 Central Park Ave,Yonkers,10710,Match,Census Geocoder Public_AR_Current,-73.830729246777,40.978746490897,,
+v156,400 River St,Troy,12180,Match,Census Geocoder Public_AR_Current,-73.687268954822,42.735840520767,,
+v277,201 Northline Rd,Ballston Spa,12020,Match,Census Geocoder Public_AR_Current,-73.839115329957,43.022734341122,,
+v398,"9483 Wheeler Foster Rd, Suite C",Dansville,14437,Match,Census Geocoder Public_AR_Current,-77.722734460806,42.569853659726,,
+v157,101 Slade Ave,West Seneca,14224,Match,Census Geocoder Public_AR_Current,-78.789182580167,42.83142315923,,
+v278,1413 Kings Hwy,Brooklyn,11229,Match,Census Geocoder Public_AR_Current,-73.959035788643,40.608498603991,61,61
+v399,544 Main St,Beacon,12508,Match,Census Geocoder Public_AR_Current,-73.96303507337,41.50258764765,,
+v154,483 3rd Ave,Brooklyn,11215,Match,Census Geocoder Public_AR_Current,-73.991744216614,40.670486181704,78,78
+v275,1067 East 2nd St,Jamestown,14701,Match,Census Geocoder Public_AR_Current,-79.220408569999,42.1094410326,,
+v396,302 8th Ave,New York,10001,Match,Census Geocoder Public_AR_Current,-73.997411296575,40.746655940623,10,10
+v155,261 Main St,Beacon,12508,Match,Census Geocoder Public_AR_Current,-73.972650995268,41.506490200792,,
+v276,143 George St,Oswego,13126,Match,Census Geocoder Public_AR_Current,-76.485306412552,43.462719512414,,
+v397,224 1st Ave,New York,10009,Match,Census Geocoder Public_AR_Current,-73.982754353926,40.730982242573,9,9
+v152,6701 Manlius Center Rd,East Syracuse,13057,Match,Census Geocoder Public_AR_Current,-76.057048397529,43.063416087775,,
+v273,8 N Main St,Homer,13077,Match,Census Geocoder Public_AR_Current,-76.178510593972,42.637666511373,,
+v394,177 Fluvanna Ave,Jamestown,14701,Match,Census Geocoder Public_AR_Current,-79.248057624127,42.114293966673,,
+v153,145-18 14th Ave,Whitestone,11357,Match,Census Geocoder Public_AR_Current,-73.822119601631,40.78684404882,109,109
+v274,1385 Abbott Rd,Lackawanna,14218,Match,Census Geocoder Public_AR_Current,-78.804086394661,42.827002830184,,
+v395,15 Centre St,Albany,12207,Match,Census Geocoder Public_AR_Current,-73.74458504858,42.656440290137,,
+v149,345 Cornelia St,Plattsburgh,12901,Match,Census Geocoder Public_AR_Current,-73.480217469689,44.697195000616,,
+v0,248 W 125th St,New York,10027,Match,Census Geocoder Public_AR_Current,-73.949755307711,40.809510816791,28,28
+v1,750 Broadway,New York,10003,Match,Census Geocoder Public_AR_Current,-73.992672447551,40.730171802402,9,9
+v2,144 Bleecker St,New York,10012,Match,Census Geocoder Public_AR_Current,-73.99938470487,40.728210716914,6,6
+v3,75 Court St,Binghamton,13901,Match,Census Geocoder Public_AR_Current,-75.911901396835,42.098738280391,,
+v4,835 Broadway,New York,10003,Match,Census Geocoder Public_AR_Current,-73.991032062518,40.73393097087,6,6
+v5,119-121 E State St,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.498519728897,42.439494381589,,
+v6,162-03 Jamaica Ave,Jamaica,11432,Match,Census Geocoder Public_AR_Current,-73.797661674953,40.704409266646,103,103
+v183,423 Franklin St,Ithaca,14850,Match,Census Geocoder Public_AR_Current,-76.504997866634,42.44891946442,,
+v7,1613 Union St,Schenectady,12309,Match,Census Geocoder Public_AR_Current,-73.904959398168,42.804959734227,,
+v184,445 State Route 28,Kingston,12401,Match,Census Geocoder Public_AR_Current,-74.059527830191,41.961794234539,,
+v8,33 Union Sq. W,New York,10003,Match,Census Geocoder Public_AR_Current,-73.990773079177,40.736623180033,13,13
+v181,2034 Jerome Ave,Bronx,10453,Match,Census Geocoder Public_AR_Current,-73.907633789929,40.853391179396,46,46
+v9,1839 Central Ave,Albany,12205,Match,Census Geocoder Public_AR_Current,-73.848901187179,42.731779984502,,
+v182,5100 Genesee St,Buffalo,14225,Match,Census Geocoder Public_AR_Current,-78.697078980218,42.937960816048,,
+v180,2225 Church Ave,Brooklyn,11226,Match,Census Geocoder Public_AR_Current,-73.958305537867,40.650464324026,70,70
+v189,"5841 Bridge St, Ste 100",East Syracuse,13057,Match,Census Geocoder Public_AR_Current,-76.067343672158,43.05450783705,,
+v187,2532 Route 9N,Greenfield Center,12833,No_Match,,,,,
+v188,"8234 Turin Rd, Ste 1",Rome,13440,Match,Census Geocoder Public_AR_Current,-75.462190730139,43.260023837894,,
+v185,242 East 58th St,New York,10022,Match,Census Geocoder Public_AR_Current,-73.966108359067,40.760467966612,17,17
+v186,3341 Sheridan Dr,Amherst,14226,Match,Census Geocoder Public_AR_Current,-78.809872737856,42.979930493418,,
+v172,2343 Forest Ave,Staten Island,10303,Match,Census Geocoder Public_AR_Current,-74.169236255933,40.627874872962,121,121
+v293,124-20 Liberty Ave,South Richmond Hill,11419,Match,Census Geocoder Public_AR_Current,-73.81992092119,40.687819633981,106,106
+v173,704 W 177th St,New York,10033,Match,Census Geocoder Public_AR_Current,-73.93818252129,40.847526539353,33,33
+v294,"576 Dick Rd, Ste 10",Depew,14043,Match,Census Geocoder Public_AR_Current,-78.737270474544,42.918270827493,,
+v170,19 Huguenot St,New Rochelle,10801,Match,Census Geocoder Public_AR_Current,-73.774035198554,40.914102443765,,
+v291,1051 College Ave,Elmira,14901,Match,Census Geocoder Public_AR_Current,-76.817458464947,42.102484828901,,
+v171,320 North Main St,Jamestown,14701,Match,Census Geocoder Public_AR_Current,-79.241329332933,42.096588837131,,
+v292,2465 Broadway,New York,10025,Match,Census Geocoder Public_AR_Current,-73.974025367477,40.791702060458,24,24
+v290,892 Wyckoff Ave,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.906781685429,40.697054114084,83,83
+v178,696 Locust St,Mt Vernon,10552,Match,Census Geocoder Public_AR_Current,-73.839374197982,40.92615614851,,
+v299,439 Court St,Binghamton,13904,Match,Census Geocoder Public_AR_Current,-75.879449705372,42.104491381781,,
+v179,1077 Atlantic Ave,Brooklyn,11238,Match,Census Geocoder Public_AR_Current,-73.955522492407,40.679320786375,79,79
+v176,260 Warren St,Hudson,12534,Match,Census Geocoder Public_AR_Current,-73.791983871458,42.253642810396,,
+v297,287 Harrison Pl,Brooklyn,11237,Match,Census Geocoder Public_AR_Current,-73.924112225216,40.707689757636,90,90
+v177,200 Lake St,Newburgh,12550,Match,Census Geocoder Public_AR_Current,-74.030667479985,41.494947001586,,
+v298,3858 Broadway,New York,10032,Match,Census Geocoder Public_AR_Current,-73.943022989862,40.836479013162,33,33
+v174,-,Astoria,-,No_Match,,,,,
+v295,69 Allen St,Buffalo,14202,Match,Census Geocoder Public_AR_Current,-78.872709565731,42.899475026268,,
+v175,521 Troy Schenectady Rd,Latham,12110,Match,Census Geocoder Public_AR_Current,-73.76272416881,42.7493469304,,
+v296,15 Bridge St,Carthage,13619,Match,Census Geocoder Public_AR_Current,-75.615558316723,43.973765283183,,
+v194,121 South Pearl St,Albany,12207,Match,Census Geocoder Public_AR_Current,-73.754725338274,42.646049502207,,
+v195,1536 Amsterdam Ave,New York,10031,Match,Census Geocoder Public_AR_Current,-73.952060460888,40.819260119398,30,30
+v192,31 Webster St,North Tonawanda,14120,Match,Census Geocoder Public_AR_Current,-78.877557707268,43.022959105652,,
+v193,63-54 108th St,Forest Hills,11375,Match,Census Geocoder Public_AR_Current,-73.849988094552,40.733532864122,112,112
+v190,3633 Kingsbridge Ave,Bronx,10463,Match,Census Geocoder Public_AR_Current,-73.902340231998,40.88412356928,50,50
+v191,1662 First Ave,New York,10028,Match,Census Geocoder Public_AR_Current,-73.949013947006,40.777250510762,19,19
+v198,"345 Main St, Suite 2",Hudson Falls,12839,Match,Census Geocoder Public_AR_Current,-73.57747592422,43.313731630967,,
+v199,52 A Kenmare St,New York,10012,Match,Census Geocoder Public_AR_Current,-73.995627939041,40.720788043716,5,5
+v196,9605 Liberty Ave,Ozone Park,11417,Match,Census Geocoder Public_AR_Current,-73.843057492422,40.680667579826,106,106
+v197,1798 E Tremont Ave,Bronx,10460,Match,Census Geocoder Public_AR_Current,-73.867444685936,40.840229423483,43,43

@@ -1,0 +1,1 @@
+SELECT date_extract_y(arrest_date) AS year, arrest_precinct AS precinct, CASE(law_code like 'PL 221%', 'PL221', law_code like 'PL 222%', 'PL222') AS article, count(*) AS n WHERE (law_code like 'PL 221%' OR law_code like 'PL 222%') AND (pd_cd IS NULL OR pd_cd != '781') GROUP BY year, precinct, article ORDER BY year, precinct LIMIT 50000

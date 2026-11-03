@@ -1,0 +1,1 @@
+SELECT license_number, license_type, license_status, operational_status, issued_date, retail_date_opened_to_public, entity_name, dba, address_line_1, address_line_2, city, state, zip_code, county, see_category WHERE (county in ('New York','Kings','Queens','Bronx','Richmond') OR county IS NULL) LIMIT 50000

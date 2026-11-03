@@ -1,0 +1,8 @@
+test,x,y,n,method,rho,p
+A. arrest rate vs open-dispensary rate,arrests_window_per10k,dispensaries_open_per10k,76,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.254,0.027
+B. arrest count vs open-dispensary count,arrests_window_2014_to_2021_03_30,dispensaries_open,77,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.451,3.8e-05
+C. arrest rate vs ever-opened dispensary rate,arrests_window_per10k,ever_per10k,76,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.267,0.02
+D. arrest rate vs open CAURD rate,arrests_window_per10k,caurd_per10k,76,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.188,0.1
+G. arrest rate vs OCM verification-page dispensary rate,arrests_window_per10k,ver_per10k,76,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.28,0.014
+E. summons rate vs open-dispensary rate (summonses kept separate),summonses_window_per10k,dispensaries_open_per10k,76,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.125,0.28
+F. sensitivity: arrest rate 2006-01-01..2021-03-30 (SI merged) vs open-dispensary rate,ar,dr,74,"Spearman rank (scipy.stats.spearmanr, average ranks for ties, two-sided p from t-approx)",-0.267,0.021
