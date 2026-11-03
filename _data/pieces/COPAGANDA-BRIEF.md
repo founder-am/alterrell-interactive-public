@@ -454,3 +454,19 @@ and who benefits from that absence.
   this piece needs to be right, not fast
 - Do not modify alterrell-interactive.css
 - Do not build before research pass is complete
+---
+
+## Decisions from the brief-expansion chat (32491bd5), saved 10-15-26
+
+Ruled by AMA in that chat:
+- Calculator translation language: the pill framing is locked. Each hour of cop content is a dose; the reader sees the accumulated count since birth. The register is "horror of accumulation," volume ingested without noticing, not lost time.
+- The taxonomy (explicit, implicit, structural, advocacy) is its own tab, not folded into the value chain tab.
+- That tab is titled "Screen Time Report." The title borrows the iPhone report and the parental screen-time register; it must not signal the conclusion before the data.
+
+Proposed in that chat, not yet ruled:
+- Seven tabs: 1 Overview, 2 The Hours (birth year to hours to pill translation), 3 The Gap, 4 The Money, 5 Screen Time Report, 6 What Could Exist, 7 Sources.
+- Each Screen Time Report tier carries one placement sentence about a show the reader loves (example: Paw Patrol).
+
+Still waiting on AMA:
+- "What Could Exist": its own tab, or the closing section of Overview.
+- The Money tab: lock a placeholder framing now for the case where the giving research finds nothing documented.
