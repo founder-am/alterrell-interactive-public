@@ -74,7 +74,7 @@ Fix: AMA adds `imdb.com` and `www.imdb.com` under Allowed domains in the cloud e
 6. **Other gates not run.** Because the stop fired first, this run did not perform the CLAUDE.md upload-gate reads past the Bible (the `[slug].astro` template, the CSS, PROJECT-STATUS.md). Those files are build files and Batch B touches none of them.
 7. **Re-run need.** Most of Batch B (steps 1, 3, 4 and 5) does not need imdb.com: it compiles what the briefs already record. Only step 2's verification of unsourced edges does. The rule says stop at preflight, so this run did not split the work. AMA could rule whether a future preflight failure should allow the offline steps to proceed.
 
-Bible read and confirmed: `ALTERRELL-INTERACTIVE-BIBLE.md`, last updated 2026-10-29, read in full at the header and the SRC, FOOT and COPY sections (COPY-06 to COPY-09 apply here). `old/AI-MASTER-RULES.md` is confirmed retired to `old/`.
+Bible read and confirmed: `ALTERRELL-INTERACTIVE-BIBLE.md`, last updated 2026-10-29. Read in part, not in full: lines 1-60 (header, LANE, SKEL, HERO, JRNY), the section index, and lines 143-176 (SRC, FOOT, COPY). COPY-06 to COPY-09 apply here. TABS, PROSE, GALL, CARD, CHART, SHARE, A11Y, BUILD, SHIP and Appendices A-C were not read; they govern builds, which this run did not do. `old/AI-MASTER-RULES.md` is confirmed retired to `old/`.
 
 ## 6. LEDGER line
 
