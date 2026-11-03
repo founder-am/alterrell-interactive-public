@@ -181,3 +181,71 @@ Do not begin build until Hub and Sodium are deployed and confirmed.
 - Do not begin build without a research pass on the data gaps listed above
 - Do not use dark backgrounds under the accordion tool or any dense copy tab
 
+
+## Research 2026-11-03 (cloud)
+
+Appended by a cloud research session on branch cloud/11-02-specialist-map. Nothing above this heading was changed. No proper copy of record exists for Specialist Map: there is no `*-COPY.md` file (Bible COPY-06). This brief is used as the **interim** append target because the session prompt names it. All URLs were accessed 2026-11-03. Tags: MEASURED means read or computed this session from the source named. SECONDARY means a primary source exists but could not be fetched or does not exist, so the value comes from a report of it. Full method, commands and coverage are in `reports/2026-11-03-specialist-map-rerun.md`.
+
+### 1. Tab 1 stat: candidates (AMA picks)
+
+Computations A–C use public-use survey files. The scripts and their raw output are in `reports/2026-11-03-specialist-map-rerun-data/`. They are Alterrell computations from federal microdata, not figures AHRQ or NCHS publish. The credit line would read "Alterrell analysis of AHRQ MEPS 2023" (or "NCHS NHIS 2018").
+
+- **A. Same front door, different back door (race). MEASURED.** MEPS 2023, adults 18+, age-adjusted to the 2000 US standard population. Saw a primary care doctor in the office: Black 43.5%, White 43.2%. Saw a specialist: Black 32.3% (95% CI 29.8–34.9), White 45.4% (95% CI 43.8–47.1). Hispanic adults: 29.6% specialist, 36.6% primary care.
+  - Sources: https://meps.ahrq.gov/mepsweb/data_files/pufs/h251/h251dta.zip (full-year consolidated file) and https://meps.ahrq.gov/mepsweb/data_files/pufs/h248g/h248gdta.zip (office-based visits). Specialty comes from DRSPLTY_M18 on visits where the person saw a medical doctor (SEEDOC_M18=1).
+  - Specialist = every coded specialty except family practice, general practice, geriatrics, internal medicine and pediatrics (primary care), and hospital residence, osteopathy and "other" (ambiguous). OB/GYN and psychiatry count as specialists.
+- **B. Income. MEASURED.** MEPS 2023, adults 18+, age-adjusted. Saw a specialist at least once in 2023: 46.2% at 400%+ of poverty, 33.3% below poverty. That is 1.39 times. Crude rates: 48.9% vs. 34.4%.
+  - NHIS 2018 shows the same direction: 31.6% vs. 24.2% age-adjusted. NHIS 2018 is the last NHIS year that asked about seeing a medical specialist; the 2019 redesign dropped the item. Source: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2018/ (samadult, personsx) and https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2018_imputed_income/ (variable AHCSYR8; income from 5 imputations combined by Rubin's rules).
+- **C. Insurance. MEASURED.** MEPS 2023, adults 18–64. Saw a specialist: uninsured all year 9.6%, any private insurance 39.2%, public only 33.1%. Uninsured adults saw a specialist at 0.245 times the rate of privately insured adults.
+  - NHIS 2018, adults 18–64: uninsured 9.6%, private 26.4%.
+- **D. Dermatology gap (fits the mole card). MEASURED, peer-reviewed.** Cai C, Gaffney A, McGregor A, et al. *Racial and Ethnic Disparities in Outpatient Visit Rates Across 29 Specialties.* JAMA Intern Med 2021;181(11):1525–1527. doi:10.1001/jamainternmed.2021.3771. https://pmc.ncbi.nlm.nih.gov/articles/PMC8290333/
+  - Data: MEPS 2015–2018, adults.
+  - Black:White dermatology visit rate ratio 0.27 (95% CI 0.21–0.34), adjusted for age. It is 0.34 after also adjusting for sex, self-reported health, insurance, income and education.
+  - Black adults had lower visit rates to 23 of 29 specialties.
+- **E. Referral networks. MEASURED, peer-reviewed.** Landon BE, Onnela J-P, Meneades L, O'Malley AJ, Keating NL. *Assessment of Racial Disparities in Primary Care Physician Specialty Referrals.* JAMA Netw Open 2021;4(1):e2029238. doi:10.1001/jamanetworkopen.2020.29238. https://pmc.ncbi.nlm.nih.gov/articles/PMC7835717/
+  - Data: traditional Medicare, 2009–2010, 12 markets.
+  - Mean number of cardiologists a PCP shared patients with: 17.5 for White patients, 8.8 for Black patients.
+  - The authors say some of the gap may come from patient-initiated visits, and call the study hypothesis-generating.
+- Supporting, older: Bisgaier J, Rhodes KV. NEJM 2011;364:2324–33. doi:10.1056/NEJMsa1013285. PubMed record: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=21675891&rettype=abstract&retmode=text
+  - Design: secret-shopper calls to specialty clinics in Cook County, IL, in 2010, posing as parents of children.
+  - Result: 66% of Medicaid-CHIP callers were denied an appointment vs. 11% of privately insured callers (MEASURED).
+
+Caveat for every candidate: these are use rates, not need-adjusted rates. Lower-income adults report worse health, so an equal use rate would still mean less care relative to need.
+
+### 2. Urgent care vs. primary care cost
+
+- **HCCI** (page dated January 28, 2026): https://healthcostinstitute.org/all-hcci-reports/urgent-care-spending-increased-by-50-over-5-years-driven-by-higher-use/. Population: employer-sponsored insurance, under 65. MEASURED:
+  - Average price, 2022: urgent care visit $220, primary care office visit $224.
+  - Same diagnosis, 2022: UTI $218 urgent care vs. $167 primary care. Infectious-disease exposure $215 vs. $216.
+  - Out of pocket, 2022: UTI $83 vs. $61. Infectious-disease exposure $9 vs. $16.
+  - HCCI's own words: "The average prices of urgent care visits were similar to the average prices for primary care visits."
+- **FAIR Health**, FH Healthcare Indicators and FH Medical Price Index 2025: https://mma.prnewswire.com/media/2647389/Eighth_Annual_FAIR_Health_Report.pdf?p=pdf (FAIR Health's report, hosted on its press-release distributor). Commercial claims, 2023. Median allowed amount for CPT 99204: office $183, urgent care center $179, retail clinic $138. MEASURED.
+  - Earlier FAIR Health page: https://www.fairhealth.org/article/fair-health-identifies-key-indicators-for-changing-venues-of-care. 2016 median charge for CPT 99203: office $294, urgent care $242, retail clinic $109. MEASURED.
+- **KFF:** no KFF analysis comparing urgent care and primary care prices was found this session.
+- **Finding:** the research undercuts the premise of a large urgent-care-vs-primary-care price gap. In both claims sources the commercial price gap is $4 or smaller. The brief has no claim text on this, so nothing here contradicts written copy.
+
+### 3. Other data gaps and figures in this brief
+
+- **Colonoscopy "currently 45": confirmed.** USPSTF final recommendation, May 18, 2021: screen adults 45–75; grade B for ages 45–49, grade A for 50–75. https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening. MEASURED. Note: the USPSTF age of 45 is the start of screening, by any recommended test. It is not a colonoscopy-specific age.
+- **"PPOs typically do not / HMOs typically do" (require referrals).**
+  - KFF EHBS 2025 (https://files.kff.org/attachment/Employer-Health-Benefits-Survey-2025-Annual-Survey.pdf) shares of covered workers: PPO 46%, HDHP/SO 33%, HMO 12%, POS 9%, conventional under 1%. MEASURED.
+  - KFF definitions: a PPO has "no requirement for a primary care referral". A POS plan "requires a primary care gatekeeper". An HMO is defined only by not covering out-of-network care.
+  - HealthCare.gov (https://www.healthcare.gov/choose-a-plan/plan-types/) says "POS plans require you to get a referral" and that PPO out-of-network use is "without a referral". Its HMO definition does not mention referrals.
+  - The PPO half of the claim is supported. The HMO half is not stated in either primary source. No primary source found gives the share of HMO enrollees who need a referral.
+- **"6–10 month waits": SECONDARY.** AMN Healthcare (formerly Merritt Hawkins) 2025 Survey of Physician Appointment Wait Times, 15 large metros. The AMN PDF returned HTTP 403 to this session, so the values come from TechTarget's report of it: https://www.techtarget.com/patientengagement/news/366624919/Average-patient-appointment-wait-time-is-31-days-in-2025
+  - Average new-patient wait across specialties: 31 days.
+  - Specialty averages: OB/GYN 42 days, gastroenterology 40, dermatology 36.5, cardiology 33, family medicine 23.5, orthopedic surgery 12.
+  - Waits of 6–10 months appear only at metro extremes: dermatology in Portland, OR, 291 days (9.56 months); OB/GYN in Boston, 231 days (7.59 months).
+  - The specialty averages are 12–42 days.
+- **Wait times by specialist type:** same AMN source and same SECONDARY status as above.
+- **Provider shortage projection.** AAMC press release, March 21, 2024: "a physician shortage of up to 86,000 physicians by 2036". https://www.aamc.org/news/press-releases/new-aamc-report-confirms-growing-physician-shortage. MEASURED.
+  - The low end of the range (13,500) appears only in SECONDARY reports. The AAMC report PDF did not download.
+  - HRSA NCHWA projections: bhw.hrsa.gov returned 403, and the data.hrsa.gov dashboard is not machine-readable. Not retrieved.
+- **Ophthalmologist vs. optometrist scope by state: SECONDARY.** A Vermont Senate Health and Welfare witness document titled "States with Laser Surgical Privileges, September 2025" lists 14 states where optometrists may perform laser procedures: AK, AR, CO, IN, KY, LA, MS, MT, OK, SD, VA, WV, WI, WY. https://legislature.vermont.gov/Documents/2026/Workgroups/Senate%20Health%20and%20Welfare/Bills/S.64/Witness%20Documents/S.64~Dean%20Barcelow~States%20with%20Laser%20Surgical%20Privileges%20September%202025~1-30-2026.pdf
+  - Healio reports that Tennessee added laser authority in April 2026 (SECONDARY).
+  - A Utah OPLR report (updated 1-29-2024) counts 8 states at its own date.
+  - Primary state statutes were not checked one by one.
+- **"fasting blood panel annually" (family history of diabetes).** Undercut.
+  - USPSTF (August 24, 2021) recommends screening adults 35–70 with overweight or obesity and says "screening every 3 years may be a reasonable approach" after a normal result. https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/screening-for-prediabetes-and-type-2-diabetes
+  - ADA Standards of Care 2026, Section 2 (Diabetes Care 2026;49(Suppl 1):S27–S49, doi:10.2337/dc26-S002; https://pmc.ncbi.nlm.nih.gov/articles/PMC12690183/) lists a first-degree relative with diabetes as a risk factor for testing adults with overweight. It says normal results should be repeated "at a minimum of 3-year intervals". Yearly testing is for people with prediabetes.
+  - MEASURED.
+- **"heads up two years before" (diabetes frame):** no primary source found for a two-year lead time. This is an editorial frame line and is left to AMA.

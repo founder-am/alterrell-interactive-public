@@ -1,0 +1,29 @@
+NHIS 2018 sample adults with valid AHCSYR8, n = 25160
+
+=== CRUDE ===
+All adults 18+                                 29.5%  95% CI  28.7- 30.3  n=25160
+Income <100% FPL                               23.9%  95% CI  22.0- 25.8  n=3265
+Income 100-199% FPL                            24.8%  95% CI  23.2- 26.3  n=4678
+Income 200-399% FPL                            29.0%  95% CI  27.6- 30.4  n=7214
+Income 400%+ FPL                               33.3%  95% CI  32.0- 34.5  n=10003
+Hispanic                                       19.6%  95% CI  17.9- 21.2  n=3156
+Non-Hispanic White                             34.4%  95% CI  33.4- 35.3  n=17402
+Non-Hispanic Black                             22.0%  95% CI  20.3- 23.8  n=2932
+Non-Hispanic Asian                             20.4%  95% CI  17.6- 23.2  n=1306
+18-64 Private                                  26.4%  95% CI  25.4- 27.4  n=12290
+18-64 Medicaid/other public                    26.3%  95% CI  24.0- 28.5  n=2303
+18-64 Uninsured                                 9.6%  95% CI   8.1- 11.2  n=2254
+
+=== AGE-ADJUSTED ===
+All adults 18+                                 27.9%  95% CI  27.2- 28.7  n=25160
+Income <100% FPL                               24.2%  95% CI  22.4- 26.0  n=3265
+Income 100-199% FPL                            23.4%  95% CI  21.8- 24.9  n=4678
+Income 200-399% FPL                            27.3%  95% CI  26.0- 28.7  n=7214
+Income 400%+ FPL                               31.6%  95% CI  30.3- 32.8  n=10003
+Hispanic                                       21.1%  95% CI  19.5- 22.8  n=3156
+Non-Hispanic White                             31.4%  95% CI  30.4- 32.3  n=17402
+Non-Hispanic Black                             22.1%  95% CI  20.5- 23.8  n=2932
+Non-Hispanic Asian                             20.7%  95% CI  18.0- 23.4  n=1306
+18-64 Private (crude only)                     26.4%  95% CI  25.4- 27.4  n=12290
+18-64 Medicaid/other public (crude only)       26.3%  95% CI  24.0- 28.5  n=2303
+18-64 Uninsured (crude only)                    9.6%  95% CI   8.1- 11.2  n=2254
