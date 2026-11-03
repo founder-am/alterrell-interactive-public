@@ -14,7 +14,7 @@
  *       from STEPS and why no sentence reads a record's dancers_s field.
  *   Q3  Four line-3 branches, written out in alterrell-hq/reference/
  *       concert-builder-copy.md and copied from it character for character.
- *       Branch C is unreachable against these 17 records and the copy file
+ *       Branch C is unreachable against these 16 records (Morgan Wallen removed 2026-11-03, AMA ruled; reachability not re-derived) and the copy file
  *       says so; it is implemented anyway because the dataset may change.
  *   Q4  The occupied cell ports the archive's chrome verbatim — "Your concert
  *       profile", "Artists who built this", the TBD footnote, the source line.
@@ -138,7 +138,7 @@ const payload = JSON.stringify(data);
     return TBD_VALS.some(function (t) { return String(v).indexOf(t) !== -1; });
   }
 
-  /* N_WORD is spelled, N is a numeral. Against these 17 records N_WORD only
+  /* N_WORD is spelled, N is a numeral. Against these 16 records N_WORD only
      ever renders "Three": branches B and C are its only users and no cell
      ties at two. "Two" is carried because the branch reads "three or fewer". */
   var N_WORD = { 1: 'One', 2: 'Two', 3: 'Three' };
@@ -184,7 +184,7 @@ const payload = JSON.stringify(data);
 
     } else if (tied.length <= 3) {
       /* Branch C, three or fewer tied with settings differing between them.
-         Unreachable against these 17 records — the copy file says so, and if
+         Unreachable against these 16 records (Morgan Wallen removed 2026-11-03, AMA ruled; reachability not re-derived) — the copy file says so, and if
          it ever renders that is a finding, not a bug. */
       line3 = N_WORD[tied.length] + ' tours tie for closest: ' +
               tied.map(recClause).join('; ') + '.';
