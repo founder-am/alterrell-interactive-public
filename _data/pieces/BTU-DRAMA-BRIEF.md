@@ -414,3 +414,169 @@ Creator: Katori Hall (Black). AMA confirmed Primary.
 3. Resolve 7 open items above (targeted research, not a full new pass)
 4. Compile all connections to `BTU-NETWORK-DATA.md`
 5. Drama cluster built as separate visual zone in D3, connected to sitcom cluster via crossover nodes
+
+---
+
+## Research 2026-11-03 (cloud)
+
+Appended by a cloud research session on branch cloud/11-02-btu-drama-animation. Append only: no line above this heading was changed.
+
+**Copy of record.** No proper copy of record exists for BTU: `ls _data/pieces/*-COPY.md` returns only GAY-UNCLES-COPY.md. This file is an **interim** target, per Bible COPY-06.
+
+**Tags.** MEASURED means read from the source named in brackets. RULED (date) means taken from BTU-OPEN-DECISIONS.md. Every source below is SECONDARY unless it is marked PRIMARY.
+
+**Source key.** All sources were accessed 2026-11-03.
+- [TVM] TVmaze API (SECONDARY): `https://api.tvmaze.com/shows/<id>/episodes`, `/seasons`, `/cast`, `/episodes/<id>/guestcast`, `/people/<id>/castcredits`, `/people/<id>/guestcastcredits`. Show IDs: The Chi 24371; Power 299; P-Valley 19678; Reasonable Doubt 61704; Being Mary Jane 325; Haves and Have Nots 3925; Queen Sugar 11649; Raising Kanan 46211; The Corner 5802; Shaft 10240; Twenties 38796; Family Reunion 39152; Carmichael Show 2470. Person IDs: Loretta Devine 3458; Omar Epps 6320; Rotimi 426319; Richard Roundtree 27507; Lena Waithe 68228; Shannon Thornton 17357.
+- [WP] Wikipedia raw wikitext (SECONDARY): `https://en.wikipedia.org/w/index.php?action=raw&title=<Title>`, read for each page title named below.
+- [EPG] epguides (SECONDARY): `https://epguides.com/DifferentWorld/season1.shtml`
+- [TA] Television Academy (PRIMARY): `https://www.televisionacademy.com/shows/corner`
+- [STZ] Starz (PRIMARY): `https://www.starz.com/us/en/series/p-valley/46156`
+- [WS] WebSearch result text (SECONDARY). The page itself was not fetched. The result URL is given each time.
+
+IMDb was not used. curl returned an empty 202 bot-check page, and WebFetch could not resolve www.imdb.com. Any IMDb figure below is quoted from search-result text and is labelled [WS].
+
+### Open item 1: Loretta Devine
+
+| Value | Tag | Source |
+|---|---|---|
+| A Different World: Stevie Rallen, season 1 only, episodes 1–9 and 21 (10 episodes) | MEASURED | [EPG] season1.shtml: "Loretta Devine as Stevie Rallen [ episodes 1 - 9, 21 ]" |
+| A Different World: main cast, season 1 only | MEASURED | [TVM] person 3458 castcredits (show 7704); [WP] "Loretta Devine" filmography |
+| P-Valley: 7 guest episodes, all in S2 (S2E1, 2, 4, 6, 7, 9, 10) | MEASURED | [TVM] person 3458 guestcastcredits |
+| P-Valley: "Main cast (season 1), recurring cast (season 2)" | MEASURED | [WP] "Loretta Devine" line 815 |
+| The PJs: Muriel Stubbs (voice), main cast; the show ran 3 seasons, 43 episodes | MEASURED | [TVM] show 1661 cast + episodes; [WP] "The PJs" |
+| Family Reunion (Netflix, 2019–2022): M'Dear, main cast; 5 seasons, 44 episodes | MEASURED | [TVM] show 39152 |
+| The Carmichael Show (NBC, 2015–2017): Cynthia Carmichael, main cast; 3 seasons, 32 episodes | MEASURED | [TVM] show 2470 |
+| Grey's Anatomy: Adele Webber, 24 guest-credit rows | MEASURED | [TVM] person 3458 guestcastcredits |
+
+Findings, stated not ruled:
+- A Different World: Devine is main cast for one season (10 episodes). That alone does not meet the sitcom rule of 3+ seasons on 1 show.
+- The sitcom rule's second path is "recurring cast on 2+ Black sitcoms". That path would fire only if AMA treats Family Reunion or The Carmichael Show as a Black sitcom. Neither show is in BTU-SITCOM-BRIEF.md, so this research does not add either one.
+- The brief's line "Loretta Devine | Ernestine Sayles | 17 eps" is not supported. [TVM] shows 7 episodes in S2. Main-cast episodes in S1 are not counted per episode in either guide. The S1+S2 total cannot be measured from these sources.
+- Devine's animation credit is The PJs, already listed in BTU-ANIMATION-BRIEF.md.
+
+### Open item 2: Omar Epps
+
+| Value | Tag | Source |
+|---|---|---|
+| ER: 10 guest episodes, all in S3 (S3E1–7, 9, 10, 11; 1996-09-26 to 1997-01-16) | MEASURED | [TVM] person 6320 guestcastcredits |
+| House: main cast (show 118, 2004–2012) | MEASURED | [TVM] person 6320 castcredits |
+| NAACP Image Award, Outstanding Supporting Actor in a Drama Series, for House: nominated 2005, won 2007, won 2008, nominated 2012, won 2013 | MEASURED (SECONDARY) | [WP] "NAACP Image Award for Outstanding Supporting Actor in a Drama Series" lines 181, 210, 227, 315, 326. The rows cite awardsandwinners.com and The Hollywood Reporter. |
+| The same list records 3 wins and 5 nominations for Epps | MEASURED (SECONDARY) | [WP] same page, lines 517–539 |
+| Power Book III: Raising Kanan: main cast | MEASURED | [TVM] person 6320 castcredits |
+
+Findings, stated not ruled:
+- Epps was not the lead on ER or on House. The Secondary Tier rule requires "the Black lead on a drama with a mixed cast". It is not met on either show.
+- His NAACP recognition is in the supporting category. Whether the NAACP tiebreaker extends to a non-lead on a mixed-cast show is an AMA RULING.
+- The NAACP's own site (naacpimageawards.net/wp-json/wp/v2/nominee-year) only covers the 2024, 2025 and 2026 awards. The 2005–2013 results are therefore SECONDARY.
+
+### Open item 3: Rotimi on The Chi
+
+| Value | Tag | Source |
+|---|---|---|
+| 14 episodes: S6E16 (2024-06-28); S7 E1–7, 9, 11 (9 eps); S8 E1, 4, 6, 10 (4 eps) | MEASURED | [TVM] person 426319 guestcastcredits |
+| Character: Charles. Guest in the S6 finale, then recurring in S7. | MEASURED (SECONDARY) | [WS] https://www.spoilertv.com/2024/07/the-chi-casts-power-alum-rotimi-as.html ; https://blackfilmandtv.com/tvnews/rotimi-joins-the-chi-for-season-7 |
+
+Finding: 14 episodes clears the 3-episode minimum. The brief says "recurring S8" (line 232). The guide places him in S6, S7 and S8, so the S8-only label is narrower than the record.
+
+### Open item 4: Richard Roundtree
+
+| Value | Tag | Source |
+|---|---|---|
+| Shaft (CBS, 1973–74): 1 season, 7 episodes, 1973-10-09 to 1974-02-19 | MEASURED | [TVM] show 10240; [WP] "Shaft (TV series)" (7 EpisodeNumber rows; `grep -c EpisodeNumber`) |
+| Shaft format: aired every third week in The New CBS Tuesday Night Movies rotation, alongside Hawkins | MEASURED (SECONDARY) | [WP] "Shaft (TV series)" line 28 |
+| Shaft regular cast: Richard Roundtree (John Shaft) and Ed Barth (Lt. Al Rossi) | MEASURED | [TVM] show 10240 cast; [WP] "Shaft (TV series)" lines 10, 89 |
+| Roots (1977): Sam Bennett, Part IV | MEASURED (SECONDARY) | [WP] "Richard Roundtree" lines 503–505 |
+| Generations (1989–1991): Dr. Daniel Reubens, recurring, 6 episodes | MEASURED (SECONDARY) | [WP] "Richard Roundtree" lines 614–616 |
+| Being Mary Jane: Paul Patterson Sr., recurring role, 33 episodes | MEASURED (SECONDARY) | [WP] "Richard Roundtree" lines 893–895 |
+| Other drama credits with 3+ episodes: Star 5, Desperate Housewives 5, Chicago Fire 4, Heroes 3, Sacrifice 3; regular on Cherish the Day | MEASURED | [TVM] person 27507 castcredits + guestcastcredits |
+
+Findings, stated not ruled:
+- Shaft ran 1 season of 7 episodes. It does not meet the 3-season minimum for either tier.
+- Shaft has one Black lead and one white co-lead. Whether it is a two-lead show under OD-10 (RULED 2026-06-03) is an AMA RULING.
+- The Founders bucket (1965–1979) is supported by the Shaft and Roots dates.
+- Roots sits in Cluster C and Generations in Cluster D. Per the OD-12 clarification (RULED 2026-09-15), Generations is a historical note only.
+
+### Open item 5: Lena Waithe and Twenties
+
+| Value | Tag | Source |
+|---|---|---|
+| Twenties (BET): 2 seasons, 18 episodes (S1 8, S2 10), 2020-03-04 to 2021-12-15 | MEASURED | [TVM] show 38796; [WP] "Twenties (TV series)" infobox |
+| Twenties main cast per guide: Jonica T. Gibbs (Hattie), Christina Elmore (Marie), Gabrielle Graham (Nia), Sophina Brown (Ida B.), Jevon McFerrin (Chuck) | MEASURED | [TVM] show 38796 cast |
+| Waithe is creator of The Chi (2018–26), Boomerang (BET, 2019–20) and Twenties (2020–21) | MEASURED (SECONDARY) | [WP] "Lena Waithe" line 17; filmography lines 196–203 |
+| Waithe's Twenties credit: "Creator; executive producer, 8 episodes" | MEASURED (SECONDARY) | [WP] "Lena Waithe" lines 201–203 |
+| Waithe on screen in The Chi: 3 guest episodes (S3E4, S3E7, S3E10) | MEASURED | [TVM] person 68228 guestcastcredits |
+| Waithe voices Maya19, Maya35 and College Maya in The Proud Family: Louder and Prouder | MEASURED | [TVM] person 68228 castcredits; show 46457 cast. Episode count not measured. |
+
+Findings, stated not ruled:
+- "Confirm sitcom Primary" cannot be closed from an episode guide. The test is 80%+ Black cast, or OD-10's two-leads rule, and neither guide records cast race. This stays an AMA RULING.
+- Twenties ran 2 seasons. Its cast members cannot reach the sitcom 3-season path through this show alone.
+- Waithe's creator-node status does not depend on that ruling: "Creator/showrunner nodes: Yes", RULED 2026-06-03.
+
+### Open item 6: Shannon Thornton on Power
+
+| Value | Tag | Source |
+|---|---|---|
+| Power: Quinn Phillips, "Recurring cast: Season 5" | MEASURED (SECONDARY) | [WP] "Shannon Thornton" lines 84–86 |
+| Power: "Quinn Phillips (3 episodes, 2018)", including S5E8 "A Friend of the Family" (2018-08-26) | MEASURED (SECONDARY) | [WS] IMDb text quoted in search results for "Quinn Phillips" Power Starz season 5 Shannon Thornton. The IMDb page was not fetched. |
+| TVmaze has no Power credit for Thornton. Her S5 guest-cast rows have no Thornton or Quinn entry. | MEASURED | [TVM] person 17357; `/episodes/<id>/guestcast` for all 10 S5 episodes of show 299 |
+| P-Valley: Thornton is main cast | MEASURED | [TVM] person 17357 castcredits |
+
+Finding: 3 episodes meets the 3-episode minimum. The count rests on IMDb text seen only through search results; TVmaze has no record.
+
+### Open item 7: The Corner, full cast
+
+| Value | Tag | Source |
+|---|---|---|
+| HBO, 6 episodes, 2000-04-16 to 2000-05-21 | MEASURED | [TVM] show 5802; [WP] "The Corner" infobox |
+| 4 Emmy nominations, 3 Emmys, all at the 2000 awards: Outstanding Miniseries (won), Directing, Charles S. Dutton (won), Writing, David Simon and David Mills (won), Casting (nominated) | MEASURED (PRIMARY) | [TA] |
+| Cast as listed in the article: T. K. Carter (Gary McCullough); Khandi Alexander (Fran Boyd); Sean Nelson (DeAndre McCullough); Clarke Peters (Fat Curt); Glenn Plummer (George "Blue" Epps); Toy Connor (Tyreeka Freamon); Maria Broom (Bunchie Boyd); Sylvester Lee Kirk (DeRodd); Corey Parker Robinson (R.C.); Reg E. Cathey (Scalio); Rodney Scott (Little DeAndre) | MEASURED (SECONDARY) | [WP] "The Corner", Cast and characters section |
+| TVmaze cast: T.K. Carter, Khandi Alexander (2 entries only) | MEASURED | [TVM] show 5802 cast |
+| Corner actors the article names as later appearing in The Wire: Clarke Peters, Maria Broom, Corey Parker Robinson, Reg E. Cathey, Clayton LeBouef, Donnell Rawlings, Tootsie Duvall, Robert F. Chew, Lance Reddick, Delaney Williams | MEASURED (SECONDARY) | [WP] "The Corner", paragraph after the cast list |
+| Per-actor episode counts: Nelson, Plummer, Connor and Peters 6 each; Ferrell 4; Reddick 3 | MEASURED (SECONDARY) | [WS] watchmode.com table quoted in search results. Direct fetch of https://watchmode.com/tv/the-corner/cast-crew returned HTTP 403. |
+
+Finding: the brief's anchor claim (Clarke Peters and Khandi Alexander in The Corner) is supported. Peters played Fat Curt; Alexander played Fran Boyd. Whether the other actors carry credits in other BTU clusters was not researched here; that would widen the scope.
+
+### Season and episode counts against two episode guides (WORK 3)
+
+The brief's figures are those in its tables above. Neither guide is PRIMARY. Where the two guides disagree, the disagreement is stated, not resolved.
+
+| Show | Brief | [TVM] seasons / eps | [WP] seasons / eps | Result |
+|---|---|---|---|---|
+| Soul Food | 5 / 74 | 5 / 74 | 5 / 74 | agree |
+| The Wire | 5 / — | 5 / 60 | 5 / 60 | agree |
+| The Corner | miniseries | 1 / 6 | — / 6 | agree |
+| Treme | 4 / — | 4 / 36 | 4 / 36 | agree |
+| Empire | 6 / 102 | 6 / 102 | 6 / 102 | agree |
+| Queen Sugar | 7 / 89 | 7 / 88 | 7 / 89 | **guides disagree on episodes** |
+| Greenleaf | 5 / 60 | 5 / 60 | 5 / 60 | agree |
+| Power | 6 / 63 | 6 / 63 | 6 / 63 | agree |
+| Power Book II: Ghost | 4 / — | 4 / 40 | 4 / 40 | agree |
+| Power Book III: Raising Kanan | 5 / — (lead cast "40 eps") | 5 / 48, ended 2026-08-07 | 5 / 48 | agree. The show has 48 episodes, so "40 eps" for the leads (brief lines 201–205) does not match the full run. |
+| The Chi | 8 / **80** | 8 / 88 | 8 / 88 | **guides agree on 88; brief says 80** |
+| P-Valley | **3** ("S3 confirmed — qualifies") | 2 aired / 18 aired; S3 airs from 2026-12-04 | 2 / 18 | **guides agree: 2 seasons aired.** [STZ] PRIMARY: "Final Season Friday, December 4th" |
+| Reasonable Doubt | 4 | 4; S4 runs 2026-10-06 to 2026-11-24; 36 aired as of 2026-11-03 | 4 / 35 | **guides disagree on episodes (1-episode lag); S4 still airing** |
+| Being Mary Jane | 4 / 52 + finale film | 4 / 51 | 4 / 52 | **guides disagree on episodes** |
+| Haves and the Have Nots | 8 / 196 | 8 / 198, including "Final Cast Reunion Part 1/2" (S8E17–18) | 8 / 196 | agree on 196 scripted episodes once the 2 reunions are excluded |
+| I Spy | 3 | 3 / 82 | 3 / 82 | agree |
+| Julia | 3 | 3 / 86 | 3 / 86 | agree |
+| Roots (1977) | miniseries | 1 / 8 | — / 8 | agree |
+| New York Undercover | 4, 1994–1998 | 4 / 89, last airdate 1999-02-11 | 4 / 89, last airdate 1998-06-25 | agree on counts; **guides disagree on the final airdate** |
+| City of Angels | 2 | 2 / 24 | 2 / 24 (1 unaired) | agree |
+| Scandal | 7 | 7 / 124 | 7 / 124 | agree |
+| How to Get Away with Murder | 6 | 6 / 90 | 6 / 90 | agree |
+| Grey's Anatomy | 20+ | 23; 469 aired as of 2026-11-03 | 23 / 469 ("As of October 29, 2026") | agree |
+
+Command for the [TVM] columns: `python3 -I tvm.py` (searches api.tvmaze.com, fetches /shows/<id>/episodes, counts by season), run 2026-11-03. "Aired" counts keep only episodes with an airdate on or before 2026-11-03.
+
+### Claims in this brief that the research undercuts (stated, not rewritten)
+
+1. **P-Valley.** Line 70 says "3 seasons … S3 confirmed — qualifies". As of 2026-11-03, 2 seasons have aired. S3 premieres 2026-12-04 ([STZ], [TVM], [WP]). The cast's "18+ eps" cannot exceed 18, the total aired so far.
+2. **The Chi.** Line 214 says "80 episodes". Both guides give 88.
+3. **Haves and the Have Nots.** Line 296 gives Tika Sumpter "213 eps". The show has 196 scripted episodes ([WP]; [WS] https://www.thewrap.com/the-haves-and-the-have-nots-to-end-with-season-8-at-own/).
+4. **Rotimi.** Line 232 says "recurring S8". The record is S6E16 plus S7 and S8, 14 episodes in all.
+5. **Reasonable Doubt.** Lines 318–321 list S2–3 and S4 credits. [TVM] per-episode guest cast for show 61704, as of 2026-11-03:
+   - Morris Chestnut: 9 episodes, S3E1 to S4E6.
+   - Brandee Evans: 9 episodes, S3E1 to S4E2.
+   - Rutina Wesley: 5 episodes, S4E3 to S4E7.
+   - La La Anthony: 2 episodes, S4E3 to S4E5. That is below the 3-episode minimum while S4 is still airing.
+6. **Loretta Devine.** Line 336 gives "17 eps" on P-Valley. Not reproduced: [TVM] shows 7 episodes in S2, and S1 cannot be counted per episode.
