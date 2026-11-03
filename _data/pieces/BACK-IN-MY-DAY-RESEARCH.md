@@ -505,3 +505,129 @@ Four categories, consistent across all cards and formats:
 
 ### Context for next Claude instance
 This is a Type 1 editorial session project. The piece is called "Back in My Day" (food ingredient evolution). It is a multi-part series — Phase 1 covers Bread, Ice Cream, Pasta, Milk. The generation card concept (one card per decade, all foods as grouped bars) is the primary card direction but is on Hold pending execution refinement. Option C (cascade pills) has never been properly built and should be the first thing built next session. Y-axis ceiling is 27 across all cards. Four ingredient categories: whole (teal #0a7c72), processed (orange #c95f1a), synthetic (red #c84628), mandate (blue #2a5298). Carry-forward data shown at 35% opacity. All decisions are documented in BACK-IN-MY-DAY-RESEARCH.md.
+
+---
+
+## Research 2026-11-03 (cloud)
+
+Appended by a cloud research run on branch cloud/11-02-back-in-my-day. All lines above this heading are unchanged. No proper copy of record exists for this piece: COPY-06 requires a `*-COPY.md` file and none exists. This file is the interim target only.
+
+Tags: MEASURED = read by this run from the named source on 2026-11-03. RULED (date) = an existing AMA ruling. PLACEHOLDER = not verified. Every URL below was accessed 2026-11-03.
+
+### R1. Why the 1950s to 1980s count column is empty
+
+Before the Nutrition Labeling and Education Act, foods with a federal standard of identity were exempt from the full ingredient-list requirement. Section 7 of Pub. L. 101-535 (Nov. 8, 1990, 104 Stat. 2353 at 2364) struck the words "If it is not subject to paragraph (g) of this section unless" from FFDCA 403(i). Bread, ice cream, macaroni and milk all have standards of identity. So a 1960s label for any of the four Phase 1 foods was not required to list every ingredient. MEASURED. Source: https://www.govinfo.gov/content/pkg/STATUTE-104/pdf/STATUTE-104-Pg2353.pdf
+
+Effect: period sources for 1950s to 1980s are the standards of identity, which list what was *permitted*. They are not counts of what any one product used. Ingredient counts below exist only from 2017 onward, from USDA FoodData Central branded records.
+
+FoodData Central source for all label rows: https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_branded_food_csv_2026-10-29.zip (USDA release 2026-10-29; files dated 2026-10-23). Counting method, applied identically: "top-level" counts comma-separated items outside parentheses, with "contains 2% or less of", "less than 2% of" and "vitamins/minerals:" treated as headers, not items. "Expanded" also counts each item inside a parenthetical group of two or more (for example, the 7 components of enriched flour and the 11 named dough conditioners).
+
+### R2. Decade tables (Phase 1, RULED 10-15-26)
+
+**Bread**
+
+| Decade | Ingredient count | Named additives | Regulatory change | Source | Date | Tag |
+|---|---|---|---|---|---|---|
+| 1950s | Not available (R1) | Permitted by the standard: lecithin; mono- and diglycerides; diacetyl tartaric acid esters of mono- and diglycerides (DATEM, permitted on a tentative basis); calcium sulfate, calcium lactate, calcium carbonate, dicalcium phosphate, ammonium phosphates, ammonium sulfate, ammonium chloride; potassium bromate, potassium iodate, calcium peroxide; monocalcium phosphate; calcium propionate, sodium propionate, sodium diacetate, lactic acid, vinegar; corn sirup; Aspergillus oryzae enzymes; soy flour | First federal bread standards, §§ 17.1 to 17.5 | 17 FR 4453 to 4464; https://www.govinfo.gov/content/pkg/FR-1952-05-15/pdf/FR-1952-05-15.pdf | Order dated May 12, 1952; published May 15, 1952 | MEASURED |
+| 1960s | Not available (R1) | Azodicarbonamide (ADA) added to flour as an aging and bleaching agent, 45 ppm limit (§ 121.1085), on a Wallace and Tiernan petition | ADA food additive regulation; flour standard § 15.1(a)(7) | 27 FR 6784; https://www.govinfo.gov/content/pkg/FR-1962-07-18/pdf/FR-1962-07-18.pdf | July 18, 1962 | MEASURED |
+| 1960s | Not available (R1) | ADA added to bread as a dough conditioner (§ 17.1(a)(12)(ii)) | Bread standard amended | Proposal 31 FR 15095 (Dec. 1, 1966); order 32 FR 4531 (Mar. 25, 1967); effective-date confirmation FR May 20, 1967. https://www.govinfo.gov/content/pkg/FR-1967-03-25/pdf/FR-1967-03-25.pdf | Effective May 24, 1967 | MEASURED |
+| 1970s | Not available (R1) | Not read this run | Standard recodified as 21 CFR 136.110 | eCFR source note: 42 FR 14400 | Mar. 15, 1977 | MEASURED (date only) |
+| 1980s | Not available (R1) | No change verified this run. The eCFR source note lists amendments at 47 FR 11826 (1982), 49 FR 10096 and 13692 (1984), and 54 FR 24894 (1989); their content was not read. | — | https://www.ecfr.gov/api/versioner/v1/full/2026-10-30/title-21.xml?part=136&section=136.110 | — | PLACEHOLDER |
+| 1990s | Full lists required (R1) | Folic acid required in enriched bread at 0.43 mg/lb | NLEA (1990); folic acid fortification final rule | 61 FR 8781; https://www.govinfo.gov/content/pkg/FR-1996-03-05/html/96-5014.htm | Published Mar. 5, 1996; effective Jan. 1, 1998 | MEASURED |
+| 2010s | Wonder Classic White: 21 top-level, 37 expanded | High fructose corn syrup; calcium carbonate; dough conditioners (SSL, CSL, monoglycerides, mono- and diglycerides, distilled monoglycerides, calcium peroxide, calcium iodate, DATEM, ethoxylated mono- and diglycerides, enzymes, ascorbic acid); monocalcium phosphate; modified corn starch; soy lecithin; ammonium sulfate; calcium sulfate; calcium propionate. **No ADA, no potassium bromate.** | — | FDC 406271, GTIN 072250011372 | Record modified 2018-07-21 | MEASURED |
+| 2020s | Wonder Classic White: 21 top-level, 37 expanded (formula identical to 2018) | As 2018. No ADA, no bromate. | FDA added ADA to its post-market review list (2025-08-19) and requested information on it (91 FR 27060). Salt-substitutes rule amends § 136.110 (91 FR 65040 to 65060). | FDC 2569016; https://www.fda.gov/food/food-chemical-safety/list-select-chemicals-food-supply-under-fda-review (page "content current as of 10/29/2026"); https://www.govinfo.gov/content/pkg/FR-2026-05-13/html/2026-09508.htm; Federal Register API, document 2026-20848 | Label modified 2023-05-23; RFI May 13, 2026; salt rule published Oct. 13, 2026, effective Dec. 14, 2026 | MEASURED |
+
+Verified dated points inside the window: 1952, 1962, 1967, 1990, 1998, 2018, 2023, 2025, 2026 = 9. Clears the 3-point bar.
+
+**Ice Cream**
+
+| Decade | Ingredient count | Named additives | Regulatory change | Source | Date | Tag |
+|---|---|---|---|---|---|---|
+| 1950s | Not available | No federal standard yet. The order records hearing proposals at 23 FR 1991 (Mar. 26, 1958); not read this run. | — | 25 FR 7124 (order text) | — | MEASURED (citation only) |
+| 1960s | Not available (R1) | Permitted stabilizers: agar-agar, algin, calcium sulfate, gelatin, gum acacia, guar seed gum, gum karaya, locust bean gum, oat gum, gum tragacanth, Irish moss, extract of Irish moss (carrageenan's source), lecithin, psyllium seed husk, sodium carboxymethylcellulose (cellulose gum). Mono- and diglycerides up to 0.2%. Sweeteners include corn sirup, dried corn sirup and glucose sirup. Finding 1: stabilizers "usually added to prevent formation of large ice crystals." | First federal standard for ice cream, frozen custard, ice milk, sherbet and water ices (§ 20.1 ff.) | 25 FR 7124 ff.; https://www.govinfo.gov/content/pkg/FR-1960-07-27/pdf/FR-1960-07-27.pdf | July 27, 1960 | MEASURED |
+| 1960s | — | Polysorbate 80 approved as an emulsifier in ice cream, frozen custard, ice milk and fruit sherbet (§ 121.1009), up to 0.1% alone or combined | Food additive order | 25 FR 7100, same issue | Dated July 19, 1960; published July 27, 1960 | MEASURED |
+| 1970s | Not available (R1) | Current text allows "safe and suitable nonmilk-derived ingredients" and requires at least 10% milkfat | Standard rewritten as 21 CFR 135.110 | eCFR source note: 43 FR 4598 | Feb. 3, 1978 | MEASURED (date; current text) |
+| 1980s | Not available (R1) | Nothing verified. Breyers advertising claims (dossier lines 89, 90, 122) were not checked against a period source. | — | — | — | PLACEHOLDER |
+| 1990s | Full lists required (R1) | — | Philip Morris (Kraft's parent) states: "During 1993, the Company sold its ice cream business." The filing does not name Breyers or the buyer. | https://www.sec.gov/Archives/edgar/data/764180/0000950130-94-000396.txt (10-K filed 1994-03-16) | 1993 | MEASURED |
+| 2010s | Breyers Natural Vanilla **ice cream**: 5 (milk, cream, sugar, tara gum, natural flavor) | Tara gum | — | FDC 397147, GTIN 077567274731 | Record modified 2018-05-31 | MEASURED |
+| 2020s | Breyers Extra Creamy Vanilla **frozen dairy dessert**: 10 top-level, 12 expanded (milk, sugar, corn syrup, cream, whey, carob bean gum, guar gum, tara gum, mono- and diglycerides, natural flavor, annatto, vitamin A palmitate). Breyers Natural Vanilla ice cream: still 5. | Corn syrup; 3 gums; mono- and diglycerides | — | FDC 2030744 (published 2021-10-28, modified 2020-12-26); FDC 2676380 (published 2023-11-16) | 2020 to 2023 | MEASURED |
+
+Verified dated points inside the window: 1960 (two orders), 1978, 1993, 2018, 2020, 2023 = 6. Clears the bar. The middle decades are regulatory, not Breyers-specific.
+
+**Pasta**
+
+| Decade | Ingredient count | Named additives | Regulatory change | Source | Date | Tag |
+|---|---|---|---|---|---|---|
+| 1940s (before the window) | Not available (R1) | Disodium phosphate, labeled "added for quick cooking" | First macaroni standards, §§ 16.1 to 16.8 | 9 FR 14881; https://www.govinfo.gov/content/pkg/FR-1944-12-23/pdf/FR-1944-12-23.pdf | Order dated Dec. 21, 1944 | MEASURED |
+| 1940s (before the window) | Not available (R1) | Thiamine, riboflavin, niacin and iron required, with vitamin D, calcium and wheat germ optional, **in products named "enriched"** | Enriched macaroni standard, § 16.9 | 11 FR 7520 to 7522; https://www.govinfo.gov/content/pkg/FR-1946-07-09/pdf/FR-1946-07-09.pdf | Dated July 3, 1946; effective on publication July 9, 1946 | MEASURED |
+| 1950s, 1960s | Not available (R1) | No change verified this run | — | — | — | PLACEHOLDER |
+| 1970s | Not available (R1) | Current § 139.110 also permits concentrated glyceryl monostearate (2% maximum), egg white and gum gluten. The year GMS was added was not found. | Recodified as 21 CFR 139.110 and 139.115 | eCFR source note: 42 FR 14409 | Mar. 15, 1977 | MEASURED (date only) |
+| 1990s | Full lists required (R1) | Folic acid at 0.9 to 1.2 mg/lb in enriched macaroni products | Folic acid final rule | 61 FR 8781 (p. 8792 explains the higher pasta level as cooking loss) | Effective Jan. 1, 1998 | MEASURED |
+| 2020s | Barilla spaghetti: 7 (semolina, durum wheat flour, niacin, ferrous sulfate, thiamine mononitrate, riboflavin, folic acid) | No non-enrichment additive | Salt-substitutes amendment to § 139.110 (91 FR 65063) | FDC 2657819 (published 2023-10-26, modified 2023-09-06) | 2023; Oct. 13, 2026 | MEASURED |
+
+Verified dated points inside the window: 1977, 1998, 2023, 2026 = 4. Clears the bar, but the 1977 point is a recodification, not a substantive change.
+
+**Milk**
+
+| Decade | Ingredient count | Named additives | Regulatory change | Source | Date | Tag |
+|---|---|---|---|---|---|---|
+| 1950s | Not available | No period source located: no 1953 Pasteurized Milk Ordinance on archive.org | — | archive.org advancedsearch | — | PLACEHOLDER |
+| 1960s | Not available (R1) | Vitamin D milk: at least 400 USP units per quart. Lowfat milk: 0.5 to 2.0% milkfat. "Fortified" milk: vitamins and minerals as the health authority approves. Optional ingredients for milk products: "flavors, sweeteners, stabilizers, emulsifiers, acidifiers, vitamins, minerals." | U.S. Public Health Service Grade "A" Pasteurized Milk Ordinance, 1965 recommendations | https://archive.org/details/micro_IA41159428_0100 (OCR text, section 1) | 1965 | MEASURED |
+| 1970s | Not available (R1) | Vitamin A optional at not less than 2,000 IU per quart; vitamin D optional at 400 IU per quart | 21 CFR 131.110 (milk) | eCFR source note: 42 FR 14360 | Mar. 15, 1977 | MEASURED (date; current text) |
+| 1990s | Full lists required (R1) | Under the old lowfat and skim standards, vitamin A addition was mandatory (2,000 IU per quart) | Lowfat milk standards revoked; lower-fat milks move to nutrient-content names such as "reduced fat" | 61 FR 58991; https://www.govinfo.gov/content/pkg/FR-1996-11-20/html/96-29485.htm | Published Nov. 20, 1996; effective Jan. 1, 1998 | MEASURED |
+| 2010s | H-E-B 2%: 3 (organic reduced fat milk, vitamin A palmitate, vitamin D3) | — | — | FDC 1569020 | Record modified 2017-07-14 | MEASURED |
+| 2020s | Hood 2%: 3. Mayfield 2%: 3. Organic Valley 2% (1 quart): 3. | — | Salt-substitutes rule also amends § 131.110 (91 FR 65056); content not read | FDC 2757802 (2026-04-23), 2462711 (modified 2021-06-18), 2755990 (2026-04-23) | 2021 to 2026 | MEASURED |
+
+Verified dated points inside the window: 1965, 1977, 1998, 2017, 2021, 2026 = 6. Clears the bar. The dossier's "1978 PMO vitamin A" point (line 268) was not found and stays PLACEHOLDER. No Sealtest 2% record exists in the FDC release.
+
+### R3. RESEARCH GAPS (lines 213 to 233), item by item
+
+| Gap | Result | Tag |
+|---|---|---|
+| Cereal: Frosted Flakes counts 1965/1975/1985/1995 | Not found. Cereal is Phase 2 (line 352). | PLACEHOLDER |
+| Cereal: date BHT was first added to Kellogg's | Not found. The federal BHT rules today are 21 CFR 172.115 and 182.3173 (eCFR, current), and FDA requested information on BHT (91 FR 27054, May 13, 2026). | PLACEHOLDER (date); MEASURED (rules) |
+| Cereal: "35% more ingredients" | One standard web search found no source for the phrase. | PLACEHOLDER |
+| Bread: 1960s Wonder Bread list from a primary source | Not found. Under R1 no full list was required. The 1952 standard is the period source for what bread could contain. | PLACEHOLDER (product list) |
+| Bread: year ADA reached widespread adoption | Approval dates verified: flour 1962, bread 1967 (R2). Adoption breadth not found. | MEASURED (approvals); PLACEHOLDER (adoption) |
+| Bread: current potassium bromate prevalence | Counted in FDC branded release 2026-10-29: 443,310 distinct active GTINs (latest record per GTIN, discontinued rows excluded). 615 list "potassium bromate" or "bromated" (excluding "unbromated", "un-bromated", "non-bromated", "no bromate"), 159 of them in "Breads & Buns" out of 10,156 GTINs in that category. ADA appears in 794 GTINs, 356 of them in Breads & Buns. These are counts of label text, not market share. | MEASURED |
+| Ice cream: year Breyers added corn syrup | No primary source found. One standard web search returned blogs and wiki talk pages only. | PLACEHOLDER |
+| Ice cream: 1965 vs today count from USDA composition data | USDA food composition tables report nutrients, not ingredient lists, so they cannot answer this. The 1960 standard (R2) is the period source. | PLACEHOLDER |
+| Ice cream: when polysorbate 80 became standard | Approved for ice cream July 1960 (25 FR 7100). In the FDC release, 2,970 of 13,251 active "Ice Cream & Frozen Yogurt" GTINs list it. | MEASURED |
+| Policy: corn subsidy dollars by decade | USDA FSA, NASS and OBPA hosts returned 403 or reset. No figure. | PLACEHOLDER |
+| Policy: Farm Bill years | Citations verified from the statute first pages: Pub. L. 93-86 (1973, starts on 87 Stat. 221 page); 99-198, Food Security Act of 1985; 104-127, FAIR Act of 1996; 107-171, Farm Security and Rural Investment Act of 2002; 110-234, Food, Conservation, and Energy Act of 2008; 113-79, Agricultural Act of 2014; 115-334, Agriculture Improvement Act of 2018. Provisions on corn and soy were not read. | MEASURED (citations); PLACEHOLDER (provisions) |
+| Policy: number of additives in 1960 | Period source located: NAS-NRC Publication 1274, "Chemicals Used in Food Processing" (1965), https://archive.org/details/bub_gb_3kUrAAAAYAAJ. It states no total. No count was built from the OCR. | PLACEHOLDER |
+
+### R4. US vs EU table (lines 155 to 171), checked against FDA, eCFR and EU law
+
+EU sources: Regulation (EU) 1129/2011 (the Union list, Annex II to Regulation 1333/2008), Directive 2006/52/EC and Regulation (EU) 2022/63, all fetched from the EU Publications Office (CELLAR) at https://publications.europa.eu/resource/celex/<CELEX number>. eur-lex.europa.eu and efsa.europa.eu document pages returned a 202 challenge or a 403, so no EFSA opinion was read.
+
+| Row | Finding | Tag |
+|---|---|---|
+| Approved additives, US vs EU | FDA "Substances Added to Food" download: 3,970 substance rows, "last updated 9/8/2026", described by FDA as "only a partial list." The "more than 10000 substances" figure is from Neltner et al., Comprehensive Reviews in Food Science and Food Safety, Nov. 2011 (peer-reviewed; DOI 10.1111/j.1541-4337.2011.00166.x, abstract via api.crossref.org). It includes food-contact substances and flavorings. The EU Union list as published in 1129/2011, Part B: 321 distinct E-number designations (regex count). The EU list excludes flavourings and food-contact materials, so the two totals measure different things. Neither 411 (brief line 28) nor "~400" (dossier line 157) matched a source read this run. | MEASURED |
+| ADA | US: 21 CFR 172.806, 45 ppm limit (eCFR current). On FDA's review list since 2025-08-19; information request May 13, 2026 (91 FR 27060). EU: "zodicarbonamide" does not appear in 1129/2011, so it is not on the Union list. UK, Australia and Singapore not verified: legislation.gov.au rendered by JavaScript; sso.agc.gov.sg returned 403. | MEASURED (US, EU); PLACEHOLDER (UK, AU, SG) |
+| Potassium bromate | US: still a named optional ingredient in 21 CFR 136.110(c)(14)(i), and permitted in bread since the 1952 standard (R2). EU: "bromate" does not appear in 1129/2011. The "EU 1990" date was not found in any primary source. Canada, China, India and the FDA 1991 letter were not verified (canada.ca returned an empty reply). | MEASURED (US, EU listing); PLACEHOLDER (dates, other countries) |
+| BVO | US: revoked by 89 FR 55040, effective Aug. 2, 2024; interim-basis use since October 1970 per the rule's background. EU: E 443 does not appear in 1129/2011. UK and Japan not verified. | MEASURED (US, EU); PLACEHOLDER (UK, JP) |
+| Titanium dioxide | EU: Regulation (EU) 2022/63 of 14 Jan. 2022 removed E 171. Foods made under the old rules could be placed on the market until 7 Aug. 2022. US: 21 CFR 73.575 still lists it (eCFR current). | MEASURED |
+| Red Dye 3 | US: food use revoked, effective Jan. 15, 2027 (90 FR 4628). **EU: E 127 erythrosine is authorised for "cocktail cherries and candied cherries" (200 mg/kg) and "bigareaux cherries in syrup and in cocktails" (150 mg/kg) in 1129/2011.** The row's "banned in EU" does not hold for maraschino-type cherries, the product the row names. | MEASURED |
+| BHT | EU: E 321 is authorised only in named fat, oil and frying-fat uses in the 1129/2011 rows read; no cereal use appears there. US: 21 CFR 172.115 and 182.3173; FDA request for information (91 FR 27054, May 13, 2026). "State-level scrutiny" not verified. | MEASURED (US, EU); PLACEHOLDER (states) |
+| Propylparaben | EU: Directive 2006/52/EC of 5 July 2006 withdrew E 216 and E 217. US: 21 CFR 184.1670 (GRAS). California AB 418 not verified (leginfo.legislature.ca.gov returned 403). | MEASURED (EU, US); PLACEHOLDER (CA) |
+
+Related: dossier line 145 and brief line 27 date the GRAS change to 1997. The 1997 document is a *proposed* rule (62 FR 18938, Apr. 17, 1997). The final rule is 81 FR 54960 (Aug. 17, 2016). MEASURED.
+
+### R5. Findings that bear on existing claims (stated here, existing lines not edited)
+
+1. Lines 50, 51, 68 and 110 place mono- and diglycerides and DATEM in bread in the 1970s to 1990s, and ice cream emulsifiers in the 1960s to 1970s. In fact the 1952 bread standard already permitted mono- and diglycerides and (tentatively) DATEM. The 1960 ice cream standard permitted mono- and diglycerides, guar, carrageenan and cellulose gum, and polysorbate 80 was approved the same day.
+2. Line 54: "Wonder Bread does not [remove ADA]." The FDC records for Wonder Classic White modified 2018-07-21 and 2023-05-23 do not list ADA.
+3. Line 55: "27 listed components." The 2023 Wonder label counts 21 top-level and 37 expanded under the method in R1. The dossier's counting method is not stated.
+4. Line 102: the Extra Creamy Vanilla list does not match FDC 2030744 (2021). FDC has no skim milk, carrageenan, cellulose gel or cellulose gum, and adds carob bean gum, annatto and vitamin A palmitate. The count of 12 matches only under the expanded method.
+5. Lines 89 and 98 (4 ingredients): Breyers *Natural Vanilla*, still labeled ice cream, has 5 ingredients in FDC records from 2018 to 2023. The jump to 12 applies to the Extra Creamy *frozen dairy dessert* line, not to the brand as a whole.
+6. Line 313: "140 micrograms folic acid per 100g" is FDA's base cereal-grain level (61 FR 8781). Enriched pasta is set at 0.9 to 1.2 mg/lb, which works out to 198 to 265 µg per 100 g (computed: mg/lb ÷ 453.592 g × 100,000).
+7. Line 312 says "first foods the FDA permitted enrichment for." The 1946 standard defines what "enriched" macaroni must contain. It does not require pasta to be enriched.
+8. Brief line 4 ("3-4x the ingredients"): milk stays at 3. Breyers Natural Vanilla goes from 4 to 5. Only the frozen dairy dessert line goes from the 4-ingredient Pledge baseline to 12 (3x).
+
+### R6. Milk and Pasta verdicts (lines 274 and 316): supported or weakened
+
+Neither verdict is overridden here.
+
+- **Milk ("stable / control"): supported.** The 1965 PMO already defines vitamin D milk and fortified lowfat milk. 2% milk lists 3 items across four brands in FDC records from 2017 to 2026. One open point: the dossier's 1978 vitamin A milestone was not found.
+- **Pasta ("different / government mandate"): direction supported, wording weakened.** Barilla's 2023 label has no additive beyond enrichment. But enrichment has been a defined option since 1946, not a federal requirement. The standard also permits non-enrichment additives (disodium phosphate since 1944; glyceryl monostearate by 1977) that Barilla does not use. "Every single addition ... is a government health mandate" (line 316) is accurate only for products sold as "enriched."
