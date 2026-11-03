@@ -57,7 +57,7 @@ interface Props {
 const { piece } = Astro.props;
 const { Content } = await render(piece);
 
-const { title, description, hero, journey, tabs = [] } = piece.data;
+const { title, description, hero, journey, tabs = [], publishDate } = piece.data;
 const slug = Astro.params.slug;
 
 /** The one tab count. Read from frontmatter, never written down here. */
@@ -110,6 +110,7 @@ const kofiUrl = 'https://ko-fi.com/alterrell';
   <div class="ai-inner">
     <h1 class="ai-hero-hed">{hero.headline}</h1>
     {hero.dek && <p class="ai-hero-dek">{hero.dek}</p>}
+    {publishDate && <p class="ai-hero-date">Published <time datetime={publishDate.toISOString().slice(0, 10)}>{publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time></p>}
   </div>
 </header>
 
