@@ -24,7 +24,7 @@ Compiled 2026-11-03 to 2026-11-04 by a cloud session on branch `cloud/11-02-btu-
 | `name` | The name as written in the brief. |
 | `cluster` | `A-sitcom`, `B-drama`, `C-miniseries`, `D-soap`, or `X-unassigned`. X means a brief names the show as a credit but no brief assigns it to a cluster. A person's cluster lists every A to D cluster their edges touch, separated by `\|`. |
 | `years` | **Show:** premiere-to-end years from TVmaze (MEASURED), or the brief's years where TVmaze has no record (PLACEHOLDER). **Person:** the span of their VERIFIED edges. Each edge contributes its MEASURED edge years where they exist, otherwise the show's span. This is an envelope, not a career span. |
-| `source` | **Show:** its TVmaze page, or Wikipedia where TVmaze has no record. **Person:** their TVmaze person page(s) where matched. |
+| `source` | **Show:** its TVmaze page, or Wikipedia where TVmaze has no record. **Person:** their TVmaze person page(s) where matched. Otherwise, the source URLs of their verified edges, so every MEASURED person `years` value has a URL. |
 | `crossover_flag` | `CROSSOVER-VERIFIED`: the person has VERIFIED edges in 2 or more of clusters A to D. `CROSSOVER-UNVERIFIED`: they reach 2 or more clusters only when UNVERIFIED edges are counted. Blank: one cluster. X-cluster shows never count toward a crossover. |
 | `crossover_clusters` | The clusters the person spans, for example `A+C`. |
 | `tier` | **Show only:** the tier the brief assigns, with the OD ruling that set it. |
