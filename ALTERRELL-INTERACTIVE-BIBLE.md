@@ -1,6 +1,6 @@
 # Alterrell Interactive Bible
 
-**Last updated:** 2026-10-29 (D-110 ruled, TABS-05 amended; 2026-09-16: COPY-06 through COPY-09 and Appendix A D-110/D-111 added; everything else is the 2026-07-27 text)
+**Last updated:** 2026-11-03 (D-112 published date ruled; 2026-10-29: D-110 ruled, TABS-05 amended; 2026-09-16: COPY-06 through COPY-09 and Appendix A D-110/D-111 added; everything else is the 2026-07-27 text)
 
 This file is canonical because it is the only file at this path. It does not declare rank.
 
@@ -289,6 +289,7 @@ This file is canonical because it is the only file at this path. It does not dec
 | D-109 | Every ruling is forward-only from 2026-07-01 unless it states otherwise. Pieces live before that date grandfather by default. | BUILD (Appendix B — governance principle, sets the default reading for D-93 through D-108) |
 | D-110 | Gay Uncles ships 8 tabs and keeps Hold Your Ground. AMA ruled 2026-10-29, superseding D-97. Closes the open conflict recorded 2026-09-16 (the row had been cited in `_archive/legacy-2026-08-13/gay-uncles/index.new.html:108` but never logged). | TABS |
 | D-111 | Copy of record: one per piece, `*-COPY.md` only, never `src/`, never a brief or factpack. A lossy rendering is the defect, not missing copy. A slot is open only if unwritten in every generation. The placeholder marker list is open-ended. | COPY (COPY-06 through COPY-09) |
+| D-112 | Every piece shows "Published [Month D, YYYY]" under the hero dek, in DM Mono, from `publishDate` in frontmatter, and its Sources tab ends with "Figures are as of the publish date and are not updated." The date is the piece's first push to `main` (Netlify publishes `main`): Sodium 2026-03-15, Concert Tax 2026-04-18, Gay Uncles 2026-04-27. Pieces not yet live take the date of their first publish. AMA ruled option B 2026-11-03; dates delegated to Claude 2026-11-03. | HERO, SRC |
 
 ---
 

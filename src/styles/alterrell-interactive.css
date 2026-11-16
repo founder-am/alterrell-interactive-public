@@ -371,6 +371,16 @@ button { cursor: pointer; font-family: var(--font-body); }
   max-width: 100%;
 }
 
+/* D-112: publish date under the hero dek. Mono, paper on the dark hero. */
+.ai-hero-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  margin-top: 12px;
+}
+
 /* Section h2 */
 .ai-h2 {
   font-family: var(--font-editorial);
