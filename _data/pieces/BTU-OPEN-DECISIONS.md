@@ -156,6 +156,7 @@ Options:
 - C) NAACP override — if NAACP nominees came from this show, individual actors qualify via tiebreaker
 **Status: RESOLVED — 2026-06-03**
 **Ruling: Option C.** Apply the NAACP tiebreaker. Individual actors with NAACP nominations from Generations qualify as BTU nodes. The show itself is documented as a historical note in the cluster. Research pass to identify NAACP-nominated cast members.
+**Clarification — 2026-09-15:** Ruling stands as Option C, but the tiebreaker cannot fire for Generations. The NAACP daytime acting category began in 1993, after the show ended in 1991, and no cast member has an NAACP nomination for Generations. The show stays a historical note only. Kristoff St. John qualifies as a Secondary node via his Y&R NAACP wins (1994 onward), not via Generations. Vivica A. Fox needs a post-1993 qualifying credit (separate check).
 
 ---
 
@@ -186,6 +187,7 @@ Options:
 | OD-10 | Hard line locked platform-wide: Primary if 80%+ Black cast OR two leads with one Black lead. Actors qualify to BTU even if show does not. | 2026-06-03 |
 | OD-11 | Apply OD-10 — Lynn Whitfield is sole lead and is Black → show qualifies Primary pending research confirmation. | 2026-06-03 |
 | OD-12 | Option C — NAACP tiebreaker applies. Qualifying actors earn nodes. Show documented as historical note. | 2026-06-03 |
+| OD-12 clarification | Tiebreaker inoperable for Generations: NAACP daytime category starts 1993, show ended 1991. Historical note only. Kristoff St. John qualifies via Y&R. | 2026-09-15 |
 | OD-13 | Option A — Diahann Carroll earns Secondary node via NAACP. Dynasty itself is not a BTU show. | 2026-06-03 |
 | Will Smith / "isolated nodes" framing | Retired. Will Smith is a connected node via Fresh Prince guest appearances. No actors are designated "isolated" by default. | 2026-06-03 |
 | Jackée Harry BTU eligibility | Confirmed eligible. 227 (seasons 1–4) + Sister Sister (all 119 episodes) + additional credits. Load-bearing node. | 2026-06-03 |

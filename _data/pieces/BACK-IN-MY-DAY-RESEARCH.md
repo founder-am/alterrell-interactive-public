@@ -256,6 +256,111 @@ Source: Lane et al., BMJ, 2024
 
 ---
 
+## PART 4: MILK
+
+### Representative product: 2% reduced-fat milk
+
+**Verified current ingredient list — standard 2% milk (multiple major brands: Hood, H-E-B, Mayfield, Sealtest, Organic Valley):**
+Reduced fat milk, vitamin A palmitate, vitamin D3.
+3 ingredients. Confirmed across five independent brands/retailers.
+
+**Historical baseline:**
+Vitamin D fortification of milk began in the 1930s (not the 1960s) as a direct public health response to rickets. Vitamin A fortification of reduced-fat milk became standard practice by the 1940s-50s, codified into the federal Pasteurized Milk Ordinance by 1978. Both predate the piece's 1960 starting point.
+
+**Key finding — milk does NOT support the "creeping synthetic invasion" narrative:**
+Standard 2% milk today, across every major brand checked, is still 3 ingredients — the same 2 added vitamins that were standard by the 1960s baseline. The carrageenan, guar gum, and cellulose gel additions exist only in specialty products (lactose-free, ultra-filtered/Fairlife, calcium-enriched) — not standard milk.
+Source: Hood, H-E-B, Mayfield Dairy, Sealtest, Organic Valley product labels (current)
+
+**Editorial verdict: Milk should be CUT or reframed.** The placeholder card claiming "3 to 7 ingredients, 1960 to 2020" with cellulose gel and cellulose gum as 2020 additions is not representative of standard milk — it describes a lactose-free specialty product. Using it as written would be a factual overstatement the piece can't defend if challenged. If milk stays in the series, the honest story is "this one didn't change" — which could work as a contrast card against the other foods, but not as a "synthetic invasion" card in the same format as bread/cereal/ice cream.
+
+---
+
+## PART 5: CHEESE
+
+### Representative product: Block cheddar cheese (not shredded, not processed)
+
+**Verified current ingredient list — natural block cheddar (Tillamook, confirmed industry-standard formula):**
+Cultured milk, salt, enzymes, annatto (color).
+4 ingredients.
+Source: Tillamook official FAQ, product label
+
+**Historical baseline:**
+Same 4-ingredient structure (cultured milk, salt, rennet/enzymes, optional annatto) has been standard cheddar-making practice for over a century. This has not meaningfully changed since 1960.
+
+**Critical distinction — three different cheese products, three different stories:**
+
+| Product type | Ingredient count | Story |
+|---|---|---|
+| Natural block cheddar | 4 | Essentially unchanged since 1960 — weak story |
+| Pre-shredded cheddar | 5-6 | Adds anticaking agent (cellulose or potato starch) + trace natamycin — modest story |
+| Processed cheese (Kraft Singles, cheese spread) | 10-15+ | Sodium phosphate, modified food starch, oleoresin paprika, natamycin, lactic acid, multiple emulsifiers — but this technology dates to 1911-1921, not 1960s-2020s. Kraft was already using sodium phosphate emulsifiers in the 1920s. |
+
+**Editorial verdict: The earlier placeholder card (5 to 21 ingredients) is not defensible as written.** It's not clear which cheese product that 21-ingredient figure describes — it doesn't match natural block, pre-shredded, or even most processed cheese spreads researched here. Cheese needs a redirect: either (a) tell the pre-shredded vs. block story, which is real but modest, or (b) tell the processed cheese is 100+ years old, not new story, which actually undercuts the "this happened in our lifetime" framing of the whole piece and may not belong in this series at all.
+
+---
+
+## PART 6: PASTA
+
+### Representative product: Dry spaghetti (Barilla, standard commercial)
+
+**Verified current ingredient list — Barilla Spaghetti (current):**
+Semolina (wheat), durum wheat flour. Vitamins/minerals: vitamin B3 (niacin), iron (ferrous sulfate), vitamin B1 (thiamine mononitrate), vitamin B2 (riboflavin), folic acid.
+2 base ingredients plus 5 mandated fortification additions = 7 total label items.
+Source: Barilla product label, current
+
+**Historical baseline and fortification timeline:**
+- 1940s: Pasta was one of the first foods the FDA permitted vitamin/iron enrichment for (niacin, iron, thiamine, riboflavin)
+- 1998: FDA mandated folic acid fortification of enriched cereal grains, including pasta — specifically to reduce neural tube birth defects. Required 140 micrograms folic acid per 100g.
+Source: FDA enrichment mandates, Nutrition Today journal
+
+**Editorial verdict: Pasta is the weakest story in the entire food set — confirms the original placeholder's own flag.** There is no corporate-driven synthetic additive creep in dry pasta. Every single addition (iron, thiamine, riboflavin, niacin, folic acid) is a government health mandate, not a manufacturer shortcut. The thesis of this piece is that food got more synthetic because of corporate/regulatory failure — that does not hold for pasta. If anything, pasta is a counter-example: a food that got measurably healthier through government intervention (folic acid fortification is credited with reducing neural tube defects). Recommend cutting pasta from the series, or using it explicitly as the "control" food that shows the thesis doesn't apply universally — which could be an interesting editorial honesty move, but is a different card than what currently exists in the workbench.
+
+---
+
+## UPDATED FOOD SCORECARD (all 7 foods researched)
+
+| Food | Story strength | Verdict |
+|---|---|---|
+| Bread | Strong — 7 to 27 ingredients, real corporate additive history (ADA, HFCS, DATEM) | IN |
+| Cereal | Strong — real additive history (BHT, dyes) plus clean EU/US double standard | IN |
+| Ice cream | Strongest — Breyers acquisition/betrayal narrative, real reformulation history | IN |
+| Yogurt | Strong — Yoplait label confirms real additive creep (modified starch, gelatin, carmine) | IN |
+| Cheese | Weak/Mixed — natural block cheese barely changed; processed cheese tech is 100+ years old, predates the piece's timeframe | RECONSIDER — needs reframing or cut |
+| Milk | Weak — standard milk is still 3 ingredients; "invasion" story only applies to specialty products | RECONSIDER — likely cut or reframe as control |
+| Pasta | Weakest — additions are entirely government health mandates, not corporate shortcuts; arguably disproves the thesis | CUT or reframe as counter-example |
+
+*(Note: this scorecard reflects the story-strength pass only. See "PHASE 1 BUILD DECISION" below, which applies the stricter verified-data-point bar and supersedes the food set recommended here.)*
+
+---
+
+## PHASE 1 BUILD DECISION — LOCKED (June 21, 2026)
+
+**Bar for shipping:** Minimum 3-4 verified, dated data points per food (not a 2-point "1960s vs 2020s" placeholder, and not extrapolated intermediate decades). Verified means either a dated regulatory/historical event from a primary source, or a confirmed current product label.
+
+**Data-point audit results:**
+
+| Food | Verified dated points | Clears bar? |
+|---|---|---|
+| Bread | 4 — 1962 ADA approval, 1970s-80s HFCS displacement, 1990s DATEM/dough conditioner standardization, 2026 current label (27 ingredients) | YES |
+| Ice cream | 4 — 1980s Breyers baseline (4 ingredients, Pledge of Purity era), 1993 Unilever acquisition, 2000s-2010s reformulation/reclassification, 2026 current label (12 ingredients, "frozen dairy dessert") | YES |
+| Pasta | 3 — 1940s FDA enrichment mandate (iron, B vitamins), 1998 FDA folic acid mandate, 2026 current label (7 total label items) | YES |
+| Milk | 3 — 1930s vitamin D fortification begins, 1978 vitamin A fortification codified (PMO), 2026 current label (still 3 ingredients) | YES — flat line IS the story |
+| Cereal | 4 but weak — 1959 BHT approval (addition), 1969 cyclamate ban (removal), 1976 Red Dye 2 ban (removal), 2026 current label. Two of four points are removals, not additions, which complicates a clean "got worse" narrative. | BORDERLINE — hold for Phase 2 |
+| Yogurt | 3 but thin — pre-1960s yogurt barely in US market, 1975 stabilizer-use literature (indirect signal, not a label date), 2026 current label. Middle decades unverified. | BORDERLINE — hold for Phase 2 |
+| Cheese (block cheddar) | 1-2 — no dated change events found; formula has been static since early 1900s | TOO THIN — hold for Phase 2, or use as a one-line footnote rather than a full card |
+
+**DECISION: Phase 1 build = Bread, Ice Cream, Pasta, Milk.**
+
+This set was chosen over Bread/Ice Cream/Cereal/Milk because Pasta has cleaner dated data than Cereal (Cereal's points are muddied by being removals rather than additions). This also produces a more honest editorial mix than three decline stories plus one control:
+- Bread: worsened (corporate additive creep)
+- Ice cream: worsened (corporate acquisition + reformulation)
+- Pasta: different (government health mandate — not corporate, arguably a net positive)
+- Milk: stable (control — genuinely didn't change)
+
+Cereal and Yogurt are held for a Phase 2 research pass to firm up their middle-decade data points. Cheese is held indefinitely unless a real dated event can be found for block cheddar specifically — until then it doesn't merit a full card.
+
+---
+
 ## EDITORIAL FLAGS FOR AMA
 
 1. The fortification problem: Government-mandated vitamin enrichment of cereal and pasta genuinely improved public health (eliminated beriberi, pellagra, neural tube defects from flour stripping). Lumping these with corporate additive decisions muddies the thesis. Recommend distinguishing "government patches" from "corporate shortcuts."
@@ -267,3 +372,136 @@ Source: Lane et al., BMJ, 2024
 4. The GRAS loophole is the systemic mechanism: Everything else is downstream of this. If one card carries the entire argument, it is the 1997 rule change.
 
 5. Caution on the obesity/additive correlation: The Hall 2019 RCT proves causation for ultra-processed food overall — it does not prove that specific additives (BHT, ADA) cause obesity directly. Keep these as separate arguments: here is what changed in the food, here is what changed in us, here is what the science shows about the connection between those two things. Do not conflate them.
+
+---
+
+## SESSION DECISIONS — June 24, 2026
+
+### Card concept evolution (this session)
+
+Started with Option A (per-food bar charts, decades on x-axis), Option B (side-by-side label panels), Option C (cascade pills). All three formats built for Phase 1 foods. None fully approved yet.
+
+**Major conceptual shift mid-session:** Moved from per-food cards to per-generation cards. One card per decade, all 4 foods as grouped bars within each card. Reader flips through decades and watches divergence happen in real time. This is the stronger editorial concept — the comparison across foods IS the argument.
+
+**Generation card set: 1960s / 1980s / 1990s / 2000s+**
+1970s skipped — no verified changes for any food that decade.
+
+**Y-axis ceiling locked at 27** (Wonder Bread current count) across all cards in the tranche. Consistent ceiling = foods can be compared across cards.
+
+**Carry-forward convention locked:** When a food has no verified data for a given decade, carry forward last known value at 35% opacity (same colors, faded). Solid = confirmed, faded = estimated carry-forward. Reader learns it once.
+
+**Card format decisions:**
+- No y-axis labels or numbers — removed for cleaner look
+- Faint horizontal gridlines at 9, 18, 27 — retained for norming
+- Count inside top of bar in white — moves with bar height
+- Count above bar in dark for very short bars (milk, pasta early decades)
+- Legend collapsed to one line in footer
+- Food labels below each bar cluster
+
+**Status of all card formats as of session close:**
+- Option A (per-food bars): Hold — bar chart at 300×280px feels cramped, generation card concept supersedes
+- Option A v2 (generation cards): Hold — structure right, execution needs refinement
+- Option B (side-by-side labels): Hold — built, not reviewed
+- Option C (cascade pills): Never properly built — queued for next session
+
+### Food scope decisions — locked
+
+**Phase 1 build set: Bread, Ice Cream, Pasta, Milk**
+Chosen over Bread/Cereal/Ice Cream/Milk because Pasta has cleaner dated data than Cereal (Cereal's verified points are mostly removals, not additions).
+
+**Editorial mix:**
+- Bread: worsened (corporate additive creep)
+- Ice cream: worsened (corporate acquisition + reformulation)
+- Pasta: different (government health mandate — net positive, not corporate)
+- Milk: stable (control — genuinely didn't change)
+
+**Phase 2 foods (held pending deeper research):**
+- Cereal: borderline — 4 data points but 2 are removals not additions. Needs reframing.
+- Yogurt: borderline — thin on middle decades. Yoplait current label confirmed strong.
+- Cheese: too thin for block cheddar specifically. Hold.
+
+**Phase 3 and beyond (multi-part series scope):**
+Pizza, burgers, chicken nuggets, fries, soda, peanut butter, mac & cheese, snack cakes, salad dressing, hot dogs, tacos confirmed as future installments. Research not started.
+
+### Ingredient category system — locked
+
+Four categories, consistent across all cards and formats:
+
+| Category | Color | Hex | Definition |
+|---|---|---|---|
+| Whole | Teal | #0a7c72 | Natural, recognizable form. Flour, milk, eggs, vanilla extract. |
+| Processed | Orange | #c95f1a | Industrially derived or significantly transformed. HFCS, modified corn starch, soy lecithin, mono/diglycerides. |
+| Synthetic | Red | #c84628 | Lab-created or chemically manufactured, no whole-food analog. ADA, DATEM, artificial dyes, calcium propionate. |
+| Gov. mandate | Blue | #2a5298 | Government-required fortification. Niacin, iron, thiamine, riboflavin, folic acid. |
+
+### Verified ingredient splits per food per decade
+
+**Bread:**
+- 1960s: 7 whole
+- 1980s: 7 whole + 3 processed + 2 synthetic = 12
+- 1990s: 7 whole + 5 processed + 7 synthetic = 19
+- 2000s+: 7 whole + 9 processed + 11 synthetic = 27
+
+**Ice cream:**
+- 1980s: 4 whole (Breyers Pledge of Purity era — verified)
+- 1990s: 4 whole + 4 processed = 8 (post-Unilever 1993)
+- 2010s+: 4 whole + 5 processed + 3 synthetic = 12
+
+**Pasta:**
+- Pre-1940s: 2 whole
+- 1940s: 2 whole + 4 mandate = 6
+- 1990s: 2 whole + 5 mandate = 7 (folic acid 1998)
+- 2026: unchanged at 7
+
+**Milk:**
+- 1930s: 2 whole
+- 1978: 3 whole (vitamin A codified)
+- 2026: still 3 whole (confirmed across 5 major brands)
+
+**Ice cream 1960s:** Unverified — carry-forward at 4 (faded). Breyers was founded 1866, likely simpler pre-Pledge era but no sourced label found.
+
+---
+
+## HANDOFF NOTE — June 24, 2026
+
+### What was completed this session
+1. Full research pass on all 7 foods — Bread, Ice Cream, Cereal, Yogurt, Milk, Cheese, Pasta
+2. Phase 1 food set locked: Bread, Ice Cream, Pasta, Milk
+3. Three card formats built (Option A per-food, Option B side-by-side, generation cards)
+4. Generation card concept locked as primary direction
+5. Y-axis ceiling locked at 27, carry-forward convention locked
+6. Four-category ingredient system locked (whole/processed/synthetic/mandate)
+7. FOOD-EVOLUTION-BRIEF.md committed to repo (_data/pieces/)
+8. BACK-IN-MY-DAY-RESEARCH.md written and updated (needs repo commit)
+
+### What is NOT done
+- Option C (cascade pills) never properly built — first task next session
+- Generation cards: Hold — structure right, execution needs refinement
+- Option B: Hold — built but not reviewed
+- _workbench/back-in-my-day-cards.html not yet populated with any approved cards
+- No hub card, no piece folder, no production HTML
+
+### Files produced this session (all in downloads)
+- back-in-my-day-phase1-cards.html (Option B — 4 foods)
+- back-in-my-day-phase1-options-ac.html (early Option A + C — superseded)
+- back-in-my-day-option-a-final.html (Option A with y-axis — superseded)
+- back-in-my-day-option-a-v2.html (Option A 4 categories — superseded)
+- back-in-my-day-option-a-v3.html (simplified, no y-axis — superseded)
+- back-in-my-day-generation-cards.html (generation concept — Hold)
+- BACK-IN-MY-DAY-RESEARCH.md (this file — needs repo commit)
+
+### Next session should open with
+1. Commit BACK-IN-MY-DAY-RESEARCH.md to _data/pieces/
+2. Build Option C (cascade pills) for all 4 Phase 1 foods
+3. Review Option B alongside Option C — pick one format or decide per-food
+4. If generation cards get revisited, the execution issue is bar chart rendering at 300×280px — consider whether these are workbench cards or piece-page visuals at a larger display size
+5. Once any card format is approved, stage into _workbench/back-in-my-day-cards.html
+
+### Open editorial decisions (AMA voice pass needed before any copy ships)
+- All [AMA EDITORIAL LINE] placeholders across all card formats
+- Headline on 1990s generation card: "The decade the food industry stopped pretending" — placeholder, not AMA voice
+- Pasta card framing: "Every addition was a public health decision" — placeholder
+- Milk card framing: "This one they left alone" — placeholder
+
+### Context for next Claude instance
+This is a Type 1 editorial session project. The piece is called "Back in My Day" (food ingredient evolution). It is a multi-part series — Phase 1 covers Bread, Ice Cream, Pasta, Milk. The generation card concept (one card per decade, all foods as grouped bars) is the primary card direction but is on Hold pending execution refinement. Option C (cascade pills) has never been properly built and should be the first thing built next session. Y-axis ceiling is 27 across all cards. Four ingredient categories: whole (teal #0a7c72), processed (orange #c95f1a), synthetic (red #c84628), mandate (blue #2a5298). Carry-forward data shown at 35% opacity. All decisions are documented in BACK-IN-MY-DAY-RESEARCH.md.

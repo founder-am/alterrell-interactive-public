@@ -416,11 +416,11 @@ These locked decisions from DESIGN-DECISION-LOG.md must be enforced. If they are
 | D-42 | Naming series title: DO NOT build until mockups approved | Block any build |
 | D-46 | ~~Naming Part 2 stays Coming Soon~~ SUPERSEDED by D-69 — Part 2 is live | No block |
 | D-70 | Series index `/naming/index.html` must exist before Part 3 ships | Block Part 3 deploy until index exists |
-| D-71 | No Sources tab for Naming Parts 3–7 — methodology in footer + Part 0 only | Enforce in all naming builds |
+| D-71 | ~~No Sources tab for Naming Parts 3–7 — methodology in footer + Part 0 only~~ SUPERSEDED by the naming retrofit run of 2026-09-17, which moved parts 0, 1 and 2 onto the live-piece spine and retired Bible TABS-07, SRC-01 and FOOT-01. Text kept, not deleted. | No longer enforced |
 | D-48 | HBS: DO NOT build until AMA confirms 4 open decisions | Block any build |
 | D-60 | "Obsidian Futures" labels stay in Naming hero eyebrow + footer wordmark | Grandfathered only |
 | D-65 | Hub card category tags: Claude proposes, AMA confirms | DO NOT deploy hub card without AMA tag confirmation |
-| D-71 | Naming series (Parts 0–7): Sources tab standard does not apply. Methodology lives in footer accordion per series template. Parts 0–2 are grandfathered. Parts 3–7 clone the Part 2 pattern. Do not flag missing Sources tab as a violation on any Naming series file. | Enforce in all Naming builds |
+| D-71 | ~~Naming series (Parts 0–7): Sources tab standard does not apply. Methodology lives in footer accordion per series template. Parts 0–2 are grandfathered. Parts 3–7 clone the Part 2 pattern. Do not flag missing Sources tab as a violation on any Naming series file.~~ SUPERSEDED by the naming retrofit run of 2026-09-17. Text kept, not deleted. | No longer enforced |
 | D-72 | Obsidian Futures card-native exception logged. 380×660px tarot dimensions for Crowning Achievements and BTU. | Enforce in all Obsidian Futures card builds |
 | D-76 | Copaganda uses full-width chart visuals V1–V5, not 300×280px cards. Build order V3→V5→V4→V2→V1. | Do not apply card spec to Copaganda |
 | D-77 | Share cards on Spread the Word tab are pre-rendered PNGs served as img tags, not HTML divs. | Enforce on all Spread the Word tab builds |
